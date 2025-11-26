@@ -481,9 +481,9 @@ kubectl get ingress -n autofix
 ## 📞 支持與反饋
 
 如有問題或建議，請通過以下方式聯繫：
-- **Issues**: https://github.com/we-can-fix/slasolve/issues
-- **Documentation**: https://docs.slasolve.com
-- **Email**: support@slasolve.com
+- **Issues**: https://github.com/we-can-fix/synergymesh/issues
+- **Documentation**: https://docs.synergymesh.com
+- **Email**: support@synergymesh.com
 
 ---
 

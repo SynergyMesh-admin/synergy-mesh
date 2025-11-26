@@ -65,9 +65,9 @@ docs-examples/
 └── README.md                # 本文件
 ```
 
-## 整合至 SLASolve
+## 整合至 SynergyMesh
 
-這些文檔與 SLASolve 平台整合：
+這些文檔與 SynergyMesh 平台整合：
 
 1. **治理定義**：提供標準化的治理邊界
 2. **開發指南**：幫助開發者快速上手

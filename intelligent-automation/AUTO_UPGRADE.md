@@ -468,6 +468,6 @@ pip install --index-url https://pypi.tuna.tsinghua.edu.cn/simple package-name
 
 ---
 
-**維護者 Maintainer:** SLASolve Team  
+**維護者 Maintainer:** SynergyMesh Team  
 **最後更新 Last Updated:** 2025-11-25  
 **版本 Version:** 1.0

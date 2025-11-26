@@ -154,7 +154,7 @@ jobs:
           context: ${{ matrix.service.context }}
           file: ${{ matrix.service.dockerfile }}
           push: false
-          tags: slasolve/${{ matrix.service.name }}:ci-${{ github.sha }}
+          tags: synergymesh/${{ matrix.service.name }}:ci-${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
           load: true
@@ -162,7 +162,7 @@ jobs:
       - name: 🔍 Test Docker image (${{ matrix.service.name }})
         run: |
           echo "測試 Docker 映像..."
-          docker images | grep slasolve/${{ matrix.service.name }}
+          docker images | grep synergymesh/${{ matrix.service.name }}
           echo "✅ Docker 映像建置成功"
       
       - name: 📊 Docker Build Summary
@@ -170,7 +170,7 @@ jobs:
           echo "## 🐳 Docker 建置完成: ${{ matrix.service.name }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "- ✅ 映像建置成功" >> $GITHUB_STEP_SUMMARY
-          echo "- 🏷️ Tag: \`slasolve/${{ matrix.service.name }}:ci-${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- 🏷️ Tag: \`synergymesh/${{ matrix.service.name }}:ci-${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
 
   # ==================== 整體狀態報告 ====================
   ci-status-report:

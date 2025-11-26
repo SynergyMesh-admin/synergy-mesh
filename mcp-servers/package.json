@@ -1,7 +1,7 @@
 {
-  "name": "@slasolve/mcp-servers",
+  "name": "@synergymesh/mcp-servers",
   "version": "1.0.0",
-  "description": "Enterprise-grade MCP servers for AutoExecutionEngine Agent",
+  "description": "Enterprise-grade MCP servers for SynergyMesh AutoExecutionEngine Agent",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -19,11 +19,13 @@
   "keywords": [
     "mcp",
     "model-context-protocol",
+    "synergymesh",
+    "enterprise-integration",
     "slsa",
     "provenance",
     "code-analysis"
   ],
-  "author": "SLASolve Team",
+  "author": "SynergyMesh Team",
   "license": "MIT",
   "engines": {
     "node": ">=18.0.0"

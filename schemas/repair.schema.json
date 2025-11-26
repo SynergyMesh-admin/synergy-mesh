@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://slasolve.dev/schemas/repair.schema.json",
+  "$id": "https://synergymesh.dev/schemas/repair.schema.json",
   "title": "Repair Result",
-  "description": "Schema for automated repair results from SLASolve auto-repair engine",
+  "description": "Schema for automated repair results from SynergyMesh auto-repair engine",
   "type": "object",
   "required": [
     "repair_id",

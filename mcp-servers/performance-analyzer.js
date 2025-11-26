@@ -5,7 +5,7 @@
  * Enterprise-grade performance analysis, bottleneck identification, and optimization
  * 
  * @module performance-analyzer
- * @author SLASolve Team
+ * @author SynergyMesh Team
  * @license MIT
  */
 

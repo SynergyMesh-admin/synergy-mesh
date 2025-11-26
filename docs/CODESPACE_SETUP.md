@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document describes the default GitHub Codespace configuration for the SLASolve project.
+This document describes the default GitHub Codespace configuration for the SynergyMesh project.
 
 ## Configuration Files
 

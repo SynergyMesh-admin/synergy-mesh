@@ -107,7 +107,7 @@ export class ProvenanceService {
     const finishedOn = metadata.buildFinishedOn || new Date().toISOString();
 
     const buildMetadata: BuildMetadata = {
-      buildType: 'https://slasolve.dev/contracts/build/v1',
+      buildType: 'https://synergymesh.dev/contracts/build/v1',
       invocationId: buildInvocationId,
       startedOn,
       finishedOn,
@@ -144,7 +144,7 @@ export class ProvenanceService {
         type: slsaProvenance.predicateType,
         builder,
         recipe: {
-          type: 'https://github.com/slasolve/build',
+          type: 'https://github.com/synergymesh/build',
           definedInMaterial: 'package.json',
           entryPoint: 'npm run build',
           arguments: buildMetadata.externalParameters || {},

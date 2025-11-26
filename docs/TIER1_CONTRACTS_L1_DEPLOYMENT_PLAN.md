@@ -144,23 +144,23 @@ node dist/server.js --version
 cd core/contracts/contracts-L1/contracts/
 
 # 1. 建置映像
-docker build -t slasolve-contracts-l1:1.0.0 .
-docker build -t slasolve-contracts-l1:latest .
+docker build -t synergymesh-contracts-l1:1.0.0 .
+docker build -t synergymesh-contracts-l1:latest .
 
 # 2. 驗證映像大小
-docker images | grep slasolve-contracts-l1
+docker images | grep synergymesh-contracts-l1
 
 # 3. 安全掃描 (使用 Trivy)
-trivy image slasolve-contracts-l1:1.0.0
+trivy image synergymesh-contracts-l1:1.0.0
 
 # 4. 測試啟動
 docker run --rm -p 3000:3000 \
   -e NODE_ENV=production \
-  slasolve-contracts-l1:1.0.0
+  synergymesh-contracts-l1:1.0.0
 
 # 5. 推送至註冊表
-docker tag slasolve-contracts-l1:1.0.0 your-registry/slasolve-contracts-l1:1.0.0
-docker push your-registry/slasolve-contracts-l1:1.0.0
+docker tag synergymesh-contracts-l1:1.0.0 your-registry/synergymesh-contracts-l1:1.0.0
+docker push your-registry/synergymesh-contracts-l1:1.0.0
 ```
 
 #### 映像規格
@@ -191,7 +191,7 @@ docker push your-registry/slasolve-contracts-l1:1.0.0
 #### 啟動服務
 ```bash
 # 使用專案根目錄的 docker-compose.yml
-cd /home/runner/work/slasolve/slasolve/
+cd /home/runner/work/synergymesh/synergymesh/
 
 # 僅啟動 Contracts L1
 docker-compose up -d contracts-l1
@@ -351,7 +351,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: contracts-l1
-  namespace: slasolve
+  namespace: synergymesh
   labels:
     app: contracts-l1
     tier: core
@@ -368,7 +368,7 @@ spec:
     spec:
       containers:
       - name: contracts-l1
-        image: ghcr.io/your-org/slasolve/contracts-l1:1.0.0
+        image: ghcr.io/your-org/synergymesh/contracts-l1:1.0.0
         ports:
         - containerPort: 3000
           name: http
@@ -401,7 +401,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: contracts-l1
-  namespace: slasolve
+  namespace: synergymesh
 spec:
   type: ClusterIP
   selector:
@@ -415,17 +415,17 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: contracts-l1
-  namespace: slasolve
+  namespace: synergymesh
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - contracts-l1.slasolve.com
+    - contracts-l1.synergymesh.com
     secretName: contracts-l1-tls
   rules:
-  - host: contracts-l1.slasolve.com
+  - host: contracts-l1.synergymesh.com
     http:
       paths:
       - path: /
@@ -443,13 +443,13 @@ spec:
 kubectl apply -f core/contracts/contracts-L1/contracts/deploy/k8s/
 
 # 查看部署狀態
-kubectl get deployment contracts-l1 -n slasolve
+kubectl get deployment contracts-l1 -n synergymesh
 
 # 查看 Pod 狀態
-kubectl get pods -n slasolve -l app=contracts-l1
+kubectl get pods -n synergymesh -l app=contracts-l1
 
 # 查看日誌
-kubectl logs -n slasolve -l app=contracts-l1 -f
+kubectl logs -n synergymesh -l app=contracts-l1 -f
 ```
 
 ##### 選項 B: Docker Compose (生產)
@@ -581,7 +581,7 @@ export let options = {
 };
 
 export default function () {
-  let res = http.get('http://contracts-l1.slasolve.com/healthz');
+  let res = http.get('http://contracts-l1.synergymesh.com/healthz');
   check(res, {
     'status is 200': (r) => r.status === 200,
   });
@@ -719,13 +719,13 @@ EOF
 ## 📞 支援與聯絡
 
 ### 技術支援
-- **開發團隊**: dev-team@islasolve.com
-- **DevOps 團隊**: devops@islasolve.com
+- **開發團隊**: dev-team@isynergymesh.com
+- **DevOps 團隊**: devops@isynergymesh.com
 - **Slack**: #contracts-l1-support
 
 ### 緊急聯絡
 - **On-Call**: +1-XXX-XXX-XXXX
-- **事件響應**: incident@islasolve.com
+- **事件響應**: incident@isynergymesh.com
 - **響應時間**: < 15 分鐘
 
 ---

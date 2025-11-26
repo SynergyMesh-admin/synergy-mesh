@@ -16,16 +16,16 @@ semantic_version:
 # ==================== Ownership ====================
 owner:
   team: platform-governance
-  primary_contact: platform@islasolve.com
+  primary_contact: platform@isynergymesh.com
   secondary_contacts:
-    - tech-lead@islasolve.com
-    - security-head@islasolve.com
+    - tech-lead@isynergymesh.com
+    - security-head@isynergymesh.com
   maintainers:
     - name: Platform Team
-      email: platform@islasolve.com
+      email: platform@isynergymesh.com
       role: primary
     - name: Security Team
-      email: security@islasolve.com
+      email: security@isynergymesh.com
       role: reviewer
 
 # ==================== Language & Localization ====================
@@ -202,7 +202,7 @@ monitoring:
 changelog:
   - version: 1.0.0
     date: 2025-11-24
-    author: platform@islasolve.com
+    author: platform@isynergymesh.com
     changes:
       - 初始版本發布
       - SLSA Level 3 合規
@@ -211,7 +211,7 @@ changelog:
   
   - version: 0.9.0
     date: 2025-11-20
-    author: platform@islasolve.com
+    author: platform@isynergymesh.com
     changes:
       - Beta 版本
       - 核心功能實作
@@ -221,5 +221,5 @@ metadata:
   created_at: "2025-11-24T00:00:00Z"
   updated_at: "2025-11-24T11:54:00Z"
   architecture_pattern: 去AXIOM化重構策略
-  project_structure: islasolve
+  project_structure: isynergymesh
   governance_level: deep-validation

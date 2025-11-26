@@ -2,7 +2,7 @@
 
 ## 專案資訊
 
-- **專案名稱**: SLASolve - Senior Automation Architect & Code Intelligence Engineer
+- **專案名稱**: SynergyMesh - Senior Automation Architect & Code Intelligence Engineer
 - **目標**: 月收入千萬美元企劃 - 第一版落地實作
 - **階段**: Phase 1 - 基礎設施建設
 - **狀態**: ✅ 完成

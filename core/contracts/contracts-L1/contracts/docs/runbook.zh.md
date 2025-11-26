@@ -61,7 +61,7 @@ kubectl top pod <pod-name>
 1. **映像拉取失敗**
    ```bash
    # 檢查映像是否存在
-   docker pull ghcr.io/we-can-fix/slasolve/contracts-service:latest
+   docker pull ghcr.io/we-can-fix/synergymesh/contracts-service:latest
    
    # 檢查 ImagePullSecrets
    kubectl get secret -n default

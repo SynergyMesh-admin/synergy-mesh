@@ -1,7 +1,7 @@
 # ============================================================================
 # 服務告警規則
 # ============================================================================
-# 監控 SLASolve 平台核心服務的健康狀態和性能指標
+# 監控 SynergyMesh 平台核心服務的健康狀態和性能指標
 # ============================================================================
 
 groups:
@@ -22,8 +22,8 @@ groups:
         annotations:
           summary: "Contracts L1 Service is down"
           description: "Contracts L1 Service ({{ $labels.instance }}) has been down for more than 1 minute."
-          runbook_url: "https://docs.slasolve.com/runbooks/contracts-l1-down"
-          dashboard: "https://grafana.slasolve.com/d/contracts-l1"
+          runbook_url: "https://docs.synergymesh.com/runbooks/contracts-l1-down"
+          dashboard: "https://grafana.synergymesh.com/d/contracts-l1"
 
       # Tier 2: MCP Servers Down
       - alert: MCPServersDown
@@ -36,7 +36,7 @@ groups:
         annotations:
           summary: "MCP Servers is down"
           description: "MCP Servers ({{ $labels.instance }}) has been down for more than 2 minutes."
-          runbook_url: "https://docs.slasolve.com/runbooks/mcp-servers-down"
+          runbook_url: "https://docs.synergymesh.com/runbooks/mcp-servers-down"
 
       # Dashboard Down
       - alert: DashboardDown

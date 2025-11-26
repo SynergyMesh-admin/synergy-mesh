@@ -65,14 +65,14 @@ Automatically analyzes the incident and assigns to the most suitable owner.
       "primaryOwner": {
         "id": "david.zhang",
         "name": "David Zhang",
-        "email": "david.zhang@slasolve.dev",
+        "email": "david.zhang@synergymesh.dev",
         "specialties": ["node.js", "python", "api", "database"],
         "timezone": "Asia/Taipei"
       },
       "secondaryOwner": {
         "id": "eva.wu",
         "name": "Eva Wu",
-        "email": "eva.wu@slasolve.dev",
+        "email": "eva.wu@synergymesh.dev",
         "specialties": ["node.js", "database", "performance"],
         "timezone": "Asia/Taipei"
       },
@@ -130,7 +130,7 @@ Get detailed status of a specific assignment.
     "primaryOwner": {
       "id": "david.zhang",
       "name": "David Zhang",
-      "email": "david.zhang@slasolve.dev",
+      "email": "david.zhang@synergymesh.dev",
       "specialties": ["node.js", "python", "api", "database"],
       "timezone": "Asia/Taipei"
     },
@@ -269,7 +269,7 @@ Reassign the assignment to a different team member.
     "primaryOwner": {
       "id": "eva.wu",
       "name": "Eva Wu",
-      "email": "eva.wu@slasolve.dev",
+      "email": "eva.wu@synergymesh.dev",
       "specialties": ["node.js", "database", "performance"],
       "timezone": "Asia/Taipei"
     },
@@ -547,11 +547,11 @@ const createAssignmentFromAlert = async (alert) => {
 
 For questions or suggestions, please contact:
 
-- **Email**: support@slasolve.dev
-- **GitHub Issues**: https://github.com/we-can-fix/slasolve/issues
-- **Documentation**: https://docs.slasolve.dev
+- **Email**: support@synergymesh.dev
+- **GitHub Issues**: https://github.com/we-can-fix/synergymesh/issues
+- **Documentation**: https://docs.synergymesh.dev
 
 ---
 
 **最後更新 (Last Updated)**: 2025-11-24  
-**維護者 (Maintainer)**: SLASolve Team
+**維護者 (Maintainer)**: SynergyMesh Team

@@ -16,7 +16,7 @@ cyclonedx-npm --output-file sbom.json
 ### 使用 Syft
 ```bash
 # 從 Docker 映像生成 SBOM
-syft packages docker:ghcr.io/we-can-fix/slasolve/contracts-service:latest \
+syft packages docker:ghcr.io/we-can-fix/synergymesh/contracts-service:latest \
   -o cyclonedx-json=sbom.json
 ```
 

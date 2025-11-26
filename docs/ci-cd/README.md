@@ -2,7 +2,7 @@
 
 ## 📋 概述
 
-本目錄包含 SLASolve 專案的 CI/CD（持續整合/持續部署）相關文檔，記錄了漸進式部署策略的各個階段實作細節。
+本目錄包含 SynergyMesh 專案的 CI/CD（持續整合/持續部署）相關文檔，記錄了漸進式部署策略的各個階段實作細節。
 
 ## 🎯 漸進式部署策略
 
@@ -105,6 +105,6 @@ gh run list --workflow="stage-1-basic-ci.yml"
 
 ---
 
-**維護者**：SLASolve Team  
+**維護者**：SynergyMesh Team  
 **最後更新**：2025-11-26  
 **版本**：1.0.0

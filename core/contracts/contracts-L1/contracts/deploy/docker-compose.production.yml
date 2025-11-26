@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   contracts-l1:
-    image: ghcr.io/we-can-fix/slasolve/contracts-l1:latest
+    image: ghcr.io/we-can-fix/synergymesh/contracts-l1:latest
     container_name: contracts-l1-prod
     restart: unless-stopped
     
@@ -29,12 +29,12 @@ services:
       start_period: 40s
     
     networks:
-      - slasolve-network
+      - synergymesh-network
     
     labels:
-      com.slasolve.service: "contracts-l1"
-      com.slasolve.tier: "core"
-      com.slasolve.environment: "production"
+      com.synergymesh.service: "contracts-l1"
+      com.synergymesh.tier: "core"
+      com.synergymesh.environment: "production"
     
     deploy:
       replicas: 3
@@ -69,14 +69,14 @@ services:
       - contracts-l1
     
     networks:
-      - slasolve-network
+      - synergymesh-network
     
     labels:
-      com.slasolve.service: "nginx"
-      com.slasolve.tier: "ingress"
+      com.synergymesh.service: "nginx"
+      com.synergymesh.tier: "ingress"
 
 networks:
-  slasolve-network:
+  synergymesh-network:
     driver: bridge
     ipam:
       config:

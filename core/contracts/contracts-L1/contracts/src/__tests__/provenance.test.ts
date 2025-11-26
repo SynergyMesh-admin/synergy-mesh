@@ -54,7 +54,7 @@ describe('ProvenanceService', () => {
           type: 'https://slsa.dev/provenance/v1',
           builder,
           recipe: expect.objectContaining({
-            type: 'https://github.com/slasolve/build'
+            type: 'https://github.com/synergymesh/build'
           }),
           metadata: expect.objectContaining({
             completeness: {

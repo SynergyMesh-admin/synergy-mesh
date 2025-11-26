@@ -28,7 +28,7 @@ jobs:
     with:
       working-directory: mcp-servers
       service-name: mcp-servers
-      image-name: slasolve/mcp-servers
+      image-name: synergymesh/mcp-servers
       registry: ghcr.io
       environment: ${{ inputs.environment || 'dev' }}
       enable-cosign: true

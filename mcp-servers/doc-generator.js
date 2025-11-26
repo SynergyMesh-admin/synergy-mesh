@@ -5,7 +5,7 @@
  * Enterprise-grade documentation generation for JSDoc, API docs, and guides
  * 
  * @module doc-generator
- * @author SLASolve Team
+ * @author SynergyMesh Team
  * @license MIT
  */
 

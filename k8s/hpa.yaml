@@ -8,7 +8,7 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: contracts-l1-hpa
-  namespace: slasolve-production
+  namespace: synergymesh-production
   labels:
     app: contracts-l1
     tier: tier1
@@ -68,7 +68,7 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: mcp-servers-hpa
-  namespace: slasolve-production
+  namespace: synergymesh-production
   labels:
     app: mcp-servers
     tier: tier2
@@ -117,7 +117,7 @@ apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
 metadata:
   name: contracts-l1-vpa
-  namespace: slasolve-production
+  namespace: synergymesh-production
 spec:
   targetRef:
     apiVersion: apps/v1

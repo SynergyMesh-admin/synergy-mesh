@@ -3,7 +3,7 @@
 
 ## 執行概要 (Executive Summary)
 
-成功從 MateChat-dev.zip 提取並整合最具商業價值的功能到 SLASolve 平台，專為無人機和自動駕駛場景優化。總商業價值估計 **$5.8M+**。
+成功從 MateChat-dev.zip 提取並整合最具商業價值的功能到 SynergyMesh 平台，專為無人機和自動駕駛場景優化。總商業價值估計 **$5.8M+**。
 
 **完成日期**: 2024-11-24  
 **專案狀態**: ✅ 核心階段完成  
@@ -306,8 +306,8 @@ User Response
 
 ```bash
 # 1. 克隆倉庫
-git clone https://github.com/we-can-fix/slasolve.git
-cd slasolve/core/contracts/contracts-L1/ai-chat-service
+git clone https://github.com/we-can-fix/synergymesh.git
+cd synergymesh/core/contracts/contracts-L1/ai-chat-service
 
 # 2. 安裝依賴
 npm install
@@ -341,13 +341,13 @@ curl http://ai-chat-service:8100/health
 
 ```bash
 # 構建鏡像
-docker build -t slasolve/ai-chat-service:1.0.0 .
+docker build -t synergymesh/ai-chat-service:1.0.0 .
 
 # 運行容器
 docker run -d \
   -p 8100:8100 \
   -e OPENAI_API_KEY=your-key \
-  slasolve/ai-chat-service:1.0.0
+  synergymesh/ai-chat-service:1.0.0
 ```
 
 ---
@@ -533,9 +533,9 @@ ai_chat_error_rate
 
 ### 核心團隊
 
-- **架構設計**: GitHub Copilot + SLASolve Team
+- **架構設計**: GitHub Copilot + SynergyMesh Team
 - **實施**: GitHub Copilot Agent
-- **審查**: SLASolve Architecture Team
+- **審查**: SynergyMesh Architecture Team
 - **原始專案**: [MateChat by DevCloudFE](https://matechat.gitcode.com)
 
 ### 致謝
@@ -570,10 +570,10 @@ ai_chat_error_rate
 
 ### 支持與聯繫
 
-- **技術支持**: tech-support@slasolve.com
-- **架構諮詢**: architects@slasolve.com
-- **安全問題**: security@slasolve.com
-- **GitHub Issues**: https://github.com/we-can-fix/slasolve/issues
+- **技術支持**: tech-support@synergymesh.com
+- **架構諮詢**: architects@synergymesh.com
+- **安全問題**: security@synergymesh.com
+- **GitHub Issues**: https://github.com/we-can-fix/synergymesh/issues
 
 ---
 
@@ -595,14 +595,14 @@ ai_chat_error_rate
 3. 進行負載測試
 4. 準備生產上線
 
-本專案為 SLASolve 平台的 AI 能力奠定了堅實基礎，為未來的智能化場景提供了可靠的技術支撐。
+本專案為 SynergyMesh 平台的 AI 能力奠定了堅實基礎，為未來的智能化場景提供了可靠的技術支撐。
 
 ---
 
 **文檔版本**: 1.0.0  
 **完成日期**: 2024-11-24  
 **狀態**: ✅ 核心階段完成  
-**維護者**: SLASolve Team
+**維護者**: SynergyMesh Team
 
 ---
 

@@ -5,7 +5,7 @@
  * Runs all validation checks and generates detailed report
  * 
  * @module comprehensive-validator
- * @author SLASolve Team
+ * @author SynergyMesh Team
  * @license MIT
  */
 

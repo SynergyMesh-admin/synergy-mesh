@@ -187,7 +187,7 @@ jobs:
     if: github.ref == 'refs/heads/main' || (github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'staging')
     environment:
       name: staging
-      url: https://contracts-l1-staging.slasolve.com
+      url: https://contracts-l1-staging.synergymesh.com
     
     steps:
       - name: 📥 Checkout Code
@@ -204,7 +204,7 @@ jobs:
         run: |
           echo "✅ Verifying deployment..."
           # 健康檢查
-          # curl -f https://contracts-l1-staging.slasolve.com/healthz || exit 1
+          # curl -f https://contracts-l1-staging.synergymesh.com/healthz || exit 1
       
       - name: 📊 Create Deployment Report
         run: |
@@ -225,7 +225,7 @@ jobs:
     if: github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'production'
     environment:
       name: production
-      url: https://contracts-l1.slasolve.com
+      url: https://contracts-l1.synergymesh.com
     
     steps:
       - name: 📥 Checkout Code
@@ -241,7 +241,7 @@ jobs:
         run: |
           echo "✅ Verifying production deployment..."
           # 健康檢查
-          # curl -f https://contracts-l1.slasolve.com/healthz || exit 1
+          # curl -f https://contracts-l1.synergymesh.com/healthz || exit 1
       
       - name: 📊 Create Deployment Report
         run: |

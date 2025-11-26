@@ -380,7 +380,7 @@ async function runRamp(duration, startRps, endRps, target, result) {
 // 主程序
 async function main() {
   console.log('============================================================================');
-  console.log('⚡ SLASolve 負載測試');
+  console.log('⚡ SynergyMesh 負載測試');
   console.log('============================================================================');
   
   const profileName = process.argv[2] || 'light';

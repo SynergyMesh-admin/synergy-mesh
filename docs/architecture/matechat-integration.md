@@ -3,11 +3,11 @@
 
 ## 概述 (Overview)
 
-本文檔描述如何將 MateChat 的高價值商業功能整合到 SLASolve 平台，專為無人機和自動駕駛場景優化。
+本文檔描述如何將 MateChat 的高價值商業功能整合到 SynergyMesh 平台，專為無人機和自動駕駛場景優化。
 
 ## 核心價值主張 (Core Value Proposition)
 
-MateChat 是一個面向智能化場景的 Vue 3 UI 組件庫，已服務於華為內部多個應用。我們提取其最具商業價值的功能並重構為適配 SLASolve 的微服務架構。
+MateChat 是一個面向智能化場景的 Vue 3 UI 組件庫，已服務於華為內部多個應用。我們提取其最具商業價值的功能並重構為適配 SynergyMesh 的微服務架構。
 
 ### 千萬美元級特質 (Million-Dollar Features)
 
@@ -97,7 +97,7 @@ graph TB
 ### 服務拓撲 (Service Topology)
 
 ```
-SLASolve Root
+SynergyMesh Root
 ├── .config/conftest/policies/matechat-integration/
 │   ├── README.md                    # 整合策略文檔
 │   └── integration-policy.rego      # OPA 策略規則
@@ -284,7 +284,7 @@ Response:
 
 ```typescript
 // 實時遙測與對話
-ws://api.slasolve.com/ws/chat?vehicleId=DRONE-001
+ws://api.synergymesh.com/ws/chat?vehicleId=DRONE-001
 
 // 訊息格式
 {
@@ -551,12 +551,12 @@ npm run test:security
 
 ## 聯繫方式 (Contact)
 
-- **技術支持**: tech-support@slasolve.com
-- **架構團隊**: architects@slasolve.com
-- **安全團隊**: security@slasolve.com
+- **技術支持**: tech-support@synergymesh.com
+- **架構團隊**: architects@synergymesh.com
+- **安全團隊**: security@synergymesh.com
 
 ---
 
 **文檔版本**: 1.0.0  
 **最後更新**: 2024-11-24  
-**維護者**: SLASolve Architecture Team
+**維護者**: SynergyMesh Architecture Team

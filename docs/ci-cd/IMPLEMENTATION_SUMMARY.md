@@ -276,7 +276,7 @@ CI 摘要生成
 
 - **實作者**：GitHub Copilot
 - **審查者**：待指定
-- **維護者**：SLASolve Team
+- **維護者**：SynergyMesh Team
 
 ## 📅 時間軸
 

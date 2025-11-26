@@ -1,11 +1,11 @@
-# SLASolve 監控系統參照文件
-# SLASolve Monitoring System Reference Documentation
+# SynergyMesh 監控系統參照文件
+# SynergyMesh Monitoring System Reference Documentation
 
 ## 📋 概述 | Overview
 
-本文件為 SLASolve 專案的監控系統參照指南，提供給所有工作人員、代理駕駛、智能體使用。目的是確保關鍵目錄與檔案的變更都能被追蹤、審核與管理。
+本文件為 SynergyMesh 專案的監控系統參照指南，提供給所有工作人員、代理駕駛、智能體使用。目的是確保關鍵目錄與檔案的變更都能被追蹤、審核與管理。
 
-This document serves as the monitoring system reference guide for the SLASolve project, providing guidance for all workers, agents, and intelligent systems. The goal is to ensure that changes to critical directories and files are tracked, audited, and managed.
+This document serves as the monitoring system reference guide for the SynergyMesh project, providing guidance for all workers, agents, and intelligent systems. The goal is to ensure that changes to critical directories and files are tracked, audited, and managed.
 
 ---
 
@@ -103,22 +103,22 @@ All PRs affecting monitored directories must include:
 
 ### Security Team (資安團隊)
 - **職責**: 安全事件回應、存取控制、漏洞管理
-- **聯絡方式**: `security@slasolve.example.com`
+- **聯絡方式**: `security@synergymesh.example.com`
 - **Slack**: `#security-alerts`
 
 ### DevOps Team (維運團隊)
 - **職責**: 系統部署、監控維護、基礎設施
-- **聯絡方式**: `devops@slasolve.example.com`
+- **聯絡方式**: `devops@synergymesh.example.com`
 - **Slack**: `#devops-on-call`
 
 ### Development Lead (開發主管)
 - **職責**: 程式碼審核、架構決策
-- **聯絡方式**: `dev-lead@slasolve.example.com`
+- **聯絡方式**: `dev-lead@synergymesh.example.com`
 - **Slack**: `#dev-leads`
 
 ### On-Call Engineer (值班工程師)
 - **職責**: 24/7 緊急事件處理
-- **聯絡方式**: `oncall@slasolve.example.com`
+- **聯絡方式**: `oncall@synergymesh.example.com`
 - **PagerDuty**: 查看 PagerDuty rotation
 
 ---
@@ -235,5 +235,5 @@ YYYY-MM-DD | <username> | <path> | <change_type> | <reason>
 
 ---
 
-**維護者 | Maintainer**: SLASolve Team  
+**維護者 | Maintainer**: SynergyMesh Team  
 **最後更新 | Last Updated**: [Document Creation Date]

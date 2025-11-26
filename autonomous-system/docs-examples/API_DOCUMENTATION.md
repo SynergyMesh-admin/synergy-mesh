@@ -358,7 +358,7 @@ events = client.events.query(
 ### JavaScript SDK
 
 ```javascript
-import { AutonomyClient } from '@slasolve/autonomy-client';
+import { AutonomyClient } from '@synergymesh/autonomy-client';
 
 // 創建客戶端
 const client = new AutonomyClient({
@@ -385,9 +385,9 @@ client.events.subscribe({
 
 ## 測試環境
 
-測試環境 URL: `https://test.autonomy.slasolve.com/api/v1`
+測試環境 URL: `https://test.autonomy.synergymesh.com/api/v1`
 
-測試 API 密鑰請聯繫：team@slasolve.com
+測試 API 密鑰請聯繫：team@synergymesh.com
 
 ---
 
@@ -405,5 +405,5 @@ client.events.subscribe({
 ## 支援
 
 如有問題或建議，請聯繫：
-- Email: team@slasolve.com
-- GitHub Issues: https://github.com/we-can-fix/slasolve/issues
+- Email: team@synergymesh.com
+- GitHub Issues: https://github.com/we-can-fix/synergymesh/issues

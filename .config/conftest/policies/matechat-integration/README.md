@@ -2,7 +2,7 @@
 
 ## 概述
 
-本配置定義如何將 MateChat 的高價值商業功能整合到 SLASolve 平台，專為無人機和自動駕駛場景優化。
+本配置定義如何將 MateChat 的高價值商業功能整合到 SynergyMesh 平台，專為無人機和自動駕駛場景優化。
 
 ## 整合的核心功能
 
@@ -57,7 +57,7 @@
 ## 技術堆棧對齊
 
 - **前端**: Vue 3 + TypeScript (與 MateChat 一致)
-- **後端**: Node.js + Express (與現有 SLASolve 一致)
+- **後端**: Node.js + Express (與現有 SynergyMesh 一致)
 - **AI 整合**: OpenAI SDK + 自定義適配器
 - **數據驗證**: Zod (現有標準)
 - **構建工具**: Vite (新增支持)

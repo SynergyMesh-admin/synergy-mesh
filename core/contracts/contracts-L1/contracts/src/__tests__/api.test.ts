@@ -42,7 +42,7 @@ describe('Provenance API Endpoints', () => {
         .send({
           filePath: testFilePath,
           builder: {
-            id: 'https://github.com/slasolve/builder',
+            id: 'https://github.com/synergymesh/builder',
             version: '1.0.0'
           }
         });
@@ -59,7 +59,7 @@ describe('Provenance API Endpoints', () => {
         predicate: {
           type: 'https://slsa.dev/provenance/v1',
           builder: {
-            id: 'https://github.com/slasolve/builder',
+            id: 'https://github.com/synergymesh/builder',
             version: '1.0.0'
           }
         }

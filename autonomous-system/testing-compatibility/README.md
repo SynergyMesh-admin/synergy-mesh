@@ -121,9 +121,9 @@ jobs:
           python test_compatibility.py
 ```
 
-## 整合至 SLASolve
+## 整合至 SynergyMesh
 
-此模組與 SLASolve 測試基礎設施整合：
+此模組與 SynergyMesh 測試基礎設施整合：
 
 1. **自動化測試**：提供測試套件和報告生成
 2. **兼容性檢查**：確保跨版本兼容性

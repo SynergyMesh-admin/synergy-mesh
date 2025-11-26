@@ -76,7 +76,7 @@ ros2 topic pub /imu/data sensor_msgs/msg/Imu "{...}"
 
 ## 整合點
 
-此模組整合至 SLASolve 平台，提供：
+此模組整合至 SynergyMesh 平台，提供：
 
 1. **即時控制能力**：為自治系統提供底層控制
 2. **感測器融合**：整合多種感測器數據

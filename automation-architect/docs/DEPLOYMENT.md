@@ -41,8 +41,8 @@
 ### 1. 克隆倉庫
 
 ```bash
-git clone https://github.com/we-can-fix/slasolve.git
-cd slasolve/automation-architect
+git clone https://github.com/we-can-fix/synergymesh.git
+cd synergymesh/automation-architect
 ```
 
 ### 2. 創建虛擬環境

@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: contracts-l1-config
-  namespace: slasolve
+  namespace: synergymesh
   labels:
     app: contracts-l1
     tier: core

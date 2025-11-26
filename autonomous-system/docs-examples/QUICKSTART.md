@@ -13,8 +13,8 @@
 ### 1. 克隆倉庫
 
 ```bash
-git clone https://github.com/we-can-fix/slasolve.git
-cd slasolve/autonomous-system
+git clone https://github.com/we-can-fix/synergymesh.git
+cd synergymesh/autonomous-system
 ```
 
 ### 2. 安裝依賴
@@ -247,8 +247,8 @@ python test_compatibility.py --matrix
 
 ### 獲取幫助
 
-- 提交 Issue：[GitHub Issues](https://github.com/we-can-fix/slasolve/issues)
-- 郵件聯繫：team@slasolve.com
+- 提交 Issue：[GitHub Issues](https://github.com/we-can-fix/synergymesh/issues)
+- 郵件聯繫：team@synergymesh.com
 
 ## 📄 授權
 

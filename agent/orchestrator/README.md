@@ -284,7 +284,7 @@ notifications:
   
   email:
     enabled: true
-    recipients: ["platform@slasolve.com"]
+    recipients: ["platform@synergymesh.com"]
   
   github:
     enabled: true

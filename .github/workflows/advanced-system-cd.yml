@@ -28,7 +28,7 @@ jobs:
     with:
       working-directory: advanced-system-src
       service-name: advanced-system
-      image-name: slasolve/advanced-system
+      image-name: synergymesh/advanced-system
       registry: ghcr.io
       environment: ${{ inputs.environment || 'dev' }}
       enable-cosign: true

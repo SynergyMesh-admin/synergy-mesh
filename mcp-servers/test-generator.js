@@ -5,7 +5,7 @@
  * Enterprise-grade test generation for unit, integration, and e2e tests
  * 
  * @module test-generator
- * @author SLASolve Team
+ * @author SynergyMesh Team
  * @license MIT
  */
 

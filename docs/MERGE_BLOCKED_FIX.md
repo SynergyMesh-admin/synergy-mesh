@@ -19,7 +19,7 @@ Waiting for Code Scanning results. Code Scanning may not be configured for the t
 
 1. **前往 Repository Settings**
    ```
-   https://github.com/we-can-fix/slasolve/settings/rules
+   https://github.com/we-can-fix/synergymesh/settings/rules
    ```
 
 2. **檢查並編輯 Rulesets**
@@ -38,7 +38,7 @@ Waiting for Code Scanning results. Code Scanning may not be configured for the t
 
 1. **前往 Branch Protection**
    ```
-   https://github.com/we-can-fix/slasolve/settings/branches
+   https://github.com/we-can-fix/synergymesh/settings/branches
    ```
 
 2. **編輯 `main` 分支規則**
@@ -53,7 +53,7 @@ Waiting for Code Scanning results. Code Scanning may not be configured for the t
 
 ```bash
 # 在 GitHub Web UI 中
-# 1. 打開 PR: https://github.com/we-can-fix/slasolve/pull/16
+# 1. 打開 PR: https://github.com/we-can-fix/synergymesh/pull/16
 # 2. 點擊合併按鈕旁的下拉選單
 # 3. 選擇 "Merge without waiting for requirements to be met (administrators only)"
 # 4. 確認合併

@@ -2,7 +2,7 @@
 
 ## 📋 概述
 
-本系統提供完整的無人機/無人駕駛高自治系統框架，整合至 SLASolve 平台。系統採用五大骨架設計，確保架構穩定性、API 治理、測試兼容性、安全觀測和完整文檔。
+本系統提供完整的無人機/無人駕駛高自治系統框架，整合至 SynergyMesh 平台。系統採用五大骨架設計，確保架構穩定性、API 治理、測試兼容性、安全觀測和完整文檔。
 
 ## 🏗️ 五大骨架架構
 
@@ -80,8 +80,8 @@
 
 ```bash
 # 1. 克隆倉庫
-git clone https://github.com/we-can-fix/slasolve.git
-cd slasolve/autonomous-system
+git clone https://github.com/we-can-fix/synergymesh.git
+cd synergymesh/autonomous-system
 
 # 2. 安裝所有依賴
 ./scripts/install_dependencies.sh
@@ -144,12 +144,12 @@ cd slasolve/autonomous-system
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-## 🔗 與 SLASolve 平台整合
+## 🔗 與 SynergyMesh 平台整合
 
-本自治系統框架與 SLASolve 平台深度整合：
+本自治系統框架與 SynergyMesh 平台深度整合：
 
 ### 1. 契約管理整合
-- API 契約驗證與 SLASolve Contracts L1 服務整合
+- API 契約驗證與 SynergyMesh Contracts L1 服務整合
 - 統一的契約管理和驗證流程
 
 ### 2. 溯源認證整合
@@ -262,9 +262,9 @@ colcon test
 
 ## 📞 支援與聯繫
 
-- **Email**: team@slasolve.com
-- **GitHub Issues**: https://github.com/we-can-fix/slasolve/issues
-- **文檔**: https://docs.slasolve.com
+- **Email**: team@synergymesh.com
+- **GitHub Issues**: https://github.com/we-can-fix/synergymesh/issues
+- **文檔**: https://docs.synergymesh.com
 
 ## 📄 授權
 
@@ -293,7 +293,7 @@ MIT License - 詳見 [LICENSE](../LICENSE) 文件
 
 ### v1.0 (當前版本)
 - ✅ 五大骨架基礎實現
-- ✅ 與 SLASolve 平台整合
+- ✅ 與 SynergyMesh 平台整合
 - ✅ 完整文檔和範例
 
 ### v1.1 (計劃中)
@@ -310,4 +310,4 @@ MIT License - 詳見 [LICENSE](../LICENSE) 文件
 
 **版本**: 1.0.0  
 **最後更新**: 2025-11-26  
-**維護者**: SLASolve Team
+**維護者**: SynergyMesh Team

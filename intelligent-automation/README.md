@@ -207,7 +207,7 @@ asyncio.run(streaming_example())
 
 ## 集成指南 Integration Guide
 
-### 與 SLASolve 集成
+### 與 SynergyMesh 集成
 
 1. **Auto-Fix Bot 集成**
    ```yaml
@@ -332,8 +332,8 @@ MIT License - 詳見 [LICENSE](../LICENSE)
 
 ## 聯繫方式 Contact
 
-- GitHub: https://github.com/we-can-fix/slasolve
-- Issues: https://github.com/we-can-fix/slasolve/issues
+- GitHub: https://github.com/we-can-fix/synergymesh
+- Issues: https://github.com/we-can-fix/synergymesh/issues
 
 ---
 

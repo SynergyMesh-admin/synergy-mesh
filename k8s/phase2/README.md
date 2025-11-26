@@ -2,7 +2,7 @@
 
 ## 📋 概覽
 
-Phase 2 是 SLASolve 的完整生產級 Kubernetes 部署配置，包含：
+Phase 2 是 SynergyMesh 的完整生產級 Kubernetes 部署配置，包含：
 - 完整的微服務架構
 - 生產級監控系統
 - 完善的日誌聚合
@@ -468,12 +468,12 @@ kubectl exec -i -n autofix postgres-0 -- \
 ## 📞 支持
 
 如有問題，請聯繫：
-- **團隊**: SLASolve Team
-- **郵箱**: support@slasolve.com
-- **文檔**: https://docs.slasolve.com
+- **團隊**: SynergyMesh Team
+- **郵箱**: support@synergymesh.com
+- **文檔**: https://docs.synergymesh.com
 
 ---
 
 **版本**: 2.0.0  
 **最後更新**: 2025-11-26  
-**維護者**: SLASolve Platform Team
+**維護者**: SynergyMesh Platform Team

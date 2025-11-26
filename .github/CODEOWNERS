@@ -1,55 +1,80 @@
-# CODEOWNERS - 代碼所有權配置
-# 此檔案定義了倉庫中不同部分的代碼審查者
-# 當 PR 修改這些文件時，會自動要求相應的審查者進行審查
+# CODEOWNERS - Code Ownership Configuration
+# This file defines code reviewers for different parts of the repository
+# When a PR modifies these files, the corresponding reviewers are automatically requested
 
-# 預設所有者 - 所有未明確指定的文件
-* @security-team
+# ====================================================================
+# SynergyMesh Team Structure
+# ====================================================================
+# @SynergyMesh/core-team          - Core development team
+# @SynergyMesh/frontend-team      - Frontend team
+# @SynergyMesh/backend-team       - Backend team
+# @SynergyMesh/devops-team        - DevOps team
+# @SynergyMesh/security-team      - Security team
+# @SynergyMesh/docs-team          - Documentation team
+# @SynergyMesh/community-mods     - Community moderators
+# @SynergyMesh/maintainers        - Project maintainers
+# ====================================================================
 
-# 安全相關配置 - 需要安全團隊審查
-/.github/workflows/codeql-advanced.yml @security-team
-/.github/workflows/pr-security-gate.yml @security-team
-/.github/workflows/secret-*.yml @security-team
-/.github/workflows/auto-vulnerability-fix.yml @security-team
-/.github/security-policy.yml @security-team
-/.github/secret-scanning/ @security-team
-/.github/codeql/ @security-team
-/config/security-network-config.yml @security-team
-/config/prometheus-rules.yml @security-team @devops-team
-/SECURITY.md @security-team
+# Default owners - All files not explicitly specified
+* @SynergyMesh/maintainers
 
-# 腳本和自動化 - 需要 DevOps 團隊審查
-/scripts/ @devops-team @security-team
-/config/elasticsearch-config.sh @devops-team
-/config/prometheus-config.yml @devops-team
+# Security-related configurations - Requires security team review
+/.github/workflows/codeql-advanced.yml @SynergyMesh/security-team
+/.github/workflows/pr-security-gate.yml @SynergyMesh/security-team
+/.github/workflows/secret-*.yml @SynergyMesh/security-team
+/.github/workflows/auto-vulnerability-fix.yml @SynergyMesh/security-team
+/.github/security-policy.yml @SynergyMesh/security-team
+/.github/secret-scanning/ @SynergyMesh/security-team
+/.github/codeql/ @SynergyMesh/security-team
+/config/security-network-config.yml @SynergyMesh/security-team
+/config/prometheus-rules.yml @SynergyMesh/security-team @SynergyMesh/devops-team
+/SECURITY.md @SynergyMesh/security-team
 
-# GitHub Actions 工作流程 - DevOps 團隊負責
-/.github/workflows/setup-runner.yml @devops-team
-/.github/workflows/validate-*.yml @devops-team
+# Scripts and automation - Requires DevOps team review
+/scripts/ @SynergyMesh/devops-team @SynergyMesh/security-team
+/config/elasticsearch-config.sh @SynergyMesh/devops-team
+/config/prometheus-config.yml @SynergyMesh/devops-team
 
-# 文檔 - 技術寫作團隊和相關領域專家
-/docs/ @tech-writers
-/docs/GHAS_*.md @security-team @tech-writers
-/docs/CODEQL_SETUP.md @security-team @tech-writers
-/docs/SECRET_SCANNING.md @security-team @tech-writers
-/docs/VULNERABILITY_MANAGEMENT.md @security-team @tech-writers
-/README.md @tech-writers
+# GitHub Actions workflows - DevOps team responsible
+/.github/workflows/setup-runner.yml @SynergyMesh/devops-team
+/.github/workflows/validate-*.yml @SynergyMesh/devops-team
 
-# Dependabot 配置 - 安全團隊和 DevOps 團隊共同負責
-/.github/dependabot.yml @security-team @devops-team
+# Documentation - Technical writers and domain experts
+/docs/ @SynergyMesh/docs-team
+/docs/GHAS_*.md @SynergyMesh/security-team @SynergyMesh/docs-team
+/docs/CODEQL_SETUP.md @SynergyMesh/security-team @SynergyMesh/docs-team
+/docs/SECRET_SCANNING.md @SynergyMesh/security-team @SynergyMesh/docs-team
+/docs/VULNERABILITY_MANAGEMENT.md @SynergyMesh/security-team @SynergyMesh/docs-team
+/README.md @SynergyMesh/docs-team
 
-# 核心應用程式代碼
-/core/ @development-team
-/core/contracts/ @development-team @security-team
-/mcp-servers/ @development-team
+# Dependabot configuration - Security and DevOps teams jointly responsible
+/.github/dependabot.yml @SynergyMesh/security-team @SynergyMesh/devops-team
 
-# 高級系統源碼 - 需要資深開發者審查
-/advanced-system-src/ @senior-developers @security-team
+# Core application code
+/core/ @SynergyMesh/backend-team
+/core/contracts/ @SynergyMesh/backend-team @SynergyMesh/security-team
+/mcp-servers/ @SynergyMesh/backend-team
 
-# 測試和架構 - QA 團隊和開發團隊
-/test-vectors/ @qa-team @development-team
-/schemas/ @development-team
+# Advanced system source - Requires senior developer review
+/advanced-system-src/ @SynergyMesh/core-team @SynergyMesh/security-team
 
-# 重要配置文件 - 需要多個團隊審查
-/package.json @development-team @devops-team
-/tsconfig.json @development-team
-/.gitignore @devops-team
+# Intelligent automation - AI/ML team
+/intelligent-automation/ @SynergyMesh/core-team
+
+# Autonomous systems - Critical safety components
+/autonomous-system/ @SynergyMesh/core-team @SynergyMesh/security-team
+
+# Testing and architecture - QA and development teams
+/test-vectors/ @SynergyMesh/core-team
+/schemas/ @SynergyMesh/backend-team
+
+# Important configuration files - Requires multiple team reviews
+/package.json @SynergyMesh/backend-team @SynergyMesh/devops-team
+/tsconfig.json @SynergyMesh/backend-team
+/.gitignore @SynergyMesh/devops-team
+
+# Community and governance files
+/CODE_OF_CONDUCT.md @SynergyMesh/community-mods
+/CONTRIBUTING.md @SynergyMesh/docs-team @SynergyMesh/community-mods
+/.github/ISSUE_TEMPLATE/ @SynergyMesh/community-mods
+/.github/PULL_REQUEST_TEMPLATE.md @SynergyMesh/community-mods
