@@ -1,108 +1,120 @@
-# 🤝 貢獻指南
+# 🤝 Contributing to SynergyMesh
 
-感謝你對 Auto-Fix Bot 項目的興趣！我們歡迎各種形式的貢獻。
+Thank you for your interest in contributing to **SynergyMesh**! We welcome contributions of all kinds.
 
-## 🌟 貢獻方式
+## 🌟 Ways to Contribute
 
-### 報告 Bug
-如果你發現了 bug，請：
-1. 檢查 [Issues](https://github.com/we-can-fix/slasolve/issues) 確認問題未被報告
-2. 創建新的 Issue，包含：
-   - 清晰的標題和描述
-   - 重現步驟
-   - 預期行為 vs 實際行為
-   - 環境信息（OS、版本等）
-   - 相關日誌或截圖
+### Reporting Bugs
 
-### 提出功能建議
-我們歡迎新功能的建議：
-1. 在 Issues 中創建 Feature Request
-2. 說明功能的用途和價值
-3. 提供使用場景示例
-4. 如果可能，提供實現思路
+If you find a bug, please:
+1. Check [Issues](https://github.com/SynergyMesh/SynergyMesh/issues) to ensure the issue hasn't been reported
+2. Create a new Issue with:
+   - Clear title and description
+   - Steps to reproduce
+   - Expected behavior vs actual behavior
+   - Environment information (OS, version, etc.)
+   - Related logs or screenshots
 
-### 提交代碼
-1. Fork 這個倉庫
-2. 創建你的特性分支 (`git checkout -b feature/AmazingFeature`)
-3. 提交你的更改 (`git commit -m 'Add some AmazingFeature'`)
-4. 推送到分支 (`git push origin feature/AmazingFeature`)
-5. 開啟一個 Pull Request
+### Feature Suggestions
 
-### 改進文檔
-- 修正拼寫或語法錯誤
-- 改進現有文檔的清晰度
-- 添加缺失的文檔
-- 翻譯文檔到其他語言
+We welcome feature suggestions:
+1. Create a Feature Request in Issues
+2. Explain the purpose and value of the feature
+3. Provide usage scenario examples
+4. If possible, suggest an implementation approach
 
-## 📋 開發指南
+### Submitting Code
 
-### 環境設置
+1. Fork this repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+### Improving Documentation
+
+- Fix spelling or grammar errors
+- Improve clarity of existing documentation
+- Add missing documentation
+- Translate documentation to other languages
+
+## 📋 Development Guide
+
+### Environment Setup
 
 ```bash
-# Clone 倉庫
-git clone https://github.com/we-can-fix/slasolve.git
-cd slasolve
+# Clone the repository
+git clone https://github.com/SynergyMesh/SynergyMesh.git
+cd SynergyMesh
 
-# 安裝依賴（如果有）
+# Install dependencies
 npm install
 
-# 運行測試
+# Run tests
 npm test
+
+# Run linting
+npm run lint
 ```
 
-### 代碼風格
+### Code Style
 
-- 遵循現有的代碼風格
-- 使用有意義的變量和函數名稱
-- 添加適當的註釋
-- 保持代碼簡潔易讀
+- Follow existing code style conventions
+- Use meaningful variable and function names
+- Add appropriate comments
+- Keep code clean and readable
+- TypeScript strict mode is required
+- Follow the project's ESLint configuration
 
-### 提交訊息規範
+### Commit Message Convention
 
-使用清晰的提交訊息：
+Use clear commit messages following Conventional Commits:
 
 ```
-類型: 簡短描述
+<type>(<scope>): <subject>
 
-詳細描述（可選）
+<body>
 
-相關 Issue: #123
+<footer>
 ```
 
-類型：
-- `feat`: 新功能
-- `fix`: Bug 修復
-- `docs`: 文檔更新
-- `style`: 代碼格式（不影響功能）
-- `refactor`: 重構
-- `test`: 測試相關
-- `chore`: 構建過程或輔助工具的變動
+Types:
+- `feat`: New feature
+- `fix`: Bug fix
+- `docs`: Documentation update
+- `style`: Code format (doesn't affect functionality)
+- `refactor`: Refactoring
+- `perf`: Performance improvements
+- `test`: Test related
+- `chore`: Build process or auxiliary tools changes
 
-### Pull Request 檢查清單
+### Pull Request Checklist
 
-在提交 PR 前，請確認：
-- [ ] 代碼遵循項目風格
-- [ ] 添加了必要的測試
-- [ ] 所有測試通過
-- [ ] 更新了相關文檔
-- [ ] 提交訊息清晰明確
-- [ ] PR 描述完整
+Before submitting a PR, please confirm:
+- [ ] Code follows project style guidelines
+- [ ] Necessary tests have been added
+- [ ] All tests pass
+- [ ] Related documentation has been updated
+- [ ] Commit messages are clear
+- [ ] PR description is complete
+- [ ] No hard-coded sensitive information
 
-## 🏆 貢獻者
+## 🏆 Contributors
 
-感謝所有貢獻者的付出！
+Thanks to all contributors for their efforts!
 
-## 📄 授權
+## 📄 License
 
-通過貢獻代碼，你同意你的貢獻將在 MIT 授權下發布。
+By contributing code, you agree that your contributions will be released under the MIT License.
 
-## 📞 聯繫
+## 📞 Contact
 
-如有疑問，請通過以下方式聯繫：
-- 📧 Email: dev@autofix-bot.com
-- 💬 Discord: [加入社群](https://discord.gg/autofix-bot)
-- 🐦 Twitter: [@AutoFixBot](https://twitter.com/AutoFixBot)
+If you have questions, please contact us:
+- 🌐 Website: [synergymesh.io](https://synergymesh.io)
+- 📧 Email: team@synergymesh.io
+- 🐦 Twitter: [@SynergyMesh](https://twitter.com/SynergyMesh)
+- 💬 Community: [community.synergymesh.io](https://community.synergymesh.io)
 
 ---
 
-**感謝你讓 Auto-Fix Bot 變得更好！** 🙏✨
+**Thank you for helping make SynergyMesh better!** 🙏✨
