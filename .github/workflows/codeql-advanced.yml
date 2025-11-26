@@ -1,0 +1,77 @@
+name: "CodeQL Advanced Security Scan"
+
+on:
+  push:
+    branches: ["main", "develop", "release/*"]
+  pull_request:
+    branches: ["main", "develop"]
+  schedule:
+    - cron: '0 2 * * 1'  # 每週一凌晨 2 點執行
+
+jobs:
+  analyze:
+    name: Analyze Code
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: ['javascript', 'python']
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python (for Python analysis)
+      if: matrix.language == 'python'
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install Python dependencies (for Python analysis)
+      if: matrix.language == 'python'
+      run: |
+        python -m pip install --upgrade pip
+        # Install minimal dependencies for analysis
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v3
+      with:
+        languages: ${{ matrix.language }}
+        config-file: ./.github/codeql/codeql-config.yml
+
+    - name: Autobuild
+      uses: github/codeql-action/autobuild@v3
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
+      with:
+        category: "/language:${{matrix.language}}"
+        upload: true
+  
+  # ==================== 互動式客服整合 ====================
+  # Note: 僅在 PR 時提供互動式反饋，避免定期掃描產生評論垃圾
+  interactive-service:
+    name: 🤖 CodeQL Advanced 互動式客服
+    needs: [analyze]
+    if: always() && github.event_name == 'pull_request'
+    uses: ./.github/workflows/interactive-ci-service.yml
+    with:
+      ci-name: "CodeQL Advanced Security Scan"
+      ci-status: ${{ needs.analyze.result }}
+      ci-context: |
+        {
+          "analysis_result": "${{ needs.analyze.result }}",
+          "languages": "javascript, python"
+        }
+      error-logs: ${{ needs.analyze.result == 'failure' && format('CodeQL 安全掃描發現問題。\n1. 查看 Security 頁籤：https://github.com/{0}/security/code-scanning\n2. 檢查 javascript 和 python 的掃描結果\n3. 修復高嚴重性問題後重新執行', github.repository) || '' }}
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
