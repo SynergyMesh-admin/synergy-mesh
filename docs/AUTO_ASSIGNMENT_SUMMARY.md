@@ -407,13 +407,13 @@ Thanks to all team members and contributors who participated in this project.
 
 ## 📞 聯絡方式 (Contact)
 
-- **Email**: support@slasolve.dev
-- **GitHub**: https://github.com/we-can-fix/slasolve
-- **Documentation**: https://docs.slasolve.dev
+- **Email**: support@synergymesh.dev
+- **GitHub**: https://github.com/we-can-fix/synergymesh
+- **Documentation**: https://docs.synergymesh.dev
 
 ---
 
 **專案狀態**: ✅ 已完成 (Completed)  
 **最後更新**: 2025-11-24  
 **版本**: 1.0.0  
-**維護者**: SLASolve Team
+**維護者**: SynergyMesh Team

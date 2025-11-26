@@ -1,6 +1,6 @@
 # 🚨 災難恢復計劃 (Disaster Recovery Plan)
 
-**專案**: SLASolve - Enterprise Code Intelligence Platform  
+**專案**: SynergyMesh - Enterprise Code Intelligence Platform  
 **版本**: 1.0.0  
 **更新日期**: 2025-11-25  
 **狀態**: ✅ 生產就緒
@@ -23,7 +23,7 @@
 
 ### 目的
 
-本災難恢復計劃 (DRP) 旨在確保 SLASolve 平台在發生災難性事件後能夠快速恢復運營，最小化業務中斷和數據損失。
+本災難恢復計劃 (DRP) 旨在確保 SynergyMesh 平台在發生災難性事件後能夠快速恢復運營，最小化業務中斷和數據損失。
 
 ### 範圍
 
@@ -122,13 +122,13 @@
 
 ```bash
 # 完整備份
-/home/runner/work/slasolve/slasolve/scripts/backup/full-backup.sh
+/home/runner/work/synergymesh/synergymesh/scripts/backup/full-backup.sh
 
 # 增量備份
-/home/runner/work/slasolve/slasolve/scripts/backup/incremental-backup.sh
+/home/runner/work/synergymesh/synergymesh/scripts/backup/incremental-backup.sh
 
 # 數據庫備份
-/home/runner/work/slasolve/slasolve/scripts/backup/database-backup.sh
+/home/runner/work/synergymesh/synergymesh/scripts/backup/database-backup.sh
 ```
 
 ---
@@ -290,7 +290,7 @@
 2. **恢復文件系統**
    ```bash
    # 從 S3 恢復
-   aws s3 sync s3://slasolve-backups/latest/ /data/restore/
+   aws s3 sync s3://synergymesh-backups/latest/ /data/restore/
    ```
 
 3. **驗證數據完整性**
@@ -412,10 +412,10 @@
 
 | 角色 | 姓名 | 電話 | 電子郵件 | 備用 |
 |------|------|------|---------|------|
-| **災難恢復協調員** | - | - | dr-coordinator@slasolve.com | - |
-| **技術負責人** | - | - | tech-lead@slasolve.com | - |
-| **運維主管** | - | - | ops-manager@slasolve.com | - |
-| **安全主管** | - | - | security-lead@slasolve.com | - |
+| **災難恢復協調員** | - | - | dr-coordinator@synergymesh.com | - |
+| **技術負責人** | - | - | tech-lead@synergymesh.com | - |
+| **運維主管** | - | - | ops-manager@synergymesh.com | - |
+| **安全主管** | - | - | security-lead@synergymesh.com | - |
 
 ### 供應商聯絡
 
@@ -438,7 +438,7 @@
 ### A. 恢復腳本位置
 
 ```
-/home/runner/work/slasolve/slasolve/scripts/
+/home/runner/work/synergymesh/synergymesh/scripts/
 ├── backup/
 │   ├── full-backup.sh
 │   ├── incremental-backup.sh
@@ -455,7 +455,7 @@
 ### B. 關鍵配置位置
 
 ```
-/home/runner/work/slasolve/slasolve/
+/home/runner/work/synergymesh/synergymesh/
 ├── docker-compose.yml          # Docker 配置
 ├── docker-compose.prod.yml     # 生產環境配置
 ├── k8s/                        # Kubernetes 配置
@@ -468,10 +468,10 @@
 
 | 版本 | 日期 | 作者 | 變更內容 |
 |------|------|------|---------|
-| 1.0.0 | 2025-11-25 | SLASolve Team | 初始版本 |
+| 1.0.0 | 2025-11-25 | SynergyMesh Team | 初始版本 |
 
 ---
 
 **最後更新**: 2025-11-25  
 **下次審查**: 2026-02-25  
-**維護者**: SLASolve Operations Team
+**維護者**: SynergyMesh Operations Team

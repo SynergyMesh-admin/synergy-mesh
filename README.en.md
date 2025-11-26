@@ -1,11 +1,11 @@
-# slasolve
+# synergymesh
 
 ## 🤖 Auto-Fix Bot - Intelligent Development Assistant
 
-[![Efficiency](https://img.shields.io/badge/Efficiency-⚡_Rapid_Response-brightgreen?style=for-the-badge)](https://github.com/we-can-fix/slasolve)
-[![Multi-Language](https://img.shields.io/badge/Multi--Language-15+_Supported-blue?style=for-the-badge)](https://github.com/we-can-fix/slasolve)
-[![24/7 Available](https://img.shields.io/badge/Availability-24%2F7_Support-orange?style=for-the-badge)](https://github.com/we-can-fix/slasolve)
-[![Cloud Native](https://img.shields.io/badge/Cloud-Native_Integration-purple?style=for-the-badge)](https://github.com/we-can-fix/slasolve)
+[![Efficiency](https://img.shields.io/badge/Efficiency-⚡_Rapid_Response-brightgreen?style=for-the-badge)](https://github.com/we-can-fix/synergymesh)
+[![Multi-Language](https://img.shields.io/badge/Multi--Language-15+_Supported-blue?style=for-the-badge)](https://github.com/we-can-fix/synergymesh)
+[![24/7 Available](https://img.shields.io/badge/Availability-24%2F7_Support-orange?style=for-the-badge)](https://github.com/we-can-fix/synergymesh)
+[![Cloud Native](https://img.shields.io/badge/Cloud-Native_Integration-purple?style=for-the-badge)](https://github.com/we-can-fix/synergymesh)
 
 ### ⚡ Efficiency First, Speed Matters
 

@@ -9,7 +9,7 @@
  *   node contract-checker.js <contract-file>
  *   node contract-checker.js contracts/external-api.json
  * 
- * @author platform@islasolve.com
+ * @author platform@isynergymesh.com
  * @version 1.0.0
  * @language zh-TW
  */

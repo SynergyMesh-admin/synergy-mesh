@@ -5,7 +5,7 @@
  * Enterprise-grade SLSA provenance validation and compliance checking
  * 
  * @module slsa-validator
- * @author SLASolve Team
+ * @author SynergyMesh Team
  * @license MIT
  */
 

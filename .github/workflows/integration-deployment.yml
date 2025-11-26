@@ -314,7 +314,7 @@ jobs:
           context: core/contracts/contracts-L1/contracts
           file: core/contracts/contracts-L1/contracts/Dockerfile
           push: false
-          tags: slasolve/contracts-l1:test
+          tags: synergymesh/contracts-l1:test
           cache-from: type=gha
           cache-to: type=gha,mode=max
           load: true
@@ -325,7 +325,7 @@ jobs:
           context: mcp-servers
           file: mcp-servers/Dockerfile
           push: false
-          tags: slasolve/mcp-servers:test
+          tags: synergymesh/mcp-servers:test
           cache-from: type=gha
           cache-to: type=gha,mode=max
           load: true
@@ -358,17 +358,17 @@ jobs:
           }
           
           # 列出建置的映像
-          docker images | grep slasolve
+          docker images | grep synergymesh
           
           # 測試 Contracts L1 映像
           echo "Testing Contracts L1..."
-          docker run --rm -d --name test-contracts-l1 -p 3000:3000 slasolve/contracts-l1:test
+          docker run --rm -d --name test-contracts-l1 -p 3000:3000 synergymesh/contracts-l1:test
           health_check "Contracts L1" "http://localhost:3000/healthz" "test-contracts-l1"
           docker stop test-contracts-l1
           
           # 測試 MCP Servers 映像
           echo "Testing MCP Servers..."
-          docker run --rm -d --name test-mcp-servers -p 3001:3001 slasolve/mcp-servers:test
+          docker run --rm -d --name test-mcp-servers -p 3001:3001 synergymesh/mcp-servers:test
           health_check "MCP Servers" "http://localhost:3001/health" "test-mcp-servers"
           docker stop test-mcp-servers
           

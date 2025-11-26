@@ -2,7 +2,7 @@
 
 ## 概述
 
-本指南說明 SLASolve 專案的企業級生產環境部署架構，包含 GitOps、供應鏈安全、政策驗證與自動化治理。
+本指南說明 SynergyMesh 專案的企業級生產環境部署架構，包含 GitOps、供應鏈安全、政策驗證與自動化治理。
 
 ## 架構特點
 
@@ -26,7 +26,7 @@
 ## 目錄結構
 
 ```
-slasolve/
+synergymesh/
 ├── .github/
 │   └── workflows/
 │       ├── project-cd.yml          # 可重用 CD workflow
@@ -237,7 +237,7 @@ cosign verify-blob --key cosign.pub --signature sbom.json.sig sbom.json
 cosign sign \
   -a "repo=$GITHUB_REPOSITORY" \
   -a "workflow=$GITHUB_WORKFLOW" \
-  ghcr.io/we-can-fix/slasolve/contracts-service:latest
+  ghcr.io/we-can-fix/synergymesh/contracts-service:latest
 ```
 
 **Key-based Signing**:
@@ -247,11 +247,11 @@ cosign generate-key-pair
 
 # 簽章
 cosign sign --key cosign.key \
-  ghcr.io/we-can-fix/slasolve/contracts-service:latest
+  ghcr.io/we-can-fix/synergymesh/contracts-service:latest
 
 # 驗證
 cosign verify --key cosign.pub \
-  ghcr.io/we-can-fix/slasolve/contracts-service:latest
+  ghcr.io/we-can-fix/synergymesh/contracts-service:latest
 ```
 
 ### SLSA Provenance
@@ -368,7 +368,7 @@ kubectl get pods -l app=contracts-service
 ```bash
 # 更新映像標籤
 kubectl set image deployment/contracts-service \
-  contracts-service=ghcr.io/we-can-fix/slasolve/contracts-service:v1.2.3
+  contracts-service=ghcr.io/we-can-fix/synergymesh/contracts-service:v1.2.3
 
 # 或編輯 deployment
 kubectl edit deployment contracts-service
@@ -570,8 +570,8 @@ MIT License - 詳見 [LICENSE](../LICENSE)
 ## 聯絡資訊
 
 - **團隊**: contracts-team
-- **Repository**: https://github.com/we-can-fix/slasolve
-- **問題回報**: https://github.com/we-can-fix/slasolve/issues
+- **Repository**: https://github.com/we-can-fix/synergymesh
+- **問題回報**: https://github.com/we-can-fix/synergymesh/issues
 
 ## 變更歷史
 

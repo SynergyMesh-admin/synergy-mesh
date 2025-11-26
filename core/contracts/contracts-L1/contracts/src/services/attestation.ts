@@ -159,13 +159,13 @@ export class SLSAAttestationService {
     deployer: string
   ): BuildMetadata {
     return {
-      buildType: 'https://slasolve.dev/contracts/build/v1',
+      buildType: 'https://synergymesh.dev/contracts/build/v1',
       invocationId: randomUUID(),
       startedOn: new Date().toISOString(),
       builder: {
-        id: 'https://slasolve.dev/builder/contracts-l1',
+        id: 'https://synergymesh.dev/builder/contracts-l1',
         version: {
-          'slasolve-contracts': version,
+          'synergymesh-contracts': version,
           'node': process.version
         }
       },

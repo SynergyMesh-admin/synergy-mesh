@@ -1,5 +1,5 @@
 {
-  "name": "@slasolve/contracts-web",
+  "name": "@synergymesh/contracts-web",
   "version": "1.0.0",
   "description": "SLSA Contracts Management Web Interface",
   "scripts": {

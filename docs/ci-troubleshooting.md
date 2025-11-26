@@ -389,7 +389,7 @@ CI 自動評論系統包含三個主要階段：
 
 若以上解決方案無法解決問題，請聯繫：
 
-- **GitHub Issues**：https://github.com/we-can-fix/slasolve/issues
+- **GitHub Issues**：https://github.com/we-can-fix/synergymesh/issues
 - **文檔**：查看 [README.md](../README.md) 獲取更多資訊
 - **CI 配置**：`.github/workflows/ci-auto-comment.yml`
 

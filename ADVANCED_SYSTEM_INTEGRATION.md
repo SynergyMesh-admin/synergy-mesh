@@ -7,7 +7,7 @@
 ## 📁 文件結構
 
 ```
-slasolve/
+synergymesh/
 ├── advanced-system-dist/        # 生產環境構建（可直接使用）
 │   ├── index.html              # 主入口文件
 │   ├── main-BBH4KZVP.css      # 樣式文件
@@ -291,7 +291,7 @@ ls -la advanced-system-dist/
 ## 📞 支援
 
 如有問題或建議，請聯繫：
-- GitHub Issues: https://github.com/we-can-fix/slasolve/issues
+- GitHub Issues: https://github.com/we-can-fix/synergymesh/issues
 - 專案維護者: @wecanfly1
 
 ---

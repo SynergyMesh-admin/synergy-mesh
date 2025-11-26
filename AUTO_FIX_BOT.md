@@ -1,9 +1,9 @@
 # 🤖 Auto-Fix Bot - 智能開發助手
 
-[![Efficiency](https://img.shields.io/badge/Efficiency-⚡_Rapid_Response-brightgreen?style=for-the-badge)](https://github.com/we-can-fix/slasolve)
-[![Multi-Language](https://img.shields.io/badge/Multi--Language-15+_Supported-blue?style=for-the-badge)](https://github.com/we-can-fix/slasolve)
-[![24/7 Available](https://img.shields.io/badge/Availability-24%2F7_Support-orange?style=for-the-badge)](https://github.com/we-can-fix/slasolve)
-[![Cloud Native](https://img.shields.io/badge/Cloud-Native_Integration-purple?style=for-the-badge)](https://github.com/we-can-fix/slasolve)
+[![Efficiency](https://img.shields.io/badge/Efficiency-⚡_Rapid_Response-brightgreen?style=for-the-badge)](https://github.com/we-can-fix/synergymesh)
+[![Multi-Language](https://img.shields.io/badge/Multi--Language-15+_Supported-blue?style=for-the-badge)](https://github.com/we-can-fix/synergymesh)
+[![24/7 Available](https://img.shields.io/badge/Availability-24%2F7_Support-orange?style=for-the-badge)](https://github.com/we-can-fix/synergymesh)
+[![Cloud Native](https://img.shields.io/badge/Cloud-Native_Integration-purple?style=for-the-badge)](https://github.com/we-can-fix/synergymesh)
 
 ## 🎯 品牌哲學與核心價值
 
@@ -162,7 +162,7 @@ Auto-Fix Bot 支持委派任務至雲端代理程式，實現:
 - 📧 Email: support@autofix-bot.com
 - 💬 Discord: [加入社群](https://discord.gg/autofix-bot)
 - 📚 文檔: [完整文檔](https://docs.autofix-bot.com)
-- 🐛 問題回報: [GitHub Issues](https://github.com/we-can-fix/slasolve/issues)
+- 🐛 問題回報: [GitHub Issues](https://github.com/we-can-fix/synergymesh/issues)
 
 ## 📄 授權
 

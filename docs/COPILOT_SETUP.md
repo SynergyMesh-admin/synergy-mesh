@@ -2,7 +2,7 @@
 
 ## 📋 Overview
 
-This document explains the GitHub Copilot custom instructions setup for the SLASolve project and how to use it effectively.
+This document explains the GitHub Copilot custom instructions setup for the SynergyMesh project and how to use it effectively.
 
 ---
 
@@ -17,7 +17,7 @@ A comprehensive custom instructions file has been created at:
 
 This file provides GitHub Copilot with project-specific guidance including:
 
-- **Project Overview**: SLASolve goals and technology stack
+- **Project Overview**: SynergyMesh goals and technology stack
 - **Code Style Standards**: TypeScript conventions, naming rules, formatting
 - **Architecture Patterns**: Controller pattern, middleware, Zod validation
 - **Documentation Standards**: JSDoc examples and requirements
@@ -33,7 +33,7 @@ This file provides GitHub Copilot with project-specific guidance including:
 
 GitHub Copilot will automatically read and apply these instructions when:
 
-1. ✅ You're working in the `slasolve` repository
+1. ✅ You're working in the `synergymesh` repository
 2. ✅ GitHub Copilot extension is enabled in your editor
 3. ✅ The `.github/copilot-instructions.md` file exists
 
@@ -148,7 +148,7 @@ GitHub Copilot uses a hierarchy of custom instructions:
 └─────────────────────────────────────┘
 ```
 
-**Repository-level** instructions (what we set up) apply to everyone working on SLASolve.
+**Repository-level** instructions (what we set up) apply to everyone working on SynergyMesh.
 
 ---
 
@@ -157,13 +157,13 @@ GitHub Copilot uses a hierarchy of custom instructions:
 ### VS Code
 
 1. Install GitHub Copilot extension
-2. Open the `slasolve` repository
+2. Open the `synergymesh` repository
 3. Start coding - instructions are automatically active
 
 ### JetBrains IDEs
 
 1. Install GitHub Copilot plugin
-2. Open the `slasolve` project
+2. Open the `synergymesh` project
 3. Instructions are automatically loaded
 
 ### Other Editors
@@ -217,8 +217,8 @@ If suggestions don't follow the instructions:
 
 - [GitHub Copilot Documentation](https://docs.github.com/en/copilot)
 - [Custom Instructions Guide](https://docs.github.com/en/copilot/customizing-copilot/adding-custom-instructions-for-github-copilot)
-- [SLASolve Contributing Guide](../CONTRIBUTING.md)
-- [SLASolve Quick Start](./QUICK_START.md)
+- [SynergyMesh Contributing Guide](../CONTRIBUTING.md)
+- [SynergyMesh Quick Start](./QUICK_START.md)
 
 ---
 
@@ -263,7 +263,7 @@ Found these instructions helpful? Have suggestions? Let the team know!
 ---
 
 **Last Updated:** November 2025  
-**Maintained By:** SLASolve Team
+**Maintained By:** SynergyMesh Team
 
 ---
 

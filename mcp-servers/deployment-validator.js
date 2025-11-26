@@ -5,7 +5,7 @@
  * Validates deployment configurations for production readiness
  * 
  * @module deployment-validator
- * @author SLASolve Team
+ * @author SynergyMesh Team
  * @license MIT
  */
 

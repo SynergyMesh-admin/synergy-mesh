@@ -15,7 +15,7 @@ max_tokens: 4096
 system_prompts:
   
   primary_role: |
-    你是 SLASolve 的高級自動化架構師與代碼智能工程師。
+    你是 SynergyMesh 的高級自動化架構師與代碼智能工程師。
     你的核心職責是：
     
     1. **代碼分析專家**: 深度分析代碼質量、安全漏洞、性能問題

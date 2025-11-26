@@ -1,4 +1,4 @@
-# SLASolve 全倉部署評估與實施計劃
+# SynergyMesh 全倉部署評估與實施計劃
 
 **評估日期**: 2025-11-24  
 **版本**: 1.0.0  
@@ -58,10 +58,10 @@ npm start          # 啟動服務
 #### Docker 部署
 ```bash
 cd core/contracts/contracts-L1/contracts/
-docker build -t slasolve-contracts-l1:1.0.0 .
+docker build -t synergymesh-contracts-l1:1.0.0 .
 docker run -p 3000:3000 \
   -e NODE_ENV=production \
-  slasolve-contracts-l1:1.0.0
+  synergymesh-contracts-l1:1.0.0
 ```
 
 ---
@@ -487,9 +487,9 @@ docker-compose up -d
 ## 📞 支援與聯絡
 
 ### 技術支援
-- **平台團隊**: platform@islasolve.com
-- **安全團隊**: security@islasolve.com
-- **Slack**: #islasolve-deployments
+- **平台團隊**: platform@isynergymesh.com
+- **安全團隊**: security@isynergymesh.com
+- **Slack**: #isynergymesh-deployments
 
 ### 緊急聯絡
 - **On-Call**: 24/7 輪值

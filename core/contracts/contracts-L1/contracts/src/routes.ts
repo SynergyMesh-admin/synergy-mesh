@@ -88,7 +88,7 @@ router.get('/', (_req: Request, res: Response) => {
   res.json({
     service: 'contracts-l1',
     version: '1.0.0',
-    description: 'SLASolve Contracts L1 - Core contract management service with build provenance',
+    description: 'SynergyMesh Contracts L1 - Core contract management service with build provenance',
     endpoints: {
       health: '/healthz',
       ready: '/readyz',

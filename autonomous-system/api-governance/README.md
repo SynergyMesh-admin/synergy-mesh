@@ -98,9 +98,9 @@ python api_contract.py
 | SAFETY_VIOLATION | trigger_emergency_protocol |
 | SYSTEM_ERROR | graceful_shutdown |
 
-## 整合至 SLASolve
+## 整合至 SynergyMesh
 
-此模組與 SLASolve 契約服務整合：
+此模組與 SynergyMesh 契約服務整合：
 
 1. **API 治理**：提供 API 契約驗證能力
 2. **依賴管理**：檢測模組間的依賴關係

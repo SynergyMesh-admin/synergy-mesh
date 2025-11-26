@@ -8,7 +8,7 @@ const CreateAttestationSchema = z.object({
   subjectPath: z.string().optional(),
   subjectDigest: z.string().optional(),
   subjectName: z.string().optional(),
-  buildType: z.string().default('https://slasolve.dev/contracts/build/v1'),
+  buildType: z.string().default('https://synergymesh.dev/contracts/build/v1'),
   builder: z.object({
     id: z.string(),
     version: z.string()
@@ -60,7 +60,7 @@ export class SLSAController {
       const metadata = this.slsaService.generateContractBuildMetadata(
         validatedInput.subjectName || validatedInput.subjectPath || 'unknown',
         '1.0.0',
-        'slasolve-contracts-l1'
+        'synergymesh-contracts-l1'
       );
 
       // 更新構建元數據
@@ -187,7 +187,7 @@ export class SLSAController {
         deployerAddress || 'unknown'
       );
 
-      metadata.buildType = 'https://slasolve.dev/contracts/deployment/v1';
+      metadata.buildType = 'https://synergymesh.dev/contracts/deployment/v1';
       metadata.externalParameters = {
         ...metadata.externalParameters,
         deploymentTxHash,

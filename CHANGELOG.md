@@ -1,5 +1,5 @@
-# SLASolve 變更記錄
-# SLASolve Change Log
+# SynergyMesh 變更記錄
+# SynergyMesh Change Log
 
 ## 📋 變更記錄格式說明 | Change Log Format
 
@@ -214,6 +214,6 @@ It is recommended to develop the following automation tools:
 
 ---
 
-**維護者 | Maintainer**: SLASolve Team  
+**維護者 | Maintainer**: SynergyMesh Team  
 **最後更新 | Last Updated**: [Document Creation Date]  
 **格式版本 | Format Version**: 1.0

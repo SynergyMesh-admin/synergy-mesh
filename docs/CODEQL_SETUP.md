@@ -2,7 +2,7 @@
 
 ## 概述
 
-本文檔詳細說明如何在 SLASolve 專案中實現企業級 CodeQL 自動化掃描。CodeQL 是 GitHub Advanced Security 的核心組件，提供強大的靜態應用安全測試 (SAST) 功能。
+本文檔詳細說明如何在 SynergyMesh 專案中實現企業級 CodeQL 自動化掃描。CodeQL 是 GitHub Advanced Security 的核心組件，提供強大的靜態應用安全測試 (SAST) 功能。
 
 ## Advanced Setup 工作流程配置
 
@@ -401,4 +401,4 @@ gh api /repos/{owner}/{repo}/code-scanning/alerts \
 ---
 
 **最後更新**: 2025-11-22  
-**維護者**: SLASolve Security Team
+**維護者**: SynergyMesh Security Team

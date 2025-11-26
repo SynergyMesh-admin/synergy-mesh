@@ -3,9 +3,9 @@
 
 ## 概述 Overview
 
-本目錄包含 SLASolve 項目的治理配置和文檔，確保模組間的責任清晰、依賴管理合理、語言邊界明確。
+本目錄包含 SynergyMesh 項目的治理配置和文檔，確保模組間的責任清晰、依賴管理合理、語言邊界明確。
 
-This directory contains governance configurations and documentation for the SLASolve project, ensuring clear module responsibilities, reasonable dependency management, and explicit language boundaries.
+This directory contains governance configurations and documentation for the SynergyMesh project, ensuring clear module responsibilities, reasonable dependency management, and explicit language boundaries.
 
 ---
 
@@ -324,6 +324,6 @@ python -c "import yaml; yaml.safe_load(open('.governance/module-environment-matr
 
 ---
 
-**維護者 Maintainer:** SLASolve Team  
+**維護者 Maintainer:** SynergyMesh Team  
 **最後更新 Last Updated:** 2025-11-25  
 **版本 Version:** 1.0

@@ -5,7 +5,7 @@
  * Enterprise-grade security scanning for vulnerabilities, dependencies, and secrets
  * 
  * @module security-scanner
- * @author SLASolve Team
+ * @author SynergyMesh Team
  * @license MIT
  */
 

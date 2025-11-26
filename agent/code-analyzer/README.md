@@ -2,7 +2,7 @@
 
 ## 概述
 
-代碼分析代理 (Code Analyzer Agent) 是 SLASolve 智能自動化系統的核心組件之一，負責深度分析代碼質量、安全性和性能。
+代碼分析代理 (Code Analyzer Agent) 是 SynergyMesh 智能自動化系統的核心組件之一，負責深度分析代碼質量、安全性和性能。
 
 ## 功能特性
 

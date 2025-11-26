@@ -1,4 +1,4 @@
-# SLASolve 運維手冊
+# SynergyMesh 運維手冊
 
 ## 🚨 故障排查指南
 
@@ -95,7 +95,7 @@ conftest test deploy/deployment.yaml -p .config/conftest/policies/
 gh pr view <pr-number> --json statusCheckRollup,mergeStateStatus
 
 # 檢查分支保護規則
-# 前往: https://github.com/we-can-fix/slasolve/settings/branches
+# 前往: https://github.com/we-can-fix/synergymesh/settings/branches
 ```
 
 **解決方案**:

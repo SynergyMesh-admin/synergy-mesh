@@ -3,7 +3,7 @@
 
 ## 目錄 Table of Contents
 
-1. [與 SLASolve 集成](#與-slasolve-集成)
+1. [與 SynergyMesh 集成](#與-synergymesh-集成)
 2. [GitHub Actions 集成](#github-actions-集成)
 3. [GitLab CI 集成](#gitlab-ci-集成)
 4. [Jenkins 集成](#jenkins-集成)
@@ -13,22 +13,22 @@
 
 ---
 
-## 與 SLASolve 集成
+## 與 SynergyMesh 集成
 
-### 1. 安裝到 SLASolve 項目
+### 1. 安裝到 SynergyMesh 項目
 
 ```bash
-cd slasolve
+cd synergymesh
 git submodule add https://github.com/we-can-fix/automation-architect.git automation-architect
 git submodule update --init --recursive
 ```
 
 ### 2. 配置集成
 
-在 SLASolve 的配置文件中添加：
+在 SynergyMesh 的配置文件中添加：
 
 ```yaml
-# .slasolve.yml
+# .synergymesh.yml
 automation_architect:
   enabled: true
   scenarios:
@@ -50,12 +50,12 @@ automation_architect:
 ### 3. 使用示例
 
 ```python
-from slasolve.automation_architect import AutomationArchitect
+from synergymesh.automation_architect import AutomationArchitect
 
 # 創建實例
 architect = AutomationArchitect(
     scenario='drone-systems',
-    config_path='.slasolve.yml'
+    config_path='.synergymesh.yml'
 )
 
 # 執行分析

@@ -1,7 +1,7 @@
 {
   "dashboard": {
     "title": "Contracts L1 Service Dashboard",
-    "tags": ["contracts", "l1", "slasolve"],
+    "tags": ["contracts", "l1", "synergymesh"],
     "timezone": "browser",
     "panels": [
       {

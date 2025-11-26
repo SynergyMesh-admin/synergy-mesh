@@ -231,7 +231,7 @@ async function benchmarkEndpoint(service, host, port, endpoint, config) {
 // 執行所有基準測試
 async function runBenchmarks() {
   console.log('============================================================================');
-  console.log('🚀 SLASolve 效能基準測試');
+  console.log('🚀 SynergyMesh 效能基準測試');
   console.log('============================================================================\n');
   
   console.log('配置:');

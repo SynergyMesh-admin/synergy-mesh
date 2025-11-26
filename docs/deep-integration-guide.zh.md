@@ -1,14 +1,14 @@
-# SLASolve 深度整合指南
+# SynergyMesh 深度整合指南
 
 ## 概述
 
-本指南說明 SLASolve 全倉庫的深度整合方案，涵蓋所有子專案的統一部署架構、CI/CD 流程、供應鏈安全與治理規範。
+本指南說明 SynergyMesh 全倉庫的深度整合方案，涵蓋所有子專案的統一部署架構、CI/CD 流程、供應鏈安全與治理規範。
 
 ## 整合架構
 
 ### 子專案總覽
 
-SLASolve 採用 monorepo 架構，包含以下子專案：
+SynergyMesh 採用 monorepo 架構，包含以下子專案：
 
 | 子專案 | 類型 | 技術棧 | 部署端口 | 團隊 |
 |--------|------|--------|---------|------|
@@ -27,7 +27,7 @@ SLASolve 採用 monorepo 架構，包含以下子專案：
 ## 目錄結構
 
 ```
-slasolve/
+synergymesh/
 ├── .github/
 │   └── workflows/
 │       ├── project-cd.yml              # 可重用 CD workflow（核心）
@@ -250,12 +250,12 @@ advanced-system-src/sbom/sbom.json
 
 ```bash
 # Keyless signing (OIDC)
-cosign sign ghcr.io/we-can-fix/slasolve/contracts-service:latest
-cosign sign ghcr.io/we-can-fix/slasolve/mcp-servers:latest
-cosign sign ghcr.io/we-can-fix/slasolve/advanced-system:latest
+cosign sign ghcr.io/we-can-fix/synergymesh/contracts-service:latest
+cosign sign ghcr.io/we-can-fix/synergymesh/mcp-servers:latest
+cosign sign ghcr.io/we-can-fix/synergymesh/advanced-system:latest
 
 # Key-based signing
-cosign sign --key cosign.key ghcr.io/we-can-fix/slasolve/contracts-service:v1.0.0
+cosign sign --key cosign.key ghcr.io/we-can-fix/synergymesh/contracts-service:v1.0.0
 ```
 
 ### SLSA Provenance
@@ -386,8 +386,8 @@ for service in contracts-service mcp-servers advanced-system; do
 done
 
 # 2. 部署到 Kubernetes
-kubectl create namespace slasolve-prod
-kubectl config set-context --current --namespace=slasolve-prod
+kubectl create namespace synergymesh-prod
+kubectl config set-context --current --namespace=synergymesh-prod
 
 # 3. 應用所有服務的 manifests
 kubectl apply -f core/contracts/contracts-L1/contracts/deploy/
@@ -403,7 +403,7 @@ kubectl get pods -l namespace.io/managed-by=gitops
 ```bash
 # 更新特定服務
 kubectl set image deployment/contracts-service \
-  contracts-service=ghcr.io/we-can-fix/slasolve/contracts-service:v1.2.0
+  contracts-service=ghcr.io/we-can-fix/synergymesh/contracts-service:v1.2.0
 
 # 查看滾動更新狀態
 kubectl rollout status deployment/contracts-service
@@ -433,7 +433,7 @@ kubectl top pods -l namespace.io/managed-by=gitops
 
 ```bash
 # 檢查 imagePullSecrets
-kubectl get secret -n slasolve-prod
+kubectl get secret -n synergymesh-prod
 
 # 建立 GHCR secret
 kubectl create secret docker-registry ghcr-secret \
@@ -574,7 +574,7 @@ KUBECONFIG: <base64 encoded kubeconfig>
 - **Contracts Team**: contracts-team@example.com
 - **Platform Team**: platform-team@example.com
 - **Frontend Team**: frontend-team@example.com
-- **Repository**: https://github.com/we-can-fix/slasolve
+- **Repository**: https://github.com/we-can-fix/synergymesh
 
 ## 變更歷史
 
@@ -582,4 +582,4 @@ KUBECONFIG: <base64 encoded kubeconfig>
 
 ---
 
-本指南涵蓋 SLASolve 的完整部署架構與治理方案。遵循本指南可確保所有服務的一致性、安全性與可維護性。
+本指南涵蓋 SynergyMesh 的完整部署架構與治理方案。遵循本指南可確保所有服務的一致性、安全性與可維護性。

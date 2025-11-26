@@ -408,4 +408,4 @@ kubectl exec -i -n autofix-bot postgres-0 -- \
 
 **最後更新**: 2025-11-25  
 **版本**: 1.0.0  
-**維護者**: SLASolve Team
+**維護者**: SynergyMesh Team

@@ -1,11 +1,11 @@
-# SLASolve 監控系統設定指引
-# SLASolve Monitoring System Setup Guide
+# SynergyMesh 監控系統設定指引
+# SynergyMesh Monitoring System Setup Guide
 
 ## 📋 文件目的 | Document Purpose
 
-本文件提供詳細的監控系統部署指引與工作人員提示詞範本，確保 SLASolve 專案的關鍵目錄與檔案能被有效監控。
+本文件提供詳細的監控系統部署指引與工作人員提示詞範本，確保 SynergyMesh 專案的關鍵目錄與檔案能被有效監控。
 
-This document provides detailed monitoring system deployment guidelines and worker prompt templates to ensure effective monitoring of critical directories and files in the SLASolve project.
+This document provides detailed monitoring system deployment guidelines and worker prompt templates to ensure effective monitoring of critical directories and files in the SynergyMesh project.
 
 ---
 
@@ -185,7 +185,7 @@ auditd is a kernel-level Linux audit tool that records all file access and syste
 
 3. 將規則永久保存到設定檔（以便重啟後保留）：
    # 方法 1：手動寫入規則檔案
-   sudo tee /etc/audit/rules.d/slasolve-monitoring.rules << 'EOF'
+   sudo tee /etc/audit/rules.d/synergymesh-monitoring.rules << 'EOF'
    -w /srv/repo/config -p wa -k repoconfig_watch
    -w /srv/repo/scripts -p wa -k reposcripts_watch
    -w /srv/repo/core/contracts -p wa -k repocore_watch
@@ -196,7 +196,7 @@ auditd is a kernel-level Linux audit tool that records all file access and syste
    EOF
    
    # 方法 2：備份當前規則到檔案
-   sudo sh -c 'auditctl -l > /etc/audit/rules.d/slasolve-monitoring-backup.txt'
+   sudo sh -c 'auditctl -l > /etc/audit/rules.d/synergymesh-monitoring-backup.txt'
 
 4. 重啟 auditd：
    sudo service auditd restart
@@ -361,7 +361,7 @@ SIEM aggregates logs from various monitoring tools, performs correlation analysi
 請依照以下步驟設定 SIEM 自動化回應：
 
 1. 建立關聯規則（Correlation Rule）：
-   名稱：SLASolve Repo Unauthorized Change
+   名稱：SynergyMesh Repo Unauthorized Change
    
    觸發條件：
    - 事件來源：FIM alert 或 auditd (key: repo*_watch)
@@ -386,7 +386,7 @@ SIEM aggregates logs from various monitoring tools, performs correlation analysi
    
    步驟 3：通知相關人員
    - 發送通知到 Slack #security-alerts
-   - 發送郵件給 security@slasolve.example.com
+   - 發送郵件給 security@synergymesh.example.com
    - 觸發 PagerDuty alert（如為高嚴重性）
    
    步驟 4：收集證據
@@ -683,6 +683,6 @@ All worker reports should follow this unified format:
 
 ---
 
-**維護者 | Maintainer**: SLASolve Team  
+**維護者 | Maintainer**: SynergyMesh Team  
 **最後更新 | Last Updated**: [Document Creation Date]  
 **版本 | Version**: 1.0

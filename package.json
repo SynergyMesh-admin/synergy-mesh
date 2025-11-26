@@ -1,7 +1,7 @@
 {
-  "name": "slasolve",
+  "name": "synergymesh",
   "version": "1.0.0",
-  "description": "SLASolve - Auto-Fix Bot with SLSA provenance capabilities",
+  "description": "SynergyMesh - Next-generation cloud-native platform for intelligent business automation and seamless data orchestration",
   "private": true,
   "workspaces": [
     "mcp-servers",
@@ -16,17 +16,20 @@
     "clean": "npm run clean --workspaces --if-present && rm -rf node_modules"
   },
   "keywords": [
+    "enterprise-integration",
+    "cloud-native",
+    "ai-automation",
+    "data-orchestration",
     "slsa",
     "provenance",
-    "auto-fix",
     "security",
     "sigstore"
   ],
-  "author": "SLASolve Team",
+  "author": "SynergyMesh Team",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/we-can-fix/slasolve.git"
+    "url": "https://github.com/SynergyMesh/SynergyMesh.git"
   },
   "engines": {
     "node": ">=18.0.0",

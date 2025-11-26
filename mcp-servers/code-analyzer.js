@@ -5,7 +5,7 @@
  * Enterprise-grade code analysis with issue detection and improvement suggestions
  * 
  * @module code-analyzer
- * @author SLASolve Team
+ * @author SynergyMesh Team
  * @license MIT
  */
 

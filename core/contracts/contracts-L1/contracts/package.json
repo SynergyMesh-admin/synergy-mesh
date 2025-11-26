@@ -1,7 +1,7 @@
 {
-  "name": "@slasolve/contracts-l1",
+  "name": "@synergymesh/contracts-l1",
   "version": "1.0.0",
-  "description": "SLASolve Contracts L1 - Core contract management service",
+  "description": "SynergyMesh Contracts L1 - Core contract management service",
   "main": "dist/server.js",
   "types": "dist/server.d.ts",
   "scripts": {
@@ -22,10 +22,10 @@
   "keywords": [
     "contracts",
     "l1",
-    "slasolve",
+    "synergymesh",
     "microservice"
   ],
-  "author": "SLASolve Team",
+  "author": "SynergyMesh Team",
   "license": "MIT",
   "engines": {
     "node": ">=18.0.0",

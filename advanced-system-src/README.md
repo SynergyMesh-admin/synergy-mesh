@@ -4,7 +4,7 @@
 
 ### 📋 概述
 
-這是 SLASolve 平台的 Phase 2 核心服務開發，實現了企業級代碼分析服務，支持多語言、多策略的智能代碼分析。
+這是 SynergyMesh 平台的 Phase 2 核心服務開發，實現了企業級代碼分析服務，支持多語言、多策略的智能代碼分析。
 
 ### 🏗️ 架構
 
@@ -282,10 +282,10 @@ MIT License - 詳見 LICENSE 文件
 
 ### 👥 作者
 
-SLASolve Team - Enterprise Code Intelligence Platform v2.0
+SynergyMesh Team - Enterprise Code Intelligence Platform v2.0
 
 ### 🔗 相關鏈接
 
 - [PHASE1_IMPLEMENTATION_SUMMARY.md](../PHASE1_IMPLEMENTATION_SUMMARY.md)
 - [PRODUCTION_READINESS.md](../PRODUCTION_READINESS.md)
-- [項目主頁](https://github.com/we-can-fix/slasolve)
+- [項目主頁](https://github.com/we-can-fix/synergymesh)

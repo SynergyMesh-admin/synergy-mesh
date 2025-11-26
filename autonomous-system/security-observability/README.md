@@ -123,9 +123,9 @@ monitor.CheckVelocityLimit(currentVelocity, maxVelocity)
 report := monitor.GenerateSafetyReport()
 ```
 
-## 整合至 SLASolve
+## 整合至 SynergyMesh
 
-此模組與 SLASolve 可觀測性基礎設施整合：
+此模組與 SynergyMesh 可觀測性基礎設施整合：
 
 1. **事件追蹤**：提供分布式追蹤能力
 2. **安全監控**：實時監控系統安全狀態

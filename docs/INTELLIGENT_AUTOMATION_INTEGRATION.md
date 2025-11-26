@@ -485,4 +485,4 @@ MIT License - 詳見 [LICENSE](../LICENSE)
 ---
 
 **最後更新**: 2025-11-25  
-**維護者**: SLASolve Team
+**維護者**: SynergyMesh Team

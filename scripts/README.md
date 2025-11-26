@@ -1,6 +1,6 @@
 # Scripts Directory
 
-本目錄包含 SLASolve 專案的自動化腳本，主要用於 GitHub Advanced Security (GHAS) 功能的實施和管理。
+本目錄包含 SynergyMesh 專案的自動化腳本，主要用於 GitHub Advanced Security (GHAS) 功能的實施和管理。
 
 ## 📋 腳本清單
 
@@ -43,7 +43,7 @@
 
 **範例輸出**:
 ```markdown
-# SLASolve 專案目錄結構圖譜
+# SynergyMesh 專案目錄結構圖譜
 
 ## 📂 完整目錄結構 / Complete Directory Structure
 ...
@@ -494,5 +494,5 @@ grep "detected" scan.log
 
 ---
 
-**維護者**: SLASolve Security Team  
+**維護者**: SynergyMesh Security Team  
 **最後更新**: 2025-11-22

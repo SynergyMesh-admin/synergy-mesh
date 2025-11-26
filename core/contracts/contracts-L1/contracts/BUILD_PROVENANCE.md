@@ -2,7 +2,7 @@
 
 ## Overview
 
-This integration provides SLSA (Supply Chain Levels for Software Artifacts) build provenance capabilities to SLASolve, ensuring secure and verifiable software supply chain management.
+This integration provides SLSA (Supply Chain Levels for Software Artifacts) build provenance capabilities to SynergyMesh, ensuring secure and verifiable software supply chain management.
 
 ## Features
 
@@ -24,7 +24,7 @@ Content-Type: application/json
 {
   "subjectPath": "/path/to/artifact",
   "builder": {
-    "id": "https://github.com/slasolve/builder",
+    "id": "https://github.com/synergymesh/builder",
     "version": "1.0.0"
   },
   "metadata": {
@@ -105,7 +105,7 @@ interface BuilderInfo {
 3. **Timestamping**: All attestations include creation timestamps
 4. **Traceability**: Unique identifiers for tracking and auditing
 
-### Integration Benefits for SLASolve
+### Integration Benefits for SynergyMesh
 
 1. **Supply Chain Security**: Verify the integrity of contract deployments and updates
 2. **Compliance**: Meet regulatory requirements for software provenance
@@ -123,7 +123,7 @@ const service = new ProvenanceService();
 const attestation = await service.createBuildAttestation(
   '/path/to/contract.wasm',
   {
-    id: 'https://github.com/slasolve/builder',
+    id: 'https://github.com/synergymesh/builder',
     version: '1.0.0'
   }
 );
@@ -138,7 +138,7 @@ console.log('Attestation valid:', isValid);
 
 ### Error Handling
 
-All API endpoints follow the standard SLASolve error response format:
+All API endpoints follow the standard SynergyMesh error response format:
 
 ```json
 {

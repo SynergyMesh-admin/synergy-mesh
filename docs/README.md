@@ -1,6 +1,6 @@
-# SLASolve Documentation
+# SynergyMesh Documentation
 
-Welcome to the SLASolve documentation. This directory contains comprehensive guides for using and deploying the SLASolve platform.
+Welcome to the SynergyMesh documentation. This directory contains comprehensive guides for using and deploying the SynergyMesh platform.
 
 ## 📚 Documentation Index
 
@@ -132,4 +132,4 @@ If you can't find what you're looking for:
 
 **Last Updated**: 2025-11-21  
 **Documentation Version**: 1.0.0  
-**Maintained by**: SLASolve Development Team
+**Maintained by**: SynergyMesh Development Team

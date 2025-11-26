@@ -1,11 +1,15 @@
-# SLASolve - GitHub Copilot Custom Instructions
+# SynergyMesh - GitHub Copilot Custom Instructions
 
 ## 📋 Project Overview
 
-**Project Name:** SLASolve  
-**Goal:** Auto-Fix Bot – Intelligent Development Assistant for code analysis and automatic fixing, with SLSA provenance capabilities  
+**Project Name:** SynergyMesh  
+**Goal:** Next-generation cloud-native platform for intelligent business automation and seamless data orchestration with SLSA provenance capabilities  
 **Tech Stack:** TypeScript, Node.js, Express, Jest, Zod, Sigstore  
 **License:** MIT
+
+### Vision
+🚀 Building the future of enterprise integration
+✨ Transforming enterprises through AI-powered workflows and unified digital experiences
 
 ---
 
@@ -101,7 +105,7 @@ const config = {
 
 ### Project Structure
 ```
-slasolve/
+synergymesh/
 ├── .github/
 │   ├── workflows/               # GitHub Actions
 │   ├── copilot-instructions.md  # This file
@@ -526,7 +530,7 @@ jobs:
 
 ## 🎯 Project-Specific Guidance
 
-### SLASolve Core Features
+### SynergyMesh Core Features
 
 #### Provenance Management
 - SLSA compliance validation
@@ -547,4 +551,4 @@ jobs:
 ---
 
 **Last Updated:** November 2025  
-**Maintainer:** SLASolve Team
+**Maintainer:** SynergyMesh Team

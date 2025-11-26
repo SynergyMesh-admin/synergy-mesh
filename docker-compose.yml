@@ -1,6 +1,6 @@
 version: '3.8'
 
-# SLASolve 生產環境 Docker Compose 配置
+# SynergyMesh 生產環境 Docker Compose 配置
 # 快速啟動所有核心服務
 
 services:
@@ -10,7 +10,7 @@ services:
     build:
       context: ./core/contracts/contracts-L1/contracts
       dockerfile: Dockerfile
-    container_name: slasolve-contracts-l1
+    container_name: synergymesh-contracts-l1
     ports:
       - "3000:3000"
     environment:
@@ -25,11 +25,11 @@ services:
       start_period: 40s
     restart: unless-stopped
     networks:
-      - slasolve-network
+      - synergymesh-network
     labels:
-      - "com.slasolve.service=contracts-l1"
-      - "com.slasolve.tier=core"
-      - "com.slasolve.version=1.0.0"
+      - "com.synergymesh.service=contracts-l1"
+      - "com.synergymesh.tier=core"
+      - "com.synergymesh.version=1.0.0"
 
   # ==================== 工具與驗證層 ====================
   
@@ -37,7 +37,7 @@ services:
     build:
       context: ./mcp-servers
       dockerfile: Dockerfile
-    container_name: slasolve-mcp-servers
+    container_name: synergymesh-mcp-servers
     ports:
       - "3001:3001"
     environment:
@@ -55,17 +55,17 @@ services:
       start_period: 40s
     restart: unless-stopped
     networks:
-      - slasolve-network
+      - synergymesh-network
     labels:
-      - "com.slasolve.service=mcp-servers"
-      - "com.slasolve.tier=tools"
-      - "com.slasolve.version=1.0.0"
+      - "com.synergymesh.service=mcp-servers"
+      - "com.synergymesh.tier=tools"
+      - "com.synergymesh.version=1.0.0"
 
   # ==================== 儀表板與監控層 ====================
   
   dashboard:
     image: nginx:alpine
-    container_name: slasolve-dashboard
+    container_name: synergymesh-dashboard
     ports:
       - "8080:80"
     volumes:
@@ -76,30 +76,30 @@ services:
       - mcp-servers
     restart: unless-stopped
     networks:
-      - slasolve-network
+      - synergymesh-network
     labels:
-      - "com.slasolve.service=dashboard"
-      - "com.slasolve.tier=frontend"
-      - "com.slasolve.version=1.0.0"
+      - "com.synergymesh.service=dashboard"
+      - "com.synergymesh.tier=frontend"
+      - "com.synergymesh.version=1.0.0"
 
 # ==================== 網路配置 ====================
 
 networks:
-  slasolve-network:
+  synergymesh-network:
     driver: bridge
-    name: slasolve-network
+    name: synergymesh-network
     labels:
-      - "com.slasolve.network=main"
+      - "com.synergymesh.network=main"
 
 # ==================== 卷配置 (可選) ====================
 
 volumes:
   contracts-data:
-    name: slasolve-contracts-data
+    name: synergymesh-contracts-data
     labels:
-      - "com.slasolve.volume=contracts"
+      - "com.synergymesh.volume=contracts"
   
   mcp-data:
-    name: slasolve-mcp-data
+    name: synergymesh-mcp-data
     labels:
-      - "com.slasolve.volume=mcp"
+      - "com.synergymesh.volume=mcp"

@@ -278,6 +278,6 @@ kubectl apply -f docs/architecture/configuration/monitoring/
 
 ---
 
-**維護團隊**：SLASolve Development Team  
+**維護團隊**：SynergyMesh Development Team  
 **最後更新**：2025-11-21  
 **文檔版本**：1.0.0

@@ -127,7 +127,7 @@ export class EscalationEngine {
     const agent1: CustomerServiceAgent = {
       id: 'cs-001',
       name: 'Sarah Johnson',
-      email: 'sarah.johnson@slasolve.dev',
+      email: 'sarah.johnson@synergymesh.dev',
       specialties: ['Customer Support', 'Technical Support', 'Escalation Management'],
       timezone: 'America/New_York',
       role: 'CUSTOMER_SERVICE',
@@ -151,7 +151,7 @@ export class EscalationEngine {
     const agent2: CustomerServiceAgent = {
       id: 'cs-002',
       name: 'Michael Chen',
-      email: 'michael.chen@slasolve.dev',
+      email: 'michael.chen@synergymesh.dev',
       specialties: ['Technical Support', 'System Integration', 'Critical Issues'],
       timezone: 'Asia/Taipei',
       role: 'CUSTOMER_SERVICE',

@@ -5,7 +5,7 @@
  * Validates code logic, authenticity, and correctness
  * 
  * @module logic-validator
- * @author SLASolve Team
+ * @author SynergyMesh Team
  * @license MIT
  */
 

@@ -2,7 +2,7 @@
 
 ## 概述
 
-成功將 SLSA (Supply Chain Levels for Software Artifacts) 構建溯源認證功能從 `attest-build-provenance-main.zip` 整合到 SLASolve 合約服務中。
+成功將 SLSA (Supply Chain Levels for Software Artifacts) 構建溯源認證功能從 `attest-build-provenance-main.zip` 整合到 SynergyMesh 合約服務中。
 
 ## 已完成的功能
 
@@ -71,8 +71,8 @@
 - **規範版本**: SLSA v1
 - **認證類型**: `https://slsa.dev/provenance/v1`
 - **構建類型**:
-  - `https://slasolve.dev/contracts/build/v1` (一般構建)
-  - `https://slasolve.dev/contracts/deployment/v1` (合約部署)
+  - `https://synergymesh.dev/contracts/build/v1` (一般構建)
+  - `https://synergymesh.dev/contracts/deployment/v1` (合約部署)
 
 ### 安全功能
 
@@ -121,4 +121,4 @@
 
 ## 總結
 
-SLSA 整合已成功完成，為 SLASolve 合約服務提供了企業級的供應鏈安全和構建溯源能力。所有有價值的功能都已從原始 GitHub Actions 工具中提取並適配到我們的微服務架構中。
+SLSA 整合已成功完成，為 SynergyMesh 合約服務提供了企業級的供應鏈安全和構建溯源能力。所有有價值的功能都已從原始 GitHub Actions 工具中提取並適配到我們的微服務架構中。

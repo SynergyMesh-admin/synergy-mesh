@@ -2,7 +2,7 @@
 
 ## 📋 概述
 
-Auto-Fix Bot 2.0 是 Islasolve 專案的自動修復機器人配置系統，整合了深度可驗證模組、Policy Gate 驗證、多層證據生成與審計追蹤功能。
+Auto-Fix Bot 2.0 是 Isynergymesh 專案的自動修復機器人配置系統，整合了深度可驗證模組、Policy Gate 驗證、多層證據生成與審計追蹤功能。
 
 ### 版本資訊
 
@@ -15,7 +15,7 @@ Auto-Fix Bot 2.0 是 Islasolve 專案的自動修復機器人配置系統，整�
 
 ### 1. 專案結構映射
 
-配置檔案完整映射了 Islasolve 專案的目錄結構：
+配置檔案完整映射了 Isynergymesh 專案的目錄結構：
 
 ```yaml
 project_mapping:
@@ -146,14 +146,14 @@ Bot 支援四個主要驗證範圍：
 
 ### Slack 通知
 
-**頻道**: `#islasolve-auto-fix`  
+**頻道**: `#isynergymesh-auto-fix`  
 **失敗時提及**: `@platform-team`, `@security-team`
 
 ### Email 通知
 
 **收件人**:
-- platform@islasolve.com
-- security@islasolve.com
+- platform@isynergymesh.com
+- security@isynergymesh.com
 
 ### GitHub 通知
 
@@ -424,17 +424,17 @@ python scripts/auto_fix_bot.py --config auto-fix-bot.yml --scope mcp-servers-val
 
 ## 📞 支援與聯絡
 
-- **平台團隊**: platform@islasolve.com
-- **安全團隊**: security@islasolve.com
-- **Slack 頻道**: #islasolve-auto-fix
-- **GitHub Issues**: https://github.com/we-can-fix/slasolve/issues
+- **平台團隊**: platform@isynergymesh.com
+- **安全團隊**: security@isynergymesh.com
+- **Slack 頻道**: #isynergymesh-auto-fix
+- **GitHub Issues**: https://github.com/we-can-fix/synergymesh/issues
 
 ## 📜 版本歷史
 
 ### 2.0.0 (2025-01-17)
 - 完整整合深度可驗證模組
 - 實作去標籤化架構策略
-- 適配 Islasolve 專案架構
+- 適配 Isynergymesh 專案架構
 - 新增 Policy Gate 驗證
 - 整合證據鏈生成
 
@@ -452,4 +452,4 @@ MIT License - 詳見 LICENSE 檔案
 
 ## 🙏 致謝
 
-感謝 Islasolve 專案的所有貢獻者，以及平台治理團隊和安全團隊的支持。
+感謝 Isynergymesh 專案的所有貢獻者，以及平台治理團隊和安全團隊的支持。

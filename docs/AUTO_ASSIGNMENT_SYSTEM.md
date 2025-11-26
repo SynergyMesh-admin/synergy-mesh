@@ -3,9 +3,9 @@
 
 ## 概述 (Overview)
 
-自動化專責負責人員系統是 SLASolve 的核心功能之一，旨在解決千萬級開發環境中的責任分派瓶頸問題。系統能夠自動識別問題類型、分析團隊專業、評估工作負載，並智慧地將任務分派給最適合的負責人。
+自動化專責負責人員系統是 SynergyMesh 的核心功能之一，旨在解決千萬級開發環境中的責任分派瓶頸問題。系統能夠自動識別問題類型、分析團隊專業、評估工作負載，並智慧地將任務分派給最適合的負責人。
 
-The Auto-Assignment System is a core feature of SLASolve, designed to solve responsibility assignment bottlenecks in million-scale development environments. The system can automatically identify problem types, analyze team expertise, evaluate workload, and intelligently assign tasks to the most suitable owners.
+The Auto-Assignment System is a core feature of SynergyMesh, designed to solve responsibility assignment bottlenecks in million-scale development environments. The system can automatically identify problem types, analyze team expertise, evaluate workload, and intelligently assign tasks to the most suitable owners.
 
 ## 核心特性 (Core Features)
 
@@ -395,12 +395,12 @@ MIT License - 詳見 [LICENSE](../LICENSE)
 
 ## 支援 (Support)
 
-- **Email**: support@slasolve.dev
-- **GitHub Issues**: https://github.com/we-can-fix/slasolve/issues
-- **Documentation**: https://docs.slasolve.dev
+- **Email**: support@synergymesh.dev
+- **GitHub Issues**: https://github.com/we-can-fix/synergymesh/issues
+- **Documentation**: https://docs.synergymesh.dev
 
 ---
 
 **最後更新 (Last Updated)**: 2025-11-24  
 **版本 (Version)**: 1.0.0  
-**維護者 (Maintainer)**: SLASolve Team
+**維護者 (Maintainer)**: SynergyMesh Team

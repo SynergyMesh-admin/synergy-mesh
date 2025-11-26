@@ -153,7 +153,7 @@ endpoints:
 
 # Component Mapping
 component_mapping:
-  # MateChat components -> SLASolve services
+  # MateChat components -> SynergyMesh services
   McBubble: "ai-chat-service/components/message-bubble"
   McInput: "input-service/components/smart-input"
   McLayout: "advanced-system-src/ui/layout"

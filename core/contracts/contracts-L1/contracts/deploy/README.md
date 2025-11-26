@@ -58,7 +58,7 @@ deploy/
    # 創建實際的密鑰（不要使用範例值！）
    kubectl create secret generic contracts-l1-secrets \
      --from-literal=API_KEY_SECRET=your-strong-secret-here \
-     -n slasolve
+     -n synergymesh
    ```
 
 3. **部署服務**
@@ -72,8 +72,8 @@ deploy/
 
 4. **驗證部署**
    ```bash
-   kubectl get pods -n slasolve -l app=contracts-l1
-   kubectl get svc -n slasolve contracts-l1
+   kubectl get pods -n synergymesh -l app=contracts-l1
+   kubectl get svc -n synergymesh contracts-l1
    ```
 
 ## 📋 配置檔案說明
@@ -96,7 +96,7 @@ Docker Compose 生產配置，包含：
 ### K8s 配置
 
 #### namespace.yaml
-定義 `slasolve` 命名空間。
+定義 `synergymesh` 命名空間。
 
 #### configmap.yaml
 應用程式配置（非敏感資料）：
@@ -178,7 +178,7 @@ Grafana 儀表板定義：
 docker-compose -f docker-compose.production.yml up -d --scale contracts-l1=5
 
 # Kubernetes
-kubectl scale deployment contracts-l1 -n slasolve --replicas=5
+kubectl scale deployment contracts-l1 -n synergymesh --replicas=5
 ```
 
 ### 查看日誌
@@ -187,7 +187,7 @@ kubectl scale deployment contracts-l1 -n slasolve --replicas=5
 docker-compose -f docker-compose.production.yml logs -f contracts-l1
 
 # Kubernetes
-kubectl logs -n slasolve -l app=contracts-l1 -f
+kubectl logs -n synergymesh -l app=contracts-l1 -f
 ```
 
 ### 更新映像
@@ -198,15 +198,15 @@ docker-compose -f docker-compose.production.yml up -d
 
 # Kubernetes
 kubectl set image deployment/contracts-l1 \
-  contracts-l1=ghcr.io/we-can-fix/slasolve/contracts-l1:v1.1.0 \
-  -n slasolve
+  contracts-l1=ghcr.io/we-can-fix/synergymesh/contracts-l1:v1.1.0 \
+  -n synergymesh
 ```
 
 ### 回滾部署
 ```bash
 # Kubernetes
-kubectl rollout undo deployment/contracts-l1 -n slasolve
-kubectl rollout status deployment/contracts-l1 -n slasolve
+kubectl rollout undo deployment/contracts-l1 -n synergymesh
+kubectl rollout status deployment/contracts-l1 -n synergymesh
 ```
 
 ## 🔒 安全最佳實踐
@@ -237,7 +237,7 @@ kubectl rollout status deployment/contracts-l1 -n slasolve
 ### Prometheus 指標
 ```bash
 # 查看指標
-curl http://contracts-l1.slasolve.com:9090/metrics
+curl http://contracts-l1.synergymesh.com:9090/metrics
 ```
 
 ### Grafana 儀表板
@@ -257,16 +257,16 @@ curl http://contracts-l1.slasolve.com:9090/metrics
 ### Pod 無法啟動
 ```bash
 # 查看 Pod 狀態
-kubectl describe pod -n slasolve -l app=contracts-l1
+kubectl describe pod -n synergymesh -l app=contracts-l1
 
 # 查看事件
-kubectl get events -n slasolve --sort-by='.lastTimestamp'
+kubectl get events -n synergymesh --sort-by='.lastTimestamp'
 ```
 
 ### 健康檢查失敗
 ```bash
 # 進入 Pod
-kubectl exec -it -n slasolve <pod-name> -- sh
+kubectl exec -it -n synergymesh <pod-name> -- sh
 
 # 手動測試健康檢查
 curl http://localhost:3000/healthz
@@ -275,10 +275,10 @@ curl http://localhost:3000/healthz
 ### 效能問題
 ```bash
 # 查看資源使用
-kubectl top pods -n slasolve -l app=contracts-l1
+kubectl top pods -n synergymesh -l app=contracts-l1
 
 # 查看 HPA 狀態
-kubectl get hpa -n slasolve
+kubectl get hpa -n synergymesh
 ```
 
 ## 📚 相關文件
@@ -291,9 +291,9 @@ kubectl get hpa -n slasolve
 
 ## 📞 支援
 
-- **平台團隊**: platform@islasolve.com
-- **DevOps 團隊**: devops@islasolve.com
-- **緊急聯絡**: incident@islasolve.com
+- **平台團隊**: platform@isynergymesh.com
+- **DevOps 團隊**: devops@isynergymesh.com
+- **緊急聯絡**: incident@isynergymesh.com
 - **Slack**: #contracts-l1-support
 
 ---

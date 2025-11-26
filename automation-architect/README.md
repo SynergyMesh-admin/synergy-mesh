@@ -196,8 +196,8 @@ MIT License - 詳見 [LICENSE](../LICENSE)
 
 ## 聯繫方式 Contact
 
-- GitHub: https://github.com/we-can-fix/slasolve
-- Issues: https://github.com/we-can-fix/slasolve/issues
+- GitHub: https://github.com/we-can-fix/synergymesh
+- Issues: https://github.com/we-can-fix/synergymesh/issues
 
 ---
 

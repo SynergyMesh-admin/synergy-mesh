@@ -36,14 +36,14 @@ curl -X POST http://localhost:3000/api/v1/assignment/assign \
       "primaryOwner": {
         "id": "frank.lin",
         "name": "Frank Lin",
-        "email": "frank.lin@slasolve.dev",
+        "email": "frank.lin@synergymesh.dev",
         "specialties": ["python", "api", "microservices"],
         "timezone": "Asia/Taipei"
       },
       "secondaryOwner": {
         "id": "david.zhang",
         "name": "David Zhang",
-        "email": "david.zhang@slasolve.dev",
+        "email": "david.zhang@synergymesh.dev",
         "specialties": ["node.js", "python", "api", "database"],
         "timezone": "Asia/Taipei"
       },
@@ -288,7 +288,7 @@ curl -X POST http://localhost:3000/api/v1/assignment/reassign/$ASSIGNMENT_ID \
     "primaryOwner": {
       "id": "eva.wu",
       "name": "Eva Wu",
-      "email": "eva.wu@slasolve.dev",
+      "email": "eva.wu@synergymesh.dev",
       "specialties": ["node.js", "database", "performance"]
     },
     "status": "ASSIGNED"
@@ -514,4 +514,4 @@ Tests:       21 passed, 21 total
 
 **最後更新 (Last Updated)**: 2025-11-24  
 **版本 (Version)**: 1.0.0  
-**維護者 (Maintainer)**: SLASolve Team
+**維護者 (Maintainer)**: SynergyMesh Team

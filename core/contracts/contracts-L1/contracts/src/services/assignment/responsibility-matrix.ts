@@ -40,21 +40,21 @@ export class ResponsibilityMatrix {
         {
           id: 'alice.chen',
           name: 'Alice Chen',
-          email: 'alice.chen@slasolve.dev',
+          email: 'alice.chen@synergymesh.dev',
           specialties: ['react', 'vue', 'typescript', 'ui/ux'],
           timezone: 'Asia/Taipei'
         },
         {
           id: 'bob.wang',
           name: 'Bob Wang',
-          email: 'bob.wang@slasolve.dev',
+          email: 'bob.wang@synergymesh.dev',
           specialties: ['react', 'typescript', 'performance'],
           timezone: 'Asia/Taipei'
         },
         {
           id: 'carol.liu',
           name: 'Carol Liu',
-          email: 'carol.liu@slasolve.dev',
+          email: 'carol.liu@synergymesh.dev',
           specialties: ['vue', 'ui/ux', 'accessibility'],
           timezone: 'Asia/Taipei'
         }
@@ -69,21 +69,21 @@ export class ResponsibilityMatrix {
         {
           id: 'david.zhang',
           name: 'David Zhang',
-          email: 'david.zhang@slasolve.dev',
+          email: 'david.zhang@synergymesh.dev',
           specialties: ['node.js', 'python', 'api', 'database'],
           timezone: 'Asia/Taipei'
         },
         {
           id: 'eva.wu',
           name: 'Eva Wu',
-          email: 'eva.wu@slasolve.dev',
+          email: 'eva.wu@synergymesh.dev',
           specialties: ['node.js', 'database', 'performance'],
           timezone: 'Asia/Taipei'
         },
         {
           id: 'frank.lin',
           name: 'Frank Lin',
-          email: 'frank.lin@slasolve.dev',
+          email: 'frank.lin@synergymesh.dev',
           specialties: ['python', 'api', 'microservices'],
           timezone: 'Asia/Taipei'
         }
@@ -98,14 +98,14 @@ export class ResponsibilityMatrix {
         {
           id: 'grace.huang',
           name: 'Grace Huang',
-          email: 'grace.huang@slasolve.dev',
+          email: 'grace.huang@synergymesh.dev',
           specialties: ['docker', 'kubernetes', 'aws', 'ci/cd'],
           timezone: 'UTC'
         },
         {
           id: 'henry.chen',
           name: 'Henry Chen',
-          email: 'henry.chen@slasolve.dev',
+          email: 'henry.chen@synergymesh.dev',
           specialties: ['kubernetes', 'monitoring', 'infrastructure'],
           timezone: 'UTC'
         }
@@ -120,14 +120,14 @@ export class ResponsibilityMatrix {
         {
           id: 'iris.lee',
           name: 'Iris Lee',
-          email: 'iris.lee@slasolve.dev',
+          email: 'iris.lee@synergymesh.dev',
           specialties: ['authentication', 'encryption', 'audit'],
           timezone: 'Asia/Shanghai'
         },
         {
           id: 'jack.yang',
           name: 'Jack Yang',
-          email: 'jack.yang@slasolve.dev',
+          email: 'jack.yang@synergymesh.dev',
           specialties: ['penetration-testing', 'security-review', 'compliance'],
           timezone: 'Asia/Shanghai'
         }

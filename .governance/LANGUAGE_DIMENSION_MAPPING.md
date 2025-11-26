@@ -339,6 +339,6 @@ cat .governance/module-environment-matrix.yml
 
 ---
 
-**維護者 Maintainer:** SLASolve Team  
+**維護者 Maintainer:** SynergyMesh Team  
 **最後更新 Last Updated:** 2025-11-25  
 **版本 Version:** 1.0

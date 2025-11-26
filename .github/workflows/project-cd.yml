@@ -111,7 +111,7 @@ jobs:
             type=raw,value=latest,enable={{is_default_branch}}
           labels: |
             org.opencontainers.image.title=${{ inputs.service-name }}
-            org.opencontainers.image.description=SLASolve ${{ inputs.service-name }}
+            org.opencontainers.image.description=SynergyMesh ${{ inputs.service-name }}
             namespace.io/team=contracts-team
             namespace.io/environment=${{ inputs.environment }}
             namespace.io/lifecycle=active
