@@ -489,7 +489,7 @@ jobs:
       name: Clean up stale PRs
       with:
         repo-token: \${{ secrets.GITHUB_TOKEN }}
-        stale-pr-message: "${config.staleMessage.replace(/"/g, '\\"').replace(/\n/g, '\\n')}"
+        stale-pr-message: "${this._escapeYamlString(config.staleMessage)}"
         stale-pr-label: "${config.staleLabel}"
         exempt-pr-labels: "${config.exemptLabels.join(',')}"
         days-before-pr-stale: ${config.staleDays}
@@ -503,6 +503,17 @@ jobs:
   // =========================================================================
   // Private Helper Methods
   // =========================================================================
+
+  /**
+   * Escape a string for use in YAML double-quoted strings
+   * Properly handles backslashes, double quotes, and newlines
+   */
+  private _escapeYamlString(str: string): string {
+    return str
+      .replace(/\\/g, '\\\\')  // Escape backslashes first
+      .replace(/"/g, '\\"')     // Escape double quotes
+      .replace(/\n/g, '\\n');   // Escape newlines
+  }
 
   /**
    * Check if a file path is an advisory file

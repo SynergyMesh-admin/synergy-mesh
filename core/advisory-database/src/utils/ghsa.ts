@@ -10,6 +10,7 @@
  * @license MIT
  */
 
+import { webcrypto } from 'node:crypto';
 import { GHSA_ID_PATTERN } from '../types/advisory.js';
 
 /**
@@ -27,18 +28,9 @@ function generateSegment(length: number = 4): string {
   let segment = '';
   const charsetLength = GHSA_CHARSET.length;
 
-  // Use crypto.getRandomValues for cryptographic randomness
-  // Fall back to Math.random if not available (should not happen in Node.js 18+)
+  // Use node:crypto webcrypto API for cryptographic randomness
   const randomValues = new Uint32Array(length);
-
-  if (typeof crypto !== 'undefined' && crypto.getRandomValues) {
-    crypto.getRandomValues(randomValues);
-  } else {
-    // Fallback for testing environments
-    for (let i = 0; i < length; i++) {
-      randomValues[i] = Math.floor(Math.random() * 0xFFFFFFFF);
-    }
-  }
+  webcrypto.getRandomValues(randomValues);
 
   for (let i = 0; i < length; i++) {
     segment += GHSA_CHARSET[randomValues[i] % charsetLength];
@@ -155,11 +147,11 @@ export function generateBatchGHSAIds(
  * const id = computeDeterministicGHSAId('CVE-2024-1234-npm-lodash');
  */
 export async function computeDeterministicGHSAId(data: string): Promise<string> {
-  // Use Web Crypto API for SHA-256 hash
+  // Use node:crypto webcrypto API for SHA-256 hash
   const encoder = new TextEncoder();
   const dataBuffer = encoder.encode(data);
 
-  const hashBuffer = await crypto.subtle.digest('SHA-256', dataBuffer);
+  const hashBuffer = await webcrypto.subtle.digest('SHA-256', dataBuffer);
   const hashArray = new Uint8Array(hashBuffer);
 
   // Convert hash bytes to GHSA ID segments
