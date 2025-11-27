@@ -7,7 +7,7 @@ import { writeFile, unlink } from 'fs/promises';
 import { join } from 'path';
 import { tmpdir } from 'os';
 
-// 創建測試用的獨立應用
+// Create standalone test application
 const createTestApp = () => {
   const app = express();
   app.use(express.json());
