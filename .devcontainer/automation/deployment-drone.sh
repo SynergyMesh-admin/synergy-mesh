@@ -30,6 +30,15 @@ DEPLOY_TAG="${DEPLOY_TAG:-latest}"
 HEALTH_CHECK_RETRIES=5
 HEALTH_CHECK_INTERVAL=10
 
+# Docker Compose 命令封裝 (解決 v1/v2 版本差異)
+docker_compose() {
+    if docker compose version &> /dev/null 2>&1; then
+        docker compose "$@"
+    else
+        docker-compose "$@"
+    fi
+}
+
 # 日誌函數
 log_info() {
     echo -e "${BLUE}[INFO]${NC} $1"
@@ -132,11 +141,7 @@ build_docker_images() {
     
     cd "$PROJECT_ROOT/.devcontainer"
     
-    if docker compose version &> /dev/null 2>&1; then
-        docker compose build --parallel 2>/dev/null || docker compose build
-    else
-        docker-compose build --parallel 2>/dev/null || docker-compose build
-    fi
+    docker_compose build --parallel 2>/dev/null || docker_compose build
     
     log_success "Docker 映像建置完成"
 }
@@ -149,19 +154,11 @@ deploy_services() {
     
     # 停止現有服務
     log_info "  停止現有服務..."
-    if docker compose version &> /dev/null 2>&1; then
-        docker compose down --remove-orphans 2>/dev/null || true
-    else
-        docker-compose down --remove-orphans 2>/dev/null || true
-    fi
+    docker_compose down --remove-orphans 2>/dev/null || true
     
     # 啟動服務
     log_info "  啟動新服務..."
-    if docker compose version &> /dev/null 2>&1; then
-        docker compose up -d
-    else
-        docker-compose up -d
-    fi
+    docker_compose up -d
     
     log_success "服務部署完成"
 }
@@ -181,14 +178,8 @@ health_check() {
         cd "$PROJECT_ROOT/.devcontainer"
         
         local unhealthy=0
-        if docker compose version &> /dev/null 2>&1; then
-            if docker compose ps | grep -q "unhealthy\|Exit"; then
-                unhealthy=1
-            fi
-        else
-            if docker-compose ps | grep -q "unhealthy\|Exit"; then
-                unhealthy=1
-            fi
+        if docker_compose ps | grep -q "unhealthy\|Exit"; then
+            unhealthy=1
         fi
         
         if [ $unhealthy -eq 0 ]; then
@@ -233,11 +224,7 @@ rollback() {
     
     cd "$PROJECT_ROOT/.devcontainer"
     
-    if docker compose version &> /dev/null 2>&1; then
-        docker compose down
-    else
-        docker-compose down
-    fi
+    docker_compose down
     
     log_info "回滾完成，請手動重新部署上一個版本"
 }
@@ -248,11 +235,7 @@ show_status() {
     
     cd "$PROJECT_ROOT/.devcontainer"
     
-    if docker compose version &> /dev/null 2>&1; then
-        docker compose ps
-    else
-        docker-compose ps
-    fi
+    docker_compose ps
 }
 
 # 顯示日誌
@@ -263,18 +246,10 @@ show_logs() {
     
     if [ -n "$service" ]; then
         log_info "📋 顯示 $service 日誌:"
-        if docker compose version &> /dev/null 2>&1; then
-            docker compose logs --tail=50 "$service"
-        else
-            docker-compose logs --tail=50 "$service"
-        fi
+        docker_compose logs --tail=50 "$service"
     else
         log_info "📋 顯示所有服務日誌:"
-        if docker compose version &> /dev/null 2>&1; then
-            docker compose logs --tail=20
-        else
-            docker-compose logs --tail=20
-        fi
+        docker_compose logs --tail=20
     fi
 }
 
@@ -358,20 +333,12 @@ main() {
             ;;
         stop)
             cd "$PROJECT_ROOT/.devcontainer"
-            if docker compose version &> /dev/null 2>&1; then
-                docker compose down
-            else
-                docker-compose down
-            fi
+            docker_compose down
             log_success "服務已停止"
             ;;
         restart)
             cd "$PROJECT_ROOT/.devcontainer"
-            if docker compose version &> /dev/null 2>&1; then
-                docker compose restart
-            else
-                docker-compose restart
-            fi
+            docker_compose restart
             log_success "服務已重啟"
             ;;
         status)

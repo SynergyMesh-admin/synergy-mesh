@@ -19,6 +19,15 @@ NC='\033[0m' # No Color
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR"
 
+# Docker Compose 命令封裝 (解決 v1/v2 版本差異)
+docker_compose() {
+    if docker compose version &> /dev/null 2>&1; then
+        docker compose "$@"
+    else
+        docker-compose "$@"
+    fi
+}
+
 # ASCII Art Logo
 show_logo() {
     echo -e "${CYAN}"
@@ -153,11 +162,7 @@ start_devcontainer() {
     fi
     
     # 啟動 Docker Compose
-    if docker compose version &> /dev/null 2>&1; then
-        docker compose up -d
-    else
-        docker-compose up -d
-    fi
+    docker_compose up -d
     
     cd ..
     
@@ -316,32 +321,20 @@ dev_toolkit() {
         3)
             echo -e "${BLUE}重建 Docker 映像...${NC}"
             cd .devcontainer
-            if docker compose version &> /dev/null 2>&1; then
-                docker compose build --no-cache
-            else
-                docker-compose build --no-cache
-            fi
+            docker_compose build --no-cache
             cd ..
             echo -e "${GREEN}✅ 重建完成${NC}"
             ;;
         4)
             echo -e "${BLUE}顯示容器日誌...${NC}"
             cd .devcontainer
-            if docker compose version &> /dev/null 2>&1; then
-                docker compose logs --tail=100
-            else
-                docker-compose logs --tail=100
-            fi
+            docker_compose logs --tail=100
             cd ..
             ;;
         5)
             echo -e "${BLUE}重啟所有服務...${NC}"
             cd .devcontainer
-            if docker compose version &> /dev/null 2>&1; then
-                docker compose restart
-            else
-                docker-compose restart
-            fi
+            docker_compose restart
             cd ..
             echo -e "${GREEN}✅ 重啟完成${NC}"
             ;;
