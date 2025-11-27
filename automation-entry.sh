@@ -265,28 +265,57 @@ version_migration() {
     echo "可用的遷移選項:"
     echo "1. v1 → v2 (Python 無人機 → 多語言島嶼)"
     echo "2. v2 → v1 (多語言島嶼 → Python 無人機)"
-    echo "3. 返回主選單"
+    echo "3. 檢查遷移狀態"
+    echo "4. 乾跑模式 (不實際執行)"
+    echo "5. 返回主選單"
     echo ""
-    read -p "請輸入選項 (1-3): " migration_choice
+    read -p "請輸入選項 (1-5): " migration_choice
+    
+    local python_cmd
+    if command -v python3 &> /dev/null; then
+        python_cmd="python3"
+    else
+        python_cmd="python"
+    fi
     
     case $migration_choice in
         1)
             echo -e "${BLUE}執行 v1 → v2 遷移...${NC}"
-            if [ -d "migration" ] && [ -f "migration/v1-to-v2.sh" ]; then
-                bash migration/v1-to-v2.sh
+            if [ -f "migration/scripts/v1_to_v2.py" ]; then
+                $python_cmd migration/scripts/v1_to_v2.py
+            elif [ -f "migration/migrator.py" ]; then
+                $python_cmd -m migration.migrator --direction=v1-to-v2
             else
-                echo -e "${YELLOW}遷移腳本尚未建立${NC}"
+                echo -e "${YELLOW}遷移腳本不存在${NC}"
             fi
             ;;
         2)
             echo -e "${BLUE}執行 v2 → v1 遷移...${NC}"
-            if [ -d "migration" ] && [ -f "migration/v2-to-v1.sh" ]; then
-                bash migration/v2-to-v1.sh
+            if [ -f "migration/scripts/v2_to_v1.py" ]; then
+                $python_cmd migration/scripts/v2_to_v1.py
+            elif [ -f "migration/migrator.py" ]; then
+                $python_cmd -m migration.migrator --direction=v2-to-v1
             else
-                echo -e "${YELLOW}遷移腳本尚未建立${NC}"
+                echo -e "${YELLOW}遷移腳本不存在${NC}"
             fi
             ;;
         3)
+            echo -e "${BLUE}檢查遷移狀態...${NC}"
+            if [ -f "migration/migrator.py" ]; then
+                $python_cmd -m migration.migrator --direction=v1-to-v2 --check-only
+            else
+                echo -e "${YELLOW}遷移工具不存在${NC}"
+            fi
+            ;;
+        4)
+            echo -e "${BLUE}乾跑模式 (v1 → v2)...${NC}"
+            if [ -f "migration/migrator.py" ]; then
+                $python_cmd -m migration.migrator --direction=v1-to-v2 --dry-run
+            else
+                echo -e "${YELLOW}遷移工具不存在${NC}"
+            fi
+            ;;
+        5)
             return 0
             ;;
         *)
