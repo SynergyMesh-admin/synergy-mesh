@@ -86,9 +86,10 @@ show_menu() {
     echo "4. 📊 系統診斷 (環境檢查)"
     echo "5. 🔄 版本遷移 (v1 ↔ v2)"
     echo "6. 🛠️  開發工具箱"
+    echo "7. 🐍 v1-python-drones (Python 無人機)"
     echo "0. ❌ 退出"
     echo ""
-    read -p "請輸入選項 (0-6): " choice
+    read -p "請輸入選項 (0-7): " choice
 }
 
 # 建立預設配置
@@ -347,6 +348,52 @@ dev_toolkit() {
     esac
 }
 
+# v1-python-drones 模式
+v1_python_drones_mode() {
+    echo -e "${PURPLE}🐍 v1-python-drones - Python 無人機系統${NC}"
+    echo ""
+    echo "可用的選項:"
+    echo "1. 🤖 自動模式 (執行所有無人機)"
+    echo "2. 📡 協調器無人機"
+    echo "3. ✈️  自動駕駛無人機"
+    echo "4. 🚢 部署無人機"
+    echo "5. 返回主選單"
+    echo ""
+    read -p "請輸入選項 (1-5): " v1_choice
+    
+    local python_cmd
+    if command -v python3 &> /dev/null; then
+        python_cmd="python3"
+    else
+        python_cmd="python"
+    fi
+    
+    case $v1_choice in
+        1)
+            echo -e "${BLUE}執行 v1-python-drones 自動模式...${NC}"
+            $python_cmd v1-python-drones/main.py --mode=auto
+            ;;
+        2)
+            echo -e "${BLUE}執行協調器無人機...${NC}"
+            $python_cmd v1-python-drones/main.py --drone=coordinator
+            ;;
+        3)
+            echo -e "${BLUE}執行自動駕駛無人機...${NC}"
+            $python_cmd v1-python-drones/main.py --drone=autopilot
+            ;;
+        4)
+            echo -e "${BLUE}執行部署無人機...${NC}"
+            $python_cmd v1-python-drones/main.py --drone=deployment
+            ;;
+        5)
+            return 0
+            ;;
+        *)
+            echo -e "${RED}無效選項${NC}"
+            ;;
+    esac
+}
+
 # 主程式邏輯
 main() {
     show_logo
@@ -366,6 +413,7 @@ main() {
             4) system_diagnosis ;;
             5) version_migration ;;
             6) dev_toolkit ;;
+            7) v1_python_drones_mode ;;
             0) 
                 echo -e "${GREEN}感謝使用 SynergyMesh! 👋${NC}"
                 exit 0

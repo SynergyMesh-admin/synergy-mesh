@@ -13,12 +13,14 @@ drone_fleet:
   coordinator:
     name: "主協調器"
     script: ".devcontainer/automation/drone-coordinator.py"
+    v1_module: "v1_python_drones.drones.coordinator_drone"
     priority: 1
     auto_start: true
     
   autopilot:
     name: "自動駕駛"
     script: ".devcontainer/automation/auto-pilot.js"
+    v1_module: "v1_python_drones.drones.autopilot_drone"
     priority: 2
     auto_start: true
     
@@ -31,8 +33,22 @@ drone_fleet:
   deployment_drone:
     name: "部署無人機"
     script: ".devcontainer/automation/deployment-drone.sh"
+    v1_module: "v1_python_drones.drones.deployment_drone"
     priority: 4
     auto_start: false
+
+# 🐍 v1-python-drones 配置
+v1_python_drones:
+  enabled: true
+  base_path: "v1-python-drones"
+  main_entry: "v1_python_drones.main"
+  modules:
+    - config.drone_config
+    - drones.base_drone
+    - drones.coordinator_drone
+    - drones.autopilot_drone
+    - drones.deployment_drone
+    - utils.helpers
 
 # 🎯 自動化任務配置
 automation:
