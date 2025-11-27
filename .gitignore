@@ -24,7 +24,13 @@ yarn-error.log*
 .env.*.local
 
 # IDE
-.vscode/
+# Keep .vscode tracked (settings.json, tasks.json, extensions.json)
+# but ignore user-specific files
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/extensions.json
+!.vscode/mcp.json
 .idea/
 *.swp
 *.swo
@@ -57,3 +63,6 @@ __pycache__/
 *.py[cod]
 *.class
 *.so
+
+# Generated files (by code-generator)
+generated/
