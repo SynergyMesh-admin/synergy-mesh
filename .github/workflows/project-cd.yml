@@ -47,6 +47,11 @@ on:
         required: false
         type: boolean
         default: false
+      has-kubeconfig:
+        description: '是否提供 KUBECONFIG（用於條件判斷）'
+        required: false
+        type: boolean
+        default: false
     secrets:
       REGISTRY_USERNAME:
         required: false
@@ -274,14 +279,14 @@ jobs:
           version: 'v1.30.0'
       
       - name: 🔐 Setup Kubeconfig
-        if: secrets.KUBECONFIG != ''
+        if: inputs.has-kubeconfig
         run: |
           mkdir -p ~/.kube
           echo "${{ secrets.KUBECONFIG }}" | base64 -d > ~/.kube/config
           chmod 600 ~/.kube/config
       
       - name: 🚀 Deploy to Kubernetes
-        if: secrets.KUBECONFIG != ''
+        if: inputs.has-kubeconfig
         run: |
           echo "🚀 部署到 ${{ inputs.environment }} 環境..."
           cd ${{ inputs.working-directory }}/deploy
