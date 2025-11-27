@@ -16,16 +16,17 @@ import json
 import logging
 import asyncio
 from typing import Optional, Dict, Any, AsyncGenerator
+
+# Configure logging - must be before any logger usage
+logging.basicConfig(level=logging.INFO,
+                   format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+
 try:
     from dotenv import load_dotenv
     load_dotenv()
 except ImportError:
     logger.warning("python-dotenv not available, environment variables will not be loaded from .env file")
-
-# Configure logging
-logging.basicConfig(level=logging.INFO,
-                   format='%(asctime)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
 class TaskExecutor:
     """
     智能任務執行器 - 用於自動化代碼分析與修復
