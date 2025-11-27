@@ -1,5 +1,11 @@
 import { Request, Response } from 'express';
 import { ProvenanceService } from '../services/provenance';
+import {
+  sendSuccess,
+  sendError,
+  createTimestamp,
+  getErrorMessage
+} from '../middleware/response';
 
 export class ProvenanceController {
   private provenanceService: ProvenanceService;
@@ -16,20 +22,12 @@ export class ProvenanceController {
       const { filePath, builder, metadata } = req.body;
 
       if (!filePath) {
-        res.status(400).json({
-          success: false,
-          error: 'filePath is required',
-          timestamp: new Date().toISOString()
-        });
+        sendError(res, 'filePath is required', { status: 400, includeTimestamp: true });
         return;
       }
 
       if (!builder) {
-        res.status(400).json({
-          success: false,
-          error: 'builder is required',
-          timestamp: new Date().toISOString()
-        });
+        sendError(res, 'builder is required', { status: 400, includeTimestamp: true });
         return;
       }
 
@@ -39,24 +37,18 @@ export class ProvenanceController {
         metadata
       );
 
-      res.status(201).json({
-        success: true,
-        data: attestation,
-        message: 'Build attestation created successfully'
+      sendSuccess(res, attestation, {
+        message: 'Build attestation created successfully',
+        status: 201
       });
     } catch (error) {
       const nodeError = error as NodeJS.ErrnoException;
       if (nodeError.code === 'ENOENT') {
-        res.status(404).json({
-          success: false,
-          error: 'File not found',
-          timestamp: new Date().toISOString()
-        });
+        sendError(res, 'File not found', { status: 404, includeTimestamp: true });
       } else {
-        res.status(500).json({
-          success: false,
-          error: error instanceof Error ? error.message : 'Failed to create attestation',
-          timestamp: new Date().toISOString()
+        sendError(res, getErrorMessage(error, 'Failed to create attestation'), {
+          status: 500,
+          includeTimestamp: true
         });
       }
     }
@@ -70,30 +62,23 @@ export class ProvenanceController {
       const { attestation } = req.body;
 
       if (!attestation) {
-        res.status(400).json({
-          success: false,
-          error: 'attestation is required',
-          timestamp: new Date().toISOString()
-        });
+        sendError(res, 'attestation is required', { status: 400, includeTimestamp: true });
         return;
       }
 
       const isValid = await this.provenanceService.verifyAttestation(attestation);
 
-      res.json({
-        success: true,
-        data: {
-          valid: isValid,
-          attestationId: attestation.id,
-          timestamp: new Date().toISOString()
-        },
+      sendSuccess(res, {
+        valid: isValid,
+        attestationId: attestation.id,
+        timestamp: createTimestamp()
+      }, {
         message: isValid ? 'Attestation is valid' : 'Attestation is invalid'
       });
     } catch (error) {
-      res.status(500).json({
-        success: false,
-        error: error instanceof Error ? error.message : 'Failed to verify attestation',
-        timestamp: new Date().toISOString()
+      sendError(res, getErrorMessage(error, 'Failed to verify attestation'), {
+        status: 500,
+        includeTimestamp: true
       });
     }
   };
@@ -106,11 +91,7 @@ export class ProvenanceController {
       const filePath = req.params.filePath || req.params[0]; // 支援通配符路由
 
       if (!filePath) {
-        res.status(404).json({
-          success: false,
-          error: 'filePath is required',
-          timestamp: new Date().toISOString()
-        });
+        sendError(res, 'filePath is required', { status: 404, includeTimestamp: true });
         return;
       }
 
@@ -118,28 +99,21 @@ export class ProvenanceController {
       const decodedPath = decodeURIComponent(filePath);
       const digest = await this.provenanceService.generateFileDigest(decodedPath);
 
-      res.json({
-        success: true,
-        data: {
-          filePath: decodedPath,
-          digest,
-          timestamp: new Date().toISOString()
-        },
+      sendSuccess(res, {
+        filePath: decodedPath,
+        digest,
+        timestamp: createTimestamp()
+      }, {
         message: 'File digest generated successfully'
       });
     } catch (error) {
       const nodeError = error as NodeJS.ErrnoException;
       if (nodeError.code === 'ENOENT') {
-        res.status(404).json({
-          success: false,
-          error: 'File not found',
-          timestamp: new Date().toISOString()
-        });
+        sendError(res, 'File not found', { status: 404, includeTimestamp: true });
       } else {
-        res.status(500).json({
-          success: false,
-          error: error instanceof Error ? error.message : 'Failed to generate file digest',
-          timestamp: new Date().toISOString()
+        sendError(res, getErrorMessage(error, 'Failed to generate file digest'), {
+          status: 500,
+          includeTimestamp: true
         });
       }
     }
@@ -153,26 +127,19 @@ export class ProvenanceController {
       const { attestationJson } = req.body;
 
       if (!attestationJson) {
-        res.status(400).json({
-          success: false,
-          error: 'attestationJson is required',
-          timestamp: new Date().toISOString()
-        });
+        sendError(res, 'attestationJson is required', { status: 400, includeTimestamp: true });
         return;
       }
 
       const attestation = this.provenanceService.importAttestation(attestationJson);
 
-      res.json({
-        success: true,
-        data: attestation,
+      sendSuccess(res, attestation, {
         message: 'Attestation imported successfully'
       });
     } catch (error) {
-      res.status(400).json({
-        success: false,
-        error: error instanceof Error ? error.message : 'Invalid JSON data or attestation format',
-        timestamp: new Date().toISOString()
+      sendError(res, getErrorMessage(error, 'Invalid JSON data or attestation format'), {
+        status: 400,
+        includeTimestamp: true
       });
     }
   };
@@ -185,20 +152,17 @@ export class ProvenanceController {
       const { id } = req.params;
       
       // 這裡應該從數據庫獲取認證，現在返回格式化消息
-      res.json({
-        success: true,
-        data: {
-          message: `Attestation export for ID: ${id}`,
-          format: 'json',
-          timestamp: new Date().toISOString()
-        },
+      sendSuccess(res, {
+        message: `Attestation export for ID: ${id}`,
+        format: 'json',
+        timestamp: createTimestamp()
+      }, {
         message: 'Attestation export endpoint'
       });
     } catch (error) {
-      res.status(500).json({
-        success: false,
-        error: error instanceof Error ? error.message : 'Failed to export attestation',
-        timestamp: new Date().toISOString()
+      sendError(res, getErrorMessage(error, 'Failed to export attestation'), {
+        status: 500,
+        includeTimestamp: true
       });
     }
   };

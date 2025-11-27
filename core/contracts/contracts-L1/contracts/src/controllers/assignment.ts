@@ -8,6 +8,12 @@ import { z } from 'zod';
 import { AutoAssignmentEngine } from '../services/assignment/auto-assignment-engine';
 import { ResponsibilityGovernance } from '../services/assignment/responsibility-governance';
 import { Incident, Priority, ProblemType, AssignmentStatus } from '../types/assignment';
+import {
+  sendSuccess,
+  sendError,
+  handleControllerError,
+  getErrorMessage
+} from '../middleware/response';
 
 // 驗證 Schema
 const incidentSchema = z.object({
@@ -55,31 +61,9 @@ export class AssignmentController {
 
       const assignment = await this.engine.assignResponsibility(incident);
 
-      res.status(201).json({
-        success: true,
-        data: {
-          assignment,
-          incident
-        }
-      });
+      sendSuccess(res, { assignment, incident }, { status: 201 });
     } catch (error) {
-      if (error instanceof z.ZodError) {
-        res.status(400).json({
-          success: false,
-          error: 'Validation error',
-          details: error.errors
-        });
-      } else if (error instanceof Error) {
-        res.status(500).json({
-          success: false,
-          error: error.message
-        });
-      } else {
-        res.status(500).json({
-          success: false,
-          error: 'Unknown error occurred'
-        });
-      }
+      handleControllerError(res, error);
     }
   };
 
@@ -97,36 +81,11 @@ export class AssignmentController {
         validatedData.status as AssignmentStatus
       );
 
-      res.json({
-        success: true,
-        data: assignment
-      });
+      sendSuccess(res, assignment);
     } catch (error) {
-      if (error instanceof z.ZodError) {
-        res.status(400).json({
-          success: false,
-          error: 'Validation error',
-          details: error.errors
-        });
-      } else if (error instanceof Error) {
-        // Check if it's a not found error
-        if (error.message.includes('not found')) {
-          res.status(404).json({
-            success: false,
-            error: error.message
-          });
-        } else {
-          res.status(500).json({
-            success: false,
-            error: error.message
-          });
-        }
-      } else {
-        res.status(500).json({
-          success: false,
-          error: 'Unknown error occurred'
-        });
-      }
+      handleControllerError(res, error, {
+        notFoundCheck: (msg) => msg.includes('not found')
+      });
     }
   };
 
@@ -140,29 +99,13 @@ export class AssignmentController {
       const assignment = this.engine.getAssignment(id);
 
       if (!assignment) {
-        res.status(404).json({
-          success: false,
-          error: `Assignment ${id} not found`
-        });
+        sendError(res, `Assignment ${id} not found`, { status: 404 });
         return;
       }
 
-      res.json({
-        success: true,
-        data: assignment
-      });
+      sendSuccess(res, assignment);
     } catch (error) {
-      if (error instanceof Error) {
-        res.status(500).json({
-          success: false,
-          error: error.message
-        });
-      } else {
-        res.status(500).json({
-          success: false,
-          error: 'Unknown error occurred'
-        });
-      }
+      sendError(res, getErrorMessage(error));
     }
   };
 
@@ -175,22 +118,9 @@ export class AssignmentController {
       const workloadStats = this.engine.getWorkloadStatistics();
       const workloadArray = Array.from(workloadStats.entries()).map(([, metrics]) => metrics);
 
-      res.json({
-        success: true,
-        data: workloadArray
-      });
+      sendSuccess(res, workloadArray);
     } catch (error) {
-      if (error instanceof Error) {
-        res.status(500).json({
-          success: false,
-          error: error.message
-        });
-      } else {
-        res.status(500).json({
-          success: false,
-          error: 'Unknown error occurred'
-        });
-      }
+      sendError(res, getErrorMessage(error));
     }
   };
 
@@ -208,28 +138,12 @@ export class AssignmentController {
         validatedData.newOwnerId
       );
 
-      res.json({
-        success: true,
-        data: assignment
-      });
+      sendSuccess(res, assignment);
     } catch (error) {
-      if (error instanceof z.ZodError) {
-        res.status(400).json({
-          success: false,
-          error: 'Validation error',
-          details: error.errors
-        });
-      } else if (error instanceof Error) {
-        res.status(404).json({
-          success: false,
-          error: error.message
-        });
-      } else {
-        res.status(500).json({
-          success: false,
-          error: 'Unknown error occurred'
-        });
-      }
+      handleControllerError(res, error, {
+        notFoundCheck: () => true,  // All non-Zod errors are treated as not found
+        notFoundStatus: 404
+      });
     }
   };
 
@@ -243,33 +157,16 @@ export class AssignmentController {
       const assignment = this.engine.getAssignment(id);
 
       if (!assignment) {
-        res.status(404).json({
-          success: false,
-          error: `Assignment ${id} not found`
-        });
+        sendError(res, `Assignment ${id} not found`, { status: 404 });
         return;
       }
 
       // 更新為升級狀態
       const updatedAssignment = await this.engine.updateAssignmentStatus(id, 'ESCALATED');
 
-      res.json({
-        success: true,
-        data: updatedAssignment,
-        message: 'Assignment escalated successfully'
-      });
+      sendSuccess(res, updatedAssignment, { message: 'Assignment escalated successfully' });
     } catch (error) {
-      if (error instanceof Error) {
-        res.status(500).json({
-          success: false,
-          error: error.message
-        });
-      } else {
-        res.status(500).json({
-          success: false,
-          error: 'Unknown error occurred'
-        });
-      }
+      sendError(res, getErrorMessage(error));
     }
   };
 
@@ -281,23 +178,9 @@ export class AssignmentController {
     try {
       const assignments = this.engine.getAllAssignments();
 
-      res.json({
-        success: true,
-        data: assignments,
-        count: assignments.length
-      });
+      sendSuccess(res, assignments, { count: assignments.length });
     } catch (error) {
-      if (error instanceof Error) {
-        res.status(500).json({
-          success: false,
-          error: error.message
-        });
-      } else {
-        res.status(500).json({
-          success: false,
-          error: 'Unknown error occurred'
-        });
-      }
+      sendError(res, getErrorMessage(error));
     }
   };
 
@@ -310,22 +193,9 @@ export class AssignmentController {
       const assignments = this.engine.getAllAssignments();
       const report = this.governance.generatePerformanceReport(assignments);
 
-      res.json({
-        success: true,
-        data: report
-      });
+      sendSuccess(res, report);
     } catch (error) {
-      if (error instanceof Error) {
-        res.status(500).json({
-          success: false,
-          error: error.message
-        });
-      } else {
-        res.status(500).json({
-          success: false,
-          error: 'Unknown error occurred'
-        });
-      }
+      sendError(res, getErrorMessage(error));
     }
   };
 }
