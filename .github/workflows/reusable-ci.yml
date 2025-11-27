@@ -168,6 +168,11 @@ jobs:
           for script in "${SCRIPTS[@]}"; do
             script=$(echo "$script" | xargs)  # trim whitespace
             if [ -n "$script" ]; then
+              # Validate script name contains only allowed characters (alphanumeric, hyphens, colons, underscores)
+              if [[ ! "$script" =~ ^[a-zA-Z0-9:_-]+$ ]]; then
+                echo "❌ Invalid script name: $script (only alphanumeric, hyphens, colons, and underscores allowed)"
+                exit 1
+              fi
               echo "🔧 Running: npm run $script"
               npm run "$script"
             fi
