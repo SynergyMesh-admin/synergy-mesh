@@ -50,6 +50,91 @@ v1_python_drones:
     - drones.deployment_drone
     - utils.helpers
 
+# 🏝️ v2-multi-islands 配置
+v2_multi_islands:
+  enabled: true
+  base_path: "v2-multi-islands"
+  main_entry: "v2_multi_islands.main"
+  
+  # 島嶼配置
+  islands:
+    rust:
+      name: "🦀 Rust 性能核心島"
+      enabled: true
+      priority: 1
+      capabilities:
+        - performance_monitor
+        - security_guardian
+        - data_pipeline
+        - system_orchestrator
+      
+    go:
+      name: "🌊 Go 雲原生服務島"
+      enabled: true
+      priority: 2
+      capabilities:
+        - api_gateway
+        - microservice_mesh
+        - container_manager
+        - distributed_cache
+      
+    typescript:
+      name: "⚡ TypeScript 全棧開發島"
+      enabled: true
+      priority: 3
+      capabilities:
+        - web_dashboard
+        - api_client_generator
+        - real_time_monitor
+        - dev_tools_suite
+      
+    python:
+      name: "🐍 Python AI 數據島"
+      enabled: true
+      priority: 4
+      capabilities:
+        - ai_code_assistant
+        - data_analysis
+        - ml_pipeline
+        - automation_scripts
+      
+    java:
+      name: "☕ Java 企業服務島"
+      enabled: true
+      priority: 5
+      capabilities:
+        - enterprise_integration
+        - message_queue_manager
+        - batch_processing
+        - legacy_system_bridge
+  
+  # 協調器配置
+  orchestrator:
+    auto_start: true
+    health_check_interval: 30
+    max_concurrent_islands: 5
+  
+  # 橋接配置
+  bridges:
+    enabled: true
+    protocols:
+      - grpc
+      - rest
+      - websocket
+  
+  # 模組列表
+  modules:
+    - config.island_config
+    - orchestrator.island_orchestrator
+    - islands.base_island
+    - islands.rust_island
+    - islands.go_island
+    - islands.typescript_island
+    - islands.python_island
+    - islands.java_island
+    - bridges.language_bridge
+    - utils.helpers
+
 # 🎯 自動化任務配置
 automation:
   code_generation:

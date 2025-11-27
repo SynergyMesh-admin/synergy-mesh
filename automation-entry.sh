@@ -87,9 +87,10 @@ show_menu() {
     echo "5. 🔄 版本遷移 (v1 ↔ v2)"
     echo "6. 🛠️  開發工具箱"
     echo "7. 🐍 v1-python-drones (Python 無人機)"
+    echo "8. 🏝️  v2-multi-islands (多語言無人島)"
     echo "0. ❌ 退出"
     echo ""
-    read -p "請輸入選項 (0-7): " choice
+    read -p "請輸入選項 (0-8): " choice
 }
 
 # 建立預設配置
@@ -394,6 +395,67 @@ v1_python_drones_mode() {
     esac
 }
 
+# v2-multi-islands 模式
+v2_multi_islands_mode() {
+    echo -e "${CYAN}🏝️  v2-multi-islands - 多語言自動化無人島系統${NC}"
+    echo ""
+    echo "可用的選項:"
+    echo "1. 🌊 自動模式 (執行協調器和主要島嶼)"
+    echo "2. 🦀 Rust 性能核心島"
+    echo "3. 🌊 Go 雲原生服務島"
+    echo "4. ⚡ TypeScript 全棧開發島"
+    echo "5. 🐍 Python AI 數據島"
+    echo "6. ☕ Java 企業服務島"
+    echo "7. 🏝️  執行所有島嶼"
+    echo "8. 返回主選單"
+    echo ""
+    read -p "請輸入選項 (1-8): " v2_choice
+    
+    local python_cmd
+    if command -v python3 &> /dev/null; then
+        python_cmd="python3"
+    else
+        python_cmd="python"
+    fi
+    
+    case $v2_choice in
+        1)
+            echo -e "${BLUE}執行 v2-multi-islands 自動模式...${NC}"
+            $python_cmd v2-multi-islands/main.py --mode=auto
+            ;;
+        2)
+            echo -e "${BLUE}執行 Rust 性能核心島...${NC}"
+            $python_cmd v2-multi-islands/main.py --island=rust
+            ;;
+        3)
+            echo -e "${BLUE}執行 Go 雲原生服務島...${NC}"
+            $python_cmd v2-multi-islands/main.py --island=go
+            ;;
+        4)
+            echo -e "${BLUE}執行 TypeScript 全棧開發島...${NC}"
+            $python_cmd v2-multi-islands/main.py --island=typescript
+            ;;
+        5)
+            echo -e "${BLUE}執行 Python AI 數據島...${NC}"
+            $python_cmd v2-multi-islands/main.py --island=python
+            ;;
+        6)
+            echo -e "${BLUE}執行 Java 企業服務島...${NC}"
+            $python_cmd v2-multi-islands/main.py --island=java
+            ;;
+        7)
+            echo -e "${BLUE}執行所有島嶼...${NC}"
+            $python_cmd v2-multi-islands/main.py --all
+            ;;
+        8)
+            return 0
+            ;;
+        *)
+            echo -e "${RED}無效選項${NC}"
+            ;;
+    esac
+}
+
 # 主程式邏輯
 main() {
     show_logo
@@ -414,6 +476,7 @@ main() {
             5) version_migration ;;
             6) dev_toolkit ;;
             7) v1_python_drones_mode ;;
+            8) v2_multi_islands_mode ;;
             0) 
                 echo -e "${GREEN}感謝使用 SynergyMesh! 👋${NC}"
                 exit 0
