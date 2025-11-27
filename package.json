@@ -6,6 +6,7 @@
   "workspaces": [
     "mcp-servers",
     "core/contracts/contracts-L1/contracts",
+    "core/advisory-database",
     "advanced-system-src"
   ],
   "scripts": {
