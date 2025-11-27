@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import { SLSAAttestationService } from '../services/attestation';
-import { createError } from '../middleware/error';
 import { z } from 'zod';
 
 // Input validation schemas
@@ -19,7 +18,9 @@ const CreateAttestationSchema = z.object({
 );
 
 const VerifyAttestationSchema = z.object({
-  provenance: z.unknown()
+  provenance: z.any().refine((val) => val !== undefined && val !== null, {
+    message: 'provenance is required'
+  })
 });
 
 const GenerateDigestSchema = z.object({
@@ -86,12 +87,18 @@ export class SLSAController {
       });
     } catch (error) {
       if (error instanceof z.ZodError) {
-        throw createError.validation(`Invalid input: ${error.errors.map(e => e.message).join(', ')}`);
+        res.status(400).json({
+          success: false,
+          error: `Invalid input: ${error.errors.map(e => e.message).join(', ')}`,
+          timestamp: new Date().toISOString()
+        });
+        return;
       }
-      if (error instanceof Error) {
-        throw createError.internal(error.message);
-      }
-      throw createError.internal('Failed to create SLSA attestation');
+      res.status(500).json({
+        success: false,
+        error: error instanceof Error ? error.message : 'Failed to create SLSA attestation',
+        timestamp: new Date().toISOString()
+      });
     }
   };
 
@@ -116,12 +123,18 @@ export class SLSAController {
       });
     } catch (error) {
       if (error instanceof z.ZodError) {
-        throw createError.validation(`Invalid input: ${error.errors.map(e => e.message).join(', ')}`);
+        res.status(400).json({
+          success: false,
+          error: `Invalid input: ${error.errors.map(e => e.message).join(', ')}`,
+          timestamp: new Date().toISOString()
+        });
+        return;
       }
-      if (error instanceof Error) {
-        throw createError.internal(error.message);
-      }
-      throw createError.internal('Failed to verify SLSA attestation');
+      res.status(500).json({
+        success: false,
+        error: error instanceof Error ? error.message : 'Failed to verify SLSA attestation',
+        timestamp: new Date().toISOString()
+      });
     }
   };
 
@@ -150,12 +163,18 @@ export class SLSAController {
       });
     } catch (error) {
       if (error instanceof z.ZodError) {
-        throw createError.validation(`Invalid input: ${error.errors.map(e => e.message).join(', ')}`);
+        res.status(400).json({
+          success: false,
+          error: `Invalid input: ${error.errors.map(e => e.message).join(', ')}`,
+          timestamp: new Date().toISOString()
+        });
+        return;
       }
-      if (error instanceof Error) {
-        throw createError.internal(error.message);
-      }
-      throw createError.internal('Failed to generate digest');
+      res.status(500).json({
+        success: false,
+        error: error instanceof Error ? error.message : 'Failed to generate digest',
+        timestamp: new Date().toISOString()
+      });
     }
   };
 
@@ -173,7 +192,12 @@ export class SLSAController {
       } = req.body;
 
       if (!contractName || !contractCode) {
-        throw createError.validation('Contract name and code are required');
+        res.status(400).json({
+          success: false,
+          error: 'Contract name and code are required',
+          timestamp: new Date().toISOString()
+        });
+        return;
       }
 
       const subject = this.slsaService.createSubjectFromContent(
@@ -214,10 +238,11 @@ export class SLSAController {
         message: 'Contract deployment attestation created successfully'
       });
     } catch (error) {
-      if (error instanceof Error) {
-        throw createError.internal(error.message);
-      }
-      throw createError.internal('Failed to create contract attestation');
+      res.status(500).json({
+        success: false,
+        error: error instanceof Error ? error.message : 'Failed to create contract attestation',
+        timestamp: new Date().toISOString()
+      });
     }
   };
 
@@ -229,7 +254,12 @@ export class SLSAController {
       const { provenance } = req.body;
 
       if (!provenance) {
-        throw createError.validation('Provenance data is required');
+        res.status(400).json({
+          success: false,
+          error: 'Provenance data is required',
+          timestamp: new Date().toISOString()
+        });
+        return;
       }
 
       const isValid = await this.slsaService.verifyProvenance(provenance);
@@ -251,10 +281,11 @@ export class SLSAController {
         message: 'Attestation summary generated successfully'
       });
     } catch (error) {
-      if (error instanceof Error) {
-        throw createError.internal(error.message);
-      }
-      throw createError.internal('Failed to generate attestation summary');
+      res.status(500).json({
+        success: false,
+        error: error instanceof Error ? error.message : 'Failed to generate attestation summary',
+        timestamp: new Date().toISOString()
+      });
     }
   };
 }
