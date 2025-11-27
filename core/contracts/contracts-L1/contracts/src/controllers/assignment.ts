@@ -141,7 +141,7 @@ export class AssignmentController {
       sendSuccess(res, assignment);
     } catch (error) {
       handleControllerError(res, error, {
-        notFoundCheck: () => true,  // All non-Zod errors are treated as not found
+        notFoundCheck: (msg) => msg.includes('not found'),
         notFoundStatus: 404
       });
     }

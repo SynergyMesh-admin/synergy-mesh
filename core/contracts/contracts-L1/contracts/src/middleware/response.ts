@@ -139,7 +139,7 @@ export const getErrorMessage = (
 
 /**
  * Handle common error patterns with Zod validation support
- * Returns true if error was handled, false otherwise
+ * Sends appropriate error response based on error type
  */
 export const handleControllerError = (
   res: Response,
