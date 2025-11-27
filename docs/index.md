@@ -15,7 +15,7 @@ Welcome to the SynergyMesh documentation. This site contains comprehensive guide
 
 ### 🏗️ Architecture & Deployment
 
-- [Architecture Documentation](./architecture/) - Complete system architecture and deployment guides
+- [Architecture Documentation](./architecture/README.md) - Complete system architecture and deployment guides
 - [System Architecture Design](./architecture/SYSTEM_ARCHITECTURE.md) - Four-layer microservices architecture
 - [Deployment & Infrastructure](./architecture/DEPLOYMENT_INFRASTRUCTURE.md) - Docker, Kubernetes, CI/CD setup
 - [Code Quality Checks](./architecture/CODE_QUALITY_CHECKS.md) - Quality tools configuration and implementation
@@ -70,9 +70,9 @@ Welcome to the SynergyMesh documentation. This site contains comprehensive guide
 
 ## 🔗 Related Resources
 
-- [GitHub Repository](https://github.com/SynergyMesh/SynergyMesh) - Source code
-- [Contributing Guide](https://github.com/SynergyMesh/SynergyMesh/blob/main/CONTRIBUTING.md) - How to contribute
-- [Security Policy](https://github.com/SynergyMesh/SynergyMesh/blob/main/SECURITY.md) - Security practices
+- [GitHub Repository]({{ site.github.repository_url | default: "https://github.com/SynergyMesh/SynergyMesh" }}) - Source code
+- [Contributing Guide]({{ site.github.repository_url | default: "https://github.com/SynergyMesh/SynergyMesh" }}/blob/main/CONTRIBUTING.md) - How to contribute
+- [Security Policy]({{ site.github.repository_url | default: "https://github.com/SynergyMesh/SynergyMesh" }}/blob/main/SECURITY.md) - Security practices
 
 ---
 
