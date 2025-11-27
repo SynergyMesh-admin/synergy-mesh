@@ -14,6 +14,12 @@ import {
   EscalationResolution
 } from '../types/escalation';
 import { Priority } from '../types/assignment';
+import {
+  sendSuccess,
+  sendError,
+  sendValidationError,
+  sendNotFound
+} from '../middleware/response';
 
 export class EscalationController {
   private escalationEngine: EscalationEngine;
@@ -42,10 +48,7 @@ export class EscalationController {
 
       // 驗證必要欄位
       if (!incidentId || !trigger || !priority || !context) {
-        res.status(400).json({
-          success: false,
-          error: 'Missing required fields: incidentId, trigger, priority, context'
-        });
+        sendValidationError(res, 'Missing required fields: incidentId, trigger, priority, context');
         return;
       }
 
@@ -61,20 +64,14 @@ export class EscalationController {
       ];
 
       if (!validTriggers.includes(trigger)) {
-        res.status(400).json({
-          success: false,
-          error: `Invalid trigger. Must be one of: ${validTriggers.join(', ')}`
-        });
+        sendValidationError(res, `Invalid trigger. Must be one of: ${validTriggers.join(', ')}`);
         return;
       }
 
       // 驗證優先級
       const validPriorities: Priority[] = ['CRITICAL', 'HIGH', 'MEDIUM', 'LOW'];
       if (!validPriorities.includes(priority)) {
-        res.status(400).json({
-          success: false,
-          error: `Invalid priority. Must be one of: ${validPriorities.join(', ')}`
-        });
+        sendValidationError(res, `Invalid priority. Must be one of: ${validPriorities.join(', ')}`);
         return;
       }
 
@@ -87,18 +84,10 @@ export class EscalationController {
         assignmentId
       );
 
-      res.status(201).json({
-        success: true,
-        data: {
-          escalation
-        }
-      });
+      sendSuccess(res, { escalation }, { status: 201 });
     } catch (error) {
       console.error('Error creating escalation:', error);
-      res.status(500).json({
-        success: false,
-        error: 'Failed to create escalation'
-      });
+      sendError(res, 'Failed to create escalation');
     }
   }
 
@@ -113,25 +102,14 @@ export class EscalationController {
       const escalation = this.escalationEngine.getEscalation(escalationId);
 
       if (!escalation) {
-        res.status(404).json({
-          success: false,
-          error: 'Escalation not found'
-        });
+        sendNotFound(res, 'Escalation');
         return;
       }
 
-      res.status(200).json({
-        success: true,
-        data: {
-          escalation
-        }
-      });
+      sendSuccess(res, { escalation });
     } catch (error) {
       console.error('Error getting escalation:', error);
-      res.status(500).json({
-        success: false,
-        error: 'Failed to get escalation'
-      });
+      sendError(res, 'Failed to get escalation');
     }
   }
 
@@ -145,19 +123,10 @@ export class EscalationController {
 
       const escalations = this.escalationEngine.getEscalationsByIncident(incidentId);
 
-      res.status(200).json({
-        success: true,
-        data: {
-          escalations,
-          count: escalations.length
-        }
-      });
+      sendSuccess(res, { escalations, count: escalations.length });
     } catch (error) {
       console.error('Error getting escalations by incident:', error);
-      res.status(500).json({
-        success: false,
-        error: 'Failed to get escalations'
-      });
+      sendError(res, 'Failed to get escalations');
     }
   }
 
@@ -171,10 +140,7 @@ export class EscalationController {
       const { status, assignedTo } = req.body;
 
       if (!status) {
-        res.status(400).json({
-          success: false,
-          error: 'Missing required field: status'
-        });
+        sendValidationError(res, 'Missing required field: status');
         return;
       }
 
@@ -188,10 +154,7 @@ export class EscalationController {
       ];
 
       if (!validStatuses.includes(status)) {
-        res.status(400).json({
-          success: false,
-          error: `Invalid status. Must be one of: ${validStatuses.join(', ')}`
-        });
+        sendValidationError(res, `Invalid status. Must be one of: ${validStatuses.join(', ')}`);
         return;
       }
 
@@ -202,25 +165,14 @@ export class EscalationController {
       );
 
       if (!updatedEscalation) {
-        res.status(404).json({
-          success: false,
-          error: 'Escalation not found'
-        });
+        sendNotFound(res, 'Escalation');
         return;
       }
 
-      res.status(200).json({
-        success: true,
-        data: {
-          escalation: updatedEscalation
-        }
-      });
+      sendSuccess(res, { escalation: updatedEscalation });
     } catch (error) {
       console.error('Error updating escalation status:', error);
-      res.status(500).json({
-        success: false,
-        error: 'Failed to update escalation status'
-      });
+      sendError(res, 'Failed to update escalation status');
     }
   }
 
@@ -234,10 +186,7 @@ export class EscalationController {
       const resolution = req.body as EscalationResolution;
 
       if (!resolution || !resolution.solutionType || !resolution.description || !resolution.implementedBy) {
-        res.status(400).json({
-          success: false,
-          error: 'Missing required resolution fields: solutionType, description, implementedBy'
-        });
+        sendValidationError(res, 'Missing required resolution fields: solutionType, description, implementedBy');
         return;
       }
 
@@ -247,25 +196,14 @@ export class EscalationController {
       );
 
       if (!resolvedEscalation) {
-        res.status(404).json({
-          success: false,
-          error: 'Escalation not found'
-        });
+        sendNotFound(res, 'Escalation');
         return;
       }
 
-      res.status(200).json({
-        success: true,
-        data: {
-          escalation: resolvedEscalation
-        }
-      });
+      sendSuccess(res, { escalation: resolvedEscalation });
     } catch (error) {
       console.error('Error resolving escalation:', error);
-      res.status(500).json({
-        success: false,
-        error: 'Failed to resolve escalation'
-      });
+      sendError(res, 'Failed to resolve escalation');
     }
   }
 
@@ -279,10 +217,7 @@ export class EscalationController {
       const { reason } = req.body;
 
       if (!reason) {
-        res.status(400).json({
-          success: false,
-          error: 'Missing required field: reason'
-        });
+        sendValidationError(res, 'Missing required field: reason');
         return;
       }
 
@@ -292,25 +227,14 @@ export class EscalationController {
       );
 
       if (!newEscalation) {
-        res.status(400).json({
-          success: false,
-          error: 'Cannot escalate further or escalation not found'
-        });
+        sendError(res, 'Cannot escalate further or escalation not found', { status: 400 });
         return;
       }
 
-      res.status(201).json({
-        success: true,
-        data: {
-          escalation: newEscalation
-        }
-      });
+      sendSuccess(res, { escalation: newEscalation }, { status: 201 });
     } catch (error) {
       console.error('Error escalating further:', error);
-      res.status(500).json({
-        success: false,
-        error: 'Failed to escalate further'
-      });
+      sendError(res, 'Failed to escalate further');
     }
   }
 
@@ -322,19 +246,10 @@ export class EscalationController {
     try {
       const agents = this.escalationEngine.getAvailableCustomerServiceAgents();
 
-      res.status(200).json({
-        success: true,
-        data: {
-          agents,
-          count: agents.length
-        }
-      });
+      sendSuccess(res, { agents, count: agents.length });
     } catch (error) {
       console.error('Error getting available customer service agents:', error);
-      res.status(500).json({
-        success: false,
-        error: 'Failed to get available agents'
-      });
+      sendError(res, 'Failed to get available agents');
     }
   }
 
@@ -353,10 +268,7 @@ export class EscalationController {
       if (startDate) {
         start = new Date(startDate as string);
         if (isNaN(start.getTime())) {
-          res.status(400).json({
-            success: false,
-            error: 'Invalid startDate format. Please use ISO 8601 format.'
-          });
+          sendValidationError(res, 'Invalid startDate format. Please use ISO 8601 format.');
           return;
         }
       } else {
@@ -367,10 +279,7 @@ export class EscalationController {
       if (endDate) {
         end = new Date(endDate as string);
         if (isNaN(end.getTime())) {
-          res.status(400).json({
-            success: false,
-            error: 'Invalid endDate format. Please use ISO 8601 format.'
-          });
+          sendValidationError(res, 'Invalid endDate format. Please use ISO 8601 format.');
           return;
         }
       } else {
@@ -379,22 +288,10 @@ export class EscalationController {
 
       const statistics = this.escalationEngine.getEscalationStatistics(start, end);
 
-      res.status(200).json({
-        success: true,
-        data: {
-          period: {
-            start,
-            end
-          },
-          statistics
-        }
-      });
+      sendSuccess(res, { period: { start, end }, statistics });
     } catch (error) {
       console.error('Error getting escalation statistics:', error);
-      res.status(500).json({
-        success: false,
-        error: 'Failed to get statistics'
-      });
+      sendError(res, 'Failed to get statistics');
     }
   }
 }

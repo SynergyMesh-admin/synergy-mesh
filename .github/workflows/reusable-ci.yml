@@ -32,6 +32,25 @@ on:
         required: false
         type: boolean
         default: true
+      enable-coverage-upload:
+        description: 'Enable coverage upload as artifact'
+        required: false
+        type: boolean
+        default: false
+      coverage-path:
+        description: 'Path to coverage folder (relative to working-directory)'
+        required: false
+        type: string
+        default: 'coverage/'
+      custom-scripts:
+        description: 'Comma-separated list of custom npm scripts to run after standard CI steps'
+        required: false
+        type: string
+        default: ''
+    outputs:
+      result:
+        description: 'CI pipeline result'
+        value: ${{ jobs.ci-pipeline.result }}
     secrets:
       REGISTRY_USERNAME:
         required: false
@@ -141,6 +160,31 @@ jobs:
         if: inputs.enable-security-scan == true && steps.check-structure.outputs.has_package_json == 'true'
         run: |
           npm audit --audit-level=moderate || echo "⚠️ 發現安全漏洞"
+
+      - name: 🔧 Run custom scripts
+        if: inputs.custom-scripts != '' && steps.check-structure.outputs.has_package_json == 'true'
+        run: |
+          IFS=',' read -ra SCRIPTS <<< "${{ inputs.custom-scripts }}"
+          for script in "${SCRIPTS[@]}"; do
+            script=$(echo "$script" | xargs)  # trim whitespace
+            if [ -n "$script" ]; then
+              # Validate script name contains only allowed characters (alphanumeric, hyphens, colons, underscores)
+              if [[ ! "$script" =~ ^[a-zA-Z0-9:_-]+$ ]]; then
+                echo "❌ Invalid script name: $script (only alphanumeric, hyphens, colons, and underscores allowed)"
+                exit 1
+              fi
+              echo "🔧 Running: npm run $script"
+              npm run "$script"
+            fi
+          done
+
+      - name: 📊 Upload coverage
+        if: inputs.enable-coverage-upload == true && always()
+        uses: actions/upload-artifact@v4.3.1
+        with:
+          name: ${{ inputs.service-name }}-coverage
+          path: ${{ inputs.working-directory }}/${{ inputs.coverage-path }}
+          retention-days: 7
 
       - name: 🐳 Build Docker image
         if: inputs.enable-docker-build == true && steps.check-structure.outputs.has_dockerfile == 'true'
