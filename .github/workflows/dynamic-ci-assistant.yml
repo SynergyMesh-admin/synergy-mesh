@@ -50,6 +50,10 @@ jobs:
     steps:
       - name: 📥 檢出代碼
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          # 安全性：使用 pull_request_target 時，明確檢出基礎分支
+          # 以避免執行來自 fork 的不受信任代碼
+          ref: ${{ github.event.repository.default_branch }}
       
       - name: 🔍 獲取 PR 編號
         id: get-pr
@@ -157,6 +161,8 @@ jobs:
     steps:
       - name: 📥 檢出代碼
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ github.event.repository.default_branch }}
       
       - name: 🔬 分析失敗原因
         id: diagnose
@@ -304,6 +310,8 @@ jobs:
     steps:
       - name: 📥 檢出代碼
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ github.event.repository.default_branch }}
       
       - name: 💬 發布智能診斷評論
         uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
@@ -456,6 +464,8 @@ jobs:
     steps:
       - name: 📥 檢出代碼
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ github.event.repository.default_branch }}
       
       - name: 🗣️ 解析開發者請求
         uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
