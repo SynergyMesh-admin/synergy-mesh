@@ -9,7 +9,8 @@ const envSchema = z.object({
   DATABASE_URL: z.string().optional(),
   REDIS_URL: z.string().optional(),
   BUILD_SHA: z.string().optional(),
-  BUILD_TIME: z.string().optional()
+  BUILD_TIME: z.string().optional(),
+  WE_TONKE: z.string().optional()
 });
 
 export type Config = z.infer<typeof envSchema>;
