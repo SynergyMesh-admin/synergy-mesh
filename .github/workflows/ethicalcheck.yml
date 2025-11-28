@@ -29,18 +29,23 @@
 name: EthicalCheck-Workflow
 
 # Controls when the workflow will run
+# DISABLED: The apisec-inc/ethicalcheck-action repository does not exist
+# To re-enable, find a working alternative or set up your own API security testing
+# on:
+#   push:
+#     branches: [ "main" ]
+#   pull_request:
+#     branches: [ "main" ]
+#   schedule:
+#     - cron: '45 7 * * 5'
+#   workflow_dispatch:
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-  # Customize trigger events based on your DevSecOps processes.
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-  schedule:
-    - cron: '45 7 * * 5'
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'This workflow is disabled. Set up a valid API security testing action first.'
+        required: true
+        default: 'I understand'
 
 permissions:
   contents: read

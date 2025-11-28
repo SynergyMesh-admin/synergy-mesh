@@ -89,9 +89,9 @@ jobs:
           #!/bin/bash
           set -euo pipefail
 
-          FILES=$(find . -name "*.js" -o -name "*.ts")
+          FILES=$(find . -type f \( -name "*.js" -o -name "*.ts" \) -not -path "*/node_modules/*" -not -path "*/.git/*" 2>/dev/null)
           if [ -n "$FILES" ]; then
-            COMPLEXITY=$(echo "$FILES" | xargs wc -l | tail -1 | awk '{print $1}')
+            COMPLEXITY=$(echo "$FILES" | xargs wc -l 2>/dev/null | tail -1 | awk '{print $1}')
           else
             COMPLEXITY=0
           fi
