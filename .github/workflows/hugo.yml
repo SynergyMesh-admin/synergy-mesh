@@ -54,8 +54,10 @@ jobs:
           echo "::warning::Please enable GitHub Pages in repository Settings → Pages → Source: GitHub Actions"
           exit 1
       - name: Install Node.js dependencies
+        if: steps.pages.outcome == 'success'
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
       - name: Build with Hugo
+        if: steps.pages.outcome == 'success'
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
           HUGO_ENVIRONMENT: production
@@ -64,6 +66,7 @@ jobs:
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
       - name: Upload artifact
+        if: steps.pages.outcome == 'success'
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
