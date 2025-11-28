@@ -9,7 +9,17 @@ High-value capabilities extracted from OJ-agent for autonomous systems.
 __version__ = "1.0.0"
 __author__ = "SLASolve Team"
 
-from .pipeline_service import pipeline_service, PipelineService
+# Handle both package and standalone imports
+try:
+    from .pipeline_service import pipeline_service, PipelineService
+except ImportError:
+    # When running standalone (e.g., in tests), use absolute imports
+    try:
+        from pipeline_service import pipeline_service, PipelineService
+    except ImportError:
+        # Module not available in this context
+        pipeline_service = None
+        PipelineService = None
 
 __all__ = [
     "pipeline_service",
