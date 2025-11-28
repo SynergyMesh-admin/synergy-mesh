@@ -72,19 +72,28 @@ jobs:
         working-directory: core/contracts/contracts-L1/contracts
         run: npm test
 
-      - name: 📊 Example: Use WE_TONKE in Node.js
+      - name: 📊 Example: Use WE_TONKE via utility function
         working-directory: core/contracts/contracts-L1/contracts
         run: |
-          node -e "
-            // Example of accessing WE_TONKE in Node.js
-            // In production code, use the getWeTonke() function from src/config/env.ts
-            const token = process.env.WE_TONKE;
-            if (token) {
-              console.log('✅ WE_TONKE is accessible in Node.js');
+          # Build the project first to use the compiled utility
+          npm run build
+          
+          # Use the actual utility function via ts-node
+          npx tsx -e "
+            import { getOptionalEnv, getWeTonke } from './src/config/env';
+            
+            // Safe way to check if WE_TONKE is configured
+            const tokenValue = getOptionalEnv('WE_TONKE');
+            
+            if (tokenValue) {
+              // In production, use getWeTonke() which throws if not set
+              const token = getWeTonke();
+              console.log('✅ WE_TONKE is accessible via getWeTonke()');
               console.log('📏 Token length:', token.length);
               // Never log the actual token value!
             } else {
               console.log('⚠️ WE_TONKE is not set - this is expected if secret is not configured');
+              console.log('💡 Add WE_TONKE to repository secrets to use this feature');
             }
           "
 

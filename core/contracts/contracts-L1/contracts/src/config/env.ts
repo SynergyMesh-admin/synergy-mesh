@@ -1,6 +1,12 @@
 /**
  * Environment variable utilities for SynergyMesh contracts-l1 service.
  * Provides type-safe access to required environment variables with fail-fast behavior.
+ *
+ * Note: For statically defined configuration variables with defaults and validation,
+ * use the schema-based approach in config.ts. This module provides utilities for:
+ * - Runtime-required variables that should cause immediate failure if missing
+ * - Dynamic environment variable access patterns
+ * - Variables that may not be known at compile time
  */
 
 /**
@@ -36,13 +42,23 @@ export function getRequiredEnv(name: string): string {
  * This function should be called during application startup
  * to ensure the required token is available.
  *
+ * Note: WE_TONKE is also defined as optional in the main config schema (config.ts).
+ * Use this function when you need fail-fast behavior (throws if not set).
+ * Use config.WE_TONKE when the token is optional for the current operation.
+ *
  * @returns The WE_TONKE token value
  * @throws {Error} When WE_TONKE environment variable is not set
  *
  * @example
- * // During application startup
+ * // During application startup (fail-fast)
  * const token = getWeTonke();
- * // Use token for API calls or authentication
+ *
+ * @example
+ * // When token is optional, use config instead
+ * import config from '../config';
+ * if (config.WE_TONKE) {
+ *   // use token
+ * }
  */
 export function getWeTonke(): string {
   return getRequiredEnv('WE_TONKE');
