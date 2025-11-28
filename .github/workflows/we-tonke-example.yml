@@ -1,0 +1,123 @@
+---
+# Example workflow demonstrating WE_TONKE environment variable usage
+# This workflow shows how to securely inject and use the WE_TONKE secret in CI/CD
+#
+# Prerequisites:
+# 1. Create a repository secret named WE_TONKE in GitHub Settings:
+#    - Go to Settings -> Security -> Secrets and variables -> Actions
+#    - Click "New repository secret"
+#    - Name: WE_TONKE
+#    - Value: Your token value
+#
+# For Codespaces:
+# 1. Go to your GitHub profile Settings -> Codespaces -> Secrets
+# 2. Add WE_TONKE secret and select repositories to apply
+#
+# For local development:
+# - macOS/Linux: export WE_TONKE="your_token"
+# - Windows PowerShell: $env:WE_TONKE = "your_token"
+
+name: WE_TONKE Example
+
+on:
+  workflow_dispatch:
+    inputs:
+      debug:
+        description: 'Enable debug output (shows token length only)'
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  example-usage:
+    name: 📋 WE_TONKE Example Usage
+    runs-on: ubuntu-latest
+
+    env:
+      # Inject WE_TONKE from repository secrets
+      WE_TONKE: ${{ secrets.WE_TONKE }}
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: 'core/contracts/contracts-L1/contracts/package-lock.json'
+
+      - name: 📦 Install dependencies
+        working-directory: core/contracts/contracts-L1/contracts
+        run: npm ci
+
+      - name: 🔍 Validate WE_TONKE (debug only - shows length, not value)
+        if: ${{ github.event.inputs.debug == 'true' }}
+        run: |
+          echo "WE_TONKE validation:"
+          if [ -n "$WE_TONKE" ]; then
+            echo "✅ WE_TONKE is set"
+            echo "📏 Length: ${#WE_TONKE} characters"
+          else
+            echo "❌ WE_TONKE is NOT set"
+            echo "Please add WE_TONKE to repository secrets"
+            exit 1
+          fi
+
+      - name: 🧪 Run tests with WE_TONKE available
+        working-directory: core/contracts/contracts-L1/contracts
+        run: npm test
+
+      - name: 📊 Example: Use WE_TONKE in Node.js
+        working-directory: core/contracts/contracts-L1/contracts
+        run: |
+          node -e "
+            // Example of accessing WE_TONKE in Node.js
+            // In production code, use the getWeTonke() function from src/config/env.ts
+            const token = process.env.WE_TONKE;
+            if (token) {
+              console.log('✅ WE_TONKE is accessible in Node.js');
+              console.log('📏 Token length:', token.length);
+              // Never log the actual token value!
+            } else {
+              console.log('⚠️ WE_TONKE is not set - this is expected if secret is not configured');
+            }
+          "
+
+      - name: 📝 Summary
+        run: |
+          cat >> $GITHUB_STEP_SUMMARY << 'EOF'
+          ## 🔑 WE_TONKE Configuration Guide
+          
+          ### Repository Secrets (for GitHub Actions)
+          1. Go to **Settings** → **Security** → **Secrets and variables** → **Actions**
+          2. Click **New repository secret**
+          3. Name: `WE_TONKE`
+          4. Value: Your token
+          
+          ### Codespaces Secrets
+          1. Go to **GitHub Profile Settings** → **Codespaces** → **Secrets**
+          2. Add `WE_TONKE` and select target repositories
+          
+          ### Local Development
+          ```bash
+          # macOS/Linux
+          export WE_TONKE="your_token"
+          
+          # Windows PowerShell
+          $env:WE_TONKE = "your_token"
+          ```
+          
+          ### Usage in TypeScript
+          ```typescript
+          import { getWeTonke } from './config/env';
+          
+          // Fail-fast: throws if WE_TONKE is not set
+          const token = getWeTonke();
+          ```
+          
+          EOF
