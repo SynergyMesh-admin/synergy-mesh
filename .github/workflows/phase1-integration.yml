@@ -305,6 +305,50 @@ jobs:
           path: phase1-integration-report.md
           retention-days: 30
   
+  # ==================== 基礎設施就緒檢查 ====================
+  infrastructure-readiness-check:
+    name: "Infrastructure Readiness Check"
+    runs-on: ubuntu-latest
+    needs: [validate-configuration, validate-scripts, validate-python-code, validate-agent-structure]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check infrastructure readiness
+        run: |
+          echo "🔍 Infrastructure Readiness Check"
+          echo ""
+          echo "✅ Configuration validation passed"
+          echo "✅ Script validation passed"
+          echo "✅ Python code validation passed"
+          echo "✅ Agent structure validation passed"
+          echo ""
+          echo "🎉 Infrastructure is ready for Phase 1 Integration!"
+
+      - name: Verify critical paths
+        run: |
+          critical_paths=(
+            "auto-fix-bot.yml"
+            "auto-fix-bot.prompt.yml"
+            ".autofix/rules"
+            "advanced-system-src"
+            "agent"
+            "schemas"
+            "scripts"
+          )
+          
+          for path in "${critical_paths[@]}"; do
+            if [ -e "$path" ]; then
+              echo "✅ $path exists"
+            else
+              echo "❌ $path missing"
+              exit 1
+            fi
+          done
+          
+          echo ""
+          echo "✅ All critical paths verified"
+
   # ==================== 互動式客服整合 ====================
   # Note: 僅在 PR 時提供互動式反饋，push 事件通過 CI 摘要查看結果
   interactive-service:
