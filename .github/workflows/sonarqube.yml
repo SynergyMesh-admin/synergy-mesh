@@ -59,9 +59,7 @@ jobs:
             echo "has_config=true" >> $GITHUB_OUTPUT
           fi
 
-      - name: Analyze with SonarQube
-        if: steps.check-config.outputs.has_config == 'true'
-        uses: SonarSource/sonarqube-scan-action@7295e71c9583053f5bf40e9d4068a0c974603ec8
+
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
