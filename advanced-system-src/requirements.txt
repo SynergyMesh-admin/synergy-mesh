@@ -22,7 +22,7 @@ psycopg2-binary>=2.9.9,<3.0.0  # PostgreSQL adapter
 # Code analysis tools
 pylint>=3.0.0,<4.0.0           # Python code analyzer
 flake8>=6.1.0,<7.0.0           # Style guide enforcement
-black>=23.12.0,<24.0.0         # Code formatter
+black>=24.3.0,<25.0.0         # Code formatter (patched ReDoS vulnerability)
 mypy>=1.7.0,<2.0.0             # Static type checker
 
 # Testing
