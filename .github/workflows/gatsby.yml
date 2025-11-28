@@ -64,7 +64,15 @@ jobs:
           #
           # You may remove this line if you want to manage the configuration yourself.
           static_site_generator: gatsby
+        continue-on-error: true
+      - name: Check Pages configuration
+        if: steps.pages.outcome == 'failure'
+        run: |
+          echo "::warning::GitHub Pages is not enabled for this repository."
+          echo "::warning::Please enable GitHub Pages in repository Settings → Pages → Source: GitHub Actions"
+          exit 1
       - name: Restore cache
+        if: steps.pages.outcome == 'success'
         uses: actions/cache@v4
         with:
           path: |
@@ -74,13 +82,15 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gatsby-build-
       - name: Install dependencies
+        if: steps.pages.outcome == 'success'
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Gatsby
+        if: steps.pages.outcome == 'success'
         env:
           PREFIX_PATHS: 'true'
         run: ${{ steps.detect-package-manager.outputs.manager }} run build
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
+
         with:
           path: ./public
 
