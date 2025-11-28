@@ -685,5 +685,341 @@ class TestSynergyMeshIntegration:
         assert orchestrator.stats["messages_sent"] > 0
 
 
+# ============================================
+# Phase 2 Tests - NLI Layer
+# ============================================
+
+from synergymesh_core.nli_layer import (
+    NaturalLanguageInteractionLayer,
+    InteractionMode,
+    UserIntent
+)
+from synergymesh_core.orchestration_layer import (
+    IntentUnderstandingEngine,
+    TaskOrchestrationEngine,
+    TaskType,
+    WorkflowStatus
+)
+
+
+class TestNaturalLanguageInteractionLayer:
+    """Tests for NaturalLanguageInteractionLayer"""
+    
+    @pytest.fixture
+    def nli(self):
+        """Create NLI instance"""
+        return NaturalLanguageInteractionLayer()
+    
+    def test_initialization(self, nli):
+        """Test NLI initialization"""
+        assert nli is not None
+        assert len(nli.sessions) == 0
+    
+    def test_create_session(self, nli):
+        """Test session creation"""
+        session_id = nli.create_session(user_id="test-user")
+        
+        assert session_id.startswith("session-")
+        assert session_id in nli.sessions
+    
+    def test_create_session_with_preferences(self, nli):
+        """Test session creation with preferences"""
+        session_id = nli.create_session(
+            user_id="test-user",
+            mode=InteractionMode.TEXT,
+            language="zh",
+            preferences={"theme": "dark"}
+        )
+        
+        context = nli.get_session(session_id)
+        assert context is not None
+        assert context.language == "zh"
+        assert context.preferences["theme"] == "dark"
+    
+    @pytest.mark.asyncio
+    async def test_process_text_input_chinese(self, nli):
+        """Test processing Chinese text input"""
+        session_id = nli.create_session()
+        
+        result = await nli.process_text_input(
+            session_id,
+            "我需要遷移資料"
+        )
+        
+        assert result.success is True
+        assert result.intent == UserIntent.COMMAND
+        assert result.confidence > 0
+    
+    @pytest.mark.asyncio
+    async def test_process_text_input_english(self, nli):
+        """Test processing English text input"""
+        session_id = nli.create_session()
+        
+        result = await nli.process_text_input(
+            session_id,
+            "Help me with data migration"
+        )
+        
+        assert result.success is True
+    
+    @pytest.mark.asyncio
+    async def test_process_help_request(self, nli):
+        """Test processing help request"""
+        session_id = nli.create_session()
+        
+        result = await nli.process_text_input(session_id, "幫助")
+        
+        assert result.intent == UserIntent.HELP
+        assert len(result.suggested_actions) > 0
+    
+    def test_register_visual_component(self, nli):
+        """Test registering visual components"""
+        comp_id = nli.register_visual_component(
+            component_type="source",
+            label="Data Source",
+            description="Source connection"
+        )
+        
+        assert comp_id.startswith("comp-")
+        assert comp_id in nli.visual_components
+    
+    def test_get_available_components(self, nli):
+        """Test getting available components"""
+        nli.register_visual_component("source", "Source", "Data source")
+        nli.register_visual_component("target", "Target", "Data target")
+        
+        components = nli.get_available_components()
+        
+        assert len(components) == 2
+    
+    def test_create_visual_workflow(self, nli):
+        """Test creating visual workflow"""
+        workflow = nli.create_visual_workflow(
+            name="Test Workflow",
+            components=[{"type": "source"}, {"type": "target"}]
+        )
+        
+        assert workflow["workflow_id"].startswith("workflow-")
+        assert workflow["name"] == "Test Workflow"
+    
+    def test_get_statistics(self, nli):
+        """Test getting NLI statistics"""
+        stats = nli.get_statistics()
+        
+        assert "total_interactions" in stats
+        assert "mode_usage" in stats
+        assert "active_sessions" in stats
+    
+    def test_close_session(self, nli):
+        """Test closing session"""
+        session_id = nli.create_session()
+        
+        result = nli.close_session(session_id)
+        
+        assert result is True
+        assert session_id not in nli.sessions
+
+
+# ============================================
+# Phase 2 Tests - Orchestration Layer
+# ============================================
+
+class TestIntentUnderstandingEngine:
+    """Tests for IntentUnderstandingEngine"""
+    
+    @pytest.fixture
+    def intent_engine(self):
+        """Create IntentUnderstandingEngine instance"""
+        return IntentUnderstandingEngine()
+    
+    def test_initialization(self, intent_engine):
+        """Test engine initialization"""
+        assert intent_engine is not None
+        assert intent_engine.stats["intents_parsed"] == 0
+    
+    def test_parse_intent_migration_chinese(self, intent_engine):
+        """Test parsing migration intent in Chinese"""
+        intent = intent_engine.parse_intent(
+            "我需要將資料從舊系統遷移到新系統"
+        )
+        
+        assert intent.task_type == TaskType.DATA_MIGRATION
+        assert intent.confidence > 0.5
+        assert intent.language == "zh"
+    
+    def test_parse_intent_sync_english(self, intent_engine):
+        """Test parsing sync intent in English"""
+        intent = intent_engine.parse_intent(
+            "Synchronize data between databases"
+        )
+        
+        assert intent.task_type == TaskType.DATA_SYNC
+        assert intent.language == "en"
+    
+    def test_parse_intent_deployment(self, intent_engine):
+        """Test parsing deployment intent"""
+        intent = intent_engine.parse_intent("Deploy to production")
+        
+        assert intent.task_type == TaskType.DEPLOYMENT
+    
+    def test_entity_extraction(self, intent_engine):
+        """Test entity extraction"""
+        intent = intent_engine.parse_intent(
+            "Migrate data from mysql to postgresql"
+        )
+        
+        assert "source" in intent.entities or "target" in intent.entities
+    
+    def test_priority_detection(self, intent_engine):
+        """Test priority detection"""
+        intent = intent_engine.parse_intent(
+            "Urgent: deploy the application immediately"
+        )
+        
+        assert intent.priority == "high"
+    
+    def test_context_memory(self, intent_engine):
+        """Test context memory management"""
+        user_id = "test-user"
+        
+        intent_engine.parse_intent("Migrate data", user_id=user_id)
+        intent_engine.parse_intent("Deploy app", user_id=user_id)
+        
+        memory = intent_engine.get_context_memory(user_id)
+        
+        assert memory is not None
+        assert len(memory.last_intents) == 2
+    
+    def test_get_statistics(self, intent_engine):
+        """Test getting statistics"""
+        intent_engine.parse_intent("Test query")
+        
+        stats = intent_engine.get_statistics()
+        
+        assert stats["intents_parsed"] == 1
+        assert "intent_distribution" in stats
+
+
+class TestTaskOrchestrationEngine:
+    """Tests for TaskOrchestrationEngine"""
+    
+    @pytest.fixture
+    def orchestration_engine(self):
+        """Create TaskOrchestrationEngine instance"""
+        return TaskOrchestrationEngine()
+    
+    @pytest.fixture
+    def intent_engine(self):
+        """Create IntentUnderstandingEngine instance"""
+        return IntentUnderstandingEngine()
+    
+    def test_initialization(self, orchestration_engine):
+        """Test engine initialization"""
+        assert orchestration_engine is not None
+        assert orchestration_engine.stats["workflows_created"] == 0
+    
+    def test_generate_workflow_migration(self, orchestration_engine, intent_engine):
+        """Test generating workflow for migration"""
+        intent = intent_engine.parse_intent("Migrate data from old to new system")
+        
+        workflow = orchestration_engine.generate_workflow(intent)
+        
+        assert workflow.workflow_id.startswith("wf-")
+        assert len(workflow.steps) > 0
+        assert workflow.status == WorkflowStatus.DRAFT
+    
+    def test_generate_workflow_deployment(self, orchestration_engine, intent_engine):
+        """Test generating workflow for deployment"""
+        intent = intent_engine.parse_intent("Deploy application")
+        
+        workflow = orchestration_engine.generate_workflow(intent)
+        
+        assert len(workflow.steps) >= 3  # Build, test, deploy
+    
+    @pytest.mark.asyncio
+    async def test_execute_workflow(self, orchestration_engine, intent_engine):
+        """Test executing a workflow"""
+        intent = intent_engine.parse_intent("Analyze code")
+        workflow = orchestration_engine.generate_workflow(intent)
+        
+        result = await orchestration_engine.execute_workflow(workflow.workflow_id)
+        
+        assert result["status"] == "completed"
+        assert orchestration_engine.stats["workflows_completed"] == 1
+    
+    def test_get_workflow_status(self, orchestration_engine, intent_engine):
+        """Test getting workflow status"""
+        intent = intent_engine.parse_intent("Deploy app")
+        workflow = orchestration_engine.generate_workflow(intent)
+        
+        status = orchestration_engine.get_workflow_status(workflow.workflow_id)
+        
+        assert status is not None
+        assert status["workflow_id"] == workflow.workflow_id
+        assert "steps" in status
+    
+    def test_register_step_handler(self, orchestration_engine):
+        """Test registering step handler"""
+        async def custom_handler(step):
+            return {"status": "custom"}
+        
+        orchestration_engine.register_step_handler("Custom Step", custom_handler)
+        
+        assert "Custom Step" in orchestration_engine.step_handlers
+    
+    def test_get_statistics(self, orchestration_engine):
+        """Test getting statistics"""
+        stats = orchestration_engine.get_statistics()
+        
+        assert "workflows_created" in stats
+        assert "success_rate" in stats
+
+
+# ============================================
+# Phase 2 Integration Tests
+# ============================================
+
+class TestPhase2Integration:
+    """Integration tests for Phase 2 components"""
+    
+    @pytest.mark.asyncio
+    async def test_full_phase2_pipeline(self):
+        """Test complete Phase 2 pipeline from NLI to workflow execution"""
+        # Initialize components
+        nli = NaturalLanguageInteractionLayer()
+        intent_engine = IntentUnderstandingEngine()
+        orchestration_engine = TaskOrchestrationEngine()
+        
+        # Create session
+        session_id = nli.create_session(user_id="integration-test")
+        
+        # Process natural language input
+        nli_result = await nli.process_text_input(
+            session_id,
+            "我需要將用戶資料從舊系統遷移到新系統"
+        )
+        
+        assert nli_result.success is True
+        
+        # Parse intent
+        intent = intent_engine.parse_intent(
+            nli_result.response_data.get("action", "data migration")
+        )
+        
+        # Generate and execute workflow
+        workflow = orchestration_engine.generate_workflow(intent)
+        result = await orchestration_engine.execute_workflow(workflow.workflow_id)
+        
+        assert result["status"] == "completed"
+        
+        # Clean up
+        nli.close_session(session_id)
+        
+        # Verify statistics
+        assert nli.stats["total_interactions"] > 0
+        assert intent_engine.stats["intents_parsed"] > 0
+        assert orchestration_engine.stats["workflows_completed"] > 0
+
+
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])
