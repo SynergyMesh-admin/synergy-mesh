@@ -126,7 +126,8 @@
     "HEARTBEAT_PORT": "3020",
     "FIXOPS_SLAGEIST_PORT": "3010",
     "POSTGRES_HOST": "postgres",
-    "REDIS_HOST": "redis"
+    "REDIS_HOST": "redis",
+    "WE_TONKE": "${localEnv:WE_TONKE}"
   },
 
   "mounts": ["source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"],
