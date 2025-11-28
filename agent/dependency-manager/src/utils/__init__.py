@@ -5,11 +5,20 @@
 
 from .dependency_tree import DependencyTree, TreeNode
 from .audit_logger import AuditLogger, AuditEvent, AuditEventType
+from .policy_simulator import PolicySimulator, SimulationScenario, SimulationResult
+from .language_boundary import LanguageBoundary, OutputLanguage, t, msg
 
 __all__ = [
     "DependencyTree",
     "TreeNode",
     "AuditLogger",
     "AuditEvent",
-    "AuditEventType"
+    "AuditEventType",
+    "PolicySimulator",
+    "SimulationScenario",
+    "SimulationResult",
+    "LanguageBoundary",
+    "OutputLanguage",
+    "t",
+    "msg"
 ]
