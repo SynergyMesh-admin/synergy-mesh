@@ -148,6 +148,10 @@ class EcosystemOrchestrator:
     - 容錯: 子系統故障不影響整體
     """
     
+    # Configuration constants
+    HEARTBEAT_TIMEOUT_SECONDS = 60
+    HEALTH_CHECK_INTERVAL_SECONDS = 30
+    
     def __init__(self):
         """Initialize the Ecosystem Orchestrator"""
         self.subsystems: Dict[str, Subsystem] = {}
@@ -670,7 +674,7 @@ class EcosystemOrchestrator:
                     # Check for stale heartbeat
                     time_diff = (current_time - subsystem.last_heartbeat).seconds
                     
-                    if time_diff > 60 and subsystem.status == SubsystemStatus.ACTIVE:
+                    if time_diff > self.HEARTBEAT_TIMEOUT_SECONDS and subsystem.status == SubsystemStatus.ACTIVE:
                         logger.warning(
                             f"Subsystem {subsystem.name} heartbeat stale, "
                             f"marking as degraded"
@@ -691,7 +695,7 @@ class EcosystemOrchestrator:
                                 SubsystemStatus.DEGRADED
                             )
                 
-                await asyncio.sleep(30)  # Check every 30 seconds
+                await asyncio.sleep(self.HEALTH_CHECK_INTERVAL_SECONDS)
                 
             except asyncio.CancelledError:
                 break

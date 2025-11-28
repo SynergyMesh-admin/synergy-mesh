@@ -121,6 +121,13 @@ class AutonomousCoordinator:
     4. 預測性維護 - Predictive maintenance
     """
     
+    # Configuration constants
+    STUCK_TASK_TIMEOUT_SECONDS = 300  # 5 minutes
+    HEALTH_CHECK_INTERVAL_SECONDS = 30
+    RECOVERY_CHECK_INTERVAL_SECONDS = 10
+    HIGH_QUEUE_THRESHOLD = 50
+    MAX_WORKERS = 8
+    
     def __init__(self, worker_count: int = 4):
         """
         Initialize the Autonomous Coordinator
@@ -392,7 +399,7 @@ class AutonomousCoordinator:
         while self.is_running:
             try:
                 await self._check_system_health()
-                await asyncio.sleep(30)  # Check every 30 seconds
+                await asyncio.sleep(self.HEALTH_CHECK_INTERVAL_SECONDS)
             except asyncio.CancelledError:
                 break
             except Exception as e:
@@ -483,7 +490,7 @@ class AutonomousCoordinator:
             try:
                 if self.system_health in [SystemHealth.DEGRADED, SystemHealth.CRITICAL]:
                     await self._attempt_auto_recovery()
-                await asyncio.sleep(10)  # Check every 10 seconds
+                await asyncio.sleep(self.RECOVERY_CHECK_INTERVAL_SECONDS)
             except asyncio.CancelledError:
                 break
             except Exception as e:
@@ -503,7 +510,7 @@ class AutonomousCoordinator:
         # Check for stuck tasks
         stuck_tasks = [
             task for task in self.running_tasks.values()
-            if task.started_at and (datetime.now() - task.started_at).seconds > 300
+            if task.started_at and (datetime.now() - task.started_at).seconds > self.STUCK_TASK_TIMEOUT_SECONDS
         ]
         
         for task in stuck_tasks:
@@ -534,7 +541,7 @@ class AutonomousCoordinator:
             logger.info(f"Auto-recovery action: {action.description} - {action.result_message}")
         
         # Check if we need to adjust worker count
-        if len(self.task_queue) > 50 and len(self.workers) < 8:
+        if len(self.task_queue) > self.HIGH_QUEUE_THRESHOLD and len(self.workers) < self.MAX_WORKERS:
             action = AutoRecoveryAction(
                 action_id=f"recovery-{uuid.uuid4().hex[:8]}",
                 action_type="scale_workers",
@@ -622,8 +629,8 @@ class AutonomousCoordinator:
             "tasks_succeeded": self.stats["tasks_succeeded"],
             "tasks_failed": self.stats["tasks_failed"],
             "auto_recoveries": self.stats["auto_recoveries"],
-            "success_rate": (
-                self.stats["tasks_succeeded"] / max(self.stats["tasks_processed"], 1) * 100
+            "success_rate": round(
+                self.stats["tasks_succeeded"] / max(self.stats["tasks_processed"], 1) * 100, 2
             )
         }
     

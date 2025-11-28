@@ -606,8 +606,8 @@ class SelfEvolutionEngine:
             "successful_evolutions": self.stats["successful_evolutions"],
             "rollbacks": self.stats["rollbacks"],
             "optimizations_applied": self.stats["optimizations_applied"],
-            "success_rate": (
-                self.stats["successful_evolutions"] / max(self.stats["total_evolutions"], 1) * 100
+            "success_rate": round(
+                self.stats["successful_evolutions"] / max(self.stats["total_evolutions"], 1) * 100, 2
             ),
             "pattern_types": list(self.pattern_memory.keys()),
             "evolution_cycles_count": len(self.evolution_cycles)
