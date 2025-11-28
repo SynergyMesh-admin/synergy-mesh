@@ -13,12 +13,13 @@ from dataclasses import dataclass, field
 from .models.dependency import DependencyAnalysis, Ecosystem
 from .models.vulnerability import VulnerabilityScanResult
 from .models.update import UpdateResult
-from .analyzers import NpmAnalyzer, BaseAnalyzer
+from .analyzers import NpmAnalyzer, PipAnalyzer, GoAnalyzer, BaseAnalyzer
 from .scanners import VulnerabilityScanner, LicenseScanner
 from .scanners.vulnerability_scanner import ScanConfig
 from .scanners.license_scanner import LicensePolicy, LicenseScanResult
 from .updaters import AutoUpdater
 from .updaters.auto_updater import UpdateConfig
+from .utils import DependencyTree, AuditLogger, AuditEventType
 
 # 配置日誌
 logging.basicConfig(
@@ -113,9 +114,11 @@ class DependencyManager:
         if Ecosystem.NPM in self.config.ecosystems:
             self._analyzers[Ecosystem.NPM] = NpmAnalyzer()
         
-        # 可擴展添加其他生態系統分析器
-        # if Ecosystem.PIP in self.config.ecosystems:
-        #     self._analyzers[Ecosystem.PIP] = PipAnalyzer()
+        if Ecosystem.PIP in self.config.ecosystems:
+            self._analyzers[Ecosystem.PIP] = PipAnalyzer()
+        
+        if Ecosystem.GO in self.config.ecosystems:
+            self._analyzers[Ecosystem.GO] = GoAnalyzer()
         
         logger.info(f"已初始化 {len(self._analyzers)} 個分析器")
     

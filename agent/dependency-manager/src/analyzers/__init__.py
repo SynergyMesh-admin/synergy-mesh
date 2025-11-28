@@ -5,8 +5,12 @@
 
 from .base_analyzer import BaseAnalyzer
 from .npm_analyzer import NpmAnalyzer
+from .pip_analyzer import PipAnalyzer
+from .go_analyzer import GoAnalyzer
 
 __all__ = [
     "BaseAnalyzer",
-    "NpmAnalyzer"
+    "NpmAnalyzer",
+    "PipAnalyzer",
+    "GoAnalyzer"
 ]
