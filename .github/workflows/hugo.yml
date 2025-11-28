@@ -46,6 +46,13 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
+        continue-on-error: true
+      - name: Check Pages configuration
+        if: steps.pages.outcome == 'failure'
+        run: |
+          echo "::warning::GitHub Pages is not enabled for this repository."
+          echo "::warning::Please enable GitHub Pages in repository Settings → Pages → Source: GitHub Actions"
+          exit 1
       - name: Install Node.js dependencies
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
       - name: Build with Hugo
