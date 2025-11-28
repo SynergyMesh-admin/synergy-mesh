@@ -82,8 +82,7 @@ jobs:
             --base "${{ steps.pages.outputs.base_path }}"
         working-directory: ${{ env.BUILD_PATH }}
       - name: Upload artifact
-        if: steps.pages.outcome == 'success'
-        uses: actions/upload-pages-artifact@v3
+
         with:
           path: ${{ env.BUILD_PATH }}/dist
 
