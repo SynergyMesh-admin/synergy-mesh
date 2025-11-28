@@ -33,6 +33,8 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
+    outputs:
+      pages_configured: ${{ steps.pages.outcome == 'success' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -70,7 +72,7 @@ jobs:
         run: |
           echo "::warning::GitHub Pages is not enabled for this repository."
           echo "::warning::Please enable GitHub Pages in repository Settings → Pages → Source: GitHub Actions"
-          exit 1
+          exit 0
       - name: Restore cache
         if: steps.pages.outcome == 'success'
         uses: actions/cache@v4
@@ -102,6 +104,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
+    if: needs.build.outputs.pages_configured == 'true'
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
