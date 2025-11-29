@@ -273,12 +273,15 @@ jobs:
 
           # 驗證 tag 是否存在且格式正確（如 v1.2.3）
           if [ -z "$PREVIOUS_VERSION" ]; then
-            echo "❌ 無法找到前一個版本，回滾失敗"
-            exit 1
+            echo "⚠️ 無法找到前一個版本標籤，跳過自動回滾"
+            echo "📋 建議：請手動檢查部署狀態並視需要回滾"
+            echo "📋 提示：使用 'git tag vX.Y.Z' 創建版本標籤以啟用自動回滾功能"
+            exit 0
           fi
           if ! [[ "$PREVIOUS_VERSION" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-            echo "❌ 版本格式不正確: $PREVIOUS_VERSION"
-            exit 1
+            echo "⚠️ 版本格式不正確: $PREVIOUS_VERSION (預期格式: vX.Y.Z)"
+            echo "📋 跳過自動回滾，請手動處理"
+            exit 0
           fi
           git checkout "$PREVIOUS_VERSION"
           docker-compose build --no-cache
