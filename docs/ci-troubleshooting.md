@@ -1,5 +1,9 @@
 # CI 故障排除 Runbook
 
+> 📋 **完整解決方案配置**: [`config/ci-comprehensive-solution.yaml`](../config/ci-comprehensive-solution.yaml)
+> 
+> 此 Runbook 涵蓋常見錯誤的快速解決方案。完整的錯誤分類、自動修復配置和監控設定請參考上述配置文件。
+
 ## 快速診斷流程
 
 ```mermaid
@@ -392,6 +396,134 @@ CI 自動評論系統包含三個主要階段：
 - **GitHub Issues**：https://github.com/we-can-fix/synergymesh/issues
 - **文檔**：查看 [README.md](../README.md) 獲取更多資訊
 - **CI 配置**：`.github/workflows/ci-auto-comment.yml`
+- **完整解決方案**：[`config/ci-comprehensive-solution.yaml`](../config/ci-comprehensive-solution.yaml)
+
+---
+
+## GitHub Actions 特定錯誤
+
+### 錯誤 7：startup_failure (工作流程無法啟動)
+
+**症狀**：
+```
+Workflow run failed with status: startup_failure
+```
+
+**根本原因**：
+- Job-level `permissions` 區塊用於調用 reusable workflows (`uses:`)
+- Workflow YAML 語法錯誤
+- 引用的 reusable workflow 路徑不正確
+
+**解決方案**：
+
+```yaml
+# ❌ 錯誤 - 不能在使用 reusable workflow 的 job 上指定 permissions
+jobs:
+  my-job:
+    uses: ./.github/workflows/reusable.yml
+    with:
+      param: value
+    permissions:      # <-- 這是無效的！
+      contents: read
+      pull-requests: write
+
+# ✅ 正確 - 移除 job-level permissions
+jobs:
+  my-job:
+    uses: ./.github/workflows/reusable.yml
+    with:
+      param: value
+    # permissions 應該在 reusable workflow 內部定義
+```
+
+**驗證 YAML 語法**：
+```bash
+python3 -c "import yaml; yaml.safe_load(open('.github/workflows/my-workflow.yml'))"
+```
+
+---
+
+### 錯誤 8：Action 版本不存在
+
+**症狀**：
+```
+Unable to resolve action `owner/repo@version`
+```
+
+**根本原因**：
+- Action 版本標籤已被刪除或重命名
+- 使用了不存在的版本
+
+**解決方案**：
+
+```yaml
+# ❌ 可能失效 - 使用短版本標籤
+uses: actions/checkout@v4
+
+# ✅ 推薦 - 使用完整 SHA
+uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+```
+
+**查找最新版本**：
+```bash
+# 查看 action 的 releases
+gh release list -R actions/checkout
+```
+
+---
+
+### 錯誤 9：權限不足
+
+**症狀**：
+```
+Resource not accessible by integration
+Error: HttpError: Resource not accessible by integration
+```
+
+**根本原因**：
+- GITHUB_TOKEN 權限不足
+- 工作流程未聲明所需權限
+
+**解決方案**：
+
+```yaml
+# 在 workflow 層級聲明權限
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+  security-events: write
+
+# 或在 job 層級聲明（僅用於非 reusable workflow）
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+```
+
+---
+
+### 錯誤 10：並發衝突
+
+**症狀**：
+```
+Another instance of this workflow is already running
+Workflow was cancelled due to concurrency
+```
+
+**根本原因**：
+- 多個相同的工作流程同時運行
+- 並發設定過於嚴格
+
+**解決方案**：
+
+```yaml
+# 使用 concurrency 控制
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true  # 取消舊的運行
+```
 
 ---
 
@@ -401,4 +533,6 @@ CI 自動評論系統包含三個主要階段：
 - [Docker Compose 官方文檔](https://docs.docker.com/compose/)
 - [Node.js 官方文檔](https://nodejs.org/)
 - [GitHub Actions 文檔](https://docs.github.com/en/actions)
+- [GitHub Actions Reusable Workflows](https://docs.github.com/en/actions/using-workflows/reusing-workflows)
 - [npm 文檔](https://docs.npmjs.com/)
+- [完整 CI 解決方案配置](../config/ci-comprehensive-solution.yaml)

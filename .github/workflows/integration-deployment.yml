@@ -516,7 +516,3 @@ jobs:
           "docker_integration": "${{ needs.docker-integration.result }}"
         }
       error-logs: ${{ (needs.tier1-contracts-l1.result == 'failure' || needs.tier2-mcp-servers.result == 'failure' || needs.tier3-autofix-bot.result == 'failure' || needs.tier4-dashboard.result == 'failure' || needs.docker-integration.result == 'failure') && '檢測到整合或部署失敗，請查看詳細日誌' || '' }}
-    permissions:
-      contents: read
-      pull-requests: write
-      issues: write

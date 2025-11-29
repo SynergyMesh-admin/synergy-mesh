@@ -61,13 +61,15 @@ on:
       COSIGN_PASSWORD:
         required: false
 
+# Reusable workflow 權限說明：
+# 當此 workflow 被調用時，權限由調用方 workflow 的頂層 permissions 決定
+# 不可在 reusable workflow 的 jobs 中設定 permissions，否則會導致 startup_failure
+# 參考: https://docs.github.com/en/actions/using-workflows/reusing-workflows#supported-keywords-for-jobs-that-call-a-reusable-workflow
+
 jobs:
   ci-pipeline:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      security-events: write
-      packages: write
+    # 注意：不在此處設定 permissions，由調用方 workflow 繼承
     
     defaults:
       run:

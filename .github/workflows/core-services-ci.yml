@@ -27,6 +27,8 @@ permissions:
   contents: read
   security-events: write
   pull-requests: write
+  packages: write
+  issues: write
 
 jobs:
   # ==================== Tier 1: Contracts L1 Service ====================
@@ -161,7 +163,3 @@ jobs:
           "mcp_servers": "${{ needs.mcp-servers-ci.result }}"
         }
       error-logs: ${{ needs.ci-status-report.result == 'failure' && '檢測到 CI 失敗，請查看詳細日誌' || '' }}
-    permissions:
-      contents: read
-      pull-requests: write
-      issues: write
