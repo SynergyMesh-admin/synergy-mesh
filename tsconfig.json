@@ -1,17 +1,10 @@
-# ═══════════════════════════════════════════════════════════════════════════════
-#                    SynergyMesh TypeScript Configuration
-#                    TypeScript 專案配置
-# ═══════════════════════════════════════════════════════════════════════════════
-
 {
   "compilerOptions": {
-    # Language and Environment
     "target": "ES2022",
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    
-    # Strict Type-Checking
+
     "strict": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
@@ -26,14 +19,12 @@
     "strictPropertyInitialization": true,
     "noPropertyAccessFromIndexSignature": true,
     "noUncheckedIndexedAccess": true,
-    
-    # Module Resolution
+
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    
-    # Emit
+
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
@@ -42,12 +33,10 @@
     "removeComments": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    
-    # Interop Constraints
+
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    
-    # Path Mapping
+
     "baseUrl": ".",
     "paths": {
       "@synergymesh/*": ["src/*"],
@@ -58,14 +47,13 @@
       "@types/*": ["types/*"],
       "@utils/*": ["src/utils/*"]
     },
-    
-    # Type Roots
+
     "typeRoots": [
       "./node_modules/@types",
       "./types"
     ]
   },
-  
+
   "include": [
     "src/**/*",
     "core/**/*.ts",
@@ -74,7 +62,7 @@
     "mcp-servers/**/*.ts",
     "types/**/*"
   ],
-  
+
   "exclude": [
     "node_modules",
     "dist",
@@ -84,7 +72,7 @@
     "**/*.spec.ts",
     "**/__tests__/**"
   ],
-  
+
   "references": [
     { "path": "./mcp-servers" },
     { "path": "./core/contracts/contracts-L1/contracts" }
