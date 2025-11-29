@@ -33,6 +33,22 @@ from pathlib import Path
 logger = logging.getLogger(__name__)
 
 
+# Environment-specific concurrency optimization thresholds
+# These can be adjusted based on infrastructure capacity
+CONCURRENCY_THRESHOLDS = {
+    'production': {
+        'min_recommended': 50,
+        'default_recommended': 100,
+        'max_recommended': 200,
+        'upper_warning_threshold': 500
+    },
+    'development': {
+        'recommended': 10,
+        'warning_threshold': 20
+    }
+}
+
+
 class OptimizationCategory(Enum):
     """Categories of configuration optimization"""
     PERFORMANCE = 'performance'
@@ -840,20 +856,22 @@ class ConfigurationOptimizer:
         current_value = config.get('max_concurrent_tasks', 100)
         env = config.get('environment', 'development')
         
-        # Environment-based recommendations
+        # Environment-based recommendations using configurable thresholds
         recommended_value = current_value
         reasoning = []
         
         if env == 'production':
-            if current_value < 50:
-                recommended_value = 100
+            prod_thresholds = CONCURRENCY_THRESHOLDS['production']
+            if current_value < prod_thresholds['min_recommended']:
+                recommended_value = prod_thresholds['default_recommended']
                 reasoning.append("Production environments typically need higher concurrency")
-            elif current_value > 500:
-                recommended_value = 200
+            elif current_value > prod_thresholds['upper_warning_threshold']:
+                recommended_value = prod_thresholds['max_recommended']
                 reasoning.append("Very high concurrency may cause resource contention")
         elif env == 'development':
-            if current_value > 20:
-                recommended_value = 10
+            dev_thresholds = CONCURRENCY_THRESHOLDS['development']
+            if current_value > dev_thresholds['warning_threshold']:
+                recommended_value = dev_thresholds['recommended']
                 reasoning.append("Development environments work well with lower concurrency")
         
         if recommended_value == current_value:

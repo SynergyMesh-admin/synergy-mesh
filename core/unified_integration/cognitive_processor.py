@@ -427,8 +427,10 @@ class ReasoningLayer:
                 })
                 total_score += factor_score
         
-        # Normalize score
-        normalized_score = min(max(total_score / max(len(factors), 1), 0.0), 1.0)
+        # Normalize score to range [0.0, 1.0]
+        factor_count = max(len(factors), 1)  # Avoid division by zero
+        average_score = total_score / factor_count
+        normalized_score = max(0.0, min(average_score, 1.0))  # Clamp to [0, 1]
         
         # Determine risk level
         if normalized_score >= 0.8:
