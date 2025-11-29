@@ -681,9 +681,20 @@ def generate_solutions() -> Dict[str, Any]:
     branch = get_env('BRANCH', '')
     commit_sha = get_env('COMMIT_SHA', '')
     failed_jobs = get_env_json('FAILURE_JOBS', [])
+    failure_type_override = get_env('FAILURE_TYPE', '')
     
     # 分析失敗類型
     failure_types = analyze_failure_type(workflow_name, failed_jobs)
+    
+    # 如果有指定的失敗類型（手動觸發），則覆蓋自動偵測的類型
+    if failure_type_override and failure_type_override != 'auto':
+        # 重置所有類型為 False
+        failure_types = {k: False for k in failure_types}
+        # 設置指定的類型為 True
+        if failure_type_override in failure_types:
+            failure_types[failure_type_override] = True
+        else:
+            failure_types['unknown'] = True
     
     # 生成根本原因分析
     root_cause = generate_root_cause_analysis(workflow_name, failed_jobs, failure_types)
@@ -701,7 +712,8 @@ def generate_solutions() -> Dict[str, Any]:
             'pr_number': pr_number,
             'branch': branch,
             'commit_sha': commit_sha,
-            'failure_types': failure_types
+            'failure_types': failure_types,
+            'failure_type_override': failure_type_override
         }
     }
 

@@ -2,6 +2,10 @@ name: 🔧 CI 失敗自動化深度解決方案
 
 # 此工作流程監控 CI 失敗，自動生成兩個深度解決方案並建立 GitHub Issue
 # 設計理念：當 CI 失敗時，自動分析問題並提供兩個不同角度的解決方案
+#
+# 觸發方式：
+# 1. workflow_run: 當監控的工作流程失敗時自動觸發
+# 2. workflow_dispatch: 手動觸發（用於測試或模擬失敗情境）
 on:
   workflow_run:
     workflows:
@@ -15,6 +19,32 @@ on:
       - "🤖 Autonomous CI Guardian"
     types:
       - completed
+  
+  # 手動觸發：用於測試或模擬失敗情境
+  workflow_dispatch:
+    inputs:
+      simulate_failure:
+        description: '模擬 CI 失敗類型'
+        required: true
+        default: 'build'
+        type: choice
+        options:
+          - build
+          - test
+          - docker
+          - security
+          - deployment
+          - lint
+          - integration
+      workflow_name:
+        description: '模擬失敗的工作流程名稱'
+        required: false
+        default: 'Core Services CI'
+        type: string
+      pr_number:
+        description: '關聯的 PR 編號（可選）'
+        required: false
+        type: string
 
 permissions:
   contents: read
@@ -33,7 +63,8 @@ jobs:
   detect-failure:
     name: 🔍 偵測 CI 失敗
     runs-on: ubuntu-latest
-    if: github.event.workflow_run.conclusion == 'failure'
+    # 觸發條件：工作流程失敗 或 手動觸發
+    if: github.event.workflow_run.conclusion == 'failure' || github.event_name == 'workflow_dispatch'
     outputs:
       has_failure: ${{ steps.check.outputs.has_failure }}
       workflow_name: ${{ steps.check.outputs.workflow_name }}
@@ -43,6 +74,7 @@ jobs:
       branch: ${{ steps.check.outputs.branch }}
       commit_sha: ${{ steps.check.outputs.commit_sha }}
       failure_jobs: ${{ steps.analyze-jobs.outputs.failure_jobs }}
+      failure_type: ${{ steps.check.outputs.failure_type }}
 
     steps:
       - name: 📥 檢出代碼
@@ -55,70 +87,146 @@ jobs:
         uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
         with:
           script: |
-            const workflowRun = context.payload.workflow_run;
+            // 判斷是自動觸發還是手動觸發
+            const isManualTrigger = context.eventName === 'workflow_dispatch';
             
-            console.log(`Workflow: ${workflowRun.name}`);
-            console.log(`Conclusion: ${workflowRun.conclusion}`);
-            console.log(`Branch: ${workflowRun.head_branch}`);
-            
-            // 獲取關聯的 PR
+            let workflowName, runUrl, branch, commitSha, failureType;
             let prNumber = null;
             let prUrl = null;
             
-            try {
-              const pulls = await github.rest.pulls.list({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                head: `${context.repo.owner}:${workflowRun.head_branch}`,
-                state: 'open'
-              });
+            if (isManualTrigger) {
+              // 手動觸發：使用輸入參數
+              workflowName = '${{ inputs.workflow_name }}' || 'Core Services CI';
+              failureType = '${{ inputs.simulate_failure }}' || 'build';
+              runUrl = `https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+              branch = context.ref.replace('refs/heads/', '');
+              commitSha = context.sha;
+              prNumber = '${{ inputs.pr_number }}' || null;
               
-              if (pulls.data.length > 0) {
-                prNumber = pulls.data[0].number;
-                prUrl = pulls.data[0].html_url;
+              console.log('=== 手動觸發模式 ===');
+              console.log(`模擬失敗類型: ${failureType}`);
+              console.log(`模擬工作流程: ${workflowName}`);
+            } else {
+              // 自動觸發：從 workflow_run 事件獲取資訊
+              const workflowRun = context.payload.workflow_run;
+              workflowName = workflowRun.name;
+              runUrl = workflowRun.html_url;
+              branch = workflowRun.head_branch;
+              commitSha = workflowRun.head_sha;
+              failureType = 'auto'; // 自動偵測
+              
+              console.log('=== 自動觸發模式 ===');
+              console.log(`Workflow: ${workflowRun.name}`);
+              console.log(`Conclusion: ${workflowRun.conclusion}`);
+              console.log(`Branch: ${workflowRun.head_branch}`);
+            }
+            
+            // 獲取關聯的 PR
+            if (!prNumber) {
+              try {
+                const pulls = await github.rest.pulls.list({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  head: `${context.repo.owner}:${branch}`,
+                  state: 'open'
+                });
+                
+                if (pulls.data.length > 0) {
+                  prNumber = pulls.data[0].number;
+                  prUrl = pulls.data[0].html_url;
+                }
+              } catch (error) {
+                console.log(`無法獲取 PR: ${error.message}`);
               }
-            } catch (error) {
-              console.log(`無法獲取 PR: ${error.message}`);
+            } else if (prNumber) {
+              prUrl = `https://github.com/${context.repo.owner}/${context.repo.repo}/pull/${prNumber}`;
             }
             
             core.setOutput('has_failure', 'true');
-            core.setOutput('workflow_name', workflowRun.name);
-            core.setOutput('run_url', workflowRun.html_url);
+            core.setOutput('workflow_name', workflowName);
+            core.setOutput('run_url', runUrl);
             core.setOutput('pr_number', prNumber || '');
             core.setOutput('pr_url', prUrl || '');
-            core.setOutput('branch', workflowRun.head_branch);
-            core.setOutput('commit_sha', workflowRun.head_sha);
+            core.setOutput('branch', branch);
+            core.setOutput('commit_sha', commitSha);
+            core.setOutput('failure_type', failureType);
 
       - name: 📊 分析失敗的 Jobs
         id: analyze-jobs
         uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
         with:
           script: |
-            const runId = context.payload.workflow_run.id;
+            const isManualTrigger = context.eventName === 'workflow_dispatch';
+            let failedJobs = [];
             
-            // 獲取所有 jobs
-            const { data: jobs } = await github.rest.actions.listJobsForWorkflowRun({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              run_id: runId
-            });
+            if (isManualTrigger) {
+              // 手動觸發：模擬失敗的 jobs
+              const failureType = '${{ inputs.simulate_failure }}' || 'build';
+              const workflowName = '${{ inputs.workflow_name }}' || 'Core Services CI';
+              
+              // 根據失敗類型生成模擬的失敗 jobs
+              const simulatedJobs = {
+                'build': [
+                  { name: `${workflowName} - Build`, conclusion: 'failure', steps: [{ name: 'npm run build', conclusion: 'failure' }] }
+                ],
+                'test': [
+                  { name: `${workflowName} - Test`, conclusion: 'failure', steps: [{ name: 'npm test', conclusion: 'failure' }] }
+                ],
+                'docker': [
+                  { name: `${workflowName} - Docker Build`, conclusion: 'failure', steps: [{ name: 'docker build', conclusion: 'failure' }] }
+                ],
+                'security': [
+                  { name: `${workflowName} - Security Scan`, conclusion: 'failure', steps: [{ name: 'npm audit', conclusion: 'failure' }] }
+                ],
+                'deployment': [
+                  { name: `${workflowName} - Deploy`, conclusion: 'failure', steps: [{ name: 'deploy to production', conclusion: 'failure' }] }
+                ],
+                'lint': [
+                  { name: `${workflowName} - Lint`, conclusion: 'failure', steps: [{ name: 'npm run lint', conclusion: 'failure' }] }
+                ],
+                'integration': [
+                  { name: `${workflowName} - Integration Test`, conclusion: 'failure', steps: [{ name: 'npm run test:integration', conclusion: 'failure' }] }
+                ]
+              };
+              
+              failedJobs = simulatedJobs[failureType] || simulatedJobs['build'];
+              failedJobs = failedJobs.map(job => ({
+                ...job,
+                html_url: `https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+                started_at: new Date().toISOString(),
+                completed_at: new Date().toISOString()
+              }));
+              
+              console.log(`[手動模式] 模擬 ${failedJobs.length} 個失敗的 jobs (類型: ${failureType})`);
+            } else {
+              // 自動觸發：從實際工作流程獲取失敗的 jobs
+              const runId = context.payload.workflow_run.id;
+              
+              // 獲取所有 jobs
+              const { data: jobs } = await github.rest.actions.listJobsForWorkflowRun({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                run_id: runId
+              });
+              
+              // 過濾失敗的 jobs
+              failedJobs = jobs.jobs.filter(job => 
+                job.conclusion === 'failure' || job.conclusion === 'timed_out'
+              ).map(job => ({
+                name: job.name,
+                conclusion: job.conclusion,
+                html_url: job.html_url,
+                started_at: job.started_at,
+                completed_at: job.completed_at,
+                steps: job.steps?.filter(step => step.conclusion === 'failure').map(step => ({
+                  name: step.name,
+                  conclusion: step.conclusion
+                })) || []
+              }));
+              
+              console.log(`[自動模式] 發現 ${failedJobs.length} 個失敗的 jobs`);
+            }
             
-            // 過濾失敗的 jobs
-            const failedJobs = jobs.jobs.filter(job => 
-              job.conclusion === 'failure' || job.conclusion === 'timed_out'
-            ).map(job => ({
-              name: job.name,
-              conclusion: job.conclusion,
-              html_url: job.html_url,
-              started_at: job.started_at,
-              completed_at: job.completed_at,
-              steps: job.steps?.filter(step => step.conclusion === 'failure').map(step => ({
-                name: step.name,
-                conclusion: step.conclusion
-              })) || []
-            }));
-            
-            console.log(`發現 ${failedJobs.length} 個失敗的 jobs`);
             core.setOutput('failure_jobs', JSON.stringify(failedJobs));
 
   # ============================================
@@ -154,6 +262,7 @@ jobs:
           BRANCH: ${{ needs.detect-failure.outputs.branch }}
           COMMIT_SHA: ${{ needs.detect-failure.outputs.commit_sha }}
           FAILURE_JOBS: ${{ needs.detect-failure.outputs.failure_jobs }}
+          FAILURE_TYPE: ${{ needs.detect-failure.outputs.failure_type }}
         run: |
           python3 .github/scripts/solution_generator.py > solutions.json
           cat solutions.json
