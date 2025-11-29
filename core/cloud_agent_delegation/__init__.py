@@ -13,7 +13,7 @@ Key Components:
 
 from .delegation_manager import DelegationManager, DelegationConfig, DelegationResult
 from .cloud_provider_adapter import CloudProviderAdapter, ProviderType, ProviderConfig
-from .task_router import TaskRouter, RoutingRule, RoutingResult
+from .task_router import TaskRouter, RoutingRule, RoutingResult, RoutingStrategy
 from .load_balancer import LoadBalancer, BalancingStrategy, ProviderHealth
 
 __all__ = [
@@ -26,6 +26,7 @@ __all__ = [
     'TaskRouter',
     'RoutingRule',
     'RoutingResult',
+    'RoutingStrategy',
     'LoadBalancer',
     'BalancingStrategy',
     'ProviderHealth',

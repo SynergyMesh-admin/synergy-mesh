@@ -265,11 +265,12 @@ class TestLoadBalancer:
     async def test_select_provider_round_robin(self, balancer):
         """Test round-robin selection"""
         balancer.config.strategy = BalancingStrategy.ROUND_ROBIN
+        balancer.config.healthy_threshold = 1  # Lower threshold for testing
         
         balancer.register_provider('provider-1', object())
         balancer.register_provider('provider-2', object())
         
-        # Mark both as healthy
+        # Mark both as healthy (need consecutive successes)
         balancer.update_health('provider-1', True)
         balancer.update_health('provider-2', True)
         
@@ -286,6 +287,7 @@ class TestLoadBalancer:
     async def test_select_provider_weighted(self, balancer):
         """Test weighted selection"""
         balancer.config.strategy = BalancingStrategy.WEIGHTED_ROUND_ROBIN
+        balancer.config.healthy_threshold = 1  # Lower threshold for testing
         
         balancer.register_provider('aws', object(), weight=40)
         balancer.register_provider('gcp', object(), weight=35)

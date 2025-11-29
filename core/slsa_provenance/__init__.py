@@ -15,8 +15,8 @@ Key Components:
 - ArtifactVerifier: Verify artifact integrity
 """
 
-from .provenance_generator import ProvenanceGenerator, Provenance, BuildDefinition
-from .signature_verifier import SignatureVerifier, SignatureResult, VerificationPolicy
+from .provenance_generator import ProvenanceGenerator, Provenance, BuildDefinition, SLSALevel
+from .signature_verifier import SignatureVerifier, SignatureResult, VerificationPolicy, SignatureType
 from .attestation_manager import AttestationManager, Attestation, AttestationType
 from .artifact_verifier import ArtifactVerifier, VerificationResult, ArtifactMetadata
 
@@ -24,9 +24,11 @@ __all__ = [
     'ProvenanceGenerator',
     'Provenance',
     'BuildDefinition',
+    'SLSALevel',
     'SignatureVerifier',
     'SignatureResult',
     'VerificationPolicy',
+    'SignatureType',
     'AttestationManager',
     'Attestation',
     'AttestationType',

@@ -12,9 +12,9 @@ Key Components:
 """
 
 from .mcp_server_manager import MCPServerManager, MCPServer, MCPServerConfig
-from .tool_registry import ToolRegistry, ToolDefinition, ToolExecutionResult
-from .workflow_orchestrator import WorkflowOrchestrator, WorkflowStep, WorkflowResult
-from .realtime_connector import RealTimeConnector, ConnectionStatus, ConnectionConfig
+from .tool_registry import ToolRegistry, ToolDefinition, ToolExecutionResult, ToolCategory
+from .workflow_orchestrator import WorkflowOrchestrator, WorkflowStep, WorkflowResult, Workflow
+from .realtime_connector import RealTimeConnector, ConnectionStatus, ConnectionConfig, TransportType
 
 __all__ = [
     'MCPServerManager',
@@ -23,12 +23,15 @@ __all__ = [
     'ToolRegistry',
     'ToolDefinition',
     'ToolExecutionResult',
+    'ToolCategory',
     'WorkflowOrchestrator',
     'WorkflowStep',
     'WorkflowResult',
+    'Workflow',
     'RealTimeConnector',
     'ConnectionStatus',
     'ConnectionConfig',
+    'TransportType',
 ]
 
 __version__ = '1.0.0'
