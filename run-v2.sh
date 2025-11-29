@@ -21,6 +21,18 @@ fi
 
 cd "$V2_DIR"
 
+# Check if main.py exists
+if [ ! -f "main.py" ]; then
+    echo "❌ Error: main.py not found in $V2_DIR"
+    exit 1
+fi
+
+# Check if python3 is available
+if ! command -v python3 &> /dev/null; then
+    echo "❌ Error: python3 is not installed or not in PATH"
+    exit 1
+fi
+
 echo "🏝️ Switching to v2-multi-islands..."
 echo "📁 Working directory: $(pwd)"
 echo ""
