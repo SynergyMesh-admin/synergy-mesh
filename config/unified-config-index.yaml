@@ -352,6 +352,21 @@ unified_capabilities:
     intent_understanding:
       provider: "intelligent-automation/synergymesh_core/"
 
+  # NEW: Work Configuration (工作配置)
+  work_configuration:
+    module_mapping:
+      provider: "core/unified_integration/work_configuration_manager.py"
+      description: "模組映射整合"
+    strategy_policy:
+      provider: "core/unified_integration/work_configuration_manager.py"
+      description: "策略政策管理"
+    cross_reference:
+      provider: "core/unified_integration/work_configuration_manager.py"
+      description: "交叉引用驗證"
+    capability_alignment:
+      provider: "core/unified_integration/work_configuration_manager.py"
+      description: "能力註冊表對齊"
+
   # Security (安全)
   security:
     attestation:

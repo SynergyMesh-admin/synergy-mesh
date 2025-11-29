@@ -66,6 +66,9 @@ directory_categories:
           - id: "configuration_optimizer"
             file: "configuration_optimizer.py"
             provides: ["ConfigValidation", "DriftDetection", "Recommendations"]
+          - id: "work_configuration_manager"
+            file: "work_configuration_manager.py"
+            provides: ["ModuleMappingIntegration", "StrategyPolicyManagement", "CrossReferenceValidation", "CapabilityRegistryAlignment"]
       
       # AI Constitution Layer
       ai_constitution:
@@ -440,6 +443,18 @@ capability_matrix:
       - "workflow_management"
       - "task_scheduling"
       - "intent_understanding"
+  
+  # NEW: Work Configuration (工作配置能力)
+  work_configuration:
+    description: "工作配置能力 - 統一工作流程與策略整合"
+    providers:
+      - "core/unified_integration/work_configuration_manager.py"
+    capabilities:
+      - "module_mapping_integration"
+      - "strategy_policy_management"
+      - "cross_reference_validation"
+      - "capability_registry_alignment"
+      - "work_configuration_lifecycle"
   
   security_compliance:
     description: "安全合規能力"
