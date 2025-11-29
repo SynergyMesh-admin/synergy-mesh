@@ -332,4 +332,21 @@ class MindMatrix:
 
 
 if __name__ == "__main__":
-    MindMatrix.bootstrap()
+    # 默認：啟動自檢
+    mm = MindMatrix.bootstrap()
+
+    # 可選：執行長全自動一次
+    try:
+        # Try relative import first, then absolute
+        try:
+            from runtime.mind_matrix.executive_auto import ExecutiveAutoController
+        except ImportError:
+            from executive_auto import ExecutiveAutoController
+
+        controller = ExecutiveAutoController()
+        report = controller.run_once()
+        print(f"🚀 Autonomous Executive 完成一次閉環，審計事件數：{len(report['audit'])}")
+    except ImportError as ex:
+        print(f"[WARN] 自動執行長模組未載入：{ex}")
+    except Exception as ex:
+        print(f"[WARN] 自動執行長未啟動：{ex}")

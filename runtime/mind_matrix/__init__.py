@@ -6,9 +6,11 @@
 Mind Matrix Runtime Module.
 
 This module provides the core MindMatrix class for managing the topology
-configuration with strict schema validation using Pydantic.
+configuration with strict schema validation using Pydantic, and the
+ExecutiveAutoController for fully autonomous executive operations.
 """
 
+from runtime.mind_matrix.executive_auto import ExecutiveAutoController
 from runtime.mind_matrix.main import (
     ExecutiveLayer,
     ExecutiveRole,
@@ -25,6 +27,7 @@ __all__ = [
     "ExecutiveLayer",
     "ToolPipeline",
     "YamlValidationPipeline",
+    "ExecutiveAutoController",
 ]
 
 __version__ = "1.0.0"
