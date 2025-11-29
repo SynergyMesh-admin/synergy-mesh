@@ -293,6 +293,8 @@ jobs:
 
       - name: 🐦 Canary deployment
         if: ${{ steps.remediation-decision.outputs.action == 'CANARY_DEPLOY' }}
+        env:
+          DRY_RUN: ${{ vars.DRY_RUN || 'true' }}
         run: |
           echo "🐦 啟動金絲雀部署..."
           cat > canary-deploy.yaml << 'YAML'
@@ -336,27 +338,29 @@ jobs:
           echo "部署到 5% 流量"
           if [ "$DRY_RUN" != "true" ]; then
             kubectl apply -f canary-deploy.yaml
+
+            echo "監控金絲雀部署 5 分鐘..."
+            sleep 300
+
+            ERROR_RATE=$(curl -s http://localhost:8080/metrics | grep -oP 'error_rate\s+\K[\d.]+' || echo "0")
+            if [ -z "$ERROR_RATE" ]; then
+              echo "❌ 無法取得錯誤率，假定為失敗"
+              ERROR_RATE="1.0"
+            fi
+            if (( $(echo "$ERROR_RATE > 0.01" | bc -l) )); then
+              echo "❌ 金絲雀部署失敗，錯誤率 $ERROR_RATE"
+              exit 1
+            fi
           else
-            echo "[DRY-RUN] 模擬部署，不實際執行"
-          fi
-
-          echo "監控金絲雀部署 5 分鐘..."
-          sleep 300
-
-          ERROR_RATE=$(curl -s http://localhost:8080/metrics | grep -oP 'error_rate\s+\K[\d.]+' || echo "0")
-          if [ -z "$ERROR_RATE" ]; then
-            echo "❌ 無法取得錯誤率，假定為失敗"
-            ERROR_RATE="1.0"
-          fi
-          if (( $(echo "$ERROR_RATE > 0.01" | bc -l) )); then
-            echo "❌ 金絲雀部署失敗，錯誤率 $ERROR_RATE"
-            exit 1
+            echo "[DRY-RUN] 模擬部署，跳過實際執行和健康檢查"
           fi
 
           echo "✅ 金絲雀部署成功"
 
       - name: 📊 Staged deployment
         if: ${{ steps.remediation-decision.outputs.action == 'STAGED_DEPLOY' }}
+        env:
+          DRY_RUN: ${{ vars.DRY_RUN || 'true' }}
         run: |
           echo "📊 開始分階段部署..."
 
@@ -364,12 +368,16 @@ jobs:
             echo "部署到 ${PERCENTAGE}% 流量..."
             # kubectl set env deployment/autonomous-system TRAFFIC_PERCENTAGE=$PERCENTAGE
 
-            sleep 120
+            if [ "$DRY_RUN" != "true" ]; then
+              sleep 120
 
-            HEALTH=$(curl -s http://localhost:8080/health | jq '.status')
-            if [ "$HEALTH" != '"healthy"' ]; then
-              echo "❌ 部署失敗，回滾..."
-              exit 1
+              HEALTH=$(curl -s http://localhost:8080/health | jq '.status')
+              if [ "$HEALTH" != '"healthy"' ]; then
+                echo "❌ 部署失敗，回滾..."
+                exit 1
+              fi
+            else
+              echo "[DRY-RUN] 模擬部署，跳過健康檢查"
             fi
 
             echo "✅ ${PERCENTAGE}% 部署成功"
