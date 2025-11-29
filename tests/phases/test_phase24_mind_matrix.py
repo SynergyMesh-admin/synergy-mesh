@@ -14,6 +14,7 @@ from pathlib import Path
 
 import pytest
 import yaml
+from pydantic import ValidationError
 
 # Add runtime to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
@@ -268,14 +269,14 @@ class TestSchemaValidation:
             }
         }
 
-        with pytest.raises(Exception):
+        with pytest.raises(ValidationError):
             MindMatrix(invalid_config)
 
     def test_missing_mind_matrix_key(self) -> None:
         """Test handling of missing mind_matrix key."""
         empty_config: dict = {}
 
-        with pytest.raises(Exception):
+        with pytest.raises(ValidationError):
             MindMatrix(empty_config)
 
 
