@@ -13,11 +13,20 @@
 # - 高度映射/引用整合 (High-level mapping/reference integration)
 # - 確保無缺失功能 (Ensure no missing functionality)
 # - 確保無重複定義 (Ensure no duplicate definitions)
+#
+# Related Configurations:
+# - config/system-manifest.yaml: 主系統宣告清單
+# - config/unified-config-index.yaml: Phase 2 統一配置索引 (目錄合併計畫)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-version: "1.0.0"
+version: "1.1.0"
 id: "synergymesh.module-map"
 description: "SynergyMesh 系統模組映射 - 統一目錄結構"
+
+# Phase 2 Reference
+phase2_consolidation:
+  reference: "config/unified-config-index.yaml"
+  description: "詳細目錄合併計畫請參閱統一配置索引"
 
 # ============================================================================
 # Directory Categories (目錄分類)

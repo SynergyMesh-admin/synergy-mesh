@@ -9,14 +9,20 @@
 # This is the root configuration that references all other configs.
 # ═══════════════════════════════════════════════════════════════════════════════
 
-version: "1.2.0"
+version: "2.0.0"
 id: "synergymesh.system"
-description: "SynergyMesh 系統宣告清單（整合心智矩陣 + 執行長系統 + 增強統一整合）"
+description: "SynergyMesh 系統宣告清單（整合心智矩陣 + 執行長系統 + 增強統一整合 + Phase 2 配置整合）"
 
 # ============================================================================
-# Configuration Hierarchy (配置層級)
+# Configuration Hierarchy (配置層級) - Phase 2 Consolidated
 # ============================================================================
 configs:
+  # Phase 2: Unified Configuration Index - 統一配置索引
+  - id: "unified_index"
+    kind: "index"
+    file: "config/unified-config-index.yaml"
+    description: "統一配置索引 - 所有配置的單一真實來源"
+    is_primary: true
   - id: "module_map"
     kind: "module-map"
     file: "config/system-module-map.yaml"
