@@ -28,7 +28,7 @@
 import json
 import os
 import sys
-from typing import Any
+from typing import Any, Dict
 
 
 def get_env(name: str, default: str = '') -> str:
@@ -672,7 +672,7 @@ jobs:
     return solutions.get(primary_type, solutions['unknown'])
 
 
-def generate_solutions() -> dict[str, Any]:
+def generate_solutions() -> Dict[str, Any]:
     """主函數：生成完整的解決方案報告。"""
     # 獲取環境變數
     workflow_name = get_env('WORKFLOW_NAME', 'Unknown Workflow')
