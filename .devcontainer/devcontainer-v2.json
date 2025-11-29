@@ -1,8 +1,8 @@
 {
-  "name": "01-core Life System - Brain Heart Heartbeat Development",
+  "name": "SynergyMesh v2 Multi Islands Development",
   "dockerComposeFile": "docker-compose.yml",
   "service": "devcontainer",
-  "workspaceFolder": "/workspace",
+  "workspaceFolder": "/workspace/v2-multi-islands",
 
   "features": {
     "ghcr.io/devcontainers/features/node:1": {
@@ -84,8 +84,8 @@
     }
   },
 
-  "postCreateCommand": "bash .devcontainer/post-create.sh",
-  "postStartCommand": "bash .devcontainer/post-start.sh",
+  "postCreateCommand": "bash /workspace/.devcontainer/post-create.sh",
+  "postStartCommand": "bash /workspace/.devcontainer/post-start-v2.sh",
 
   "customizations": {
     "vscode": {
@@ -130,7 +130,8 @@
     "FIXOPS_SLAGEIST_PORT": "3010",
     "POSTGRES_HOST": "postgres",
     "REDIS_HOST": "redis",
-    "WE_TONKE": "${localEnv:WE_TONKE}"
+    "WE_TONKE": "${localEnv:WE_TONKE}",
+    "SYNERGYMESH_VERSION": "v2"
   },
 
   "mounts": ["source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"],

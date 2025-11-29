@@ -93,6 +93,19 @@ enhanced_integration:
       - "OptimizationRecommendations"
       - "AutoTuning"
 
+  # NEW: Work Configuration Manager
+  work_configuration_manager:
+    id: "work_configuration_manager"
+    module: "core.unified_integration.work_configuration_manager"
+    class: "WorkConfigurationManager"
+    description: "工作配置管理器 - 統一工作流程與策略整合"
+    provides:
+      - "ModuleMappingIntegration"
+      - "StrategyPolicyManagement"
+      - "CrossReferenceValidation"
+      - "CapabilityRegistryAlignment"
+      - "WorkConfigurationLifecycle"
+
 boot_sequence: ["environment", "dependencies", "constitution", "virtual_experts", "safety", "mind_matrix"]
 
 # Enhanced Boot Sequence for Full System Integration
@@ -102,7 +115,7 @@ enhanced_boot_sequence:
   - phase: "mind_matrix"
     components: ["mind_matrix"]
   - phase: "enhanced_integration"
-    components: ["service_registry", "cognitive_processor", "configuration_optimizer"]
+    components: ["service_registry", "cognitive_processor", "configuration_optimizer", "work_configuration_manager"]
   - phase: "services"
     components: ["contracts-l1", "mcp-servers", "slsa-provenance"]
 
