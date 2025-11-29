@@ -52,7 +52,3 @@ jobs:
           "check_result": "${{ needs.language-check.result }}"
         }
       error-logs: ${{ needs.language-check.result == 'failure' && '語言合規性檢查失敗。請確保：\n1. .md/.yml 檔案使用繁體中文\n2. 排除目錄設定正確\n3. 查看詳細錯誤訊息以了解哪些檔案不符規範' || '' }}
-    permissions:
-      contents: read
-      pull-requests: write
-      issues: write
