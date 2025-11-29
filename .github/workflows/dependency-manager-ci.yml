@@ -301,7 +301,3 @@ jobs:
           "config_validation": "${{ needs.config-validation.result }}"
         }
       error-logs: ${{ needs.syntax-check.result == 'failure' && 'Python 語法檢查失敗' || needs.structure-validation.result == 'failure' && '目錄結構驗證失敗' || needs.config-validation.result == 'failure' && '配置文件驗證失敗' || '' }}
-    permissions:
-      contents: read
-      pull-requests: write
-      issues: write
