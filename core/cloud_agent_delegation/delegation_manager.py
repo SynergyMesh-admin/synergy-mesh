@@ -468,11 +468,24 @@ class DelegationManager:
         task: Task,
         provider_name: str
     ) -> Any:
-        """Execute task on a specific provider"""
+        """
+        Execute task on a specific provider
+        
+        NOTE: This is a simulation for framework demonstration.
+        Production implementation should integrate with actual cloud
+        provider SDKs (boto3 for AWS, google-cloud for GCP, azure for Azure).
+        
+        Args:
+            task: Task to execute
+            provider_name: Name of the provider
+            
+        Returns:
+            Execution result
+        """
         provider = self._providers.get(provider_name)
         
         if not provider:
-            # Simulate execution for testing
+            # Simulate execution for testing/demonstration
             await asyncio.sleep(0.1)
             return {
                 'status': 'success',

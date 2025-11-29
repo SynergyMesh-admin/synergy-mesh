@@ -472,8 +472,20 @@ class WorkflowOrchestrator:
         condition: str,
         context: Dict[str, Any]
     ) -> bool:
-        """Evaluate a condition expression"""
-        # Simple condition evaluation - can be extended
+        """
+        Evaluate a condition expression
+        
+        NOTE: This is a simplified implementation for framework demonstration.
+        Production implementation should use a proper expression evaluator
+        like simpleeval or a custom DSL parser for safe condition evaluation.
+        
+        Args:
+            condition: Condition expression string
+            context: Context data for substitution
+            
+        Returns:
+            True if condition is met, False otherwise
+        """
         try:
             # Replace context references
             for key, value in context.items():
@@ -483,7 +495,9 @@ class WorkflowOrchestrator:
             if not all(c in allowed_chars or c.isalnum() or c == '_' for c in condition):
                 logger.warning(f'Unsafe condition blocked: {condition}')
                 return True
-            return True  # Default to true for safety
+            # For framework demonstration, return True
+            # Production should implement proper condition evaluation
+            return True
         except Exception as e:
             logger.error(f'Condition evaluation failed: {e}')
             return True

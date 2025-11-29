@@ -476,9 +476,23 @@ class SignatureVerifier:
         artifact_digest: str,
         signature: str
     ) -> Optional[TransparencyLogEntry]:
-        """Check transparency log for entry"""
-        # Simulate Rekor lookup
-        # In production, make actual API call to Rekor
+        """
+        Check transparency log for entry
+        
+        NOTE: This is a simulation for framework demonstration.
+        In production, this would make actual API calls to Rekor
+        transparency log service.
+        
+        Args:
+            artifact_digest: Artifact digest to look up
+            signature: Signature to verify
+            
+        Returns:
+            TransparencyLogEntry if found, None otherwise
+        """
+        # Simulate Rekor lookup - production implementation would use:
+        # import requests
+        # response = requests.post(f'{self.rekor_url}/api/v1/log/entries/retrieve')
         return TransparencyLogEntry(
             log_index=12345,
             log_id='rekor.sigstore.dev',
@@ -492,11 +506,28 @@ class SignatureVerifier:
         signature: bytes,
         certificate: Optional[Certificate]
     ) -> Dict[str, Any]:
-        """Perform cryptographic verification"""
-        # Simplified verification
-        # In production, use proper cryptographic verification
+        """
+        Perform cryptographic verification
         
-        # Simulate successful verification
+        NOTE: This is a simulation for framework demonstration.
+        In production, this would use the cryptography library to
+        perform actual signature verification against the certificate.
+        
+        Production implementation would use:
+        - cryptography.hazmat.primitives.asymmetric for key operations
+        - Certificate chain validation
+        - Signature algorithm verification
+        
+        Args:
+            artifact_digest: Digest of the artifact
+            signature: Decoded signature bytes
+            certificate: Certificate for verification
+            
+        Returns:
+            Verification result dictionary
+        """
+        # Simulate successful verification for framework demonstration
+        # Production would perform actual cryptographic verification
         return {
             'valid': True,
             'claims': {
