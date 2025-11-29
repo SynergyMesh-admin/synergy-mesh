@@ -96,8 +96,15 @@ class ExecutiveAutoController:
             else:
                 topology_file = "config/topology-mind-matrix.yaml"
 
-        with open(topology_file, encoding="utf-8") as f:
-            topology = yaml.safe_load(f)
+        try:
+            with open(topology_file, encoding="utf-8") as f:
+                topology = yaml.safe_load(f)
+        except FileNotFoundError as e:
+            raise FileNotFoundError(
+                f"Topology configuration file not found: {topology_file}"
+            ) from e
+        except yaml.YAMLError as e:
+            raise ValueError(f"Invalid YAML in topology file: {topology_file}") from e
 
         self.mm = MindMatrix(topology)
         self.max_heal_attempts = max_heal_attempts

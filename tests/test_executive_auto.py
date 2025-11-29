@@ -463,7 +463,7 @@ class TestToolPipelineValidation:
 
     def test_run_tool_invalid_stage(self, controller: ExecutiveAutoController) -> None:
         """Test running tool with invalid stage raises error."""
-        with pytest.raises(AssertionError, match="工具管線階段不存在"):
+        with pytest.raises(AssertionError, match="invalid_stage"):
             controller._run_tool("invalid_stage", {"op": "test"})
 
 
