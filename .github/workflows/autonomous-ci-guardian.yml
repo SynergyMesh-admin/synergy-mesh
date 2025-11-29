@@ -97,7 +97,7 @@ jobs:
           fi
 
           CHANGED_FILES=$(git diff --name-only HEAD~1 2>/dev/null | wc -l)
-          CHANGED_LINES=$(git diff HEAD~1 2>/dev/null | grep '^[+-]' | wc -l)
+          CHANGED_LINES=$( (git diff HEAD~1 2>/dev/null | grep '^[+-]' || true) | wc -l)
 
           if [ "$COMPLEXITY" -gt 5000 ]; then
             RISK="HIGH"
