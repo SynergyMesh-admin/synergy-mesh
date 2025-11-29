@@ -9,11 +9,18 @@
 # This is the root configuration that references all other configs.
 # ═══════════════════════════════════════════════════════════════════════════════
 
-version: "1.1.0"
+version: "1.2.0"
 id: "synergymesh.system"
 description: "SynergyMesh 系統宣告清單（整合心智矩陣 + 執行長系統 + 增強統一整合）"
 
+# ============================================================================
+# Configuration Hierarchy (配置層級)
+# ============================================================================
 configs:
+  - id: "module_map"
+    kind: "module-map"
+    file: "config/system-module-map.yaml"
+    description: "系統模組映射 - 統一目錄結構與元件整合"
   - id: "environment"
     kind: "environment"
     file: "config/environment.yaml"
