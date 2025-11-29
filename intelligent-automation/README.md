@@ -9,6 +9,85 @@ This module extracts core high-value capabilities from OJ-agent, refactored and 
 
 ## 核心能力 Core Capabilities
 
+### 🌐 SynergyMesh Core - 無人化自主協同網格系統
+
+SynergyMesh Core 是革命性的完全自主化系統網格，實現「無人機、無人駕駛、自動化迭代升遷」的高階架構願景。
+
+**設計哲學**: 讓程式服務於人類，而非人類服務於程式
+
+#### 1. **NaturalLanguageProcessor (自然語言處理器)** 🗣️
+- **零技術門檻** - Non-engineers interact through natural language
+- **意圖識別** - Automatic intent detection and classification
+- **技術規格生成** - Auto-translate business requirements to technical specs
+- **多語言支持** - Support for Traditional Chinese and English
+
+```python
+from synergymesh_core import NaturalLanguageProcessor
+
+processor = NaturalLanguageProcessor()
+result = await processor.process_natural_request(
+    "我需要將用戶資料從舊系統同步到新系統"
+)
+# System automatically generates migration tasks
+```
+
+#### 2. **AutonomousCoordinator (自主協調器)** 🤖
+- **24/7 自主運行** - Fully autonomous operation without human intervention
+- **自我修復** - Self-healing and automatic error recovery
+- **智能決策** - Autonomous decision making based on historical data
+- **預測性維護** - Predictive maintenance and proactive problem solving
+
+```python
+from synergymesh_core import AutonomousCoordinator
+
+coordinator = AutonomousCoordinator(worker_count=4)
+await coordinator.start()
+task_id = coordinator.schedule_task(
+    name="Data Migration",
+    task_type="migration",
+    params={"source": "old_db", "target": "new_db"},
+    priority=TaskPriority.HIGH
+)
+```
+
+#### 3. **SelfEvolutionEngine (自我進化引擎)** 🧬
+- **自動學習** - Learn from user interactions and system behavior
+- **瓶頸識別** - Identify bottlenecks and optimization opportunities
+- **自動重構** - Auto-refactor and improve system architecture
+- **無縫升級** - Seamless deployment of improvements
+
+```python
+from synergymesh_core import SelfEvolutionEngine
+
+engine = SelfEvolutionEngine()
+engine.record_learning(
+    learning_type=LearningType.USER_INTERACTION,
+    data={"action": "query", "result": "success"},
+    confidence=0.9
+)
+await engine.start_evolution_cycle()  # Automatic optimization
+```
+
+#### 4. **EcosystemOrchestrator (生態協同編排器)** 🎼
+- **子系統協調** - Independent subsystems work together in harmony
+- **資源分配** - Intelligent resource allocation and load balancing
+- **衝突解決** - Priority management and conflict resolution
+- **狀態同步** - System-wide state management and synchronization
+
+```python
+from synergymesh_core import EcosystemOrchestrator
+
+orchestrator = EcosystemOrchestrator()
+nlp_id = orchestrator.register_subsystem(
+    name="NLP Processor",
+    subsystem_type=SubsystemType.LANGUAGE_PROCESSOR,
+    capabilities=["natural_language", "intent_detection"]
+)
+await orchestrator.start()
+```
+
+### 傳統智能體 Traditional Agents
+
 ### 1. **TaskExecutor (任務執行器)**
 - **智能代碼分析** - Intelligent code analysis with security and performance checks
 - **自動修復** - Automated fixing of critical issues
@@ -61,6 +140,12 @@ This module extracts core high-value capabilities from OJ-agent, refactored and 
 
 ```
 intelligent-automation/
+├── synergymesh_core/                # 🆕 SynergyMesh 核心自主系統
+│   ├── __init__.py                 # 模組導出
+│   ├── natural_language_processor.py  # 自然語言處理器
+│   ├── autonomous_coordinator.py   # 自主協調器 (24/7)
+│   ├── self_evolution_engine.py    # 自我進化引擎
+│   └── ecosystem_orchestrator.py   # 生態協同編排器
 ├── agents/                          # 智能體模組
 │   ├── task_executor.py            # 代碼分析與修復
 │   ├── recognition_server.py       # 意圖識別與路由
@@ -68,7 +153,10 @@ intelligent-automation/
 ├── pipeline_service.py             # 管線編排服務
 ├── config/                         # 配置文件
 ├── tests/                          # 測試文件
+│   ├── test_synergymesh_core.py   # SynergyMesh 核心測試
+│   └── test_task_executor.py       # TaskExecutor 測試
 ├── requirements.txt                # Python 依賴
+├── pytest.ini                      # pytest 配置
 └── README.md                       # 本文件
 ```
 

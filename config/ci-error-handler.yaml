@@ -1,0 +1,132 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+#                    SynergyMesh CI Error Handler Configuration
+#                    CI 錯誤處理配置 (Phase 12)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+ci_error_handler:
+  version: "1.0.0"
+  enabled: true
+
+# Error Categories
+error_categories:
+  - BUILD_ERROR
+  - TEST_FAILURE
+  - LINT_ERROR
+  - TYPE_ERROR
+  - DEPENDENCY_ERROR
+  - SECURITY_SCAN
+  - DEPLOYMENT_ERROR
+
+# Error Patterns
+error_patterns:
+  eslint:
+    pattern: "error\\s+.*eslint"
+    category: LINT_ERROR
+    auto_fixable: true
+    fix_command: "npm run lint -- --fix"
+  
+  prettier:
+    pattern: "Prettier.*check failed"
+    category: LINT_ERROR
+    auto_fixable: true
+    fix_command: "npm run format"
+  
+  typescript:
+    pattern: "error TS\\d+"
+    category: TYPE_ERROR
+    auto_fixable: false
+  
+  jest:
+    pattern: "FAIL.*\\.test\\."
+    category: TEST_FAILURE
+    auto_fixable: false
+  
+  npm_audit:
+    pattern: "npm audit.*vulnerabilities"
+    category: SECURITY_SCAN
+    auto_fixable: true
+    fix_command: "npm audit fix"
+
+# Issue Management
+issue_management:
+  auto_create: true
+  
+  labels:
+    BUILD_ERROR: ["ci-failure", "build"]
+    TEST_FAILURE: ["ci-failure", "test"]
+    LINT_ERROR: ["ci-failure", "lint", "auto-fixable"]
+    TYPE_ERROR: ["ci-failure", "typescript"]
+    DEPENDENCY_ERROR: ["ci-failure", "dependencies"]
+    SECURITY_SCAN: ["ci-failure", "security"]
+    DEPLOYMENT_ERROR: ["ci-failure", "deployment"]
+  
+  assignees:
+    enabled: true
+    use_codeowners: true
+  
+  duplicate_detection: true
+  
+  templates:
+    title: "[CI Failure] {workflow_name}: {error_category}"
+    body: |
+      ## CI Failure Report
+      
+      **Workflow:** {workflow_name}
+      **Run ID:** {run_id}
+      **Branch:** {branch}
+      **Commit:** {commit_sha}
+      
+      ### Error Details
+      ```
+      {error_details}
+      ```
+      
+      ### Suggested Fix
+      {suggested_fix}
+      
+      ### Links
+      - [Workflow Run]({run_url})
+      - [Commit]({commit_url})
+
+# Auto Fix
+auto_fix:
+  enabled: true
+  
+  safe_fixes:
+    - lint_errors
+    - formatting
+    - dependency_audit
+    - import_sorting
+  
+  create_pr: true
+  pr_template:
+    title: "[Auto-Fix] {error_category} in {workflow_name}"
+    body: |
+      ## Automated Fix
+      
+      This PR was automatically generated to fix CI errors.
+      
+      **Original Issue:** #{issue_number}
+      **Error Category:** {error_category}
+      
+      ### Changes Made
+      {changes_description}
+      
+      ### Verification
+      - [ ] Tests pass
+      - [ ] Lint passes
+      - [ ] Build succeeds
+
+# Status Tracking
+status_tracking:
+  statuses:
+    - PENDING
+    - IN_PROGRESS
+    - PR_CREATED
+    - VERIFIED
+    - CLOSED
+  
+  metrics:
+    track_fix_rate: true
+    track_time_to_fix: true
+    track_auto_vs_manual: true

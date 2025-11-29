@@ -32,6 +32,8 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    outputs:
+      pages_configured: ${{ steps.pages.outcome == 'success' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -69,7 +71,7 @@ jobs:
         run: |
           echo "::warning::GitHub Pages is not enabled for this repository."
           echo "::warning::Please enable GitHub Pages in repository Settings → Pages → Source: GitHub Actions"
-          exit 1
+          exit 0
       - name: Install dependencies
         if: steps.pages.outcome == 'success'
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
@@ -82,7 +84,8 @@ jobs:
             --base "${{ steps.pages.outputs.base_path }}"
         working-directory: ${{ env.BUILD_PATH }}
       - name: Upload artifact
-
+        if: steps.pages.outcome == 'success'
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ${{ env.BUILD_PATH }}/dist
 
@@ -91,6 +94,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     needs: build
+    if: needs.build.outputs.pages_configured == 'true'
     runs-on: ubuntu-latest
     name: Deploy
     steps:

@@ -44,7 +44,8 @@ jobs:
           echo "::warning::Please enable GitHub Pages in repository Settings → Pages → Source: GitHub Actions"
           exit 0
       - name: Upload artifact
-
+        if: steps.pages.outcome == 'success'
+        uses: actions/upload-pages-artifact@v3
         with:
           # Upload docs directory
           path: './docs'
