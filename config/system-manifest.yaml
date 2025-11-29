@@ -1,0 +1,49 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+#                    SynergyMesh System Manifest Configuration
+#                    系統宣告清單（整合心智矩陣 + 執行長系統）
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+# 唯一入口 manifest，無重複定義
+# Single entry point manifest, no duplicate definitions
+#
+# This is the root configuration that references all other configs.
+# ═══════════════════════════════════════════════════════════════════════════════
+
+version: "1.0.0"
+id: "synergymesh.system"
+description: "SynergyMesh 系統宣告清單（整合心智矩陣 + 執行長系統）"
+
+configs:
+  - id: "environment"
+    kind: "environment"
+    file: "config/environment.yaml"
+  - id: "dependencies"
+    kind: "dependencies"
+    file: "config/dependencies.yaml"
+  - id: "constitution"
+    kind: "governance"
+    file: "config/ai-constitution.yaml"
+  - id: "virtual_experts"
+    kind: "experts"
+    file: "config/virtual-experts.yaml"
+  - id: "safety"
+    kind: "safety"
+    file: "config/safety-mechanisms.yaml"
+  - id: "mind_matrix"
+    kind: "topology"
+    file: "config/topology-mind-matrix.yaml"
+    description: "核心拓撲自稠密演化心智矩陣（含 Executive 層）"
+    depends_on: ["environment", "dependencies", "constitution", "virtual_experts", "safety"]
+    provides:
+      - "MindMatrixTopology"
+      - "ExecutiveSystem"
+      - "MultiAgentHypergraph"
+      - "ToolPipeline"
+      - "YAMLValidationPipeline"
+
+boot_sequence: ["environment", "dependencies", "constitution", "virtual_experts", "safety", "mind_matrix"]
+
+entrypoint:
+  module: "runtime.mind_matrix.main"
+  class: "MindMatrix"
+  method: "bootstrap"
