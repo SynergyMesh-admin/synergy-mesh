@@ -405,25 +405,32 @@ jobs:
 
       - name: 🚀 Full deployment
         if: ${{ steps.remediation-decision.outputs.action == 'FULL_DEPLOY' }}
+        env:
+          DRY_RUN: ${{ vars.DRY_RUN || 'true' }}
         run: |
           echo "🚀 開始完整部署..."
           if [ ! -f docker-compose.yml ]; then
             echo "❌ docker-compose.yml 檔案不存在，部署失敗"
             exit 1
           fi
-          docker-compose build --no-cache
-          docker-compose up -d
 
-          echo "監控部署 30 秒..."
-          sleep 30
+          if [ "$DRY_RUN" != "true" ]; then
+            docker-compose build --no-cache
+            docker-compose up -d
 
-          ERROR_RATE=$(curl -s http://localhost:8080/metrics 2>/dev/null | grep error_rate | awk '{print $NF}' || echo "0.0")
-          if [ -n "$ERROR_RATE" ] && [ "$ERROR_RATE" != "0.0" ]; then
-            # 使用 awk 進行浮點數比較，當 ERROR_RATE > 0.01 時返回 0（成功），觸發 if 條件
-            if awk "BEGIN {exit ($ERROR_RATE > 0.01 ? 0 : 1)}"; then
-              echo "❌ 部署失敗，錯誤率 $ERROR_RATE"
-              exit 1
+            echo "監控部署 30 秒..."
+            sleep 30
+
+            ERROR_RATE=$(curl -s http://localhost:8080/metrics 2>/dev/null | grep error_rate | awk '{print $NF}' || echo "0.0")
+            if [ -n "$ERROR_RATE" ] && [ "$ERROR_RATE" != "0.0" ]; then
+              # 使用 awk 進行浮點數比較，當 ERROR_RATE > 0.01 時返回 0（成功），觸發 if 條件
+              if awk "BEGIN {exit ($ERROR_RATE > 0.01 ? 0 : 1)}"; then
+                echo "❌ 部署失敗，錯誤率 $ERROR_RATE"
+                exit 1
+              fi
             fi
+          else
+            echo "[DRY-RUN] 模擬完整部署，跳過實際執行和健康檢查"
           fi
 
           echo "✅ 完整部署成功"
