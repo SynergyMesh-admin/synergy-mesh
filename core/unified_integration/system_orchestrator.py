@@ -424,9 +424,9 @@ class SystemOrchestrator:
                         
                     if now >= task.next_run:
                         await self._execute_scheduled_task(task)
-                        task.next_run = now.replace(
-                            second=now.second + task.interval_seconds
-                        )
+                        # Use timedelta for proper date arithmetic
+                        from datetime import timedelta
+                        task.next_run = now + timedelta(seconds=task.interval_seconds)
                         
                 await asyncio.sleep(1)  # Check every second
                 
