@@ -694,6 +694,9 @@ def generate_solutions() -> Dict[str, Any]:
         if failure_type_override in failure_types:
             failure_types[failure_type_override] = True
         else:
+            # 記錄警告：未知的失敗類型
+            print(f"警告：未知的失敗類型 '{failure_type_override}'，使用 'unknown' 類型", 
+                  file=sys.stderr)
             failure_types['unknown'] = True
     
     # 生成根本原因分析

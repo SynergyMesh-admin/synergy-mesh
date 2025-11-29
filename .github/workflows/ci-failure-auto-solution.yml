@@ -97,11 +97,12 @@ jobs:
             if (isManualTrigger) {
               // 手動觸發：使用輸入參數
               workflowName = '${{ inputs.workflow_name }}' || 'Core Services CI';
-              failureType = '${{ inputs.simulate_failure }}' || 'build';
+              failureType = '${{ inputs.simulate_failure }}';
               runUrl = `https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
               branch = context.ref.replace('refs/heads/', '');
               commitSha = context.sha;
-              prNumber = '${{ inputs.pr_number }}' || null;
+              const prInput = '${{ inputs.pr_number }}';
+              prNumber = prInput && prInput.trim() !== '' ? prInput : null;
               
               console.log('=== 手動觸發模式 ===');
               console.log(`模擬失敗類型: ${failureType}`);
@@ -189,7 +190,12 @@ jobs:
                 ]
               };
               
-              failedJobs = simulatedJobs[failureType] || simulatedJobs['build'];
+              // 使用選擇的失敗類型，如果無效則使用 build 作為預設
+              if (!simulatedJobs[failureType]) {
+                console.log(`警告：未知的失敗類型 '${failureType}'，使用預設類型 'build'`);
+                failureType = 'build';
+              }
+              failedJobs = simulatedJobs[failureType];
               failedJobs = failedJobs.map(job => ({
                 ...job,
                 html_url: `https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
