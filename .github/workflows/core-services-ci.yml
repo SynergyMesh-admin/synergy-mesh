@@ -27,6 +27,8 @@ permissions:
   contents: read
   security-events: write
   pull-requests: write
+  packages: write
+  issues: write
 
 jobs:
   # ==================== Tier 1: Contracts L1 Service ====================
