@@ -291,22 +291,18 @@ directory_categories:
         description: "模組映射"
 
   # ─────────────────────────────────────────────────────────────────────────
-  # Frontend (前端)
+  # Frontend (前端) - CONSOLIDATED
   # ─────────────────────────────────────────────────────────────────────────
   frontend:
-    description: "前端應用"
+    description: "前端應用 (已整合)"
     modules:
-      advanced_architecture:
-        path: "frontend/architecture/"
-        description: "進階架構視覺化"
-        provides: ["ArchitectureVisualization"]
+      ui:
+        path: "frontend/ui/"
+        description: "統一前端UI套件 - 架構視覺化與系統UI"
+        provides: ["ArchitectureVisualization", "SystemUI", "CodeAnalyzerAPI"]
+        note: "Consolidated from frontend/architecture and frontend/system-ui"
       
-      advanced_system_src:
-        path: "frontend/system-ui/"
-        description: "進階系統源碼"
-        provides: ["SystemUI", "CodeAnalyzerAPI"]
-      
-      advanced_system_dist:
+      dist:
         path: "frontend/dist/"
         description: "進階系統編譯產出"
         type: "build_output"

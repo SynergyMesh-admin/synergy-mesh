@@ -7,7 +7,7 @@
     "mcp-servers",
     "core/contracts/contracts-L1/contracts",
     "core/advisory-database",
-    "frontend/system-ui"
+    "frontend/ui"
   ],
   "scripts": {
     "lint": "npm run lint --workspaces --if-present",

@@ -1,6 +1,7 @@
 {
-  "name": "synergymesh-system-ui",
+  "name": "@synergymesh/ui",
   "version": "1.0.0",
+  "description": "SynergyMesh Unified Frontend UI - Architecture Visualization and System UI",
   "scripts": {
     "dev": "node scripts/build.mjs",
     "build": "node scripts/build.mjs --production"
@@ -8,6 +9,8 @@
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
     "@radix-ui/react-accordion": "^1.2.8",
+    "@radix-ui/react-alert-dialog": "^1.1.11",
+    "@radix-ui/react-aspect-ratio": "^1.1.4",
     "@radix-ui/react-avatar": "^1.1.7",
     "@radix-ui/react-checkbox": "^1.2.3",
     "@radix-ui/react-collapsible": "^1.1.8",
