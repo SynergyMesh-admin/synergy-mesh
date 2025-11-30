@@ -75,7 +75,7 @@ python3 v2-multi-islands/main.py --island=go
 
 ### 透過自動化入口
 ```bash
-./automation-entry.sh
+./tools/scripts/automation-entry.sh
 # 選擇選項 8: v2-multi-islands
 ```
 
@@ -109,7 +109,7 @@ print(config.islands)
 如需從 v1-python-drones 遷移至 v2-multi-islands，請使用：
 
 ```bash
-./automation-entry.sh
+./tools/scripts/automation-entry.sh
 # 選擇選項 5: 版本遷移
 # 選擇 1: v1 → v2
 ```

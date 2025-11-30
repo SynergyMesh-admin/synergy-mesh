@@ -51,7 +51,7 @@ The following directories are sorted by importance and sensitivity. It is recomm
 - `manage-secret-patterns.py`
 - `vulnerability-alert-handler.py`
 
-### 6. `.config/conftest/policies/` - 安全與合規政策
+### 6. `governance/policies/conftest/` - 安全與合規政策
 **說明**: OPA/Conftest 政策定義檔  
 **監控重點**: 政策規則變更  
 **風險等級**: 🟠 中高 (Medium-High)

@@ -61,7 +61,7 @@ synergymesh/
 │       └── policies/
 │           └── naming_policy.rego  # 命名規範政策
 │
-├── .governance/
+├── governance/
 │   ├── policies.yaml               # 治理政策配置
 │   └── registry.yaml               # 模組註冊表
 │
@@ -142,7 +142,7 @@ curl http://localhost:3000/healthz
 ```bash
 # 使用 Conftest 驗證
 cd core/contract_service/contracts-L1/contracts
-conftest test deploy/*.yaml --policy ../../../../../../.config/conftest/policies
+conftest test deploy/*.yaml --policy ../../../../../../governance/policies/conftest
 
 # 使用命名檢查腳本
 ../../../../../../scripts/naming/check-naming.sh
@@ -265,7 +265,7 @@ cosign verify --key cosign.pub \
 
 ### Conftest 政策
 
-**位置**: `.config/conftest/policies/` 和 `policy/`
+**位置**: `governance/policies/conftest/` 和 `policy/`
 
 **驗證項目**:
 - ✅ 資源限制（requests/limits）
@@ -279,13 +279,13 @@ cosign verify --key cosign.pub \
 **執行方式**:
 ```bash
 # 驗證單一檔案
-conftest test deploy/deployment.yaml --policy .config/conftest/policies
+conftest test deploy/deployment.yaml --policy governance/policies/conftest
 
 # 驗證所有 manifests
-conftest test deploy/*.yaml --policy .config/conftest/policies --all-namespaces
+conftest test deploy/*.yaml --policy governance/policies/conftest --all-namespaces
 
 # 生成 JSON 報告
-conftest test deploy/*.yaml --policy .config/conftest/policies --output json
+conftest test deploy/*.yaml --policy governance/policies/conftest --output json
 ```
 
 ### 命名規範

@@ -29,7 +29,7 @@ cd your-project
 # 初始化 Auto-Fix Bot
 autofix init
 
-# 這會創建 .autofixrc.json 配置文件
+# 這會創建 config/autofixrc.json 配置文件
 ```
 
 ### 第三步：運行第一次分析
@@ -104,7 +104,7 @@ autofix analyze --cloud
 
 ### 技巧 1: 在保存時自動修復
 
-在 `.autofixrc.json` 中配置：
+在 `config/autofixrc.json` 中配置：
 
 ```json
 {
@@ -189,7 +189,7 @@ npx husky add .husky/pre-commit "autofix fix --staged"
   "version": "1.0",
   "cloudDelegation": {
     "enabled": true,
-    "endpoint": "https://cloud.autofix-bot.com",
+    "endpoint": "https://cloudconfig/autofix-bot.com",
     "mode": "intelligent",
     "agents": {
       "maxConcurrent": 10,
@@ -291,9 +291,9 @@ autofix fix --batch --cloud
 ## 🎓 學習資源
 
 ### 官方文檔
-- [完整文檔](https://docs.autofix-bot.com)
-- [API 參考](https://docs.autofix-bot.com/api)
-- [最佳實踐](https://docs.autofix-bot.com/best-practices)
+- [完整文檔](https://docsconfig/autofix-bot.com)
+- [API 參考](https://docsconfig/autofix-bot.com/api)
+- [最佳實踐](https://docsconfig/autofix-bot.com/best-practices)
 
 ### 社群資源
 - [GitHub 討論區](https://github.com/autofix-bot/discussions)
@@ -320,7 +320,7 @@ A: 是的，使用端到端加密，敏感數據不會離開本地環境。
 A: 可以，基本功能支援完全離線使用。雲端委派需要網絡連接。
 
 ### Q: 如何取得支援？
-A: 訪問 [support.autofix-bot.com](https://support.autofix-bot.com) 或發送郵件至 support@autofix-bot.com
+A: 訪問 [supportconfig/autofix-bot.com](https://supportconfig/autofix-bot.com) 或發送郵件至 support@autofix-bot.com
 
 ## 🚀 下一步
 

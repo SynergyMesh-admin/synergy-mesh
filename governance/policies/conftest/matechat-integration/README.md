@@ -72,9 +72,9 @@
 ## 配置管理
 
 所有整合配置位於:
-- 策略定義: `.config/conftest/policies/matechat-integration/`
+- 策略定義: `governance/policies/conftest/matechat-integration/`
 - 服務配置: `config/integrations/matechat/`
-- 部署清單: `.governance/deployment/matechat-services.yml`
+- 部署清單: `governance/deployment/matechat-services.yml`
 
 ## 性能目標
 

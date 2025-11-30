@@ -110,10 +110,10 @@ create_directories() {
     log_info "創建目錄結構..."
     
     local dirs=(
-        ".autofix/rules"
-        ".autofix/templates"
-        ".autofix/validators"
-        ".autofix/transformations"
+        "config/autofix/rules"
+        "config/autofix/templates"
+        "config/autofix/validators"
+        "config/autofix/transformations"
         "advanced-system-src/core/analyzers"
         "advanced-system-src/core/services"
         "advanced-system-src/core/repairers"

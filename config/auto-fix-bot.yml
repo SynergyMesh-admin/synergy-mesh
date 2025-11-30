@@ -31,7 +31,7 @@ description: >
 # ==================== Project Structure Mapping ====================
 project_mapping:
   config_root: ".config"
-  policies_root: ".config/conftest/policies"
+  policies_root: "governance/policies/conftest"
   governance_root: ".governance"
   evidence_root: "root-evidence"
   schemas_root: "schemas"
@@ -40,7 +40,7 @@ project_mapping:
   docs_root: "docs"
   mcp_servers_root: "mcp-servers"
   test_vectors_root: "test-vectors"
-  autofix_root: ".autofix"
+  autofix_root: "config/autofix"
   agent_root: "agent"
   hyperautomation_root: "intelligent-hyperautomation"
   core_root: "advanced-system-src/core"
@@ -194,12 +194,12 @@ auto_repair:
   repair_strategies:
     - name: rule_based
       enabled: true
-      rules_dir: ".autofix/rules"
+      rules_dir: "config/autofix/rules"
       priority: 1
     
     - name: ast_based
       enabled: true
-      transformations_dir: ".autofix/transformations"
+      transformations_dir: "config/autofix/transformations"
       priority: 2
     
     - name: ml_based
@@ -397,7 +397,7 @@ policy_gates:
   - name: pre-validation-gate
     stage: pre-fix
     policies:
-      - path: .config/conftest/policies/yaml-structure.rego
+      - path: governance/policies/conftest/yaml-structure.rego
         engine: OPA
         required: true
         min_score: 100
@@ -415,7 +415,7 @@ policy_gates:
   - name: post-fix-validation-gate
     stage: post-fix
     policies:
-      - path: .config/conftest/policies/deep-validation.rego
+      - path: governance/policies/conftest/deep-validation.rego
         engine: OPA
         required: true
         min_score: 95

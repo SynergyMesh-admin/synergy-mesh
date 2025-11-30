@@ -29,7 +29,7 @@ directory-structure:
   required-directories:
     - ".github/workflows"
     - "docs"
-    - ".governance"
+    - "governance"
 
 # 腳本命名規範
 script-naming:

@@ -161,7 +161,7 @@ Auto-Fix Bot 支持委派任務至雲端代理程式，實現:
 
 - 📧 Email: support@autofix-bot.com
 - 💬 Discord: [加入社群](https://discord.gg/autofix-bot)
-- 📚 文檔: [完整文檔](https://docs.autofix-bot.com)
+- 📚 文檔: [完整文檔](https://docsconfig/autofix-bot.com)
 - 🐛 問題回報: [GitHub Issues](https://github.com/we-can-fix/synergymesh/issues)
 
 ## 📄 授權
