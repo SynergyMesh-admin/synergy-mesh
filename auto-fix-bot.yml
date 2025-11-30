@@ -1,6 +1,10 @@
 # Auto-Fix Bot Configuration File
 # 項目配置文件
 #
+# NOTE: This file is a required copy of .auto-fix-bot.yml for Tier 3 Auto-Fix Bot
+# System validation in CI. Both files are required by the integration-deployment workflow.
+# See .github/workflows/integration-deployment.yml for details.
+#
 # Metadata & Quality Baseline (第一層：元數據與質量基線)
 # ============================================================
 # version: 配置文件格式版本
