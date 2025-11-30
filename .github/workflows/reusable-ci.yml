@@ -152,7 +152,16 @@ jobs:
         if: steps.check-structure.outputs.has_package_json == 'true'
         run: |
           if npm run | grep -q "test"; then
-            npm test -- --ci --coverage
+            # Check if the test script uses Node.js native test runner
+            test_script=$(node -p "require('./package.json').scripts?.test || ''")
+            if echo "$test_script" | grep -q "node --test"; then
+              # Node.js native test runner doesn't support --ci or --coverage
+              echo "🔍 Detected Node.js native test runner, running without extra flags"
+              npm test
+            else
+              # Jest or other test runners support these flags
+              npm test -- --ci --coverage
+            fi
           else
             echo "⚠️ 略過 tests (無對應 script)"
           fi
