@@ -51,7 +51,7 @@ brew install conftest  # macOS
 wget https://github.com/open-policy-agent/conftest/releases/download/v0.49.1/conftest_0.49.1_Linux_x86_64.tar.gz
 
 # 測試特定文件
-conftest test deploy/deployment.yaml -p .config/conftest/policies/
+conftest test deploy/deployment.yaml -p governance/policies/conftest/
 ```
 
 **常見違規**:
@@ -210,7 +210,7 @@ npx @cyclonedx/cyclonedx-npm --output-file sbom.json
 
 4. **更新治理註冊表**
    ```yaml
-   # .governance/registry.yaml
+   # governance/registry.yaml
    new-service:
      id: new-service
      type: service
@@ -223,17 +223,17 @@ npx @cyclonedx/cyclonedx-npm --output-file sbom.json
 
 1. **編輯 Conftest 政策**
    ```bash
-   vim .config/conftest/policies/naming_policy.rego
+   vim governance/policies/conftest/naming_policy.rego
    ```
 
 2. **本地測試**
    ```bash
-   conftest test <test-file> -p .config/conftest/policies/
+   conftest test <test-file> -p governance/policies/conftest/
    ```
 
 3. **提交並創建 PR**
    ```bash
-   git add .config/conftest/policies/
+   git add governance/policies/conftest/
    git commit -m "chore: update conftest policies"
    git push
    ```

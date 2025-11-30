@@ -372,7 +372,7 @@ jobs:
 💡 **提示**: 所有修復已自動應用，請重新運行測試。
 
 [查看完整報告](https://autofix-bot.com/reports/abc123) | 
-[配置 Auto-Fix Bot](https://docs.autofix-bot.com)
+[配置 Auto-Fix Bot](https://docsconfig/autofix-bot.com)
 ```
 
 ---

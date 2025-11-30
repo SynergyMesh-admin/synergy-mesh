@@ -98,7 +98,7 @@ graph TB
 
 ```
 SynergyMesh Root
-├── .config/conftest/policies/matechat-integration/
+├── governance/policies/conftest/matechat-integration/
 │   ├── README.md                    # 整合策略文檔
 │   └── integration-policy.rego      # OPA 策略規則
 │
@@ -127,7 +127,7 @@ SynergyMesh Root
 ├── mcp-servers/
 │   └── ai-model-integration/        # AI 模型整合 (計劃中)
 │
-├── .governance/deployment/
+├── governance/deployment/
 │   └── matechat-services.yml        # 部署清單
 │
 └── docs/architecture/

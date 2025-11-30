@@ -11,7 +11,7 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 # 配置
-POLICY_DIR="${POLICY_DIR:-.config/conftest/policies}"
+POLICY_DIR="${POLICY_DIR:-governance/policies/conftest}"
 MANIFEST_DIR="${MANIFEST_DIR:-deploy}"
 REPORT_FILE="${REPORT_FILE:-artifacts/reports/naming/naming-violations.json}"
 

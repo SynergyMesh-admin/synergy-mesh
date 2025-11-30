@@ -53,7 +53,7 @@ synergymesh/
 │   │   └── components/
 │   └── package.json
 │
-└── .governance/              # 治理配置
+└── governance/              # 治理配置
     ├── registry.yaml         # 模組註冊表
     └── policies.yaml         # 基線政策
 ```
@@ -175,7 +175,7 @@ Level 3: 防篡改建置
 
 ### 3. 治理註冊表
 
-**位置**: `.governance/registry.yaml`
+**位置**: `governance/registry.yaml`
 
 **功能**:
 - 記錄所有模組元數據
@@ -185,7 +185,7 @@ Level 3: 防篡改建置
 
 ### 4. 政策引擎
 
-**位置**: `.config/conftest/policies/`
+**位置**: `governance/policies/conftest/`
 
 **功能**:
 - Kubernetes 資源驗證
@@ -253,5 +253,5 @@ Level 3: 防篡改建置
 - [快速開始](../QUICK_START.md)
 - [貢獻指南](../CONTRIBUTING.md)
 - [安全政策](../SECURITY.md)
-- [治理政策](.governance/policies.yaml)
-- [模組註冊表](.governance/registry.yaml)
+- [治理政策](governance/policies.yaml)
+- [模組註冊表](governance/registry.yaml)

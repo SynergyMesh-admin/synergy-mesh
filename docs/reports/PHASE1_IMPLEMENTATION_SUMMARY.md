@@ -113,7 +113,7 @@ system:
 
 ### 2. 自動修復規則庫（450+ 行）
 
-#### .autofix/rules/security-rules.yaml (200+ 行)
+#### config/autofix/rules/security-rules.yaml (200+ 行)
 **安全修復規則**
 
 **規則覆蓋**
@@ -144,7 +144,7 @@ system:
    - 模式：不安全的路徑拼接
    - 修復：路徑清理
 
-#### .autofix/rules/performance-rules.yaml (250+ 行)
+#### config/autofix/rules/performance-rules.yaml (250+ 行)
 **性能優化規則**
 
 **規則覆蓋**

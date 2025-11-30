@@ -49,7 +49,7 @@ python -m v1_python_drones.main --drone=deployment
 
 ### 透過自動化入口
 ```bash
-./automation-entry.sh
+./tools/scripts/automation-entry.sh
 # 選擇選項 1: 自動模式
 ```
 
@@ -99,7 +99,7 @@ python -m pytest v1-python-drones/tests/
 如需遷移至 v2 多語言島嶼系統，請參考 `/migration` 目錄中的遷移工具。
 
 ```bash
-./automation-entry.sh
+./tools/scripts/automation-entry.sh
 # 選擇選項 5: 版本遷移
 # 選擇 1: v1 → v2
 ```

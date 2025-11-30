@@ -157,7 +157,7 @@ by automation tools and support version compatibility verification.
 ```
 
 **示例模組 Example Modules:**
-- `.governance/module-environment-matrix.yml` - 環境需求映射
+- `governance/environment-matrix/module-environment-matrix.yml` - 環境需求映射
 - `.auto-fix-bot.yml` - Bot 配置
 - `cloud-agent-delegation.yml` - 代理委派配置
 
@@ -271,7 +271,7 @@ modules:
 | intelligent-automation/ | Popular | Python | pip, 可選 |
 | mcp-servers/ | Server-side | TypeScript | npm, 必需 |
 | scripts/ | Popular | Shell/Python | 條件式 |
-| .governance/ | Data Representation | YAML | N/A |
+| governance/environment-matrix/ | Data Representation | YAML | N/A |
 | advanced-system-src/ | Web | TypeScript | npm, 必需 |
 
 ---
@@ -282,7 +282,7 @@ modules:
 
 ```bash
 # 使用治理文件檢查
-cat .governance/module-environment-matrix.yml
+cat governance/environment-matrix/module-environment-matrix.yml
 
 # 或使用自動化腳本
 ./scripts/conditional-deploy.sh
@@ -332,7 +332,7 @@ cat .governance/module-environment-matrix.yml
 
 ## 📚 相關文檔 Related Documentation
 
-- [Module Environment Matrix](.governance/module-environment-matrix.yml)
+- [Module Environment Matrix](governance/environment-matrix/module-environment-matrix.yml)
 - [Conditional Deploy Script](../scripts/conditional-deploy.sh)
 - [Intelligent Automation README](../intelligent-automation/README.md)
 - [Auto-Fix Bot Configuration](../.auto-fix-bot.yml)

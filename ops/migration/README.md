@@ -28,7 +28,7 @@ migration/
 ### 透過 automation-entry.sh
 
 ```bash
-./automation-entry.sh
+./tools/scripts/automation-entry.sh
 # 選擇選項 5: 版本遷移 (v1 ↔ v2)
 ```
 

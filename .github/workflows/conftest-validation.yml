@@ -28,7 +28,7 @@ jobs:
             echo "檢查 deploy/ 目錄"
             find deploy -name "*.yaml" -o -name "*.yml" | while read file; do
               echo "驗證: $file"
-              conftest test "$file" -p .config/conftest/policies/ || true
+              conftest test "$file" -p governance/policies/conftest/ || true
             done
           fi
 
@@ -38,7 +38,7 @@ jobs:
             echo "檢查 templates/ 目錄"
             find templates -name "*.yaml" -o -name "*.yml" | while read file; do
               echo "驗證: $file"
-              conftest test "$file" -p .config/conftest/policies/ || true
+              conftest test "$file" -p governance/policies/conftest/ || true
             done
           fi
 

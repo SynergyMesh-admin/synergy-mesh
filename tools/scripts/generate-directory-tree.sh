@@ -44,10 +44,9 @@ SPECIAL_DIRS=(
   ".vscode"
   ".devcontainer"
   ".config"
-  ".autofix"
-  ".governance"
-  ".registry"
+  "config/autofix"
   ".docker-templates"
+  ".ci"
   "node_modules"
 )
 
@@ -114,10 +113,9 @@ declare -A SPECIAL_DIR_DESC=(
   [".vscode"]="VS Code 編輯器設定 / VS Code editor configuration"
   [".devcontainer"]="開發容器設定 / Development container configuration"
   [".config"]="專案設定檔案 / Project configuration files"
-  [".autofix"]="自動修復機制設定 / Auto-fix mechanism configuration"
-  [".governance"]="治理規則與政策 / Governance rules and policies"
-  [".registry"]="註冊表設定 / Registry configuration"
+  ["config/autofix"]="自動修復機制設定 / Auto-fix mechanism configuration"
   [".docker-templates"]="Docker 範本檔案 / Docker template files"
+  [".ci"]="CI 策略閘門設定 / CI policy gate configuration"
   ["node_modules"]="Node.js 依賴套件（已排除顯示）/ Node.js dependencies (excluded from display)"
 )
 

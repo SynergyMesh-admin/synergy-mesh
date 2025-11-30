@@ -65,7 +65,7 @@ ai-chat-service/
 
 ### 2. 整合策略與配置 - 治理層
 
-**位置**: `.config/conftest/policies/matechat-integration/`
+**位置**: `governance/policies/conftest/matechat-integration/`
 
 **內容**:
 - ✅ 整合策略文檔 (README.md)
@@ -80,7 +80,7 @@ ai-chat-service/
 
 ### 3. 部署清單與治理
 
-**位置**: `.governance/deployment/matechat-services.yml`
+**位置**: `governance/deployment/matechat-services.yml`
 
 **內容**:
 - ✅ Kubernetes 部署配置
@@ -327,7 +327,7 @@ npm start
 
 ```bash
 # 應用部署清單
-kubectl apply -f .governance/deployment/matechat-services.yml
+kubectl apply -f governance/deployment/matechat-services.yml
 
 # 驗證部署
 kubectl get pods -l app=ai-chat-service
@@ -557,8 +557,8 @@ ai_chat_error_rate
 
 - [架構設計](architecture/matechat-integration.md)
 - [API 文檔](../core/contract_service/contracts-L1/ai-chat-service/README.md)
-- [部署清單](../.governance/deployment/matechat-services.yml)
-- [整合策略](../.config/conftest/policies/matechat-integration/README.md)
+- [部署清單](../governance/deployment/matechat-services.yml)
+- [整合策略](../governance/policies/conftest/matechat-integration/README.md)
 
 ### 外部資源
 

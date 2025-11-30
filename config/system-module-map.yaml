@@ -535,7 +535,7 @@ root_directory_guidelines:
   hidden_directories:
     description: "隱藏目錄（應保留）"
     directories:
-      - ".autofix"
+      - "config/autofix"
       - ".ci"
       - ".config"
       - ".devcontainer"
@@ -543,7 +543,7 @@ root_directory_guidelines:
       - ".github"
       - ".github-private"
       - ".governance"
-      - ".registry"
+      - "governance/registry"
       - ".vscode"
 
 # ============================================================================

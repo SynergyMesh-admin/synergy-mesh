@@ -66,7 +66,7 @@ echo "  • Orchestrator:   ./orchestrator/island_orchestrator.py"
 echo "  • Islands:        ./islands/"
 echo ""
 echo "🔗 From repo root, you can also run:"
-echo "  • /workspace/run-v2.sh"
+echo "  • /workspace/tools/scripts/run-v2.sh"
 echo ""
 
 # Optional: Auto-start v2 system (uncomment if desired)
