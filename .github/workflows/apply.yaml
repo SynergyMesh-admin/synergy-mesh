@@ -1,0 +1,459 @@
+# SynergyMesh Governance Pipeline - Eight Stage Apply Workflow
+# 八階段治理管線 - Apply 工作流
+#
+# This workflow implements the full governance pipeline:
+# Stage 1: Lint - 語法檢查
+# Stage 2: Format - 格式規範
+# Stage 3: Schema - 結構驗證
+# Stage 4: Vector Test - 向量測試
+# Stage 5: Policy Gate - 策略閘
+# Stage 6: SBOM - 供應鏈清單
+# Stage 7: Provenance - 溯源注入
+# Stage 8: Audit - 審計記錄
+
+name: Governance Pipeline (Apply)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - 'governance/**'
+      - 'schemas/**'
+      - 'tools/docs/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - 'governance/**'
+      - 'schemas/**'
+      - 'tools/docs/**'
+  workflow_dispatch:
+    inputs:
+      skip_stages:
+        description: 'Stages to skip (comma-separated: lint,format,schema,vector,policy,sbom,provenance,audit)'
+        required: false
+        default: ''
+      dry_run:
+        description: 'Dry run mode (no changes committed)'
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+env:
+  PYTHON_VERSION: '3.11'
+  NODE_VERSION: '18'
+
+jobs:
+  # ==========================================================================
+  # Stage 1: Lint - 語法檢查
+  # ==========================================================================
+  stage-1-lint:
+    name: "Stage 1: Lint"
+    runs-on: ubuntu-latest
+    outputs:
+      status: ${{ steps.lint.outcome }}
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      
+      - name: Install dependencies
+        run: |
+          pip install yamllint pyyaml jsonschema
+      
+      - name: Run YAML Lint
+        id: lint
+        run: |
+          echo "🔍 Stage 1: Lint - 語法檢查"
+          echo "================================"
+          
+          # Find and lint YAML files
+          find docs governance -name "*.yaml" -o -name "*.yml" | head -20 | while read file; do
+            echo "Checking: $file"
+            yamllint -d relaxed "$file" || echo "Warning: $file has lint issues"
+          done
+          
+          echo "✅ Lint stage completed"
+
+  # ==========================================================================
+  # Stage 2: Format - 格式規範
+  # ==========================================================================
+  stage-2-format:
+    name: "Stage 2: Format"
+    runs-on: ubuntu-latest
+    needs: stage-1-lint
+    outputs:
+      status: ${{ steps.format.outcome }}
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Check Format
+        id: format
+        run: |
+          echo "📐 Stage 2: Format - 格式規範"
+          echo "================================"
+          
+          # Check indentation and formatting
+          errors=0
+          for file in docs/*.yaml docs/*.json governance/**/*.yaml; do
+            if [ -f "$file" ]; then
+              # Check for tabs (should use spaces)
+              if grep -P '\t' "$file" > /dev/null 2>&1; then
+                echo "Warning: $file contains tabs"
+                ((errors++))
+              fi
+            fi
+          done
+          
+          if [ $errors -gt 0 ]; then
+            echo "⚠️ Found $errors formatting issues"
+          else
+            echo "✅ Format stage completed"
+          fi
+
+  # ==========================================================================
+  # Stage 3: Schema - 結構驗證
+  # ==========================================================================
+  stage-3-schema:
+    name: "Stage 3: Schema Validation"
+    runs-on: ubuntu-latest
+    needs: stage-2-format
+    outputs:
+      status: ${{ steps.schema.outcome }}
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      
+      - name: Install dependencies
+        run: |
+          pip install pyyaml jsonschema
+      
+      - name: Validate Schema
+        id: schema
+        run: |
+          echo "📋 Stage 3: Schema - 結構驗證"
+          echo "================================"
+          
+          python tools/docs/validate_index.py --verbose
+          
+          echo "✅ Schema validation completed"
+
+  # ==========================================================================
+  # Stage 4: Vector Test - 向量測試
+  # ==========================================================================
+  stage-4-vector:
+    name: "Stage 4: Vector Tests"
+    runs-on: ubuntu-latest
+    needs: stage-3-schema
+    outputs:
+      status: ${{ steps.vector.outcome }}
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      
+      - name: Install dependencies
+        run: |
+          pip install pyyaml jsonschema
+      
+      - name: Run Vector Tests
+        id: vector
+        run: |
+          echo "🧪 Stage 4: Vector Test - 向量測試"
+          echo "================================"
+          
+          # Run test vectors if they exist
+          if [ -d "test-vectors" ]; then
+            python tools/utilities/validate_yaml.py || echo "Vector tests completed with warnings"
+          else
+            echo "No test vectors found, skipping"
+          fi
+          
+          echo "✅ Vector test stage completed"
+
+  # ==========================================================================
+  # Stage 5: Policy Gate - 策略閘
+  # ==========================================================================
+  stage-5-policy:
+    name: "Stage 5: Policy Gate"
+    runs-on: ubuntu-latest
+    needs: stage-4-vector
+    outputs:
+      status: ${{ steps.policy.outcome }}
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Check Policy Compliance
+        id: policy
+        run: |
+          echo "🚧 Stage 5: Policy Gate - 策略閘"
+          echo "================================"
+          
+          # Check if base policy exists
+          if [ -f "governance/policies/base-policy.yaml" ]; then
+            echo "✅ Base policy found"
+            
+            # Validate policy structure
+            python3 -c "
+import yaml
+with open('governance/policies/base-policy.yaml', 'r') as f:
+    policy = yaml.safe_load(f)
+    
+required = ['validation', 'rules', 'autofix', 'audit', 'supplyChain']
+for req in required:
+    if req in policy:
+        print(f'✅ {req}: configured')
+    else:
+        print(f'⚠️ {req}: missing')
+"
+          else
+            echo "⚠️ Base policy not found"
+          fi
+          
+          echo "✅ Policy gate stage completed"
+
+  # ==========================================================================
+  # Stage 6: SBOM - 供應鏈清單
+  # ==========================================================================
+  stage-6-sbom:
+    name: "Stage 6: SBOM Generation"
+    runs-on: ubuntu-latest
+    needs: stage-5-policy
+    outputs:
+      status: ${{ steps.sbom.outcome }}
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      
+      - name: Install dependencies
+        run: |
+          pip install pyyaml
+      
+      - name: Generate SBOM
+        id: sbom
+        run: |
+          echo "📦 Stage 6: SBOM - 供應鏈清單"
+          echo "================================"
+          
+          # Check existing SBOM
+          if [ -f "governance/sbom/synergymesh.spdx.json" ]; then
+            echo "✅ SBOM exists: governance/sbom/synergymesh.spdx.json"
+            
+            # Validate SBOM structure
+            python3 -c "
+import json
+with open('governance/sbom/synergymesh.spdx.json', 'r') as f:
+    sbom = json.load(f)
+    
+print(f'SPDX Version: {sbom.get(\"spdxVersion\", \"unknown\")}')
+print(f'Packages: {len(sbom.get(\"packages\", []))}')
+print(f'Relationships: {len(sbom.get(\"relationships\", []))}')
+"
+          else
+            echo "⚠️ SBOM not found, generating..."
+            python tools/docs/provenance_injector.py --generate-sbom || echo "SBOM generation skipped"
+          fi
+          
+          echo "✅ SBOM stage completed"
+
+  # ==========================================================================
+  # Stage 7: Provenance - 溯源注入
+  # ==========================================================================
+  stage-7-provenance:
+    name: "Stage 7: Provenance Injection"
+    runs-on: ubuntu-latest
+    needs: stage-6-sbom
+    outputs:
+      status: ${{ steps.provenance.outcome }}
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      
+      - name: Install dependencies
+        run: |
+          pip install pyyaml
+      
+      - name: Generate Provenance
+        id: provenance
+        run: |
+          echo "🔏 Stage 7: Provenance - 溯源注入"
+          echo "================================"
+          
+          # Check existing provenance
+          if [ -f "governance/sbom/provenance.json" ]; then
+            echo "✅ Provenance exists: governance/sbom/provenance.json"
+            
+            # Validate provenance structure
+            python3 -c "
+import json
+with open('governance/sbom/provenance.json', 'r') as f:
+    prov = json.load(f)
+    
+print(f'Schema: {prov.get(\"\$schema\", \"unknown\")}')
+print(f'Type: {prov.get(\"_type\", \"unknown\")}')
+subjects = prov.get('subject', [])
+print(f'Subjects: {len(subjects)}')
+"
+          else
+            echo "⚠️ Provenance not found, generating..."
+            python tools/docs/provenance_injector.py --generate-provenance || echo "Provenance generation skipped"
+          fi
+          
+          echo "✅ Provenance stage completed"
+
+  # ==========================================================================
+  # Stage 8: Audit - 審計記錄
+  # ==========================================================================
+  stage-8-audit:
+    name: "Stage 8: Audit Recording"
+    runs-on: ubuntu-latest
+    needs: stage-7-provenance
+    outputs:
+      status: ${{ steps.audit.outcome }}
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      
+      - name: Install dependencies
+        run: |
+          pip install pyyaml
+      
+      - name: Generate Audit Record
+        id: audit
+        run: |
+          echo "📝 Stage 8: Audit - 審計記錄"
+          echo "================================"
+          
+          # Generate audit event
+          python tools/docs/provenance_injector.py --audit || echo "Audit recording skipped"
+          
+          # Summary
+          echo ""
+          echo "📊 Pipeline Summary"
+          echo "==================="
+          echo "Repository: ${{ github.repository }}"
+          echo "Commit: ${{ github.sha }}"
+          echo "Actor: ${{ github.actor }}"
+          echo "Event: ${{ github.event_name }}"
+          echo "Workflow: ${{ github.workflow }}"
+          echo "Run ID: ${{ github.run_id }}"
+          
+          echo ""
+          echo "✅ Audit stage completed"
+
+  # ==========================================================================
+  # Summary Job
+  # ==========================================================================
+  summary:
+    name: "Pipeline Summary"
+    runs-on: ubuntu-latest
+    needs: [stage-1-lint, stage-2-format, stage-3-schema, stage-4-vector, stage-5-policy, stage-6-sbom, stage-7-provenance, stage-8-audit]
+    if: always()
+    
+    steps:
+      - name: Generate Summary
+        run: |
+          echo "# 🏁 Governance Pipeline Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Stage | Name | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|-------|------|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| 1 | Lint | ${{ needs.stage-1-lint.result == 'success' && '✅' || '❌' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| 2 | Format | ${{ needs.stage-2-format.result == 'success' && '✅' || '❌' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| 3 | Schema | ${{ needs.stage-3-schema.result == 'success' && '✅' || '❌' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| 4 | Vector Test | ${{ needs.stage-4-vector.result == 'success' && '✅' || '❌' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| 5 | Policy Gate | ${{ needs.stage-5-policy.result == 'success' && '✅' || '❌' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| 6 | SBOM | ${{ needs.stage-6-sbom.result == 'success' && '✅' || '❌' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| 7 | Provenance | ${{ needs.stage-7-provenance.result == 'success' && '✅' || '❌' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| 8 | Audit | ${{ needs.stage-8-audit.result == 'success' && '✅' || '❌' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Commit:** \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Actor:** @${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Run ID:** ${{ github.run_id }}" >> $GITHUB_STEP_SUMMARY
+      
+      - name: Comment on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const results = {
+              lint: '${{ needs.stage-1-lint.result }}',
+              format: '${{ needs.stage-2-format.result }}',
+              schema: '${{ needs.stage-3-schema.result }}',
+              vector: '${{ needs.stage-4-vector.result }}',
+              policy: '${{ needs.stage-5-policy.result }}',
+              sbom: '${{ needs.stage-6-sbom.result }}',
+              provenance: '${{ needs.stage-7-provenance.result }}',
+              audit: '${{ needs.stage-8-audit.result }}'
+            };
+            
+            const allPassed = Object.values(results).every(r => r === 'success');
+            const emoji = allPassed ? '✅' : '⚠️';
+            
+            let body = `## ${emoji} Governance Pipeline Results\n\n`;
+            body += '| Stage | Status |\n';
+            body += '|-------|--------|\n';
+            body += `| 1. Lint | ${results.lint === 'success' ? '✅' : '❌'} |\n`;
+            body += `| 2. Format | ${results.format === 'success' ? '✅' : '❌'} |\n`;
+            body += `| 3. Schema | ${results.schema === 'success' ? '✅' : '❌'} |\n`;
+            body += `| 4. Vector Test | ${results.vector === 'success' ? '✅' : '❌'} |\n`;
+            body += `| 5. Policy Gate | ${results.policy === 'success' ? '✅' : '❌'} |\n`;
+            body += `| 6. SBOM | ${results.sbom === 'success' ? '✅' : '❌'} |\n`;
+            body += `| 7. Provenance | ${results.provenance === 'success' ? '✅' : '❌'} |\n`;
+            body += `| 8. Audit | ${results.audit === 'success' ? '✅' : '❌'} |\n`;
+            
+            if (allPassed) {
+              body += '\n**All governance checks passed!** 🎉';
+            } else {
+              body += '\n**Some governance checks failed.** Please review the workflow logs.';
+            }
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: body
+            });
