@@ -72,17 +72,16 @@ directory_consolidation:
       - "ArchitectureStability"
 
   # ─────────────────────────────────────────────────────────────────────────
-  # Frontend Directories → frontend/ (前端目錄合併) ✓ COMPLETED
+  # Frontend Directories → frontend/ (前端目錄合併) ✓ COMPLETED + CONSOLIDATED
   # ─────────────────────────────────────────────────────────────────────────
   frontend_merge:
     target: "frontend/"
-    description: "合併所有前端相關目錄"
+    description: "合併所有前端相關目錄為統一套件"
     status: "completed"
     directories:
-      - path: "frontend/architecture/"
-        capabilities: ["ArchitectureVisualization"]
-      - path: "frontend/system-ui/"
-        capabilities: ["SystemUI", "CodeAnalyzerAPI"]
+      - path: "frontend/ui/"
+        capabilities: ["ArchitectureVisualization", "SystemUI", "CodeAnalyzerAPI"]
+        note: "Consolidated from frontend/architecture and frontend/system-ui"
       - path: "frontend/dist/"
         type: "build_output"
     unified_capabilities:
