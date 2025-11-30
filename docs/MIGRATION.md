@@ -1,125 +1,123 @@
-# SynergyMesh Directory Migration Guide
+# SynergyMesh Directory Structure Guide
 
 ## Overview
 
-This document describes the directory topology migration (Proposal v1) for the SynergyMesh project. The migration reorganizes the repository structure to improve maintainability, clarity, and separation of concerns.
+This document describes the repository structure for the SynergyMesh project.
 
-## Migration Summary
+## Current Directory Structure
 
-### Date
-November 2025
+```
+synergymesh/
+├── .github/                    # GitHub configurations
+│   └── workflows/             # CI/CD workflows
+├── core/                       # Core platform services
+│   ├── advisory-database/     # Advisory database service
+│   └── contract_service/      # Contract management
+│       └── contracts-L1/      # Layer 1 contracts
+├── mcp-servers/               # MCP server implementations
+├── frontend/                  # Frontend applications
+│   └── ui/                    # Main UI application
+├── automation/                # Automation tools
+├── bridges/                   # Language and system bridges
+├── config/                    # System configurations
+├── docs/                      # Documentation
+├── docker-templates/          # Docker template files
+├── governance/                # Governance policies
+├── infra/                     # Infrastructure configurations
+├── infrastructure/            # Infrastructure as code
+├── scripts/                   # Utility scripts
+├── shared/                    # Shared utilities
+├── tests/                     # Test suites
+├── tools/                     # Development tools
+├── v1-python-drones/          # v1 automation system (Python)
+├── v2-multi-islands/          # v2 multi-language automation
+├── docker-compose.yml         # Production Docker Compose
+├── docker-compose.dev.yml     # Development Docker Compose
+├── package.json               # Root package configuration
+└── tsconfig.json              # TypeScript configuration
+```
 
-### Purpose
-- Centralize meta-configuration under `.meta/`
-- Better organize platform components under `platform/`
-- Separate supply chain artifacts under `supply-chain/`
-- Improve infrastructure organization under `infra/`
-- Clearer application structure under `app/` and `services/`
+## Workspace Configuration
 
-## Directory Mapping
+The npm workspaces are configured as:
 
-### Meta Configuration (`.meta/`)
+```json
+{
+  "workspaces": [
+    "mcp-servers",
+    "core/contract_service/contracts-L1/contracts",
+    "core/advisory-database",
+    "frontend/ui"
+  ]
+}
+```
 
-| New Location | Original Location | Description |
-|--------------|-------------------|-------------|
-| `.meta/ci/` | `.github/workflows/` | CI/CD workflows and configurations |
-| `.meta/github/` | `.github/` | GitHub-specific configurations (CODEOWNERS, templates, etc.) |
-| `.meta/github-private/` | `.github-private/` | Private GitHub configurations |
-| `.meta/governance/` | `governance/` | Governance policies and schemas |
-| `.meta/vscode/` | `.vscode/` | VS Code workspace settings |
-| `.meta/devcontainer/` | `.devcontainer/` | Dev container configurations |
-| `.meta/policies/` | `governance/policies/conftest/` | Conftest policies (centralized) |
-| `.meta/registry/` | `governance/registry/` | Service/module registry |
-| `.meta/attest/` | `attest-build-provenance-main/` | Attestation templates and signing policies |
+## Key Directories
 
-### Supply Chain (`supply-chain/`)
+### Core Services (`core/`)
 
-| New Location | Original Location | Description |
-|--------------|-------------------|-------------|
-| `supply-chain/sbom/` | `governance/sbom/` | SBOM generation and provenance |
-| `supply-chain/attestations/` | (new) | SLSA/L3 evidence storage |
-| `supply-chain/registry/` | (optional) | Alternative registry location |
+- **advisory-database/**: Security advisory database and management
+- **contract_service/**: Contract management services
+  - **contracts-L1/contracts/**: Layer 1 contract service (main TypeScript service)
 
-### Platform Components (`platform/`)
+### MCP Servers (`mcp-servers/`)
 
-| New Location | Original Location | Description |
-|--------------|-------------------|-------------|
-| `platform/core/` | `core/` | Core platform services |
-| `platform/runtime/` | `runtime/` | Runtime components |
-| `platform/shared/` | `shared/` | Shared utilities and constants |
-| `platform/bridges/` | `bridges/` | Language and system bridges |
-| `platform/mcp/` | `mcp-servers/` | MCP server implementations |
-| `platform/agent/` | `agent/` | Agent services |
+Model Context Protocol server implementations for:
+- Code analysis
+- Security scanning
+- Test generation
+- Documentation generation
 
-### Application Layer (`app/`)
+### Frontend (`frontend/`)
 
-| New Location | Original Location | Description |
-|--------------|-------------------|-------------|
-| `app/frontend/ui/` | `frontend/ui/` | Frontend UI components |
+- **ui/**: Main user interface application
 
-### Services (`services/`)
+### Automation Systems
 
-| New Location | Original Location | Description |
-|--------------|-------------------|-------------|
-| `services/contracts/` | `contracts/` | Application layer contracts/ABI |
+- **v1-python-drones/**: Python-based automation (conceptual architecture)
+- **v2-multi-islands/**: Multi-language automation system (conceptual architecture)
 
-### Infrastructure (`infra/`)
+## Build Commands
 
-| New Location | Original Location | Description |
-|--------------|-------------------|-------------|
-| `infra/infrastructure/` | `infrastructure/` | Infrastructure configurations |
-| `infra/config/` | `config/` | System configurations |
-| `infra/runtime-profiles/` | (new) | Runtime environment profiles |
+```bash
+# Install dependencies
+npm install
 
-### Other Changes
+# Build all workspaces
+npm run build
 
-| New Location | Original Location | Description |
-|--------------|-------------------|-------------|
-| `docker-templates/` | `.docker-templates/` | Docker template files |
-| `tests/e2e/` | (new) | End-to-end tests |
-| `tests/integration/` | (new) | Integration tests |
-| `tests/unit/` | `tests/` | Unit tests |
-| `examples/` | (new) | Usage examples |
-| `scripts/` | (new) | Migration and generation tools |
-| `.config/conftest/` | `governance/policies/conftest/` | Conftest framework (policies in `.meta/policies/`) |
+# Run all tests
+npm run test
 
-## Migration Steps
+# Lint all workspaces
+npm run lint
+```
 
-### Automated Migration
+## Docker Deployment
 
-A migration script is provided at `scripts/migrate-topology.sh` (if available) to automate the directory restructuring.
+```bash
+# Start all services
+docker-compose up -d
 
-### Manual Migration
+# Start specific services
+docker-compose up -d contracts-l1
+docker-compose up -d mcp-servers
+docker-compose up -d dashboard
+```
 
-1. Create the new directory structure
-2. Copy files to new locations
-3. Update import paths in source files
-4. Update `package.json` workspace paths
-5. Update CI/CD workflow paths
-6. Test all builds and tests
+## CI/CD Workflows
 
-## Compatibility Layer
+Key workflows in `.github/workflows/`:
 
-See [BUILD_COMPAT.md](./BUILD_COMPAT.md) for information on maintaining backwards compatibility during the transition period.
+- **core-services-ci.yml**: CI for core services
+- **reusable-ci.yml**: Reusable CI pipeline
+- **project-cd.yml**: Reusable CD pipeline
+- **contracts-cd.yml**: Contracts service CD
+- **mcp-servers-cd.yml**: MCP Servers CD
+- **integration-deployment.yml**: Full integration & deployment
 
-## Verification
+## Related Documentation
 
-After migration, verify:
-
-1. All tests pass: `npm test`
-2. Build succeeds: `npm run build`
-3. Linting passes: `npm run lint`
-4. CI/CD workflows function correctly
-
-## Rollback
-
-If issues arise, the original directory structure is preserved. To rollback:
-
-1. Remove new directories
-2. The original directories remain intact for reference
-
-## Notes
-
-- Original directories are preserved during transition for reference
-- Symbolic links may be used for backwards compatibility
-- Update any external references to the repository structure
+- [BUILD_COMPAT.md](./BUILD_COMPAT.md) - Build configuration guide
+- [README.md](../README.md) - Project overview
+- [CONTRIBUTING.md](../CONTRIBUTING.md) - Contribution guidelines

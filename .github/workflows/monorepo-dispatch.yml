@@ -19,7 +19,6 @@ jobs:
     outputs:
       mcp-servers: ${{ steps.filter.outputs.mcp-servers }}
       contracts: ${{ steps.filter.outputs.contracts }}
-      advanced-system: ${{ steps.filter.outputs.advanced-system }}
     steps:
       - name: 📥 Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -33,8 +32,6 @@ jobs:
               - 'mcp-servers/**'
             contracts:
               - 'core/contract_service/contracts-L1/contracts/**'
-            advanced-system:
-              - 'advanced-system-src/**'
 
   ci-mcp-servers:
     needs: detect-changes
@@ -58,19 +55,8 @@ jobs:
       enable-docker-build: true
       enable-sbom: true
 
-  ci-advanced-system:
-    needs: detect-changes
-    if: needs.detect-changes.outputs.advanced-system == 'true'
-    uses: ./.github/workflows/reusable-ci.yml
-    with:
-      working-directory: advanced-system-src
-      service-name: advanced-system
-      node-version: '18'
-      enable-docker-build: false
-      enable-sbom: true
-
   summary:
-    needs: [detect-changes, ci-mcp-servers, ci-contracts, ci-advanced-system]
+    needs: [detect-changes, ci-mcp-servers, ci-contracts]
     if: always()
     runs-on: ubuntu-latest
     steps:
@@ -82,4 +68,3 @@ jobs:
           echo "|--------|------|----------|" >> $GITHUB_STEP_SUMMARY
           echo "| MCP Servers | ${{ needs.ci-mcp-servers.result || 'skipped' }} | ${{ needs.detect-changes.outputs.mcp-servers }} |" >> $GITHUB_STEP_SUMMARY
           echo "| Contracts | ${{ needs.ci-contracts.result || 'skipped' }} | ${{ needs.detect-changes.outputs.contracts }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Advanced System | ${{ needs.ci-advanced-system.result || 'skipped' }} | ${{ needs.detect-changes.outputs.advanced-system }} |" >> $GITHUB_STEP_SUMMARY
