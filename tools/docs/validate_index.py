@@ -64,9 +64,24 @@ def validate_against_schema(data: dict[str, Any], schema: dict[str, Any]) -> lis
     return errors
 
 
-def validate_required_fields(doc: dict[str, Any], doc_id: str) -> list[str]:
-    """Check that all required fields are present in a document entry."""
-    required_fields = ['id', 'path', 'title', 'domain', 'layer', 'type', 'tags', 'owner', 'status', 'description']
+def validate_required_fields(doc: dict[str, Any], doc_id: str, schema: dict[str, Any] | None = None) -> list[str]:
+    """Check that all required fields are present in a document entry.
+    
+    If schema is provided, required fields are extracted from the schema.
+    Otherwise, falls back to default required fields.
+    """
+    # Extract required fields from schema if available
+    if schema and 'properties' in schema:
+        items_schema = schema.get('properties', {}).get('items', {})
+        if items_schema.get('type') == 'array' and 'items' in items_schema:
+            item_schema = items_schema['items']
+            required_fields = item_schema.get('required', [])
+        else:
+            required_fields = ['id', 'path', 'title', 'domain', 'layer', 'type', 'tags', 'owner', 'status', 'description']
+    else:
+        # Default required fields for backward compatibility
+        required_fields = ['id', 'path', 'title', 'domain', 'layer', 'type', 'tags', 'owner', 'status', 'description']
+    
     errors = []
     for field in required_fields:
         if field not in doc:
@@ -159,6 +174,7 @@ def main():
 
     # Collect all errors
     all_errors = []
+    schema = None
 
     # JSON Schema validation
     if not args.skip_schema and schema_path.exists():
@@ -197,8 +213,8 @@ def main():
     for doc in documents:
         doc_id = doc.get('id', '<unknown>')
         
-        # Check required fields
-        all_errors.extend(validate_required_fields(doc, doc_id))
+        # Check required fields (using schema if available)
+        all_errors.extend(validate_required_fields(doc, doc_id, schema))
         
         # Check file exists
         if 'path' in doc:
