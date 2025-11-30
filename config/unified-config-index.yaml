@@ -42,26 +42,24 @@ master_configs:
 # Directory Consolidation Plan (目錄合併計畫)
 # ============================================================================
 # 減少根目錄子目錄數量，將相關目錄合併
+# STATUS: COMPLETED - All directories have been consolidated
 directory_consolidation:
   
   # ─────────────────────────────────────────────────────────────────────────
-  # Automation Directories → automation/ (自動化目錄合併)
+  # Automation Directories → automation/ (自動化目錄合併) ✓ COMPLETED
   # ─────────────────────────────────────────────────────────────────────────
   automation_merge:
     target: "automation/"
     description: "合併所有自動化相關目錄"
-    source_directories:
-      - path: "intelligent-automation/"
-        new_path: "automation/intelligent/"
+    status: "completed"
+    directories:
+      - path: "automation/intelligent/"
         capabilities: ["TaskOrchestration", "IntentUnderstanding"]
-      - path: "intelligent-hyperautomation/"
-        new_path: "automation/hyperautomation/"
+      - path: "automation/hyperautomation/"
         capabilities: ["HyperautomationPolicies", "UAVGovernance"]
-      - path: "automation-architect/"
-        new_path: "automation/architect/"
+      - path: "automation/architect/"
         capabilities: ["ArchitectureAnalysis", "RepairEngine"]
-      - path: "autonomous-system/"
-        new_path: "automation/autonomous/"
+      - path: "automation/autonomous/"
         capabilities: ["APIGovernance", "ArchitectureStability"]
     unified_capabilities:
       - "TaskOrchestration"
@@ -74,20 +72,18 @@ directory_consolidation:
       - "ArchitectureStability"
 
   # ─────────────────────────────────────────────────────────────────────────
-  # Frontend Directories → frontend/ (前端目錄合併)
+  # Frontend Directories → frontend/ (前端目錄合併) ✓ COMPLETED
   # ─────────────────────────────────────────────────────────────────────────
   frontend_merge:
     target: "frontend/"
     description: "合併所有前端相關目錄"
-    source_directories:
-      - path: "advanced-architecture/"
-        new_path: "frontend/architecture/"
+    status: "completed"
+    directories:
+      - path: "frontend/architecture/"
         capabilities: ["ArchitectureVisualization"]
-      - path: "advanced-system-src/"
-        new_path: "frontend/system-ui/"
+      - path: "frontend/system-ui/"
         capabilities: ["SystemUI", "CodeAnalyzerAPI"]
-      - path: "advanced-system-dist/"
-        new_path: "frontend/dist/"
+      - path: "frontend/dist/"
         type: "build_output"
     unified_capabilities:
       - "ArchitectureVisualization"
@@ -95,20 +91,18 @@ directory_consolidation:
       - "CodeAnalyzerAPI"
 
   # ─────────────────────────────────────────────────────────────────────────
-  # Testing Directories → tests/ (測試目錄合併)
+  # Testing Directories → tests/ (測試目錄合併) ✓ COMPLETED
   # ─────────────────────────────────────────────────────────────────────────
   testing_merge:
     target: "tests/"
     description: "合併所有測試相關目錄"
-    source_directories:
-      - path: "tests/"
-        new_path: "tests/unit/"
+    status: "completed"
+    directories:
+      - path: "tests/unit/"
         capabilities: ["UnitTests"]
-      - path: "test-vectors/"
-        new_path: "tests/vectors/"
+      - path: "tests/vectors/"
         capabilities: ["TestVectors", "ValidationData"]
-      - path: "performance-tests/"
-        new_path: "tests/performance/"
+      - path: "tests/performance/"
         capabilities: ["PerformanceTests", "LoadTests"]
     unified_capabilities:
       - "UnitTests"
@@ -123,18 +117,20 @@ directory_consolidation:
   infrastructure_merge:
     target: "infrastructure/"
     description: "合併所有基礎設施相關目錄"
-    source_directories:
-      - path: "k8s/"
-        new_path: "infrastructure/kubernetes/"
+  # Infrastructure Directories → infrastructure/ (基礎設施目錄合併) ✓ COMPLETED
+  # ─────────────────────────────────────────────────────────────────────────
+  infrastructure_merge:
+    target: "infrastructure/"
+    description: "合併所有基礎設施相關目錄"
+    status: "completed"
+    directories:
+      - path: "infrastructure/kubernetes/"
         capabilities: ["Deployment", "Services", "Monitoring"]
-      - path: "monitoring/"
-        new_path: "infrastructure/monitoring/"
+      - path: "infrastructure/monitoring/"
         capabilities: ["MetricsCollection", "AlertManagement"]
-      - path: "canary/"
-        new_path: "infrastructure/canary/"
+      - path: "infrastructure/canary/"
         capabilities: ["CanaryDeployment"]
-      - path: "drift/"
-        new_path: "infrastructure/drift/"
+      - path: "infrastructure/drift/"
         capabilities: ["DriftDetection"]
     unified_capabilities:
       - "Deployment"
@@ -146,20 +142,18 @@ directory_consolidation:
       - "DriftDetection"
 
   # ─────────────────────────────────────────────────────────────────────────
-  # Tools & Scripts → tools/ (工具腳本目錄合併)
+  # Tools & Scripts → tools/ (工具腳本目錄合併) ✓ COMPLETED
   # ─────────────────────────────────────────────────────────────────────────
   tools_merge:
     target: "tools/"
     description: "合併所有工具與腳本相關目錄"
-    source_directories:
-      - path: "scripts/"
-        new_path: "tools/scripts/"
+    status: "completed"
+    directories:
+      - path: "tools/scripts/"
         capabilities: ["AutomationScripts"]
-      - path: "tools/"
-        new_path: "tools/utilities/"
+      - path: "tools/utilities/"
         capabilities: ["Utilities"]
-      - path: "ci/"
-        new_path: "tools/ci/"
+      - path: "tools/ci/"
         capabilities: ["CIHelpers"]
     unified_capabilities:
       - "AutomationScripts"
@@ -167,26 +161,22 @@ directory_consolidation:
       - "CIHelpers"
 
   # ─────────────────────────────────────────────────────────────────────────
-  # Governance & Policy → governance/ (治理政策目錄合併)
+  # Governance & Policy → governance/ (治理政策目錄合併) ✓ COMPLETED
   # ─────────────────────────────────────────────────────────────────────────
   governance_merge:
     target: "governance/"
     description: "合併所有治理與政策相關目錄"
-    source_directories:
-      - path: "governance/"
-        new_path: "governance/rules/"
+    status: "completed"
+    directories:
+      - path: "governance/rules/"
         capabilities: ["GovernanceRules"]
-      - path: "policy/"
-        new_path: "governance/policies/"
+      - path: "governance/policies/"
         capabilities: ["PolicyDefinitions"]
-      - path: "schemas/"
-        new_path: "governance/schemas/"
+      - path: "governance/schemas/"
         capabilities: ["SchemaDefinitions"]
-      - path: "sbom/"
-        new_path: "governance/sbom/"
+      - path: "governance/sbom/"
         capabilities: ["SoftwareBillOfMaterials"]
-      - path: "audit/"
-        new_path: "governance/audit/"
+      - path: "governance/audit/"
         capabilities: ["AuditLogs"]
     unified_capabilities:
       - "GovernanceRules"
@@ -196,26 +186,22 @@ directory_consolidation:
       - "AuditLogs"
 
   # ─────────────────────────────────────────────────────────────────────────
-  # Operations → ops/ (運維目錄合併)
+  # Operations → ops/ (運維目錄合併) ✓ COMPLETED
   # ─────────────────────────────────────────────────────────────────────────
   operations_merge:
     target: "ops/"
     description: "合併所有運維相關目錄"
-    source_directories:
-      - path: "runbooks/"
-        new_path: "ops/runbooks/"
+    status: "completed"
+    directories:
+      - path: "ops/runbooks/"
         capabilities: ["Runbooks"]
-      - path: "reports/"
-        new_path: "ops/reports/"
+      - path: "ops/reports/"
         capabilities: ["Reports"]
-      - path: "artifacts/"
-        new_path: "ops/artifacts/"
+      - path: "ops/artifacts/"
         capabilities: ["BuildArtifacts"]
-      - path: "migration/"
-        new_path: "ops/migration/"
+      - path: "ops/migration/"
         capabilities: ["MigrationTools"]
-      - path: "onboarding/"
-        new_path: "ops/onboarding/"
+      - path: "ops/onboarding/"
         capabilities: ["Onboarding"]
     unified_capabilities:
       - "Runbooks"
@@ -225,12 +211,13 @@ directory_consolidation:
       - "Onboarding"
 
 # ============================================================================
-# Root Files Consolidation (根目錄檔案整合)
+# Root Files Consolidation (根目錄檔案整合) - STATUS: COMPLETED
 # ============================================================================
 root_files_consolidation:
+  status: "completed"
   
-  # Move to docs/
-  move_to_docs:
+  # Moved to docs/ - COMPLETED
+  moved_to_docs:
     - source: "ADVANCED_SYSTEM_INTEGRATION.md"
       target: "docs/architecture/ADVANCED_SYSTEM_INTEGRATION.md"
     - source: "AUTO_FIX_BOT.md"
