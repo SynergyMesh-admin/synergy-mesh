@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://schema.synergymesh.io/docs-index/v1",
-  "title": "SynergyMesh Docs Index Schema v1",
-  "description": "Schema for docs index - defines document entries for agents/validators/CI governance",
+  "title": "SynergyMesh Docs Index Schema v1 (Mirror)",
+  "description": "治理鏡像：定義 SynergyMesh 文件/資產索引之權威結構，支援系統↔系統治理、跨平台掛載與供應鏈證據。",
   "type": "object",
   "required": ["version", "items"],
   "properties": {
@@ -14,7 +14,7 @@
     "version": {
       "type": "string",
       "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
-      "description": "Index file version (semantic versioning)"
+      "description": "索引檔版本（語義化版本，例如 1.0.0）"
     },
     "namespace": {
       "type": "string",
@@ -36,12 +36,12 @@
         },
         "required": ["name"]
       },
-      "description": "Document category definitions"
+      "description": "文檔分類定義"
     },
     "layers": {
       "type": "array",
       "items": { "type": "string" },
-      "description": "Architecture layer definitions"
+      "description": "架構層定義"
     },
     "items": {
       "type": "array",
@@ -64,18 +64,18 @@
           "id": {
             "type": "string",
             "pattern": "^[a-z0-9]+([a-z0-9-_]*[a-z0-9])?$",
-            "description": "Unique identifier, globally unique, short, traceable"
+            "description": "唯一識別符（全域唯一），建議含域前綴；例：docs-core-overview"
           },
           "path": {
             "type": "string",
             "pattern": "^(?:[A-Za-z0-9._\\-/]+)$",
-            "description": "Relative repository path or URL; prefer relative paths"
+            "description": "資產相對路徑或 URL；建議使用相對倉庫根之穩定路徑"
           },
           "title": {
             "type": "string",
             "minLength": 3,
             "maxLength": 120,
-            "description": "Document or asset title"
+            "description": "資產標題（面向人類與系統的摘要）"
           },
           "domain": {
             "type": "string",
@@ -102,7 +102,7 @@
               "security",
               "guides"
             ],
-            "description": "Asset business or technical domain"
+            "description": "資產所屬業務或技術域"
           },
           "layer": {
             "type": "string",
@@ -125,7 +125,7 @@
               "enablement",
               "governance-ops"
             ],
-            "description": "System structure layer mapping"
+            "description": "系統結構圖層映射"
           },
           "type": {
             "type": "string",
@@ -151,7 +151,7 @@
               "guide",
               "api-reference"
             ],
-            "description": "Specific asset type"
+            "description": "具體資產類型"
           },
           "tags": {
             "type": "array",
@@ -160,24 +160,24 @@
               "type": "string",
               "pattern": "^[a-z0-9]+([a-z0-9-_]*[a-z0-9])?$"
             },
-            "description": "Free tags for search and classification"
+            "description": "自由標籤，用於檢索與分類"
           },
           "owner": {
             "type": "string",
             "minLength": 2,
             "maxLength": 80,
-            "description": "Responsible owner, can be team or agent name"
+            "description": "責任所有者，可為團隊或代理名稱"
           },
           "status": {
             "type": "string",
             "enum": ["draft", "stable", "deprecated", "archived", "experimental"],
-            "description": "Asset lifecycle status"
+            "description": "資產生命週期狀態"
           },
           "description": {
             "type": "string",
             "minLength": 1,
             "maxLength": 400,
-            "description": "Brief description of purpose and scope"
+            "description": "簡述用途與範圍"
           },
           "last_reviewed": {
             "type": "string",
@@ -203,7 +203,7 @@
                 "baremetal"
               ]
             },
-            "description": "Applicable platforms (optional), for cross-platform work"
+            "description": "適用平台（可選），為跨平台工作預留"
           },
           "languages": {
             "type": "array",
@@ -211,7 +211,7 @@
               "type": "string",
               "enum": ["typescript", "javascript", "python", "go", "cpp", "rust", "java", "yaml", "json", "markdown"]
             },
-            "description": "Related languages (optional)"
+            "description": "相關語言（可選）"
           },
           "provenance": {
             "type": "object",
@@ -221,7 +221,7 @@
               "signatureRef": { "type": "string" }
             },
             "additionalProperties": false,
-            "description": "Supply chain provenance reference (optional)"
+            "description": "供應鏈溯源參考（可選）"
           },
           "sbom": {
             "type": "object",
@@ -230,7 +230,7 @@
               "ref": { "type": "string" }
             },
             "additionalProperties": false,
-            "description": "SBOM reference (optional)"
+            "description": "SBOM 參考（可選）"
           },
           "links": {
             "type": "array",
@@ -242,11 +242,11 @@
                 "href": { "type": "string" }
               }
             },
-            "description": "Related links (e.g., original docs, design diagrams, API)"
+            "description": "相關連結（如原始文檔、設計圖、API）"
           },
           "meta": {
             "type": "object",
-            "description": "Free extension fields for specific agents or platforms"
+            "description": "自由擴充欄位，供特定代理或平台使用"
           }
         },
         "additionalProperties": false
@@ -266,7 +266,7 @@
           }
         }
       },
-      "description": "Relationships between documents"
+      "description": "文檔間關係"
     }
   },
   "additionalProperties": false
