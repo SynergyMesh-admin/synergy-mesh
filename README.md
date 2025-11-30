@@ -498,3 +498,112 @@ Code Quality CI     ────┘
 @copilot 文檔                         # 查看系統文檔
 ```
 
+## 🏛️ Structural Governance System (結構治理系統)
+
+SynergyMesh implements a comprehensive **SuperRoot-style schema namespace** and **autonomous governance infrastructure** for system-to-system governance.
+
+### 📋 Schema Namespace
+
+The docs-index schema (`$schema: https://schema.synergymesh.io/docs-index/v1`) provides:
+
+- **Required Metadata Fields**: id, path, title, domain, layer, type, tags, owner, status, description
+- **Optional Supply Chain Fields**: platforms, languages, provenance, sbom, signature, links, meta
+- **JSON Schema Draft 2020-12**: Strict validation with controlled vocabulary
+
+```yaml
+# docs/knowledge_index.yaml
+$schema: "https://schema.synergymesh.io/docs-index/v1"
+version: "1.0.0"
+items:
+  - id: "docs-architecture-overview"
+    path: "docs/architecture/layers.md"
+    title: "Architecture Overview"
+    domain: "architecture"
+    layer: "platform-core"
+    type: "reference"
+    tags: ["architecture", "overview"]
+    owner: "platform-team"
+    status: "stable"
+    description: "System architecture documentation"
+```
+
+### 🔧 Governance Tools
+
+| Tool | Path | Description |
+|------|------|-------------|
+| **Index Validator** | `tools/docs/validate_index.py` | Schema validation against JSON Schema |
+| **Repository Scanner** | `tools/docs/scan_repo_generate_index.py` | Auto-scan repository to generate docs index |
+| **Provenance Injector** | `tools/docs/provenance_injector.py` | SLSA L3 evidence injection, SBOM generation |
+| **PR Summary Generator** | `tools/docs/pr_comment_summary.py` | Governance pipeline results summary |
+
+### 📜 Policy Configuration
+
+**Base Policy** (`governance/policies/base-policy.yaml`) defines:
+
+- **Seven-Stage Validation Chain**: Lint → Format → Schema → Vector Test → Policy Gate → SBOM → Signature
+- **Naming Rules**: ID patterns, path conventions, controlled vocabulary
+- **Autofix Configuration**: Triggers, behavior, limits
+- **Supply Chain**: SLSA L3, SBOM format, provenance settings
+
+### 🔄 Ten-Stage Governance Pipeline
+
+The **Structural Apply Pipeline** (`.github/workflows/apply.yaml`) implements:
+
+| Stage | Name | Description |
+|-------|------|-------------|
+| 1 | Lint | YAML/JSON syntax check |
+| 2 | Format | Formatting rules validation |
+| 3 | Schema | JSON Schema validation |
+| 4 | Vector Test | Test vectors validation |
+| 5 | Policy Gate | OPA/Conftest policy check |
+| 6 | K8s Validation | Kubernetes manifest validation (kubeval, kubeconform) |
+| 7 | SBOM | Software Bill of Materials generation |
+| 8 | Provenance | SLSA evidence injection |
+| 9 | Cosign Sign | Sigstore keyless signing |
+| 10 | Audit | Audit event recording |
+
+**Multi-Language Support**: Python 3.10, Node.js 20, Rust stable, Go 1.22, Java 17
+
+**Autofix Dispatch**: Automatic remediation PR creation on governance failures
+
+### 📊 Quick Example
+
+```bash
+# Validate docs index
+python tools/docs/validate_index.py --verbose
+
+# Scan repository and generate index
+python tools/docs/scan_repo_generate_index.py --dry-run
+
+# Generate SLSA provenance
+python tools/docs/provenance_injector.py --generate-provenance
+
+# Generate SBOM
+python tools/docs/provenance_injector.py --generate-sbom
+```
+
+### 📁 Governance Structure
+
+```
+governance/
+├── schemas/
+│   └── docs-index.schema.json     # 治理鏡像 - JSON Schema v1
+├── policies/
+│   ├── base-policy.yaml           # 基礎策略閘配置
+│   └── manifest-policies.rego     # OPA policy rules
+├── audit/
+│   └── format.yaml                # 審計事件格式定義
+├── sbom/
+│   ├── provenance.json            # SLSA 溯源紀錄
+│   ├── synergymesh.spdx.json      # SPDX SBOM
+│   └── docs-provenance.json       # 文檔溯源
+└── rules/
+    └── ...                        # 治理規則
+```
+
+For detailed documentation, see:
+- [Docs Index Schema](governance/schemas/docs-index.schema.json)
+- [Base Policy Configuration](governance/policies/base-policy.yaml)
+- [Audit Format](governance/audit/format.yaml)
+- [Knowledge Index](docs/knowledge_index.yaml)
+
