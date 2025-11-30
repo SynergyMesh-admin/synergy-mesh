@@ -101,11 +101,15 @@ jobs:
           fi
           
           # 檢查 package-lock.json 位置（支援 monorepo/workspace）
+          # 注意：cache-dependency-path 需要從 repository root 開始的路徑
           if [ -f "package-lock.json" ]; then
+            # 工作目錄中有 package-lock.json
             echo "lock_file_path=${{ inputs.working-directory }}/package-lock.json" >> $GITHUB_OUTPUT
           elif [ -f "${{ github.workspace }}/package-lock.json" ]; then
+            # 使用 root 目錄的 package-lock.json（適用於 monorepo/workspace）
             echo "lock_file_path=package-lock.json" >> $GITHUB_OUTPUT
           else
+            # 沒有找到 package-lock.json，停用快取
             echo "lock_file_path=" >> $GITHUB_OUTPUT
           fi
 
