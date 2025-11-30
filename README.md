@@ -6,6 +6,13 @@
 >
 > ✨ *Transforming enterprises through AI-powered workflows and unified digital experiences.*
 
+## 🤖 Unmanned Island
+
+<a href="https://github.com/Unmanned-Island-admin/SynergyMesh"><img src="https://img.shields.io/badge/Efficiency-⚡_Rapid_Response-brightgreen?style=for-the-badge"></a>
+<a href="https://github.com/Unmanned-Island-admin/SynergyMesh"><img src="https://img.shields.io/badge/Multi--Language-15+_Supported-blue?style=for-the-badge"></a>
+<a href="https://github.com/Unmanned-Island-admin/SynergyMesh"><img src="https://img.shields.io/badge/Availability-24%2F7_Support-orange?style=for-the-badge"></a>
+<a href="https://github.com/Unmanned-Island-admin/SynergyMesh"><img src="https://img.shields.io/badge/Cloud-Native_Integration-purple?style=for-the-badge"></a>
+
 ---
 
 ## 🌟 Features
@@ -34,45 +41,165 @@
 
 ## 📁 Structure
 
-The repository has been consolidated into a cleaner directory structure:
+倉庫已整合成更清晰的目錄結構：
 
-- `automation/` - 🤖 All automation-related modules (consolidated)
-  - `intelligent/` - Multi-agent AI system for autonomous code analysis
-  - `hyperautomation/` - Hyperautomation policies and UAV governance
-  - `architect/` - Architecture analysis and repair engine
-  - `autonomous/` - Five-skeleton autonomous drone/self-driving system framework
-- `frontend/` - 🎨 Frontend applications (consolidated)
-  - `architecture/` - Architecture visualization
-  - `system-ui/` - System UI source code
-  - `dist/` - Build output
-- `infrastructure/` - 🏗️ Infrastructure configurations (consolidated)
-  - `kubernetes/` - Kubernetes deployment configurations
-  - `monitoring/` - Monitoring and alerting
-  - `canary/` - Canary deployment configurations
-  - `drift/` - Drift detection
-- `tests/` - 🧪 All testing (consolidated)
-  - `unit/` - Unit tests
-  - `vectors/` - Test vectors
-  - `performance/` - Performance tests
-- `governance/` - ⚖️ Governance and policies (consolidated)
-  - `rules/` - Governance rules
-  - `policies/` - Policy definitions
-  - `schemas/` - Schema definitions
-- `tools/` - 🔧 Tools and scripts (consolidated)
-  - `scripts/` - Automation scripts
-  - `utilities/` - Utility tools
-  - `ci/` - CI helper tools
-- `ops/` - 📋 Operations (consolidated)
-  - `runbooks/` - Operational runbooks
-  - `reports/` - Reports
-  - `artifacts/` - Build artifacts
-- `config/` - ⚙️ Configuration files (consolidated from root)
-- `docs/` - 📚 Documentation (organized into subdirectories)
-- `core/` - 🏛️ Core platform services
-  - `contracts/` - Contract management services
-    - `contracts-L1/` - Layer 1 contract management
-- `mcp-servers/` - MCP server implementations
-- `.github/` - GitHub Actions workflows and configurations
+### 🗂️ 完整倉庫結構圖
+
+```
+SynergyMesh/
+├── 📁 automation/                    # 🤖 自動化模組
+│   ├── architect/                    # 架構分析和修復引擎
+│   ├── autonomous/                   # 五骨架自駕/無人機自主系統框架
+│   ├── hyperautomation/              # 超自動化策略和無人機治理
+│   ├── intelligent/                  # 多代理 AI 代碼分析系統
+│   └── zero_touch_deployment.py      # 零接觸部署腳本
+│
+├── 📁 core/                          # 🏛️ 核心平台服務
+│   ├── advisory-database/            # 安全諮詢數據庫
+│   ├── ai_constitution/              # AI 憲法和倫理
+│   ├── ai_decision_engine.py         # AI 決策引擎
+│   ├── auto_bug_detector.py          # 自動錯誤檢測
+│   ├── auto_governance_hub.py        # 自動化治理中心
+│   ├── autonomous_trust_engine.py    # 信任管理引擎
+│   ├── ci_error_handler/             # CI 錯誤處理
+│   ├── cloud_agent_delegation/       # 雲端代理任務委派
+│   ├── context_understanding_engine.py # 上下文理解引擎
+│   ├── contracts/                    # 合約管理服務（L1）
+│   ├── execution_architecture/       # 執行架構
+│   ├── execution_engine/             # 代碼執行引擎
+│   ├── hallucination_detector.py     # AI 幻覺檢測
+│   ├── main_system/                  # 主系統核心
+│   ├── mcp_servers_enhanced/         # 增強型 MCP 服務器
+│   ├── monitoring_system/            # 系統監控
+│   ├── safety_mechanisms/            # 安全機制
+│   ├── slsa_provenance/              # SLSA 溯源支持
+│   ├── tech_stack/                   # 技術棧定義
+│   ├── training_system/              # AI 訓練系統
+│   ├── unified_integration/          # 統一整合層
+│   ├── virtual_experts/              # 虛擬專家系統
+│   └── yaml_module_system/           # 基於 YAML 的模組系統
+│
+├── 📁 frontend/                      # 🎨 前端應用程式
+│   └── ui/                           # 系統 UI 源碼
+│
+├── 📁 infrastructure/                # 🏗️ 基礎設施配置
+│   ├── canary/                       # 金絲雀部署配置
+│   ├── drift/                        # 基礎設施漂移檢測
+│   ├── kubernetes/                   # Kubernetes 部署清單
+│   └── monitoring/                   # 監控和告警配置
+│
+├── 📁 tests/                         # 🧪 測試套件
+│   ├── performance/                  # 性能測試
+│   ├── unit/                         # 單元測試
+│   └── vectors/                      # 測試向量
+│
+├── 📁 governance/                    # ⚖️ 治理和策略
+│   ├── audit/                        # 審計配置
+│   ├── policies/                     # 策略定義
+│   ├── rules/                        # 治理規則
+│   ├── sbom/                         # 軟體物料清單
+│   └── schemas/                      # Schema 定義
+│
+├── 📁 tools/                         # 🔧 工具和腳本
+│   ├── ci/                           # CI 輔助工具
+│   ├── scripts/                      # 自動化腳本
+│   └── utilities/                    # 實用工具
+│
+├── 📁 ops/                           # 📋 運維
+│   ├── artifacts/                    # 構建產物
+│   ├── migration/                    # 遷移腳本
+│   ├── onboarding/                   # 入職資源
+│   ├── reports/                      # 生成報告
+│   └── runbooks/                     # 運維手冊
+│
+├── 📁 config/                        # ⚙️ 配置文件
+│   ├── ai-constitution.yaml          # AI 憲法配置
+│   ├── auto-fix-bot.yml              # Auto-fix bot 配置
+│   ├── cloud-agent-delegation.yml    # 雲端委派設定
+│   ├── monitoring.yaml               # 監控配置
+│   ├── prometheus-config.yml         # Prometheus 設定
+│   ├── safety-mechanisms.yaml        # 安全機制配置
+│   └── ...                           # 其他配置文件
+│
+├── 📁 docs/                          # 📚 文檔
+│   ├── architecture/                 # 架構文檔
+│   ├── automation/                   # 自動化指南
+│   ├── ci-cd/                        # CI/CD 文檔
+│   ├── operations/                   # 運維指南
+│   ├── reports/                      # 文檔報告
+│   ├── security/                     # 安全文檔
+│   └── *.md                          # 功能文檔文件
+│
+├── 📁 mcp-servers/                   # 🔌 MCP 服務器實現
+│   ├── code-analyzer.js              # 代碼分析服務器
+│   ├── comprehensive-validator.js    # 綜合驗證
+│   ├── deployment-validator.js       # 部署驗證
+│   ├── doc-generator.js              # 文檔生成器
+│   ├── logic-validator.js            # 邏輯驗證
+│   ├── performance-analyzer.js       # 性能分析
+│   ├── security-scanner.js           # 安全掃描
+│   ├── slsa-validator.js             # SLSA 驗證
+│   └── test-generator.js             # 測試生成
+│
+├── 📁 agent/                         # 🤖 代理服務
+│   ├── auto-repair/                  # 自動修復代理
+│   ├── code-analyzer/                # 代碼分析代理
+│   ├── dependency-manager/           # 依賴管理
+│   ├── orchestrator/                 # 代理編排
+│   └── vulnerability-detector/       # 漏洞檢測
+│
+├── 📁 shared/                        # 📦 共享資源
+│   ├── config/                       # 共享配置
+│   ├── constants/                    # 共享常量
+│   └── utils/                        # 共享工具
+│
+├── 📁 bridges/                       # 🌉 語言橋接
+│   └── language_bridges.py           # 跨語言整合
+│
+├── 📁 contracts/                     # 📄 外部合約
+│   └── external-api.json             # 外部 API 合約
+│
+├── 📁 runtime/                       # ⚡ 運行時組件
+│   └── mind_matrix/                  # Mind Matrix 運行時
+│
+├── 📁 .github/                       # 🔄 GitHub 配置
+│   └── workflows/                    # GitHub Actions 工作流程
+│
+└── 📄 根目錄文件
+    ├── README.md                     # 中文文檔（本文件）
+    ├── README.en.md                  # 英文文檔
+    ├── CONTRIBUTING.md               # 貢獻指南
+    ├── SECURITY.md                   # 安全政策
+    ├── CODE_OF_CONDUCT.md            # 行為準則
+    ├── CHANGELOG.md                  # 變更日誌
+    ├── package.json                  # Node.js 依賴
+    ├── tsconfig.json                 # TypeScript 配置
+    ├── jest.config.js                # Jest 測試配置
+    ├── Dockerfile                    # Docker 構建文件
+    ├── docker-compose.yml            # Docker Compose 配置
+    └── deploy.sh                     # 部署腳本
+```
+
+### 📂 目錄說明
+
+| 目錄 | 圖示 | 說明 |
+|------|------|------|
+| `automation/` | 🤖 | 所有自動化相關模組，包括 AI 系統、架構分析和自主系統框架 |
+| `core/` | 🏛️ | 核心平台服務，包括 AI 引擎、安全機制和整合層 |
+| `frontend/` | 🎨 | 前端應用程式和 UI 組件 |
+| `infrastructure/` | 🏗️ | 基礎設施即代碼、Kubernetes 配置、監控和部署 |
+| `tests/` | 🧪 | 所有測試套件，包括單元測試、性能測試和測試向量 |
+| `governance/` | ⚖️ | 治理策略、規則、Schema 和審計配置 |
+| `tools/` | 🔧 | 開發工具、CI 輔助和實用腳本 |
+| `ops/` | 📋 | 運維資源，包括運維手冊、報告和遷移腳本 |
+| `config/` | ⚙️ | 所有系統組件的集中配置文件 |
+| `docs/` | 📚 | 按主題組織的完整文檔 |
+| `mcp-servers/` | 🔌 | MCP（模型上下文協議）服務器實現 |
+| `agent/` | 🤖 | 用於自動化的智能代理服務 |
+| `shared/` | 📦 | 共享資源、工具和常量 |
+| `bridges/` | 🌉 | 跨語言整合橋接 |
+| `contracts/` | 📄 | API 合約和外部接口定義 |
+| `runtime/` | ⚡ | 運行時組件和執行環境 |
 
 ## 🚀 Getting Started
 
@@ -231,7 +358,7 @@ The autonomous system framework provides a complete five-skeleton architecture f
 
 ```bash
 # Run API governance validation
-cd autonomous-system/api-governance
+cd automation/autonomous/api-governance
 python3 api_contract.py
 
 # Run compatibility tests
@@ -245,10 +372,10 @@ ros2 run autonomy_core flight_controller
 ```
 
 For complete documentation, see:
-- [Autonomous System Documentation](autonomous-system/README.md)
-- [Quickstart Guide](autonomous-system/docs-examples/QUICKSTART.md)
-- [API Documentation](autonomous-system/docs-examples/API_DOCUMENTATION.md)
-- [Governance Matrix](autonomous-system/docs-examples/governance_matrix.yaml)
+- [Autonomous System Documentation](automation/autonomous/README.md)
+- [Quickstart Guide](automation/autonomous/docs-examples/QUICKSTART.md)
+- [API Documentation](automation/autonomous/docs-examples/API_DOCUMENTATION.md)
+- [Governance Matrix](automation/autonomous/docs-examples/governance_matrix.yaml)
 
 ## 🤖 動態互動 CI 系統
 
