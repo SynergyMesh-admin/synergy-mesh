@@ -11,13 +11,13 @@ name: Policy Simulation
 on:
   pull_request:
     paths:
-      - 'core/contracts/contracts-L1/contracts/deploy/k8s/**'
-      - 'core/contracts/contracts-L1/contracts/policy/**'
+      - 'core/contract_service/contracts-L1/contracts/deploy/k8s/**'
+      - 'core/contract_service/contracts-L1/contracts/policy/**'
   push:
     branches:
       - main
     paths:
-      - 'core/contracts/contracts-L1/contracts/deploy/k8s/**'
+      - 'core/contract_service/contracts-L1/contracts/deploy/k8s/**'
   workflow_dispatch:
 
 jobs:
@@ -39,7 +39,7 @@ jobs:
       - name: 驗證 OPA 策略語法
         run: |
           echo "📋 驗證 OPA 策略檔案語法..."
-          opa check core/contracts/contracts-L1/contracts/policy/manifest-policies.rego
+          opa check core/contract_service/contracts-L1/contracts/policy/manifest-policies.rego
           echo "✅ 策略語法驗證通過"
       
       - name: 執行策略模擬 - Deployment
@@ -48,14 +48,14 @@ jobs:
         run: |
           echo "🔍 模擬 Deployment 策略..."
           opa eval \
-            --data core/contracts/contracts-L1/contracts/policy/manifest-policies.rego \
-            --input core/contracts/contracts-L1/contracts/deploy/k8s/deployment-production.yaml \
+            --data core/contract_service/contracts-L1/contracts/policy/manifest-policies.rego \
+            --input core/contract_service/contracts-L1/contracts/deploy/k8s/deployment-production.yaml \
             --format pretty \
             'data.kubernetes.deny' > deployment-report.txt
           
           opa eval \
-            --data core/contracts/contracts-L1/contracts/policy/manifest-policies.rego \
-            --input core/contracts/contracts-L1/contracts/deploy/k8s/deployment-production.yaml \
+            --data core/contract_service/contracts-L1/contracts/policy/manifest-policies.rego \
+            --input core/contract_service/contracts-L1/contracts/deploy/k8s/deployment-production.yaml \
             --format json \
             'data.kubernetes.deny' > deployment-report.json
           
@@ -67,8 +67,8 @@ jobs:
         run: |
           echo "🔍 模擬 Service 策略..."
           opa eval \
-            --data core/contracts/contracts-L1/contracts/policy/manifest-policies.rego \
-            --input core/contracts/contracts-L1/contracts/deploy/k8s/service-production.yaml \
+            --data core/contract_service/contracts-L1/contracts/policy/manifest-policies.rego \
+            --input core/contract_service/contracts-L1/contracts/deploy/k8s/service-production.yaml \
             --format json \
             'data.kubernetes.deny' > service-report.json
       
@@ -78,8 +78,8 @@ jobs:
         run: |
           echo "🔍 模擬 Ingress 策略..."
           opa eval \
-            --data core/contracts/contracts-L1/contracts/policy/manifest-policies.rego \
-            --input core/contracts/contracts-L1/contracts/deploy/k8s/ingress.yaml \
+            --data core/contract_service/contracts-L1/contracts/policy/manifest-policies.rego \
+            --input core/contract_service/contracts-L1/contracts/deploy/k8s/ingress.yaml \
             --format json \
             'data.kubernetes.deny' > ingress-report.json
       

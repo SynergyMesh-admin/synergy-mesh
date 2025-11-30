@@ -221,7 +221,7 @@ security-observability/
 
 ### 1. 契約管理整合
 
-**整合點**: `core/contracts/contracts-L1/contracts/`
+**整合點**: `core/contract_service/contracts-L1/contracts/`
 
 - API 治理骨架與 Contracts L1 服務整合
 - 統一的契約管理和驗證流程

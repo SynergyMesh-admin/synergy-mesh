@@ -16,7 +16,7 @@
 
 ### 1. AI 對話服務 (AI Chat Service) - $2M+ 價值
 
-**位置**: `core/contracts/contracts-L1/ai-chat-service/`
+**位置**: `core/contract_service/contracts-L1/ai-chat-service/`
 
 **功能**:
 - ✅ 實時 AI 對話系統
@@ -307,7 +307,7 @@ User Response
 ```bash
 # 1. 克隆倉庫
 git clone https://github.com/we-can-fix/synergymesh.git
-cd synergymesh/core/contracts/contracts-L1/ai-chat-service
+cd synergymesh/core/contract_service/contracts-L1/ai-chat-service
 
 # 2. 安裝依賴
 npm install
@@ -547,7 +547,7 @@ ai_chat_error_rate
 歡迎貢獻！請參考:
 - [CONTRIBUTING.md](../CONTRIBUTING.md)
 - [Architecture Guide](architecture/matechat-integration.md)
-- [API Documentation](../core/contracts/contracts-L1/ai-chat-service/README.md)
+- [API Documentation](../core/contract_service/contracts-L1/ai-chat-service/README.md)
 
 ---
 
@@ -556,7 +556,7 @@ ai_chat_error_rate
 ### 內部文檔
 
 - [架構設計](architecture/matechat-integration.md)
-- [API 文檔](../core/contracts/contracts-L1/ai-chat-service/README.md)
+- [API 文檔](../core/contract_service/contracts-L1/ai-chat-service/README.md)
 - [部署清單](../.governance/deployment/matechat-services.yml)
 - [整合策略](../.config/conftest/policies/matechat-integration/README.md)
 

@@ -39,7 +39,7 @@
 
 ### 📍 位置
 ```
-core/contracts/contracts-L1/contracts/
+core/contract_service/contracts-L1/contracts/
 ```
 
 ### 🎯 功能
@@ -70,7 +70,7 @@ core/contracts/contracts-L1/contracts/
 docker-compose up -d contracts-l1
 
 # 直接運行
-cd core/contracts/contracts-L1/contracts
+cd core/contract_service/contracts-L1/contracts
 npm ci
 npm run build
 npm start
@@ -490,7 +490,7 @@ kubectl get hpa -n synergymesh-production
 
 ```bash
 # 本地開發
-cd core/contracts/contracts-L1/contracts && npm run dev
+cd core/contract_service/contracts-L1/contracts && npm run dev
 cd mcp-servers && npm start
 open auto-fix-bot-dashboard.html
 ```

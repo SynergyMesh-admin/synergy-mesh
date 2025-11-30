@@ -11,7 +11,7 @@
 ## 📊 服務概覽
 
 ### 基本資訊
-- **位置**: `core/contracts/contracts-L1/contracts/`
+- **位置**: `core/contract_service/contracts-L1/contracts/`
 - **類型**: RESTful API 微服務
 - **技術棧**: TypeScript, Express.js, Node.js 18+
 - **端口**: 3000
@@ -53,7 +53,7 @@
 - [ ] 配置網路設定
 
 #### 環境變數配置
-創建 `core/contracts/contracts-L1/contracts/.env`:
+創建 `core/contract_service/contracts-L1/contracts/.env`:
 ```bash
 # 應用程式設定
 NODE_ENV=production
@@ -99,7 +99,7 @@ METRICS_PORT=9090
 
 #### 建置步驟
 ```bash
-cd core/contracts/contracts-L1/contracts/
+cd core/contract_service/contracts-L1/contracts/
 
 # 1. 安裝依賴
 npm ci
@@ -141,7 +141,7 @@ node dist/server.js --version
 
 #### Docker 建置步驟
 ```bash
-cd core/contracts/contracts-L1/contracts/
+cd core/contract_service/contracts-L1/contracts/
 
 # 1. 建置映像
 docker build -t synergymesh-contracts-l1:1.0.0 .
@@ -264,7 +264,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'core/contracts/contracts-L1/contracts/**'
+      - 'core/contract_service/contracts-L1/contracts/**'
   workflow_dispatch:
 
 jobs:
@@ -284,30 +284,30 @@ jobs:
         with:
           node-version: '18'
           cache: 'npm'
-          cache-dependency-path: core/contracts/contracts-L1/contracts/package-lock.json
+          cache-dependency-path: core/contract_service/contracts-L1/contracts/package-lock.json
       
       - name: Install Dependencies
-        working-directory: core/contracts/contracts-L1/contracts
+        working-directory: core/contract_service/contracts-L1/contracts
         run: npm ci
       
       - name: Lint & Test
-        working-directory: core/contracts/contracts-L1/contracts
+        working-directory: core/contract_service/contracts-L1/contracts
         run: |
           npm run lint
           npm run test
       
       - name: Build
-        working-directory: core/contracts/contracts-L1/contracts
+        working-directory: core/contract_service/contracts-L1/contracts
         run: npm run build
       
       - name: Generate SBOM
-        working-directory: core/contracts/contracts-L1/contracts
+        working-directory: core/contract_service/contracts-L1/contracts
         run: |
           npm install -g @cyclonedx/cyclonedx-npm
           cyclonedx-npm --output-file sbom.json
       
       - name: Build Docker Image
-        working-directory: core/contracts/contracts-L1/contracts
+        working-directory: core/contract_service/contracts-L1/contracts
         run: |
           docker build -t ghcr.io/${{ github.repository }}/contracts-l1:${{ github.sha }} .
           docker build -t ghcr.io/${{ github.repository }}/contracts-l1:latest .
@@ -345,7 +345,7 @@ jobs:
 #### 部署選項
 
 ##### 選項 A: Kubernetes 部署
-創建 `core/contracts/contracts-L1/contracts/deploy/k8s/deployment.yaml`:
+創建 `core/contract_service/contracts-L1/contracts/deploy/k8s/deployment.yaml`:
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -440,7 +440,7 @@ spec:
 部署命令:
 ```bash
 # 應用配置
-kubectl apply -f core/contracts/contracts-L1/contracts/deploy/k8s/
+kubectl apply -f core/contract_service/contracts-L1/contracts/deploy/k8s/
 
 # 查看部署狀態
 kubectl get deployment contracts-l1 -n synergymesh

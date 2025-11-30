@@ -5,7 +5,7 @@
   "private": true,
   "workspaces": [
     "mcp-servers",
-    "core/contracts/contracts-L1/contracts",
+    "core/contract_service/contracts-L1/contracts",
     "core/advisory-database",
     "frontend/ui"
   ],

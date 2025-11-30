@@ -49,10 +49,10 @@ jobs:
         with:
           node-version: '18'
           cache: 'npm'
-          cache-dependency-path: 'core/contracts/contracts-L1/contracts/package-lock.json'
+          cache-dependency-path: 'core/contract_service/contracts-L1/contracts/package-lock.json'
 
       - name: 📦 Install dependencies
-        working-directory: core/contracts/contracts-L1/contracts
+        working-directory: core/contract_service/contracts-L1/contracts
         run: npm ci
 
       - name: 🔍 Validate WE_TONKE (debug only - shows length, not value)
@@ -69,11 +69,11 @@ jobs:
           fi
 
       - name: 🧪 Run tests with WE_TONKE available
-        working-directory: core/contracts/contracts-L1/contracts
+        working-directory: core/contract_service/contracts-L1/contracts
         run: npm test
 
       - name: 📊 Example: Use WE_TONKE via utility function
-        working-directory: core/contracts/contracts-L1/contracts
+        working-directory: core/contract_service/contracts-L1/contracts
         run: |
           # Build the project first to use the compiled utility
           npm run build

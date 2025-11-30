@@ -59,7 +59,7 @@
 
 ```bash
 # 測試命令
-cd core/contracts/contracts-L1/contracts
+cd core/contract_service/contracts-L1/contracts
 npm ci
 npm test -- --ci --coverage
 

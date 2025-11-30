@@ -61,7 +61,7 @@ Contracts Service 是 SynergyMesh 平台的核心服務之一，負責 SLSA (Sup
 ### 目錄結構
 
 ```
-core/contracts/contracts-L1/contracts/
+core/contract_service/contracts-L1/contracts/
 ├── src/
 │   ├── server.ts              # 應用程式入口
 │   ├── routes.ts              # 路由定義

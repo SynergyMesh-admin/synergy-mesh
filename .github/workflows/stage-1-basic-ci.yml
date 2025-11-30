@@ -44,7 +44,7 @@ jobs:
       
       - name: 🧪 運行基礎測試（Contracts L1）
         id: tests-contracts
-        working-directory: core/contracts/contracts-L1/contracts
+        working-directory: core/contract_service/contracts-L1/contracts
         run: |
           echo "開始測試 Contracts L1 服務..."
           npm ci
@@ -64,7 +64,7 @@ jobs:
       - name: 📊 測試覆蓋率檢查
         id: coverage
         if: always()
-        working-directory: core/contracts/contracts-L1/contracts
+        working-directory: core/contract_service/contracts-L1/contracts
         run: |
           # 嘗試從測試輸出提取覆蓋率資訊
           if [ -f test-output.log ]; then
@@ -180,7 +180,7 @@ jobs:
           
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### 📍 服務位置" >> $GITHUB_STEP_SUMMARY
-          echo "- Contracts L1: \`core/contracts/contracts-L1/contracts/\`" >> $GITHUB_STEP_SUMMARY
+          echo "- Contracts L1: \`core/contract_service/contracts-L1/contracts/\`" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "---" >> $GITHUB_STEP_SUMMARY
           echo "🚀 **Stage 1** - 基礎 CI 自動評論機制" >> $GITHUB_STEP_SUMMARY
@@ -206,4 +206,4 @@ jobs:
           "tests_result": "${{ needs.basic-checks.result }}",
           "service": "contracts-l1"
         }
-      error-logs: ${{ needs.basic-checks.result == 'failure' && '基礎測試失敗。請檢查：\n1. 測試日誌中的具體錯誤\n2. 環境健康檢查是否通過\n3. 相關測試覆蓋率是否達標\n4. 詳細報告：core/contracts/contracts-L1/contracts/' || '' }}
+      error-logs: ${{ needs.basic-checks.result == 'failure' && '基礎測試失敗。請檢查：\n1. 測試日誌中的具體錯誤\n2. 環境健康檢查是否通過\n3. 相關測試覆蓋率是否達標\n4. 詳細報告：core/contract_service/contracts-L1/contracts/' || '' }}

@@ -30,7 +30,7 @@
 <!-- 請勾選受影響的模組 -->
 
 - [ ] intelligent-hyperautomation
-- [ ] core/contracts/contracts-L1
+- [ ] core/contract_service/contracts-L1
 - [ ] mcp-servers
 - [ ] docs
 - [ ] .github/workflows

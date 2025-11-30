@@ -78,7 +78,7 @@ directory_categories:
       
       # Contracts L1
       contracts_l1:
-        path: "core/contracts/contracts-L1/"
+        path: "core/contract_service/contracts-L1/"
         description: "L1 合約管理服務"
         provides: ["ContractManagement", "ProvenanceAttestation"]
       
@@ -560,7 +560,7 @@ cross_references:
   
   # Service Registry references
   service_registry_integrations:
-    - "core/contracts/contracts-L1/"
+    - "core/contract_service/contracts-L1/"
     - "mcp-servers/"
     - "core/slsa_provenance/"
     - "core/execution_engine/"

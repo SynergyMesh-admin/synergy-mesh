@@ -116,7 +116,7 @@ push:
   paths:
     - 'mcp-servers/**'           # 僅觸發 mcp-servers CD
     - 'advanced-system-src/**'   # 僅觸發 advanced-system CD
-    - 'core/contracts/**'        # 僅觸發 contracts CD
+    - 'core/contract_service/**'        # 僅觸發 contracts CD
 ```
 
 **手動觸發**:
@@ -231,7 +231,7 @@ gh workflow run contracts-cd.yml -f environment=prod
 
 ```bash
 # Contracts Service
-core/contracts/contracts-L1/contracts/sbom/sbom.json
+core/contract_service/contracts-L1/contracts/sbom/sbom.json
 
 # MCP Servers (將生成)
 mcp-servers/sbom/sbom.json
@@ -390,7 +390,7 @@ kubectl create namespace synergymesh-prod
 kubectl config set-context --current --namespace=synergymesh-prod
 
 # 3. 應用所有服務的 manifests
-kubectl apply -f core/contracts/contracts-L1/contracts/deploy/
+kubectl apply -f core/contract_service/contracts-L1/contracts/deploy/
 kubectl apply -f mcp-servers/deploy/
 kubectl apply -f advanced-system-src/deploy/
 
@@ -565,9 +565,9 @@ KUBECONFIG: <base64 encoded kubeconfig>
 ## 相關文件
 
 - [生產環境部署指南](./production-deployment-guide.zh.md)
-- [Contracts Service 架構](../core/contracts/contracts-L1/contracts/docs/architecture.zh.md)
-- [Contracts Service Runbook](../core/contracts/contracts-L1/contracts/docs/runbook.zh.md)
-- [SBOM 說明](../core/contracts/contracts-L1/contracts/sbom/README.md)
+- [Contracts Service 架構](../core/contract_service/contracts-L1/contracts/docs/architecture.zh.md)
+- [Contracts Service Runbook](../core/contract_service/contracts-L1/contracts/docs/runbook.zh.md)
+- [SBOM 說明](../core/contract_service/contracts-L1/contracts/sbom/README.md)
 
 ## 聯絡資訊
 

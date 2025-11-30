@@ -87,7 +87,7 @@ PENDING → IN_REVIEW → ASSIGNED → IN_PROGRESS → RESOLVED → CLOSED
 ## 📂 檔案結構 File Structure
 
 ```
-core/contracts/contracts-L1/contracts/src/
+core/contract_service/contracts-L1/contracts/src/
 ├── types/
 │   └── escalation.ts              # 升級系統類型定義 (200+ lines)
 ├── services/
