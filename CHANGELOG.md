@@ -137,7 +137,7 @@ This section provides a quick summary view showing recent change counts for each
 | `advanced-system-dist/` | 0 | - | 🔴 高 High |
 | `mcp-servers/` | 0 | - | 🟠 中高 Med-High |
 | `scripts/` | 0 | - | 🟠 中高 Med-High |
-| `.config/conftest/policies/` | 0 | - | 🟠 中高 Med-High |
+| `governance/policies/conftest/` | 0 | - | 🟠 中高 Med-High |
 | `schemas/` | 0 | - | 🟡 中 Medium |
 | `docs/` | 0 | - | 🟡 中 Medium |
 

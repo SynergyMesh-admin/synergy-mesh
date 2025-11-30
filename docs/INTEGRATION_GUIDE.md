@@ -212,14 +212,14 @@ autofix report --format html
 autofix watch --auto-fix
 ```
 
-### 配置檔案 `.autofixrc.json`
+### 配置檔案 `config/autofixrc.json`
 
 ```json
 {
   "version": "1.0",
   "cloudDelegation": {
     "enabled": true,
-    "endpoint": "https://cloud.autofix-bot.com",
+    "endpoint": "https://cloudconfig/autofix-bot.com",
     "maxConcurrent": 10
   },
   "rules": {
@@ -411,7 +411,7 @@ const axios = require('axios');
 class AutoFixBotAPI {
   constructor(token) {
     this.client = axios.create({
-      baseURL: 'https://api.autofix-bot.com/v1',
+      baseURL: 'https://apiconfig/autofix-bot.com/v1',
       headers: {
         'Authorization': `Bearer ${token}`
       }

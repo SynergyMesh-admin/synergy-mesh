@@ -246,9 +246,9 @@ jobs:
         if: hashFiles(format('{0}/deploy/*.yaml', inputs.working-directory)) != ''
         run: |
           echo "🔍 檢查 Kubernetes manifests..."
-          if [ -d "../../.config/conftest/policies" ]; then
+          if [ -d "../../governance/policies/conftest" ]; then
             conftest test deploy/*.yaml \
-              --policy ../../.config/conftest/policies \
+              --policy ../../governance/policies/conftest \
               --all-namespaces || echo "⚠️ 政策檢查發現問題（非阻斷）"
           else
             echo "⏭️ 未找到政策檔案，跳過檢查"

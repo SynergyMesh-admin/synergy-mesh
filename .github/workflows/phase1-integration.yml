@@ -57,7 +57,7 @@ jobs:
           import yaml
           import os
           
-          rule_dir = '.autofix/rules'
+          rule_dir = 'config/autofix/rules'
           if os.path.exists(rule_dir):
               for file in os.listdir(rule_dir):
                   if file.endswith('.yaml') or file.endswith('.yml'):
@@ -218,8 +218,8 @@ jobs:
           [ -f "auto-fix-bot.prompt.yml" ] && echo "   ✓ auto-fix-bot.prompt.yml"
           echo ""
           echo "✅ Auto-Repair Rules"
-          [ -f ".autofix/rules/security-rules.yaml" ] && echo "   ✓ security-rules.yaml"
-          [ -f ".autofix/rules/performance-rules.yaml" ] && echo "   ✓ performance-rules.yaml"
+          [ -f "config/autofix/rules/security-rules.yaml" ] && echo "   ✓ security-rules.yaml"
+          [ -f "config/autofix/rules/performance-rules.yaml" ] && echo "   ✓ performance-rules.yaml"
           echo ""
           echo "✅ Code Analysis Engine"
           [ -f "advanced-system-src/core/analyzers/analyzer.py" ] && echo "   ✓ analyzer.py"
@@ -330,7 +330,7 @@ jobs:
           critical_paths=(
             "auto-fix-bot.yml"
             "auto-fix-bot.prompt.yml"
-            ".autofix/rules"
+            "config/autofix/rules"
             "advanced-system-src"
             "agent"
             "schemas"

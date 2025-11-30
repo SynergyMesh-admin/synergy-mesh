@@ -20,7 +20,7 @@ Auto-Fix Bot 2.0 是 Isynergymesh 專案的自動修復機器人配置系統，�
 ```yaml
 project_mapping:
   config_root: ".config"
-  policies_root: ".config/conftest/policies"
+  policies_root: "governance/policies/conftest"
   governance_root: ".governance"
   evidence_root: "root-evidence"
   schemas_root: "schemas"
@@ -36,7 +36,7 @@ project_mapping:
 Bot 支援四個主要驗證範圍：
 
 #### 2.1 Deep YAML 驗證
-- 路徑：`templates/**/*.yaml`, `schemas/**/*.json`, `.config/**/*.yaml`, `.governance/**/*.yaml`
+- 路徑：`templates/**/*.yaml`, `schemas/**/*.json`, `.config/**/*.yaml`, `governance/**/*.yaml`
 - 功能：深度驗證 YAML 檔案結構和內容
 
 #### 2.2 MCP Servers 驗證
@@ -102,15 +102,15 @@ Bot 支援四個主要驗證範圍：
 ### Pre-Validation Gate (前置檢查門)
 
 **驗證內容**:
-- OPA 策略：`.config/conftest/policies/yaml-structure.rego`
-- Kyverno 策略：`.governance/security-policy.yaml`
+- OPA 策略：`governance/policies/conftest/yaml-structure.rego`
+- Kyverno 策略：`governance/security-policy.yaml`
 
 **失敗動作**: 阻擋執行
 
 ### Post-Fix Validation Gate (後置驗證門)
 
 **驗證內容**:
-- OPA 策略：`.config/conftest/policies/deep-validation.rego`
+- OPA 策略：`governance/policies/conftest/deep-validation.rego`
 - JSON Schema：`schemas/complete-validation-schema.json`
 
 **證據要求**:
@@ -404,7 +404,7 @@ python scripts/auto_fix_bot.py --config auto-fix-bot.yml --scope mcp-servers-val
 #### Q1: Policy Gate 驗證失敗
 
 **解決方案**:
-1. 檢查 `.config/conftest/policies/` 下的策略檔案
+1. 檢查 `governance/policies/conftest/` 下的策略檔案
 2. 確認 YAML 檔案符合必要的結構要求
 3. 查看審計日誌：`root-evidence/audit/auto-fix/`
 

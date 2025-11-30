@@ -6,19 +6,22 @@
 
 ## 📋 Overview 概述
 
-本目錄包含 SynergyMesh 平台的治理資源，包括策略定義、審計配置、軟體物料清單 (SBOM) 和 schema 定義。
+本目錄包含 SynergyMesh 項目的治理配置和文檔，確保模組間的責任清晰、依賴管理合理、語言邊界明確。
 
-This directory contains governance resources for the SynergyMesh platform, including policy definitions, audit configurations, software bill of materials (SBOM), and schema definitions.
+This directory contains governance configurations and documentation for the SynergyMesh project, ensuring clear module responsibilities, reasonable dependency management, and explicit language boundaries.
 
 ## 📁 Directory Structure 目錄結構
 
 ```
 governance/
-├── audit/       # 審計配置 - Audit configurations
-├── policies/    # 策略定義 - Policy definitions
-├── rules/       # 治理規則 - Governance rules
-├── sbom/        # 軟體物料清單 - Software Bill of Materials
-└── schemas/     # Schema 定義 - Schema definitions
+├── audit/              # 審計配置 - Audit configurations
+├── deployment/         # 部署配置 - Deployment configurations
+├── environment-matrix/ # 模組環境映射 - Module environment matrix
+├── policies/           # 策略定義 - Policy definitions
+├── registry/           # 模組治理註冊表 - Module governance registry
+├── rules/              # 治理規則 - Governance rules
+├── sbom/               # 軟體物料清單 - Software Bill of Materials
+└── schemas/            # Schema 定義 - Schema definitions
 ```
 
 ## 🎯 What This Directory Does 本目錄負責什麼
@@ -29,6 +32,7 @@ governance/
    - 安全策略
    - 存取控制策略
    - 代碼品質策略
+   - Conftest/OPA 策略
 
 2. **Audit Configurations 審計配置** (`audit/`)
    - 審計日誌配置
@@ -49,6 +53,19 @@ governance/
    - 配置文件 schema
    - API schema
    - Data model definitions / 資料模型定義
+
+6. **Environment Matrix 環境映射** (`environment-matrix/`)
+   - 模組環境需求映射
+   - 語言維度映射
+   - 條件式部署配置
+
+7. **Deployment Configuration 部署配置** (`deployment/`)
+   - 服務部署配置
+   - Kubernetes 清單
+
+8. **Module Registry 模組註冊表** (`registry/`)
+   - 服務治理元數據
+   - 模組依賴關係
 
 ### ❌ What This Directory Does NOT Do 本目錄不負責什麼
 

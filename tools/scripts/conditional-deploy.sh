@@ -9,7 +9,7 @@ set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
-GOVERNANCE_FILE="$ROOT_DIR/.governance/module-environment-matrix.yml"
+GOVERNANCE_FILE="$ROOT_DIR/governance/environment-matrix/module-environment-matrix.yml"
 
 echo "=== Conditional Deployment System ==="
 echo "條件式部署系統"
@@ -125,7 +125,7 @@ main() {
     echo "Summary:"
     echo "  - Dependencies installed conditionally based on module type"
     echo "  - No hardcoded dependency templates applied"
-    echo "  - Refer to .governance/module-environment-matrix.yml for details"
+    echo "  - Refer to governance/environment-matrix/module-environment-matrix.yml for details"
 }
 
 # Run main deployment

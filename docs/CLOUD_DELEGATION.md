@@ -37,7 +37,7 @@
 
 ### 1. 基本配置
 
-在 `.autofix/config.json` 中配置:
+在 `config/autofix/config.json` 中配置:
 
 ```json
 {
@@ -69,7 +69,7 @@
 export AUTOFIX_CLOUD_DELEGATION=true
 
 # 雲端代理程式端點
-export AUTOFIX_CLOUD_ENDPOINT=https://cloud.autofix-bot.com
+export AUTOFIX_CLOUD_ENDPOINT=https://cloudconfig/autofix-bot.com
 
 # 認證令牌
 export AUTOFIX_CLOUD_TOKEN=your-secure-token
@@ -150,7 +150,7 @@ const result = await AutoFixBot.delegate({
 
 ### 監控儀表板
 
-訪問 `https://dashboard.autofix-bot.com` 查看:
+訪問 `https://dashboardconfig/autofix-bot.com` 查看:
 - 📈 實時任務狀態
 - 🖥️ 代理程式資源使用
 - ⏱️ 平均處理時間
@@ -262,17 +262,17 @@ autofix delegate --task analyze --debug
 
 ## 🔗 相關資源
 
-- [API 文檔](https://docs.autofix-bot.com/api)
-- [最佳實踐](https://docs.autofix-bot.com/best-practices)
-- [案例研究](https://docs.autofix-bot.com/case-studies)
-- [社群論壇](https://forum.autofix-bot.com)
+- [API 文檔](https://docsconfig/autofix-bot.com/api)
+- [最佳實踐](https://docsconfig/autofix-bot.com/best-practices)
+- [案例研究](https://docsconfig/autofix-bot.com/case-studies)
+- [社群論壇](https://forumconfig/autofix-bot.com)
 
 ## 📞 支持
 
 如需協助，請聯繫:
 - 📧 cloud-support@autofix-bot.com
-- 💬 即時聊天: [support.autofix-bot.com](https://support.autofix-bot.com)
-- 📚 幫助中心: [help.autofix-bot.com](https://help.autofix-bot.com)
+- 💬 即時聊天: [supportconfig/autofix-bot.com](https://supportconfig/autofix-bot.com)
+- 📚 幫助中心: [helpconfig/autofix-bot.com](https://helpconfig/autofix-bot.com)
 
 ---
 

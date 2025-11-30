@@ -44,7 +44,7 @@ Phase 1 基礎設施建設已完成全面真實檢測，所有核心組件通過
 
 ### 2. Rules Validation ✅
 
-#### Security Rules (.autofix/rules/security-rules.yaml)
+#### Security Rules (config/autofix/rules/security-rules.yaml)
 - ✅ YAML syntax valid (regex escaping fixed)
 - ✅ 6 security rules defined:
   1. Hardcoded secrets detection
@@ -57,7 +57,7 @@ Phase 1 基礎設施建設已完成全面真實檢測，所有核心組件通過
 - **Lines**: 200+
 - **Status**: PRODUCTION READY
 
-#### Performance Rules (.autofix/rules/performance-rules.yaml)
+#### Performance Rules (config/autofix/rules/performance-rules.yaml)
 - ✅ YAML syntax valid
 - ✅ 6 performance rules defined:
   1. N+1 query optimization
@@ -355,7 +355,7 @@ Based on the user's advanced requirements, consider implementing:
    - **Rationale**: Ensures reproducible builds with signed SBOMs
 
 3. **Module Self-Description & Governance Metadata Registry** 🎯
-   - Extend .registry/ structure
+   - Extend governance/registry/ structure
    - Add module metadata (owner, semantic-version, governance-hooks)
    - Create registry/schema.json
    - **Rationale**: Machine-readable governance metadata for automated decision-making

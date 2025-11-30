@@ -70,7 +70,7 @@ synergymesh/
 │   └── conftest/
 │       └── policies/                   # 全局政策
 │
-├── .governance/
+├── governance/
 │   ├── policies.yaml                   # 基線政策
 │   └── registry.yaml                   # 模組註冊表
 │
@@ -369,10 +369,10 @@ done
 
 ```bash
 # 驗證 K8s manifests
-conftest test */deploy/*.yaml --policy .config/conftest/policies/
+conftest test */deploy/*.yaml --policy governance/policies/conftest/
 
 # 驗證特定服務
-conftest test mcp-servers/deploy/*.yaml --policy .config/conftest/policies/
+conftest test mcp-servers/deploy/*.yaml --policy governance/policies/conftest/
 ```
 
 ## 部署操作
