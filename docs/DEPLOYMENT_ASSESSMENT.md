@@ -10,7 +10,7 @@
 
 ### 1. Contracts L1 Service (核心服務)
 
-**位置**: `core/contracts/contracts-L1/contracts/`  
+**位置**: `core/contract_service/contracts-L1/contracts/`  
 **狀態**: ✅ **生產就緒**  
 **類型**: RESTful API 微服務  
 **技術棧**: TypeScript, Express.js, Node.js 18+
@@ -49,7 +49,7 @@
 
 #### 快速部署命令
 ```bash
-cd core/contracts/contracts-L1/contracts/
+cd core/contract_service/contracts-L1/contracts/
 npm install
 npm run predeploy  # 檢查、測試、編譯
 npm start          # 啟動服務
@@ -57,7 +57,7 @@ npm start          # 啟動服務
 
 #### Docker 部署
 ```bash
-cd core/contracts/contracts-L1/contracts/
+cd core/contract_service/contracts-L1/contracts/
 docker build -t synergymesh-contracts-l1:1.0.0 .
 docker run -p 3000:3000 \
   -e NODE_ENV=production \
@@ -334,7 +334,7 @@ npm start             # 啟動 MCP 伺服器
 
 #### 1. 啟動 Contracts L1
 ```bash
-cd core/contracts/contracts-L1/contracts/
+cd core/contract_service/contracts-L1/contracts/
 npm install
 npm run dev  # 開發模式 (hot reload)
 # 服務運行於 http://localhost:3000
@@ -366,7 +366,7 @@ version: '3.8'
 
 services:
   contracts-l1:
-    build: ./core/contracts/contracts-L1/contracts
+    build: ./core/contract_service/contracts-L1/contracts
     ports:
       - "3000:3000"
     environment:

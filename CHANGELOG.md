@@ -65,7 +65,7 @@ Below are examples of various change types for reference:
 2025-11-20 | john.doe | config/prometheus-config.yml | modify | Update retention policy from 15d to 30d for compliance (PR#123)
 
 # 新增功能範例 | New Feature Example
-2025-11-18 | jane.smith | core/contracts/contracts-L1/contracts/src/routes.ts | add | Add new health check endpoint (/api/health) (Issue#456)
+2025-11-18 | jane.smith | core/contract_service/contracts-L1/contracts/src/routes.ts | add | Add new health check endpoint (/api/health) (Issue#456)
 
 # 安全性變更範例 | Security Change Example
 2025-11-15 | security-team | scripts/manage-secret-patterns.py | security | Add input validation to prevent command injection (CVE-2025-XXXX)
@@ -132,7 +132,7 @@ This section provides a quick summary view showing recent change counts for each
 | 目錄 Directory | 變更次數 Changes | 最後變更 Last Change | 風險等級 Risk Level |
 |---|---|---|---|
 | `config/` | 0 | - | 🔴 高 High |
-| `core/contracts/` | 0 | - | 🔴 高 High |
+| `core/contract_service/` | 0 | - | 🔴 高 High |
 | `advanced-system-src/` | 0 | - | 🔴 高 High |
 | `advanced-system-dist/` | 0 | - | 🔴 高 High |
 | `mcp-servers/` | 0 | - | 🟠 中高 Med-High |

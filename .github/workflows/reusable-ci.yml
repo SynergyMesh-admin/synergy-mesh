@@ -99,14 +99,27 @@ jobs:
           else
             echo "has_dockerfile=false" >> $GITHUB_OUTPUT
           fi
+          
+          # 檢查 package-lock.json 位置（支援 monorepo/workspace）
+          # 注意：cache-dependency-path 需要從 repository root 開始的路徑
+          if [ -f "package-lock.json" ]; then
+            # 工作目錄中有 package-lock.json
+            echo "lock_file_path=${{ inputs.working-directory }}/package-lock.json" >> $GITHUB_OUTPUT
+          elif [ -f "${{ github.workspace }}/package-lock.json" ]; then
+            # 使用 root 目錄的 package-lock.json（適用於 monorepo/workspace）
+            echo "lock_file_path=package-lock.json" >> $GITHUB_OUTPUT
+          else
+            # 沒有找到 package-lock.json，停用快取
+            echo "lock_file_path=" >> $GITHUB_OUTPUT
+          fi
 
       - name: 🟢 Setup Node.js
         if: steps.check-structure.outputs.has_package_json == 'true'
         uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4.1.0
         with:
           node-version: ${{ inputs.node-version }}
-          cache: 'npm'
-          cache-dependency-path: ${{ inputs.working-directory }}/package-lock.json
+          cache: ${{ steps.check-structure.outputs.lock_file_path != '' && 'npm' || '' }}
+          cache-dependency-path: ${{ steps.check-structure.outputs.lock_file_path }}
 
       - name: 📦 Install dependencies
         if: steps.check-structure.outputs.has_package_json == 'true'
@@ -139,7 +152,19 @@ jobs:
         if: steps.check-structure.outputs.has_package_json == 'true'
         run: |
           if npm run | grep -q "test"; then
-            npm test -- --ci --coverage
+            # Check if the test script uses Node.js native test runner
+            test_script=$(node -p "require('./package.json').scripts?.test || ''" 2>/dev/null || echo "")
+            if [ -z "$test_script" ]; then
+              echo "⚠️ Unable to parse test script from package.json"
+              npm test
+            elif echo "$test_script" | grep -q "node --test"; then
+              # Node.js native test runner doesn't support --ci or --coverage
+              echo "🔍 Detected Node.js native test runner, running without extra flags"
+              npm test
+            else
+              # Jest or other test runners support these flags
+              npm test -- --ci --coverage
+            fi
           else
             echo "⚠️ 略過 tests (無對應 script)"
           fi

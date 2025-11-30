@@ -37,7 +37,7 @@ synergymesh/
 │   ├── security-scanner.js   # 安全掃描器
 │   └── slsa-validator.js     # SLSA 驗證器
 │
-├── core/contracts/           # 核心契約服務
+├── core/contract_service/           # 核心契約服務
 │   └── contracts-L1/
 │       └── contracts/        # L1 契約管理
 │           ├── src/

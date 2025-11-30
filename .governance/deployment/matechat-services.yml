@@ -21,7 +21,7 @@ metadata:
 services:
   - name: ai-chat-service
     type: microservice
-    path: core/contracts/contracts-L1/ai-chat-service
+    path: core/contract_service/contracts-L1/ai-chat-service
     language: typescript
     framework: express
     
@@ -116,14 +116,14 @@ services:
 
   - name: input-service
     type: microservice
-    path: core/contracts/contracts-L1/input-service
+    path: core/contract_service/contracts-L1/input-service
     status: planned
     dependencies:
       - ai-chat-service
     
   - name: file-service
     type: microservice
-    path: core/contracts/contracts-L1/file-service
+    path: core/contract_service/contracts-L1/file-service
     status: planned
     dependencies:
       - ai-chat-service
@@ -277,7 +277,7 @@ compliance:
 
 # Documentation
 documentation:
-  readme: core/contracts/contracts-L1/ai-chat-service/README.md
-  api_spec: core/contracts/contracts-L1/ai-chat-service/openapi.yml
+  readme: core/contract_service/contracts-L1/ai-chat-service/README.md
+  api_spec: core/contract_service/contracts-L1/ai-chat-service/openapi.yml
   architecture: docs/architecture/ai-chat-service.md
   runbook: docs/runbooks/ai-chat-service-operations.md

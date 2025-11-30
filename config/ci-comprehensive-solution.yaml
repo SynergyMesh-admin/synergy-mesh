@@ -535,7 +535,7 @@ monitoring:
     interval_minutes: 5
     endpoints:
       - name: "contracts-l1"
-        path: "core/contracts/contracts-L1/contracts"
+        path: "core/contract_service/contracts-L1/contracts"
         check: "npm test"
       - name: "mcp-servers"
         path: "mcp-servers"

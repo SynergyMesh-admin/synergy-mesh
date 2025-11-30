@@ -1,10 +1,49 @@
 # SynergyMesh MCP Servers
+# MCP 服務器
 
 Enterprise-grade Model Context Protocol (MCP) servers for the AutoExecutionEngine Agent.
 
-## 🎯 Overview
+> LLM 工具端點，提供 MCP 協議的工具供 LLM 調用。
+> LLM tool endpoints, providing MCP protocol tools for LLM invocation.
 
-This directory contains six specialized MCP servers that provide advanced capabilities for code analysis, testing, documentation, SLSA validation, security scanning, and performance optimization.
+## 🎯 Overview 概述
+
+This directory contains specialized MCP servers that provide advanced capabilities for code analysis, testing, documentation, SLSA validation, security scanning, and performance optimization.
+
+本目錄包含專門的 MCP 服務器，提供代碼分析、測試、文檔、SLSA 驗證、安全掃描和性能優化等高級功能。
+
+## 🔷 What This Directory Does 本目錄負責什麼
+
+### ✅ Responsibilities 職責
+
+- 提供 **LLM 可調用的工具端點**（MCP 協議）
+- 封裝特定功能為標準化 MCP 工具
+- 處理工具的輸入驗證和輸出格式化
+- 提供工具元數據和能力描述
+
+### ❌ What This Directory Does NOT Do 本目錄不負責什麼
+
+- **不實作核心業務邏輯** - 使用 `core/` 中的平台能力
+- **不管理長生命週期代理狀態** - 使用 `agent/`
+- **不組合複雜工作流** - 使用 `automation/intelligent/`
+
+## 🔗 Dependencies 依賴關係
+
+### ✅ Allowed Dependencies 允許的依賴
+
+| Dependency 依賴 | Purpose 用途 |
+|----------------|--------------|
+| `core/` | 調用平台級 AI 能力 |
+| `shared/` | 共用工具和配置 |
+
+### ❌ Prohibited Dependencies 禁止的依賴
+
+| Should NOT depend on 不應依賴 | Reason 原因 |
+|------------------------------|-------------|
+| `agent/` | MCP 端點不應依賴業務代理 |
+| `automation/intelligent/` | MCP 端點不應依賴 pipeline |
+
+---
 
 ## 📦 MCP Servers
 

@@ -107,7 +107,7 @@ name: Core Services CI
 on:
   pull_request:
     paths:
-      - 'core/contracts/**'
+      - 'core/contract_service/**'
       - 'mcp-servers/**'
 
 permissions:

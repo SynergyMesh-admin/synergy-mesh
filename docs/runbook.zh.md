@@ -185,7 +185,7 @@ npx @cyclonedx/cyclonedx-npm --output-file sbom.json
    {
      "workspaces": [
        "mcp-servers",
-       "core/contracts/contracts-L1/contracts",
+       "core/contract_service/contracts-L1/contracts",
        "advanced-system-src",
        "apps/new-service"
      ]

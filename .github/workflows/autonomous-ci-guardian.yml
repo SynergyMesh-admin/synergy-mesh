@@ -87,17 +87,24 @@ jobs:
         run: |
           cat > analyze_complexity.sh << 'BASH'
           #!/bin/bash
-          set -euo pipefail
+          set -uo pipefail
 
-          FILES=$(find . -type f \( -name "*.js" -o -name "*.ts" \) -not -path "*/node_modules/*" -not -path "*/.git/*" 2>/dev/null)
+          FILES=$(find . -type f \( -name "*.js" -o -name "*.ts" \) -not -path "*/node_modules/*" -not -path "*/.git/*" 2>/dev/null || true)
           if [ -n "$FILES" ]; then
             COMPLEXITY=$(echo "$FILES" | xargs wc -l 2>/dev/null | tail -1 | awk '{print $1}')
           else
             COMPLEXITY=0
           fi
 
-          CHANGED_FILES=$(git diff --name-only HEAD~1 2>/dev/null | wc -l)
-          CHANGED_LINES=$(git diff HEAD~1 2>/dev/null | grep '^[+-]' | wc -l)
+          # Handle shallow clone case - check if HEAD~1 exists before running git diff
+          if git rev-parse --verify HEAD~1 >/dev/null 2>&1; then
+            CHANGED_FILES=$(git diff --name-only HEAD~1 2>/dev/null | wc -l || echo "0")
+            CHANGED_LINES=$( (git diff HEAD~1 2>/dev/null | grep '^[+-]' || true) | wc -l)
+          else
+            # Shallow clone or first commit - use empty comparison
+            CHANGED_FILES=0
+            CHANGED_LINES=0
+          fi
 
           if [ "$COMPLEXITY" -gt 5000 ]; then
             RISK="HIGH"
@@ -294,7 +301,7 @@ jobs:
       - name: 🐦 Canary deployment
         if: ${{ steps.remediation-decision.outputs.action == 'CANARY_DEPLOY' }}
         env:
-          DRY_RUN: ${{ vars.DRY_RUN || 'true' }}
+          DRY_RUN: ${{ (vars.DRY_RUN == 'false' && 'false') || 'true' }}
         run: |
           echo "🐦 啟動金絲雀部署..."
           cat > canary-deploy.yaml << 'YAML'
@@ -360,7 +367,7 @@ jobs:
       - name: 📊 Staged deployment
         if: ${{ steps.remediation-decision.outputs.action == 'STAGED_DEPLOY' }}
         env:
-          DRY_RUN: ${{ vars.DRY_RUN || 'true' }}
+          DRY_RUN: ${{ (vars.DRY_RUN == 'false' && 'false') || 'true' }}
         run: |
           echo "📊 開始分階段部署..."
 
@@ -406,7 +413,7 @@ jobs:
       - name: 🚀 Full deployment
         if: ${{ steps.remediation-decision.outputs.action == 'FULL_DEPLOY' }}
         env:
-          DRY_RUN: ${{ vars.DRY_RUN || 'true' }}
+          DRY_RUN: ${{ (vars.DRY_RUN == 'false' && 'false') || 'true' }}
         run: |
           echo "🚀 開始完整部署..."
           if [ ! -f docker-compose.yml ]; then

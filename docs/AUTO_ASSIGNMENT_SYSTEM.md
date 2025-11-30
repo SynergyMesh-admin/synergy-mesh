@@ -116,7 +116,7 @@ The Auto-Assignment System is a core feature of SynergyMesh, designed to solve r
 ### 安裝 (Installation)
 
 ```bash
-cd core/contracts/contracts-L1/contracts
+cd core/contract_service/contracts-L1/contracts
 npm install
 ```
 

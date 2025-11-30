@@ -4,7 +4,7 @@ name: Core Services CI
 on:
   pull_request:
     paths:
-      - 'core/contracts/contracts-L1/contracts/**'
+      - 'core/contract_service/contracts-L1/contracts/**'
       - 'mcp-servers/**'
       - '.github/workflows/core-services-ci.yml'
   push:
@@ -12,7 +12,7 @@ on:
       - main
       - develop
     paths:
-      - 'core/contracts/contracts-L1/contracts/**'
+      - 'core/contract_service/contracts-L1/contracts/**'
       - 'mcp-servers/**'
       - '.github/workflows/core-services-ci.yml'
   workflow_dispatch:
@@ -36,7 +36,7 @@ jobs:
     name: 🏗️ Contracts L1 CI
     uses: ./.github/workflows/reusable-ci.yml
     with:
-      working-directory: core/contracts/contracts-L1/contracts
+      working-directory: core/contract_service/contracts-L1/contracts
       service-name: contracts-l1
       node-version: '18'
       enable-coverage-upload: true
@@ -73,8 +73,8 @@ jobs:
       matrix:
         service:
           - name: contracts-l1
-            context: core/contracts/contracts-L1/contracts
-            dockerfile: core/contracts/contracts-L1/contracts/Dockerfile
+            context: core/contract_service/contracts-L1/contracts
+            dockerfile: core/contract_service/contracts-L1/contracts/Dockerfile
           - name: mcp-servers
             context: mcp-servers
             dockerfile: mcp-servers/Dockerfile
@@ -135,7 +135,7 @@ jobs:
           echo "| MCP Servers | ${{ needs.mcp-servers-ci.result == 'success' && '✅ 通過' || '❌ 失敗' }} |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### 📍 位置資訊" >> $GITHUB_STEP_SUMMARY
-          echo "- **Contracts L1**: \`core/contracts/contracts-L1/contracts/\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Contracts L1**: \`core/contract_service/contracts-L1/contracts/\`" >> $GITHUB_STEP_SUMMARY
           echo "- **MCP Servers**: \`mcp-servers/\`" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### 🚀 部署指令" >> $GITHUB_STEP_SUMMARY

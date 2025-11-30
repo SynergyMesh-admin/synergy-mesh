@@ -58,27 +58,27 @@ jobs:
         with:
           node-version: '18'
           cache: 'npm'
-          cache-dependency-path: core/contracts/contracts-L1/contracts/package-lock.json
+          cache-dependency-path: core/contract_service/contracts-L1/contracts/package-lock.json
       
       - name: 📦 Install dependencies
-        working-directory: core/contracts/contracts-L1/contracts
+        working-directory: core/contract_service/contracts-L1/contracts
         run: npm ci
       
       - name: 🔍 Type check
-        working-directory: core/contracts/contracts-L1/contracts
+        working-directory: core/contract_service/contracts-L1/contracts
         run: npm run typecheck
       
       - name: 🎨 Lint code
-        working-directory: core/contracts/contracts-L1/contracts
+        working-directory: core/contract_service/contracts-L1/contracts
         run: npm run lint
       
       - name: 🧪 Run tests
-        working-directory: core/contracts/contracts-L1/contracts
+        working-directory: core/contract_service/contracts-L1/contracts
         run: npm test -- --ci --coverage
       
       - name: 🏗️ Build application
         id: build
-        working-directory: core/contracts/contracts-L1/contracts
+        working-directory: core/contract_service/contracts-L1/contracts
         run: npm run build
       
       - name: 📊 Upload coverage
@@ -86,19 +86,19 @@ jobs:
         uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4.4.3
         with:
           name: contracts-l1-coverage
-          path: core/contracts/contracts-L1/contracts/coverage/
+          path: core/contract_service/contracts-L1/contracts/coverage/
           retention-days: 7
       
       - name: 📦 Upload build artifacts
         uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4.4.3
         with:
           name: contracts-l1-dist
-          path: core/contracts/contracts-L1/contracts/dist/
+          path: core/contract_service/contracts-L1/contracts/dist/
           retention-days: 7
       
       - name: 📌 Extract version
         id: version
-        working-directory: core/contracts/contracts-L1/contracts
+        working-directory: core/contract_service/contracts-L1/contracts
         run: echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
       
       - name: ✅ Tier 1 完成
@@ -311,8 +311,8 @@ jobs:
       - name: 🏗️ Build Contracts L1 image
         uses: docker/build-push-action@48aba3b46d1b1fec4febb7c5d0c644b249a11355 # v6.10.0
         with:
-          context: core/contracts/contracts-L1/contracts
-          file: core/contracts/contracts-L1/contracts/Dockerfile
+          context: core/contract_service/contracts-L1/contracts
+          file: core/contract_service/contracts-L1/contracts/Dockerfile
           push: false
           tags: synergymesh/contracts-l1:test
           cache-from: type=gha
@@ -429,7 +429,7 @@ jobs:
             ["tier4"]="95/100"
           )
           declare -A tier_paths=(
-            ["tier1"]="\`core/contracts/contracts-L1/contracts/\`"
+            ["tier1"]="\`core/contract_service/contracts-L1/contracts/\`"
             ["tier2"]="\`mcp-servers/\`"
             ["tier3"]="根目錄 + \`scripts/\` + \`tools/\`"
             ["tier4"]="\`auto-fix-bot-dashboard.html\`"

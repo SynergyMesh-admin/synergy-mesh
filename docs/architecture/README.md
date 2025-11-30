@@ -4,9 +4,24 @@
 
 ## 📚 文檔概覽
 
+### 🆕 架構分層與邊界（新增）
+
+0. **[架構分層視圖](./layers.md)** ⭐ 新增
+   - 五層架構分層表
+   - 各層職責說明
+   - 依賴規則定義
+   - 按語言/領域分類索引
+
+1. **[倉庫地圖與語義邊界](./repo-map.md)** ⭐ 新增
+   - 系統世界觀定義
+   - AI/Agent 模組邊界
+   - Contract/Schema 邊界
+   - 快速決策指南
+   - 不變量規則
+
 ### 核心文檔
 
-1. **[系統架構設計](./SYSTEM_ARCHITECTURE.md)**
+2. **[系統架構設計](./SYSTEM_ARCHITECTURE.md)**
    - 整體架構概述
    - 四層架構設計（檢查引擎層、協調編排層、基礎設施層、監控告警層）
    - 核心組件介紹
@@ -14,21 +29,21 @@
    - 部署模式
    - 安全與性能考量
 
-2. **[部署與基礎設施](./DEPLOYMENT_INFRASTRUCTURE.md)**
+3. **[部署與基礎設施](./DEPLOYMENT_INFRASTRUCTURE.md)**
    - Docker容器化環境搭建
    - CI/CD流水線配置
    - Kubernetes集群部署
    - 監控系統配置
    - 環境準備指南
 
-3. **[代碼品質檢查實現](./CODE_QUALITY_CHECKS.md)**
+4. **[代碼品質檢查實現](./CODE_QUALITY_CHECKS.md)**
    - SonarQube靜態分析配置
    - ESLint/Prettier格式化檢查
    - 安全掃描實現
    - 配置驗證
    - 報告生成與聚合
 
-4. **[安全檢測與配置文件檢查](./SECURITY_CONFIG_CHECKS.md)** ⭐ 新增
+5. **[安全檢測與配置文件檢查](./SECURITY_CONFIG_CHECKS.md)**
    - 第二階段部署文檔
    - Bandit Python安全檢查
    - OWASP Dependency Check整合
@@ -38,7 +53,7 @@
 
 ### 配置文件
 
-5. **[配置文件與腳本](./configuration/)**
+6. **[配置文件與腳本](./configuration/)**
    - Docker配置
    - Jenkins Pipeline
    - Kubernetes部署清單

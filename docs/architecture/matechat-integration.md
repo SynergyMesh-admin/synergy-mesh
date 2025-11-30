@@ -105,7 +105,7 @@ SynergyMesh Root
 ├── config/integrations/matechat/
 │   └── config.yaml                  # 服務配置
 │
-├── core/contracts/contracts-L1/
+├── core/contract_service/contracts-L1/
 │   ├── ai-chat-service/             # AI 對話服務
 │   │   ├── src/
 │   │   │   ├── server.ts

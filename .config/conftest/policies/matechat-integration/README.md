@@ -12,7 +12,7 @@
   - 飛行任務指令對話
   - 遠程診斷與故障排除
   - 實時狀態查詢與監控
-- **整合位置**: `core/contracts/contracts-L1/ai-chat-service/`
+- **整合位置**: `core/contract_service/contracts-L1/ai-chat-service/`
 
 ### 2. 智能輸入系統 (Intelligent Input)
 - **商業價值**: 多模態輸入、命令解析、快速操作
@@ -20,7 +20,7 @@
   - @提及特定模組或系統
   - 附件上傳（飛行日誌、遙測數據）
   - 快捷命令與提示詞
-- **整合位置**: `core/contracts/contracts-L1/input-service/`
+- **整合位置**: `core/contract_service/contracts-L1/input-service/`
 
 ### 3. Markdown 渲染引擎
 - **商業價值**: 結構化文檔、技術報告、實時日誌
@@ -44,7 +44,7 @@
   - 飛行數據記錄
   - 傳感器日誌管理
   - SLSA 證明文件
-- **整合位置**: `core/contracts/contracts-L1/file-service/`
+- **整合位置**: `core/contract_service/contracts-L1/file-service/`
 
 ## 架構整合原則
 
