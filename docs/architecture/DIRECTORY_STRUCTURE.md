@@ -44,8 +44,7 @@
 │   └── zero_touch_deployment.py
 │
 ├── frontend/                    # 🎨 前端應用 (已整合)
-│   ├── architecture/           # 架構視覺化 (原 advanced-architecture/)
-│   ├── system-ui/              # 系統 UI (原 advanced-system-src/)
+│   ├── ui/                     # 統一 UI 套件 (整合自 architecture + system-ui)
 │   └── dist/                   # 編譯產出 (原 advanced-system-dist/)
 │
 ├── infrastructure/              # 🏗️ 基礎設施 (已整合)
@@ -121,8 +120,8 @@
 | `intelligent-hyperautomation/` | `automation/hyperautomation/` | 超自動化 |
 | `automation-architect/` | `automation/architect/` | 自動化架構師 |
 | `autonomous-system/` | `automation/autonomous/` | 自主系統 |
-| `advanced-architecture/` | `frontend/architecture/` | 架構視覺化 |
-| `advanced-system-src/` | `frontend/system-ui/` | 系統 UI 源碼 |
+| `advanced-architecture/` | `frontend/ui/` | 架構視覺化 (已整合) |
+| `advanced-system-src/` | `frontend/ui/` | 系統 UI 源碼 (已整合) |
 | `advanced-system-dist/` | `frontend/dist/` | 編譯產出 |
 | `k8s/` | `infrastructure/kubernetes/` | Kubernetes 配置 |
 | `monitoring/` | `infrastructure/monitoring/` | 監控配置 |
