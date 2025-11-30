@@ -1,0 +1,273 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.synergymesh.io/docs-index/v1",
+  "title": "SynergyMesh Docs Index Schema v1",
+  "description": "Schema for docs index - defines document entries for agents/validators/CI governance",
+  "type": "object",
+  "required": ["version", "items"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "const": "https://schema.synergymesh.io/docs-index/v1",
+      "description": "Schema namespace identifier"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "description": "Index file version (semantic versioning)"
+    },
+    "namespace": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9.]*[a-z0-9]$",
+      "description": "Optional namespace identifier"
+    },
+    "last_updated": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+      "description": "Last update date (YYYY-MM-DD)"
+    },
+    "categories": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" }
+        },
+        "required": ["name"]
+      },
+      "description": "Document category definitions"
+    },
+    "layers": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Architecture layer definitions"
+    },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "path",
+          "title",
+          "domain",
+          "layer",
+          "type",
+          "tags",
+          "owner",
+          "status",
+          "description"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+([a-z0-9-_]*[a-z0-9])?$",
+            "description": "Unique identifier, globally unique, short, traceable"
+          },
+          "path": {
+            "type": "string",
+            "pattern": "^(?:[A-Za-z0-9._\\-/]+)$",
+            "description": "Relative repository path or URL; prefer relative paths"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 120,
+            "description": "Document or asset title"
+          },
+          "domain": {
+            "type": "string",
+            "enum": [
+              "automation",
+              "core",
+              "frontend",
+              "infrastructure",
+              "tests",
+              "governance",
+              "tools",
+              "ops",
+              "operations",
+              "config",
+              "docs",
+              "mcp-servers",
+              "agent",
+              "shared",
+              "bridges",
+              "contracts",
+              "runtime",
+              "github",
+              "architecture",
+              "security",
+              "guides"
+            ],
+            "description": "Asset business or technical domain"
+          },
+          "layer": {
+            "type": "string",
+            "enum": [
+              "coordination",
+              "execution",
+              "monitoring",
+              "supplyChain",
+              "audit",
+              "policy",
+              "schema",
+              "workflow",
+              "ui",
+              "service",
+              "runtime",
+              "docs",
+              "experience-interfaces",
+              "platform-core",
+              "ai-automation",
+              "enablement",
+              "governance-ops"
+            ],
+            "description": "System structure layer mapping"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "markdown",
+              "yaml",
+              "json",
+              "ts-module",
+              "py-module",
+              "go-module",
+              "service-config",
+              "policy",
+              "schema",
+              "workflow",
+              "audit-entry",
+              "sbom",
+              "provenance",
+              "diagram",
+              "readme",
+              "reference",
+              "design",
+              "index",
+              "guide",
+              "api-reference"
+            ],
+            "description": "Specific asset type"
+          },
+          "tags": {
+            "type": "array",
+            "minItems": 0,
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9]+([a-z0-9-_]*[a-z0-9])?$"
+            },
+            "description": "Free tags for search and classification"
+          },
+          "owner": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 80,
+            "description": "Responsible owner, can be team or agent name"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["draft", "stable", "deprecated", "archived", "experimental"],
+            "description": "Asset lifecycle status"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 400,
+            "description": "Brief description of purpose and scope"
+          },
+          "last_reviewed": {
+            "type": "string",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+            "description": "Last review date (YYYY-MM-DD)"
+          },
+          "platforms": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "kubernetes",
+                "docker",
+                "linux",
+                "windows",
+                "macos",
+                "ios",
+                "android",
+                "aws",
+                "gcp",
+                "azure",
+                "edge",
+                "baremetal"
+              ]
+            },
+            "description": "Applicable platforms (optional), for cross-platform work"
+          },
+          "languages": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["typescript", "javascript", "python", "go", "cpp", "rust", "java", "yaml", "json", "markdown"]
+            },
+            "description": "Related languages (optional)"
+          },
+          "provenance": {
+            "type": "object",
+            "properties": {
+              "slsaRef": { "type": "string" },
+              "digest": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+              "signatureRef": { "type": "string" }
+            },
+            "additionalProperties": false,
+            "description": "Supply chain provenance reference (optional)"
+          },
+          "sbom": {
+            "type": "object",
+            "properties": {
+              "format": { "type": "string", "enum": ["spdx-json", "cyclonedx-json"] },
+              "ref": { "type": "string" }
+            },
+            "additionalProperties": false,
+            "description": "SBOM reference (optional)"
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["rel", "href"],
+              "properties": {
+                "rel": { "type": "string" },
+                "href": { "type": "string" }
+              }
+            },
+            "description": "Related links (e.g., original docs, design diagrams, API)"
+          },
+          "meta": {
+            "type": "object",
+            "description": "Free extension fields for specific agents or platforms"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "relationships": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["from", "to", "type"],
+        "properties": {
+          "from": { "type": "string" },
+          "to": { "type": "string" },
+          "type": {
+            "type": "string",
+            "enum": ["complements", "parent-child", "depends-on", "references"]
+          }
+        }
+      },
+      "description": "Relationships between documents"
+    }
+  },
+  "additionalProperties": false
+}

@@ -7,6 +7,8 @@ on:
       - 'schemas/**'
       - 'test-vectors/**'
       - 'tools/**'
+      - 'docs/**'
+      - 'governance/schemas/**'
   push:
     branches: [main]
 
@@ -34,7 +36,11 @@ jobs:
       
       - name: Validate YAML files
         run: |
-          python tools/validate_yaml.py
+          python tools/utilities/validate_yaml.py
+      
+      - name: Validate docs knowledge index
+        run: |
+          python tools/docs/validate_index.py --verbose
       
       - name: Generate validation report
         if: always()

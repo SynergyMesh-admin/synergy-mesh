@@ -47,15 +47,15 @@ layers:
   - enablement              # Infrastructure, CI, tests, config
   - governance-ops          # Governance, ops, docs
 
-# Document Index / 文檔索引
-documents:
+# Document Items / 文檔項目
+items:
   # ===== Architecture Documents 架構文檔 =====
   - id: "architecture_layers"
     path: "docs/architecture/layers.md"
     title: "Architecture Layers 架構分層視圖"
     domain: "architecture"
     layer: "platform-core"
-    kind: "reference"
+    type: "reference"
     tags: ["architecture", "layers", "dependencies", "overview"]
     owner: "platform-team"
     status: "stable"
@@ -67,7 +67,7 @@ documents:
     title: "Repository Map 倉庫地圖與語義邊界"
     domain: "architecture"
     layer: "platform-core"
-    kind: "reference"
+    type: "reference"
     tags: ["architecture", "boundaries", "semantic", "agents"]
     owner: "platform-team"
     status: "stable"
@@ -79,7 +79,7 @@ documents:
     title: "System Architecture Design 系統架構設計"
     domain: "architecture"
     layer: "platform-core"
-    kind: "design"
+    type: "design"
     tags: ["architecture", "microservices", "design"]
     owner: "platform-team"
     status: "stable"
@@ -91,7 +91,7 @@ documents:
     title: "Architecture Documentation Index 架構文檔索引"
     domain: "architecture"
     layer: "platform-core"
-    kind: "index"
+    type: "index"
     tags: ["architecture", "index", "navigation"]
     owner: "platform-team"
     status: "stable"
@@ -103,7 +103,7 @@ documents:
     title: "Deployment & Infrastructure 部署與基礎設施"
     domain: "operations"
     layer: "enablement"
-    kind: "guide"
+    type: "guide"
     tags: ["deployment", "docker", "kubernetes", "ci-cd"]
     owner: "devops-team"
     status: "stable"
@@ -115,7 +115,7 @@ documents:
     title: "Code Quality Checks 代碼品質檢查"
     domain: "operations"
     layer: "enablement"
-    kind: "guide"
+    type: "guide"
     tags: ["quality", "linting", "sonarqube", "eslint"]
     owner: "platform-team"
     status: "stable"
@@ -127,7 +127,7 @@ documents:
     title: "Security & Config Checks 安全檢測與配置文件檢查"
     domain: "security"
     layer: "enablement"
-    kind: "guide"
+    type: "guide"
     tags: ["security", "bandit", "owasp", "validation"]
     owner: "security-team"
     status: "stable"
@@ -140,7 +140,7 @@ documents:
     title: "Intelligent Automation Module 智能自動化模組"
     domain: "automation"
     layer: "ai-automation"
-    kind: "readme"
+    type: "readme"
     tags: ["automation", "ai", "pipeline", "agents"]
     owner: "automation-team"
     status: "stable"
@@ -152,7 +152,7 @@ documents:
     title: "Autonomous System Framework 自主系統框架"
     domain: "automation"
     layer: "ai-automation"
-    kind: "readme"
+    type: "readme"
     tags: ["autonomous", "drone", "self-driving", "framework"]
     owner: "autonomous-team"
     status: "stable"
@@ -164,7 +164,7 @@ documents:
     title: "Autonomous System Quickstart 自主系統快速入門"
     domain: "automation"
     layer: "ai-automation"
-    kind: "guide"
+    type: "guide"
     tags: ["autonomous", "quickstart", "getting-started"]
     owner: "autonomous-team"
     status: "experimental"
@@ -177,7 +177,7 @@ documents:
     title: "Agent Services 代理服務"
     domain: "automation"
     layer: "ai-automation"
-    kind: "readme"
+    type: "readme"
     tags: ["agents", "auto-repair", "orchestrator", "boundaries"]
     owner: "agent-team"
     status: "stable"
@@ -190,7 +190,7 @@ documents:
     title: "Core Platform Services 核心平台服務"
     domain: "architecture"
     layer: "platform-core"
-    kind: "readme"
+    type: "readme"
     tags: ["core", "ai-engine", "execution", "boundaries"]
     owner: "platform-team"
     status: "stable"
@@ -202,7 +202,7 @@ documents:
     title: "Execution Engine 執行引擎"
     domain: "architecture"
     layer: "platform-core"
-    kind: "readme"
+    type: "readme"
     tags: ["execution", "engine", "abstraction"]
     owner: "platform-team"
     status: "stable"
@@ -214,7 +214,7 @@ documents:
     title: "Execution Architecture 執行架構"
     domain: "architecture"
     layer: "platform-core"
-    kind: "readme"
+    type: "readme"
     tags: ["execution", "architecture", "orchestration"]
     owner: "platform-team"
     status: "stable"
@@ -226,7 +226,7 @@ documents:
     title: "Contract Service 合約管理服務"
     domain: "architecture"
     layer: "platform-core"
-    kind: "readme"
+    type: "readme"
     tags: ["contracts", "service", "l1"]
     owner: "contract-team"
     status: "stable"
@@ -239,7 +239,7 @@ documents:
     title: "Runtime Environment 運行時環境"
     domain: "architecture"
     layer: "platform-core"
-    kind: "readme"
+    type: "readme"
     tags: ["runtime", "mind-matrix", "execution"]
     owner: "platform-team"
     status: "stable"
@@ -252,7 +252,7 @@ documents:
     title: "MCP Servers MCP 服務器"
     domain: "automation"
     layer: "ai-automation"
-    kind: "readme"
+    type: "readme"
     tags: ["mcp", "llm", "tools", "endpoints"]
     owner: "platform-team"
     status: "stable"
@@ -265,7 +265,7 @@ documents:
     title: "External API Contracts 外部 API 合約定義"
     domain: "architecture"
     layer: "experience-interfaces"
-    kind: "readme"
+    type: "readme"
     tags: ["contracts", "api", "schema", "openapi"]
     owner: "integration-team"
     status: "stable"
@@ -278,7 +278,7 @@ documents:
     title: "Auto-Assignment System 自動分配系統"
     domain: "automation"
     layer: "ai-automation"
-    kind: "design"
+    type: "design"
     tags: ["auto-assignment", "sla", "load-balancing"]
     owner: "automation-team"
     status: "stable"
@@ -290,7 +290,7 @@ documents:
     title: "Auto-Assignment API 自動分配 API"
     domain: "automation"
     layer: "ai-automation"
-    kind: "api-reference"
+    type: "api-reference"
     tags: ["auto-assignment", "api", "rest"]
     owner: "automation-team"
     status: "stable"
@@ -302,7 +302,7 @@ documents:
     title: "Advanced Escalation System 進階升級系統"
     domain: "automation"
     layer: "ai-automation"
-    kind: "design"
+    type: "design"
     tags: ["escalation", "customer-service", "safety-critical"]
     owner: "automation-team"
     status: "stable"
@@ -314,7 +314,7 @@ documents:
     title: "Dynamic CI Assistant 動態 CI 助手"
     domain: "operations"
     layer: "enablement"
-    kind: "guide"
+    type: "guide"
     tags: ["ci", "assistant", "automation"]
     owner: "devops-team"
     status: "stable"
@@ -326,7 +326,7 @@ documents:
     title: "Auto Review & Merge 自動審查與合併"
     domain: "operations"
     layer: "enablement"
-    kind: "guide"
+    type: "guide"
     tags: ["auto-review", "auto-merge", "ci-cd"]
     owner: "devops-team"
     status: "stable"
@@ -339,7 +339,7 @@ documents:
     title: "Quick Start Guide 快速入門指南"
     domain: "guides"
     layer: "enablement"
-    kind: "guide"
+    type: "guide"
     tags: ["quickstart", "getting-started", "tutorial"]
     owner: "docs-team"
     status: "stable"
@@ -351,7 +351,7 @@ documents:
     title: "Integration Guide 整合指南"
     domain: "guides"
     layer: "experience-interfaces"
-    kind: "guide"
+    type: "guide"
     tags: ["integration", "external-systems", "api"]
     owner: "integration-team"
     status: "stable"
@@ -363,7 +363,7 @@ documents:
     title: "Copilot Setup Copilot 設定"
     domain: "guides"
     layer: "enablement"
-    kind: "guide"
+    type: "guide"
     tags: ["copilot", "github", "setup"]
     owner: "docs-team"
     status: "stable"
@@ -376,7 +376,7 @@ documents:
     title: "Vulnerability Management 漏洞管理"
     domain: "security"
     layer: "governance-ops"
-    kind: "guide"
+    type: "guide"
     tags: ["security", "vulnerabilities", "cve"]
     owner: "security-team"
     status: "stable"
@@ -388,7 +388,7 @@ documents:
     title: "Secret Scanning 密鑰掃描"
     domain: "security"
     layer: "governance-ops"
-    kind: "guide"
+    type: "guide"
     tags: ["security", "secrets", "scanning"]
     owner: "security-team"
     status: "stable"
@@ -400,7 +400,7 @@ documents:
     title: "Security Training 安全培訓"
     domain: "security"
     layer: "governance-ops"
-    kind: "guide"
+    type: "guide"
     tags: ["security", "training", "best-practices"]
     owner: "security-team"
     status: "stable"
@@ -413,7 +413,7 @@ documents:
     title: "Governance 治理"
     domain: "governance"
     layer: "governance-ops"
-    kind: "readme"
+    type: "readme"
     tags: ["governance", "policies", "rules", "sbom"]
     owner: "governance-team"
     status: "stable"

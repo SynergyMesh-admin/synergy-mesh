@@ -4,6 +4,7 @@ Knowledge Index Validator
 知識索引驗證工具
 
 Validates the docs/knowledge_index.yaml file to ensure:
+- Schema validation against docs-index.schema.json
 - All referenced files exist
 - Required fields are present
 - IDs are unique
@@ -15,6 +16,7 @@ Usage:
 """
 
 import argparse
+import json
 import sys
 from pathlib import Path
 from typing import Any
@@ -26,6 +28,13 @@ except ImportError:
     print("Error: PyYAML is required. Install with: pip install pyyaml")
     sys.exit(1)
 
+# Try to import jsonschema for schema validation
+try:
+    from jsonschema import validate, ValidationError
+    HAS_JSONSCHEMA = True
+except ImportError:
+    HAS_JSONSCHEMA = False
+
 
 def load_index(index_path: Path) -> dict[str, Any]:
     """Load and parse the knowledge index YAML file."""
@@ -33,9 +42,31 @@ def load_index(index_path: Path) -> dict[str, Any]:
         return yaml.safe_load(f)
 
 
+def load_json_schema(schema_path: Path) -> dict[str, Any]:
+    """Load JSON schema file."""
+    with open(schema_path, 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+
+def validate_against_schema(data: dict[str, Any], schema: dict[str, Any]) -> list[str]:
+    """Validate data against JSON schema."""
+    errors = []
+    if not HAS_JSONSCHEMA:
+        return ["⚠️  Schema validation skipped (jsonschema not installed)"]
+    
+    try:
+        validate(instance=data, schema=schema)
+    except ValidationError as e:
+        errors.append(f"Schema validation error: {e.message}")
+        if e.path:
+            errors.append(f"  At path: {'.'.join(str(p) for p in e.path)}")
+    
+    return errors
+
+
 def validate_required_fields(doc: dict[str, Any], doc_id: str) -> list[str]:
     """Check that all required fields are present in a document entry."""
-    required_fields = ['id', 'path', 'title', 'domain', 'layer', 'kind', 'status']
+    required_fields = ['id', 'path', 'title', 'domain', 'layer', 'type', 'tags', 'owner', 'status', 'description']
     errors = []
     for field in required_fields:
         if field not in doc:
@@ -100,12 +131,14 @@ def validate_layers(documents: list[dict[str, Any]], layers: list[str]) -> list[
 def main():
     parser = argparse.ArgumentParser(description='Validate knowledge index YAML file')
     parser.add_argument('--verbose', '-v', action='store_true', help='Show detailed output')
+    parser.add_argument('--skip-schema', action='store_true', help='Skip JSON schema validation')
     args = parser.parse_args()
 
     # Determine paths
     script_dir = Path(__file__).parent
     repo_root = script_dir.parent.parent
     index_path = repo_root / 'docs' / 'knowledge_index.yaml'
+    schema_path = repo_root / 'governance' / 'schemas' / 'docs-index.schema.json'
 
     if not index_path.exists():
         print(f"Error: Knowledge index not found at {index_path}")
@@ -124,7 +157,25 @@ def main():
         print(str(e))
         sys.exit(1)
 
-    documents = index.get('documents', [])
+    # Collect all errors
+    all_errors = []
+
+    # JSON Schema validation
+    if not args.skip_schema and schema_path.exists():
+        if args.verbose:
+            print("🔍 Validating against JSON Schema...")
+        try:
+            schema = load_json_schema(schema_path)
+            schema_errors = validate_against_schema(index, schema)
+            all_errors.extend(schema_errors)
+            if args.verbose and not schema_errors:
+                print("  ✅ Schema validation passed")
+        except Exception as e:
+            all_errors.append(f"Failed to load schema: {e}")
+    elif args.verbose:
+        print("⚠️  Schema validation skipped")
+
+    documents = index.get('items', [])
     categories = index.get('categories', {})
     layers = index.get('layers', [])
     relationships = index.get('relationships', [])
@@ -135,9 +186,6 @@ def main():
         print(f"Found {len(layers)} layers")
         print(f"Found {len(relationships)} relationships")
         print()
-
-    # Collect all errors
-    all_errors = []
 
     # Validate unique IDs
     all_errors.extend(validate_unique_ids(documents))
