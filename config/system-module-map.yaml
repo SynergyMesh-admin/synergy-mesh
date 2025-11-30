@@ -232,22 +232,22 @@ directory_categories:
     description: "自動化系統"
     modules:
       intelligent_automation:
-        path: "intelligent-automation/"
+        path: "automation/intelligent/"
         description: "智能自動化"
         provides: ["TaskOrchestration", "IntentUnderstanding"]
       
       intelligent_hyperautomation:
-        path: "intelligent-hyperautomation/"
+        path: "automation/hyperautomation/"
         description: "智能超自動化"
         provides: ["HyperautomationPolicies", "UAVGovernance"]
       
       automation_architect:
-        path: "automation-architect/"
+        path: "automation/architect/"
         description: "自動化架構師"
         provides: ["ArchitectureAnalysis", "RepairEngine"]
       
       autonomous_system:
-        path: "autonomous-system/"
+        path: "automation/autonomous/"
         description: "自主系統"
         provides: ["APIGovernance", "ArchitectureStability"]
 
@@ -297,17 +297,17 @@ directory_categories:
     description: "前端應用"
     modules:
       advanced_architecture:
-        path: "advanced-architecture/"
+        path: "frontend/architecture/"
         description: "進階架構視覺化"
         provides: ["ArchitectureVisualization"]
       
       advanced_system_src:
-        path: "advanced-system-src/"
+        path: "frontend/system-ui/"
         description: "進階系統源碼"
         provides: ["SystemUI", "CodeAnalyzerAPI"]
       
       advanced_system_dist:
-        path: "advanced-system-dist/"
+        path: "frontend/dist/"
         description: "進階系統編譯產出"
         type: "build_output"
 
@@ -338,15 +338,15 @@ directory_categories:
     description: "測試相關"
     modules:
       tests:
-        path: "tests/"
+        path: "tests/unit/"
         description: "測試套件"
       
       test_vectors:
-        path: "test-vectors/"
+        path: "tests/vectors/"
         description: "測試向量"
       
       performance_tests:
-        path: "performance-tests/"
+        path: "tests/performance/"
         description: "性能測試"
 
   # ─────────────────────────────────────────────────────────────────────────
@@ -356,15 +356,15 @@ directory_categories:
     description: "治理與政策"
     modules:
       governance:
-        path: "governance/"
+        path: "governance/rules/"
         description: "治理規則"
       
       policy:
-        path: "policy/"
+        path: "governance/policies/"
         description: "政策定義"
       
       schemas:
-        path: "schemas/"
+        path: "governance/schemas/"
         description: "資料結構定義"
 
   # ─────────────────────────────────────────────────────────────────────────
@@ -374,15 +374,15 @@ directory_categories:
     description: "工具與腳本"
     modules:
       scripts:
-        path: "scripts/"
+        path: "tools/scripts/"
         description: "自動化腳本"
       
       tools:
-        path: "tools/"
+        path: "tools/utilities/"
         description: "工具程式"
       
       ci:
-        path: "ci/"
+        path: "tools/ci/"
         description: "CI 輔助工具"
 
   # ─────────────────────────────────────────────────────────────────────────

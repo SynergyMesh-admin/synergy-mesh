@@ -34,25 +34,45 @@
 
 ## 📁 Structure
 
-- `autonomous-system/` - **NEW** Five-skeleton autonomous drone/self-driving system framework
-  - `architecture-stability/` - C++ core control layer with ROS 2
-  - `api-governance/` - Python module governance and API contract validation
-  - `testing-compatibility/` - Python + YAML automated testing framework
-  - `security-observability/` - Go microservice for distributed tracing and security monitoring
-  - `docs-examples/` - Complete documentation and governance definitions
-- `intelligent-automation/` - Multi-agent AI system for autonomous code analysis
-  - `agents/` - Specialized AI agents (TaskExecutor, RecognitionServer, VisualizationAgent)
-  - `pipeline_service.py` - Orchestration service for multi-agent coordination
-- `core/` - Core platform services
+The repository has been consolidated into a cleaner directory structure:
+
+- `automation/` - 🤖 All automation-related modules (consolidated)
+  - `intelligent/` - Multi-agent AI system for autonomous code analysis
+  - `hyperautomation/` - Hyperautomation policies and UAV governance
+  - `architect/` - Architecture analysis and repair engine
+  - `autonomous/` - Five-skeleton autonomous drone/self-driving system framework
+- `frontend/` - 🎨 Frontend applications (consolidated)
+  - `architecture/` - Architecture visualization
+  - `system-ui/` - System UI source code
+  - `dist/` - Build output
+- `infrastructure/` - 🏗️ Infrastructure configurations (consolidated)
+  - `kubernetes/` - Kubernetes deployment configurations
+  - `monitoring/` - Monitoring and alerting
+  - `canary/` - Canary deployment configurations
+  - `drift/` - Drift detection
+- `tests/` - 🧪 All testing (consolidated)
+  - `unit/` - Unit tests
+  - `vectors/` - Test vectors
+  - `performance/` - Performance tests
+- `governance/` - ⚖️ Governance and policies (consolidated)
+  - `rules/` - Governance rules
+  - `policies/` - Policy definitions
+  - `schemas/` - Schema definitions
+- `tools/` - 🔧 Tools and scripts (consolidated)
+  - `scripts/` - Automation scripts
+  - `utilities/` - Utility tools
+  - `ci/` - CI helper tools
+- `ops/` - 📋 Operations (consolidated)
+  - `runbooks/` - Operational runbooks
+  - `reports/` - Reports
+  - `artifacts/` - Build artifacts
+- `config/` - ⚙️ Configuration files (consolidated from root)
+- `docs/` - 📚 Documentation (organized into subdirectories)
+- `core/` - 🏛️ Core platform services
   - `contracts/` - Contract management services
     - `contracts-L1/` - Layer 1 contract management
-      - `contracts/` - Core contract service implementation
-- `.github/` - GitHub Actions workflows
-  - `workflows/` - CI/CD automation
-    - `auto-review-merge.yml` - Automated review and merge workflow
-  - `scripts/` - Helper scripts for automation
-- `docs/` - Documentation
-  - `AUTO_REVIEW_MERGE.md` - Auto review and merge documentation
+- `mcp-servers/` - MCP server implementations
+- `.github/` - GitHub Actions workflows and configurations
 
 ## 🚀 Getting Started
 
@@ -62,7 +82,7 @@ The autonomous system framework provides complete support for drone and self-dri
 
 ```bash
 # Navigate to autonomous system
-cd autonomous-system
+cd automation/autonomous
 
 # See detailed quickstart guide
 cat docs-examples/QUICKSTART.md
@@ -71,20 +91,20 @@ cat docs-examples/QUICKSTART.md
 # Refer to the detailed guide for complete installation steps
 ```
 
-See [Autonomous System Documentation](autonomous-system/README.md) for complete setup instructions.
+See [Autonomous System Documentation](automation/autonomous/README.md) for complete setup instructions.
 
 ### Intelligent Automation Quick Start
 
 ```bash
 # Install Python dependencies for intelligent automation
-cd intelligent-automation
+cd automation/intelligent
 pip install -r requirements.txt
 
 # Run example
 python pipeline_service.py
 ```
 
-See individual service README files for specific setup instructions, including [Intelligent Automation Module](intelligent-automation/README.md).
+See individual service README files for specific setup instructions, including [Intelligent Automation Module](automation/intelligent/README.md).
 
 ## 🤖 Auto Review & Merge
 
