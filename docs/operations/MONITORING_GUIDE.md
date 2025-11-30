@@ -73,7 +73,7 @@ FIM detects unauthorized file changes by creating file baselines and performing 
 
 2. 建立基線監控清單，優先監控以下路徑：
    - /srv/repo/config
-   - /srv/repo/core/contracts
+   - /srv/repo/core/contract_service
    - /srv/repo/advanced-system-src
    - /srv/repo/advanced-system-dist
    - /srv/repo/mcp-servers
@@ -118,7 +118,7 @@ FIM detects unauthorized file changes by creating file baselines and performing 
       /srv/repo/config
     </directories>
     <directories check_all="yes" realtime="yes" report_changes="yes">
-      /srv/repo/core/contracts
+      /srv/repo/core/contract_service
     </directories>
     <directories check_all="yes" realtime="yes" report_changes="yes">
       /srv/repo/advanced-system-src
@@ -169,7 +169,7 @@ auditd is a kernel-level Linux audit tool that records all file access and syste
    sudo auditctl -w /srv/repo/scripts -p wa -k reposcripts_watch
    
    # 監控核心程式碼目錄
-   sudo auditctl -w /srv/repo/core/contracts -p wa -k repocore_watch
+   sudo auditctl -w /srv/repo/core/contract_service -p wa -k repocore_watch
    
    # 監控進階系統原始碼
    sudo auditctl -w /srv/repo/advanced-system-src -p wa -k reposrc_watch
@@ -188,7 +188,7 @@ auditd is a kernel-level Linux audit tool that records all file access and syste
    sudo tee /etc/audit/rules.d/synergymesh-monitoring.rules << 'EOF'
    -w /srv/repo/config -p wa -k repoconfig_watch
    -w /srv/repo/scripts -p wa -k reposcripts_watch
-   -w /srv/repo/core/contracts -p wa -k repocore_watch
+   -w /srv/repo/core/contract_service -p wa -k repocore_watch
    -w /srv/repo/advanced-system-src -p wa -k reposrc_watch
    -w /srv/repo/mcp-servers -p wa -k repomcp_watch
    -w /srv/repo/.config/conftest/policies -p wa -k repopolicy_watch

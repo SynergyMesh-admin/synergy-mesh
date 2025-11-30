@@ -64,7 +64,7 @@ SynergyMesh/
 │   ├── ci_error_handler/             # CI 錯誤處理
 │   ├── cloud_agent_delegation/       # 雲端代理任務委派
 │   ├── context_understanding_engine.py # 上下文理解引擎
-│   ├── contracts/                    # 合約管理服務（L1）
+│   ├── contract_service/             # 合約管理服務（L1）- 注意：非 contracts/
 │   ├── execution_architecture/       # 執行架構
 │   ├── execution_engine/             # 代碼執行引擎
 │   ├── hallucination_detector.py     # AI 幻覺檢測

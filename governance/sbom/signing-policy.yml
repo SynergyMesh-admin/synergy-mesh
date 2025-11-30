@@ -78,9 +78,9 @@ jobs:
       
       - name: 📦 生成 SBOM - Contracts L1
         run: |
-          if [ -d "core/contracts/contracts-L1" ]; then
+          if [ -d "core/contract_service/contracts-L1" ]; then
             echo "🔍 掃描 Contracts L1..."
-            syft packages dir:core/contracts/contracts-L1 \
+            syft packages dir:core/contract_service/contracts-L1 \
               -o cyclonedx-json \
               --file sbom/contracts-l1-sbom.json
             

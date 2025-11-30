@@ -25,7 +25,7 @@ The following directories are sorted by importance and sensitivity. It is recomm
 - `security-network-config.yml`
 - `grafana-dashboard.json`
 
-### 2. `core/contracts/` - 合約與關鍵邏輯
+### 2. `core/contract_service/` - 合約與關鍵邏輯
 **說明**: 核心業務邏輯、合約管理服務  
 **監控重點**: 程式碼變更、API 修改  
 **風險等級**: 🔴 高 (High)  
@@ -194,7 +194,7 @@ YYYY-MM-DD | <username> | <path> | <change_type> | <reason>
 **範例 | Example**:
 ```
 2025-11-24 | john.doe | config/prometheus-config.yml | modify | Update retention policy from 15d to 30d
-2025-11-24 | jane.smith | core/contracts/contracts-L1/contracts/src/routes.ts | add | Add new health check endpoint
+2025-11-24 | jane.smith | core/contract_service/contracts-L1/contracts/src/routes.ts | add | Add new health check endpoint
 ```
 
 ---

@@ -82,7 +82,7 @@ modules:
       - "requires_python: false"
   
   # Contracts Service (TypeScript)
-  "core/contracts":
+  "core/contract_service":
     primary_language: "typescript"
     language_dimension: "server_side_languages"
     runtime: "nodejs >= 18.0.0"

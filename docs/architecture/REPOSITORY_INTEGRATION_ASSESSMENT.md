@@ -227,8 +227,8 @@
 |------|---------|------|
 | advanced-architecture/src/components/ui/ | 48 | 舊版本 |
 | advanced-system-src/src/components/ui/ | 48 | 新版本 |
-| core/contracts/contracts-L1/contracts/web/src/components/ui/ | 48 | 複製 |
-| core/contracts/contracts-L1/contracts/web/components/ui/ | 48 | 複製 |
+| core/contract_service/contracts-L1/contracts/web/src/components/ui/ | 48 | 複製 |
+| core/contract_service/contracts-L1/contracts/web/components/ui/ | 48 | 複製 |
 
 **整合建議**: 
 - 保持 advanced-system-src 為主要來源
@@ -292,7 +292,7 @@
 
 | 模組 | 功能 | 狀態 |
 |------|------|------|
-| core/contracts-L1 | 合約管理服務 | ✅ 保留 |
+| core/contract_service-L1 | 合約管理服務 | ✅ 保留 |
 | core/advisory-database | 安全諮詢資料庫 | ✅ 保留 |
 | mcp-servers | MCP 伺服器 | ✅ 保留 |
 | advanced-system-src | 主前端系統 | ✅ 保留 |

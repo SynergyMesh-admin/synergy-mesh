@@ -25,7 +25,7 @@ ENV NPM_CONFIG_CACHE=/home/nodejs/.npm
 
 此配置必須應用於所有包含 Node.js 構建步驟的 Dockerfile：
 
-- ✅ `core/contracts/contracts-L1/contracts/Dockerfile`
+- ✅ `core/contract_service/contracts-L1/contracts/Dockerfile`
 - ✅ `mcp-servers/Dockerfile`
 - ✅ `advanced-system-src/Dockerfile`
 - ⚠️  未來任何新的 Node.js 服務 Dockerfile

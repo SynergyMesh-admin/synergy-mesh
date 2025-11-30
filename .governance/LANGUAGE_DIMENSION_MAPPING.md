@@ -64,7 +64,7 @@ microservices architecture and supports event-driven governance.
 ```
 
 **示例模組 Example Modules:**
-- `core/contracts/` - TypeScript/Node.js contract services
+- `core/contract_service/` - TypeScript/Node.js contract services
 - `mcp-servers/` - TypeScript MCP server implementations
 
 **治理原則 Governance Principles:**

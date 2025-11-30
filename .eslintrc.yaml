@@ -19,7 +19,7 @@ parserOptions:
   project:
     - "./tsconfig.json"
     - "./mcp-servers/tsconfig.json"
-    - "./core/contracts/contracts-L1/contracts/tsconfig.json"
+    - "./core/contract_service/contracts-L1/contracts/tsconfig.json"
 
 plugins:
   - "@typescript-eslint"

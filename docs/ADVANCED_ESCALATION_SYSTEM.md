@@ -134,7 +134,7 @@ The Advanced Escalation System is a core feature of SynergyMesh, specifically de
 The system is integrated into the contracts-L1 service, no additional installation required.
 
 ```bash
-cd core/contracts/contracts-L1/contracts
+cd core/contract_service/contracts-L1/contracts
 npm install
 npm run build
 ```

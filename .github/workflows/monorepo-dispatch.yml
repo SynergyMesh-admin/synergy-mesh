@@ -32,7 +32,7 @@ jobs:
             mcp-servers:
               - 'mcp-servers/**'
             contracts:
-              - 'core/contracts/contracts-L1/contracts/**'
+              - 'core/contract_service/contracts-L1/contracts/**'
             advanced-system:
               - 'advanced-system-src/**'
 
@@ -52,7 +52,7 @@ jobs:
     if: needs.detect-changes.outputs.contracts == 'true'
     uses: ./.github/workflows/reusable-ci.yml
     with:
-      working-directory: core/contracts/contracts-L1/contracts
+      working-directory: core/contract_service/contracts-L1/contracts
       service-name: contracts-service
       node-version: '18'
       enable-docker-build: true

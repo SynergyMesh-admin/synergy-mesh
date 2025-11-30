@@ -26,7 +26,7 @@ AI-powered chat service for drone and autonomous vehicle operations, extracted a
 
 ### 安裝依賴
 ```bash
-cd core/contracts/contracts-L1/ai-chat-service
+cd core/contract_service/contracts-L1/ai-chat-service
 npm install
 ```
 

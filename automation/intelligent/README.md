@@ -1,6 +1,36 @@
 # Intelligent Automation Module
 # 智能自動化模組
 
+> 產品級 Pipeline 組合，提供多代理 AI 代碼分析系統和自動化工作流。
+> Product-level pipeline composition, providing multi-agent AI code analysis systems and automated workflows.
+
+## 🔷 What This Directory Does 本目錄負責什麼
+
+### ✅ Responsibilities 職責
+
+- **多代理 AI 代碼分析系統** - 具體 pipeline 組合（code pipeline、review pipeline）
+- **SynergyMesh Core 自主協同系統** - 產品級工作流
+- **Pipeline 編排和服務** - 協調多個代理和工具
+
+### ❌ What This Directory Does NOT Do 本目錄不負責什麼
+
+- **不實作平台級 AI 引擎** - 使用 `core/` 中的 AI 決策引擎
+- **不提供 LLM 端點** - 使用 `mcp-servers/`
+- **不實作單一代理邏輯** - 使用 `agent/`
+
+### 🔗 Dependencies 依賴關係
+
+**應依賴 Should depend on:**
+- `core/` - 平台級 AI 能力
+- `mcp-servers/` - LLM 工具端點
+- `agent/` - 業務代理
+
+**不應依賴 Should NOT depend on:**
+- `frontend/` - Pipeline 不應直接依賴 UI
+- `infrastructure/` - Pipeline 不應依賴部署配置
+
+---
+
 ## 概述 Overview
 
 本模組從 OJ-agent 提取核心商業價值能力，重構並優化用於無人機、無人駕駛和自動化迭代系統的代碼質量保障。

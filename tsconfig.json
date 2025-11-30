@@ -75,6 +75,6 @@
 
   "references": [
     { "path": "./mcp-servers" },
-    { "path": "./core/contracts/contracts-L1/contracts" }
+    { "path": "./core/contract_service/contracts-L1/contracts" }
   ]
 }

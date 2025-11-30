@@ -10,7 +10,7 @@ services:
   ai-chat-service:
     enabled: true
     port: 8100
-    path: "core/contracts/contracts-L1/ai-chat-service"
+    path: "core/contract_service/contracts-L1/ai-chat-service"
     features:
       - real-time-chat
       - streaming-response
@@ -20,7 +20,7 @@ services:
   input-service:
     enabled: true
     port: 8101
-    path: "core/contracts/contracts-L1/input-service"
+    path: "core/contract_service/contracts-L1/input-service"
     features:
       - mention-system
       - file-upload
@@ -30,7 +30,7 @@ services:
   file-service:
     enabled: true
     port: 8102
-    path: "core/contracts/contracts-L1/file-service"
+    path: "core/contract_service/contracts-L1/file-service"
     features:
       - telemetry-upload
       - log-management

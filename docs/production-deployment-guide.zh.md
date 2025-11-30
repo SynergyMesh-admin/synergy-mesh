@@ -101,7 +101,7 @@ synergymesh/
 
 ```bash
 # 進入 contracts service 目錄
-cd core/contracts/contracts-L1/contracts
+cd core/contract_service/contracts-L1/contracts
 
 # 安裝依賴
 npm install
@@ -125,7 +125,7 @@ npm run lint
 ### 本地構建 Docker 映像
 
 ```bash
-cd core/contracts/contracts-L1/contracts
+cd core/contract_service/contracts-L1/contracts
 
 # 構建映像
 docker build -t contracts-service:local .
@@ -141,7 +141,7 @@ curl http://localhost:3000/healthz
 
 ```bash
 # 使用 Conftest 驗證
-cd core/contracts/contracts-L1/contracts
+cd core/contract_service/contracts-L1/contracts
 conftest test deploy/*.yaml --policy ../../../../../../.config/conftest/policies
 
 # 使用命名檢查腳本
@@ -154,7 +154,7 @@ conftest test deploy/*.yaml --policy ../../../../../../.config/conftest/policies
 
 **自動觸發**:
 - Push 到 `main` 或 `develop` 分支
-- 修改 `core/contracts/contracts-L1/contracts/**` 路徑下的檔案
+- 修改 `core/contract_service/contracts-L1/contracts/**` 路徑下的檔案
 
 **手動觸發**:
 ```bash
@@ -343,7 +343,7 @@ conftest test deploy/*.yaml --policy .config/conftest/policies --output json
 ### 部署命令
 
 ```bash
-cd core/contracts/contracts-L1/contracts/deploy
+cd core/contract_service/contracts-L1/contracts/deploy
 
 # 應用所有配置
 kubectl apply -f .
@@ -434,8 +434,8 @@ kubectl apply -f deploy/alerts.yaml
 ## 故障排查
 
 詳細故障排查步驟請參考：
-- [運維手冊 (Runbook)](../core/contracts/contracts-L1/contracts/docs/runbook.zh.md)
-- [架構文件](../core/contracts/contracts-L1/contracts/docs/architecture.zh.md)
+- [運維手冊 (Runbook)](../core/contract_service/contracts-L1/contracts/docs/runbook.zh.md)
+- [架構文件](../core/contract_service/contracts-L1/contracts/docs/architecture.zh.md)
 
 ### 快速診斷
 
@@ -461,7 +461,7 @@ kubectl exec -it <pod-name> -- /bin/sh
 ### 構建 Artifacts
 
 ```bash
-cd core/contracts/contracts-L1/contracts
+cd core/contract_service/contracts-L1/contracts
 OUTPUT_DIR=artifacts/reports ../../../../scripts/artifacts/build.sh
 ```
 

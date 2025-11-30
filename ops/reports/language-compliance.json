@@ -154,56 +154,56 @@
       "ratio": 0.14003083247687564
     },
     {
-      "file": "core/contracts/contracts-L1/ai-chat-service/README.md",
+      "file": "core/contract_service/contracts-L1/ai-chat-service/README.md",
       "type": "documentation",
       "severity": "high",
       "message": "文檔中文比例不足: 14.7% (建議 ≥30%)",
       "ratio": 0.1474448478078749
     },
     {
-      "file": "core/contracts/contracts-L1/contracts/BUILD_PROVENANCE.md",
+      "file": "core/contract_service/contracts-L1/contracts/BUILD_PROVENANCE.md",
       "type": "documentation",
       "severity": "critical",
       "message": "文檔中文比例不足: 0.0% (建議 ≥30%)",
       "ratio": 0
     },
     {
-      "file": "core/contracts/contracts-L1/contracts/SLSA_INTEGRATION_REPORT.md",
+      "file": "core/contract_service/contracts-L1/contracts/SLSA_INTEGRATION_REPORT.md",
       "type": "documentation",
       "severity": "high",
       "message": "文檔中文比例不足: 27.8% (建議 ≥30%)",
       "ratio": 0.2781995661605206
     },
     {
-      "file": "core/contracts/contracts-L1/contracts/deploy/README.md",
+      "file": "core/contract_service/contracts-L1/contracts/deploy/README.md",
       "type": "documentation",
       "severity": "high",
       "message": "文檔中文比例不足: 17.6% (建議 ≥30%)",
       "ratio": 0.17633136094674556
     },
     {
-      "file": "core/contracts/contracts-L1/contracts/docs/architecture.zh.md",
+      "file": "core/contract_service/contracts-L1/contracts/docs/architecture.zh.md",
       "type": "documentation",
       "severity": "high",
       "message": "文檔中文比例不足: 19.6% (建議 ≥30%)",
       "ratio": 0.19612724757952973
     },
     {
-      "file": "core/contracts/contracts-L1/contracts/docs/runbook.zh.md",
+      "file": "core/contract_service/contracts-L1/contracts/docs/runbook.zh.md",
       "type": "documentation",
       "severity": "high",
       "message": "文檔中文比例不足: 16.7% (建議 ≥30%)",
       "ratio": 0.16701173222912352
     },
     {
-      "file": "core/contracts/contracts-L1/contracts/sbom/README.md",
+      "file": "core/contract_service/contracts-L1/contracts/sbom/README.md",
       "type": "documentation",
       "severity": "high",
       "message": "文檔中文比例不足: 17.6% (建議 ≥30%)",
       "ratio": 0.17639429312581065
     },
     {
-      "file": "core/contracts/contracts-L1/contracts/web/README.md",
+      "file": "core/contract_service/contracts-L1/contracts/web/README.md",
       "type": "documentation",
       "severity": "critical",
       "message": "文檔中文比例不足: 0.0% (建議 ≥30%)",
