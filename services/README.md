@@ -20,4 +20,4 @@ Application layer contracts including:
 ## See Also
 
 - [Migration Guide](../docs/MIGRATION.md)
-- [Contract Service](../platform/core/contract_service/)
+- [Contract Service](../core/contract_service/)

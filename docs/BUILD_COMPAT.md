@@ -2,13 +2,11 @@
 
 ## Overview
 
-This document explains the compatibility layer maintained during the directory topology migration to ensure existing builds, tests, and CI/CD pipelines continue to function.
+This document explains the build configuration for the SynergyMesh monorepo structure.
 
 ## Workspace Configuration
 
-### Original Workspaces
-
-The original `package.json` workspaces configuration:
+The `package.json` workspaces configuration:
 
 ```json
 {
@@ -21,115 +19,76 @@ The original `package.json` workspaces configuration:
 }
 ```
 
-### New Workspaces (Post-Migration)
+## Directory Structure
 
-```json
-{
-  "workspaces": [
-    "platform/mcp",
-    "platform/core/contract_service/contracts-L1/contracts",
-    "platform/core/advisory-database",
-    "app/frontend/ui"
-  ]
-}
+The repository follows a clean, unified structure:
+
 ```
-
-## Transition Strategy
-
-During the transition period, both directory structures are maintained:
-
-1. **Original directories** - Remain in place for backwards compatibility
-2. **New directories** - Contain the migrated structure
+synergymesh/
+├── core/                           # Core platform services
+│   ├── advisory-database/         # Advisory database service
+│   └── contract_service/          # Contract management services
+│       └── contracts-L1/          # Layer 1 contracts
+├── mcp-servers/                    # MCP server implementations
+├── frontend/                       # Frontend applications
+│   └── ui/                        # Main UI application
+└── ...
+```
 
 ## Path Aliases
 
-Consider adding path aliases in `tsconfig.json` for smoother transition:
+The `tsconfig.json` includes path aliases for easier imports:
 
 ```json
 {
   "compilerOptions": {
     "paths": {
-      "@platform/*": ["platform/*"],
-      "@app/*": ["app/*"],
-      "@services/*": ["services/*"],
-      "@infra/*": ["infra/*"],
-      "@meta/*": [".meta/*"]
+      "@synergymesh/*": ["src/*"],
+      "@core/*": ["core/*"],
+      "@bridges/*": ["bridges/*"],
+      "@automation/*": ["automation/*"],
+      "@mcp/*": ["mcp-servers/*"],
+      "@types/*": ["types/*"],
+      "@utils/*": ["src/utils/*"]
     }
   }
 }
 ```
 
-## CI/CD Updates
+## CI/CD Configuration
 
 ### GitHub Actions Workflow Paths
 
-Update workflow triggers to use new paths:
+Workflow triggers use the core paths:
 
 ```yaml
-# Before
 on:
   push:
     paths:
       - 'core/**'
       - 'mcp-servers/**'
-
-# After (transition period - both)
-on:
-  push:
-    paths:
-      - 'core/**'
-      - 'mcp-servers/**'
-      - 'platform/**'
-
-# After (complete migration)
-on:
-  push:
-    paths:
-      - 'platform/**'
-```
-
-## Import Path Updates
-
-### TypeScript/JavaScript Imports
-
-When migrating imports, update paths gradually:
-
-```typescript
-// Before
-import { something } from '../../core/services/some-service';
-
-// After
-import { something } from '@platform/core/services/some-service';
+      - 'frontend/**'
 ```
 
 ## Testing
 
-### Ensuring Test Compatibility
-
-1. Run tests from both old and new locations
-2. Verify all test fixtures are accessible
-3. Update test configuration paths as needed
-
 ### Jest Configuration
 
-Update `jest.config.js` roots if needed:
+The workspaces handle their own test configurations:
 
-```javascript
-module.exports = {
-  roots: [
-    '<rootDir>/platform',
-    '<rootDir>/app',
-    '<rootDir>/tests'
-  ],
-  // ... other config
-};
+```bash
+# Run all tests
+npm run test
+
+# Run tests for a specific workspace
+npm run test --workspace=@synergymesh/contracts-l1
 ```
 
 ## Build Scripts
 
 ### NPM Scripts
 
-Ensure build scripts work with new structure:
+Build scripts work across all workspaces:
 
 ```json
 {
@@ -141,30 +100,21 @@ Ensure build scripts work with new structure:
 }
 ```
 
-## Docker Build Context
+## Docker Build
 
-Update Dockerfile paths if needed:
+The `docker-compose.yml` configures services:
 
-```dockerfile
-# Update COPY commands
-COPY platform/core ./platform/core
-COPY app/frontend ./app/frontend
+```bash
+# Start all services
+docker-compose up -d
+
+# Start specific service
+docker-compose up -d contracts-l1
+docker-compose up -d mcp-servers
 ```
-
-## Known Issues
-
-1. **Symlinks**: Some environments may have issues with symlinks
-2. **IDE indexing**: IDEs may need to re-index after migration
-3. **Cache invalidation**: Clear build caches after migration
-
-## Deprecation Timeline
-
-1. **Phase 1**: Both structures exist (current)
-2. **Phase 2**: Warnings for old paths (future)
-3. **Phase 3**: Old structure removed (future)
 
 ## Support
 
-For migration issues, refer to:
-- [MIGRATION.md](./MIGRATION.md) - Full migration guide
-- [docs/architecture/](./architecture/) - Architecture documentation
+For build issues, refer to:
+- [README.md](../README.md) - Project documentation
+- [CONTRIBUTING.md](../CONTRIBUTING.md) - Contribution guidelines
