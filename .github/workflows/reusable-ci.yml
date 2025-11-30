@@ -153,8 +153,11 @@ jobs:
         run: |
           if npm run | grep -q "test"; then
             # Check if the test script uses Node.js native test runner
-            test_script=$(node -p "require('./package.json').scripts?.test || ''")
-            if echo "$test_script" | grep -q "node --test"; then
+            test_script=$(node -p "require('./package.json').scripts?.test || ''" 2>/dev/null || echo "")
+            if [ -z "$test_script" ]; then
+              echo "⚠️ Unable to parse test script from package.json"
+              npm test
+            elif echo "$test_script" | grep -q "node --test"; then
               # Node.js native test runner doesn't support --ci or --coverage
               echo "🔍 Detected Node.js native test runner, running without extra flags"
               npm test
