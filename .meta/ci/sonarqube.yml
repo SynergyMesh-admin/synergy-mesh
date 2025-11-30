@@ -1,0 +1,81 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+# This workflow helps you trigger a SonarQube analysis of your code and populates
+# GitHub Code Scanning alerts with the vulnerabilities found.
+# (this feature is available starting from SonarQube 9.7, Developer Edition and above)
+
+# 1. Make sure you add a valid GitHub configuration to your SonarQube (Administration > DevOps platforms > GitHub)
+
+# 2. Import your project on SonarQube
+#     * Add your repository as a new project by clicking "Create project" from your homepage.
+#
+# 3. Select GitHub Actions as your CI and follow the tutorial
+#     * a. Generate a new token and add it to your GitHub repository's secrets using the name SONAR_TOKEN
+#          (On SonarQube, click on your avatar on top-right > My account > Security or ask your administrator)
+#
+#     * b. Copy/paste your SonarQube host URL to your GitHub repository's secrets using the name SONAR_HOST_URL
+#
+#     * c. Copy/paste the project Key into the args parameter below
+#          (You'll find this information in SonarQube by following the tutorial or by clicking on Project Information at the top-right of your project's homepage)
+
+# Feel free to take a look at our documentation (https://docs.sonarqube.org/latest/analysis/github-integration/)
+# or reach out to our community forum if you need some help (https://community.sonarsource.com/c/sq/10)
+
+name: SonarQube analysis
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  pull-requests: read # allows SonarQube to decorate PRs with analysis results
+
+jobs:
+  Analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check for SonarQube configuration
+        id: check-config
+        run: |
+          if [ -z "${{ secrets.SONAR_TOKEN }}" ]; then
+            echo "⚠️ SONAR_TOKEN is not configured."
+            echo "has_config=false" >> $GITHUB_OUTPUT
+          elif [ -z "${{ secrets.SONAR_HOST_URL }}" ]; then
+            echo "⚠️ SONAR_HOST_URL is not configured."
+            echo "has_config=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_config=true" >> $GITHUB_OUTPUT
+          fi
+
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        with:
+          args:
+            -Dsonar.projectKey=SynergyMesh
+        continue-on-error: true
+
+      - name: Skip notice
+        if: steps.check-config.outputs.has_config == 'false'
+        run: |
+          echo "::warning::SonarQube analysis skipped - configuration not complete"
+          echo ""
+          echo "To enable SonarQube analysis, configure the following secrets:"
+          echo "1. SONAR_TOKEN - Generate at SonarQube > My Account > Security"
+          echo "2. SONAR_HOST_URL - Your SonarQube server URL"
+          echo ""
+          echo "Add secrets at: Settings > Secrets and variables > Actions > New repository secret"
