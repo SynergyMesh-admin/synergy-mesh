@@ -1,12 +1,32 @@
 "use client"
 
-import { useTheme } from "next-themes"
+import * as React from "react"
 import { Toaster as Sonner } from "sonner"
 
 type ToasterProps = React.ComponentProps<typeof Sonner>
 
+/**
+ * Custom hook to detect system theme preference
+ * This replaces next-themes useTheme for React/Vite compatibility
+ */
+const useSystemTheme = (): "light" | "dark" | "system" => {
+  const [theme, setTheme] = React.useState<"light" | "dark" | "system">("system")
+
+  React.useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
+    const updateTheme = () => {
+      setTheme(mediaQuery.matches ? "dark" : "light")
+    }
+    updateTheme()
+    mediaQuery.addEventListener("change", updateTheme)
+    return () => mediaQuery.removeEventListener("change", updateTheme)
+  }, [])
+
+  return theme
+}
+
 const Toaster = ({ ...props }: ToasterProps) => {
-  const { theme = "system" } = useTheme()
+  const theme = useSystemTheme()
 
   return (
     <Sonner
