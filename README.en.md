@@ -6,6 +6,13 @@
 >
 > ✨ *Transforming enterprises through AI-powered workflows and unified digital experiences.*
 
+## 🤖 Unmanned Island
+
+<a href="https://github.com/Unmanned-Island-admin/SynergyMesh"><img src="https://img.shields.io/badge/Efficiency-⚡_Rapid_Response-brightgreen?style=for-the-badge"></a>
+<a href="https://github.com/Unmanned-Island-admin/SynergyMesh"><img src="https://img.shields.io/badge/Multi--Language-15+_Supported-blue?style=for-the-badge"></a>
+<a href="https://github.com/Unmanned-Island-admin/SynergyMesh"><img src="https://img.shields.io/badge/Availability-24%2F7_Support-orange?style=for-the-badge"></a>
+<a href="https://github.com/Unmanned-Island-admin/SynergyMesh"><img src="https://img.shields.io/badge/Cloud-Native_Integration-purple?style=for-the-badge"></a>
+
 ---
 
 ## 🌟 Features
