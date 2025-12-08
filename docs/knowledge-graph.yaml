@@ -3,7 +3,7 @@ version: 1.0.0
 id: unmanned-island-knowledge-graph
 title: Unmanned Island System Knowledge Graph
 description: Knowledge graph representation of the repository structure and entities
-generated_at: '2025-12-08T20:29:38.842852Z'
+generated_at: '2025-12-08T20:30:18.531054Z'
 source_repo: .
 nodes:
 - id: system:unmanned-island
@@ -1660,6 +1660,12 @@ nodes:
   path: _codeql_detected_source_root/governance
   properties:
     label_zh: 子系統
+- id: file:_codeql_detected_source_root:governance:language-naming-rules.yaml
+  type: config
+  label: language-naming-rules.yaml
+  path: _codeql_detected_source_root/governance/language-naming-rules.yaml
+  properties:
+    label_zh: 設定
 - id: dir:_codeql_detected_source_root:governance:policies
   type: directory
   label: policies
@@ -5140,6 +5146,12 @@ nodes:
   path: governance
   properties:
     label_zh: 子系統
+- id: file:governance:language-naming-rules.yaml
+  type: config
+  label: language-naming-rules.yaml
+  path: governance/language-naming-rules.yaml
+  properties:
+    label_zh: 設定
 - id: dir:governance:policies
   type: directory
   label: policies
@@ -7961,6 +7973,9 @@ edges:
   target: dir:_codeql_detected_source_root:governance
   type: contains
 - source: dir:_codeql_detected_source_root:governance
+  target: file:_codeql_detected_source_root:governance:language-naming-rules.yaml
+  type: contains
+- source: dir:_codeql_detected_source_root:governance
   target: dir:_codeql_detected_source_root:governance:policies
   type: contains
 - source: dir:_codeql_detected_source_root:governance
@@ -9701,6 +9716,9 @@ edges:
   target: dir:governance
   type: contains
 - source: dir:governance
+  target: file:governance:language-naming-rules.yaml
+  type: contains
+- source: dir:governance
   target: dir:governance:policies
   type: contains
 - source: dir:governance:policies
@@ -10694,19 +10712,19 @@ edges:
   target: config:config:unified-config-index.yaml
   type: configures
 statistics:
-  total_nodes: 1186
-  total_edges: 1185
+  total_nodes: 1188
+  total_edges: 1187
   nodes_by_type:
     system: 1
     directory: 515
     module: 317
-    config: 312
+    config: 314
     subsystem: 18
     document: 7
     capability: 15
     component: 1
   edges_by_type:
-    contains: 1166
+    contains: 1168
     provides: 15
     configures: 4
 meta:
