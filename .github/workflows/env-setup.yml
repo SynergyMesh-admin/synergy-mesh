@@ -1,0 +1,49 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+#                    Environment Setup - Reusable Workflow
+#                    統一 Token 管理工作流程
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+# 使用方式：
+#   在其他工作流程中引用：
+#   jobs:
+#     setup:
+#       uses: ./.github/workflows/env-setup.yml
+#       secrets: inherit
+#
+# Token 優先順序：
+#   1. vars.WE_TONKE (Repository Variable)
+#   2. secrets.WE_TONKE (Repository Secret)
+#   3. secrets.GITHUB_TOKEN (默認 Token)
+#   4. github.token (自動生成 Token)
+#
+# ═══════════════════════════════════════════════════════════════════════════════
+
+name: Environment Setup
+
+on:
+    workflow_call:
+        outputs:
+            token:
+                description: "The resolved GitHub token"
+                value: ${{ jobs.setup.outputs.token }}
+
+jobs:
+    setup:
+        runs-on: ubuntu-latest
+        outputs:
+            token: ${{ steps.resolve-token.outputs.token }}
+        steps:
+            - name: Resolve GitHub Token
+              id: resolve-token
+              run: |
+                  # 優先使用 WE_TONKE，然後是 GITHUB_TOKEN
+                  if [ -n "${{ vars.WE_TONKE }}" ]; then
+                    echo "token=${{ vars.WE_TONKE }}" >> $GITHUB_OUTPUT
+                    echo "Using WE_TONKE from vars"
+                  elif [ -n "${{ secrets.WE_TONKE }}" ]; then
+                    echo "token=${{ secrets.WE_TONKE }}" >> $GITHUB_OUTPUT
+                    echo "Using WE_TONKE from secrets"
+                  else
+                    echo "token=${{ secrets.WE_TONKE || secrets.GITHUB_TOKEN }}" >> $GITHUB_OUTPUT
+                    echo "Using default GITHUB_TOKEN"
+                  fi
