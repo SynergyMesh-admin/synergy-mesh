@@ -105,7 +105,9 @@ engines:
     enabled: true
     config:
       learning_enabled: true
-      auto_optimize: false  # Set to true for fully autonomous mode
+      # auto_optimize controls whether evolution opportunities are applied automatically
+      # during the evolution phase (different from workflow.mode which controls overall automation)
+      auto_optimize: false  # Set to true to auto-apply evolution opportunities
       confidence_threshold: 0.7
       max_evolution_cycles: 3
       safety_checks: true
@@ -168,6 +170,9 @@ safety:
     - "tests_still_passing"
     - "no_new_vulnerabilities"
     - "performance_acceptable"
+  
+  # Validation timeouts
+  validation_timeout: 300  # seconds for validation checks (e.g., test runs)
   
   # Rollback conditions
   rollback_on:

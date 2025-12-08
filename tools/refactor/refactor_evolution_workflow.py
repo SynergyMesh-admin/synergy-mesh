@@ -50,6 +50,15 @@ from enum import Enum
 # ============================================================================
 
 BASE_PATH = Path(__file__).parent.parent.parent
+
+# ============================================================================
+# Configuration Constants
+# ============================================================================
+
+# These defaults can be overridden via configuration file
+DEFAULT_VALIDATION_TIMEOUT = 300  # seconds for validation checks
+DEFAULT_MIN_PROBLEMS_THRESHOLD = 20  # minimum problems to warrant refactoring
+DEFAULT_MAX_PROBLEMS_THRESHOLD = 200  # maximum problems to handle in one cycle
 CONFIG_PATH = BASE_PATH / "config" / "refactor-evolution.yaml"
 REPORTS_DIR = BASE_PATH / "reports" / "refactor-evolution"
 BACKUP_DIR = BASE_PATH / ".refactor-backups"
@@ -256,8 +265,9 @@ class RefactorEvolutionWorkflow:
             
             elif check == "no_syntax_errors":
                 # Basic syntax check for Python files
+                py_files = [str(p) for p in BASE_PATH.glob("**/*.py")]
                 result = subprocess.run(
-                    ["python", "-m", "py_compile"] + list(BASE_PATH.glob("**/*.py")),
+                    ["python", "-m", "py_compile"] + py_files,
                     cwd=BASE_PATH,
                     capture_output=True
                 )
@@ -401,9 +411,12 @@ class RefactorEvolutionWorkflow:
             
             # Check for common issues
             if "structure" in focus_areas:
-                if len(subdirs) > 20:
+                min_threshold = self.config.get("analysis", {}).get("min_problems_threshold", DEFAULT_MIN_PROBLEMS_THRESHOLD)
+                max_threshold = self.config.get("analysis", {}).get("max_problems_threshold", DEFAULT_MAX_PROBLEMS_THRESHOLD)
+                
+                if len(subdirs) > min_threshold:
                     analysis["issues"].append("High number of subdirectories - consider consolidation")
-                if analysis["file_counts"]["total"] > 200:
+                if analysis["file_counts"]["total"] > max_threshold:
                     analysis["issues"].append("Large number of files - consider modularization")
             
             if "organization" in focus_areas:

@@ -30,8 +30,11 @@ import argparse
 from pathlib import Path
 
 # Add parent directory to path
+# Note: Consider setting PYTHONPATH environment variable as an alternative
 BASE_PATH = Path(__file__).parent.parent.parent
-sys.path.insert(0, str(BASE_PATH / "tools" / "refactor"))
+refactor_path = str(BASE_PATH / "tools" / "refactor")
+if refactor_path not in sys.path:
+    sys.path.insert(0, refactor_path)
 
 from refactor_evolution_workflow import RefactorEvolutionWorkflow, REPORTS_DIR
 
