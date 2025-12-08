@@ -46,7 +46,8 @@
       "@automation/*": ["automation/*"],
       "@mcp/*": ["mcp-servers/*"],
       "@types/*": ["types/*"],
-      "@utils/*": ["src/utils/*"]
+      "@utils/*": ["src/utils/*"],
+      "@validation/*": ["validation/*"]
     },
 
     "typeRoots": [
@@ -75,3 +76,19 @@
     { "path": "./unmanned-engineer-ceo" }
   ]
 }
+
+// validation.ts
+import { z } from 'zod';
+
+const requestSchema = z.object({
+  name: z.string().min(1),
+  age: z.number().min(0),
+});
+
+export const validateRequest = (req, res, next) => {
+  const result = requestSchema.safeParse(req.body);
+  if (!result.success) {
+    return res.status(400).json({ errors: result.error.errors });
+  }
+  next();
+};
