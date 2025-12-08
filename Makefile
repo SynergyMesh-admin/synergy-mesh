@@ -10,10 +10,11 @@
 #   make all-kg          - Run all generation tasks
 #   make check-drift     - Check if generated files are up-to-date
 #   make clean-generated - Remove all generated YAML files
+#   make analyze-reports - Analyze root-level reports
 #
 # ═══════════════════════════════════════════════════════════════════════════════
 
-.PHONY: mndoc kg superroot all-kg check-drift clean-generated help
+.PHONY: mndoc kg superroot all-kg check-drift clean-generated analyze-reports help
 
 # Default target
 .DEFAULT_GOAL := help
@@ -26,6 +27,8 @@ README := README.md
 MNDOC_OUTPUT := docs/generated-mndoc.yaml
 KG_OUTPUT := docs/knowledge-graph.yaml
 SUPERROOT_OUTPUT := docs/superroot-entities.yaml
+REPORTS_ANALYSIS_MD := docs/reports-analysis.md
+REPORTS_ANALYSIS_JSON := docs/reports-analysis.json
 
 # ─────────────────────────────────────────────────────────────────────────────
 # MN-DOC Generation
@@ -109,6 +112,20 @@ clean-generated:
 	@echo "✅ Generated files removed"
 
 # ─────────────────────────────────────────────────────────────────────────────
+# Reports Analysis
+# ─────────────────────────────────────────────────────────────────────────────
+analyze-reports:
+	@echo "📊 Analyzing root-level reports..."
+	$(PYTHON) tools/docs/analyze_root_reports.py \
+		--repo-root . \
+		--output $(REPORTS_ANALYSIS_MD) \
+		--json-output $(REPORTS_ANALYSIS_JSON) \
+		--verbose
+	@echo "✅ Reports analysis complete!"
+	@echo "   - Markdown: $(REPORTS_ANALYSIS_MD)"
+	@echo "   - JSON: $(REPORTS_ANALYSIS_JSON)"
+
+# ─────────────────────────────────────────────────────────────────────────────
 # Governance Validation
 # ─────────────────────────────────────────────────────────────────────────────
 validate-governance:
@@ -136,6 +153,7 @@ help:
 	@echo "  make all-kg          Run all generation tasks"
 	@echo "  make check-drift     Check if generated files are up-to-date"
 	@echo "  make clean-generated Remove all generated YAML files"
+	@echo "  make analyze-reports Analyze root-level reports"
 	@echo "  make validate-governance     Validate Architecture Governance Matrix"
 	@echo "  make validate-governance-ci  Validate governance (CI mode)"
 	@echo "  make help            Show this help message"
