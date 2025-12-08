@@ -3,10 +3,10 @@ version: 1.0.0
 id: unmanned-island-superroot-entities
 title: Unmanned Island System - SuperRoot Entities
 description: SuperRoot-compatible entity definitions projected from knowledge graph
-generated_at: '2025-12-07T12:23:18.745783Z'
+generated_at: '2025-12-08T15:04:40.188509Z'
 source:
   knowledge_graph: unmanned-island-knowledge-graph
-  generated_at: '2025-12-07T12:23:18.149286Z'
+  generated_at: '2025-12-08T15:04:38.840284Z'
 entities:
 - id: system:unmanned-island
   type: System
@@ -26,6 +26,167 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 目錄
+- id: dir:v2-multi-islands
+  type: Directory
+  label: v2-multi-islands
+  path: v2-multi-islands
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:v2-multi-islands:utils
+  type: Directory
+  label: utils
+  path: v2-multi-islands/utils
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:v2-multi-islands:utils:helpers.py
+  type: Component
+  label: helpers.py
+  path: v2-multi-islands/utils/helpers.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:v2-multi-islands:utils:__init__.py
+  type: Component
+  label: __init__.py
+  path: v2-multi-islands/utils/__init__.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:v2-multi-islands:orchestrator
+  type: Directory
+  label: orchestrator
+  path: v2-multi-islands/orchestrator
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:v2-multi-islands:orchestrator:island_orchestrator.py
+  type: Component
+  label: island_orchestrator.py
+  path: v2-multi-islands/orchestrator/island_orchestrator.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:v2-multi-islands:orchestrator:__init__.py
+  type: Component
+  label: __init__.py
+  path: v2-multi-islands/orchestrator/__init__.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:v2-multi-islands:islands
+  type: Directory
+  label: islands
+  path: v2-multi-islands/islands
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:v2-multi-islands:islands:typescript_island.py
+  type: Component
+  label: typescript_island.py
+  path: v2-multi-islands/islands/typescript_island.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:v2-multi-islands:islands:rust_island.py
+  type: Component
+  label: rust_island.py
+  path: v2-multi-islands/islands/rust_island.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:v2-multi-islands:islands:python_island.py
+  type: Component
+  label: python_island.py
+  path: v2-multi-islands/islands/python_island.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:v2-multi-islands:islands:java_island.py
+  type: Component
+  label: java_island.py
+  path: v2-multi-islands/islands/java_island.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:v2-multi-islands:islands:go_island.py
+  type: Component
+  label: go_island.py
+  path: v2-multi-islands/islands/go_island.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:v2-multi-islands:islands:base_island.py
+  type: Component
+  label: base_island.py
+  path: v2-multi-islands/islands/base_island.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:v2-multi-islands:islands:__init__.py
+  type: Component
+  label: __init__.py
+  path: v2-multi-islands/islands/__init__.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:v2-multi-islands:main.py
+  type: Component
+  label: main.py
+  path: v2-multi-islands/main.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:v2-multi-islands:config
+  type: ConfigParam
+  label: config
+  path: v2-multi-islands/config
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:v2-multi-islands:config:island_config.py
+  type: Component
+  label: island_config.py
+  path: v2-multi-islands/config/island_config.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:v2-multi-islands:config:__init__.py
+  type: Component
+  label: __init__.py
+  path: v2-multi-islands/config/__init__.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:v2-multi-islands:bridges
+  type: Directory
+  label: bridges
+  path: v2-multi-islands/bridges
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:v2-multi-islands:bridges:language_bridge.py
+  type: Component
+  label: language_bridge.py
+  path: v2-multi-islands/bridges/language_bridge.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:v2-multi-islands:bridges:__init__.py
+  type: Component
+  label: __init__.py
+  path: v2-multi-islands/bridges/__init__.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:v2-multi-islands:__init__.py
+  type: Component
+  label: __init__.py
+  path: v2-multi-islands/__init__.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
 - id: dir:mcp-servers
   type: Component
   label: mcp-servers
@@ -103,13 +264,6 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 設定
-- id: file:mcp-servers:eslint.config.js
-  type: Component
-  label: eslint.config.js
-  path: mcp-servers/eslint.config.js
-  meta:
-    source: knowledge-graph
-    label_zh: 模組
 - id: file:mcp-servers:slsa-validator.js
   type: Component
   label: slsa-validator.js
@@ -152,6 +306,76 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 模組
+- id: dir:examples
+  type: Directory
+  label: examples
+  path: examples
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:agent
+  type: Component
+  label: agent
+  path: agent
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:agent:dependency-manager
+  type: Directory
+  label: dependency-manager
+  path: agent/dependency-manager
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:agent:dependency-manager:tests
+  type: Component
+  label: tests
+  path: agent/dependency-manager/tests
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:agent:dependency-manager:config
+  type: ConfigParam
+  label: config
+  path: agent/dependency-manager/config
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:agent:dependency-manager:src
+  type: Directory
+  label: src
+  path: agent/dependency-manager/src
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:agent:auto-repair
+  type: Directory
+  label: auto-repair
+  path: agent/auto-repair
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:agent:orchestrator
+  type: Directory
+  label: orchestrator
+  path: agent/orchestrator
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:agent:vulnerability-detector
+  type: Directory
+  label: vulnerability-detector
+  path: agent/vulnerability-detector
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:agent:code-analyzer
+  type: Directory
+  label: code-analyzer
+  path: agent/code-analyzer
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
 - id: dir:apps
   type: Directory
   label: apps
@@ -173,13 +397,6 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 模組
-- id: dir:apps:web:services
-  type: Directory
-  label: services
-  path: apps/web/services
-  meta:
-    source: knowledge-graph
-    label_zh: 目錄
 - id: dir:apps:web:scripts
   type: Directory
   label: scripts
@@ -201,13 +418,6 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 目錄
-- id: dir:apps:web:core
-  type: Subsystem
-  label: core
-  path: apps/web/core
-  meta:
-    source: knowledge-graph
-    label_zh: 子系統
 - id: dir:apps:web:k8s
   type: Directory
   label: k8s
@@ -215,20 +425,6 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 目錄
-- id: file:apps:web:docker-compose.api.yml
-  type: ConfigParam
-  label: docker-compose.api.yml
-  path: apps/web/docker-compose.api.yml
-  meta:
-    source: knowledge-graph
-    label_zh: 設定
-- id: dir:apps:web:tests
-  type: Component
-  label: tests
-  path: apps/web/tests
-  meta:
-    source: knowledge-graph
-    label_zh: 模組
 - id: dir:apps:web:src
   type: Directory
   label: src
@@ -236,10 +432,2264 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 目錄
+- id: dir:apps:web-backend
+  type: Directory
+  label: web-backend
+  path: apps/web-backend
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:apps:web-backend:services
+  type: Directory
+  label: services
+  path: apps/web-backend/services
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:apps:web-backend:tests
+  type: Component
+  label: tests
+  path: apps/web-backend/tests
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:apps:web-backend:analyzers
+  type: Directory
+  label: analyzers
+  path: apps/web-backend/analyzers
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
 - id: dir:apps:_scratch
   type: Directory
   label: _scratch
   path: apps/_scratch
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root
+  type: Directory
+  label: _codeql_detected_source_root
+  path: _codeql_detected_source_root
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:ai
+  type: Directory
+  label: ai
+  path: _codeql_detected_source_root/ai
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:v2-multi-islands
+  type: Directory
+  label: v2-multi-islands
+  path: _codeql_detected_source_root/v2-multi-islands
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:v2-multi-islands:utils
+  type: Directory
+  label: utils
+  path: _codeql_detected_source_root/v2-multi-islands/utils
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:v2-multi-islands:orchestrator
+  type: Directory
+  label: orchestrator
+  path: _codeql_detected_source_root/v2-multi-islands/orchestrator
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:v2-multi-islands:islands
+  type: Directory
+  label: islands
+  path: _codeql_detected_source_root/v2-multi-islands/islands
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:v2-multi-islands:main.py
+  type: Component
+  label: main.py
+  path: _codeql_detected_source_root/v2-multi-islands/main.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:_codeql_detected_source_root:v2-multi-islands:config
+  type: ConfigParam
+  label: config
+  path: _codeql_detected_source_root/v2-multi-islands/config
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:_codeql_detected_source_root:v2-multi-islands:bridges
+  type: Directory
+  label: bridges
+  path: _codeql_detected_source_root/v2-multi-islands/bridges
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:v2-multi-islands:__init__.py
+  type: Component
+  label: __init__.py
+  path: _codeql_detected_source_root/v2-multi-islands/__init__.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:_codeql_detected_source_root:mcp-servers
+  type: Component
+  label: mcp-servers
+  path: _codeql_detected_source_root/mcp-servers
+  meta:
+    source: knowledge-graph
+    label_zh: MCP伺服器
+- id: file:_codeql_detected_source_root:mcp-servers:comprehensive-validator.js
+  type: Component
+  label: comprehensive-validator.js
+  path: _codeql_detected_source_root/mcp-servers/comprehensive-validator.js
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:_codeql_detected_source_root:mcp-servers:doc-generator.js
+  type: Component
+  label: doc-generator.js
+  path: _codeql_detected_source_root/mcp-servers/doc-generator.js
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:_codeql_detected_source_root:mcp-servers:deployment-validator.js
+  type: Component
+  label: deployment-validator.js
+  path: _codeql_detected_source_root/mcp-servers/deployment-validator.js
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:_codeql_detected_source_root:mcp-servers:performance-analyzer.js
+  type: Component
+  label: performance-analyzer.js
+  path: _codeql_detected_source_root/mcp-servers/performance-analyzer.js
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:_codeql_detected_source_root:mcp-servers:deploy
+  type: Directory
+  label: deploy
+  path: _codeql_detected_source_root/mcp-servers/deploy
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:mcp-servers:slsa-validator.js
+  type: Component
+  label: slsa-validator.js
+  path: _codeql_detected_source_root/mcp-servers/slsa-validator.js
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:_codeql_detected_source_root:mcp-servers:security-scanner.js
+  type: Component
+  label: security-scanner.js
+  path: _codeql_detected_source_root/mcp-servers/security-scanner.js
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:_codeql_detected_source_root:mcp-servers:test-generator.js
+  type: Component
+  label: test-generator.js
+  path: _codeql_detected_source_root/mcp-servers/test-generator.js
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:_codeql_detected_source_root:mcp-servers:index.js
+  type: Component
+  label: index.js
+  path: _codeql_detected_source_root/mcp-servers/index.js
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:_codeql_detected_source_root:mcp-servers:logic-validator.js
+  type: Component
+  label: logic-validator.js
+  path: _codeql_detected_source_root/mcp-servers/logic-validator.js
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:_codeql_detected_source_root:mcp-servers:code-analyzer.js
+  type: Component
+  label: code-analyzer.js
+  path: _codeql_detected_source_root/mcp-servers/code-analyzer.js
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:_codeql_detected_source_root:examples
+  type: Directory
+  label: examples
+  path: _codeql_detected_source_root/examples
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:agent
+  type: Component
+  label: agent
+  path: _codeql_detected_source_root/agent
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:_codeql_detected_source_root:agent:dependency-manager
+  type: Directory
+  label: dependency-manager
+  path: _codeql_detected_source_root/agent/dependency-manager
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:agent:auto-repair
+  type: Directory
+  label: auto-repair
+  path: _codeql_detected_source_root/agent/auto-repair
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:agent:orchestrator
+  type: Directory
+  label: orchestrator
+  path: _codeql_detected_source_root/agent/orchestrator
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:agent:vulnerability-detector
+  type: Directory
+  label: vulnerability-detector
+  path: _codeql_detected_source_root/agent/vulnerability-detector
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:agent:code-analyzer
+  type: Directory
+  label: code-analyzer
+  path: _codeql_detected_source_root/agent/code-analyzer
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:docker-compose.dev.yml
+  type: ConfigParam
+  label: docker-compose.dev.yml
+  path: _codeql_detected_source_root/docker-compose.dev.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:_codeql_detected_source_root:apps
+  type: Directory
+  label: apps
+  path: _codeql_detected_source_root/apps
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:apps:web
+  type: Directory
+  label: web
+  path: _codeql_detected_source_root/apps/web
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:apps:web-backend
+  type: Directory
+  label: web-backend
+  path: _codeql_detected_source_root/apps/web-backend
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:apps:_scratch
+  type: Directory
+  label: _scratch
+  path: _codeql_detected_source_root/apps/_scratch
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  type: Directory
+  label: _codeql_detected_source_root
+  path: _codeql_detected_source_root/_codeql_detected_source_root
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:ai
+  type: Directory
+  label: ai
+  path: _codeql_detected_source_root/_codeql_detected_source_root/ai
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:v2-multi-islands
+  type: Directory
+  label: v2-multi-islands
+  path: _codeql_detected_source_root/_codeql_detected_source_root/v2-multi-islands
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:mcp-servers
+  type: Component
+  label: mcp-servers
+  path: _codeql_detected_source_root/_codeql_detected_source_root/mcp-servers
+  meta:
+    source: knowledge-graph
+    label_zh: MCP伺服器
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:examples
+  type: Directory
+  label: examples
+  path: _codeql_detected_source_root/_codeql_detected_source_root/examples
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:agent
+  type: Component
+  label: agent
+  path: _codeql_detected_source_root/_codeql_detected_source_root/agent
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:_codeql_detected_source_root:_codeql_detected_source_root:docker-compose.dev.yml
+  type: ConfigParam
+  label: docker-compose.dev.yml
+  path: _codeql_detected_source_root/_codeql_detected_source_root/docker-compose.dev.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:apps
+  type: Directory
+  label: apps
+  path: _codeql_detected_source_root/_codeql_detected_source_root/apps
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:_codeql_detected_source_root
+  type: Directory
+  label: _codeql_detected_source_root
+  path: _codeql_detected_source_root/_codeql_detected_source_root/_codeql_detected_source_root
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:services
+  type: Directory
+  label: services
+  path: _codeql_detected_source_root/_codeql_detected_source_root/services
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:_codeql_detected_source_root:auto-fix-bot.yml
+  type: ConfigParam
+  label: auto-fix-bot.yml
+  path: _codeql_detected_source_root/_codeql_detected_source_root/auto-fix-bot.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:scripts
+  type: Directory
+  label: scripts
+  path: _codeql_detected_source_root/_codeql_detected_source_root/scripts
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:v1-python-drones
+  type: Directory
+  label: v1-python-drones
+  path: _codeql_detected_source_root/_codeql_detected_source_root/v1-python-drones
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:_codeql_detected_source_root:jest.config.js
+  type: Component
+  label: jest.config.js
+  path: _codeql_detected_source_root/_codeql_detected_source_root/jest.config.js
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:_codeql_detected_source_root:_codeql_detected_source_root:pnpm-workspace.yaml
+  type: ConfigParam
+  label: pnpm-workspace.yaml
+  path: _codeql_detected_source_root/_codeql_detected_source_root/pnpm-workspace.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:reports
+  type: Directory
+  label: reports
+  path: _codeql_detected_source_root/_codeql_detected_source_root/reports
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:tools
+  type: Component
+  label: tools
+  path: _codeql_detected_source_root/_codeql_detected_source_root/tools
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:contracts
+  type: Directory
+  label: contracts
+  path: _codeql_detected_source_root/_codeql_detected_source_root/contracts
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:ops
+  type: Directory
+  label: ops
+  path: _codeql_detected_source_root/_codeql_detected_source_root/ops
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:docker-templates
+  type: Directory
+  label: docker-templates
+  path: _codeql_detected_source_root/_codeql_detected_source_root/docker-templates
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:experiments
+  type: Directory
+  label: experiments
+  path: _codeql_detected_source_root/_codeql_detected_source_root/experiments
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:runtime
+  type: Directory
+  label: runtime
+  path: _codeql_detected_source_root/_codeql_detected_source_root/runtime
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:automation
+  type: Subsystem
+  label: automation
+  path: _codeql_detected_source_root/_codeql_detected_source_root/automation
+  meta:
+    source: knowledge-graph
+    label_zh: 子系統
+- id: file:_codeql_detected_source_root:_codeql_detected_source_root:docker-compose.yml
+  type: ConfigParam
+  label: docker-compose.yml
+  path: _codeql_detected_source_root/_codeql_detected_source_root/docker-compose.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:docs
+  type: Document
+  label: docs
+  path: _codeql_detected_source_root/_codeql_detected_source_root/docs
+  meta:
+    source: knowledge-graph
+    label_zh: 文件
+- id: file:_codeql_detected_source_root:_codeql_detected_source_root:pnpm-lock.yaml
+  type: ConfigParam
+  label: pnpm-lock.yaml
+  path: _codeql_detected_source_root/_codeql_detected_source_root/pnpm-lock.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:autonomous
+  type: Directory
+  label: autonomous
+  path: _codeql_detected_source_root/_codeql_detected_source_root/autonomous
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:core
+  type: Subsystem
+  label: core
+  path: _codeql_detected_source_root/_codeql_detected_source_root/core
+  meta:
+    source: knowledge-graph
+    label_zh: 子系統
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:supply-chain
+  type: Directory
+  label: supply-chain
+  path: _codeql_detected_source_root/_codeql_detected_source_root/supply-chain
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:_codeql_detected_source_root:eslint.config.js
+  type: Component
+  label: eslint.config.js
+  path: _codeql_detected_source_root/_codeql_detected_source_root/eslint.config.js
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:governance
+  type: Subsystem
+  label: governance
+  path: _codeql_detected_source_root/_codeql_detected_source_root/governance
+  meta:
+    source: knowledge-graph
+    label_zh: 子系統
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:knowledge
+  type: Directory
+  label: knowledge
+  path: _codeql_detected_source_root/_codeql_detected_source_root/knowledge
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:synergymesh.egg-info
+  type: Directory
+  label: synergymesh.egg-info
+  path: _codeql_detected_source_root/_codeql_detected_source_root/synergymesh.egg-info
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:tests
+  type: Component
+  label: tests
+  path: _codeql_detected_source_root/_codeql_detected_source_root/tests
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:config
+  type: ConfigParam
+  label: config
+  path: _codeql_detected_source_root/_codeql_detected_source_root/config
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:infrastructure
+  type: Component
+  label: infrastructure
+  path: _codeql_detected_source_root/_codeql_detected_source_root/infrastructure
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:frontend
+  type: Directory
+  label: frontend
+  path: _codeql_detected_source_root/_codeql_detected_source_root/frontend
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:shared
+  type: Directory
+  label: shared
+  path: _codeql_detected_source_root/_codeql_detected_source_root/shared
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:unmanned-engineer-ceo
+  type: Directory
+  label: unmanned-engineer-ceo
+  path: _codeql_detected_source_root/_codeql_detected_source_root/unmanned-engineer-ceo
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:infra
+  type: Directory
+  label: infra
+  path: _codeql_detected_source_root/_codeql_detected_source_root/infra
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:bridges
+  type: Directory
+  label: bridges
+  path: _codeql_detected_source_root/_codeql_detected_source_root/bridges
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:_codeql_detected_source_root:island.bootstrap.stage0.yaml
+  type: ConfigParam
+  label: island.bootstrap.stage0.yaml
+  path: _codeql_detected_source_root/_codeql_detected_source_root/island.bootstrap.stage0.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:_codeql_detected_source_root:synergymesh.yaml
+  type: ConfigParam
+  label: synergymesh.yaml
+  path: _codeql_detected_source_root/_codeql_detected_source_root/synergymesh.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:island-ai
+  type: Directory
+  label: island-ai
+  path: _codeql_detected_source_root/_codeql_detected_source_root/island-ai
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:templates
+  type: Directory
+  label: templates
+  path: _codeql_detected_source_root/_codeql_detected_source_root/templates
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:services
+  type: Directory
+  label: services
+  path: _codeql_detected_source_root/services
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:services:mcp
+  type: Directory
+  label: mcp
+  path: _codeql_detected_source_root/services/mcp
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:services:_scratch
+  type: Directory
+  label: _scratch
+  path: _codeql_detected_source_root/services/_scratch
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:services:agents
+  type: Directory
+  label: agents
+  path: _codeql_detected_source_root/services/agents
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:services:__init__.py
+  type: Component
+  label: __init__.py
+  path: _codeql_detected_source_root/services/__init__.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:_codeql_detected_source_root:auto-fix-bot.yml
+  type: ConfigParam
+  label: auto-fix-bot.yml
+  path: _codeql_detected_source_root/auto-fix-bot.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:_codeql_detected_source_root:scripts
+  type: Directory
+  label: scripts
+  path: _codeql_detected_source_root/scripts
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:scripts:naming
+  type: Directory
+  label: naming
+  path: _codeql_detected_source_root/scripts/naming
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:scripts:hooks
+  type: Directory
+  label: hooks
+  path: _codeql_detected_source_root/scripts/hooks
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:scripts:sync
+  type: Directory
+  label: sync
+  path: _codeql_detected_source_root/scripts/sync
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:scripts:brand-replacer.py
+  type: Component
+  label: brand-replacer.py
+  path: _codeql_detected_source_root/scripts/brand-replacer.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:_codeql_detected_source_root:v1-python-drones
+  type: Directory
+  label: v1-python-drones
+  path: _codeql_detected_source_root/v1-python-drones
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:v1-python-drones:utils
+  type: Directory
+  label: utils
+  path: _codeql_detected_source_root/v1-python-drones/utils
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:v1-python-drones:main.py
+  type: Component
+  label: main.py
+  path: _codeql_detected_source_root/v1-python-drones/main.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:_codeql_detected_source_root:v1-python-drones:drones
+  type: Directory
+  label: drones
+  path: _codeql_detected_source_root/v1-python-drones/drones
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:v1-python-drones:config
+  type: ConfigParam
+  label: config
+  path: _codeql_detected_source_root/v1-python-drones/config
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:v1-python-drones:__init__.py
+  type: Component
+  label: __init__.py
+  path: _codeql_detected_source_root/v1-python-drones/__init__.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:_codeql_detected_source_root:jest.config.js
+  type: Component
+  label: jest.config.js
+  path: _codeql_detected_source_root/jest.config.js
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:_codeql_detected_source_root:pnpm-workspace.yaml
+  type: ConfigParam
+  label: pnpm-workspace.yaml
+  path: _codeql_detected_source_root/pnpm-workspace.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:_codeql_detected_source_root:reports
+  type: Directory
+  label: reports
+  path: _codeql_detected_source_root/reports
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:tools
+  type: Component
+  label: tools
+  path: _codeql_detected_source_root/tools
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:_codeql_detected_source_root:tools:generate-language-dashboard.py
+  type: Component
+  label: generate-language-dashboard.py
+  path: _codeql_detected_source_root/tools/generate-language-dashboard.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:_codeql_detected_source_root:tools:bootstrap_from_manifest.py
+  type: Component
+  label: bootstrap_from_manifest.py
+  path: _codeql_detected_source_root/tools/bootstrap_from_manifest.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:_codeql_detected_source_root:tools:generate-refactor-playbook.py
+  type: Component
+  label: generate-refactor-playbook.py
+  path: _codeql_detected_source_root/tools/generate-refactor-playbook.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:_codeql_detected_source_root:tools:lkb-update.py
+  type: Component
+  label: lkb-update.py
+  path: _codeql_detected_source_root/tools/lkb-update.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:_codeql_detected_source_root:tools:ai-refactor-review.py
+  type: Component
+  label: ai-refactor-review.py
+  path: _codeql_detected_source_root/tools/ai-refactor-review.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:_codeql_detected_source_root:tools:ci-cost-dashboard.py
+  type: Component
+  label: ci-cost-dashboard.py
+  path: _codeql_detected_source_root/tools/ci-cost-dashboard.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:_codeql_detected_source_root:tools:scripts
+  type: Directory
+  label: scripts
+  path: _codeql_detected_source_root/tools/scripts
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:tools:language-health-score.py
+  type: Component
+  label: language-health-score.py
+  path: _codeql_detected_source_root/tools/language-health-score.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:_codeql_detected_source_root:tools:generate-migration-flow.py
+  type: Component
+  label: generate-migration-flow.py
+  path: _codeql_detected_source_root/tools/generate-migration-flow.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:_codeql_detected_source_root:tools:evolution
+  type: Directory
+  label: evolution
+  path: _codeql_detected_source_root/tools/evolution
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:tools:map-violations-to-playbooks.py
+  type: Component
+  label: map-violations-to-playbooks.py
+  path: _codeql_detected_source_root/tools/map-violations-to-playbooks.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:_codeql_detected_source_root:tools:cli
+  type: Directory
+  label: cli
+  path: _codeql_detected_source_root/tools/cli
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:tools:_scratch
+  type: Directory
+  label: _scratch
+  path: _codeql_detected_source_root/tools/_scratch
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:tools:utilities
+  type: Directory
+  label: utilities
+  path: _codeql_detected_source_root/tools/utilities
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:tools:load-playbook.py
+  type: Component
+  label: load-playbook.py
+  path: _codeql_detected_source_root/tools/load-playbook.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:_codeql_detected_source_root:tools:docs
+  type: Document
+  label: docs
+  path: _codeql_detected_source_root/tools/docs
+  meta:
+    source: knowledge-graph
+    label_zh: 文件
+- id: file:_codeql_detected_source_root:tools:generate-hotspot-heatmap.py
+  type: Component
+  label: generate-hotspot-heatmap.py
+  path: _codeql_detected_source_root/tools/generate-hotspot-heatmap.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:_codeql_detected_source_root:tools:language-history-writer.py
+  type: Component
+  label: language-history-writer.py
+  path: _codeql_detected_source_root/tools/language-history-writer.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:_codeql_detected_source_root:tools:validate-refactor-index.py
+  type: Component
+  label: validate-refactor-index.py
+  path: _codeql_detected_source_root/tools/validate-refactor-index.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:_codeql_detected_source_root:tools:generate-sankey-data.py
+  type: Component
+  label: generate-sankey-data.py
+  path: _codeql_detected_source_root/tools/generate-sankey-data.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:_codeql_detected_source_root:tools:governance
+  type: Subsystem
+  label: governance
+  path: _codeql_detected_source_root/tools/governance
+  meta:
+    source: knowledge-graph
+    label_zh: 子系統
+- id: file:_codeql_detected_source_root:tools:ai-auto-fix.py
+  type: Component
+  label: ai-auto-fix.py
+  path: _codeql_detected_source_root/tools/ai-auto-fix.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:_codeql_detected_source_root:tools:semantic-commit-generator.py
+  type: Component
+  label: semantic-commit-generator.py
+  path: _codeql_detected_source_root/tools/semantic-commit-generator.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:_codeql_detected_source_root:tools:ci
+  type: Directory
+  label: ci
+  path: _codeql_detected_source_root/tools/ci
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:tools:language-dashboard-data.yaml
+  type: ConfigParam
+  label: language-dashboard-data.yaml
+  path: _codeql_detected_source_root/tools/language-dashboard-data.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:_codeql_detected_source_root:contracts
+  type: Directory
+  label: contracts
+  path: _codeql_detected_source_root/contracts
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:ops
+  type: Directory
+  label: ops
+  path: _codeql_detected_source_root/ops
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:ops:runbooks
+  type: Directory
+  label: runbooks
+  path: _codeql_detected_source_root/ops/runbooks
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:ops:artifacts
+  type: Directory
+  label: artifacts
+  path: _codeql_detected_source_root/ops/artifacts
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:ops:reports
+  type: Directory
+  label: reports
+  path: _codeql_detected_source_root/ops/reports
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:ops:onboarding
+  type: Directory
+  label: onboarding
+  path: _codeql_detected_source_root/ops/onboarding
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:ops:migration
+  type: Directory
+  label: migration
+  path: _codeql_detected_source_root/ops/migration
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:docker-templates
+  type: Directory
+  label: docker-templates
+  path: _codeql_detected_source_root/docker-templates
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:experiments
+  type: Directory
+  label: experiments
+  path: _codeql_detected_source_root/experiments
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:runtime
+  type: Directory
+  label: runtime
+  path: _codeql_detected_source_root/runtime
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:runtime:mind_matrix
+  type: Directory
+  label: mind_matrix
+  path: _codeql_detected_source_root/runtime/mind_matrix
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:automation
+  type: Subsystem
+  label: automation
+  path: _codeql_detected_source_root/automation
+  meta:
+    source: knowledge-graph
+    label_zh: 子系統
+- id: dir:_codeql_detected_source_root:automation:intelligent
+  type: Directory
+  label: intelligent
+  path: _codeql_detected_source_root/automation/intelligent
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:automation:hyperautomation
+  type: Directory
+  label: hyperautomation
+  path: _codeql_detected_source_root/automation/hyperautomation
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:automation:self_awareness_report.py
+  type: Component
+  label: self_awareness_report.py
+  path: _codeql_detected_source_root/automation/self_awareness_report.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:_codeql_detected_source_root:automation:_scratch
+  type: Directory
+  label: _scratch
+  path: _codeql_detected_source_root/automation/_scratch
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:automation:autonomous
+  type: Directory
+  label: autonomous
+  path: _codeql_detected_source_root/automation/autonomous
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:automation:architect
+  type: Directory
+  label: architect
+  path: _codeql_detected_source_root/automation/architect
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:automation:zero_touch_deployment.py
+  type: Component
+  label: zero_touch_deployment.py
+  path: _codeql_detected_source_root/automation/zero_touch_deployment.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:_codeql_detected_source_root:automation:architecture-skeletons
+  type: Directory
+  label: architecture-skeletons
+  path: _codeql_detected_source_root/automation/architecture-skeletons
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:docker-compose.yml
+  type: ConfigParam
+  label: docker-compose.yml
+  path: _codeql_detected_source_root/docker-compose.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:_codeql_detected_source_root:docs
+  type: Document
+  label: docs
+  path: _codeql_detected_source_root/docs
+  meta:
+    source: knowledge-graph
+    label_zh: 文件
+- id: dir:_codeql_detected_source_root:docs:refactor_playbooks
+  type: Directory
+  label: refactor_playbooks
+  path: _codeql_detected_source_root/docs/refactor_playbooks
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:docs:GOVERNANCE
+  type: Directory
+  label: GOVERNANCE
+  path: _codeql_detected_source_root/docs/GOVERNANCE
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:docs:mndoc
+  type: Directory
+  label: mndoc
+  path: _codeql_detected_source_root/docs/mndoc
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:docs:issues
+  type: Directory
+  label: issues
+  path: _codeql_detected_source_root/docs/issues
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:docs:examples
+  type: Directory
+  label: examples
+  path: _codeql_detected_source_root/docs/examples
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:docs:unmanned-island.mndoc.yaml
+  type: ConfigParam
+  label: unmanned-island.mndoc.yaml
+  path: _codeql_detected_source_root/docs/unmanned-island.mndoc.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:_codeql_detected_source_root:docs:scratch
+  type: Directory
+  label: scratch
+  path: _codeql_detected_source_root/docs/scratch
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:docs:architecture
+  type: Directory
+  label: architecture
+  path: _codeql_detected_source_root/docs/architecture
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:docs:generated-index.yaml
+  type: ConfigParam
+  label: generated-index.yaml
+  path: _codeql_detected_source_root/docs/generated-index.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:_codeql_detected_source_root:docs:ci-cd
+  type: Directory
+  label: ci-cd
+  path: _codeql_detected_source_root/docs/ci-cd
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:docs:evolution
+  type: Directory
+  label: evolution
+  path: _codeql_detected_source_root/docs/evolution
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:docs:reports
+  type: Directory
+  label: reports
+  path: _codeql_detected_source_root/docs/reports
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:docs:generated-mndoc.yaml
+  type: ConfigParam
+  label: generated-mndoc.yaml
+  path: _codeql_detected_source_root/docs/generated-mndoc.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:_codeql_detected_source_root:docs:automation
+  type: Subsystem
+  label: automation
+  path: _codeql_detected_source_root/docs/automation
+  meta:
+    source: knowledge-graph
+    label_zh: 子系統
+- id: file:_codeql_detected_source_root:docs:knowledge-graph.yaml
+  type: ConfigParam
+  label: knowledge-graph.yaml
+  path: _codeql_detected_source_root/docs/knowledge-graph.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:_codeql_detected_source_root:docs:COMPONENTS
+  type: Directory
+  label: COMPONENTS
+  path: _codeql_detected_source_root/docs/COMPONENTS
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:docs:security
+  type: Directory
+  label: security
+  path: _codeql_detected_source_root/docs/security
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:docs:troubleshooting
+  type: Directory
+  label: troubleshooting
+  path: _codeql_detected_source_root/docs/troubleshooting
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:docs:agents
+  type: Directory
+  label: agents
+  path: _codeql_detected_source_root/docs/agents
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:docs:AGENTS
+  type: Directory
+  label: AGENTS
+  path: _codeql_detected_source_root/docs/AGENTS
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:docs:DEPLOYMENT
+  type: Directory
+  label: DEPLOYMENT
+  path: _codeql_detected_source_root/docs/DEPLOYMENT
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:docs:COPILOT
+  type: Directory
+  label: COPILOT
+  path: _codeql_detected_source_root/docs/COPILOT
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:docs:ARCHITECTURE
+  type: Directory
+  label: ARCHITECTURE
+  path: _codeql_detected_source_root/docs/ARCHITECTURE
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:docs:AUTONOMY
+  type: Directory
+  label: AUTONOMY
+  path: _codeql_detected_source_root/docs/AUTONOMY
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:docs:superroot-entities.yaml
+  type: ConfigParam
+  label: superroot-entities.yaml
+  path: _codeql_detected_source_root/docs/superroot-entities.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:docs:_config.yml
+  type: ConfigParam
+  label: _config.yml
+  path: _codeql_detected_source_root/docs/_config.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:_codeql_detected_source_root:docs:operations
+  type: Directory
+  label: operations
+  path: _codeql_detected_source_root/docs/operations
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:docs:knowledge_index.yaml
+  type: ConfigParam
+  label: knowledge_index.yaml
+  path: _codeql_detected_source_root/docs/knowledge_index.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:pnpm-lock.yaml
+  type: ConfigParam
+  label: pnpm-lock.yaml
+  path: _codeql_detected_source_root/pnpm-lock.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:_codeql_detected_source_root:autonomous
+  type: Directory
+  label: autonomous
+  path: _codeql_detected_source_root/autonomous
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:core
+  type: Subsystem
+  label: core
+  path: _codeql_detected_source_root/core
+  meta:
+    source: knowledge-graph
+    label_zh: 子系統
+- id: dir:_codeql_detected_source_root:core:main_system
+  type: Directory
+  label: main_system
+  path: _codeql_detected_source_root/core/main_system
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:core:slsa_provenance
+  type: Directory
+  label: slsa_provenance
+  path: _codeql_detected_source_root/core/slsa_provenance
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:core:training_system
+  type: Directory
+  label: training_system
+  path: _codeql_detected_source_root/core/training_system
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:core:mcp_servers_enhanced
+  type: Directory
+  label: mcp_servers_enhanced
+  path: _codeql_detected_source_root/core/mcp_servers_enhanced
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:core:tech_stack
+  type: Directory
+  label: tech_stack
+  path: _codeql_detected_source_root/core/tech_stack
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:core:yaml_module_system
+  type: Directory
+  label: yaml_module_system
+  path: _codeql_detected_source_root/core/yaml_module_system
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:core:execution_architecture
+  type: Directory
+  label: execution_architecture
+  path: _codeql_detected_source_root/core/execution_architecture
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:core:island_ai_runtime
+  type: Directory
+  label: island_ai_runtime
+  path: _codeql_detected_source_root/core/island_ai_runtime
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:core:unified_integration
+  type: Directory
+  label: unified_integration
+  path: _codeql_detected_source_root/core/unified_integration
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:core:monitoring_system
+  type: Directory
+  label: monitoring_system
+  path: _codeql_detected_source_root/core/monitoring_system
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:core:cloud_agent_delegation
+  type: Directory
+  label: cloud_agent_delegation
+  path: _codeql_detected_source_root/core/cloud_agent_delegation
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:core:_scratch
+  type: Directory
+  label: _scratch
+  path: _codeql_detected_source_root/core/_scratch
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:core:auto_governance_hub.py
+  type: Component
+  label: auto_governance_hub.py
+  path: _codeql_detected_source_root/core/auto_governance_hub.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:_codeql_detected_source_root:core:autonomous_trust_engine.py
+  type: Component
+  label: autonomous_trust_engine.py
+  path: _codeql_detected_source_root/core/autonomous_trust_engine.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:_codeql_detected_source_root:core:advisory-database
+  type: Directory
+  label: advisory-database
+  path: _codeql_detected_source_root/core/advisory-database
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:core:safety_mechanisms
+  type: Directory
+  label: safety_mechanisms
+  path: _codeql_detected_source_root/core/safety_mechanisms
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:core:hallucination_detector.py
+  type: Component
+  label: hallucination_detector.py
+  path: _codeql_detected_source_root/core/hallucination_detector.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:_codeql_detected_source_root:core:ci_error_handler
+  type: Directory
+  label: ci_error_handler
+  path: _codeql_detected_source_root/core/ci_error_handler
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:core:virtual_experts
+  type: Directory
+  label: virtual_experts
+  path: _codeql_detected_source_root/core/virtual_experts
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:core:ai_decision_engine.py
+  type: Component
+  label: ai_decision_engine.py
+  path: _codeql_detected_source_root/core/ai_decision_engine.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:_codeql_detected_source_root:core:ai_constitution
+  type: Directory
+  label: ai_constitution
+  path: _codeql_detected_source_root/core/ai_constitution
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:core:execution_engine
+  type: Directory
+  label: execution_engine
+  path: _codeql_detected_source_root/core/execution_engine
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:core:context_understanding_engine.py
+  type: Component
+  label: context_understanding_engine.py
+  path: _codeql_detected_source_root/core/context_understanding_engine.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:_codeql_detected_source_root:core:__init__.py
+  type: Component
+  label: __init__.py
+  path: _codeql_detected_source_root/core/__init__.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:_codeql_detected_source_root:core:contract_service
+  type: Directory
+  label: contract_service
+  path: _codeql_detected_source_root/core/contract_service
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:core:auto_bug_detector.py
+  type: Component
+  label: auto_bug_detector.py
+  path: _codeql_detected_source_root/core/auto_bug_detector.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:_codeql_detected_source_root:core:modules
+  type: Directory
+  label: modules
+  path: _codeql_detected_source_root/core/modules
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:supply-chain
+  type: Directory
+  label: supply-chain
+  path: _codeql_detected_source_root/supply-chain
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:supply-chain:sbom
+  type: Directory
+  label: sbom
+  path: _codeql_detected_source_root/supply-chain/sbom
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:eslint.config.js
+  type: Component
+  label: eslint.config.js
+  path: _codeql_detected_source_root/eslint.config.js
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:_codeql_detected_source_root:governance
+  type: Subsystem
+  label: governance
+  path: _codeql_detected_source_root/governance
+  meta:
+    source: knowledge-graph
+    label_zh: 子系統
+- id: dir:_codeql_detected_source_root:governance:policies
+  type: Directory
+  label: policies
+  path: _codeql_detected_source_root/governance/policies
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:governance:architecture
+  type: Directory
+  label: architecture
+  path: _codeql_detected_source_root/governance/architecture
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:governance:environment-matrix
+  type: Directory
+  label: environment-matrix
+  path: _codeql_detected_source_root/governance/environment-matrix
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:governance:ownership-map.yaml
+  type: ConfigParam
+  label: ownership-map.yaml
+  path: _codeql_detected_source_root/governance/ownership-map.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:_codeql_detected_source_root:governance:rules
+  type: Directory
+  label: rules
+  path: _codeql_detected_source_root/governance/rules
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:governance:mapping-rules.yaml
+  type: ConfigParam
+  label: mapping-rules.yaml
+  path: _codeql_detected_source_root/governance/mapping-rules.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:_codeql_detected_source_root:governance:registry
+  type: Directory
+  label: registry
+  path: _codeql_detected_source_root/governance/registry
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:governance:_scratch
+  type: Directory
+  label: _scratch
+  path: _codeql_detected_source_root/governance/_scratch
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:governance:deployment
+  type: Directory
+  label: deployment
+  path: _codeql_detected_source_root/governance/deployment
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:governance:architecture-health.yaml
+  type: ConfigParam
+  label: architecture-health.yaml
+  path: _codeql_detected_source_root/governance/architecture-health.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:_codeql_detected_source_root:governance:schemas
+  type: Directory
+  label: schemas
+  path: _codeql_detected_source_root/governance/schemas
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:governance:audit
+  type: Directory
+  label: audit
+  path: _codeql_detected_source_root/governance/audit
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:governance:behavior-contracts
+  type: Directory
+  label: behavior-contracts
+  path: _codeql_detected_source_root/governance/behavior-contracts
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:governance:sbom
+  type: Directory
+  label: sbom
+  path: _codeql_detected_source_root/governance/sbom
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:governance:modules
+  type: Directory
+  label: modules
+  path: _codeql_detected_source_root/governance/modules
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:knowledge
+  type: Directory
+  label: knowledge
+  path: _codeql_detected_source_root/knowledge
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:knowledge:evolution-state.yaml
+  type: ConfigParam
+  label: evolution-state.yaml
+  path: _codeql_detected_source_root/knowledge/evolution-state.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:knowledge:language-history.yaml
+  type: ConfigParam
+  label: language-history.yaml
+  path: _codeql_detected_source_root/knowledge/language-history.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:_codeql_detected_source_root:synergymesh.egg-info
+  type: Directory
+  label: synergymesh.egg-info
+  path: _codeql_detected_source_root/synergymesh.egg-info
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:tests
+  type: Component
+  label: tests
+  path: _codeql_detected_source_root/tests
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:_codeql_detected_source_root:tests:performance
+  type: Directory
+  label: performance
+  path: _codeql_detected_source_root/tests/performance
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:tests:vectors
+  type: Directory
+  label: vectors
+  path: _codeql_detected_source_root/tests/vectors
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:tests:unit
+  type: Directory
+  label: unit
+  path: _codeql_detected_source_root/tests/unit
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:config
+  type: ConfigParam
+  label: config
+  path: _codeql_detected_source_root/config
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:config:virtual-experts.yaml
+  type: ConfigParam
+  label: virtual-experts.yaml
+  path: _codeql_detected_source_root/config/virtual-experts.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:_codeql_detected_source_root:config:autofix
+  type: Directory
+  label: autofix
+  path: _codeql_detected_source_root/config/autofix
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:config:brand-mapping.yaml
+  type: ConfigParam
+  label: brand-mapping.yaml
+  path: _codeql_detected_source_root/config/brand-mapping.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:config:monitoring.yaml
+  type: ConfigParam
+  label: monitoring.yaml
+  path: _codeql_detected_source_root/config/monitoring.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:config:ci-error-handler.yaml
+  type: ConfigParam
+  label: ci-error-handler.yaml
+  path: _codeql_detected_source_root/config/ci-error-handler.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:config:system-module-map.yaml
+  type: ConfigParam
+  label: system-module-map.yaml
+  path: _codeql_detected_source_root/config/system-module-map.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:config:island-control.yml
+  type: ConfigParam
+  label: island-control.yml
+  path: _codeql_detected_source_root/config/island-control.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:config:dependencies.yaml
+  type: ConfigParam
+  label: dependencies.yaml
+  path: _codeql_detected_source_root/config/dependencies.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:config:environment.yaml
+  type: ConfigParam
+  label: environment.yaml
+  path: _codeql_detected_source_root/config/environment.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:config:safety-mechanisms.yaml
+  type: ConfigParam
+  label: safety-mechanisms.yaml
+  path: _codeql_detected_source_root/config/safety-mechanisms.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:config:prometheus-rules.yml
+  type: ConfigParam
+  label: prometheus-rules.yml
+  path: _codeql_detected_source_root/config/prometheus-rules.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:config:auto-fix-bot.yml
+  type: ConfigParam
+  label: auto-fix-bot.yml
+  path: _codeql_detected_source_root/config/auto-fix-bot.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:config:system-manifest.yaml
+  type: ConfigParam
+  label: system-manifest.yaml
+  path: _codeql_detected_source_root/config/system-manifest.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:config:drone-config.yml
+  type: ConfigParam
+  label: drone-config.yml
+  path: _codeql_detected_source_root/config/drone-config.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:config:ci-comprehensive-solution.yaml
+  type: ConfigParam
+  label: ci-comprehensive-solution.yaml
+  path: _codeql_detected_source_root/config/ci-comprehensive-solution.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:_codeql_detected_source_root:config:docker
+  type: Directory
+  label: docker
+  path: _codeql_detected_source_root/config/docker
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:config:ci-config.yaml
+  type: ConfigParam
+  label: ci-config.yaml
+  path: _codeql_detected_source_root/config/ci-config.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:config:yaml-module-system.yaml
+  type: ConfigParam
+  label: yaml-module-system.yaml
+  path: _codeql_detected_source_root/config/yaml-module-system.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:config:auto-fix-bot .prompt.yml
+  type: ConfigParam
+  label: auto-fix-bot .prompt.yml
+  path: _codeql_detected_source_root/config/auto-fix-bot .prompt.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:config:unified-config-index.yaml
+  type: ConfigParam
+  label: unified-config-index.yaml
+  path: _codeql_detected_source_root/config/unified-config-index.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:config:language-policy.yaml
+  type: ConfigParam
+  label: language-policy.yaml
+  path: _codeql_detected_source_root/config/language-policy.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:config:sync-refactor-config.yaml
+  type: ConfigParam
+  label: sync-refactor-config.yaml
+  path: _codeql_detected_source_root/config/sync-refactor-config.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:config:island-ai-runtime.yaml
+  type: ConfigParam
+  label: island-ai-runtime.yaml
+  path: _codeql_detected_source_root/config/island-ai-runtime.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:_codeql_detected_source_root:config:conftest
+  type: Directory
+  label: conftest
+  path: _codeql_detected_source_root/config/conftest
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:config:builder-system-prompt.yaml
+  type: ConfigParam
+  label: builder-system-prompt.yaml
+  path: _codeql_detected_source_root/config/builder-system-prompt.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:config:system-module-map.example.yaml
+  type: ConfigParam
+  label: system-module-map.example.yaml
+  path: _codeql_detected_source_root/config/system-module-map.example.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:_codeql_detected_source_root:config:integrations
+  type: Directory
+  label: integrations
+  path: _codeql_detected_source_root/config/integrations
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:config:integrations-index.yaml
+  type: ConfigParam
+  label: integrations-index.yaml
+  path: _codeql_detected_source_root/config/integrations-index.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:config:topology-mind-matrix.yaml
+  type: ConfigParam
+  label: topology-mind-matrix.yaml
+  path: _codeql_detected_source_root/config/topology-mind-matrix.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:config:security-network-config.yml
+  type: ConfigParam
+  label: security-network-config.yml
+  path: _codeql_detected_source_root/config/security-network-config.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:config:ai-constitution.yaml
+  type: ConfigParam
+  label: ai-constitution.yaml
+  path: _codeql_detected_source_root/config/ai-constitution.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:config:cloud-agent-delegation.yml
+  type: ConfigParam
+  label: cloud-agent-delegation.yml
+  path: _codeql_detected_source_root/config/cloud-agent-delegation.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:config:auto-fix-bot.prompt.yml
+  type: ConfigParam
+  label: auto-fix-bot.prompt.yml
+  path: _codeql_detected_source_root/config/auto-fix-bot.prompt.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:config:prometheus-config.yml
+  type: ConfigParam
+  label: prometheus-config.yml
+  path: _codeql_detected_source_root/config/prometheus-config.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:config:tenant-tier-definitions.yaml
+  type: ConfigParam
+  label: tenant-tier-definitions.yaml
+  path: _codeql_detected_source_root/config/tenant-tier-definitions.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:config:synergymesh.config.yaml
+  type: ConfigParam
+  label: synergymesh.config.yaml
+  path: _codeql_detected_source_root/config/synergymesh.config.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:config:ci-agent-config.yaml
+  type: ConfigParam
+  label: ci-agent-config.yaml
+  path: _codeql_detected_source_root/config/ci-agent-config.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:_codeql_detected_source_root:config:templates
+  type: Directory
+  label: templates
+  path: _codeql_detected_source_root/config/templates
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:config:system-evolution.yaml
+  type: ConfigParam
+  label: system-evolution.yaml
+  path: _codeql_detected_source_root/config/system-evolution.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:_codeql_detected_source_root:infrastructure
+  type: Component
+  label: infrastructure
+  path: _codeql_detected_source_root/infrastructure
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:_codeql_detected_source_root:infrastructure:monitoring
+  type: Directory
+  label: monitoring
+  path: _codeql_detected_source_root/infrastructure/monitoring
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:infrastructure:kubernetes
+  type: Directory
+  label: kubernetes
+  path: _codeql_detected_source_root/infrastructure/kubernetes
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:infrastructure:canary
+  type: Directory
+  label: canary
+  path: _codeql_detected_source_root/infrastructure/canary
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:infrastructure:drift
+  type: Directory
+  label: drift
+  path: _codeql_detected_source_root/infrastructure/drift
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:frontend
+  type: Directory
+  label: frontend
+  path: _codeql_detected_source_root/frontend
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:frontend:ui
+  type: Directory
+  label: ui
+  path: _codeql_detected_source_root/frontend/ui
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:shared
+  type: Directory
+  label: shared
+  path: _codeql_detected_source_root/shared
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:shared:utils
+  type: Directory
+  label: utils
+  path: _codeql_detected_source_root/shared/utils
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:shared:language_bridges.py
+  type: Component
+  label: language_bridges.py
+  path: _codeql_detected_source_root/shared/language_bridges.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:_codeql_detected_source_root:shared:constants
+  type: Directory
+  label: constants
+  path: _codeql_detected_source_root/shared/constants
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:shared:config
+  type: ConfigParam
+  label: config
+  path: _codeql_detected_source_root/shared/config
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:shared:__init__.py
+  type: Component
+  label: __init__.py
+  path: _codeql_detected_source_root/shared/__init__.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:_codeql_detected_source_root:unmanned-engineer-ceo
+  type: Directory
+  label: unmanned-engineer-ceo
+  path: _codeql_detected_source_root/unmanned-engineer-ceo
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:unmanned-engineer-ceo:99-meta
+  type: Directory
+  label: 99-meta
+  path: _codeql_detected_source_root/unmanned-engineer-ceo/99-meta
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:unmanned-engineer-ceo:10-traits-matrix
+  type: Directory
+  label: 10-traits-matrix
+  path: _codeql_detected_source_root/unmanned-engineer-ceo/10-traits-matrix
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:unmanned-engineer-ceo:60-machine-guides
+  type: Directory
+  label: 60-machine-guides
+  path: _codeql_detected_source_root/unmanned-engineer-ceo/60-machine-guides
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:unmanned-engineer-ceo:80-skeleton-configs
+  type: Directory
+  label: 80-skeleton-configs
+  path: _codeql_detected_source_root/unmanned-engineer-ceo/80-skeleton-configs
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:unmanned-engineer-ceo:02-enterprise-capabilities
+  type: Directory
+  label: 02-enterprise-capabilities
+  path: _codeql_detected_source_root/unmanned-engineer-ceo/02-enterprise-capabilities
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:unmanned-engineer-ceo:03-intelligence
+  type: Directory
+  label: 03-intelligence
+  path: _codeql_detected_source_root/unmanned-engineer-ceo/03-intelligence
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:unmanned-engineer-ceo:20-roadmap
+  type: Directory
+  label: 20-roadmap
+  path: _codeql_detected_source_root/unmanned-engineer-ceo/20-roadmap
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:unmanned-engineer-ceo:01-advanced-engineering
+  type: Directory
+  label: 01-advanced-engineering
+  path: _codeql_detected_source_root/unmanned-engineer-ceo/01-advanced-engineering
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:unmanned-engineer-ceo:30-assessment
+  type: Directory
+  label: 30-assessment
+  path: _codeql_detected_source_root/unmanned-engineer-ceo/30-assessment
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:unmanned-engineer-ceo:00-foundation
+  type: Directory
+  label: 00-foundation
+  path: _codeql_detected_source_root/unmanned-engineer-ceo/00-foundation
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:unmanned-engineer-ceo:50-org-implementation
+  type: Directory
+  label: 50-org-implementation
+  path: _codeql_detected_source_root/unmanned-engineer-ceo/50-org-implementation
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:unmanned-engineer-ceo:04-systems-thinking
+  type: Directory
+  label: 04-systems-thinking
+  path: _codeql_detected_source_root/unmanned-engineer-ceo/04-systems-thinking
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:unmanned-engineer-ceo:manifest.yaml
+  type: ConfigParam
+  label: manifest.yaml
+  path: _codeql_detected_source_root/unmanned-engineer-ceo/manifest.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:_codeql_detected_source_root:unmanned-engineer-ceo:70-architecture-skeletons
+  type: Directory
+  label: 70-architecture-skeletons
+  path: _codeql_detected_source_root/unmanned-engineer-ceo/70-architecture-skeletons
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:unmanned-engineer-ceo:40-simulations
+  type: Directory
+  label: 40-simulations
+  path: _codeql_detected_source_root/unmanned-engineer-ceo/40-simulations
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:infra
+  type: Directory
+  label: infra
+  path: _codeql_detected_source_root/infra
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:infra:_scratch
+  type: Directory
+  label: _scratch
+  path: _codeql_detected_source_root/infra/_scratch
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:infra:config
+  type: ConfigParam
+  label: config
+  path: _codeql_detected_source_root/infra/config
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:_codeql_detected_source_root:infra:infrastructure
+  type: Component
+  label: infrastructure
+  path: _codeql_detected_source_root/infra/infrastructure
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:_codeql_detected_source_root:bridges
+  type: Directory
+  label: bridges
+  path: _codeql_detected_source_root/bridges
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:bridges:language_bridges.py
+  type: Component
+  label: language_bridges.py
+  path: _codeql_detected_source_root/bridges/language_bridges.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:_codeql_detected_source_root:island.bootstrap.stage0.yaml
+  type: ConfigParam
+  label: island.bootstrap.stage0.yaml
+  path: _codeql_detected_source_root/island.bootstrap.stage0.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:synergymesh.yaml
+  type: ConfigParam
+  label: synergymesh.yaml
+  path: _codeql_detected_source_root/synergymesh.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:_codeql_detected_source_root:island-ai
+  type: Directory
+  label: island-ai
+  path: _codeql_detected_source_root/island-ai
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:island-ai:examples
+  type: Directory
+  label: examples
+  path: _codeql_detected_source_root/island-ai/examples
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:_codeql_detected_source_root:island-ai:jest.config.js
+  type: Component
+  label: jest.config.js
+  path: _codeql_detected_source_root/island-ai/jest.config.js
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:_codeql_detected_source_root:island-ai:src
+  type: Directory
+  label: src
+  path: _codeql_detected_source_root/island-ai/src
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:templates
+  type: Directory
+  label: templates
+  path: _codeql_detected_source_root/templates
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:templates:root
+  type: Directory
+  label: root
+  path: _codeql_detected_source_root/templates/root
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:templates:github
+  type: Directory
+  label: github
+  path: _codeql_detected_source_root/templates/github
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:templates:git-hooks
+  type: Directory
+  label: git-hooks
+  path: _codeql_detected_source_root/templates/git-hooks
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:templates:sync
+  type: Directory
+  label: sync
+  path: _codeql_detected_source_root/templates/sync
   meta:
     source: knowledge-graph
     label_zh: 目錄
@@ -572,10 +3022,24 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 設定
+- id: file:.github:workflows:validate-copilot-instructions.yml
+  type: ConfigParam
+  label: validate-copilot-instructions.yml
+  path: .github/workflows/validate-copilot-instructions.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
 - id: file:.github:workflows:dynamic-ci-assistant.yml
   type: ConfigParam
   label: dynamic-ci-assistant.yml
   path: .github/workflows/dynamic-ci-assistant.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:.github:workflows:copilot-setup-steps.yml
+  type: ConfigParam
+  label: copilot-setup-steps.yml
+  path: .github/workflows/copilot-setup-steps.yml
   meta:
     source: knowledge-graph
     label_zh: 設定
@@ -621,6 +3085,20 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 設定
+- id: file:.github:workflows:stackhawk.yml
+  type: ConfigParam
+  label: stackhawk.yml
+  path: .github/workflows/stackhawk.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:.github:workflows:neuralegion.yml
+  type: ConfigParam
+  label: neuralegion.yml
+  path: .github/workflows/neuralegion.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
 - id: file:.github:workflows:island-ai-setup-steps.yml
   type: ConfigParam
   label: island-ai-setup-steps.yml
@@ -632,6 +3110,13 @@ entities:
   type: ConfigParam
   label: 06-security-scan.yml
   path: .github/workflows/06-security-scan.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:.github:workflows:soos-dast-scan.yml
+  type: ConfigParam
+  label: soos-dast-scan.yml
+  path: .github/workflows/soos-dast-scan.yml
   meta:
     source: knowledge-graph
     label_zh: 設定
@@ -653,6 +3138,13 @@ entities:
   type: ConfigParam
   label: policy-simulate.yml
   path: .github/workflows/policy-simulate.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:.github:workflows:reusable-setup.yml
+  type: ConfigParam
+  label: reusable-setup.yml
+  path: .github/workflows/reusable-setup.yml
   meta:
     source: knowledge-graph
     label_zh: 設定
@@ -705,6 +3197,13 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 設定
+- id: file:.github:workflows:eslint.yml
+  type: ConfigParam
+  label: eslint.yml
+  path: .github/workflows/eslint.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
 - id: file:.github:workflows:system-evolution.yml
   type: ConfigParam
   label: system-evolution.yml
@@ -754,10 +3253,24 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 設定
+- id: file:.github:workflows:fortify.yml
+  type: ConfigParam
+  label: fortify.yml
+  path: .github/workflows/fortify.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
 - id: file:.github:workflows:auto-update-knowledge-graph.yml
   type: ConfigParam
   label: auto-update-knowledge-graph.yml
   path: .github/workflows/auto-update-knowledge-graph.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:.github:workflows:synopsys-io.yml
+  type: ConfigParam
+  label: synopsys-io.yml
+  path: .github/workflows/synopsys-io.yml
   meta:
     source: knowledge-graph
     label_zh: 設定
@@ -807,6 +3320,13 @@ entities:
   type: ConfigParam
   label: ai-auto-fix-pr.yml
   path: .github/workflows/ai-auto-fix-pr.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:.github:workflows:synopsys-action.yml
+  type: ConfigParam
+  label: synopsys-action.yml
+  path: .github/workflows/synopsys-action.yml
   meta:
     source: knowledge-graph
     label_zh: 設定
@@ -908,6 +3428,13 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 設定
+- id: file:.github:workflows:reusable-validation.yml
+  type: ConfigParam
+  label: reusable-validation.yml
+  path: .github/workflows/reusable-validation.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
 - id: file:.github:workflows:self-healing-ci.yml
   type: ConfigParam
   label: self-healing-ci.yml
@@ -933,6 +3460,13 @@ entities:
   type: ConfigParam
   label: 03-build.yml
   path: .github/workflows/03-build.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:.github:workflows:mayhem-for-api.yml
+  type: ConfigParam
+  label: mayhem-for-api.yml
+  path: .github/workflows/mayhem-for-api.yml
   meta:
     source: knowledge-graph
     label_zh: 設定
@@ -1062,6 +3596,111 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 設定
+- id: dir:v1-python-drones
+  type: Directory
+  label: v1-python-drones
+  path: v1-python-drones
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:v1-python-drones:utils
+  type: Directory
+  label: utils
+  path: v1-python-drones/utils
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:v1-python-drones:utils:helpers.py
+  type: Component
+  label: helpers.py
+  path: v1-python-drones/utils/helpers.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:v1-python-drones:utils:__init__.py
+  type: Component
+  label: __init__.py
+  path: v1-python-drones/utils/__init__.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:v1-python-drones:main.py
+  type: Component
+  label: main.py
+  path: v1-python-drones/main.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:v1-python-drones:drones
+  type: Directory
+  label: drones
+  path: v1-python-drones/drones
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:v1-python-drones:drones:autopilot_drone.py
+  type: Component
+  label: autopilot_drone.py
+  path: v1-python-drones/drones/autopilot_drone.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:v1-python-drones:drones:base_drone.py
+  type: Component
+  label: base_drone.py
+  path: v1-python-drones/drones/base_drone.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:v1-python-drones:drones:coordinator_drone.py
+  type: Component
+  label: coordinator_drone.py
+  path: v1-python-drones/drones/coordinator_drone.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:v1-python-drones:drones:deployment_drone.py
+  type: Component
+  label: deployment_drone.py
+  path: v1-python-drones/drones/deployment_drone.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:v1-python-drones:drones:__init__.py
+  type: Component
+  label: __init__.py
+  path: v1-python-drones/drones/__init__.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:v1-python-drones:config
+  type: ConfigParam
+  label: config
+  path: v1-python-drones/config
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:v1-python-drones:config:__init__.py
+  type: Component
+  label: __init__.py
+  path: v1-python-drones/config/__init__.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:v1-python-drones:config:drone_config.py
+  type: Component
+  label: drone_config.py
+  path: v1-python-drones/config/drone_config.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:v1-python-drones:__init__.py
+  type: Component
+  label: __init__.py
+  path: v1-python-drones/__init__.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
 - id: dir:reports
   type: Directory
   label: reports
@@ -1321,6 +3960,13 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 模組
+- id: file:tools:docs:analyze_root_reports.py
+  type: Component
+  label: analyze_root_reports.py
+  path: tools/docs/analyze_root_reports.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
 - id: file:tools:docs:scan_repo_generate_index.py
   type: Component
   label: scan_repo_generate_index.py
@@ -1440,6 +4086,13 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 設定
+- id: dir:contracts
+  type: Directory
+  label: contracts
+  path: contracts
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
 - id: dir:ops
   type: Directory
   label: ops
@@ -1451,6 +4104,20 @@ entities:
   type: Directory
   label: runbooks
   path: ops/runbooks
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:ops:artifacts
+  type: Directory
+  label: artifacts
+  path: ops/artifacts
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:ops:artifacts:reports
+  type: Directory
+  label: reports
+  path: ops/artifacts/reports
   meta:
     source: knowledge-graph
     label_zh: 目錄
@@ -1510,6 +4177,13 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 目錄
+- id: dir:docker-templates
+  type: Directory
+  label: docker-templates
+  path: docker-templates
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
 - id: dir:experiments
   type: Directory
   label: experiments
@@ -1517,6 +4191,41 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 目錄
+- id: dir:runtime
+  type: Directory
+  label: runtime
+  path: runtime
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:runtime:mind_matrix
+  type: Directory
+  label: mind_matrix
+  path: runtime/mind_matrix
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:runtime:mind_matrix:main.py
+  type: Component
+  label: main.py
+  path: runtime/mind_matrix/main.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:runtime:mind_matrix:executive_auto.py
+  type: Component
+  label: executive_auto.py
+  path: runtime/mind_matrix/executive_auto.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:runtime:mind_matrix:__init__.py
+  type: Component
+  label: __init__.py
+  path: runtime/mind_matrix/__init__.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
 - id: dir:automation
   type: Subsystem
   label: automation
@@ -1748,6 +4457,13 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 設定
+- id: dir:automation:architect:frameworks
+  type: Directory
+  label: frameworks
+  path: automation/architect/frameworks
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
 - id: dir:automation:architect:docs
   type: Document
   label: docs
@@ -1776,6 +4492,13 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 設定
+- id: dir:automation:architect:scenarios
+  type: Directory
+  label: scenarios
+  path: automation/architect/scenarios
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
 - id: file:automation:zero_touch_deployment.py
   type: Component
   label: zero_touch_deployment.py
@@ -1941,6 +4664,13 @@ entities:
   type: Directory
   label: api-evolution
   path: docs/architecture/api-evolution
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:docs:architecture:configuration
+  type: Directory
+  label: configuration
+  path: docs/architecture/configuration
   meta:
     source: knowledge-graph
     label_zh: 目錄
@@ -2119,6 +4849,48 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 子系統
+- id: dir:core:main_system
+  type: Directory
+  label: main_system
+  path: core/main_system
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:core:main_system:automation_pipeline.py
+  type: Component
+  label: automation_pipeline.py
+  path: core/main_system/automation_pipeline.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:main_system:phase_orchestrator.py
+  type: Component
+  label: phase_orchestrator.py
+  path: core/main_system/phase_orchestrator.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:main_system:system_bootstrap.py
+  type: Component
+  label: system_bootstrap.py
+  path: core/main_system/system_bootstrap.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:main_system:__init__.py
+  type: Component
+  label: __init__.py
+  path: core/main_system/__init__.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:main_system:synergymesh_core.py
+  type: Component
+  label: synergymesh_core.py
+  path: core/main_system/synergymesh_core.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
 - id: dir:core:slsa_provenance
   type: Directory
   label: slsa_provenance
@@ -2165,6 +4937,230 @@ entities:
   type: Component
   label: attestation_manager.py
   path: core/slsa_provenance/attestation_manager.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:core:training_system
+  type: Directory
+  label: training_system
+  path: core/training_system
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:core:training_system:example_library.py
+  type: Component
+  label: example_library.py
+  path: core/training_system/example_library.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:training_system:skills_training.py
+  type: Component
+  label: skills_training.py
+  path: core/training_system/skills_training.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:training_system:__init__.py
+  type: Component
+  label: __init__.py
+  path: core/training_system/__init__.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:training_system:knowledge_base.py
+  type: Component
+  label: knowledge_base.py
+  path: core/training_system/knowledge_base.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:core:mcp_servers_enhanced
+  type: Directory
+  label: mcp_servers_enhanced
+  path: core/mcp_servers_enhanced
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:core:mcp_servers_enhanced:realtime_connector.py
+  type: Component
+  label: realtime_connector.py
+  path: core/mcp_servers_enhanced/realtime_connector.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:mcp_servers_enhanced:tool_registry.py
+  type: Component
+  label: tool_registry.py
+  path: core/mcp_servers_enhanced/tool_registry.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:mcp_servers_enhanced:workflow_orchestrator.py
+  type: Component
+  label: workflow_orchestrator.py
+  path: core/mcp_servers_enhanced/workflow_orchestrator.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:mcp_servers_enhanced:mcp_server_manager.py
+  type: Component
+  label: mcp_server_manager.py
+  path: core/mcp_servers_enhanced/mcp_server_manager.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:mcp_servers_enhanced:__init__.py
+  type: Component
+  label: __init__.py
+  path: core/mcp_servers_enhanced/__init__.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:core:tech_stack
+  type: Directory
+  label: tech_stack
+  path: core/tech_stack
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:core:tech_stack:multi_agent_coordinator.py
+  type: Component
+  label: multi_agent_coordinator.py
+  path: core/tech_stack/multi_agent_coordinator.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:tech_stack:python_bridge.py
+  type: Component
+  label: python_bridge.py
+  path: core/tech_stack/python_bridge.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:tech_stack:framework_integrations.py
+  type: Component
+  label: framework_integrations.py
+  path: core/tech_stack/framework_integrations.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:tech_stack:architecture_config.py
+  type: Component
+  label: architecture_config.py
+  path: core/tech_stack/architecture_config.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:tech_stack:__init__.py
+  type: Component
+  label: __init__.py
+  path: core/tech_stack/__init__.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:core:yaml_module_system
+  type: Directory
+  label: yaml_module_system
+  path: core/yaml_module_system
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:core:yaml_module_system:policy_gate.py
+  type: Component
+  label: policy_gate.py
+  path: core/yaml_module_system/policy_gate.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:yaml_module_system:yaml_schema_validator.py
+  type: Component
+  label: yaml_schema_validator.py
+  path: core/yaml_module_system/yaml_schema_validator.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:yaml_module_system:yaml_module_definition.py
+  type: Component
+  label: yaml_module_definition.py
+  path: core/yaml_module_system/yaml_module_definition.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:yaml_module_system:ci_verification_pipeline.py
+  type: Component
+  label: ci_verification_pipeline.py
+  path: core/yaml_module_system/ci_verification_pipeline.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:yaml_module_system:slsa_compliance.py
+  type: Component
+  label: slsa_compliance.py
+  path: core/yaml_module_system/slsa_compliance.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:yaml_module_system:audit_trail.py
+  type: Component
+  label: audit_trail.py
+  path: core/yaml_module_system/audit_trail.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:yaml_module_system:__init__.py
+  type: Component
+  label: __init__.py
+  path: core/yaml_module_system/__init__.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:core:execution_architecture
+  type: Directory
+  label: execution_architecture
+  path: core/execution_architecture
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:core:execution_architecture:function_calling.py
+  type: Component
+  label: function_calling.py
+  path: core/execution_architecture/function_calling.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:execution_architecture:mcp_integration.py
+  type: Component
+  label: mcp_integration.py
+  path: core/execution_architecture/mcp_integration.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:execution_architecture:tool_system.py
+  type: Component
+  label: tool_system.py
+  path: core/execution_architecture/tool_system.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:execution_architecture:agent_orchestration.py
+  type: Component
+  label: agent_orchestration.py
+  path: core/execution_architecture/agent_orchestration.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:execution_architecture:langchain_integration.py
+  type: Component
+  label: langchain_integration.py
+  path: core/execution_architecture/langchain_integration.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:execution_architecture:__init__.py
+  type: Component
+  label: __init__.py
+  path: core/execution_architecture/__init__.py
   meta:
     source: knowledge-graph
     label_zh: 模組
@@ -2315,6 +5311,104 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 模組
+- id: dir:core:monitoring_system
+  type: Directory
+  label: monitoring_system
+  path: core/monitoring_system
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:core:monitoring_system:intelligent_monitoring.py
+  type: Component
+  label: intelligent_monitoring.py
+  path: core/monitoring_system/intelligent_monitoring.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:monitoring_system:observability_platform.py
+  type: Component
+  label: observability_platform.py
+  path: core/monitoring_system/observability_platform.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:monitoring_system:auto_remediation.py
+  type: Component
+  label: auto_remediation.py
+  path: core/monitoring_system/auto_remediation.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:monitoring_system:smart_anomaly_detector.py
+  type: Component
+  label: smart_anomaly_detector.py
+  path: core/monitoring_system/smart_anomaly_detector.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:monitoring_system:auto_diagnosis.py
+  type: Component
+  label: auto_diagnosis.py
+  path: core/monitoring_system/auto_diagnosis.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:monitoring_system:__init__.py
+  type: Component
+  label: __init__.py
+  path: core/monitoring_system/__init__.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:monitoring_system:self_learning.py
+  type: Component
+  label: self_learning.py
+  path: core/monitoring_system/self_learning.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:core:cloud_agent_delegation
+  type: Directory
+  label: cloud_agent_delegation
+  path: core/cloud_agent_delegation
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:core:cloud_agent_delegation:load_balancer.py
+  type: Component
+  label: load_balancer.py
+  path: core/cloud_agent_delegation/load_balancer.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:cloud_agent_delegation:task_router.py
+  type: Component
+  label: task_router.py
+  path: core/cloud_agent_delegation/task_router.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:cloud_agent_delegation:delegation_manager.py
+  type: Component
+  label: delegation_manager.py
+  path: core/cloud_agent_delegation/delegation_manager.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:cloud_agent_delegation:cloud_provider_adapter.py
+  type: Component
+  label: cloud_provider_adapter.py
+  path: core/cloud_agent_delegation/cloud_provider_adapter.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:cloud_agent_delegation:__init__.py
+  type: Component
+  label: __init__.py
+  path: core/cloud_agent_delegation/__init__.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
 - id: dir:core:_scratch
   type: Directory
   label: _scratch
@@ -2448,10 +5542,199 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 模組
+- id: dir:core:ci_error_handler
+  type: Directory
+  label: ci_error_handler
+  path: core/ci_error_handler
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:core:ci_error_handler:fix_status_tracker.py
+  type: Component
+  label: fix_status_tracker.py
+  path: core/ci_error_handler/fix_status_tracker.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:ci_error_handler:auto_fix_engine.py
+  type: Component
+  label: auto_fix_engine.py
+  path: core/ci_error_handler/auto_fix_engine.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:ci_error_handler:issue_manager.py
+  type: Component
+  label: issue_manager.py
+  path: core/ci_error_handler/issue_manager.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:ci_error_handler:ci_error_analyzer.py
+  type: Component
+  label: ci_error_analyzer.py
+  path: core/ci_error_handler/ci_error_analyzer.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:ci_error_handler:__init__.py
+  type: Component
+  label: __init__.py
+  path: core/ci_error_handler/__init__.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:core:virtual_experts
+  type: Directory
+  label: virtual_experts
+  path: core/virtual_experts
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:core:virtual_experts:expert_team.py
+  type: Component
+  label: expert_team.py
+  path: core/virtual_experts/expert_team.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:virtual_experts:expert_base.py
+  type: Component
+  label: expert_base.py
+  path: core/virtual_experts/expert_base.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:virtual_experts:domain_experts.py
+  type: Component
+  label: domain_experts.py
+  path: core/virtual_experts/domain_experts.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:virtual_experts:__init__.py
+  type: Component
+  label: __init__.py
+  path: core/virtual_experts/__init__.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
 - id: file:core:ai_decision_engine.py
   type: Component
   label: ai_decision_engine.py
   path: core/ai_decision_engine.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:core:ai_constitution
+  type: Directory
+  label: ai_constitution
+  path: core/ai_constitution
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:core:ai_constitution:adaptive_guidelines.py
+  type: Component
+  label: adaptive_guidelines.py
+  path: core/ai_constitution/adaptive_guidelines.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:ai_constitution:fundamental_laws.py
+  type: Component
+  label: fundamental_laws.py
+  path: core/ai_constitution/fundamental_laws.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:ai_constitution:policy_as_prompt.py
+  type: Component
+  label: policy_as_prompt.py
+  path: core/ai_constitution/policy_as_prompt.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:ai_constitution:operational_rules.py
+  type: Component
+  label: operational_rules.py
+  path: core/ai_constitution/operational_rules.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:ai_constitution:constitution_engine.py
+  type: Component
+  label: constitution_engine.py
+  path: core/ai_constitution/constitution_engine.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:ai_constitution:__init__.py
+  type: Component
+  label: __init__.py
+  path: core/ai_constitution/__init__.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:ai_constitution:guardrails.py
+  type: Component
+  label: guardrails.py
+  path: core/ai_constitution/guardrails.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:core:execution_engine
+  type: Directory
+  label: execution_engine
+  path: core/execution_engine
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:core:execution_engine:verification_engine.py
+  type: Component
+  label: verification_engine.py
+  path: core/execution_engine/verification_engine.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:execution_engine:connector_manager.py
+  type: Component
+  label: connector_manager.py
+  path: core/execution_engine/connector_manager.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:execution_engine:rollback_manager.py
+  type: Component
+  label: rollback_manager.py
+  path: core/execution_engine/rollback_manager.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:execution_engine:capability_registry.py
+  type: Component
+  label: capability_registry.py
+  path: core/execution_engine/capability_registry.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:execution_engine:action_executor.py
+  type: Component
+  label: action_executor.py
+  path: core/execution_engine/action_executor.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:execution_engine:execution_engine.py
+  type: Component
+  label: execution_engine.py
+  path: core/execution_engine/execution_engine.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:core:execution_engine:__init__.py
+  type: Component
+  label: __init__.py
+  path: core/execution_engine/__init__.py
   meta:
     source: knowledge-graph
     label_zh: 模組
@@ -2609,6 +5892,27 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 目錄
+- id: dir:supply-chain
+  type: Directory
+  label: supply-chain
+  path: supply-chain
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:supply-chain:sbom
+  type: Directory
+  label: sbom
+  path: supply-chain/sbom
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:supply-chain:sbom:signing-policy.yml
+  type: ConfigParam
+  label: signing-policy.yml
+  path: supply-chain/sbom/signing-policy.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
 - id: dir:governance
   type: Subsystem
   label: governance
@@ -2637,6 +5941,13 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 設定
+- id: file:governance:policies:namespace-naming-policy.yaml
+  type: ConfigParam
+  label: namespace-naming-policy.yaml
+  path: governance/policies/namespace-naming-policy.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
 - id: file:governance:policies:base-policies.yaml
   type: ConfigParam
   label: base-policies.yaml
@@ -2651,6 +5962,13 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 設定
+- id: dir:governance:policies:compliance
+  type: Directory
+  label: compliance
+  path: governance/policies/compliance
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
 - id: dir:governance:policies:conftest
   type: Directory
   label: conftest
@@ -3309,10 +6627,24 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 設定
+- id: file:config:ci-config.yaml
+  type: ConfigParam
+  label: ci-config.yaml
+  path: config/ci-config.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
 - id: file:config:yaml-module-system.yaml
   type: ConfigParam
   label: yaml-module-system.yaml
   path: config/yaml-module-system.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:config:auto-fix-bot .prompt.yml
+  type: ConfigParam
+  label: auto-fix-bot .prompt.yml
+  path: config/auto-fix-bot .prompt.yml
   meta:
     source: knowledge-graph
     label_zh: 設定
@@ -3327,6 +6659,13 @@ entities:
   type: ConfigParam
   label: language-policy.yaml
   path: config/language-policy.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:config:sync-refactor-config.yaml
+  type: ConfigParam
+  label: sync-refactor-config.yaml
+  path: config/sync-refactor-config.yaml
   meta:
     source: knowledge-graph
     label_zh: 設定
@@ -3393,6 +6732,13 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 設定
+- id: file:config:integrations-index.yaml
+  type: ConfigParam
+  label: integrations-index.yaml
+  path: config/integrations-index.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
 - id: file:config:topology-mind-matrix.yaml
   type: ConfigParam
   label: topology-mind-matrix.yaml
@@ -3432,6 +6778,13 @@ entities:
   type: ConfigParam
   label: prometheus-config.yml
   path: config/prometheus-config.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:config:tenant-tier-definitions.yaml
+  type: ConfigParam
+  label: tenant-tier-definitions.yaml
+  path: config/tenant-tier-definitions.yaml
   meta:
     source: knowledge-graph
     label_zh: 設定
@@ -3568,6 +6921,13 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 設定
+- id: dir:infrastructure:kubernetes:phase2
+  type: Directory
+  label: phase2
+  path: infrastructure/kubernetes/phase2
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
 - id: file:infrastructure:kubernetes:kustomization.yaml
   type: ConfigParam
   label: kustomization.yaml
@@ -3600,6 +6960,13 @@ entities:
   type: Directory
   label: ingress
   path: infrastructure/kubernetes/ingress
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:infrastructure:kubernetes:baseline
+  type: Directory
+  label: baseline
+  path: infrastructure/kubernetes/baseline
   meta:
     source: knowledge-graph
     label_zh: 目錄
@@ -3666,6 +7033,83 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 設定
+- id: dir:frontend
+  type: Directory
+  label: frontend
+  path: frontend
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:frontend:ui
+  type: Directory
+  label: ui
+  path: frontend/ui
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:frontend:ui:tailwind.config.js
+  type: Component
+  label: tailwind.config.js
+  path: frontend/ui/tailwind.config.js
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:frontend:ui:services
+  type: Directory
+  label: services
+  path: frontend/ui/services
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:frontend:ui:scripts
+  type: Directory
+  label: scripts
+  path: frontend/ui/scripts
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:frontend:ui:deploy
+  type: Directory
+  label: deploy
+  path: frontend/ui/deploy
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:frontend:ui:core
+  type: Subsystem
+  label: core
+  path: frontend/ui/core
+  meta:
+    source: knowledge-graph
+    label_zh: 子系統
+- id: dir:frontend:ui:k8s
+  type: Directory
+  label: k8s
+  path: frontend/ui/k8s
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:frontend:ui:docker-compose.api.yml
+  type: ConfigParam
+  label: docker-compose.api.yml
+  path: frontend/ui/docker-compose.api.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:frontend:ui:tests
+  type: Component
+  label: tests
+  path: frontend/ui/tests
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:frontend:ui:src
+  type: Directory
+  label: src
+  path: frontend/ui/src
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
 - id: dir:shared
   type: Directory
   label: shared
@@ -4233,6 +7677,237 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 目錄
+- id: dir:infra:config
+  type: ConfigParam
+  label: config
+  path: infra/config
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:infra:config:virtual-experts.yaml
+  type: ConfigParam
+  label: virtual-experts.yaml
+  path: infra/config/virtual-experts.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:infra:config:autofix
+  type: Directory
+  label: autofix
+  path: infra/config/autofix
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:infra:config:monitoring.yaml
+  type: ConfigParam
+  label: monitoring.yaml
+  path: infra/config/monitoring.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:infra:config:ci-error-handler.yaml
+  type: ConfigParam
+  label: ci-error-handler.yaml
+  path: infra/config/ci-error-handler.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:infra:config:system-module-map.yaml
+  type: ConfigParam
+  label: system-module-map.yaml
+  path: infra/config/system-module-map.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:infra:config:island-control.yml
+  type: ConfigParam
+  label: island-control.yml
+  path: infra/config/island-control.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:infra:config:dependencies.yaml
+  type: ConfigParam
+  label: dependencies.yaml
+  path: infra/config/dependencies.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:infra:config:environment.yaml
+  type: ConfigParam
+  label: environment.yaml
+  path: infra/config/environment.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:infra:config:safety-mechanisms.yaml
+  type: ConfigParam
+  label: safety-mechanisms.yaml
+  path: infra/config/safety-mechanisms.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:infra:config:prometheus-rules.yml
+  type: ConfigParam
+  label: prometheus-rules.yml
+  path: infra/config/prometheus-rules.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:infra:config:auto-fix-bot.yml
+  type: ConfigParam
+  label: auto-fix-bot.yml
+  path: infra/config/auto-fix-bot.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:infra:config:system-manifest.yaml
+  type: ConfigParam
+  label: system-manifest.yaml
+  path: infra/config/system-manifest.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:infra:config:drone-config.yml
+  type: ConfigParam
+  label: drone-config.yml
+  path: infra/config/drone-config.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:infra:config:ci-comprehensive-solution.yaml
+  type: ConfigParam
+  label: ci-comprehensive-solution.yaml
+  path: infra/config/ci-comprehensive-solution.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:infra:config:yaml-module-system.yaml
+  type: ConfigParam
+  label: yaml-module-system.yaml
+  path: infra/config/yaml-module-system.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:infra:config:auto-fix-bot .prompt.yml
+  type: ConfigParam
+  label: auto-fix-bot .prompt.yml
+  path: infra/config/auto-fix-bot .prompt.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:infra:config:unified-config-index.yaml
+  type: ConfigParam
+  label: unified-config-index.yaml
+  path: infra/config/unified-config-index.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:infra:config:integrations
+  type: Directory
+  label: integrations
+  path: infra/config/integrations
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:infra:config:topology-mind-matrix.yaml
+  type: ConfigParam
+  label: topology-mind-matrix.yaml
+  path: infra/config/topology-mind-matrix.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:infra:config:security-network-config.yml
+  type: ConfigParam
+  label: security-network-config.yml
+  path: infra/config/security-network-config.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:infra:config:ai-constitution.yaml
+  type: ConfigParam
+  label: ai-constitution.yaml
+  path: infra/config/ai-constitution.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:infra:config:cloud-agent-delegation.yml
+  type: ConfigParam
+  label: cloud-agent-delegation.yml
+  path: infra/config/cloud-agent-delegation.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:infra:config:auto-fix-bot.prompt.yml
+  type: ConfigParam
+  label: auto-fix-bot.prompt.yml
+  path: infra/config/auto-fix-bot.prompt.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:infra:config:prometheus-config.yml
+  type: ConfigParam
+  label: prometheus-config.yml
+  path: infra/config/prometheus-config.yml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: file:infra:config:synergymesh.config.yaml
+  type: ConfigParam
+  label: synergymesh.config.yaml
+  path: infra/config/synergymesh.config.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:infra:infrastructure
+  type: Component
+  label: infrastructure
+  path: infra/infrastructure
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:infra:infrastructure:monitoring
+  type: Directory
+  label: monitoring
+  path: infra/infrastructure/monitoring
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:infra:infrastructure:kubernetes
+  type: Directory
+  label: kubernetes
+  path: infra/infrastructure/kubernetes
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:infra:infrastructure:canary
+  type: Directory
+  label: canary
+  path: infra/infrastructure/canary
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:infra:infrastructure:drift
+  type: Directory
+  label: drift
+  path: infra/infrastructure/drift
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:bridges
+  type: Directory
+  label: bridges
+  path: bridges
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:bridges:language_bridges.py
+  type: Component
+  label: language_bridges.py
+  path: bridges/language_bridges.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
 - id: dir:island-ai
   type: Directory
   label: island-ai
@@ -4251,6 +7926,13 @@ entities:
   type: Component
   label: basic-usage.ts
   path: island-ai/examples/basic-usage.ts
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:island-ai:examples:multi-agent-collaboration.ts
+  type: Component
+  label: multi-agent-collaboration.ts
+  path: island-ai/examples/multi-agent-collaboration.ts
   meta:
     source: knowledge-graph
     label_zh: 模組
@@ -4279,6 +7961,13 @@ entities:
   type: Directory
   label: agents
   path: island-ai/src/agents
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:island-ai:src:collaboration
+  type: Directory
+  label: collaboration
+  path: island-ai/src/collaboration
   meta:
     source: knowledge-graph
     label_zh: 目錄
@@ -4562,6 +8251,75 @@ relationships:
   target: dir:ai
   type: CONTAINS
 - source: system:unmanned-island
+  target: dir:v2-multi-islands
+  type: CONTAINS
+- source: dir:v2-multi-islands
+  target: dir:v2-multi-islands:utils
+  type: CONTAINS
+- source: dir:v2-multi-islands:utils
+  target: file:v2-multi-islands:utils:helpers.py
+  type: CONTAINS
+- source: dir:v2-multi-islands:utils
+  target: file:v2-multi-islands:utils:__init__.py
+  type: CONTAINS
+- source: dir:v2-multi-islands
+  target: dir:v2-multi-islands:orchestrator
+  type: CONTAINS
+- source: dir:v2-multi-islands:orchestrator
+  target: file:v2-multi-islands:orchestrator:island_orchestrator.py
+  type: CONTAINS
+- source: dir:v2-multi-islands:orchestrator
+  target: file:v2-multi-islands:orchestrator:__init__.py
+  type: CONTAINS
+- source: dir:v2-multi-islands
+  target: dir:v2-multi-islands:islands
+  type: CONTAINS
+- source: dir:v2-multi-islands:islands
+  target: file:v2-multi-islands:islands:typescript_island.py
+  type: CONTAINS
+- source: dir:v2-multi-islands:islands
+  target: file:v2-multi-islands:islands:rust_island.py
+  type: CONTAINS
+- source: dir:v2-multi-islands:islands
+  target: file:v2-multi-islands:islands:python_island.py
+  type: CONTAINS
+- source: dir:v2-multi-islands:islands
+  target: file:v2-multi-islands:islands:java_island.py
+  type: CONTAINS
+- source: dir:v2-multi-islands:islands
+  target: file:v2-multi-islands:islands:go_island.py
+  type: CONTAINS
+- source: dir:v2-multi-islands:islands
+  target: file:v2-multi-islands:islands:base_island.py
+  type: CONTAINS
+- source: dir:v2-multi-islands:islands
+  target: file:v2-multi-islands:islands:__init__.py
+  type: CONTAINS
+- source: dir:v2-multi-islands
+  target: file:v2-multi-islands:main.py
+  type: CONTAINS
+- source: dir:v2-multi-islands
+  target: dir:v2-multi-islands:config
+  type: CONTAINS
+- source: dir:v2-multi-islands:config
+  target: file:v2-multi-islands:config:island_config.py
+  type: CONTAINS
+- source: dir:v2-multi-islands:config
+  target: file:v2-multi-islands:config:__init__.py
+  type: CONTAINS
+- source: dir:v2-multi-islands
+  target: dir:v2-multi-islands:bridges
+  type: CONTAINS
+- source: dir:v2-multi-islands:bridges
+  target: file:v2-multi-islands:bridges:language_bridge.py
+  type: CONTAINS
+- source: dir:v2-multi-islands:bridges
+  target: file:v2-multi-islands:bridges:__init__.py
+  type: CONTAINS
+- source: dir:v2-multi-islands
+  target: file:v2-multi-islands:__init__.py
+  type: CONTAINS
+- source: system:unmanned-island
   target: dir:mcp-servers
   type: CONTAINS
 - source: dir:mcp-servers
@@ -4595,9 +8353,6 @@ relationships:
   target: file:mcp-servers:deploy:rbac.yaml
   type: CONTAINS
 - source: dir:mcp-servers
-  target: file:mcp-servers:eslint.config.js
-  type: CONTAINS
-- source: dir:mcp-servers
   target: file:mcp-servers:slsa-validator.js
   type: CONTAINS
 - source: dir:mcp-servers
@@ -4616,6 +8371,36 @@ relationships:
   target: file:mcp-servers:code-analyzer.js
   type: CONTAINS
 - source: system:unmanned-island
+  target: dir:examples
+  type: CONTAINS
+- source: system:unmanned-island
+  target: dir:agent
+  type: CONTAINS
+- source: dir:agent
+  target: dir:agent:dependency-manager
+  type: CONTAINS
+- source: dir:agent:dependency-manager
+  target: dir:agent:dependency-manager:tests
+  type: CONTAINS
+- source: dir:agent:dependency-manager
+  target: dir:agent:dependency-manager:config
+  type: CONTAINS
+- source: dir:agent:dependency-manager
+  target: dir:agent:dependency-manager:src
+  type: CONTAINS
+- source: dir:agent
+  target: dir:agent:auto-repair
+  type: CONTAINS
+- source: dir:agent
+  target: dir:agent:orchestrator
+  type: CONTAINS
+- source: dir:agent
+  target: dir:agent:vulnerability-detector
+  type: CONTAINS
+- source: dir:agent
+  target: dir:agent:code-analyzer
+  type: CONTAINS
+- source: system:unmanned-island
   target: dir:apps
   type: CONTAINS
 - source: dir:apps
@@ -4623,9 +8408,6 @@ relationships:
   type: CONTAINS
 - source: dir:apps:web
   target: file:apps:web:tailwind.config.js
-  type: CONTAINS
-- source: dir:apps:web
-  target: dir:apps:web:services
   type: CONTAINS
 - source: dir:apps:web
   target: dir:apps:web:scripts
@@ -4637,22 +8419,979 @@ relationships:
   target: dir:apps:web:public
   type: CONTAINS
 - source: dir:apps:web
-  target: dir:apps:web:core
-  type: CONTAINS
-- source: dir:apps:web
   target: dir:apps:web:k8s
-  type: CONTAINS
-- source: dir:apps:web
-  target: file:apps:web:docker-compose.api.yml
-  type: CONTAINS
-- source: dir:apps:web
-  target: dir:apps:web:tests
   type: CONTAINS
 - source: dir:apps:web
   target: dir:apps:web:src
   type: CONTAINS
 - source: dir:apps
+  target: dir:apps:web-backend
+  type: CONTAINS
+- source: dir:apps:web-backend
+  target: dir:apps:web-backend:services
+  type: CONTAINS
+- source: dir:apps:web-backend
+  target: dir:apps:web-backend:tests
+  type: CONTAINS
+- source: dir:apps:web-backend
+  target: dir:apps:web-backend:analyzers
+  type: CONTAINS
+- source: dir:apps
   target: dir:apps:_scratch
+  type: CONTAINS
+- source: system:unmanned-island
+  target: dir:_codeql_detected_source_root
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:ai
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:v2-multi-islands
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:v2-multi-islands
+  target: dir:_codeql_detected_source_root:v2-multi-islands:utils
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:v2-multi-islands
+  target: dir:_codeql_detected_source_root:v2-multi-islands:orchestrator
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:v2-multi-islands
+  target: dir:_codeql_detected_source_root:v2-multi-islands:islands
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:v2-multi-islands
+  target: file:_codeql_detected_source_root:v2-multi-islands:main.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:v2-multi-islands
+  target: dir:_codeql_detected_source_root:v2-multi-islands:config
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:v2-multi-islands
+  target: dir:_codeql_detected_source_root:v2-multi-islands:bridges
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:v2-multi-islands
+  target: file:_codeql_detected_source_root:v2-multi-islands:__init__.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:mcp-servers
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:mcp-servers
+  target: file:_codeql_detected_source_root:mcp-servers:comprehensive-validator.js
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:mcp-servers
+  target: file:_codeql_detected_source_root:mcp-servers:doc-generator.js
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:mcp-servers
+  target: file:_codeql_detected_source_root:mcp-servers:deployment-validator.js
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:mcp-servers
+  target: file:_codeql_detected_source_root:mcp-servers:performance-analyzer.js
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:mcp-servers
+  target: dir:_codeql_detected_source_root:mcp-servers:deploy
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:mcp-servers
+  target: file:_codeql_detected_source_root:mcp-servers:slsa-validator.js
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:mcp-servers
+  target: file:_codeql_detected_source_root:mcp-servers:security-scanner.js
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:mcp-servers
+  target: file:_codeql_detected_source_root:mcp-servers:test-generator.js
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:mcp-servers
+  target: file:_codeql_detected_source_root:mcp-servers:index.js
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:mcp-servers
+  target: file:_codeql_detected_source_root:mcp-servers:logic-validator.js
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:mcp-servers
+  target: file:_codeql_detected_source_root:mcp-servers:code-analyzer.js
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:examples
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:agent
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:agent
+  target: dir:_codeql_detected_source_root:agent:dependency-manager
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:agent
+  target: dir:_codeql_detected_source_root:agent:auto-repair
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:agent
+  target: dir:_codeql_detected_source_root:agent:orchestrator
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:agent
+  target: dir:_codeql_detected_source_root:agent:vulnerability-detector
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:agent
+  target: dir:_codeql_detected_source_root:agent:code-analyzer
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: file:_codeql_detected_source_root:docker-compose.dev.yml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:apps
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:apps
+  target: dir:_codeql_detected_source_root:apps:web
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:apps
+  target: dir:_codeql_detected_source_root:apps:web-backend
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:apps
+  target: dir:_codeql_detected_source_root:apps:_scratch
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:ai
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:v2-multi-islands
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:mcp-servers
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:examples
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:agent
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: file:_codeql_detected_source_root:_codeql_detected_source_root:docker-compose.dev.yml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:apps
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:_codeql_detected_source_root
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:services
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: file:_codeql_detected_source_root:_codeql_detected_source_root:auto-fix-bot.yml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:scripts
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:v1-python-drones
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: file:_codeql_detected_source_root:_codeql_detected_source_root:jest.config.js
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: file:_codeql_detected_source_root:_codeql_detected_source_root:pnpm-workspace.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:reports
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:tools
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:contracts
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:ops
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:docker-templates
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:experiments
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:runtime
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:automation
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: file:_codeql_detected_source_root:_codeql_detected_source_root:docker-compose.yml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:docs
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: file:_codeql_detected_source_root:_codeql_detected_source_root:pnpm-lock.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:autonomous
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:core
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:supply-chain
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: file:_codeql_detected_source_root:_codeql_detected_source_root:eslint.config.js
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:governance
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:knowledge
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:synergymesh.egg-info
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:tests
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:config
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:infrastructure
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:frontend
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:shared
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:unmanned-engineer-ceo
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:infra
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:bridges
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: file:_codeql_detected_source_root:_codeql_detected_source_root:island.bootstrap.stage0.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: file:_codeql_detected_source_root:_codeql_detected_source_root:synergymesh.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:island-ai
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:templates
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:services
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:services
+  target: dir:_codeql_detected_source_root:services:mcp
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:services
+  target: dir:_codeql_detected_source_root:services:_scratch
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:services
+  target: dir:_codeql_detected_source_root:services:agents
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:services
+  target: file:_codeql_detected_source_root:services:__init__.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: file:_codeql_detected_source_root:auto-fix-bot.yml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:scripts
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:scripts
+  target: dir:_codeql_detected_source_root:scripts:naming
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:scripts
+  target: dir:_codeql_detected_source_root:scripts:hooks
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:scripts
+  target: dir:_codeql_detected_source_root:scripts:sync
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:scripts
+  target: file:_codeql_detected_source_root:scripts:brand-replacer.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:v1-python-drones
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:v1-python-drones
+  target: dir:_codeql_detected_source_root:v1-python-drones:utils
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:v1-python-drones
+  target: file:_codeql_detected_source_root:v1-python-drones:main.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:v1-python-drones
+  target: dir:_codeql_detected_source_root:v1-python-drones:drones
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:v1-python-drones
+  target: dir:_codeql_detected_source_root:v1-python-drones:config
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:v1-python-drones
+  target: file:_codeql_detected_source_root:v1-python-drones:__init__.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: file:_codeql_detected_source_root:jest.config.js
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: file:_codeql_detected_source_root:pnpm-workspace.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:reports
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:tools
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:tools
+  target: file:_codeql_detected_source_root:tools:generate-language-dashboard.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:tools
+  target: file:_codeql_detected_source_root:tools:bootstrap_from_manifest.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:tools
+  target: file:_codeql_detected_source_root:tools:generate-refactor-playbook.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:tools
+  target: file:_codeql_detected_source_root:tools:lkb-update.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:tools
+  target: file:_codeql_detected_source_root:tools:ai-refactor-review.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:tools
+  target: file:_codeql_detected_source_root:tools:ci-cost-dashboard.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:tools
+  target: dir:_codeql_detected_source_root:tools:scripts
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:tools
+  target: file:_codeql_detected_source_root:tools:language-health-score.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:tools
+  target: file:_codeql_detected_source_root:tools:generate-migration-flow.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:tools
+  target: dir:_codeql_detected_source_root:tools:evolution
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:tools
+  target: file:_codeql_detected_source_root:tools:map-violations-to-playbooks.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:tools
+  target: dir:_codeql_detected_source_root:tools:cli
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:tools
+  target: dir:_codeql_detected_source_root:tools:_scratch
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:tools
+  target: dir:_codeql_detected_source_root:tools:utilities
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:tools
+  target: file:_codeql_detected_source_root:tools:load-playbook.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:tools
+  target: dir:_codeql_detected_source_root:tools:docs
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:tools
+  target: file:_codeql_detected_source_root:tools:generate-hotspot-heatmap.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:tools
+  target: file:_codeql_detected_source_root:tools:language-history-writer.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:tools
+  target: file:_codeql_detected_source_root:tools:validate-refactor-index.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:tools
+  target: file:_codeql_detected_source_root:tools:generate-sankey-data.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:tools
+  target: dir:_codeql_detected_source_root:tools:governance
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:tools
+  target: file:_codeql_detected_source_root:tools:ai-auto-fix.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:tools
+  target: file:_codeql_detected_source_root:tools:semantic-commit-generator.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:tools
+  target: dir:_codeql_detected_source_root:tools:ci
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:tools
+  target: file:_codeql_detected_source_root:tools:language-dashboard-data.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:contracts
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:ops
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:ops
+  target: dir:_codeql_detected_source_root:ops:runbooks
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:ops
+  target: dir:_codeql_detected_source_root:ops:artifacts
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:ops
+  target: dir:_codeql_detected_source_root:ops:reports
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:ops
+  target: dir:_codeql_detected_source_root:ops:onboarding
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:ops
+  target: dir:_codeql_detected_source_root:ops:migration
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:docker-templates
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:experiments
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:runtime
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:runtime
+  target: dir:_codeql_detected_source_root:runtime:mind_matrix
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:automation
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:automation
+  target: dir:_codeql_detected_source_root:automation:intelligent
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:automation
+  target: dir:_codeql_detected_source_root:automation:hyperautomation
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:automation
+  target: file:_codeql_detected_source_root:automation:self_awareness_report.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:automation
+  target: dir:_codeql_detected_source_root:automation:_scratch
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:automation
+  target: dir:_codeql_detected_source_root:automation:autonomous
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:automation
+  target: dir:_codeql_detected_source_root:automation:architect
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:automation
+  target: file:_codeql_detected_source_root:automation:zero_touch_deployment.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:automation
+  target: dir:_codeql_detected_source_root:automation:architecture-skeletons
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: file:_codeql_detected_source_root:docker-compose.yml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:docs
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:docs
+  target: dir:_codeql_detected_source_root:docs:refactor_playbooks
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:docs
+  target: dir:_codeql_detected_source_root:docs:GOVERNANCE
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:docs
+  target: dir:_codeql_detected_source_root:docs:mndoc
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:docs
+  target: dir:_codeql_detected_source_root:docs:issues
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:docs
+  target: dir:_codeql_detected_source_root:docs:examples
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:docs
+  target: file:_codeql_detected_source_root:docs:unmanned-island.mndoc.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:docs
+  target: dir:_codeql_detected_source_root:docs:scratch
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:docs
+  target: dir:_codeql_detected_source_root:docs:architecture
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:docs
+  target: file:_codeql_detected_source_root:docs:generated-index.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:docs
+  target: dir:_codeql_detected_source_root:docs:ci-cd
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:docs
+  target: dir:_codeql_detected_source_root:docs:evolution
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:docs
+  target: dir:_codeql_detected_source_root:docs:reports
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:docs
+  target: file:_codeql_detected_source_root:docs:generated-mndoc.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:docs
+  target: dir:_codeql_detected_source_root:docs:automation
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:docs
+  target: file:_codeql_detected_source_root:docs:knowledge-graph.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:docs
+  target: dir:_codeql_detected_source_root:docs:COMPONENTS
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:docs
+  target: dir:_codeql_detected_source_root:docs:security
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:docs
+  target: dir:_codeql_detected_source_root:docs:troubleshooting
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:docs
+  target: dir:_codeql_detected_source_root:docs:agents
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:docs
+  target: dir:_codeql_detected_source_root:docs:AGENTS
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:docs
+  target: dir:_codeql_detected_source_root:docs:DEPLOYMENT
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:docs
+  target: dir:_codeql_detected_source_root:docs:COPILOT
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:docs
+  target: dir:_codeql_detected_source_root:docs:ARCHITECTURE
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:docs
+  target: dir:_codeql_detected_source_root:docs:AUTONOMY
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:docs
+  target: file:_codeql_detected_source_root:docs:superroot-entities.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:docs
+  target: file:_codeql_detected_source_root:docs:_config.yml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:docs
+  target: dir:_codeql_detected_source_root:docs:operations
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:docs
+  target: file:_codeql_detected_source_root:docs:knowledge_index.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: file:_codeql_detected_source_root:pnpm-lock.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:autonomous
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:core
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:core
+  target: dir:_codeql_detected_source_root:core:main_system
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:core
+  target: dir:_codeql_detected_source_root:core:slsa_provenance
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:core
+  target: dir:_codeql_detected_source_root:core:training_system
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:core
+  target: dir:_codeql_detected_source_root:core:mcp_servers_enhanced
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:core
+  target: dir:_codeql_detected_source_root:core:tech_stack
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:core
+  target: dir:_codeql_detected_source_root:core:yaml_module_system
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:core
+  target: dir:_codeql_detected_source_root:core:execution_architecture
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:core
+  target: dir:_codeql_detected_source_root:core:island_ai_runtime
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:core
+  target: dir:_codeql_detected_source_root:core:unified_integration
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:core
+  target: dir:_codeql_detected_source_root:core:monitoring_system
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:core
+  target: dir:_codeql_detected_source_root:core:cloud_agent_delegation
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:core
+  target: dir:_codeql_detected_source_root:core:_scratch
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:core
+  target: file:_codeql_detected_source_root:core:auto_governance_hub.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:core
+  target: file:_codeql_detected_source_root:core:autonomous_trust_engine.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:core
+  target: dir:_codeql_detected_source_root:core:advisory-database
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:core
+  target: dir:_codeql_detected_source_root:core:safety_mechanisms
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:core
+  target: file:_codeql_detected_source_root:core:hallucination_detector.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:core
+  target: dir:_codeql_detected_source_root:core:ci_error_handler
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:core
+  target: dir:_codeql_detected_source_root:core:virtual_experts
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:core
+  target: file:_codeql_detected_source_root:core:ai_decision_engine.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:core
+  target: dir:_codeql_detected_source_root:core:ai_constitution
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:core
+  target: dir:_codeql_detected_source_root:core:execution_engine
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:core
+  target: file:_codeql_detected_source_root:core:context_understanding_engine.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:core
+  target: file:_codeql_detected_source_root:core:__init__.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:core
+  target: dir:_codeql_detected_source_root:core:contract_service
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:core
+  target: file:_codeql_detected_source_root:core:auto_bug_detector.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:core
+  target: dir:_codeql_detected_source_root:core:modules
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:supply-chain
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:supply-chain
+  target: dir:_codeql_detected_source_root:supply-chain:sbom
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: file:_codeql_detected_source_root:eslint.config.js
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:governance
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:policies
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:architecture
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:environment-matrix
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:governance
+  target: file:_codeql_detected_source_root:governance:ownership-map.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:rules
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:governance
+  target: file:_codeql_detected_source_root:governance:mapping-rules.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:registry
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:_scratch
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:deployment
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:governance
+  target: file:_codeql_detected_source_root:governance:architecture-health.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:schemas
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:audit
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:behavior-contracts
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:sbom
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:modules
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:knowledge
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:knowledge
+  target: file:_codeql_detected_source_root:knowledge:evolution-state.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:knowledge
+  target: file:_codeql_detected_source_root:knowledge:language-history.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:synergymesh.egg-info
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:tests
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:tests
+  target: dir:_codeql_detected_source_root:tests:performance
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:tests
+  target: dir:_codeql_detected_source_root:tests:vectors
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:tests
+  target: dir:_codeql_detected_source_root:tests:unit
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:config
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:virtual-experts.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: dir:_codeql_detected_source_root:config:autofix
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:brand-mapping.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:monitoring.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:ci-error-handler.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:system-module-map.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:island-control.yml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:dependencies.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:environment.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:safety-mechanisms.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:prometheus-rules.yml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:auto-fix-bot.yml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:system-manifest.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:drone-config.yml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:ci-comprehensive-solution.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: dir:_codeql_detected_source_root:config:docker
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:ci-config.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:yaml-module-system.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:auto-fix-bot .prompt.yml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:unified-config-index.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:language-policy.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:sync-refactor-config.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:island-ai-runtime.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: dir:_codeql_detected_source_root:config:conftest
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:builder-system-prompt.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:system-module-map.example.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: dir:_codeql_detected_source_root:config:integrations
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:integrations-index.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:topology-mind-matrix.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:security-network-config.yml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:ai-constitution.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:cloud-agent-delegation.yml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:auto-fix-bot.prompt.yml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:prometheus-config.yml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:tenant-tier-definitions.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:synergymesh.config.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:ci-agent-config.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: dir:_codeql_detected_source_root:config:templates
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:system-evolution.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:infrastructure
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:infrastructure
+  target: dir:_codeql_detected_source_root:infrastructure:monitoring
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:infrastructure
+  target: dir:_codeql_detected_source_root:infrastructure:kubernetes
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:infrastructure
+  target: dir:_codeql_detected_source_root:infrastructure:canary
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:infrastructure
+  target: dir:_codeql_detected_source_root:infrastructure:drift
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:frontend
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:frontend
+  target: dir:_codeql_detected_source_root:frontend:ui
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:shared
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:shared
+  target: dir:_codeql_detected_source_root:shared:utils
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:shared
+  target: file:_codeql_detected_source_root:shared:language_bridges.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:shared
+  target: dir:_codeql_detected_source_root:shared:constants
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:shared
+  target: dir:_codeql_detected_source_root:shared:config
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:shared
+  target: file:_codeql_detected_source_root:shared:__init__.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:unmanned-engineer-ceo
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:unmanned-engineer-ceo
+  target: dir:_codeql_detected_source_root:unmanned-engineer-ceo:99-meta
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:unmanned-engineer-ceo
+  target: dir:_codeql_detected_source_root:unmanned-engineer-ceo:10-traits-matrix
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:unmanned-engineer-ceo
+  target: dir:_codeql_detected_source_root:unmanned-engineer-ceo:60-machine-guides
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:unmanned-engineer-ceo
+  target: dir:_codeql_detected_source_root:unmanned-engineer-ceo:80-skeleton-configs
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:unmanned-engineer-ceo
+  target: dir:_codeql_detected_source_root:unmanned-engineer-ceo:02-enterprise-capabilities
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:unmanned-engineer-ceo
+  target: dir:_codeql_detected_source_root:unmanned-engineer-ceo:03-intelligence
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:unmanned-engineer-ceo
+  target: dir:_codeql_detected_source_root:unmanned-engineer-ceo:20-roadmap
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:unmanned-engineer-ceo
+  target: dir:_codeql_detected_source_root:unmanned-engineer-ceo:01-advanced-engineering
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:unmanned-engineer-ceo
+  target: dir:_codeql_detected_source_root:unmanned-engineer-ceo:30-assessment
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:unmanned-engineer-ceo
+  target: dir:_codeql_detected_source_root:unmanned-engineer-ceo:00-foundation
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:unmanned-engineer-ceo
+  target: dir:_codeql_detected_source_root:unmanned-engineer-ceo:50-org-implementation
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:unmanned-engineer-ceo
+  target: dir:_codeql_detected_source_root:unmanned-engineer-ceo:04-systems-thinking
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:unmanned-engineer-ceo
+  target: file:_codeql_detected_source_root:unmanned-engineer-ceo:manifest.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:unmanned-engineer-ceo
+  target: dir:_codeql_detected_source_root:unmanned-engineer-ceo:70-architecture-skeletons
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:unmanned-engineer-ceo
+  target: dir:_codeql_detected_source_root:unmanned-engineer-ceo:40-simulations
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:infra
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:infra
+  target: dir:_codeql_detected_source_root:infra:_scratch
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:infra
+  target: dir:_codeql_detected_source_root:infra:config
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:infra
+  target: dir:_codeql_detected_source_root:infra:infrastructure
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:bridges
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:bridges
+  target: file:_codeql_detected_source_root:bridges:language_bridges.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: file:_codeql_detected_source_root:island.bootstrap.stage0.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: file:_codeql_detected_source_root:synergymesh.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:island-ai
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:island-ai
+  target: dir:_codeql_detected_source_root:island-ai:examples
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:island-ai
+  target: file:_codeql_detected_source_root:island-ai:jest.config.js
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:island-ai
+  target: dir:_codeql_detected_source_root:island-ai:src
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:templates
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:templates
+  target: dir:_codeql_detected_source_root:templates:root
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:templates
+  target: dir:_codeql_detected_source_root:templates:github
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:templates
+  target: dir:_codeql_detected_source_root:templates:git-hooks
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:templates
+  target: dir:_codeql_detected_source_root:templates:sync
   type: CONTAINS
 - source: system:unmanned-island
   target: dir:services
@@ -4796,7 +9535,13 @@ relationships:
   target: file:.github:workflows:codeql.yml
   type: CONTAINS
 - source: dir:.github:workflows
+  target: file:.github:workflows:validate-copilot-instructions.yml
+  type: CONTAINS
+- source: dir:.github:workflows
   target: file:.github:workflows:dynamic-ci-assistant.yml
+  type: CONTAINS
+- source: dir:.github:workflows
+  target: file:.github:workflows:copilot-setup-steps.yml
   type: CONTAINS
 - source: dir:.github:workflows
   target: file:.github:workflows:snyk-security.yml
@@ -4817,10 +9562,19 @@ relationships:
   target: file:.github:workflows:create-staging-branch.yml
   type: CONTAINS
 - source: dir:.github:workflows
+  target: file:.github:workflows:stackhawk.yml
+  type: CONTAINS
+- source: dir:.github:workflows
+  target: file:.github:workflows:neuralegion.yml
+  type: CONTAINS
+- source: dir:.github:workflows
   target: file:.github:workflows:island-ai-setup-steps.yml
   type: CONTAINS
 - source: dir:.github:workflows
   target: file:.github:workflows:06-security-scan.yml
+  type: CONTAINS
+- source: dir:.github:workflows
+  target: file:.github:workflows:soos-dast-scan.yml
   type: CONTAINS
 - source: dir:.github:workflows
   target: file:.github:workflows:validate-yaml.yml
@@ -4830,6 +9584,9 @@ relationships:
   type: CONTAINS
 - source: dir:.github:workflows
   target: file:.github:workflows:policy-simulate.yml
+  type: CONTAINS
+- source: dir:.github:workflows
+  target: file:.github:workflows:reusable-setup.yml
   type: CONTAINS
 - source: dir:.github:workflows
   target: file:.github:workflows:project-self-awareness-nightly.yml
@@ -4853,6 +9610,9 @@ relationships:
   target: file:.github:workflows:08-sync-subdirs.yml
   type: CONTAINS
 - source: dir:.github:workflows
+  target: file:.github:workflows:eslint.yml
+  type: CONTAINS
+- source: dir:.github:workflows
   target: file:.github:workflows:system-evolution.yml
   type: CONTAINS
 - source: dir:.github:workflows
@@ -4874,7 +9634,13 @@ relationships:
   target: file:.github:workflows:reusable-docker-build.yml
   type: CONTAINS
 - source: dir:.github:workflows
+  target: file:.github:workflows:fortify.yml
+  type: CONTAINS
+- source: dir:.github:workflows
   target: file:.github:workflows:auto-update-knowledge-graph.yml
+  type: CONTAINS
+- source: dir:.github:workflows
+  target: file:.github:workflows:synopsys-io.yml
   type: CONTAINS
 - source: dir:.github:workflows
   target: file:.github:workflows:osv-scanner.yml
@@ -4896,6 +9662,9 @@ relationships:
   type: CONTAINS
 - source: dir:.github:workflows
   target: file:.github:workflows:ai-auto-fix-pr.yml
+  type: CONTAINS
+- source: dir:.github:workflows
+  target: file:.github:workflows:synopsys-action.yml
   type: CONTAINS
 - source: dir:.github:workflows
   target: file:.github:workflows:secret-bypass-request.yml
@@ -4940,6 +9709,9 @@ relationships:
   target: file:.github:workflows:setup-runner.yml
   type: CONTAINS
 - source: dir:.github:workflows
+  target: file:.github:workflows:reusable-validation.yml
+  type: CONTAINS
+- source: dir:.github:workflows
   target: file:.github:workflows:self-healing-ci.yml
   type: CONTAINS
 - source: dir:.github:workflows
@@ -4950,6 +9722,9 @@ relationships:
   type: CONTAINS
 - source: dir:.github:workflows
   target: file:.github:workflows:03-build.yml
+  type: CONTAINS
+- source: dir:.github:workflows
+  target: file:.github:workflows:mayhem-for-api.yml
   type: CONTAINS
 - source: dir:.github:workflows
   target: file:.github:workflows:project-self-awareness.yml
@@ -5004,6 +9779,51 @@ relationships:
   type: CONTAINS
 - source: dir:.github:healing-knowledge
   target: file:.github:healing-knowledge:knowledge-base.yaml
+  type: CONTAINS
+- source: system:unmanned-island
+  target: dir:v1-python-drones
+  type: CONTAINS
+- source: dir:v1-python-drones
+  target: dir:v1-python-drones:utils
+  type: CONTAINS
+- source: dir:v1-python-drones:utils
+  target: file:v1-python-drones:utils:helpers.py
+  type: CONTAINS
+- source: dir:v1-python-drones:utils
+  target: file:v1-python-drones:utils:__init__.py
+  type: CONTAINS
+- source: dir:v1-python-drones
+  target: file:v1-python-drones:main.py
+  type: CONTAINS
+- source: dir:v1-python-drones
+  target: dir:v1-python-drones:drones
+  type: CONTAINS
+- source: dir:v1-python-drones:drones
+  target: file:v1-python-drones:drones:autopilot_drone.py
+  type: CONTAINS
+- source: dir:v1-python-drones:drones
+  target: file:v1-python-drones:drones:base_drone.py
+  type: CONTAINS
+- source: dir:v1-python-drones:drones
+  target: file:v1-python-drones:drones:coordinator_drone.py
+  type: CONTAINS
+- source: dir:v1-python-drones:drones
+  target: file:v1-python-drones:drones:deployment_drone.py
+  type: CONTAINS
+- source: dir:v1-python-drones:drones
+  target: file:v1-python-drones:drones:__init__.py
+  type: CONTAINS
+- source: dir:v1-python-drones
+  target: dir:v1-python-drones:config
+  type: CONTAINS
+- source: dir:v1-python-drones:config
+  target: file:v1-python-drones:config:__init__.py
+  type: CONTAINS
+- source: dir:v1-python-drones:config
+  target: file:v1-python-drones:config:drone_config.py
+  type: CONTAINS
+- source: dir:v1-python-drones
+  target: file:v1-python-drones:__init__.py
   type: CONTAINS
 - source: system:unmanned-island
   target: dir:reports
@@ -5117,6 +9937,9 @@ relationships:
   target: file:tools:docs:provenance_injector.py
   type: CONTAINS
 - source: dir:tools:docs
+  target: file:tools:docs:analyze_root_reports.py
+  type: CONTAINS
+- source: dir:tools:docs
   target: file:tools:docs:scan_repo_generate_index.py
   type: CONTAINS
 - source: dir:tools
@@ -5168,10 +9991,19 @@ relationships:
   target: file:tools:language-dashboard-data.yaml
   type: CONTAINS
 - source: system:unmanned-island
+  target: dir:contracts
+  type: CONTAINS
+- source: system:unmanned-island
   target: dir:ops
   type: CONTAINS
 - source: dir:ops
   target: dir:ops:runbooks
+  type: CONTAINS
+- source: dir:ops
+  target: dir:ops:artifacts
+  type: CONTAINS
+- source: dir:ops:artifacts
+  target: dir:ops:artifacts:reports
   type: CONTAINS
 - source: dir:ops
   target: dir:ops:reports
@@ -5198,7 +10030,25 @@ relationships:
   target: dir:ops:migration:templates
   type: CONTAINS
 - source: system:unmanned-island
+  target: dir:docker-templates
+  type: CONTAINS
+- source: system:unmanned-island
   target: dir:experiments
+  type: CONTAINS
+- source: system:unmanned-island
+  target: dir:runtime
+  type: CONTAINS
+- source: dir:runtime
+  target: dir:runtime:mind_matrix
+  type: CONTAINS
+- source: dir:runtime:mind_matrix
+  target: file:runtime:mind_matrix:main.py
+  type: CONTAINS
+- source: dir:runtime:mind_matrix
+  target: file:runtime:mind_matrix:executive_auto.py
+  type: CONTAINS
+- source: dir:runtime:mind_matrix
+  target: file:runtime:mind_matrix:__init__.py
   type: CONTAINS
 - source: system:unmanned-island
   target: dir:automation
@@ -5300,6 +10150,9 @@ relationships:
   target: file:automation:architect:docker-compose.yml
   type: CONTAINS
 - source: dir:automation:architect
+  target: dir:automation:architect:frameworks
+  type: CONTAINS
+- source: dir:automation:architect
   target: dir:automation:architect:docs
   type: CONTAINS
 - source: dir:automation:architect
@@ -5310,6 +10163,9 @@ relationships:
   type: CONTAINS
 - source: dir:automation:architect
   target: dir:automation:architect:config
+  type: CONTAINS
+- source: dir:automation:architect
+  target: dir:automation:architect:scenarios
   type: CONTAINS
 - source: dir:automation
   target: file:automation:zero_touch_deployment.py
@@ -5382,6 +10238,9 @@ relationships:
   type: CONTAINS
 - source: dir:docs:architecture
   target: dir:docs:architecture:api-evolution
+  type: CONTAINS
+- source: dir:docs:architecture
+  target: dir:docs:architecture:configuration
   type: CONTAINS
 - source: dir:docs
   target: file:docs:generated-index.yaml
@@ -5459,6 +10318,24 @@ relationships:
   target: dir:core
   type: CONTAINS
 - source: dir:core
+  target: dir:core:main_system
+  type: CONTAINS
+- source: dir:core:main_system
+  target: file:core:main_system:automation_pipeline.py
+  type: CONTAINS
+- source: dir:core:main_system
+  target: file:core:main_system:phase_orchestrator.py
+  type: CONTAINS
+- source: dir:core:main_system
+  target: file:core:main_system:system_bootstrap.py
+  type: CONTAINS
+- source: dir:core:main_system
+  target: file:core:main_system:__init__.py
+  type: CONTAINS
+- source: dir:core:main_system
+  target: file:core:main_system:synergymesh_core.py
+  type: CONTAINS
+- source: dir:core
   target: dir:core:slsa_provenance
   type: CONTAINS
 - source: dir:core:slsa_provenance
@@ -5478,6 +10355,102 @@ relationships:
   type: CONTAINS
 - source: dir:core:slsa_provenance
   target: file:core:slsa_provenance:attestation_manager.py
+  type: CONTAINS
+- source: dir:core
+  target: dir:core:training_system
+  type: CONTAINS
+- source: dir:core:training_system
+  target: file:core:training_system:example_library.py
+  type: CONTAINS
+- source: dir:core:training_system
+  target: file:core:training_system:skills_training.py
+  type: CONTAINS
+- source: dir:core:training_system
+  target: file:core:training_system:__init__.py
+  type: CONTAINS
+- source: dir:core:training_system
+  target: file:core:training_system:knowledge_base.py
+  type: CONTAINS
+- source: dir:core
+  target: dir:core:mcp_servers_enhanced
+  type: CONTAINS
+- source: dir:core:mcp_servers_enhanced
+  target: file:core:mcp_servers_enhanced:realtime_connector.py
+  type: CONTAINS
+- source: dir:core:mcp_servers_enhanced
+  target: file:core:mcp_servers_enhanced:tool_registry.py
+  type: CONTAINS
+- source: dir:core:mcp_servers_enhanced
+  target: file:core:mcp_servers_enhanced:workflow_orchestrator.py
+  type: CONTAINS
+- source: dir:core:mcp_servers_enhanced
+  target: file:core:mcp_servers_enhanced:mcp_server_manager.py
+  type: CONTAINS
+- source: dir:core:mcp_servers_enhanced
+  target: file:core:mcp_servers_enhanced:__init__.py
+  type: CONTAINS
+- source: dir:core
+  target: dir:core:tech_stack
+  type: CONTAINS
+- source: dir:core:tech_stack
+  target: file:core:tech_stack:multi_agent_coordinator.py
+  type: CONTAINS
+- source: dir:core:tech_stack
+  target: file:core:tech_stack:python_bridge.py
+  type: CONTAINS
+- source: dir:core:tech_stack
+  target: file:core:tech_stack:framework_integrations.py
+  type: CONTAINS
+- source: dir:core:tech_stack
+  target: file:core:tech_stack:architecture_config.py
+  type: CONTAINS
+- source: dir:core:tech_stack
+  target: file:core:tech_stack:__init__.py
+  type: CONTAINS
+- source: dir:core
+  target: dir:core:yaml_module_system
+  type: CONTAINS
+- source: dir:core:yaml_module_system
+  target: file:core:yaml_module_system:policy_gate.py
+  type: CONTAINS
+- source: dir:core:yaml_module_system
+  target: file:core:yaml_module_system:yaml_schema_validator.py
+  type: CONTAINS
+- source: dir:core:yaml_module_system
+  target: file:core:yaml_module_system:yaml_module_definition.py
+  type: CONTAINS
+- source: dir:core:yaml_module_system
+  target: file:core:yaml_module_system:ci_verification_pipeline.py
+  type: CONTAINS
+- source: dir:core:yaml_module_system
+  target: file:core:yaml_module_system:slsa_compliance.py
+  type: CONTAINS
+- source: dir:core:yaml_module_system
+  target: file:core:yaml_module_system:audit_trail.py
+  type: CONTAINS
+- source: dir:core:yaml_module_system
+  target: file:core:yaml_module_system:__init__.py
+  type: CONTAINS
+- source: dir:core
+  target: dir:core:execution_architecture
+  type: CONTAINS
+- source: dir:core:execution_architecture
+  target: file:core:execution_architecture:function_calling.py
+  type: CONTAINS
+- source: dir:core:execution_architecture
+  target: file:core:execution_architecture:mcp_integration.py
+  type: CONTAINS
+- source: dir:core:execution_architecture
+  target: file:core:execution_architecture:tool_system.py
+  type: CONTAINS
+- source: dir:core:execution_architecture
+  target: file:core:execution_architecture:agent_orchestration.py
+  type: CONTAINS
+- source: dir:core:execution_architecture
+  target: file:core:execution_architecture:langchain_integration.py
+  type: CONTAINS
+- source: dir:core:execution_architecture
+  target: file:core:execution_architecture:__init__.py
   type: CONTAINS
 - source: dir:core
   target: dir:core:island_ai_runtime
@@ -5543,6 +10516,48 @@ relationships:
   target: file:core:unified_integration:work_configuration_manager.py
   type: CONTAINS
 - source: dir:core
+  target: dir:core:monitoring_system
+  type: CONTAINS
+- source: dir:core:monitoring_system
+  target: file:core:monitoring_system:intelligent_monitoring.py
+  type: CONTAINS
+- source: dir:core:monitoring_system
+  target: file:core:monitoring_system:observability_platform.py
+  type: CONTAINS
+- source: dir:core:monitoring_system
+  target: file:core:monitoring_system:auto_remediation.py
+  type: CONTAINS
+- source: dir:core:monitoring_system
+  target: file:core:monitoring_system:smart_anomaly_detector.py
+  type: CONTAINS
+- source: dir:core:monitoring_system
+  target: file:core:monitoring_system:auto_diagnosis.py
+  type: CONTAINS
+- source: dir:core:monitoring_system
+  target: file:core:monitoring_system:__init__.py
+  type: CONTAINS
+- source: dir:core:monitoring_system
+  target: file:core:monitoring_system:self_learning.py
+  type: CONTAINS
+- source: dir:core
+  target: dir:core:cloud_agent_delegation
+  type: CONTAINS
+- source: dir:core:cloud_agent_delegation
+  target: file:core:cloud_agent_delegation:load_balancer.py
+  type: CONTAINS
+- source: dir:core:cloud_agent_delegation
+  target: file:core:cloud_agent_delegation:task_router.py
+  type: CONTAINS
+- source: dir:core:cloud_agent_delegation
+  target: file:core:cloud_agent_delegation:delegation_manager.py
+  type: CONTAINS
+- source: dir:core:cloud_agent_delegation
+  target: file:core:cloud_agent_delegation:cloud_provider_adapter.py
+  type: CONTAINS
+- source: dir:core:cloud_agent_delegation
+  target: file:core:cloud_agent_delegation:__init__.py
+  type: CONTAINS
+- source: dir:core
   target: dir:core:_scratch
   type: CONTAINS
 - source: dir:core
@@ -5600,7 +10615,88 @@ relationships:
   target: file:core:hallucination_detector.py
   type: CONTAINS
 - source: dir:core
+  target: dir:core:ci_error_handler
+  type: CONTAINS
+- source: dir:core:ci_error_handler
+  target: file:core:ci_error_handler:fix_status_tracker.py
+  type: CONTAINS
+- source: dir:core:ci_error_handler
+  target: file:core:ci_error_handler:auto_fix_engine.py
+  type: CONTAINS
+- source: dir:core:ci_error_handler
+  target: file:core:ci_error_handler:issue_manager.py
+  type: CONTAINS
+- source: dir:core:ci_error_handler
+  target: file:core:ci_error_handler:ci_error_analyzer.py
+  type: CONTAINS
+- source: dir:core:ci_error_handler
+  target: file:core:ci_error_handler:__init__.py
+  type: CONTAINS
+- source: dir:core
+  target: dir:core:virtual_experts
+  type: CONTAINS
+- source: dir:core:virtual_experts
+  target: file:core:virtual_experts:expert_team.py
+  type: CONTAINS
+- source: dir:core:virtual_experts
+  target: file:core:virtual_experts:expert_base.py
+  type: CONTAINS
+- source: dir:core:virtual_experts
+  target: file:core:virtual_experts:domain_experts.py
+  type: CONTAINS
+- source: dir:core:virtual_experts
+  target: file:core:virtual_experts:__init__.py
+  type: CONTAINS
+- source: dir:core
   target: file:core:ai_decision_engine.py
+  type: CONTAINS
+- source: dir:core
+  target: dir:core:ai_constitution
+  type: CONTAINS
+- source: dir:core:ai_constitution
+  target: file:core:ai_constitution:adaptive_guidelines.py
+  type: CONTAINS
+- source: dir:core:ai_constitution
+  target: file:core:ai_constitution:fundamental_laws.py
+  type: CONTAINS
+- source: dir:core:ai_constitution
+  target: file:core:ai_constitution:policy_as_prompt.py
+  type: CONTAINS
+- source: dir:core:ai_constitution
+  target: file:core:ai_constitution:operational_rules.py
+  type: CONTAINS
+- source: dir:core:ai_constitution
+  target: file:core:ai_constitution:constitution_engine.py
+  type: CONTAINS
+- source: dir:core:ai_constitution
+  target: file:core:ai_constitution:__init__.py
+  type: CONTAINS
+- source: dir:core:ai_constitution
+  target: file:core:ai_constitution:guardrails.py
+  type: CONTAINS
+- source: dir:core
+  target: dir:core:execution_engine
+  type: CONTAINS
+- source: dir:core:execution_engine
+  target: file:core:execution_engine:verification_engine.py
+  type: CONTAINS
+- source: dir:core:execution_engine
+  target: file:core:execution_engine:connector_manager.py
+  type: CONTAINS
+- source: dir:core:execution_engine
+  target: file:core:execution_engine:rollback_manager.py
+  type: CONTAINS
+- source: dir:core:execution_engine
+  target: file:core:execution_engine:capability_registry.py
+  type: CONTAINS
+- source: dir:core:execution_engine
+  target: file:core:execution_engine:action_executor.py
+  type: CONTAINS
+- source: dir:core:execution_engine
+  target: file:core:execution_engine:execution_engine.py
+  type: CONTAINS
+- source: dir:core:execution_engine
+  target: file:core:execution_engine:__init__.py
   type: CONTAINS
 - source: dir:core
   target: file:core:context_understanding_engine.py
@@ -5669,6 +10765,15 @@ relationships:
   target: dir:core:modules:drone_system
   type: CONTAINS
 - source: system:unmanned-island
+  target: dir:supply-chain
+  type: CONTAINS
+- source: dir:supply-chain
+  target: dir:supply-chain:sbom
+  type: CONTAINS
+- source: dir:supply-chain:sbom
+  target: file:supply-chain:sbom:signing-policy.yml
+  type: CONTAINS
+- source: system:unmanned-island
   target: dir:governance
   type: CONTAINS
 - source: dir:governance
@@ -5681,10 +10786,16 @@ relationships:
   target: file:governance:policies:architecture-rules.yaml
   type: CONTAINS
 - source: dir:governance:policies
+  target: file:governance:policies:namespace-naming-policy.yaml
+  type: CONTAINS
+- source: dir:governance:policies
   target: file:governance:policies:base-policies.yaml
   type: CONTAINS
 - source: dir:governance:policies
   target: file:governance:policies:data-privacy-policy.yaml
+  type: CONTAINS
+- source: dir:governance:policies
+  target: dir:governance:policies:compliance
   type: CONTAINS
 - source: dir:governance:policies
   target: dir:governance:policies:conftest
@@ -5969,13 +11080,22 @@ relationships:
   target: file:config:docker:compose.architect.yaml
   type: CONTAINS
 - source: dir:config
+  target: file:config:ci-config.yaml
+  type: CONTAINS
+- source: dir:config
   target: file:config:yaml-module-system.yaml
+  type: CONTAINS
+- source: dir:config
+  target: file:config:auto-fix-bot .prompt.yml
   type: CONTAINS
 - source: dir:config
   target: file:config:unified-config-index.yaml
   type: CONTAINS
 - source: dir:config
   target: file:config:language-policy.yaml
+  type: CONTAINS
+- source: dir:config
+  target: file:config:sync-refactor-config.yaml
   type: CONTAINS
 - source: dir:config
   target: file:config:island-ai-runtime.yaml
@@ -6005,6 +11125,9 @@ relationships:
   target: file:config:integrations:quantum-integration.yaml
   type: CONTAINS
 - source: dir:config
+  target: file:config:integrations-index.yaml
+  type: CONTAINS
+- source: dir:config
   target: file:config:topology-mind-matrix.yaml
   type: CONTAINS
 - source: dir:config
@@ -6021,6 +11144,9 @@ relationships:
   type: CONTAINS
 - source: dir:config
   target: file:config:prometheus-config.yml
+  type: CONTAINS
+- source: dir:config
+  target: file:config:tenant-tier-definitions.yaml
   type: CONTAINS
 - source: dir:config
   target: file:config:synergymesh.config.yaml
@@ -6080,6 +11206,9 @@ relationships:
   target: file:infrastructure:kubernetes:namespace.yaml
   type: CONTAINS
 - source: dir:infrastructure:kubernetes
+  target: dir:infrastructure:kubernetes:phase2
+  type: CONTAINS
+- source: dir:infrastructure:kubernetes
   target: file:infrastructure:kubernetes:kustomization.yaml
   type: CONTAINS
 - source: dir:infrastructure:kubernetes
@@ -6093,6 +11222,9 @@ relationships:
   type: CONTAINS
 - source: dir:infrastructure:kubernetes
   target: dir:infrastructure:kubernetes:ingress
+  type: CONTAINS
+- source: dir:infrastructure:kubernetes
+  target: dir:infrastructure:kubernetes:baseline
   type: CONTAINS
 - source: dir:infrastructure:kubernetes
   target: dir:infrastructure:kubernetes:database
@@ -6120,6 +11252,39 @@ relationships:
   type: CONTAINS
 - source: dir:infrastructure:drift
   target: file:infrastructure:drift:scan-cronjob.yaml
+  type: CONTAINS
+- source: system:unmanned-island
+  target: dir:frontend
+  type: CONTAINS
+- source: dir:frontend
+  target: dir:frontend:ui
+  type: CONTAINS
+- source: dir:frontend:ui
+  target: file:frontend:ui:tailwind.config.js
+  type: CONTAINS
+- source: dir:frontend:ui
+  target: dir:frontend:ui:services
+  type: CONTAINS
+- source: dir:frontend:ui
+  target: dir:frontend:ui:scripts
+  type: CONTAINS
+- source: dir:frontend:ui
+  target: dir:frontend:ui:deploy
+  type: CONTAINS
+- source: dir:frontend:ui
+  target: dir:frontend:ui:core
+  type: CONTAINS
+- source: dir:frontend:ui
+  target: dir:frontend:ui:k8s
+  type: CONTAINS
+- source: dir:frontend:ui
+  target: file:frontend:ui:docker-compose.api.yml
+  type: CONTAINS
+- source: dir:frontend:ui
+  target: dir:frontend:ui:tests
+  type: CONTAINS
+- source: dir:frontend:ui
+  target: dir:frontend:ui:src
   type: CONTAINS
 - source: system:unmanned-island
   target: dir:shared
@@ -6364,6 +11529,105 @@ relationships:
 - source: dir:infra
   target: dir:infra:_scratch
   type: CONTAINS
+- source: dir:infra
+  target: dir:infra:config
+  type: CONTAINS
+- source: dir:infra:config
+  target: file:infra:config:virtual-experts.yaml
+  type: CONTAINS
+- source: dir:infra:config
+  target: dir:infra:config:autofix
+  type: CONTAINS
+- source: dir:infra:config
+  target: file:infra:config:monitoring.yaml
+  type: CONTAINS
+- source: dir:infra:config
+  target: file:infra:config:ci-error-handler.yaml
+  type: CONTAINS
+- source: dir:infra:config
+  target: file:infra:config:system-module-map.yaml
+  type: CONTAINS
+- source: dir:infra:config
+  target: file:infra:config:island-control.yml
+  type: CONTAINS
+- source: dir:infra:config
+  target: file:infra:config:dependencies.yaml
+  type: CONTAINS
+- source: dir:infra:config
+  target: file:infra:config:environment.yaml
+  type: CONTAINS
+- source: dir:infra:config
+  target: file:infra:config:safety-mechanisms.yaml
+  type: CONTAINS
+- source: dir:infra:config
+  target: file:infra:config:prometheus-rules.yml
+  type: CONTAINS
+- source: dir:infra:config
+  target: file:infra:config:auto-fix-bot.yml
+  type: CONTAINS
+- source: dir:infra:config
+  target: file:infra:config:system-manifest.yaml
+  type: CONTAINS
+- source: dir:infra:config
+  target: file:infra:config:drone-config.yml
+  type: CONTAINS
+- source: dir:infra:config
+  target: file:infra:config:ci-comprehensive-solution.yaml
+  type: CONTAINS
+- source: dir:infra:config
+  target: file:infra:config:yaml-module-system.yaml
+  type: CONTAINS
+- source: dir:infra:config
+  target: file:infra:config:auto-fix-bot .prompt.yml
+  type: CONTAINS
+- source: dir:infra:config
+  target: file:infra:config:unified-config-index.yaml
+  type: CONTAINS
+- source: dir:infra:config
+  target: dir:infra:config:integrations
+  type: CONTAINS
+- source: dir:infra:config
+  target: file:infra:config:topology-mind-matrix.yaml
+  type: CONTAINS
+- source: dir:infra:config
+  target: file:infra:config:security-network-config.yml
+  type: CONTAINS
+- source: dir:infra:config
+  target: file:infra:config:ai-constitution.yaml
+  type: CONTAINS
+- source: dir:infra:config
+  target: file:infra:config:cloud-agent-delegation.yml
+  type: CONTAINS
+- source: dir:infra:config
+  target: file:infra:config:auto-fix-bot.prompt.yml
+  type: CONTAINS
+- source: dir:infra:config
+  target: file:infra:config:prometheus-config.yml
+  type: CONTAINS
+- source: dir:infra:config
+  target: file:infra:config:synergymesh.config.yaml
+  type: CONTAINS
+- source: dir:infra
+  target: dir:infra:infrastructure
+  type: CONTAINS
+- source: dir:infra:infrastructure
+  target: dir:infra:infrastructure:monitoring
+  type: CONTAINS
+- source: dir:infra:infrastructure
+  target: dir:infra:infrastructure:kubernetes
+  type: CONTAINS
+- source: dir:infra:infrastructure
+  target: dir:infra:infrastructure:canary
+  type: CONTAINS
+- source: dir:infra:infrastructure
+  target: dir:infra:infrastructure:drift
+  type: CONTAINS
+- source: system:unmanned-island
+  target: dir:bridges
+  type: CONTAINS
+- source: dir:bridges
+  target: file:bridges:language_bridges.py
+  type: CONTAINS
 - source: system:unmanned-island
   target: dir:island-ai
   type: CONTAINS
@@ -6372,6 +11636,9 @@ relationships:
   type: CONTAINS
 - source: dir:island-ai:examples
   target: file:island-ai:examples:basic-usage.ts
+  type: CONTAINS
+- source: dir:island-ai:examples
+  target: file:island-ai:examples:multi-agent-collaboration.ts
   type: CONTAINS
 - source: dir:island-ai
   target: file:island-ai:jest.config.js
@@ -6384,6 +11651,9 @@ relationships:
   type: CONTAINS
 - source: dir:island-ai:src
   target: dir:island-ai:src:agents
+  type: CONTAINS
+- source: dir:island-ai:src
+  target: dir:island-ai:src:collaboration
   type: CONTAINS
 - source: dir:island-ai:src
   target: file:island-ai:src:types.ts
@@ -6500,15 +11770,15 @@ relationships:
   target: config:config:unified-config-index.yaml
   type: CONFIGURES
 summary:
-  total_entities: 648
-  total_relationships: 647
+  total_entities: 1175
+  total_relationships: 1174
   entities_by_type:
     Capability: 15
-    Component: 146
-    ConfigParam: 197
-    Directory: 275
-    Document: 4
-    Subsystem: 10
+    Component: 311
+    ConfigParam: 311
+    Directory: 512
+    Document: 7
+    Subsystem: 18
     System: 1
 meta:
   generator: project_to_superroot.py

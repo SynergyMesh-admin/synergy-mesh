@@ -129,7 +129,7 @@ sections:
 
     ```bash
 
-    git clone https://github.com/Unmanned-Isla...'
+    git clone https://github.com/SynergyMesh-a...'
 - id: admin-copilot-cli-public-preview
   title: 🖥 Admin Copilot CLI (Public Preview)
   type: content
@@ -292,7 +292,7 @@ sections:
     _讓開發更高效，讓程式碼更完美！_
 
 
-    [GitHub](https://github.com/U...'
+    [GitHub](https://github.com/S...'
 detected_subsystems:
 - id: synergymesh
   detected: true
