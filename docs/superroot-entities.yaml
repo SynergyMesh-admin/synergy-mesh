@@ -3,10 +3,10 @@ version: 1.0.0
 id: unmanned-island-superroot-entities
 title: Unmanned Island System - SuperRoot Entities
 description: SuperRoot-compatible entity definitions projected from knowledge graph
-generated_at: '2025-12-08T21:37:10.999132Z'
+generated_at: '2025-12-08T21:45:12.641725Z'
 source:
   knowledge_graph: unmanned-island-knowledge-graph
-  generated_at: '2025-12-08T21:37:09.785391Z'
+  generated_at: '2025-12-08T21:45:11.416885Z'
 entities:
 - id: system:unmanned-island
   type: System
@@ -1167,6 +1167,13 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 目錄
+- id: dir:_codeql_detected_source_root:reports:refactor-evolution
+  type: Directory
+  label: refactor-evolution
+  path: _codeql_detected_source_root/reports/refactor-evolution
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
 - id: dir:_codeql_detected_source_root:tools
   type: Component
   label: tools
@@ -2294,6 +2301,13 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 設定
+- id: file:_codeql_detected_source_root:config:refactor-evolution.yaml
+  type: ConfigParam
+  label: refactor-evolution.yaml
+  path: _codeql_detected_source_root/config/refactor-evolution.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
 - id: dir:_codeql_detected_source_root:config:automation
   type: Subsystem
   label: automation
@@ -2385,6 +2399,13 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 設定
+- id: dir:_codeql_detected_source_root:config:pipelines
+  type: Directory
+  label: pipelines
+  path: _codeql_detected_source_root/config/pipelines
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
 - id: file:_codeql_detected_source_root:config:synergymesh.config.yaml
   type: ConfigParam
   label: synergymesh.config.yaml
@@ -3750,6 +3771,27 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 目錄
+- id: dir:reports:refactor-evolution
+  type: Directory
+  label: refactor-evolution
+  path: reports/refactor-evolution
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:reports:refactor-evolution:plans
+  type: Directory
+  label: plans
+  path: reports/refactor-evolution/plans
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:reports:refactor-evolution:logs
+  type: Directory
+  label: logs
+  path: reports/refactor-evolution/logs
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
 - id: dir:tools
   type: Component
   label: tools
@@ -3806,10 +3848,24 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 模組
+- id: file:tools:refactor:auto_refactor.py
+  type: Component
+  label: auto_refactor.py
+  path: tools/refactor/auto_refactor.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
 - id: file:tools:refactor:process_legacy_scratch.py
   type: Component
   label: process_legacy_scratch.py
   path: tools/refactor/process_legacy_scratch.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:tools:refactor:refactor_evolution_workflow.py
+  type: Component
+  label: refactor_evolution_workflow.py
+  path: tools/refactor/refactor_evolution_workflow.py
   meta:
     source: knowledge-graph
     label_zh: 模組
@@ -6830,6 +6886,13 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 設定
+- id: file:config:refactor-evolution.yaml
+  type: ConfigParam
+  label: refactor-evolution.yaml
+  path: config/refactor-evolution.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
 - id: dir:config:automation
   type: Subsystem
   label: automation
@@ -6960,6 +7023,20 @@ entities:
   type: ConfigParam
   label: tenant-tier-definitions.yaml
   path: config/tenant-tier-definitions.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:config:pipelines
+  type: Directory
+  label: pipelines
+  path: config/pipelines
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:config:pipelines:refactor-evolution-pipeline.yaml
+  type: ConfigParam
+  label: refactor-evolution-pipeline.yaml
+  path: config/pipelines/refactor-evolution-pipeline.yaml
   meta:
     source: knowledge-graph
     label_zh: 設定
@@ -8914,6 +8991,9 @@ relationships:
 - source: dir:_codeql_detected_source_root
   target: dir:_codeql_detected_source_root:reports
   type: CONTAINS
+- source: dir:_codeql_detected_source_root:reports
+  target: dir:_codeql_detected_source_root:reports:refactor-evolution
+  type: CONTAINS
 - source: dir:_codeql_detected_source_root
   target: dir:_codeql_detected_source_root:tools
   type: CONTAINS
@@ -9398,6 +9478,9 @@ relationships:
   target: file:_codeql_detected_source_root:config:island-ai-runtime.yaml
   type: CONTAINS
 - source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:refactor-evolution.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
   target: dir:_codeql_detected_source_root:config:automation
   type: CONTAINS
 - source: dir:_codeql_detected_source_root:config
@@ -9435,6 +9518,9 @@ relationships:
   type: CONTAINS
 - source: dir:_codeql_detected_source_root:config
   target: file:_codeql_detected_source_root:config:tenant-tier-definitions.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: dir:_codeql_detected_source_root:config:pipelines
   type: CONTAINS
 - source: dir:_codeql_detected_source_root:config
   target: file:_codeql_detected_source_root:config:synergymesh.config.yaml
@@ -10021,6 +10107,15 @@ relationships:
 - source: system:unmanned-island
   target: dir:reports
   type: CONTAINS
+- source: dir:reports
+  target: dir:reports:refactor-evolution
+  type: CONTAINS
+- source: dir:reports:refactor-evolution
+  target: dir:reports:refactor-evolution:plans
+  type: CONTAINS
+- source: dir:reports:refactor-evolution
+  target: dir:reports:refactor-evolution:logs
+  type: CONTAINS
 - source: system:unmanned-island
   target: dir:tools
   type: CONTAINS
@@ -10046,7 +10141,13 @@ relationships:
   target: file:tools:refactor:refactor_engine.py
   type: CONTAINS
 - source: dir:tools:refactor
+  target: file:tools:refactor:auto_refactor.py
+  type: CONTAINS
+- source: dir:tools:refactor
   target: file:tools:refactor:process_legacy_scratch.py
+  type: CONTAINS
+- source: dir:tools:refactor
+  target: file:tools:refactor:refactor_evolution_workflow.py
   type: CONTAINS
 - source: dir:tools:refactor
   target: file:tools:refactor:update_indexes.py
@@ -11342,6 +11443,9 @@ relationships:
   target: file:config:island-ai-runtime.yaml
   type: CONTAINS
 - source: dir:config
+  target: file:config:refactor-evolution.yaml
+  type: CONTAINS
+- source: dir:config
   target: dir:config:automation
   type: CONTAINS
 - source: dir:config:automation
@@ -11397,6 +11501,12 @@ relationships:
   type: CONTAINS
 - source: dir:config
   target: file:config:tenant-tier-definitions.yaml
+  type: CONTAINS
+- source: dir:config
+  target: dir:config:pipelines
+  type: CONTAINS
+- source: dir:config:pipelines
+  target: file:config:pipelines:refactor-evolution-pipeline.yaml
   type: CONTAINS
 - source: dir:config
   target: file:config:synergymesh.config.yaml
@@ -12020,13 +12130,13 @@ relationships:
   target: config:config:unified-config-index.yaml
   type: CONFIGURES
 summary:
-  total_entities: 1200
-  total_relationships: 1199
+  total_entities: 1211
+  total_relationships: 1210
   entities_by_type:
     Capability: 15
-    Component: 322
-    ConfigParam: 315
-    Directory: 518
+    Component: 324
+    ConfigParam: 318
+    Directory: 524
     Document: 7
     Subsystem: 22
     System: 1
