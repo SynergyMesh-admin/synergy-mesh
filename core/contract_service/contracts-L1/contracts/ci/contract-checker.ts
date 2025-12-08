@@ -6,21 +6,29 @@
  * Automated validation of external API contracts and SLA compliance
  * 
  * 使用方式 Usage:
- *   node contract-checker.js <contract-file>
- *   node contract-checker.js contracts/external-api.json
+ *   ts-node contract-checker.ts <contract-file>
+ *   ts-node contract-checker.ts contracts/external-api.json
  * 
  * @author platform@isynergymesh.com
  * @version 1.0.0
  * @language zh-TW
  */
 
-const fs = require('fs');
-const https = require('https');
-const http = require('http');
+import fs from 'fs';
+import https from 'https';
+import http from 'http';
 
 // ==================== 配置 Configuration ====================
 
-const CONFIG = {
+interface ConfigType {
+  timeout: number;
+  retries: number;
+  concurrency: number;
+  reportFormat: string;
+  failFast: boolean;
+}
+
+const CONFIG: ConfigType = {
   timeout: 30000,              // 30 秒
   retries: 3,                  // 最多重試 3 次
   concurrency: 5,              // 並行檢查數
@@ -28,14 +36,89 @@ const CONFIG = {
   failFast: false,             // 遇到失敗時立即停止
 };
 
+// ==================== 類型定義 Type Definitions ====================
+
+interface HealthCheck {
+  endpoint: string;
+  method: string;
+  expected_status: number;
+  timeout: string | number;
+}
+
+interface SLA {
+  latency?: {
+    p95: string;
+  };
+  error_rate?: {
+    threshold: string;
+  };
+}
+
+interface ContractDef {
+  provider: string;
+  required: boolean;
+  base_url: string;
+  health_check?: HealthCheck;
+  sla?: SLA;
+}
+
+interface Contract {
+  contract_version: string;
+  description: string;
+  contracts: Record<string, ContractDef>;
+}
+
+interface HealthResult {
+  success: boolean;
+  skipped?: boolean;
+  status?: number;
+  duration?: number;
+  endpoint?: string;
+  error?: string;
+}
+
+interface LatencyResult {
+  p50: number;
+  p95: number;
+  p99: number;
+  min?: number;
+  max?: number;
+  samples: number;
+}
+
+interface ErrorRateResult {
+  rate: number;
+  total: number;
+  errors: number;
+}
+
+interface ContractResult {
+  name: string;
+  provider: string;
+  passed: boolean;
+  errors: string[];
+  metrics: {
+    health?: HealthResult;
+    latency?: LatencyResult;
+    error_rate?: ErrorRateResult;
+  };
+  timestamp: string;
+}
+
+interface HttpResponse {
+  status: number;
+  headers: http.IncomingHttpHeaders;
+  data: string;
+}
+
 // ==================== 主程式 Main ====================
 
-async function main() {
+async function main(): Promise<void> {
   const args = process.argv.slice(2);
   
   if (args.length === 0) {
     console.error('錯誤: 請提供契約檔案路徑');
-    console.error('使用方式: node contract-checker.js <contract-file>');
+    console.error('使用方式: ts-node contract-checker.ts <contract-file>');
     process.exit(1);
   }
   
@@ -53,7 +136,7 @@ async function main() {
   try {
     // 載入契約
     const contractData = fs.readFileSync(contractFile, 'utf8');
-    const contract = JSON.parse(contractData);
+    const contract: Contract = JSON.parse(contractData);
     
     console.log(`📋 載入契約: ${contractFile}`);
     console.log(`📦 契約版本: ${contract.contract_version}`);
@@ -77,15 +160,16 @@ async function main() {
     }
     
   } catch (error) {
-    console.error(`\n❌ 執行失敗: ${error.message}`);
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    console.error(`\n❌ 執行失敗: ${errorMessage}`);
     process.exit(1);
   }
 }
 
 // ==================== 契約檢查 Contract Checking ====================
 
-async function checkContracts(contract) {
-  const results = [];
+async function checkContracts(contract: Contract): Promise<ContractResult[]> {
+  const results: ContractResult[] = [];
   const contracts = contract.contracts || {};
   
   console.log('🔍 開始檢查契約...\n');
@@ -114,8 +198,8 @@ async function checkContracts(contract) {
   return results;
 }
 
-async function checkSingleContract(name, contractDef) {
-  const result = {
+async function checkSingleContract(name: string, contractDef: ContractDef): Promise<ContractResult> {
+  const result: ContractResult = {
     name,
     provider: contractDef.provider,
     passed: true,
@@ -132,45 +216,52 @@ async function checkSingleContract(name, contractDef) {
       
       if (!healthResult.success) {
         result.passed = false;
-        result.errors.push(`健康檢查失敗: ${healthResult.error}`);
+        result.errors.push(`健康檢查失敗: ${healthResult.error || 'unknown'}`);
       }
     }
     
     // 2. 延遲檢查
-    if (contractDef.sla && contractDef.sla.latency) {
+    if (contractDef.sla?.latency) {
       const latencyResult = await checkLatency(contractDef);
       result.metrics.latency = latencyResult;
       
       // 解析閾值 (例如: "< 200ms")
-      const p95Threshold = parseInt(contractDef.sla.latency.p95.match(/\d+/)[0]);
-      
-      if (latencyResult.p95 > p95Threshold) {
-        result.passed = false;
-        result.errors.push(
-          `延遲過高: p95=${latencyResult.p95}ms (閾值: ${p95Threshold}ms)`
-        );
+      const p95Match = contractDef.sla.latency.p95.match(/\d+/);
+      if (p95Match) {
+        const p95Threshold = parseInt(p95Match[0], 10);
+        
+        if (latencyResult.p95 > p95Threshold) {
+          result.passed = false;
+          result.errors.push(
+            `延遲過高: p95=${latencyResult.p95}ms (閾值: ${p95Threshold}ms)`
+          );
+        }
       }
     }
     
     // 3. 錯誤率檢查（模擬）
-    if (contractDef.sla && contractDef.sla.error_rate) {
+    if (contractDef.sla?.error_rate) {
       const errorRateResult = await checkErrorRate(contractDef);
       result.metrics.error_rate = errorRateResult;
       
       // 解析閾值 (例如: "< 1%")
-      const threshold = parseFloat(contractDef.sla.error_rate.threshold.match(/[\d.]+/)[0]);
-      
-      if (errorRateResult.rate > threshold) {
-        result.passed = false;
-        result.errors.push(
-          `錯誤率過高: ${errorRateResult.rate}% (閾值: ${threshold}%)`
-        );
+      const thresholdMatch = contractDef.sla.error_rate.threshold.match(/[\d.]+/);
+      if (thresholdMatch) {
+        const threshold = parseFloat(thresholdMatch[0]);
+        
+        if (errorRateResult.rate > threshold) {
+          result.passed = false;
+          result.errors.push(
+            `錯誤率過高: ${errorRateResult.rate}% (閾值: ${threshold}%)`
+          );
+        }
       }
     }
     
   } catch (error) {
     result.passed = false;
-    result.errors.push(`檢查異常: ${error.message}`);
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    result.errors.push(`檢查異常: ${errorMessage}`);
   }
   
   return result;
@@ -178,7 +269,7 @@ async function checkSingleContract(name, contractDef) {
 
 // ==================== 健康檢查 Health Check ====================
 
-async function checkHealth(contractDef) {
+async function checkHealth(contractDef: ContractDef): Promise<HealthResult> {
   const healthCheck = contractDef.health_check;
   
   if (!healthCheck) {
@@ -186,7 +277,6 @@ async function checkHealth(contractDef) {
   }
   
   const url = `${contractDef.base_url}${healthCheck.endpoint}`;
-  // Parse timeout with proper unit handling (e.g., "5s", "30s", "100ms")
   const timeout = parseTimeout(healthCheck.timeout);
   
   try {
@@ -203,9 +293,10 @@ async function checkHealth(contractDef) {
       endpoint: url,
     };
   } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
     return {
       success: false,
-      error: error.message,
+      error: errorMessage,
       endpoint: url,
     };
   }
@@ -213,8 +304,8 @@ async function checkHealth(contractDef) {
 
 // ==================== 延遲檢查 Latency Check ====================
 
-async function checkLatency(contractDef) {
-  const samples = [];
+async function checkLatency(contractDef: ContractDef): Promise<LatencyResult> {
+  const samples: number[] = [];
   const sampleCount = 10;
   
   // 使用健康檢查端點進行延遲測試
@@ -252,7 +343,7 @@ async function checkLatency(contractDef) {
 
 // ==================== 錯誤率檢查 Error Rate Check ====================
 
-async function checkErrorRate(contractDef) {
+async function checkErrorRate(contractDef: ContractDef): Promise<ErrorRateResult> {
   // 模擬錯誤率檢查
   // 實際應用中應該查詢監控系統或日誌
   
@@ -283,12 +374,17 @@ async function checkErrorRate(contractDef) {
 
 // ==================== HTTP 請求 HTTP Request ====================
 
-function makeRequest(url, method = 'GET', headers = {}, timeout = CONFIG.timeout) {
+function makeRequest(
+  url: string, 
+  method: string = 'GET', 
+  headers: Record<string, string> = {}, 
+  timeout: number = CONFIG.timeout
+): Promise<HttpResponse> {
   return new Promise((resolve, reject) => {
     const urlObj = new URL(url);
     const protocol = urlObj.protocol === 'https:' ? https : http;
     
-    const options = {
+    const options: http.RequestOptions = {
       hostname: urlObj.hostname,
       port: urlObj.port,
       path: urlObj.pathname + urlObj.search,
@@ -309,7 +405,7 @@ function makeRequest(url, method = 'GET', headers = {}, timeout = CONFIG.timeout
       
       res.on('end', () => {
         resolve({
-          status: res.statusCode,
+          status: res.statusCode || 0,
           headers: res.headers,
           data,
         });
@@ -332,8 +428,8 @@ function makeRequest(url, method = 'GET', headers = {}, timeout = CONFIG.timeout
  * 解析時間字串並轉換為毫秒
  * Parse timeout string and convert to milliseconds
  * 
- * @param {string} timeStr - 時間字串 (e.g., "5s", "100ms", "1m", "30s")
- * @returns {number} 毫秒數 milliseconds
+ * @param timeStr - 時間字串 (e.g., "5s", "100ms", "1m", "30s")
+ * @returns 毫秒數 milliseconds
  * 
  * @example
  * parseTimeout("5s")    // returns 5000
@@ -341,7 +437,7 @@ function makeRequest(url, method = 'GET', headers = {}, timeout = CONFIG.timeout
  * parseTimeout("1m")    // returns 60000
  * parseTimeout("30s")   // returns 30000
  */
-function parseTimeout(timeStr) {
+function parseTimeout(timeStr: string | number): number {
   // Pattern for matching time strings with optional units
   const TIMEOUT_PATTERN = /^(\d+(?:\.\d+)?)(ms|s|m|h)?$/i;
   
@@ -379,13 +475,13 @@ function parseTimeout(timeStr) {
   }
 }
 
-function percentile(arr, p) {
+function percentile(arr: number[], p: number): number {
   if (arr.length === 0) return 0;
   const index = Math.ceil((p / 100) * arr.length) - 1;
   return arr[Math.max(0, index)];
 }
 
-function generateReport(results, contract) {
+function generateReport(results: ContractResult[], contract: Contract): void {
   console.log('\n\n====================================');
   console.log('檢查報告 Validation Report');
   console.log('====================================\n');
@@ -442,18 +538,7 @@ function generateReport(results, contract) {
 
 // ==================== 執行 Execute ====================
 
-if (require.main === module) {
-  main().catch(error => {
-    console.error('未預期的錯誤:', error);
-    process.exit(1);
-  });
-}
-
-module.exports = {
-  checkContracts,
-  checkSingleContract,
-  checkHealth,
-  checkLatency,
-  checkErrorRate,
-  parseTimeout,
-};
+main().catch(error => {
+  console.error('未預期的錯誤:', error);
+  process.exit(1);
+});
