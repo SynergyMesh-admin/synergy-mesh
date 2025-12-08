@@ -7,6 +7,7 @@
 ## 🎯 委派目標
 
 ### 主要目標
+
 - **提升處理速度**: 利用雲端資源加速任務執行
 - **擴展處理能力**: 支持大規模並發任務
 - **優化資源使用**: 智能分配計算資源
@@ -92,6 +93,7 @@ export AUTOFIX_MAX_AGENTS=10
 | 📚 文檔生成 | 自動生成文檔 | Low | 1-2分鐘 |
 
 ### 不建議委派任務
+
 - 需要本地文件系統訪問的任務
 - 敏感數據處理
 - 實時交互任務
@@ -151,6 +153,7 @@ const result = await AutoFixBot.delegate({
 ### 監控儀表板
 
 訪問 `https://dashboardconfig/autofix-bot.com` 查看:
+
 - 📈 實時任務狀態
 - 🖥️ 代理程式資源使用
 - ⏱️ 平均處理時間
@@ -174,11 +177,13 @@ const result = await AutoFixBot.delegate({
 ## 🔒 安全性
 
 ### 認證方式
+
 - **API Token**: 使用安全令牌認證
 - **OAuth 2.0**: 支持 OAuth 流程
 - **mTLS**: 雙向 TLS 加密通訊
 
 ### 數據保護
+
 - 🔐 端到端加密
 - 🛡️ 敏感數據過濾
 - 📝 審計日誌記錄
@@ -189,6 +194,7 @@ const result = await AutoFixBot.delegate({
 ### 最佳實踐
 
 1. **批量處理**
+
    ```javascript
    // 好的做法：批量提交
    await bot.delegateBatch(tasks);
@@ -200,6 +206,7 @@ const result = await AutoFixBot.delegate({
    ```
 
 2. **並發控制**
+
    ```javascript
    const options = {
      maxConcurrent: 5,  // 控制並發數
@@ -208,6 +215,7 @@ const result = await AutoFixBot.delegate({
    ```
 
 3. **超時設置**
+
    ```javascript
    const options = {
      timeout: 300000,   // 5分鐘超時
@@ -221,18 +229,21 @@ const result = await AutoFixBot.delegate({
 ### 常見問題
 
 #### 1. 連接失敗
+
 ```
 錯誤: Cloud delegation connection failed
 解決: 檢查網絡連接和 AUTOFIX_CLOUD_ENDPOINT 配置
 ```
 
 #### 2. 認證錯誤
+
 ```
 錯誤: Authentication failed
 解決: 驗證 AUTOFIX_CLOUD_TOKEN 是否正確且未過期
 ```
 
 #### 3. 超時問題
+
 ```
 錯誤: Task timeout after 300s
 解決: 增加 timeout 設置或優化任務大小
@@ -270,7 +281,8 @@ autofix delegate --task analyze --debug
 ## 📞 支持
 
 如需協助，請聯繫:
-- 📧 cloud-support@autofix-bot.com
+
+- 📧 <cloud-support@autofix-bot.com>
 - 💬 即時聊天: [supportconfig/autofix-bot.com](https://supportconfig/autofix-bot.com)
 - 📚 幫助中心: [helpconfig/autofix-bot.com](https://helpconfig/autofix-bot.com)
 

@@ -1,4 +1,5 @@
 # Senior Automation Architect & Code Intelligence Engineer
+
 # 企業級自動化代碼分析與修復系統
 
 ## 概述 Overview
@@ -10,6 +11,7 @@ This is an enterprise-grade automated code analysis and repair platform designed
 ## 核心能力 Core Capabilities
 
 ### 1. **多維度代碼分析 Multi-Dimensional Code Analysis**
+
 - 安全漏洞檢測 (Security vulnerability detection)
 - 代碼質量分析 (Code quality analysis)
 - 性能分析 (Performance analysis)
@@ -17,12 +19,14 @@ This is an enterprise-grade automated code analysis and repair platform designed
 - 可維護性評估 (Maintainability assessment)
 
 ### 2. **智能自動修復 Intelligent Auto-Repair**
+
 - 基於規則的自動修復 (Rule-based auto repair)
 - AST 驅動的代碼變換 (AST-driven code transformation)
 - 機器學習優化建議 (ML-powered optimization suggestions)
 - 修復效果自動驗證 (Automated repair verification)
 
 ### 3. **多語言治理框架 Multi-Language Governance**
+
 - Framework 1: Popular Languages (Python, TypeScript, Go, Rust)
 - Framework 2: Server-side Languages (Java, C#, Node.js, Kotlin)
 - Framework 3: Web Languages (JavaScript, TypeScript, HTML, CSS)
@@ -31,6 +35,7 @@ This is an enterprise-grade automated code analysis and repair platform designed
 - Framework 6: Other Languages (C++, Haskell, Elixir, Zig)
 
 ### 4. **應用場景支援 Application Scenarios**
+
 - **無人機系統** (Drone Systems): 實時飛控代碼分析
 - **無人駕駛** (Autonomous Driving): 決策算法質量保障
 - **自動化迭代** (Automation Iteration): CI/CD 集成與優化
@@ -132,12 +137,14 @@ print(result)
 ## 技術棧 Technology Stack
 
 ### 核心技術 Core Technologies
+
 - **Backend**: Python (FastAPI), Go, TypeScript (Node.js)
 - **Analysis**: SonarQube, Semgrep, ESLint, Pylint
 - **Security**: Snyk, OWASP Dependency-Check, Trivy
 - **Performance**: Perf, Flamegraph, py-spy, BPF
 
 ### 基礎設施 Infrastructure
+
 - **Container**: Docker, Podman
 - **Orchestration**: Kubernetes
 - **Message Queue**: Kafka, RabbitMQ, NATS
@@ -196,8 +203,8 @@ MIT License - 詳見 [LICENSE](../LICENSE)
 
 ## 聯繫方式 Contact
 
-- GitHub: https://github.com/we-can-fix/synergymesh
-- Issues: https://github.com/we-can-fix/synergymesh/issues
+- GitHub: <https://github.com/we-can-fix/synergymesh>
+- Issues: <https://github.com/we-can-fix/synergymesh/issues>
 
 ---
 

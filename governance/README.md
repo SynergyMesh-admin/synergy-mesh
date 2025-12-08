@@ -1,4 +1,5 @@
 # Governance
+
 # 治理
 
 > 治理政策、規則、安全配置和合規資源。
@@ -10,18 +11,54 @@
 
 This directory contains governance configurations and documentation for the SynergyMesh project, ensuring clear module responsibilities, reasonable dependency management, and explicit language boundaries.
 
+## 🎯 Architecture Governance Matrix | 架構治理矩陣 ⭐
+
+**[📖 Read the Architecture Governance Matrix](./ARCHITECTURE_GOVERNANCE_MATRIX.md)**
+
+The Architecture Governance Matrix is a comprehensive framework that extends beyond simple directory mapping to include **nine governance dimensions**:
+
+架構治理矩陣是一個全面的框架，超越了簡單的目錄映射，包含 **九個治理維度**：
+
+### Core Structural Contracts | 核心結構契約
+1. **Namespace** - Logical naming and boundaries
+2. **Module Mapping** - Logical ID to physical path mapping
+3. **Dependency Rules** - Who can call whom
+
+### Extended Governance Dimensions | 延伸治理維度
+4. **Layers & Domains** - Semantic definitions and responsibilities
+5. **Roles & Capabilities** - Module behavioral intent
+6. **Behavior Contracts** - API, events, invariants, failure modes
+7. **Lifecycle & Ownership** - Team ownership and module state
+8. **Policies & Constraints** - Executable architectural policies
+9. **Quality & Metrics** - Measurable architecture health
+
+This matrix makes architecture governance **explicit, measurable, and automatable**.
+
 ## 📁 Directory Structure 目錄結構
 
 ```
 governance/
-├── audit/              # 審計配置 - Audit configurations
-├── deployment/         # 部署配置 - Deployment configurations
-├── environment-matrix/ # 模組環境映射 - Module environment matrix
-├── policies/           # 策略定義 - Policy definitions
-├── registry/           # 模組治理註冊表 - Module governance registry
-├── rules/              # 治理規則 - Governance rules
-├── sbom/               # 軟體物料清單 - Software Bill of Materials
-└── schemas/            # Schema 定義 - Schema definitions
+├── ARCHITECTURE_GOVERNANCE_MATRIX.md  # 🎯 架構治理矩陣（核心文檔）
+├── architecture/                      # 架構定義
+│   └── layers-domains.yaml           # 層級與領域語義定義
+├── behavior-contracts/                # 行為契約
+│   ├── README.md                     # 契約指南
+│   └── *.yaml                        # 各模組的行為契約
+├── modules/                           # 模組角色與能力
+│   ├── README.md                     # 模組規範指南
+│   └── *.yaml                        # 各模組的詳細規範
+├── ownership-map.yaml                 # 所有權與生命週期映射
+├── architecture-health.yaml           # 架構健康度指標
+├── policies/                          # 策略定義
+│   ├── architecture-rules.yaml       # 架構策略規則
+│   └── ...                           # 其他策略
+├── audit/                             # 審計配置
+├── deployment/                        # 部署配置
+├── environment-matrix/                # 模組環境映射
+├── registry/                          # 模組治理註冊表
+├── rules/                             # 治理規則
+├── sbom/                              # 軟體物料清單
+└── schemas/                           # Schema 定義
 ```
 
 ## 🎯 What This Directory Does 本目錄負責什麼
@@ -107,3 +144,56 @@ governance/
 
 **Owner 負責人**: Governance Team  
 **Last Updated 最後更新**: 2025-11-30
+
+# Supply Chain Directory
+
+This directory contains supply chain security artifacts for SynergyMesh.
+
+## Structure
+
+```
+supply-chain/
+├── sbom/          # Software Bill of Materials
+├── attestations/  # SLSA/L3 evidence
+└── registry/      # Component registry (optional)
+```
+
+## Components
+
+### SBOM (`sbom/`)
+
+Software Bill of Materials containing:
+
+- SPDX format SBOMs
+- Provenance information
+- Signing policies
+
+### Attestations (`attestations/`)
+
+SLSA Level 3 attestation evidence:
+
+- Build attestations
+- Provenance records
+- Verification artifacts
+
+### Registry (`registry/`)
+
+Optional component registry for:
+
+- Module versions
+- Service definitions
+- Contract schemas
+
+## SLSA Compliance
+
+SynergyMesh follows SLSA (Supply-chain Levels for Software Artifacts) framework:
+
+- Level 1: Documentation of build process
+- Level 2: Tamper resistance through hosted build
+- Level 3: Security against specific threats
+
+## See Also
+
+- [SLSA Framework](https://slsa.dev/)
+- [Migration Guide](../docs/MIGRATION.md)
+- [Sigstore Documentation](https://docs.sigstore.dev/)

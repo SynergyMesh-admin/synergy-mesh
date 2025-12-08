@@ -9,6 +9,7 @@
 **症狀**: GitHub Actions workflow 失敗
 
 **診斷步驟**:
+
 ```bash
 # 檢查最近的 workflow 運行
 gh run list --limit 5
@@ -20,6 +21,7 @@ gh run view <run-id> --log-failed
 **可能原因與修復**:
 
 1. **依賴安裝失敗**
+
    ```bash
    # 本地重現
    cd <sub-project>
@@ -28,12 +30,14 @@ gh run view <run-id> --log-failed
    ```
 
 2. **Lint 錯誤**
+
    ```bash
    npm run lint
    npm run lint -- --fix  # 自動修復
    ```
 
 3. **測試失敗**
+
    ```bash
    npm test
    npm test -- --verbose  # 詳細輸出
@@ -44,6 +48,7 @@ gh run view <run-id> --log-failed
 **症狀**: PR 中 Conftest 檢查不通過
 
 **診斷步驟**:
+
 ```bash
 # 本地安裝 Conftest
 brew install conftest  # macOS
@@ -57,6 +62,7 @@ conftest test deploy/deployment.yaml -p governance/policies/conftest/
 **常見違規**:
 
 1. **Namespace 命名不符合規範**
+
    ```yaml
    # ❌ 錯誤
    metadata:
@@ -72,6 +78,7 @@ conftest test deploy/deployment.yaml -p governance/policies/conftest/
    ```
 
 2. **Service port 缺少名稱**
+
    ```yaml
    # ❌ 錯誤
    ports:
@@ -90,6 +97,7 @@ conftest test deploy/deployment.yaml -p governance/policies/conftest/
 **症狀**: "Merging is blocked" 或 "Waiting for Code Scanning results"
 
 **診斷步驟**:
+
 ```bash
 # 檢查 PR 狀態
 gh pr view <pr-number> --json statusCheckRollup,mergeStateStatus
@@ -101,6 +109,7 @@ gh pr view <pr-number> --json statusCheckRollup,mergeStateStatus
 **解決方案**:
 
 1. **確保所有 CI 檢查通過**
+
    ```bash
    # 查看失敗的檢查
    gh pr checks <pr-number>
@@ -112,6 +121,7 @@ gh pr view <pr-number> --json statusCheckRollup,mergeStateStatus
    - 調整 Code Scanning 要求
 
 3. **使用管理員權限合併**
+
    ```bash
    gh pr merge <pr-number> --squash --admin
    ```
@@ -121,6 +131,7 @@ gh pr view <pr-number> --json statusCheckRollup,mergeStateStatus
 **症狀**: 修改了子專案代碼但 CI 未執行
 
 **診斷步驟**:
+
 ```bash
 # 檢查最近的 workflow 運行
 gh run list --workflow="monorepo-dispatch.yml" --limit 3
@@ -136,6 +147,7 @@ gh run view <run-id> --log
    - 確保路徑匹配正確
 
 2. **變更的文件不在監控範圍內**
+
    ```yaml
    # 擴展監控路徑
    filters: |
@@ -149,6 +161,7 @@ gh run view <run-id> --log
 **症狀**: `npm run sbom` 或 CI 中 SBOM 步驟失敗
 
 **診斷步驟**:
+
 ```bash
 # 本地測試
 cd <sub-project>
@@ -159,6 +172,7 @@ cat sbom.json | jq .
 ```
 
 **修復方案**:
+
 ```bash
 # 確保依賴完整安裝
 npm ci
@@ -174,6 +188,7 @@ npx @cyclonedx/cyclonedx-npm --output-file sbom.json
 ### 添加新的子專案
 
 1. **創建專案目錄結構**
+
    ```bash
    mkdir -p apps/new-service
    cd apps/new-service
@@ -181,6 +196,7 @@ npx @cyclonedx/cyclonedx-npm --output-file sbom.json
    ```
 
 2. **更新根目錄 package.json**
+
    ```json
    {
      "workspaces": [
@@ -193,6 +209,7 @@ npx @cyclonedx/cyclonedx-npm --output-file sbom.json
    ```
 
 3. **更新 Monorepo Dispatcher**
+
    ```yaml
    # .github/workflows/monorepo-dispatch.yml
    filters: |
@@ -209,6 +226,7 @@ npx @cyclonedx/cyclonedx-npm --output-file sbom.json
    ```
 
 4. **更新治理註冊表**
+
    ```yaml
    # governance/registry.yaml
    new-service:
@@ -222,16 +240,19 @@ npx @cyclonedx/cyclonedx-npm --output-file sbom.json
 ### 更新政策規則
 
 1. **編輯 Conftest 政策**
+
    ```bash
    vim governance/policies/conftest/naming_policy.rego
    ```
 
 2. **本地測試**
+
    ```bash
    conftest test <test-file> -p governance/policies/conftest/
    ```
 
 3. **提交並創建 PR**
+
    ```bash
    git add governance/policies/conftest/
    git commit -m "chore: update conftest policies"
@@ -241,6 +262,7 @@ npx @cyclonedx/cyclonedx-npm --output-file sbom.json
 ### 升級依賴
 
 1. **檢查過期依賴**
+
    ```bash
    # 在根目錄
    npm outdated --workspaces
@@ -251,6 +273,7 @@ npx @cyclonedx/cyclonedx-npm --output-file sbom.json
    ```
 
 2. **更新依賴**
+
    ```bash
    # 更新特定包
    npm update <package-name> --workspace=<workspace-name>
@@ -261,6 +284,7 @@ npx @cyclonedx/cyclonedx-npm --output-file sbom.json
    ```
 
 3. **安全更新**
+
    ```bash
    npm audit fix --workspaces
    ```
@@ -343,8 +367,8 @@ gh pr create --title "Revert: <original-pr-title>" \
 
 ## 🆘 緊急聯絡
 
-- **Platform Team**: platform-team@example.com
-- **Security Team**: security@example.com
+- **Platform Team**: <platform-team@example.com>
+- **Security Team**: <security@example.com>
 - **On-call**: [PagerDuty / Slack Channel]
 
 ## 📚 相關資源

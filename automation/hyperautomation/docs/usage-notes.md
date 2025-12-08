@@ -7,6 +7,7 @@
 ## 文檔結構
 
 ### 核心文檔
+
 - **core-principles.md**：核心理念與定位，定義技術助手的能力框架與互動原則
 - **uav-autonomous-driving-governance.md**：UAV/AD 治理規範，提供安全、合規與可追溯的實施準則
 - **usage-notes.md**（本文件）：使用說明與最佳實踐
@@ -14,11 +15,13 @@
 - **sbom-placeholder.json**：SBOM 佔位文件，需在 CI 中生成實際 SBOM
 
 ### 策略文件
+
 - **policies/rego/uav_ad.rego**：OPA/Conftest 策略，用於驗證 UAV/AD 配置
 - **policies/gatekeeper/uav-ad-labels.yaml**：Gatekeeper 約束，驗證必要標籤
 - **policies/gatekeeper/geo-fencing.yaml**：地理圍欄策略約束
 
 ### 契約文件
+
 - **contracts/file-contract.json**：文件契約與雜湊佔位符
 
 ## 快速開始
@@ -326,11 +329,13 @@ argocd app rollback uav-system <revision>
 ## 支援與貢獻
 
 ### 取得協助
+
 - 查看文檔：[docs/](docs/)
 - 提交 Issue：GitHub Issues
-- 聯繫團隊：platform-team@example.com
+- 聯繫團隊：<platform-team@example.com>
 
 ### 貢獻指南
+
 1. Fork 專案
 2. 創建功能分支
 3. 提交變更

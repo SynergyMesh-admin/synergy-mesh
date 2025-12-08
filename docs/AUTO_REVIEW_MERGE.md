@@ -9,18 +9,21 @@ This automated review and merge workflow automatically reviews all Pull Requests
 ## ✨ 功能特性 (Features)
 
 ### 1. 自動審核 (Auto Review)
+
 - ✅ 自動分析 PR 中的代碼變更
 - 🔍 檢測常見的代碼問題
 - 📊 生成詳細的審核報告
 - ✅ 自動批准通過審核的 PR
 
 ### 2. 自動修復 (Auto Fix)
+
 - 🔧 自動修復未使用的 import
 - 🎨 修復代碼格式問題
 - 📝 修正簡單的語法錯誤
 - ⚡ 優化代碼質量
 
 ### 3. 自動合併 (Auto Merge)
+
 - 🔀 自動合併已批准的 PR
 - ⏳ 等待所有檢查完成
 - 📝 使用 squash merge 保持歷史記錄整潔
@@ -73,6 +76,7 @@ graph LR
 - 💬 通知設置
 
 範例配置：
+
 ```yaml
 merge:
   method: squash  # 可選: squash, merge, rebase
@@ -84,6 +88,7 @@ merge:
 **注意：** 合併方式需要在工作流程文件 `.github/workflows/auto-review-merge.yml` 的 `env.AUTO_MERGE_METHOD` 中設置。默認為 `squash`。
 
 要更改合併方式，請編輯工作流程文件：
+
 ```yaml
 env:
   AUTO_MERGE_METHOD: squash  # 或 merge, rebase
@@ -202,11 +207,13 @@ permissions:
 #### 1. 合併失敗
 
 **原因：**
+
 - 存在代碼衝突
 - CI 檢查未通過
 - 權限不足
 
 **解決方案：**
+
 - 解決代碼衝突
 - 修復 CI 失敗
 - 檢查 GitHub Token 權限
@@ -214,20 +221,24 @@ permissions:
 #### 2. 審核未觸發
 
 **原因：**
+
 - PR 處於草稿狀態
 - 工作流程配置錯誤
 
 **解決方案：**
+
 - 將 PR 標記為就緒
 - 檢查工作流程配置文件
 
 #### 3. 自動修復失敗
 
 **原因：**
+
 - 代碼問題過於複雜
 - 缺少必要的工具
 
 **解決方案：**
+
 - 手動修復問題
 - 安裝必要的依賴
 
@@ -250,6 +261,7 @@ permissions:
 ## 📝 更新日誌 (Changelog)
 
 ### v1.0.0 (2025-11-22)
+
 - ✨ 初始版本發布
 - 🔍 自動審核功能
 - 🔧 自動修復功能

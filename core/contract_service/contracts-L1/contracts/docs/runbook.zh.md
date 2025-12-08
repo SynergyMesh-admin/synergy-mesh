@@ -15,6 +15,7 @@
 ## 快速診斷
 
 ### 檢查服務狀態
+
 ```bash
 # 檢查 Pod 狀態
 kubectl get pods -l app=contracts-service
@@ -27,6 +28,7 @@ kubectl get events --sort-by='.lastTimestamp' | grep contracts-service
 ```
 
 ### 健康檢查
+
 ```bash
 # 本地檢查
 curl http://localhost:3000/healthz
@@ -41,10 +43,12 @@ curl http://localhost:3000/healthz
 ### 1. Pod 無法啟動
 
 #### 症狀
+
 - Pod 狀態為 `CrashLoopBackOff` 或 `Error`
 - 健康檢查失敗
 
 #### 診斷步驟
+
 ```bash
 # 查看 Pod 詳細資訊
 kubectl describe pod <pod-name>
@@ -59,6 +63,7 @@ kubectl top pod <pod-name>
 #### 可能原因與解決方案
 
 1. **映像拉取失敗**
+
    ```bash
    # 檢查映像是否存在
    docker pull ghcr.io/we-can-fix/synergymesh/contracts-service:latest
@@ -68,6 +73,7 @@ kubectl top pod <pod-name>
    ```
 
 2. **資源不足**
+
    ```bash
    # 檢查節點資源
    kubectl top nodes
@@ -77,6 +83,7 @@ kubectl top pod <pod-name>
    ```
 
 3. **配置錯誤**
+
    ```bash
    # 檢查環境變數
    kubectl get deployment contracts-service -o yaml | grep -A 10 env:
@@ -85,10 +92,12 @@ kubectl top pod <pod-name>
 ### 2. 高錯誤率
 
 #### 症狀
+
 - 告警: `ContractsServiceHighErrorRate`
 - 5xx 錯誤率超過 5%
 
 #### 診斷步驟
+
 ```bash
 # 查看最近的錯誤日誌
 kubectl logs -l app=contracts-service --tail=200 | grep -i error
@@ -120,10 +129,12 @@ kubectl logs -l app=contracts-service --tail=100 | grep "POST\|GET\|PUT\|DELETE"
 ### 3. 高延遲
 
 #### 症狀
+
 - 告警: `ContractsServiceHighLatency`
 - P99 延遲超過 1 秒
 
 #### 診斷步驟
+
 ```bash
 # 檢查資源使用
 kubectl top pod -l app=contracts-service
@@ -138,6 +149,7 @@ kubectl get hpa contracts-service-hpa
 #### 可能原因與解決方案
 
 1. **資源不足**
+
    ```bash
    # 手動擴展
    kubectl scale deployment contracts-service --replicas=5
@@ -159,10 +171,12 @@ kubectl get hpa contracts-service-hpa
 ### 4. Pod 頻繁重啟
 
 #### 症狀
+
 - 告警: `ContractsServiceFrequentRestarts`
 - Pod 重啟次數持續增加
 
 #### 診斷步驟
+
 ```bash
 # 查看重啟原因
 kubectl describe pod <pod-name> | grep -A 5 "Last State"
@@ -177,6 +191,7 @@ kubectl top pod -l app=contracts-service --containers
 #### 可能原因與解決方案
 
 1. **記憶體洩漏 (OOMKilled)**
+
    ```bash
    # 增加記憶體限制
    kubectl set resources deployment contracts-service \
@@ -184,6 +199,7 @@ kubectl top pod -l app=contracts-service --containers
    ```
 
 2. **健康檢查太嚴格**
+
    ```bash
    # 調整探針配置
    kubectl edit deployment contracts-service
@@ -198,10 +214,12 @@ kubectl top pod -l app=contracts-service --containers
 ### 5. 記憶體使用率高
 
 #### 症狀
+
 - 告警: `ContractsServiceHighMemoryUsage`
 - 記憶體使用超過 90%
 
 #### 診斷步驟
+
 ```bash
 # 檢查記憶體使用
 kubectl top pod -l app=contracts-service
@@ -211,6 +229,7 @@ kubectl get --raw /apis/metrics.k8s.io/v1beta1/namespaces/default/pods
 ```
 
 #### 解決方案
+
 ```bash
 # 1. 增加記憶體限制
 kubectl set resources deployment contracts-service \
@@ -227,10 +246,12 @@ kubectl set env deployment/contracts-service NODE_OPTIONS="--max-old-space-size=
 ### 6. CPU 使用率高
 
 #### 症狀
+
 - 告警: `ContractsServiceHighCPUUsage`
 - CPU 使用超過 90%
 
 #### 診斷步驟
+
 ```bash
 # 檢查 CPU 使用
 kubectl top pod -l app=contracts-service
@@ -240,6 +261,7 @@ kubectl describe pod <pod-name> | grep -i cpu
 ```
 
 #### 解決方案
+
 ```bash
 # 1. 水平擴展
 kubectl scale deployment contracts-service --replicas=5
@@ -255,6 +277,7 @@ kubectl logs -l app=contracts-service | grep -i "processing\|compute"
 ## 緊急回滾
 
 ### 回滾到上一個版本
+
 ```bash
 # 查看部署歷史
 kubectl rollout history deployment contracts-service
@@ -267,6 +290,7 @@ kubectl rollout undo deployment contracts-service --to-revision=3
 ```
 
 ### 暫停流量
+
 ```bash
 # 縮減到 0 副本
 kubectl scale deployment contracts-service --replicas=0
@@ -294,13 +318,14 @@ container_memory_usage_bytes{pod=~"contracts-service-.*"}
 ```
 
 ### 告警配置位置
+
 - 告警規則: `deploy/alerts.yaml`
 - Grafana 儀表板: (待建立)
 
 ## 聯絡資訊
 
 - **團隊**: contracts-team
-- **Email**: contracts-team@example.com
+- **Email**: <contracts-team@example.com>
 - **Slack**: #contracts-service
 - **On-call**: PagerDuty escalation policy
 

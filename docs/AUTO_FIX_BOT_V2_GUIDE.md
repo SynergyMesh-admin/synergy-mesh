@@ -36,18 +36,22 @@ project_mapping:
 Bot 支援四個主要驗證範圍：
 
 #### 2.1 Deep YAML 驗證
+
 - 路徑：`templates/**/*.yaml`, `schemas/**/*.json`, `.config/**/*.yaml`, `governance/**/*.yaml`
 - 功能：深度驗證 YAML 檔案結構和內容
 
 #### 2.2 MCP Servers 驗證
+
 - 路徑：`mcp-servers/**/*.py`, `mcp-servers/**/*.json`
 - 功能：確保 MCP servers 符合安全和型別標註要求
 
 #### 2.3 Advanced Architecture 同步
+
 - 路徑：`advanced-architecture/**/*`, `advanced-system-src/**/*`, `advanced-system-dist/**/*`
 - 功能：同步源碼與建置輸出
 
 #### 2.4 Evidence Chain 驗證
+
 - 路徑：`root-evidence/**/*.json`, `attest-build-provenance-main/**/*`
 - 功能：驗證證據鏈的完整性和簽章
 
@@ -56,11 +60,13 @@ Bot 支援四個主要驗證範圍：
 ### 1. Deep YAML Schema Validation (Critical)
 
 **觸發條件**:
+
 - 檔案符合模式：`templates/**/*.yaml`
 - Schema 違規
 - 缺少必要欄位
 
 **自動修復動作**:
+
 1. Schema 驗證
 2. 自動補充缺失的 metadata
 3. 生成測試向量
@@ -68,32 +74,38 @@ Bot 支援四個主要驗證範圍：
 ### 2. MCP Servers Compliance (High)
 
 **觸發條件**:
+
 - 檔案符合模式：`mcp-servers/**/*.py`
 - 導入違規
 - 缺少型別提示
 
 **自動修復動作**:
+
 1. 修復不當的導入
 2. 添加型別標註
 
 ### 3. Architecture Consistency (Medium)
 
 **觸發條件**:
+
 - 檔案符合模式：`advanced-system-src/**/*`
 - 建置不一致
 
 **自動修復動作**:
+
 1. 同步到 dist 目錄
 2. 驗證完整性
 
 ### 4. Evidence Chain Integrity (Critical)
 
 **觸發條件**:
+
 - 檔案符合模式：`root-evidence/**/*.json`
 - 簽章遺失
 - 認證無效
 
 **自動修復動作**:
+
 1. 驗證簽章
 2. 重新生成認證
 
@@ -102,6 +114,7 @@ Bot 支援四個主要驗證範圍：
 ### Pre-Validation Gate (前置檢查門)
 
 **驗證內容**:
+
 - OPA 策略：`governance/policies/conftest/yaml-structure.rego`
 - Kyverno 策略：`governance/security-policy.yaml`
 
@@ -110,10 +123,12 @@ Bot 支援四個主要驗證範圍：
 ### Post-Fix Validation Gate (後置驗證門)
 
 **驗證內容**:
+
 - OPA 策略：`governance/policies/conftest/deep-validation.rego`
 - JSON Schema：`schemas/complete-validation-schema.json`
 
 **證據要求**:
+
 - SBOM 已生成
 - Attestation 已簽署
 - Provenance 完整
@@ -152,12 +167,14 @@ Bot 支援四個主要驗證範圍：
 ### Email 通知
 
 **收件人**:
-- platform@isynergymesh.com
-- security@isynergymesh.com
+
+- <platform@isynergymesh.com>
+- <security@isynergymesh.com>
 
 ### GitHub 通知
 
 **動作**:
+
 - 建立 Issue
 - 指派給 `platform-lead`
 - 標籤：`auto-fix`, `governance`, `priority-high`
@@ -200,6 +217,7 @@ Bot 支援四個主要驗證範圍：
 **工作流程檔案**: `.github/workflows/auto-fix-validation.yml`
 
 **所需環境變數**:
+
 - `COSIGN_PRIVATE_KEY`
 - `SLACK_WEBHOOK_URL`
 - `SMTP_SERVER`
@@ -210,6 +228,7 @@ Bot 支援四個主要驗證範圍：
 **Dockerfile**: `.devcontainer/Dockerfile`
 
 **擴展**:
+
 - ms-python.python
 - ms-vscode.vscode-yaml
 - redhat.vscode-yaml
@@ -279,12 +298,14 @@ os.system, subprocess, eval, exec, __import__
 ### YAML 結構要求
 
 **必要區段**:
+
 - metadata
 - version
 - owner
 - audit
 
 **元數據要求**:
+
 - created_at (RFC3339 格式)
 - updated_at (RFC3339 格式)
 - labels (至少 2 個)
@@ -325,6 +346,7 @@ os.system, subprocess, eval, exec, __import__
 ### 1. Schema 驗證失敗
 
 **步驟**:
+
 1. 備份當前檔案
 2. 從範本還原
 3. 合併現有資料
@@ -334,6 +356,7 @@ os.system, subprocess, eval, exec, __import__
 ### 2. 證據損壞檢測
 
 **步驟**:
+
 1. 隔離損壞的證據
 2. 從備份還原
 3. 重新生成簽章
@@ -343,6 +366,7 @@ os.system, subprocess, eval, exec, __import__
 ### 3. Policy Gate 持續失敗
 
 **步驟**:
+
 1. 建立緊急 Issue
 2. 停用自動合併
 3. 要求人工審查
@@ -362,6 +386,7 @@ os.system, subprocess, eval, exec, __import__
 ### 儀表板
 
 #### Auto Fix Overview
+
 - 修復嘗試趨勢
 - 按規則類型的成功率
 - 平均解決時間
@@ -369,6 +394,7 @@ os.system, subprocess, eval, exec, __import__
 - 證據生成狀態
 
 #### Security Compliance
+
 - 簽章驗證狀態
 - 認證覆蓋率
 - 審計追蹤完整性
@@ -404,6 +430,7 @@ python scripts/auto_fix_bot.py --config auto-fix-bot.yml --scope mcp-servers-val
 #### Q1: Policy Gate 驗證失敗
 
 **解決方案**:
+
 1. 檢查 `governance/policies/conftest/` 下的策略檔案
 2. 確認 YAML 檔案符合必要的結構要求
 3. 查看審計日誌：`root-evidence/audit/auto-fix/`
@@ -411,6 +438,7 @@ python scripts/auto_fix_bot.py --config auto-fix-bot.yml --scope mcp-servers-val
 #### Q2: 簽章驗證失敗
 
 **解決方案**:
+
 1. 確認 `COSIGN_PRIVATE_KEY` 環境變數已設定
 2. 檢查證書識別符是否正確
 3. 驗證 OIDC 發行者設定
@@ -418,20 +446,22 @@ python scripts/auto_fix_bot.py --config auto-fix-bot.yml --scope mcp-servers-val
 #### Q3: 證據生成失敗
 
 **解決方案**:
+
 1. 確認 `syft` 和 `cosign` 工具已安裝
 2. 檢查 `root-evidence/` 目錄權限
 3. 查看生成命令的輸出日誌
 
 ## 📞 支援與聯絡
 
-- **平台團隊**: platform@isynergymesh.com
-- **安全團隊**: security@isynergymesh.com
+- **平台團隊**: <platform@isynergymesh.com>
+- **安全團隊**: <security@isynergymesh.com>
 - **Slack 頻道**: #isynergymesh-auto-fix
-- **GitHub Issues**: https://github.com/we-can-fix/synergymesh/issues
+- **GitHub Issues**: <https://github.com/we-can-fix/synergymesh/issues>
 
 ## 📜 版本歷史
 
 ### 2.0.0 (2025-01-17)
+
 - 完整整合深度可驗證模組
 - 實作去標籤化架構策略
 - 適配 Isynergymesh 專案架構
@@ -439,10 +469,12 @@ python scripts/auto_fix_bot.py --config auto-fix-bot.yml --scope mcp-servers-val
 - 整合證據鏈生成
 
 ### 1.5.0 (2025-01-17)
+
 - 新增 Policy Gate 整合
 - 新增證據鏈生成功能
 
 ### 1.0.0 (2025-01-17)
+
 - 初始版本
 - 基本 YAML 驗證與修復功能
 

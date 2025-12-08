@@ -30,6 +30,7 @@ synergymesh/
 ## 🎨 新系統特點
 
 ### 技術棧
+
 - **React 19** - 現代化前端框架
 - **TypeScript** - 類型安全
 - **Tailwind CSS** - 實用優先的 CSS 框架
@@ -37,6 +38,7 @@ synergymesh/
 - **shadcn/ui** - 高質量 UI 組件庫
 
 ### 功能頁面
+
 1. **首頁 (Home)** - 展示核心價值和服務概覽
 2. **前端開發 (Frontend)** - 前端技術能力展示
 3. **後端開發 (Backend)** - 後端技術能力展示
@@ -44,7 +46,9 @@ synergymesh/
 5. **聯繫方式 (Contact)** - 聯絡表單
 
 ### UI 組件
+
 包含 50+ 個專業級 UI 組件：
+
 - 導航欄和側邊欄
 - 表單和輸入組件
 - 對話框和提示
@@ -102,6 +106,7 @@ npm run build
 ### 整合方案 2：雙儀表板共存
 
 保持兩個系統獨立運行：
+
 - `advanced-system-dist/index.html` - 高階系統門戶
 - `auto-fix-bot-dashboard.html` - Bot 效率儀表板
 
@@ -141,6 +146,7 @@ export default function BotDashboard() {
 ## 📊 比較分析
 
 ### 新系統優勢
+
 ✅ 現代化技術棧（React + TypeScript）  
 ✅ 專業級 UI 組件庫  
 ✅ 響應式設計  
@@ -149,6 +155,7 @@ export default function BotDashboard() {
 ✅ 完整的開發工具鏈  
 
 ### 原儀表板優勢
+
 ✅ 輕量級（單個 HTML 文件）  
 ✅ 無需構建步驟  
 ✅ 直接在瀏覽器中運行  
@@ -158,16 +165,19 @@ export default function BotDashboard() {
 ## 🎯 建議的整合策略
 
 ### 短期（立即可用）
+
 1. 將 `advanced-system-dist` 部署為主站
 2. 保留 `auto-fix-bot-dashboard.html` 作為效率監控頁面
 3. 在新系統導航中添加鏈接到儀表板
 
 ### 中期（1-2 週）
+
 1. 將 Auto-Fix Bot 儀表板的核心指標整合到新系統首頁
 2. 創建一個專門的 "Bot 監控" 頁面
 3. 統一視覺風格和品牌元素
 
 ### 長期（1 個月+）
+
 1. 完全遷移到 React 組件架構
 2. 添加實時數據更新功能
 3. 整合後端 API
@@ -176,6 +186,7 @@ export default function BotDashboard() {
 ## 🌐 部署選項
 
 ### 選項 1：Vercel（推薦）
+
 ```bash
 # 安裝 Vercel CLI
 npm i -g vercel
@@ -186,6 +197,7 @@ vercel --prod
 ```
 
 ### 選項 2：GitHub Pages
+
 ```bash
 # 1. 將 advanced-system-dist 內容複製到 docs/ 或 gh-pages 分支
 # 2. 在 GitHub 倉庫設置中啟用 GitHub Pages
@@ -193,6 +205,7 @@ vercel --prod
 ```
 
 ### 選項 3：Cloudflare Pages
+
 1. 登入 Cloudflare Pages
 2. 上傳 `advanced-system-dist` 目錄的壓縮包
 3. 配置自定義域名（可選）
@@ -200,6 +213,7 @@ vercel --prod
 ## 🛠️ 開發指南
 
 ### 添加新頁面
+
 ```typescript
 // advanced-system-src/src/pages/NewPage.tsx
 import Navbar from '@/components/layout/Navbar';
@@ -219,6 +233,7 @@ export default function NewPage() {
 ```
 
 ### 修改樣式
+
 ```javascript
 // tailwind.config.js
 export default {
@@ -235,17 +250,20 @@ export default {
 ```
 
 ### 添加新組件
+
 組件庫位於 `src/components/ui/`，使用 shadcn/ui 標準。
 
 ## 📝 維護建議
 
 1. **定期更新依賴**
+
    ```bash
    cd advanced-system-src
    npm update
    ```
 
 2. **代碼質量檢查**
+
    ```bash
    npm run lint
    npm run type-check
@@ -268,7 +286,9 @@ export default {
 ## 🆘 問題排查
 
 ### 問題：npm install 失敗
+
 **解決方案**：確保 Node.js 版本 >= 16
+
 ```bash
 node --version
 npm cache clean --force
@@ -276,13 +296,17 @@ npm install
 ```
 
 ### 問題：構建失敗
+
 **解決方案**：檢查 TypeScript 錯誤
+
 ```bash
 npm run type-check
 ```
 
 ### 問題：頁面無法加載
+
 **解決方案**：確認所有資源文件在同一目錄
+
 ```bash
 # 檢查 dist 目錄結構
 ls -la advanced-system-dist/
@@ -291,7 +315,8 @@ ls -la advanced-system-dist/
 ## 📞 支援
 
 如有問題或建議，請聯繫：
-- GitHub Issues: https://github.com/we-can-fix/synergymesh/issues
+
+- GitHub Issues: <https://github.com/we-can-fix/synergymesh/issues>
 - 專案維護者: @wecanfly1
 
 ---

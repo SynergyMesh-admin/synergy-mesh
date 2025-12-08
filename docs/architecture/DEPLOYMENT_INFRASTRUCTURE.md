@@ -787,6 +787,7 @@ psql -h localhost -U sonarqube -d sonarqube -c "SELECT version();"
 ### 常見問題
 
 1. **SonarQube啟動失敗**
+
    ```bash
    # 檢查日誌
    docker-compose logs sonarqube
@@ -796,6 +797,7 @@ psql -h localhost -U sonarqube -d sonarqube -c "SELECT version();"
    ```
 
 2. **PostgreSQL連接失敗**
+
    ```bash
    # 檢查網絡連接
    docker network inspect code-quality-network
@@ -805,6 +807,7 @@ psql -h localhost -U sonarqube -d sonarqube -c "SELECT version();"
    ```
 
 3. **Jenkins插件安裝失敗**
+
    ```bash
    # 手動下載插件
    wget -P /var/jenkins_home/plugins/ https://updates.jenkins.io/download/plugins/...
@@ -849,12 +852,14 @@ save 60 10000
 ## 維護計劃
 
 ### 日常維護
+
 - 每日檢查服務狀態
 - 每日備份數據庫
 - 每週清理舊日誌
 - 每月更新依賴包
 
 ### 定期維護
+
 - 每季度升級組件版本
 - 每半年進行安全審計
 - 每年進行容量規劃評估

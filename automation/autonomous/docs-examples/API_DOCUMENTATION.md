@@ -31,6 +31,7 @@ Authorization: Bearer <token>
 **描述**: 向飛行控制器發送控制命令
 
 **請求體**:
+
 ```json
 {
   "target_altitude": 10.0,
@@ -40,6 +41,7 @@ Authorization: Bearer <token>
 ```
 
 **響應**:
+
 ```json
 {
   "status": "executing",
@@ -50,6 +52,7 @@ Authorization: Bearer <token>
 ```
 
 **狀態碼**:
+
 - `200`: 成功
 - `400`: 無效參數
 - `503`: 服務不可用
@@ -59,6 +62,7 @@ Authorization: Bearer <token>
 **端點**: `GET /flight/control/status`
 
 **響應**:
+
 ```json
 {
   "current_altitude": 9.8,
@@ -80,6 +84,7 @@ Authorization: Bearer <token>
 **描述**: 驗證當前狀態和控制命令是否安全
 
 **請求體**:
+
 ```json
 {
   "current_state": {
@@ -95,6 +100,7 @@ Authorization: Bearer <token>
 ```
 
 **響應**:
+
 ```json
 {
   "is_safe": true,
@@ -113,6 +119,7 @@ Authorization: Bearer <token>
 **端點**: `GET /safety/report`
 
 **響應**:
+
 ```json
 {
   "total_violations": 5,
@@ -138,6 +145,7 @@ Authorization: Bearer <token>
 **端點**: `GET /sensor/fusion/data`
 
 **響應**:
+
 ```json
 {
   "orientation": [0.0, 0.0, 0.0, 1.0],
@@ -162,6 +170,7 @@ Authorization: Bearer <token>
 **端點**: `GET /events/query`
 
 **查詢參數**:
+
 - `category`: 事件分類 (sensor_error, control_error, safety_violation, etc.)
 - `severity`: 嚴重性 (INFO, WARN, ERROR, CRITICAL)
 - `start_time`: 開始時間 (ISO 8601)
@@ -169,6 +178,7 @@ Authorization: Bearer <token>
 - `limit`: 返回數量限制 (預設: 100)
 
 **響應**:
+
 ```json
 {
   "total": 150,
@@ -194,6 +204,7 @@ Authorization: Bearer <token>
 **端點**: `GET /events/export`
 
 **查詢參數**:
+
 - `format`: 導出格式 (json, csv)
 - `start_time`: 開始時間
 - `end_time`: 結束時間
@@ -209,6 +220,7 @@ Authorization: Bearer <token>
 **端點**: `POST /governance/validate`
 
 **請求體**:
+
 ```json
 {
   "module_name": "flight_controller",
@@ -220,6 +232,7 @@ Authorization: Bearer <token>
 ```
 
 **響應**:
+
 ```json
 {
   "valid": true,
@@ -233,6 +246,7 @@ Authorization: Bearer <token>
 **端點**: `GET /governance/report`
 
 **響應**:
+
 ```json
 {
   "total_modules": 5,
@@ -300,6 +314,7 @@ Authorization: Bearer <token>
 **端點**: `ws://localhost:8080/ws/events`
 
 **訂閱消息**:
+
 ```json
 {
   "action": "subscribe",
@@ -309,6 +324,7 @@ Authorization: Bearer <token>
 ```
 
 **事件消息**:
+
 ```json
 {
   "type": "event",
@@ -387,13 +403,14 @@ client.events.subscribe({
 
 測試環境 URL: `https://test.autonomy.synergymesh.com/api/v1`
 
-測試 API 密鑰請聯繫：team@synergymesh.com
+測試 API 密鑰請聯繫：<team@synergymesh.com>
 
 ---
 
 ## 更新日誌
 
 ### v1.0.0 (2025-11-26)
+
 - 初始版本發布
 - 基礎飛行控制 API
 - 安全監控 API
@@ -405,5 +422,6 @@ client.events.subscribe({
 ## 支援
 
 如有問題或建議，請聯繫：
-- Email: team@synergymesh.com
-- GitHub Issues: https://github.com/we-can-fix/synergymesh/issues
+
+- Email: <team@synergymesh.com>
+- GitHub Issues: <https://github.com/we-can-fix/synergymesh/issues>

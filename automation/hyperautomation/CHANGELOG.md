@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 #### 核心文檔
+
 - **core-principles.md**: 完整的技術助手能力框架與互動原則
   - 多語言程式設計精通（系統級、企業級、腳本、函數式、新興語言）
   - 框架與技術棧專長（前端、後端、DevOps）
@@ -42,6 +43,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **sbom-placeholder.json**: CycloneDX 1.5 格式 SBOM 佔位符
 
 #### 治理策略
+
 - **policies/rego/uav_ad.rego**: OPA/Conftest 策略
   - UAV/AD 系統標籤驗證
   - 安全等級格式驗證（L0-L5）
@@ -65,6 +67,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - 條件驗證（啟用時必須指定區域）
 
 #### 範例模板
+
 - **templates/impl/examples/namespace.yaml**: 命名空間範例
   - UAV 生產命名空間
   - AD 生產命名空間
@@ -103,6 +106,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - 進階配置（多環境、GitOps）
 
 #### 契約與文檔
+
 - **contracts/file-contract.json**: 文件契約
   - 產物清單
   - 雜湊佔位符（BLAKE3 + SHA3-512）
@@ -125,6 +129,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - 版本歷史
 
 #### CI/CD 整合
+
 - 更新 `.github/workflows/conftest-validation.yml`
   - 添加 intelligent-hyperautomation 路徑監控
   - 添加 UAV/AD 策略驗證步驟
@@ -133,6 +138,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Technical Details
 
 #### 驗證結果
+
 - ✅ YAML 格式驗證通過（yamllint）
 - ✅ JSON 格式驗證通過
 - ✅ OPA 策略語法驗證通過（conftest 0.47.0）
@@ -141,12 +147,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ✅ 代碼審查完成（4 comments reviewed）
 
 #### 文件統計
+
 - 總計 20 個文件
 - 文檔總字數：約 45,000 字元
 - 代碼總行數：約 500 行（YAML + Rego）
 - 支援語言：繁體中文 + English
 
 #### 設計原則
+
 - 平台中立：可移植至任意 Kubernetes/GitOps 平台
 - 嚴格結構：無未知欄位，Kubernetes 1.30 對齊
 - 安全第一：SHA3-512 + BLAKE3 雙重雜湊支援
@@ -154,6 +162,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 一次性完整輸出：無待補項目
 
 ### Compliance
+
 - Kubernetes 1.30 compatible
 - SLSA Level 2 compatible structure
 - CycloneDX 1.5 SBOM format
@@ -161,6 +170,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Gatekeeper admission control ready
 
 ### Dependencies
+
 - conftest >= 0.47.0
 - yamllint >= 1.37.0
 - kubectl >= 1.30.0
@@ -168,15 +178,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - cosign (optional, for signing)
 
 ### Migration Notes
+
 本版本為初始發布，無需遷移。
 
 ### Breaking Changes
+
 無。
 
 ### Deprecations
+
 無。
 
 ### Security
+
 - 所有範例使用 SHA256 digest 容器映像
 - 實施最小權限原則
 - 啟用 read-only root filesystem
@@ -184,6 +198,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 強制資源限制
 
 ### Contributors
+
 - Platform Team
 - Safety & Compliance Team
 
@@ -192,6 +207,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Planned
+
 - [ ] 實際 SBOM 生成整合
 - [ ] 文件雜湊自動計算
 - [ ] Gatekeeper ConstraintTemplate 定義

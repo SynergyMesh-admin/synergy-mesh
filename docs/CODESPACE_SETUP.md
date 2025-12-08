@@ -35,7 +35,7 @@ Recommended extensions for the project:
 - **ESLint**: Code linting
 - **Prettier**: Code formatting
 - **TypeScript**: Language support
-- **GitHub Copilot**: AI-powered code completion
+- **Island AI**: AI-powered code completion
 - **Jest**: Testing framework support
 - **JSON/YAML**: Configuration file support
 
@@ -44,6 +44,7 @@ Recommended extensions for the project:
 ### Port Forwarding
 
 The following ports are automatically forwarded:
+
 - `3000`: Main application server
 - `3001`: Additional service port
 
@@ -65,6 +66,7 @@ The container runs as the `node` user for security best practices.
 4. Click "Create codespace on [branch]"
 
 The container will automatically:
+
 - Set up the Node.js 18 environment
 - Install all recommended VS Code extensions
 - Run `npm install` to install dependencies
@@ -92,6 +94,7 @@ To customize the configuration:
 ### Container Build Issues
 
 If the container fails to build:
+
 1. Check the Docker daemon is running
 2. Verify network connectivity
 3. Try rebuilding with `Dev Containers: Rebuild Container`
@@ -99,6 +102,7 @@ If the container fails to build:
 ### Extension Issues
 
 If recommended extensions don't install:
+
 1. Check the VS Code marketplace is accessible
 2. Manually install extensions from the Extensions panel
 3. Verify extension IDs in `.vscode/extensions.json`

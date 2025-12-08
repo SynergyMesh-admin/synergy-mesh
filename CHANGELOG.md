@@ -1,4 +1,5 @@
 # SynergyMesh 變更記錄
+
 # SynergyMesh Change Log
 
 ## 📋 變更記錄格式說明 | Change Log Format
@@ -35,6 +36,130 @@ YYYY-MM-DD | <username> | <path> | <change_type> | <reason>
 ---
 
 ## 📝 變更記錄 | Change Records
+
+### 2025-12
+
+#### v4.1.0 - HLP Executor Core Integration (HLP 執行器核心整合) - P1 Tasks
+
+```
+2025-12-07 | copilot | governance/schemas/state-machine.schema.json | add | Create state machine JSON schema for HLP Executor
+2025-12-07 | copilot | core/safety_mechanisms/checkpoint_manager.py | add | Implement checkpoint management module with compression and retention
+2025-12-07 | copilot | core/safety_mechanisms/retry_policies.py | add | Implement retry strategy module with exponential backoff and risk-adaptive delays
+2025-12-07 | copilot | config/safety-mechanisms.yaml | modify | Add HLP Executor circuit breaker and rollback configuration
+2025-12-07 | copilot | config/monitoring.yaml | modify | Add HLP Executor logging configuration
+2025-12-07 | copilot | config/unified-config-index.yaml | modify | Add vector alignment configuration for HLP Executor
+2025-12-07 | copilot | config/integrations/quantum-integration.yaml | add | Create quantum backend integration configuration
+2025-12-07 | copilot | config/integrations/knowledge-graph-integration.yaml | add | Create knowledge graph integration configuration
+2025-12-07 | copilot | infrastructure/kubernetes/hpa/hlp-executor-hpa.yaml | add | Create HPA configuration for HLP Executor autoscaling
+2025-12-07 | copilot | infrastructure/monitoring/prometheus/servicemonitors/hlp-executor-metrics.yaml | add | Create Prometheus ServiceMonitor and alerting rules
+2025-12-07 | copilot | governance/policies/security/hlp-executor-security-policy.yaml | add | Create security policy with GDPR, SOC2, and quantum-safe compliance
+2025-12-07 | copilot | docs/operations/runbooks/HLP_EXECUTOR_ERROR_HANDLING.md | add | Create error handling runbook for operations team
+2025-12-07 | copilot | docs/operations/runbooks/HLP_EXECUTOR_EMERGENCY.md | add | Create emergency procedures runbook (P1/P2)
+2025-12-07 | copilot | docs/operations/runbooks/HLP_EXECUTOR_MAINTENANCE.md | add | Create maintenance procedures runbook
+2025-12-07 | copilot | docs/operations/slo/HLP_EXECUTOR_SLO.md | add | Create SLO metrics documentation
+2025-12-07 | copilot | docs/operations/deployment/HLP_EXECUTOR_DEPLOYMENT_CHECKLIST.md | add | Create deployment checklist
+2025-12-07 | copilot | docs/architecture/CHECKPOINT_STRATEGY.md | add | Create checkpoint strategy documentation
+2025-12-07 | copilot | docs/architecture/RECOVERY_MODE.md | add | Create recovery mode and rollback documentation
+2025-12-07 | copilot | tests/unit/test_partial_rollback.py | add | Create comprehensive unit tests for partial rollback manager
+2025-12-07 | copilot | tests/unit/hlp-executor/jest.config.js | add | Create Jest configuration for HLP Executor unit tests
+```
+
+**說明**: HLP Executor Core Plugin P1 階段整合完成（21項任務）
+
+**Added**:
+- **HLP Executor Core Plugin** (v1.0.0): 新增 Async DAG 編排引擎
+  - 狀態機 JSON Schema 規範與驗證
+  - 檢查點管理模組（支援壓縮、保留策略、檢查和驗證）
+  - 重試策略模組（指數退避 + Jitter + Risk-Adaptive）
+  - 斷路器錯誤處理配置
+  - 部分回滾功能（Phase/Plan-unit/Artifact 三層粒度）
+  - Prometheus 監控與告警規則（ServiceMonitor）
+  - Kubernetes HPA 自動擴展配置
+  - 量子後端整合（優雅降級到經典模式）
+  - 知識圖譜整合（語義搜索與依賴解析）
+  - SLSA L3 供應鏈安全合規
+  - 安全政策（GDPR、SOC 2 Type II、Quantum-Safe）
+  - 運維手冊（錯誤處理、緊急程序、維護程序）
+  - SLO 指標定義與監控
+  - 部署檢查清單
+  - 架構文檔（檢查點策略、恢復模式）
+  - 單元測試（partial_rollback.py）
+  - Jest 測試配置
+
+**Description**: Completed HLP Executor Core Plugin P1 phase integration (21 tasks)
+
+**Added**:
+- **HLP Executor Core Plugin** (v1.0.0): New Async DAG orchestration engine
+  - State machine JSON schema for validation
+  - Checkpoint management with compression and retention policies
+  - Retry strategy with exponential backoff + jitter + risk-adaptive delays
+  - Circuit breaker error handling
+  - Partial rollback (Phase/Plan-unit/Artifact granularity)
+  - Prometheus monitoring with ServiceMonitor and alerting rules
+  - Kubernetes HPA for autoscaling
+  - Quantum backend integration (graceful degradation to classical)
+  - Knowledge graph integration (semantic search and dependency resolution)
+  - SLSA L3 supply chain security compliance
+  - Security policies (GDPR, SOC 2 Type II, Quantum-Safe cryptography)
+  - Operations runbooks (error handling, emergency, maintenance)
+  - SLO metrics and monitoring
+  - Deployment checklist
+  - Architecture documentation (checkpoint strategy, recovery mode)
+  - Unit tests for partial rollback manager
+  - Jest test configuration
+
+---
+
+#### v4.0.1 - Documentation Integration (文檔整合)
+
+```
+2025-12-02 | copilot | README.md | modify | Integrate apps/web documentation into root README.md
+```
+
+**說明**: 將 `apps/web` 子目錄的建置說明與文檔完整整合入根目錄 README.md。
+
+**Description**: Integrated all build instructions and documentation from `apps/web` subdirectory into the root README.md.
+
+**主要變更 | Key Changes**:
+- 新增 `apps/web` 到目錄結構說明 (Added `apps/web` to directory structure)
+- 新增 Web 前端與代碼分析 API 完整章節 (Added complete Web Frontend & Code Analysis API section)
+  - 安裝與設定指南 (Installation and setup guide)
+  - 測試運行說明 (Test execution instructions)
+  - API 服務端點說明 (API service endpoints)
+  - 代碼分析引擎功能說明 (Code analysis engine features)
+  - Docker 容器化部署 (Docker containerization)
+  - Kubernetes 部署指南 (Kubernetes deployment guide)
+- 新增應用程式文檔導航區塊 (Added application documentation navigation section)
+- 更新頁首導航連結 (Updated header navigation links)
+
+---
+
+#### v4.0.0 - Major System Update (系統重大更新)
+
+```
+2025-12-02 | copilot | README.md | modify | Update version from 3.0.0 to 4.0.0 (PR#16)
+2025-12-02 | copilot | CHANGELOG.md | modify | Add v4.0.0 release notes (PR#16)
+2025-12-02 | copilot | tools/cli/ | add | Add Admin Copilot CLI integration (PR#16)
+2025-12-02 | copilot | docs/ADMIN_COPILOT_CLI.md | add | Add CLI documentation (PR#16)
+```
+
+**說明**: 系統重大更新 - 版本同步至 4.0.0，反映第四階段目錄整合完成。新增 Admin Copilot CLI 工具。
+
+**Description**: Major system update - Version synchronized to 4.0.0, reflecting Phase 4 directory consolidation completion. Added Admin Copilot CLI tool.
+
+**主要變更 | Key Changes**:
+- 版本號更新至 4.0.0 (Version updated to 4.0.0)
+- Phase 4 目錄整合完成 (Phase 4 directory consolidation complete)
+- 深度執行系統 (Deep Execution System) 已整合 (PR#10)
+- 知識圖譜驗證修正 (Knowledge Graph validation fixes) (PR#9)
+- CI 工作流程修正 (CI workflow fixes) (PR#7)
+- Agent 配置修正 (Agent configuration fixes) (PR#11)
+- **新增 Admin Copilot CLI** - 終端機 AI 助手 (New: Admin Copilot CLI - Terminal AI assistant)
+  - 自然語言對話功能 (Natural language chat)
+  - 程式碼分析與修復 (Code analysis and fixes)
+  - MCP 伺服器整合 (MCP server integration)
+
+---
 
 ### 2025-11
 
@@ -127,7 +252,18 @@ cut -d'|' -f3 CHANGELOG.md | cut -d'/' -f1 | sort | uniq -c | sort -rn
 
 This section provides a quick summary view showing recent change counts for each monitored directory:
 
-### 2025-11 (當前月份 | Current Month)
+### 2025-12 (當前月份 | Current Month)
+
+| 目錄 Directory | 變更次數 Changes | 最後變更 Last Change | 風險等級 Risk Level |
+|---|---|---|---|
+| `config/` | 0 | - | 🔴 高 High |
+| `core/contract_service/` | 0 | - | 🔴 高 High |
+| `README.md` | 2 | 2025-12-02 | 🟡 中 Medium |
+| `CHANGELOG.md` | 2 | 2025-12-02 | 🟡 中 Medium |
+| `tools/cli/` | 3 | 2025-12-02 | 🟢 低 Low |
+| `docs/ADMIN_COPILOT_CLI.md` | 1 | 2025-12-02 | 🟢 低 Low |
+
+### 2025-11 (上月 | Previous Month)
 
 | 目錄 Directory | 變更次數 Changes | 最後變更 Last Change | 風險等級 Risk Level |
 |---|---|---|---|

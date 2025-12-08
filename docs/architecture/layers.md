@@ -1,4 +1,5 @@
 # SynergyMesh Architecture Layers
+
 # 架構分層視圖
 
 > 本文件定義了 SynergyMesh 平台的分層架構視圖，作為目錄結構與系統邊界的唯一參考來源。
@@ -21,16 +22,19 @@
 負責與外部世界的互動，包括用戶介面和外部系統整合。
 
 **Directories 目錄:**
+
 - `frontend/` - 前端 UI 應用程式
 - `bridges/` - 跨語言整合橋接（Python、Go 等）
 - `contracts/` - 外部 API 合約定義（schemas / OpenAPI specs）
 
 **Responsibilities 職責:**
+
 - 提供使用者互動介面
 - 定義外部 API 規格
 - 處理跨語言呼叫
 
 **Does NOT include 不包含:**
+
 - 業務邏輯實作
 - 內部服務通訊協議
 
@@ -41,11 +45,13 @@
 平台的核心能力，提供決策引擎、執行環境和共用資源。
 
 **Directories 目錄:**
+
 - `core/` - 核心平台服務（AI 引擎、治理、安全機制、整合服務）
 - `runtime/` - 實際運行時環境（Mind Matrix runtime）
 - `shared/` - 共用工具、配置和常量
 
 **Responsibilities 職責:**
+
 - AI 決策引擎與上下文理解
 - 執行架構與引擎
 - 安全機制與信任管理
@@ -53,6 +59,7 @@
 - 訓練系統
 
 **Does NOT include 不包含:**
+
 - CI/CD 工作流程
 - 監控基礎設施
 - 產品級 pipeline 組合
@@ -64,17 +71,20 @@
 AI 能力實作、智能代理和自動化流程。
 
 **Directories 目錄:**
+
 - `automation/` - 自動化能力（architect、autonomous、hyperautomation、intelligent）
 - `agent/` - 長生命週期業務代理（auto-repair、code-analyzer、orchestrator）
 - `mcp-servers/` - MCP（Model Context Protocol）工具端點，供 LLM 調用
 
 **Responsibilities 職責:**
+
 - 多代理 AI 代碼分析系統
 - 自主系統框架（無人機、自動駕駛）
 - 智能自動化 pipeline
 - LLM 可調用的工具端點
 
 **Does NOT include 不包含:**
+
 - 平台級共用 AI 能力（這些在 `core/`）
 - 前端 UI
 - 基礎設施配置
@@ -86,6 +96,7 @@ AI 能力實作、智能代理和自動化流程。
 支援開發、測試和部署的基礎設施。
 
 **Directories 目錄:**
+
 - `infrastructure/` - IaC、Kubernetes、監控配置
 - `.github/` - GitHub Actions 工作流程
 - `tools/` - 開發工具和腳本
@@ -93,12 +104,14 @@ AI 能力實作、智能代理和自動化流程。
 - `config/` - 集中式配置文件
 
 **Responsibilities 職責:**
+
 - 容器化和編排
 - CI/CD 自動化
 - 測試執行和品質保證
 - 環境配置管理
 
 **Does NOT include 不包含:**
+
 - 業務邏輯
 - AI 模型或代理實作
 
@@ -109,17 +122,20 @@ AI 能力實作、智能代理和自動化流程。
 政策、文檔和運維資源。
 
 **Directories 目錄:**
+
 - `governance/` - 治理政策、規則、SBOM、schemas
 - `ops/` - 運維手冊、報告、遷移腳本
 - `docs/` - 完整文檔集合
 
 **Responsibilities 職責:**
+
 - 合規與審計
 - 運維程序
 - 知識文檔
 - SLSA / supply chain security
 
 **Does NOT include 不包含:**
+
 - 可執行代碼（除腳本外）
 - 配置文件（這些在 `config/`）
 
@@ -189,6 +205,7 @@ Experience/Interfaces → Platform Core → AI & Automation
 ### Before Adding New Code 新增代碼前
 
 問自己：
+
 - 這段代碼的主要職責是什麼？
 - 它應該屬於哪一層？
 - 它需要依賴哪些其他模組？

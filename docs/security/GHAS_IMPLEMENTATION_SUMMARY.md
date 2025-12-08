@@ -17,24 +17,28 @@
 ### 涵蓋功能
 
 ✅ **CodeQL 靜態分析**
+
 - 6 種程式語言支援
 - 自定義安全查詢
 - PR 自動化閘門
 - 多語言建置腳本
 
 ✅ **Secret Scanning 防護**
+
 - 30+ 秘密模式
 - Push protection
 - 自動化旁路流程
 - Pre-push hooks
 
 ✅ **監控與告警**
+
 - Prometheus 指標
 - Elasticsearch 日誌
 - 自定義告警規則
 - Dashboard 建議
 
 ✅ **基礎設施**
+
 - 自託管 Runner 設定
 - 網路安全配置
 - 組織安全政策
@@ -127,42 +131,51 @@ export GITHUB_TOKEN="your_token"
 ## 📋 主要工作流程
 
 ### CodeQL Advanced Scan
+
 **文件**: `.github/workflows/codeql-advanced.yml`
 
 **功能**:
+
 - 多語言自動檢測和建置
 - 使用企業級配置和自定義查詢
 - 結果自動上傳到 Security 標籤
 
 **觸發條件**:
+
 - Push 到主要分支
 - Pull Request
 - 每週定時掃描
 
 ### PR Security Gate
+
 **文件**: `.github/workflows/pr-security-gate.yml`
 
 **功能**:
+
 - 自動評估 PR 的安全風險
 - Critical 級別自動阻擋
 - High 級別要求審查
 - 自動添加 PR 評論
 
 **閘門規則**:
+
 - Critical > 0: ❌ 阻擋合併
 - High > 3: ⚠️ 要求審查
 - 其他: ✅ 允許合併
 
 ### Secret Protection
+
 **文件**: `.github/workflows/secret-protection.yml`
 
 **功能**:
+
 - 即時秘密檢測
 - 掃描 commits 和修改的文件
 - 自動 PR 評論
 - 安全建議
 
 **檢測類型**:
+
 - GitHub Tokens
 - API Keys (AWS, Azure, GCP)
 - Database Credentials
@@ -170,24 +183,29 @@ export GITHUB_TOKEN="your_token"
 - 30+ 其他模式
 
 ### Secret Bypass Request
+
 **文件**: `.github/workflows/secret-bypass-request.yml`
 
 **功能**:
+
 - 標準化旁路請求流程
 - 自動建立追蹤 Issue
 - 通知批准者
 - 審計日誌記錄
 
 **旁路原因**:
+
 - False positive
 - Test data
 - Legacy system migration
 - Approved exception
 
 ### Runner Setup
+
 **文件**: `.github/workflows/setup-runner.yml`
 
 **功能**:
+
 - 生成 Runner 設定腳本
 - 包含健康檢查工具
 - 服務管理腳本
@@ -196,9 +214,11 @@ export GITHUB_TOKEN="your_token"
 ## 🛠️ 自動化腳本
 
 ### build-matrix.sh
+
 多語言建置支援，用於 CodeQL 分析
 
 **支援語言**:
+
 - JavaScript/TypeScript (npm, yarn, pnpm)
 - Python (pip, setup.py, pyproject.toml)
 - Java (Gradle, Maven)
@@ -209,23 +229,28 @@ export GITHUB_TOKEN="your_token"
 - Swift (Package, Xcode)
 
 ### advanced-push-protection.sh
+
 本地秘密檢測和阻擋
 
 **模式**:
+
 - `staged`: 暫存變更
 - `commits`: 最近 commits
 - `full`: 完整掃描
 - `strict`: 嚴格模式（預設）
 
 **整合**:
+
 - Git pre-push hook
 - CI/CD pipeline
 - 本地開發環境
 
 ### manage-secret-patterns.py
+
 GitHub Secret Scanning API 管理工具
 
 **操作**:
+
 - `list`: 列出模式
 - `create`: 建立新模式
 - `update`: 更新模式
@@ -236,9 +261,11 @@ GitHub Secret Scanning API 管理工具
 ## 📖 文檔指南
 
 ### 1. GHAS_COMPLETE_GUIDE.md
+
 **完整實施指南** - 從零開始的完整指導
 
 **涵蓋內容**:
+
 - 環境準備
 - CodeQL 實施
 - Secret Scanning 實施
@@ -249,9 +276,11 @@ GitHub Secret Scanning API 管理工具
 **適合對象**: 所有使用者
 
 ### 2. GHAS_DEPLOYMENT.md
+
 **部署架構與環境準備**
 
 **涵蓋內容**:
+
 - GitHub Enterprise 配置
 - 環境隔離設計
 - 權限管理
@@ -261,9 +290,11 @@ GitHub Secret Scanning API 管理工具
 **適合對象**: 系統管理員、DevOps 工程師
 
 ### 3. CODEQL_SETUP.md
+
 **CodeQL 自動化掃描實現**
 
 **涵蓋內容**:
+
 - 工作流程配置
 - 自定義配置
 - 自定義查詢規則
@@ -273,9 +304,11 @@ GitHub Secret Scanning API 管理工具
 **適合對象**: 開發者、安全工程師
 
 ### 4. SECRET_SCANNING.md
+
 **Secret Scanning 全方位防護**
 
 **涵蓋內容**:
+
 - Push Protection 配置
 - 自定義模式管理
 - 旁路機制
@@ -285,9 +318,11 @@ GitHub Secret Scanning API 管理工具
 **適合對象**: 開發者、安全團隊
 
 ### 5. scripts/README.md
+
 **腳本使用文檔**
 
 **涵蓋內容**:
+
 - 每個腳本的詳細說明
 - 使用範例
 - 參數說明
@@ -300,6 +335,7 @@ GitHub Secret Scanning API 管理工具
 ### CodeQL 自定義查詢
 
 **enterprise-security.ql**
+
 - 檢測敏感資料洩露
 - 監控 console.log 中的秘密
 - 企業特定模式
@@ -309,16 +345,19 @@ GitHub Secret Scanning API 管理工具
 **30+ 秘密類型**:
 
 **Critical 級別**:
+
 - 加密金鑰
 - 私鑰
 - 雲端憑證
 
 **High 級別**:
+
 - 資料庫連接
 - API 令牌
 - 服務帳戶
 
 **Medium 級別**:
+
 - Session 密鑰
 - Webhook 密鑰
 - 第三方服務
@@ -328,12 +367,14 @@ GitHub Secret Scanning API 管理工具
 ### Prometheus 指標
 
 **關鍵指標**:
+
 - `github_security_alerts`: 安全警報數量
 - `github_api_remaining`: API 配額
 - `github_runner_status`: Runner 狀態
 - `github_codeql_analysis_status`: CodeQL 狀態
 
 **告警規則** (config/prometheus-rules.yml):
+
 - Critical 漏洞告警
 - API 配額告警
 - Runner 離線告警
@@ -342,6 +383,7 @@ GitHub Secret Scanning API 管理工具
 ### Elasticsearch 日誌
 
 **索引結構**:
+
 - `github-security-logs`: 統一日誌索引
 - 90 天保留期
 - ILM 生命週期管理
@@ -403,30 +445,35 @@ gh api --method POST /orgs/{org}/teams \
 ## ✅ 驗證檢查清單
 
 ### 基本配置
+
 - [ ] GHAS 授權已啟用
 - [ ] 所有工作流程文件已添加
 - [ ] 腳本權限已設定 (chmod +x)
 - [ ] 環境變數已配置
 
 ### CodeQL
+
 - [ ] 工作流程可以成功執行
 - [ ] 自定義查詢正常運作
 - [ ] PR 閘門正確觸發
 - [ ] 建置腳本支援您的語言
 
 ### Secret Scanning
+
 - [ ] Push protection 已安裝
 - [ ] 自定義模式已部署
 - [ ] 旁路流程可以運作
 - [ ] 團隊已收到培訓
 
 ### 監控
+
 - [ ] Prometheus 可以收集指標
 - [ ] Elasticsearch 接收日誌
 - [ ] 告警規則已配置
 - [ ] Dashboard 已建立
 
 ### 文檔
+
 - [ ] 團隊已閱讀完整指南
 - [ ] 安全政策已溝通
 - [ ] 回報流程已建立
@@ -435,21 +482,25 @@ gh api --method POST /orgs/{org}/teams \
 ## 🔄 維護計劃
 
 ### 每日
+
 - 檢查開放的安全警報
 - 審查 PR 安全評論
 - 處理旁路請求
 
 ### 每週
+
 - 定時 CodeQL 掃描結果審查
 - Runner 健康檢查
 - API 配額監控
 
 ### 每月
+
 - 更新自定義模式
 - 審查告警規則
 - 團隊培訓和分享
 
 ### 每季
+
 - 全面安全審計
 - 工具版本更新
 - 政策審查和更新
@@ -457,12 +508,14 @@ gh api --method POST /orgs/{org}/teams \
 ## 📞 支援資源
 
 ### 內部支援
-- **安全團隊**: security-team@example.com
+
+- **安全團隊**: <security-team@example.com>
 - **Slack**: #security-alerts
 - **Wiki**: 內部安全知識庫
 - **文檔**: docs/ 目錄
 
 ### 外部資源
+
 - [GitHub Advanced Security 文檔](https://docs.github.com/en/enterprise-cloud@latest/get-started/learning-about-github/about-github-advanced-security)
 - [CodeQL 文檔](https://codeql.github.com/docs/)
 - [Secret Scanning 文檔](https://docs.github.com/en/code-security/secret-scanning)

@@ -50,6 +50,7 @@ on:
 #### 路徑配置
 
 **包含的路徑**:
+
 - `src/` - 主要源代碼
 - `lib/` - 函式庫
 - `app/` - 應用程式
@@ -58,6 +59,7 @@ on:
 - `advanced-system-src/` - 進階系統源碼
 
 **排除的路徑**:
+
 - `node_modules/` - Node.js 依賴
 - `vendor/` - 第三方供應商代碼
 - `**/*.test.js` - 測試文件
@@ -85,11 +87,13 @@ on:
 #### 建立自定義查詢的步驟
 
 1. **建立查詢檔案**
+
 ```bash
 touch .github/codeql/custom-queries/my-query.ql
 ```
 
-2. **編寫 CodeQL 查詢**
+1. **編寫 CodeQL 查詢**
+
 ```ql
 /**
  * @name My Custom Query
@@ -108,7 +112,7 @@ import javascript
 // Your query logic here
 ```
 
-3. **更新 qlpack.yml**
+1. **更新 qlpack.yml**
 確保您的查詢包含在 `.github/codeql/custom-queries/qlpack.yml` 中。
 
 ## Pull Request 整合機制
@@ -170,26 +174,32 @@ For detailed information, check the Security tab.
 建置腳本位於 `scripts/build-matrix.sh`，支援以下語言：
 
 #### Java
+
 - Gradle: `./gradlew clean build -x test --no-daemon`
 - Maven: `mvn clean compile -DskipTests`
 
 #### JavaScript/TypeScript
+
 - npm: `npm ci --production=false && npm run build`
 - Yarn: `yarn install --frozen-lockfile`
 - pnpm: `pnpm install --frozen-lockfile`
 
 #### Python
+
 - requirements.txt: `pip install -r requirements.txt`
 - setup.py: `pip install -e .`
 - pyproject.toml: `pip install -e .`
 
-#### C#
+#### C #
+
 - `dotnet restore && dotnet build --configuration Release --no-restore`
 
 #### Go
+
 - `go mod download && go mod verify && go build ./...`
 
 #### C/C++
+
 - CMake: `cmake .. -DCMAKE_BUILD_TYPE=Release && make -j$(nproc)`
 - Makefile: `make clean && make release`
 
@@ -226,6 +236,7 @@ CodeQL 會定期更新以包含新的安全規則和改進。建議：
    - 選擇原因（如 "False positive"）
 
 2. **在代碼中抑制**
+
    ```javascript
    // codeql[js/insecure-randomness]
    const randomValue = Math.random();
@@ -251,6 +262,7 @@ CodeQL 會定期更新以包含新的安全規則和改進。建議：
 **問題**: CodeQL 無法初始化特定語言
 
 **解決方案**:
+
 ```yaml
 - name: Initialize CodeQL
   uses: github/codeql-action/init@v3
@@ -265,6 +277,7 @@ CodeQL 會定期更新以包含新的安全規則和改進。建議：
 **問題**: 自定義建置步驟失敗
 
 **解決方案**:
+
 1. 檢查建置依賴是否已安裝
 2. 確認建置命令是否正確
 3. 查看工作流程日誌以獲取詳細錯誤信息
@@ -275,6 +288,7 @@ CodeQL 會定期更新以包含新的安全規則和改進。建議：
 **問題**: CodeQL 分析因記憶體不足而失敗
 
 **解決方案**:
+
 ```yaml
 - name: Perform CodeQL Analysis
   uses: github/codeql-action/analyze@v3
@@ -288,6 +302,7 @@ CodeQL 會定期更新以包含新的安全規則和改進。建議：
 **問題**: 掃描執行時間超過 timeout
 
 **解決方案**:
+
 ```yaml
 jobs:
   analyze:

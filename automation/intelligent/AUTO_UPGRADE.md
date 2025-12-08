@@ -1,4 +1,5 @@
 # Auto Environment Upgrade System - Enterprise Edition
+
 # 自動環境升級系統 - 企業版
 
 ## 概述 Overview
@@ -20,24 +21,28 @@ When missing dependencies are detected, the system automatically upgrades the en
 ## 🎯 設計理念 Design Philosophy
 
 ### 傳統方式 Traditional Approach
+
 ```
 缺少依賴 → 降級功能 → 部分功能不可用
 Missing Dep → Degrade → Limited Features
 ```
 
 ### 自動升級方式 Auto-Upgrade Approach (v1.0)
+
 ```
 缺少依賴 → 自動檢測 → 自動安裝 → 完整功能
 Missing Dep → Detect → Install → Full Features
 ```
 
 ### 🆕 企業版增強 Enterprise Enhancement (v2.0)
+
 ```
 配置文件 → 依賴分析 → 衝突檢測 → 並行安裝 → 智能推薦 → 完整功能
 Config File → Analyze → Detect Conflicts → Parallel Install → Recommend → Full Features
 ```
 
 **優勢 Advantages:**
+
 - ✅ 無需手動干預 No manual intervention
 - ✅ 確保最佳體驗 Optimal experience
 - ✅ 智能依賴管理 Intelligent dependency management

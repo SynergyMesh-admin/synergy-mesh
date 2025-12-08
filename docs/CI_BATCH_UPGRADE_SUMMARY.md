@@ -5,6 +5,7 @@
 本次升級將 **7 個關鍵 CI workflows** 整合到互動式 CI 服務系統中，使每個 CI 都成為獨立的智能客服代理。
 
 ### 升級日期
+
 - **開始時間**: 2025-11-26
 - **完成時間**: 2025-11-26
 - **總耗時**: < 2 小時
@@ -75,20 +76,23 @@ permissions:
 **位置**: `.github/workflows/integration-deployment.yml`
 
 **特點**:
+
 - 監控 4 個層級（Tier 1-4）
 - 整合 Docker 建置和測試
 - 提供生產就緒評分
 - 最複雜的升級案例
 
 **升級變更**:
+
 - 添加 `issues: write` 權限
 - 整合 6 個 jobs 的結果
 - 提供詳細的執行上下文
 
 **互動式能力**:
+
 ```bash
-@copilot analyze Integration & Deployment  # 分析整合問題
-@copilot fix Integration & Deployment      # 獲取修復建議
+@island analyze Integration & Deployment  # 分析整合問題
+@island fix Integration & Deployment      # 獲取修復建議
 ```
 
 ### 2. Stage 1 Basic CI
@@ -96,18 +100,21 @@ permissions:
 **位置**: `.github/workflows/stage-1-basic-ci.yml`
 
 **特點**:
+
 - 基礎測試和覆蓋率檢查
 - 環境健康驗證
 - 輕量級快速檢查
 
 **升級變更**:
+
 - 添加 `issues: write` 權限
 - 簡化的狀態判斷
 
 **互動式能力**:
+
 ```bash
-@copilot analyze Stage 1 Basic CI  # 分析測試失敗
-@copilot help Stage 1 Basic CI     # 查看文檔
+@island analyze Stage 1 Basic CI  # 分析測試失敗
+@island help Stage 1 Basic CI     # 查看文檔
 ```
 
 ### 3. Language Compliance Check
@@ -115,16 +122,19 @@ permissions:
 **位置**: `.github/workflows/language-check.yml`
 
 **特點**:
+
 - 檢查文檔和配置語言規範
 - 僅在相關文件變更時觸發
 
 **升級變更**:
+
 - 新增 `permissions` 區塊
 - 添加互動式服務整合
 
 **互動式能力**:
+
 ```bash
-@copilot fix Language Compliance Check  # 獲取修復建議
+@island fix Language Compliance Check  # 獲取修復建議
 ```
 
 ### 4. CodeQL Advanced
@@ -132,18 +142,21 @@ permissions:
 **位置**: `.github/workflows/codeql-advanced.yml`
 
 **特點**:
+
 - JavaScript 和 Python 安全分析
 - 定期掃描 + PR 觸發
 - 僅在 PR 時提供互動式反饋
 
 **升級變更**:
+
 - 條件執行：`if: always() && github.event_name == 'pull_request'`
 - 避免在定期掃描時產生過多評論
 
 **互動式能力**:
+
 ```bash
-@copilot analyze CodeQL Advanced  # 分析安全問題
-@copilot similar CodeQL Advanced  # 查找類似問題
+@island analyze CodeQL Advanced  # 分析安全問題
+@island similar CodeQL Advanced  # 查找類似問題
 ```
 
 ### 5. Auto Vulnerability Fix
@@ -151,18 +164,21 @@ permissions:
 **位置**: `.github/workflows/auto-vulnerability-fix.yml`
 
 **特點**:
+
 - 自動漏洞評估和修復
 - 支援不同嚴重程度閾值
 - Dependabot 整合
 
 **升級變更**:
+
 - 整合評估和摘要 jobs
 - 提供漏洞統計上下文
 
 **互動式能力**:
+
 ```bash
-@copilot analyze Auto Vulnerability Fix  # 分析漏洞
-@copilot fix Auto Vulnerability Fix      # 自動修復建議
+@island analyze Auto Vulnerability Fix  # 分析漏洞
+@island fix Auto Vulnerability Fix      # 自動修復建議
 ```
 
 ### 6. Security Compliance Report
@@ -170,17 +186,20 @@ permissions:
 **位置**: `.github/workflows/compliance-report.yml`
 
 **特點**:
+
 - 月度合規報告生成
 - 整合多個安全指標
 - 支援多種報告格式
 
 **升級變更**:
+
 - 僅在 workflow_dispatch 時提供互動式反饋
 - 避免自動排程時的評論
 
 **互動式能力**:
+
 ```bash
-@copilot help Security Compliance Report  # 查看報告說明
+@island help Security Compliance Report  # 查看報告說明
 ```
 
 ### 7. Phase 1 Integration
@@ -188,17 +207,20 @@ permissions:
 **位置**: `.github/workflows/phase1-integration.yml`
 
 **特點**:
+
 - 基礎設施整合驗證
 - 配置文件檢查
 - 生成整合報告
 
 **升級變更**:
+
 - 添加 `issues: write` 權限
 - 整合驗證和就緒檢查
 
 **互動式能力**:
+
 ```bash
-@copilot analyze Phase 1 Integration  # 分析整合問題
+@island analyze Phase 1 Integration  # 分析整合問題
 ```
 
 ---
@@ -286,6 +308,7 @@ if: always() && github.event_name == 'pull_request'
 ### 開發者體驗
 
 **改進項**:
+
 - ✅ 即時獲得智能診斷（1 分鐘內）
 - ✅ 針對性修復建議
 - ✅ 互動式命令支援
@@ -293,6 +316,7 @@ if: always() && github.event_name == 'pull_request'
 - ✅ 統一的評論格式
 
 **不變項**:
+
 - ✅ CI 原有功能完整保留
 - ✅ 執行流程不受影響
 - ✅ 失敗判斷邏輯一致
@@ -403,11 +427,13 @@ error-logs: "Failed"
 #### 1. 互動式服務未執行
 
 **可能原因**:
+
 - 權限不足
 - 條件不滿足
 - workflow 語法錯誤
 
 **解決方案**:
+
 ```yaml
 # 檢查權限
 permissions:
@@ -424,11 +450,13 @@ python3 -m yaml filename.yml
 #### 2. 評論未生成
 
 **可能原因**:
+
 - PR 編號無法獲取
 - 網路問題
 - Token 權限問題
 
 **解決方案**:
+
 - 查看 workflow run 日誌
 - 檢查 `pr-number` 輸出
 - 驗證 `GITHUB_TOKEN` 權限
@@ -436,10 +464,12 @@ python3 -m yaml filename.yml
 #### 3. 狀態判斷錯誤
 
 **可能原因**:
+
 - `needs` 依賴配置錯誤
 - 狀態計算邏輯錯誤
 
 **解決方案**:
+
 - 檢查所有 `needs` 中的 job 名稱
 - 驗證狀態計算表達式
 - 測試各種失敗情況
@@ -481,6 +511,7 @@ python3 -m yaml filename.yml
 - 🗣️ **命令支援** - 互動式命令系統
 
 所有升級：
+
 - ✅ 零破壞性變更
 - ✅ 向後兼容
 - ✅ 性能影響最小
@@ -489,6 +520,7 @@ python3 -m yaml filename.yml
 ### 設計理念更新
 
 **專注於失敗診斷**：
+
 - ❌ 失敗時：提供智能診斷、修復建議、互動命令
 - ✅ 成功時：僅清理標籤，不發布評論（避免資源浪費和通知疲勞）
 

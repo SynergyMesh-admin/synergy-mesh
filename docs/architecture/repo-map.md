@@ -1,4 +1,5 @@
 # SynergyMesh Repository Map
+
 # 倉庫地圖與語義邊界
 
 > 本文件為智能體和開發者提供「世界觀」參考：整個系統的架構與互動都以此 monorepo 及其內部結構為唯一真相與唯一操作介面。
@@ -28,6 +29,7 @@
 #### `core/` - Platform-Level AI Capabilities 平台級 AI 能力
 
 **負責 Responsible for:**
+
 - AI 決策引擎 (`ai_decision_engine.py`)
 - 上下文理解引擎 (`context_understanding_engine.py`)
 - 虛擬專家系統 (`virtual_experts/`)
@@ -35,15 +37,18 @@
 - 幻覺檢測 (`hallucination_detector.py`)
 
 **不負責 NOT responsible for:**
+
 - 具體業務 pipeline（這些在 `automation/intelligent/`）
 - LLM 工具端點（這些在 `mcp-servers/`）
 - 業務代理編排（這些在 `agent/`）
 
 **應依賴 Should depend on:**
+
 - `shared/`
 - `runtime/`
 
 **不應依賴 Should NOT depend on:**
+
 - `automation/`
 - `agent/`
 - `mcp-servers/`
@@ -53,6 +58,7 @@
 #### `mcp-servers/` - LLM Tool Endpoints LLM 工具端點
 
 **負責 Responsible for:**
+
 - 提供 LLM 可調用的工具（MCP 協議）
 - 代碼分析端點 (`code-analyzer.js`)
 - SLSA 驗證端點 (`slsa-validator.js`)
@@ -60,14 +66,17 @@
 - 文檔生成端點 (`doc-generator.js`)
 
 **不負責 NOT responsible for:**
+
 - 核心業務邏輯實作
 - 長生命週期代理狀態管理
 - 複雜工作流編排
 
 **應依賴 Should depend on:**
+
 - 可調用 `core/` 提供的能力
 
 **不應依賴 Should NOT depend on:**
+
 - `agent/` 的業務代理
 - `automation/intelligent/` 的 pipeline
 
@@ -76,6 +85,7 @@
 #### `agent/` - Business Agents 業務代理
 
 **負責 Responsible for:**
+
 - 長生命週期業務代理
 - 自動修復代理 (`auto-repair/`)
 - 代碼分析代理 (`code-analyzer/`)
@@ -83,15 +93,18 @@
 - 漏洞檢測代理 (`vulnerability-detector/`)
 
 **不負責 NOT responsible for:**
+
 - LLM 工具端點（使用 `mcp-servers/`）
 - 平台級 AI 能力（使用 `core/`）
 - Pipeline 組合（使用 `automation/intelligent/`）
 
 **應依賴 Should depend on:**
+
 - `core/` 的平台能力
 - `mcp-servers/` 的工具端點
 
 **不應依賴 Should NOT depend on:**
+
 - 直接實作 LLM 協議
 
 ---
@@ -99,17 +112,20 @@
 #### `automation/intelligent/` - Product Pipelines 產品級 Pipeline
 
 **負責 Responsible for:**
+
 - 多代理 AI 代碼分析系統
 - 具體 pipeline 組合（code pipeline、review pipeline）
 - SynergyMesh Core 自主協同系統
 - 產品級工作流
 
 **不負責 NOT responsible for:**
+
 - 平台級 AI 引擎（使用 `core/`）
 - LLM 端點實作（使用 `mcp-servers/`）
 - 單一代理實作（使用 `agent/`）
 
 **應依賴 Should depend on:**
+
 - `core/`
 - `mcp-servers/`
 - `agent/`
@@ -121,11 +137,13 @@
 #### `core/contract_service/` (原 `core/contract_service/`)
 
 **負責 Responsible for:**
+
 - 合約管理微服務的程式碼
 - L1 合約服務實作
 - AI 聊天服務整合
 
 **不負責 NOT responsible for:**
+
 - 外部 API 合約定義（這些在 `contracts/`）
 
 ---
@@ -133,11 +151,13 @@
 #### `contracts/`
 
 **負責 Responsible for:**
+
 - 外部 API 合約定義（OpenAPI specs）
 - Schema 資料文件
 - 介面規格定義
 
 **不負責 NOT responsible for:**
+
 - 實作代碼
 - 服務邏輯
 
@@ -148,11 +168,13 @@
 #### `runtime/`
 
 **負責 Responsible for:**
+
 - 實際運行時環境
 - Mind Matrix runtime
 - 部署時啟動的組件
 
 **與 `core/execution_*` 的關係:**
+
 - `runtime/` = 實際部署、啟動、承載 execution 的環境
 - `core/execution_engine/` = 提供執行邏輯的抽象
 - `core/execution_architecture/` = 定義執行拓撲/設計
@@ -191,6 +213,7 @@
 ### 驗證方式 Validation
 
 所有變更完成後，必須：
+
 - 通過專案測試命令（`npm test`, `npm run lint`）
 - 更新相關文檔，使 repo 自身能解釋新結構
 

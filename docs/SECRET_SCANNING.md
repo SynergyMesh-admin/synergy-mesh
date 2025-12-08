@@ -81,6 +81,7 @@ Push Protection 工作流程已配置於 `.github/workflows/secret-protection.ym
 #### 模式類別
 
 **Critical（關鍵）**:
+
 - 加密主金鑰
 - AES 加密金鑰
 - RSA 私鑰
@@ -88,6 +89,7 @@ Push Protection 工作流程已配置於 `.github/workflows/secret-protection.ym
 - 雲端服務憑證
 
 **High（高）**:
+
 - 企業資料庫連接字串
 - 內部 API 令牌
 - 服務帳戶金鑰
@@ -95,6 +97,7 @@ Push Protection 工作流程已配置於 `.github/workflows/secret-protection.ym
 - OAuth 客戶端密鑰
 
 **Medium（中）**:
+
 - 舊版 API 金鑰
 - Session 密鑰
 - Bearer 令牌
@@ -174,6 +177,7 @@ patterns:
 ### 什麼是旁路機制？
 
 有時某些檢測到的「秘密」實際上是：
+
 - 誤報（False Positives）
 - 測試資料
 - 公開可用的範例
@@ -214,7 +218,7 @@ patterns:
 2. **Issue 建立**: 系統自動建立追蹤 Issue
 3. **通知批准者**: 安全團隊成員收到通知
 4. **審查**: 批准者檢查警報和理由
-5. **決策**: 
+5. **決策**:
    - 批准：標記警報為 resolved
    - 拒絕：關閉 Issue 並說明原因
 6. **審計**: 所有決策記錄在審計日誌中
@@ -263,6 +267,7 @@ gh api --method PATCH \
 #### Pull Request 自動檢查
 
 Secret Protection 工作流程會自動：
+
 1. 掃描 PR 中的變更
 2. 添加掃描結果評論
 3. 提供修復建議
@@ -295,6 +300,7 @@ curl -X POST https://siem.example.com/api/events \
 ### 預防秘密洩露
 
 1. **使用環境變數**
+
    ```bash
    # 好的做法
    export DATABASE_URL="postgres://..."
@@ -310,6 +316,7 @@ curl -X POST https://siem.example.com/api/events \
    - GitHub Secrets
 
 3. **使用 .gitignore**
+
    ```gitignore
    # 忽略包含秘密的文件
    .env
@@ -328,6 +335,7 @@ curl -X POST https://siem.example.com/api/events \
 如果秘密已經被推送到倉庫：
 
 1. **立即輪換/撤銷**
+
    ```bash
    # 立即撤銷被洩露的憑證
    # 生成新的憑證
@@ -335,6 +343,7 @@ curl -X POST https://siem.example.com/api/events \
    ```
 
 2. **清理 Git 歷史**
+
    ```bash
    # 使用 BFG Repo-Cleaner
    bfg --replace-text passwords.txt repo.git
@@ -346,6 +355,7 @@ curl -X POST https://siem.example.com/api/events \
    ```
 
 3. **強制推送**
+
    ```bash
    git push --force --all
    git push --force --tags
@@ -409,7 +419,8 @@ gh api /orgs/{org}/secret-scanning/alerts \
 
 **Q: 掃描報告太多誤報怎麼辦？**
 
-A: 
+A:
+
 1. 調整自定義模式以提高精確度
 2. 使用排除規則過濾已知的誤報
 3. 為測試文件添加排除路徑
@@ -417,6 +428,7 @@ A:
 **Q: 如何處理舊倉庫中的歷史秘密？**
 
 A:
+
 1. 執行完整的倉庫掃描
 2. 優先處理高嚴重程度的警報
 3. 輪換所有被檢測到的憑證
@@ -425,6 +437,7 @@ A:
 **Q: Push Protection 阻止了合法的推送？**
 
 A:
+
 1. 確認檢測到的是否真的是秘密
 2. 如果是誤報，提交旁路請求
 3. 如果是測試資料，將其移到配置文件中

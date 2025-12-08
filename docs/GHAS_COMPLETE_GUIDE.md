@@ -284,7 +284,7 @@ cat .github/codeql/custom-queries/enterprise-security.ql
 #### 溝通渠道
 
 - Slack: #security-alerts
-- Email: security-team@example.com
+- Email: <security-team@example.com>
 - Issues: GitHub Security 標籤
 - Wiki: 內部安全知識庫
 
@@ -314,6 +314,7 @@ cat .github/codeql/custom-queries/enterprise-security.ql
 **症狀**: CodeQL 分析失敗
 
 **解決方案**:
+
 ```bash
 # 檢查建置步驟
 ./scripts/build-matrix.sh <language>
@@ -328,6 +329,7 @@ cat .github/codeql/custom-queries/enterprise-security.ql
 #### 記憶體不足
 
 **解決方案**:
+
 ```yaml
 env:
   CODEQL_RAM: 8192
@@ -338,6 +340,7 @@ env:
 #### 太多誤報
 
 **解決方案**:
+
 1. 調整自定義模式
 2. 添加排除規則
 3. 使用更精確的正則表達式
@@ -345,6 +348,7 @@ env:
 #### Push 被阻擋
 
 **解決方案**:
+
 ```bash
 # 確認是否真的是秘密
 # 如果是誤報，提交旁路請求
@@ -358,6 +362,7 @@ git push --no-verify
 #### Prometheus 無法收集指標
 
 **檢查清單**:
+
 - [ ] Exporter 是否運行
 - [ ] 網路連接是否正常
 - [ ] 認證配置是否正確
@@ -366,6 +371,7 @@ git push --no-verify
 #### Elasticsearch 連接失敗
 
 **解決方案**:
+
 ```bash
 # 測試連接
 curl -X GET "http://elasticsearch:9200/_cluster/health"

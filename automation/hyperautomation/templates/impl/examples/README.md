@@ -5,12 +5,16 @@
 ## 範例清單
 
 ### namespace.yaml
+
 定義 UAV 和 AD 系統的命名空間，包含所有必要標籤：
+
 - `namespace.io/*` 標準標籤
 - `uav.io/system` UAV/AD 系統標識
 
 ### uav-deployment.yaml
+
 UAV 控制器部署範例，展示：
+
 - ✅ 完整的標籤集（標準 + UAV 特定）
 - ✅ 安全等級標註（L4 - 高風險）
 - ✅ 使用 SHA256 digest 的容器映像
@@ -20,7 +24,9 @@ UAV 控制器部署範例，展示：
 - ✅ 環境變數從 ConfigMap 讀取
 
 ### uav-configmap.yaml
+
 UAV 地理圍欄配置範例：
+
 - ✅ `geo.fence.enabled` 設定
 - ✅ `geo.fence.regions` 區域定義
 - ✅ 安全參數（高度、速度、電量）
@@ -28,7 +34,9 @@ UAV 地理圍欄配置範例：
 - ✅ 通訊設定
 
 ### ad-deployment.yaml
+
 自動駕駛控制器部署範例：
+
 - ✅ AD 系統標籤
 - ✅ 安全等級 L3（中等風險）
 - ✅ 較高的資源配置（1-2 CPU, 1-2Gi 記憶體）
@@ -80,6 +88,7 @@ kubectl apply -f examples/ --dry-run=server
 所有資源必須包含以下標籤：
 
 #### 標準命名空間標籤
+
 - `namespace.io/managed-by`: 管理者（如 "platform-team"）
 - `namespace.io/domain`: 業務領域（"uav" 或 "ad"）
 - `namespace.io/team`: 負責團隊
@@ -87,6 +96,7 @@ kubectl apply -f examples/ --dry-run=server
 - `namespace.io/lifecycle`: 生命週期（experimental/stable/deprecated）
 
 #### UAV/AD 特定標籤（用於 Deployment）
+
 - `uav.io/system`: 系統類型（"uav" 或 "ad"）
 - `uav.io/safety-level`: 安全等級（L0-L5）
 - `uav.io/risk-category`: 風險類別（low/medium/high）
@@ -119,6 +129,7 @@ data:
 ```
 
 ### 區域格式
+
 - 格式：`XX-RegionName`
 - XX: 兩個大寫字母的國家/地區代碼
 - RegionName: 區域名稱（可包含字母、數字、底線、連字符）
@@ -127,6 +138,7 @@ data:
 ## 資源要求
 
 ### UAV 系統建議配置
+
 ```yaml
 resources:
   requests:
@@ -138,6 +150,7 @@ resources:
 ```
 
 ### AD 系統建議配置
+
 ```yaml
 resources:
   requests:
@@ -151,17 +164,21 @@ resources:
 ## 安全最佳實踐
 
 ### 容器映像
+
 ✅ 使用 SHA256 digest 而非 tag
+
 ```yaml
 image: registry.example.com/app@sha256:abc123...
 ```
 
 ❌ 避免使用可變標籤
+
 ```yaml
 image: registry.example.com/app:latest  # 不建議
 ```
 
 ### 安全上下文
+
 ```yaml
 securityContext:
   runAsNonRoot: true
@@ -174,6 +191,7 @@ securityContext:
 ```
 
 ### 健康檢查
+
 ```yaml
 livenessProbe:
   httpGet:
@@ -195,6 +213,7 @@ readinessProbe:
 ### 策略驗證失敗
 
 **問題**: 缺少必要標籤
+
 ```
 FAIL - Missing label uav.io/system
 ```
@@ -202,6 +221,7 @@ FAIL - Missing label uav.io/system
 **解決**: 添加缺失的標籤到 metadata.labels
 
 **問題**: 地理圍欄格式錯誤
+
 ```
 FAIL - Invalid geo-fence regions format
 ```
@@ -211,6 +231,7 @@ FAIL - Invalid geo-fence regions format
 ### 部署失敗
 
 **問題**: 資源不足
+
 ```
 FailedScheduling: Insufficient cpu/memory
 ```
@@ -218,6 +239,7 @@ FailedScheduling: Insufficient cpu/memory
 **解決**: 調整 requests/limits 或增加節點資源
 
 **問題**: 映像拉取失敗
+
 ```
 ImagePullBackOff
 ```

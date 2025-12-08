@@ -20,6 +20,7 @@ cd synergymesh/autonomous-system
 ### 2. 安裝依賴
 
 #### ROS 2 依賴
+
 ```bash
 # 安裝 ROS 2 (以 Humble 為例)
 sudo apt update
@@ -31,6 +32,7 @@ rosdep install --from-paths . --ignore-src -r -y
 ```
 
 #### Python 依賴
+
 ```bash
 # 安裝 API 治理模組依賴
 cd ../api-governance
@@ -42,6 +44,7 @@ pip install -r requirements.txt
 ```
 
 #### Go 依賴
+
 ```bash
 cd ../security-observability
 go mod download
@@ -50,6 +53,7 @@ go mod download
 ### 3. 構建項目
 
 #### 構建 C++ 核心控制層
+
 ```bash
 cd ../architecture-stability
 
@@ -63,6 +67,7 @@ make -j$(nproc)
 ```
 
 #### 構建 Go 微服務
+
 ```bash
 cd ../../security-observability
 go build -o event_logger
@@ -71,6 +76,7 @@ go build -o event_logger
 ### 4. 運行模擬
 
 #### 啟動飛行控制器
+
 ```bash
 cd ../architecture-stability
 source install/setup.bash
@@ -78,6 +84,7 @@ ros2 run autonomy_core flight_controller
 ```
 
 #### 啟動安全監控服務
+
 ```bash
 cd ../security-observability
 ./event_logger
@@ -86,12 +93,14 @@ cd ../security-observability
 ### 5. 運行測試
 
 #### Python 測試
+
 ```bash
 cd ../testing-compatibility
 python test_compatibility.py
 ```
 
 #### API 治理驗證
+
 ```bash
 cd ../api-governance
 python api_contract.py
@@ -176,6 +185,7 @@ export ENABLE_ENCRYPTION=true
 ### 事件日誌
 
 事件日誌保存在：
+
 - 本地：`/var/log/autonomy/events.log`
 - JSON 格式：通過 API 導出
 
@@ -197,18 +207,21 @@ ros2 topic bw /imu/data
 ## 🧪 測試與驗證
 
 ### 單元測試
+
 ```bash
 cd testing-compatibility
 python -m unittest discover
 ```
 
 ### 整合測試
+
 ```bash
 # 啟動所有服務後執行
 ./scripts/run_integration_tests.sh
 ```
 
 ### 兼容性測試
+
 ```bash
 # 測試跨版本兼容性
 python test_compatibility.py --matrix
@@ -248,7 +261,7 @@ python test_compatibility.py --matrix
 ### 獲取幫助
 
 - 提交 Issue：[GitHub Issues](https://github.com/we-can-fix/synergymesh/issues)
-- 郵件聯繫：team@synergymesh.com
+- 郵件聯繫：<team@synergymesh.com>
 
 ## 📄 授權
 

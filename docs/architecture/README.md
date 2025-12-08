@@ -19,9 +19,15 @@
    - 快速決策指南
    - 不變量規則
 
+2. **[API 演化文件](./api-evolution/)** ⭐ 新增
+   - [API 演化標準模板](./api-evolution/TEMPLATE.md) - 可複用的 API 演化計畫模板
+   - [L1 Core + Automation 任務](./api-evolution/L1_core_and_automation_tasks.md) - 當前階段的 API 演化實施計畫
+   - 18 個新 endpoints 定義與驗證規範
+   - 與 system-module-map.yaml 的整合對齊
+
 ### 核心文檔
 
-2. **[系統架構設計](./SYSTEM_ARCHITECTURE.md)**
+1. **[系統架構設計](./SYSTEM_ARCHITECTURE.md)**
    - 整體架構概述
    - 四層架構設計（檢查引擎層、協調編排層、基礎設施層、監控告警層）
    - 核心組件介紹
@@ -29,21 +35,21 @@
    - 部署模式
    - 安全與性能考量
 
-3. **[部署與基礎設施](./DEPLOYMENT_INFRASTRUCTURE.md)**
+2. **[部署與基礎設施](./DEPLOYMENT_INFRASTRUCTURE.md)**
    - Docker容器化環境搭建
    - CI/CD流水線配置
    - Kubernetes集群部署
    - 監控系統配置
    - 環境準備指南
 
-4. **[代碼品質檢查實現](./CODE_QUALITY_CHECKS.md)**
+3. **[代碼品質檢查實現](./CODE_QUALITY_CHECKS.md)**
    - SonarQube靜態分析配置
    - ESLint/Prettier格式化檢查
    - 安全掃描實現
    - 配置驗證
    - 報告生成與聚合
 
-5. **[安全檢測與配置文件檢查](./SECURITY_CONFIG_CHECKS.md)**
+4. **[安全檢測與配置文件檢查](./SECURITY_CONFIG_CHECKS.md)**
    - 第二階段部署文檔
    - Bandit Python安全檢查
    - OWASP Dependency Check整合
@@ -53,7 +59,7 @@
 
 ### 配置文件
 
-6. **[配置文件與腳本](./configuration/)**
+1. **[配置文件與腳本](./configuration/)**
    - Docker配置
    - Jenkins Pipeline
    - Kubernetes部署清單
@@ -107,24 +113,28 @@
 ## 📋 主要功能
 
 ### 代碼品質檢查
+
 - ✅ 靜態代碼分析（SonarQube）
 - ✅ 代碼格式檢查（ESLint, Prettier）
 - ✅ 代碼風格驗證（Pylint, Flake8）
 - ✅ 類型檢查（TypeScript, Mypy）
 
 ### 安全掃描
+
 - ✅ 依賴漏洞檢測（npm audit, Safety）
 - ✅ 代碼安全掃描（Bandit, CodeQL）
 - ✅ OWASP依賴檢查
 - ✅ 安全熱點識別
 
 ### 自動化流程
+
 - ✅ CI/CD整合（Jenkins, GitHub Actions）
 - ✅ 質量門控管理
 - ✅ 自動化報告生成
 - ✅ 多通道通知（郵件、Slack、釘釘）
 
 ### 監控與分析
+
 - ✅ 實時性能監控
 - ✅ 日誌聚合與分析
 - ✅ 指標收集與可視化
@@ -133,6 +143,7 @@
 ## 🔧 技術棧
 
 ### 核心工具
+
 - **SonarQube** 9.9+ - 靜態代碼分析
 - **Jenkins** 2.4+ - CI/CD編排
 - **Docker** 20.10+ - 容器化
@@ -141,6 +152,7 @@
 - **Redis** 6+ - 緩存
 
 ### 檢查工具
+
 - **ESLint** - JavaScript/TypeScript代碼檢查
 - **Prettier** - 代碼格式化
 - **Pylint** - Python代碼分析
@@ -149,6 +161,7 @@
 - **CodeQL** - 代碼安全分析
 
 ### 監控工具
+
 - **Prometheus** - 指標收集
 - **Grafana** - 數據可視化
 - **ELK Stack** - 日誌管理
@@ -206,12 +219,14 @@ kubectl apply -f docs/architecture/configuration/monitoring/
 ## 📈 性能指標
 
 ### SLA目標
+
 - **可用性**：99.9%
 - **響應時間**：P95 < 2秒
 - **錯誤率**：< 0.1%
 - **並發處理**：支持100+並發檢查任務
 
 ### 擴展能力
+
 - **水平擴展**：支持多實例部署
 - **垂直擴展**：支持資源動態調整
 - **負載均衡**：自動流量分配
@@ -220,12 +235,14 @@ kubectl apply -f docs/architecture/configuration/monitoring/
 ## 🔄 更新與維護
 
 ### 日常維護
+
 - 每日健康檢查
 - 每日數據備份
 - 每週日誌清理
 - 每月依賴更新
 
 ### 定期升級
+
 - 每季度組件升級
 - 每半年安全審計
 - 每年容量規劃
@@ -233,11 +250,13 @@ kubectl apply -f docs/architecture/configuration/monitoring/
 ## 📞 支持與反饋
 
 ### 獲取幫助
+
 1. 查閱相關文檔
 2. 搜索已知問題
 3. 提交新問題
 
 ### 貢獻指南
+
 1. Fork倉庫
 2. 創建特性分支
 3. 提交Pull Request
@@ -254,12 +273,14 @@ kubectl apply -f docs/architecture/configuration/monitoring/
 ## 🗺️ 文檔路線圖
 
 ### 已完成
+
 - ✅ 系統架構設計
 - ✅ 部署與基礎設施指南
 - ✅ 代碼品質檢查實現
 - ✅ 配置文件與腳本
 
 ### 計劃中
+
 - ⏳ API參考文檔
 - ⏳ 故障排除指南
 - ⏳ 最佳實踐手冊
@@ -269,12 +290,14 @@ kubectl apply -f docs/architecture/configuration/monitoring/
 ## 📚 相關資源
 
 ### 官方文檔
+
 - [SonarQube Documentation](https://docs.sonarqube.org/)
 - [Jenkins Documentation](https://www.jenkins.io/doc/)
 - [Kubernetes Documentation](https://kubernetes.io/docs/)
 - [Docker Documentation](https://docs.docker.com/)
 
 ### 社區資源
+
 - [ESLint Rules](https://eslint.org/docs/rules/)
 - [Prettier Options](https://prettier.io/docs/en/options.html)
 - [Python Code Quality](https://realpython.com/python-code-quality/)

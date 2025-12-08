@@ -29,17 +29,20 @@ deploy/
 ### 使用 Docker Compose
 
 1. **複製環境變數範本**
+
    ```bash
    cp .env.example .env.production
    # 編輯 .env.production，設定實際的值
    ```
 
 2. **啟動服務**
+
    ```bash
    docker-compose -f docker-compose.production.yml up -d
    ```
 
 3. **驗證服務**
+
    ```bash
    curl http://localhost:3000/healthz
    ```
@@ -52,6 +55,7 @@ deploy/
    - Kustomize (可選，kubectl 內建)
 
 2. **創建命名空間與密鑰**
+
    ```bash
    kubectl apply -f k8s/namespace.yaml
    
@@ -62,6 +66,7 @@ deploy/
    ```
 
 3. **部署服務**
+
    ```bash
    # 使用 kubectl
    kubectl apply -f k8s/
@@ -71,6 +76,7 @@ deploy/
    ```
 
 4. **驗證部署**
+
    ```bash
    kubectl get pods -n synergymesh -l app=contracts-l1
    kubectl get svc -n synergymesh contracts-l1
@@ -79,7 +85,9 @@ deploy/
 ## 📋 配置檔案說明
 
 ### .env.example
+
 環境變數範本，包含：
+
 - 應用程式配置（PORT, NODE_ENV）
 - 資料庫配置（可選）
 - Sigstore 配置
@@ -87,7 +95,9 @@ deploy/
 - 監控配置
 
 ### docker-compose.production.yml
+
 Docker Compose 生產配置，包含：
+
 - Contracts L1 服務（3 個副本）
 - Nginx 負載平衡器（可選）
 - 健康檢查
@@ -96,22 +106,29 @@ Docker Compose 生產配置，包含：
 ### K8s 配置
 
 #### namespace.yaml
+
 定義 `synergymesh` 命名空間。
 
 #### configmap.yaml
+
 應用程式配置（非敏感資料）：
+
 - 環境設定
 - 功能開關
 - Sigstore URL
 
 #### secret.yaml
+
 敏感資料（**生產環境必須替換！**）：
+
 - API 密鑰
 - 資料庫憑證
 - 第三方服務令牌
 
 #### deployment-production.yaml
+
 生產部署配置：
+
 - 3 個副本（高可用）
 - 滾動更新策略
 - 健康檢查（liveness, readiness, startup）
@@ -120,24 +137,32 @@ Docker Compose 生產配置，包含：
 - Pod 反親和性（避免單點故障）
 
 #### service-production.yaml
+
 兩個服務定義：
+
 1. **contracts-l1**: ClusterIP 服務（內部訪問）
 2. **contracts-l1-headless**: Headless 服務（直接 Pod 訪問）
 
 #### ingress.yaml
+
 流量入口配置：
+
 - HTTPS 自動憑證（Let's Encrypt）
 - 速率限制
 - CORS 支援
 - 多域名支援
 
 #### servicemonitor.yaml
+
 Prometheus 監控配置：
+
 - 指標收集端點
 - 收集間隔：30 秒
 
 #### prometheusrule.yaml
+
 告警規則：
+
 - 高錯誤率（>5%）
 - 慢回應時間（p95 > 100ms）
 - 服務停止
@@ -146,14 +171,18 @@ Prometheus 監控配置：
 - 低副本數（<2）
 
 #### kustomization.yaml
+
 Kustomize 配置：
+
 - 統一命名空間
 - 共同標籤
 - 映像標籤管理
 - 配置生成器
 
 ### nginx.conf
+
 Nginx 負載平衡器配置：
+
 - HTTP 到 HTTPS 重定向
 - SSL/TLS 配置
 - 速率限制
@@ -162,7 +191,9 @@ Nginx 負載平衡器配置：
 - 指標端點（內部網路限制）
 
 ### grafana-dashboard.json
+
 Grafana 儀表板定義：
+
 - 請求速率
 - 回應時間（p95）
 - 錯誤率
@@ -173,6 +204,7 @@ Grafana 儀表板定義：
 ## 🔧 常見操作
 
 ### 擴展副本數
+
 ```bash
 # Docker Compose
 docker-compose -f docker-compose.production.yml up -d --scale contracts-l1=5
@@ -182,6 +214,7 @@ kubectl scale deployment contracts-l1 -n synergymesh --replicas=5
 ```
 
 ### 查看日誌
+
 ```bash
 # Docker Compose
 docker-compose -f docker-compose.production.yml logs -f contracts-l1
@@ -191,6 +224,7 @@ kubectl logs -n synergymesh -l app=contracts-l1 -f
 ```
 
 ### 更新映像
+
 ```bash
 # Docker Compose
 docker-compose -f docker-compose.production.yml pull
@@ -203,6 +237,7 @@ kubectl set image deployment/contracts-l1 \
 ```
 
 ### 回滾部署
+
 ```bash
 # Kubernetes
 kubectl rollout undo deployment/contracts-l1 -n synergymesh
@@ -235,18 +270,22 @@ kubectl rollout status deployment/contracts-l1 -n synergymesh
 ## 📊 監控與告警
 
 ### Prometheus 指標
+
 ```bash
 # 查看指標
 curl http://contracts-l1.synergymesh.com:9090/metrics
 ```
 
 ### Grafana 儀表板
+
 1. 匯入 `grafana-dashboard.json`
 2. 配置 Prometheus 資料來源
 3. 查看即時指標
 
 ### 告警通知
+
 配置 Alertmanager 接收告警：
+
 - Slack
 - Email
 - PagerDuty
@@ -255,6 +294,7 @@ curl http://contracts-l1.synergymesh.com:9090/metrics
 ## 🐛 故障排除
 
 ### Pod 無法啟動
+
 ```bash
 # 查看 Pod 狀態
 kubectl describe pod -n synergymesh -l app=contracts-l1
@@ -264,6 +304,7 @@ kubectl get events -n synergymesh --sort-by='.lastTimestamp'
 ```
 
 ### 健康檢查失敗
+
 ```bash
 # 進入 Pod
 kubectl exec -it -n synergymesh <pod-name> -- sh
@@ -273,6 +314,7 @@ curl http://localhost:3000/healthz
 ```
 
 ### 效能問題
+
 ```bash
 # 查看資源使用
 kubectl top pods -n synergymesh -l app=contracts-l1
@@ -291,9 +333,9 @@ kubectl get hpa -n synergymesh
 
 ## 📞 支援
 
-- **平台團隊**: platform@isynergymesh.com
-- **DevOps 團隊**: devops@isynergymesh.com
-- **緊急聯絡**: incident@isynergymesh.com
+- **平台團隊**: <platform@isynergymesh.com>
+- **DevOps 團隊**: <devops@isynergymesh.com>
+- **緊急聯絡**: <incident@isynergymesh.com>
 - **Slack**: #contracts-l1-support
 
 ---

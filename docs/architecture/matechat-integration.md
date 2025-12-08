@@ -1,4 +1,5 @@
 # MateChat Integration Architecture
+
 # MateChat 整合架構文檔
 
 ## 概述 (Overview)
@@ -445,24 +446,28 @@ npm run test:security
 ## 遷移計劃 (Migration Plan)
 
 ### 階段 1: 核心服務 (Week 1-2)
+
 - [x] AI Chat Service 基礎架構
 - [x] OpenAI 整合
 - [x] 配置管理
 - [x] 部署清單
 
 ### 階段 2: 擴展功能 (Week 3-4)
+
 - [ ] Input Service 實現
 - [ ] File Service 實現
 - [ ] Markdown Renderer 整合
 - [ ] WebSocket 支持
 
 ### 階段 3: 優化與穩定 (Week 5-6)
+
 - [ ] 性能優化
 - [ ] 安全加固
 - [ ] 監控完善
 - [ ] 文檔補充
 
 ### 階段 4: 生產就緒 (Week 7-8)
+
 - [ ] 負載測試
 - [ ] 災難恢復演練
 - [ ] 用戶培訓
@@ -522,21 +527,25 @@ npm run test:security
 ## 未來展望 (Future Roadmap)
 
 ### Q1 2025
+
 - [ ] 語音輸入支持
 - [ ] 多語言擴展
 - [ ] 離線模式
 
 ### Q2 2025
+
 - [ ] 視覺理解 (GPT-4V)
 - [ ] 自動化飛行規劃
 - [ ] 預測性維護
 
 ### Q3 2025
+
 - [ ] 聯邦學習整合
 - [ ] 邊緣計算部署
 - [ ] 增強現實界面
 
 ### Q4 2025
+
 - [ ] 自主決策系統
 - [ ] 多機協同對話
 - [ ] 量子計算探索
@@ -551,9 +560,9 @@ npm run test:security
 
 ## 聯繫方式 (Contact)
 
-- **技術支持**: tech-support@synergymesh.com
-- **架構團隊**: architects@synergymesh.com
-- **安全團隊**: security@synergymesh.com
+- **技術支持**: <tech-support@synergymesh.com>
+- **架構團隊**: <architects@synergymesh.com>
+- **安全團隊**: <security@synergymesh.com>
 
 ---
 

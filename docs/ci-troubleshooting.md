@@ -1,7 +1,7 @@
 # CI 故障排除 Runbook
 
 > 📋 **完整解決方案配置**: [`config/ci-comprehensive-solution.yaml`](../config/ci-comprehensive-solution.yaml)
-> 
+>
 > 此 Runbook 涵蓋常見錯誤的快速解決方案。完整的錯誤分類、自動修復配置和監控設定請參考上述配置文件。
 
 ## 快速診斷流程
@@ -23,11 +23,13 @@ graph TD
 ### 錯誤 1：Docker Compose 未安裝
 
 **症狀**：
+
 ```
 Error: docker-compose: command not found
 ```
 
 **根本原因**：
+
 - Runner 環境未更新
 - 本地環境不同步
 
@@ -51,6 +53,7 @@ docker compose version
 ```
 
 **預防措施**：
+
 - 在 workflow 中添加初始化步驟
 - 定期更新 Runner 環境
 
@@ -59,12 +62,14 @@ docker compose version
 ### 錯誤 2：磁盤空間不足
 
 **症狀**：
+
 ```
 Error: No space left on device
 docker: Error response from daemon: write /var/lib/docker/...: no space left on device
 ```
 
 **根本原因**：
+
 - Docker 鏡像堆積
 - 舊容器未清理
 
@@ -83,6 +88,7 @@ docker volume prune              # 刪除未使用的卷
 ```
 
 **預防措施**：
+
 - 在 workflow 中定期執行 `docker system prune`
 - 限制鏡像層數
 
@@ -91,11 +97,13 @@ docker volume prune              # 刪除未使用的卷
 ### 錯誤 3：Dockerfile 語法錯誤
 
 **症狀**：
+
 ```
 Error parsing reference: "ubuntu:22.04 AS builder"
 ```
 
 **根本原因**：
+
 - Dockerfile 語法不正確
 - 基礎鏡像版本不存在
 
@@ -129,11 +137,13 @@ RUN apt-get update && apt-get install -y python3
 ### 錯誤 4：測試超時
 
 **症狀**：
+
 ```
 Test timeout: test did not complete within 30000ms
 ```
 
 **根本原因**：
+
 - 服務啟動過慢
 - 測試環境配置不完整
 
@@ -160,12 +170,14 @@ docker-compose exec -T app npm test
 ### 錯誤 5：npm ci 在 Docker 容器中失敗
 
 **症狀**：
+
 ```
 Exit handler never called!
 npm ERR! This is an error with npm itself.
 ```
 
 **根本原因**：
+
 - Docker 容器環境中的 npm ci 已知問題
 - 容器內記憶體或資源限制
 
@@ -186,6 +198,7 @@ pnpm test
 ```
 
 **預防措施**：
+
 - 在 CI workflow 中避免在 Docker 容器內運行 npm ci
 - 使用主機環境運行測試（如 core-services-ci.yml）
 - 考慮使用其他套件管理器（pnpm, yarn）
@@ -195,12 +208,14 @@ pnpm test
 ### 錯誤 6：Node.js 版本不符
 
 **症狀**：
+
 ```
 Error: The engine "node" is incompatible with this module.
 Expected version ">=18.0.0".
 ```
 
 **根本原因**：
+
 - 本地 Node.js 版本過舊
 - 環境中安裝了錯誤的 Node.js 版本
 
@@ -393,7 +408,7 @@ CI 自動評論系統包含三個主要階段：
 
 若以上解決方案無法解決問題，請聯繫：
 
-- **GitHub Issues**：https://github.com/we-can-fix/synergymesh/issues
+- **GitHub Issues**：<https://github.com/we-can-fix/synergymesh/issues>
 - **文檔**：查看 [README.md](../README.md) 獲取更多資訊
 - **CI 配置**：`.github/workflows/ci-auto-comment.yml`
 - **完整解決方案**：[`config/ci-comprehensive-solution.yaml`](../config/ci-comprehensive-solution.yaml)
@@ -405,11 +420,13 @@ CI 自動評論系統包含三個主要階段：
 ### 錯誤 7：startup_failure (工作流程無法啟動)
 
 **症狀**：
+
 ```
 Workflow run failed with status: startup_failure
 ```
 
 **根本原因**：
+
 - Job-level `permissions` 區塊用於調用 reusable workflows (`uses:`)
 - Workflow YAML 語法錯誤
 - 引用的 reusable workflow 路徑不正確
@@ -437,6 +454,7 @@ jobs:
 ```
 
 **驗證 YAML 語法**：
+
 ```bash
 python3 -c "import yaml; yaml.safe_load(open('.github/workflows/my-workflow.yml'))"
 ```
@@ -446,11 +464,13 @@ python3 -c "import yaml; yaml.safe_load(open('.github/workflows/my-workflow.yml'
 ### 錯誤 8：Action 版本不存在
 
 **症狀**：
+
 ```
 Unable to resolve action `owner/repo@version`
 ```
 
 **根本原因**：
+
 - Action 版本標籤已被刪除或重命名
 - 使用了不存在的版本
 
@@ -465,6 +485,7 @@ uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 ```
 
 **查找最新版本**：
+
 ```bash
 # 查看 action 的 releases
 gh release list -R actions/checkout
@@ -475,12 +496,14 @@ gh release list -R actions/checkout
 ### 錯誤 9：權限不足
 
 **症狀**：
+
 ```
 Resource not accessible by integration
 Error: HttpError: Resource not accessible by integration
 ```
 
 **根本原因**：
+
 - GITHUB_TOKEN 權限不足
 - 工作流程未聲明所需權限
 
@@ -507,12 +530,14 @@ jobs:
 ### 錯誤 10：並發衝突
 
 **症狀**：
+
 ```
 Another instance of this workflow is already running
 Workflow was cancelled due to concurrency
 ```
 
 **根本原因**：
+
 - 多個相同的工作流程同時運行
 - 並發設定過於嚴格
 

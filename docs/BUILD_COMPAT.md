@@ -116,5 +116,6 @@ docker-compose up -d mcp-servers
 ## Support
 
 For build issues, refer to:
+
 - [README.md](../README.md) - Project documentation
 - [CONTRIBUTING.md](../CONTRIBUTING.md) - Contribution guidelines

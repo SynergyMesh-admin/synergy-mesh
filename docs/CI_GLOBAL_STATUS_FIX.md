@@ -3,20 +3,24 @@
 ## 🎯 問題描述
 
 ### 症狀
+
 CI 機器人報告「✅ CI 檢查全部通過！」，但實際上仍有檢查失敗（例如 Language Compliance Check）。
 
 ### 根本原因分析
 
 **1. 局部視角 vs. 全局視角（Silo Effect）**
+
 - 機器人只監控部分 CI workflows（5個）
 - 當**它監控的**所有 workflows 通過時，就報告成功
 - 但並未檢查**整個 PR** 的所有 checks 狀態
 
 **2. 平行執行的時間差（Race Condition）**
+
 - 機器人可能在其他 checks 完成前就發布評論
 - 導致「先報喜，後發現問題」的情況
 
 **3. 範圍盲區（Monitoring Gap）**
+
 - 原本只監控 5 個 workflows：
   - Core Services CI
   - Integration & Deployment
@@ -34,6 +38,7 @@ CI 機器人報告「✅ CI 檢查全部通過！」，但實際上仍有檢查�
 ### 1. 擴展監控範圍
 
 **修改前**：
+
 ```yaml
 workflow_run:
   workflows:
@@ -45,6 +50,7 @@ workflow_run:
 ```
 
 **修改後**：
+
 ```yaml
 workflow_run:
   workflows:
@@ -107,10 +113,12 @@ if (failedChecks.length > 0) {
 在發布成功評論前，使用全局狀態驗證確保所有 checks 真正通過。
 
 **最終決策**（v2.1）：
+
 - ❌ **失敗時**：提供智能診斷、修復建議、互動命令
 - ✅ **成功時**：僅清理標籤，不發布評論
 
 **原因**：
+
 1. 成功通知不具有意義
 2. 避免資源浪費和通知疲勞
 3. 讓開發者專注於需要處理的問題
@@ -122,12 +130,14 @@ if (failedChecks.length > 0) {
 #### 原始設計示例（已廢棄）
 
 **修改前**：
+
 ```markdown
 ## ✅ CI 檢查全部通過！
 恭喜！所有 CI 檢查已成功完成。
 ```
 
 **原計劃修改後**：
+
 ```markdown
 ## ✅ CI 檢查全部通過！
 恭喜！所有 **15 個** CI 檢查已成功完成。
@@ -185,6 +195,7 @@ if (failedChecks.length > 0) {
 ```
 
 **設計理念**：
+
 - 成功時僅清理標籤，不發布評論
 - 失敗時由各 CI 的 `interactive-service` job 處理
 - 專注於提供有價值的失敗診斷，避免通知疲勞
@@ -194,15 +205,19 @@ if (failedChecks.length > 0) {
 ### API 調用說明
 
 1. **獲取 PR 資訊**
+
    ```javascript
    github.rest.pulls.get({ owner, repo, pull_number })
    ```
+
    - 取得 PR 的 head SHA
 
 2. **列出所有 Check Runs**
+
    ```javascript
    github.rest.checks.listForRef({ owner, repo, ref: pr.head.sha })
    ```
+
    - 取得該 commit 的所有檢查
    - 包含所有 CI workflows 和 GitHub Apps 的 checks
 
@@ -213,11 +228,13 @@ if (failedChecks.length > 0) {
 ### 防護機制
 
 **三重檢查**：
+
 1. ✅ **待完成檢查** → 如有，則不發布
 2. ✅ **失敗檢查** → 如有，則不發布
 3. ✅ **日誌記錄** → 詳細記錄決策過程
 
 **容錯處理**：
+
 - API 調用失敗 → 不發布評論（寧可不報，不可誤報）
 - 無法取得 PR → 跳過評論生成
 - 空 checks 列表 → 記錄警告但不報告成功
@@ -225,16 +242,19 @@ if (failedChecks.length > 0) {
 ## 📝 測試建議
 
 ### 測試場景 1：部分成功
+
 - **設定**：5 個監控的 workflows 成功，但 Language Check 失敗
 - **預期**：不發布成功評論 ✅
 - **驗證**：日誌顯示「發現 1 個失敗的檢查」
 
 ### 測試場景 2：待完成
+
 - **設定**：5 個監控的 workflows 成功，但還有其他 checks 正在執行
 - **預期**：不發布成功評論 ✅
 - **驗證**：日誌顯示「仍有 X 個檢查待完成」
 
 ### 測試場景 3：全部成功
+
 - **設定**：所有 checks 都已完成且成功
 - **預期**：清理失敗標籤，不發布評論（專注失敗診斷）✅
 - **驗證**：標籤已清理，無評論發布
@@ -266,10 +286,12 @@ if (failedChecks.length > 0) {
 ### 最終設計理念（v2.1）
 
 **專注於失敗診斷**：
+
 - ❌ 失敗時：提供智能診斷、修復建議、互動命令
 - ✅ 成功時：僅清理標籤，不發布評論
 
 **原因**：
+
 1. 成功通知不具有任何意義
 2. 避免資源浪費
 3. 減少通知疲勞

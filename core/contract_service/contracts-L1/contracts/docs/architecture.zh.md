@@ -15,12 +15,14 @@ Contracts Service 是 SynergyMesh 平台的核心服務之一，負責 SLSA (Sup
 ## 核心功能
 
 ### 1. 溯源認證 (Provenance Attestation)
+
 - 建立構建認證
 - 驗證溯源資料
 - 匯入/匯出認證
 - 檔案摘要生成
 
 ### 2. SLSA 驗證
+
 - SLSA Level 1-3 合規驗證
 - 契約認證
 - 摘要生成
@@ -124,6 +126,7 @@ Kubernetes Probe → /healthz → 200 OK
 ## 安全設計
 
 ### 容器安全
+
 - ✅ 非 root 使用者 (UID 1001)
 - ✅ 只讀根文件系統
 - ✅ 禁用權限提升
@@ -131,12 +134,14 @@ Kubernetes Probe → /healthz → 200 OK
 - ✅ SeccompProfile: RuntimeDefault
 
 ### 網路安全
+
 - ✅ NetworkPolicy 限制流量
 - ✅ 入站流量白名單
 - ✅ 出站流量限制
 - ✅ TLS 加密（若啟用 Ingress）
 
 ### RBAC
+
 - ✅ 專用 ServiceAccount
 - ✅ 最小權限原則
 - ✅ 明確的 Role 定義
@@ -145,17 +150,20 @@ Kubernetes Probe → /healthz → 200 OK
 ## 供應鏈安全
 
 ### SBOM (Software Bill of Materials)
+
 - 格式: CycloneDX JSON
 - 生成時機: 構建階段
 - 簽章: Cosign
 - 儲存: Artifact Registry
 
 ### 映像簽章
+
 - 工具: Sigstore/Cosign
 - 模式: Keyless 或 Key-based
 - 驗證: 部署前驗證
 
 ### SLSA 合規
+
 - 目標級別: SLSA Level 2+
 - Provenance: 自動生成
 - 建立可重現性: Dockerfile 固定
@@ -163,12 +171,14 @@ Kubernetes Probe → /healthz → 200 OK
 ## 可觀測性
 
 ### 日誌
+
 - 結構化日誌 (JSON)
 - 追蹤 ID (Trace ID)
 - 日誌級別: debug, info, warn, error
 - 輸出: stdout/stderr
 
 ### 指標
+
 - 端點: `/metrics`
 - 格式: Prometheus
 - 指標類型:
@@ -178,6 +188,7 @@ Kubernetes Probe → /healthz → 200 OK
   - 資源使用
 
 ### 告警
+
 - 平台: Prometheus/Alertmanager
 - 規則: `deploy/alerts.yaml`
 - 嚴重度:
@@ -185,24 +196,28 @@ Kubernetes Probe → /healthz → 200 OK
   - `warning`: 效能下降
 
 ### 追蹤
+
 - (待實施) OpenTelemetry
 - Span 覆蓋: HTTP 請求、外部呼叫
 
 ## 部署策略
 
 ### 發布策略
+
 - 滾動更新 (Rolling Update)
 - maxSurge: 1
 - maxUnavailable: 0
 - 零停機部署
 
 ### 自動擴展
+
 - 指標: CPU (70%), 記憶體 (80%)
 - 最小副本: 3
 - 最大副本: 10
 - 穩定視窗: 300s (縮減)
 
 ### 高可用性
+
 - 副本數: 3+
 - Pod 反親和性: 避免單點故障
 - PodDisruptionBudget: 最小可用 2
@@ -210,6 +225,7 @@ Kubernetes Probe → /healthz → 200 OK
 ## 資源配置
 
 ### 預設資源
+
 ```yaml
 resources:
   requests:
@@ -221,6 +237,7 @@ resources:
 ```
 
 ### 環境變數
+
 - `NODE_ENV`: 環境 (production/development)
 - `PORT`: 服務端口 (3000)
 - `LOG_LEVEL`: 日誌級別 (info)
@@ -229,10 +246,12 @@ resources:
 ## 外部依賴
 
 ### 必要依賴
+
 - Kubernetes API (健康檢查、配置)
 - DNS 服務 (服務發現)
 
 ### 可選依賴
+
 - Sigstore (簽章驗證)
 - 容器登錄 (映像拉取)
 - Prometheus (指標收集)
@@ -240,10 +259,12 @@ resources:
 ## 災難恢復
 
 ### 備份策略
+
 - 配置: Git 版本控制
 - 資料: (如適用)
 
 ### 恢復步驟
+
 1. 從 Git 恢復配置
 2. 重新部署服務
 3. 驗證健康檢查
@@ -252,11 +273,13 @@ resources:
 ## 效能指標
 
 ### SLA 目標
+
 - 可用性: 99.95%
 - P99 延遲: < 100ms
 - 錯誤率: < 0.05%
 
 ### 容量規劃
+
 - 單 Pod QPS: ~100
 - 3 副本總 QPS: ~300
 - 擴展閾值: CPU > 70%
@@ -264,12 +287,14 @@ resources:
 ## 開發與測試
 
 ### 本地開發
+
 ```bash
 npm install
 npm run dev
 ```
 
 ### 測試
+
 ```bash
 npm run lint
 npm run typecheck
@@ -277,6 +302,7 @@ npm test
 ```
 
 ### 構建
+
 ```bash
 npm run build
 docker build -t contracts-service:local .
@@ -285,12 +311,14 @@ docker build -t contracts-service:local .
 ## 治理與合規
 
 ### 標籤規範
+
 - `namespace.io/team`: 團隊標識
 - `namespace.io/environment`: 環境標識
 - `namespace.io/lifecycle`: 生命週期狀態
 - `namespace.io/managed-by`: 管理工具
 
 ### 政策驗證
+
 - 工具: Conftest/OPA
 - 政策: `policy/manifest-policies.rego`
 - 驗證時機: CI/CD Pipeline

@@ -63,6 +63,7 @@ The npm workspaces are configured as:
 ### MCP Servers (`mcp-servers/`)
 
 Model Context Protocol server implementations for:
+
 - Code analysis
 - Security scanning
 - Test generation

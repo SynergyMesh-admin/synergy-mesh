@@ -25,7 +25,7 @@ gh api \
 
 **注意**: 請將 `{org}` 替換為您的組織名稱，並使用有效的 GitHub Personal Access Token (PAT) 進行認證。
 
-2. **設定組織安全策略**
+1. **設定組織安全策略**
 
 組織安全策略配置請參考 `.github/security-policy.yml` 文件。
 
@@ -70,7 +70,7 @@ gh api \
   --field privacy="closed"
 ```
 
-2. **設定倉庫存取權限**
+1. **設定倉庫存取權限**
 
 權限配置示例：
 

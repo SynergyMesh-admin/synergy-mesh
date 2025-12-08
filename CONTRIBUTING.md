@@ -7,6 +7,7 @@ Thank you for your interest in contributing to **SynergyMesh**! We welcome contr
 ### Reporting Bugs
 
 If you find a bug, please:
+
 1. Check [Issues](https://github.com/SynergyMesh/SynergyMesh/issues) to ensure the issue hasn't been reported
 2. Create a new Issue with:
    - Clear title and description
@@ -18,6 +19,7 @@ If you find a bug, please:
 ### Feature Suggestions
 
 We welcome feature suggestions:
+
 1. Create a Feature Request in Issues
 2. Explain the purpose and value of the feature
 3. Provide usage scenario examples
@@ -79,6 +81,7 @@ Use clear commit messages following Conventional Commits:
 ```
 
 Types:
+
 - `feat`: New feature
 - `fix`: Bug fix
 - `docs`: Documentation update
@@ -91,6 +94,7 @@ Types:
 ### Pull Request Checklist
 
 Before submitting a PR, please confirm:
+
 - [ ] Code follows project style guidelines
 - [ ] Necessary tests have been added
 - [ ] All tests pass
@@ -98,6 +102,26 @@ Before submitting a PR, please confirm:
 - [ ] Commit messages are clear
 - [ ] PR description is complete
 - [ ] No hard-coded sensitive information
+
+### AI-Generated Contributions
+
+If your PR includes AI-generated content or assistance, ensure compliance with the **[AI Behavior Contract](.github/AI-BEHAVIOR-CONTRACT.md)**:
+
+- [ ] No vague language used (e.g., "seems to be", "might be")
+- [ ] Clear binary status (CAN_COMPLETE or CANNOT_COMPLETE)
+- [ ] Large tasks properly decomposed (2-3 subtasks)
+- [ ] File modifications marked as draft (unless explicitly authorized)
+- [ ] Validation script passed: `.github/scripts/validate-ai-response.sh`
+
+**Validation Command:**
+
+```bash
+# Validate commit message
+.github/scripts/validate-ai-response.sh --commit HEAD
+
+# Validate PR description
+.github/scripts/validate-ai-response.sh "$(gh pr view --json body -q .body)"
+```
 
 ## 🏆 Contributors
 
@@ -110,8 +134,9 @@ By contributing code, you agree that your contributions will be released under t
 ## 📞 Contact
 
 If you have questions, please contact us:
+
 - 🌐 Website: [synergymesh.io](https://synergymesh.io)
-- 📧 Email: team@synergymesh.io
+- 📧 Email: <team@synergymesh.io>
 - 🐦 Twitter: [@SynergyMesh](https://twitter.com/SynergyMesh)
 - 💬 Community: [community.synergymesh.io](https://community.synergymesh.io)
 

@@ -54,16 +54,19 @@
 ### 1. 監控階段 (analyze-ci-status)
 
 **觸發時機**：
+
 - 當任何監控的 workflow 完成時（`workflow_run`）
 - 當 PR 被打開、同步或重新打開時（`pull_request`）
 
 **工作內容**：
+
 - 獲取 PR 編號
 - 檢查所有 CI check runs 的狀態
 - 識別失敗的 workflows
 - 生成狀態摘要
 
 **輸出**：
+
 - `has_failures`: 是否有失敗
 - `failed_workflows`: 失敗的 workflows 列表
 - `pr_number`: 關聯的 PR 編號
@@ -82,6 +85,7 @@
 | Unknown | 未知失敗 | 需要查看詳細日誌 | 查看日誌、參考文檔 |
 
 **快速修復建議**：
+
 - 🔧 運行環境檢查：`bash scripts/check-env.sh`
 - 🧹 清理 Docker 資源：`docker system prune -a`
 - 📚 查看故障排除文檔：`docs/ci-troubleshooting.md`
@@ -126,6 +130,7 @@
 ### ⚡ 快速修復
 
 **🔧 運行環境檢查**
+
 ```bash
 bash scripts/check-env.sh
 ```
@@ -134,9 +139,10 @@ bash scripts/check-env.sh
 
 ### 🤝 需要幫助？
 
-- 💬 回覆 `@copilot 幫我分析` 獲取更詳細協助
+- 💬 回覆 `@island 幫我分析` 獲取更詳細協助
 - 📚 查看 CI 故障排除文檔
 - 🔧 執行環境檢查腳本
+
 ```
 
 **標籤管理**：
@@ -147,7 +153,7 @@ bash scripts/check-env.sh
 
 ### 4. 互動處理階段 (handle-interaction)
 
-**觸發時機**：當開發者在 PR 評論中提到 `@copilot` 時
+**觸發時機**：當開發者在 PR 評論中提到 `@island` 時
 
 **支援的互動命令**：
 
@@ -156,21 +162,24 @@ bash scripts/check-env.sh
 | 深度分析 | `幫我分析`, `分析` | 啟動深度分析流程 |
 | 環境檢查 | `環境`, `check-env` | 提供環境檢查指南 |
 | 查看文檔 | `文檔`, `documentation` | 提供相關文檔連結 |
-| 幫助 | 其他 `@copilot` 提及 | 顯示可用命令列表 |
+| 幫助 | 其他 `@island` 提及 | 顯示可用命令列表 |
 
 **互動流程**：
 ```
-開發者：@copilot 幫我分析
+
+開發者：@island 幫我分析
     ↓
 助手：🔍 深度分析中...
     ↓
 分析項目：
+
 - ✅ CI workflow 狀態
 - ✅ 錯誤日誌模式
 - ✅ 代碼變更影響
 - ✅ 相似問題歷史
     ↓
 助手：[提供詳細分析結果]
+
 ```
 
 ### 5. 成功清理階段 (cleanup-on-success)
@@ -239,9 +248,11 @@ bash scripts/check-env.sh
 
 3. **互動求助**
    ```
-   @copilot 幫我分析
-   @copilot 環境檢查
-   @copilot 文檔
+
+   @island 幫我分析
+   @island 環境檢查
+   @island 文檔
+
    ```
 
 4. **修復並推送**
@@ -296,6 +307,7 @@ on:
 ### 監控的 Workflows
 
 當前監控的 workflows：
+
 - Core Services CI
 - Integration & Deployment
 - Auto-Fix Bot
@@ -309,6 +321,7 @@ on:
 診斷邏輯位於 `diagnose-failures` job 的 `script` 部分。
 
 **自定義診斷規則**：
+
 ```javascript
 // 添加自定義檢測邏輯
 if (workflowName.includes('your-keyword')) {
@@ -332,6 +345,7 @@ if (workflowName.includes('your-keyword')) {
 互動命令定義在 `handle-interaction` job 中。
 
 **添加新命令**：
+
 ```javascript
 if (comment.includes('your-command')) {
   response = `## 🎯 自定義回應
@@ -370,7 +384,7 @@ if (comment.includes('your-command')) {
 
 1. **本地先測試**：推送前執行 `bash scripts/check-env.sh`
 2. **關注評論**：CI 失敗時查看助手的診斷報告
-3. **互動溝通**：不確定時使用 `@copilot` 互動
+3. **互動溝通**：不確定時使用 `@island` 互動
 4. **及時修復**：根據建議快速修復問題
 
 ### 維護者
@@ -414,11 +428,13 @@ if (comment.includes('your-command')) {
 ### 助手沒有發布評論
 
 **可能原因**：
+
 1. PR 沒有關聯的 CI 失敗
 2. Workflow 權限不足
 3. 事件觸發不正確
 
 **解決方案**：
+
 1. 檢查 PR 的 checks 頁面
 2. 驗證 workflow 的 permissions 設定
 3. 查看 workflow run 日誌
@@ -426,26 +442,31 @@ if (comment.includes('your-command')) {
 ### 診斷不準確
 
 **可能原因**：
+
 1. Workflow 命名不符合預期模式
 2. 診斷邏輯需要更新
 
 **解決方案**：
+
 1. 調整 `diagnose-failures` 中的檢測邏輯
 2. 添加新的 workflow 類型匹配規則
 
 ### 互動命令無反應
 
 **可能原因**：
+
 1. 評論格式不正確
 2. 權限問題
 
 **解決方案**：
-1. 確保評論中包含 `@copilot`
+
+1. 確保評論中包含 `@island`
 2. 檢查 issue_comment 事件權限
 
 ## 📝 版本歷史
 
 ### v1.0.0 (2024-11-26)
+
 - ✨ 初始版本發布
 - 🎯 智能 CI 狀態監控
 - 🤖 自動診斷和分析

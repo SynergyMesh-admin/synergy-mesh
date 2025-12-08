@@ -7,14 +7,16 @@
 ## 整合的核心功能
 
 ### 1. AI 對話系統 (AI Chat System)
+
 - **商業價值**: 實時通訊、智能助手、決策支持
-- **應用場景**: 
+- **應用場景**:
   - 飛行任務指令對話
   - 遠程診斷與故障排除
   - 實時狀態查詢與監控
 - **整合位置**: `core/contract_service/contracts-L1/ai-chat-service/`
 
 ### 2. 智能輸入系統 (Intelligent Input)
+
 - **商業價值**: 多模態輸入、命令解析、快速操作
 - **應用場景**:
   - @提及特定模組或系統
@@ -23,6 +25,7 @@
 - **整合位置**: `core/contract_service/contracts-L1/input-service/`
 
 ### 3. Markdown 渲染引擎
+
 - **商業價值**: 結構化文檔、技術報告、實時日誌
 - **應用場景**:
   - 飛行報告生成
@@ -31,6 +34,7 @@
 - **整合位置**: `advanced-system-src/markdown-renderer/`
 
 ### 4. 模型整合層 (Model Integration)
+
 - **商業價值**: AI 能力、預測分析、智能決策
 - **應用場景**:
   - 路徑規劃優化
@@ -39,6 +43,7 @@
 - **整合位置**: `mcp-servers/ai-model-integration/`
 
 ### 5. 文件處理系統
+
 - **商業價值**: 數據管理、日誌存儲、證據追溯
 - **應用場景**:
   - 飛行數據記錄
@@ -72,6 +77,7 @@
 ## 配置管理
 
 所有整合配置位於:
+
 - 策略定義: `governance/policies/conftest/matechat-integration/`
 - 服務配置: `config/integrations/matechat/`
 - 部署清單: `governance/deployment/matechat-services.yml`

@@ -139,11 +139,13 @@ workflows:
 ### VS Code 擴展
 
 #### 安裝
+
 ```bash
 code --install-extension autofix-bot.vscode
 ```
 
 #### 配置 `.vscode/settings.json`
+
 ```json
 {
   "autofix.enabled": true,
@@ -161,11 +163,13 @@ code --install-extension autofix-bot.vscode
 ### JetBrains IDEs
 
 #### 插件安裝
+
 1. File → Settings → Plugins
 2. 搜索 "Auto-Fix Bot"
 3. 點擊 Install
 
 #### 配置
+
 ```xml
 <!-- .idea/autofix.xml -->
 <autofix-configuration>
@@ -533,6 +537,7 @@ scrape_configs:
 ### 常見問題
 
 **問題**: 連接雲端失敗
+
 ```bash
 # 檢查配置
 autofix config --check
@@ -545,6 +550,7 @@ autofix logs --tail 100
 ```
 
 **問題**: 授權失敗
+
 ```bash
 # 重新設置令牌
 autofix login
