@@ -1,3 +1,4 @@
+```json
 {
   "compilerOptions": {
     "target": "ES2022",
@@ -92,3 +93,4 @@ export const validateRequest = (req, res, next) => {
   }
   next();
 };
+```
