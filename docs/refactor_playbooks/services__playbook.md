@@ -1,6 +1,6 @@
 # Refactor Playbook: services/
 
-**Generated:** 2025-12-08T11:18:08.576325  
+**Generated:** 2025-12-08T11:19:44.557358  
 **Cluster Score:** 82  
 **Status:** Draft (LLM generation required for complete playbook)
 

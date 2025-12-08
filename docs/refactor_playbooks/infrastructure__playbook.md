@@ -1,6 +1,6 @@
 # Refactor Playbook: infrastructure/
 
-**Generated:** 2025-12-08T11:18:08.586312  
+**Generated:** 2025-12-08T11:19:44.572215  
 **Cluster Score:** 40  
 **Status:** Draft (LLM generation required for complete playbook)
 
