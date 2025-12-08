@@ -579,7 +579,7 @@ cpp_naming:
   
   project_specific:
     requirement: "Each C++ subsystem MUST choose ONE style and document it"
-    documentation_location: "subsystem README.md"
+    documentation_location: "<subsystem_root>/README.md (e.g., automation/autonomous/README.md)"
     consistency: "CRITICAL - Mixed styles within a subsystem are NOT allowed"
   
   enforcement:
@@ -587,8 +587,8 @@ cpp_naming:
     linter: "clang-tidy"
     auto_fix_available: true
     commands:
-      format: "clang-format -i **/*.cpp **/*.h"
-      check: "clang-tidy autonomous/**/*.cpp"
+      format: "find . -name '*.cpp' -o -name '*.h' | xargs clang-format -i"
+      check: "find autonomous/ -name '*.cpp' | xargs clang-tidy"
 
 # ============================================================================
 # Configuration File Naming
@@ -700,11 +700,14 @@ auto_fix_integration:
 # ============================================================================
 refactor_playbook_integration:
   priority: "P2"
-  category: "持續重構 (Continuous Refactoring)"
+  category: "continuous_refactoring"
+  category_zh: "持續重構"
   
   standard_task:
-    description: "將本 cluster 內所有檔案/符號命名，對齊 docs/architecture/naming-conventions.md"
-    approach: "不符合規範 → 由 Auto-Fix Bot 提出 rename 建議 PR"
+    description: "Align all file and symbol naming in the cluster with docs/architecture/naming-conventions.md"
+    description_zh: "將本 cluster 內所有檔案/符號命名，對齊 docs/architecture/naming-conventions.md"
+    approach: "Non-compliant items → Auto-Fix Bot creates rename suggestion PR"
+    approach_zh: "不符合規範 → 由 Auto-Fix Bot 提出 rename 建議 PR"
   
   applies_to:
     - "docs/refactor_playbooks/core__playbook.md"
