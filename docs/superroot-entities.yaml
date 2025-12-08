@@ -3,10 +3,10 @@ version: 1.0.0
 id: unmanned-island-superroot-entities
 title: Unmanned Island System - SuperRoot Entities
 description: SuperRoot-compatible entity definitions projected from knowledge graph
-generated_at: '2025-12-08T15:04:40.188509Z'
+generated_at: '2025-12-08T20:29:40.028431Z'
 source:
   knowledge_graph: unmanned-island-knowledge-graph
-  generated_at: '2025-12-08T15:04:38.840284Z'
+  generated_at: '2025-12-08T20:29:38.842852Z'
 entities:
 - id: system:unmanned-island
   type: System
@@ -1181,6 +1181,13 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 模組
+- id: dir:_codeql_detected_source_root:tools:refactor
+  type: Directory
+  label: refactor
+  path: _codeql_detected_source_root/tools/refactor
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
 - id: file:_codeql_detected_source_root:tools:generate-refactor-playbook.py
   type: Component
   label: generate-refactor-playbook.py
@@ -3729,6 +3736,62 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 模組
+- id: dir:tools:refactor
+  type: Directory
+  label: refactor
+  path: tools/refactor
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:tools:refactor:cognitive_engine.py
+  type: Component
+  label: cognitive_engine.py
+  path: tools/refactor/cognitive_engine.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:tools:refactor:validate_structure.py
+  type: Component
+  label: validate_structure.py
+  path: tools/refactor/validate_structure.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:tools:refactor:execute_integration.py
+  type: Component
+  label: execute_integration.py
+  path: tools/refactor/execute_integration.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:tools:refactor:refactor_engine.py
+  type: Component
+  label: refactor_engine.py
+  path: tools/refactor/refactor_engine.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:tools:refactor:process_legacy_scratch.py
+  type: Component
+  label: process_legacy_scratch.py
+  path: tools/refactor/process_legacy_scratch.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:tools:refactor:update_indexes.py
+  type: Component
+  label: update_indexes.py
+  path: tools/refactor/update_indexes.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:tools:refactor:__init__.py
+  type: Component
+  label: __init__.py
+  path: tools/refactor/__init__.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
 - id: file:tools:generate-refactor-playbook.py
   type: Component
   label: generate-refactor-playbook.py
@@ -4559,6 +4622,20 @@ entities:
   type: Directory
   label: _legacy_scratch
   path: docs/refactor_playbooks/_legacy_scratch
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:docs:refactor_playbooks:config
+  type: ConfigParam
+  label: config
+  path: docs/refactor_playbooks/config
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:docs:refactor_playbooks:templates
+  type: Directory
+  label: templates
+  path: docs/refactor_playbooks/templates
   meta:
     source: knowledge-graph
     label_zh: 目錄
@@ -8746,6 +8823,9 @@ relationships:
   target: file:_codeql_detected_source_root:tools:bootstrap_from_manifest.py
   type: CONTAINS
 - source: dir:_codeql_detected_source_root:tools
+  target: dir:_codeql_detected_source_root:tools:refactor
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:tools
   target: file:_codeql_detected_source_root:tools:generate-refactor-playbook.py
   type: CONTAINS
 - source: dir:_codeql_detected_source_root:tools
@@ -9838,6 +9918,30 @@ relationships:
   target: file:tools:bootstrap_from_manifest.py
   type: CONTAINS
 - source: dir:tools
+  target: dir:tools:refactor
+  type: CONTAINS
+- source: dir:tools:refactor
+  target: file:tools:refactor:cognitive_engine.py
+  type: CONTAINS
+- source: dir:tools:refactor
+  target: file:tools:refactor:validate_structure.py
+  type: CONTAINS
+- source: dir:tools:refactor
+  target: file:tools:refactor:execute_integration.py
+  type: CONTAINS
+- source: dir:tools:refactor
+  target: file:tools:refactor:refactor_engine.py
+  type: CONTAINS
+- source: dir:tools:refactor
+  target: file:tools:refactor:process_legacy_scratch.py
+  type: CONTAINS
+- source: dir:tools:refactor
+  target: file:tools:refactor:update_indexes.py
+  type: CONTAINS
+- source: dir:tools:refactor
+  target: file:tools:refactor:__init__.py
+  type: CONTAINS
+- source: dir:tools
   target: file:tools:generate-refactor-playbook.py
   type: CONTAINS
 - source: dir:tools
@@ -10193,6 +10297,12 @@ relationships:
   type: CONTAINS
 - source: dir:docs:refactor_playbooks
   target: dir:docs:refactor_playbooks:_legacy_scratch
+  type: CONTAINS
+- source: dir:docs:refactor_playbooks
+  target: dir:docs:refactor_playbooks:config
+  type: CONTAINS
+- source: dir:docs:refactor_playbooks
+  target: dir:docs:refactor_playbooks:templates
   type: CONTAINS
 - source: dir:docs:refactor_playbooks
   target: dir:docs:refactor_playbooks:03_refactor
@@ -11770,13 +11880,13 @@ relationships:
   target: config:config:unified-config-index.yaml
   type: CONFIGURES
 summary:
-  total_entities: 1175
-  total_relationships: 1174
+  total_entities: 1186
+  total_relationships: 1185
   entities_by_type:
     Capability: 15
-    Component: 311
-    ConfigParam: 311
-    Directory: 512
+    Component: 318
+    ConfigParam: 312
+    Directory: 515
     Document: 7
     Subsystem: 18
     System: 1

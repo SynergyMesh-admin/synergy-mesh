@@ -3,7 +3,7 @@ version: 1.0.0
 id: unmanned-island-knowledge-graph
 title: Unmanned Island System Knowledge Graph
 description: Knowledge graph representation of the repository structure and entities
-generated_at: '2025-12-08T15:04:38.840284Z'
+generated_at: '2025-12-08T20:29:38.842852Z'
 source_repo: .
 nodes:
 - id: system:unmanned-island
@@ -1012,6 +1012,12 @@ nodes:
   path: _codeql_detected_source_root/tools/bootstrap_from_manifest.py
   properties:
     label_zh: 模組
+- id: dir:_codeql_detected_source_root:tools:refactor
+  type: directory
+  label: refactor
+  path: _codeql_detected_source_root/tools/refactor
+  properties:
+    label_zh: 目錄
 - id: file:_codeql_detected_source_root:tools:generate-refactor-playbook.py
   type: module
   label: generate-refactor-playbook.py
@@ -3196,6 +3202,54 @@ nodes:
   path: tools/bootstrap_from_manifest.py
   properties:
     label_zh: 模組
+- id: dir:tools:refactor
+  type: directory
+  label: refactor
+  path: tools/refactor
+  properties:
+    label_zh: 目錄
+- id: file:tools:refactor:cognitive_engine.py
+  type: module
+  label: cognitive_engine.py
+  path: tools/refactor/cognitive_engine.py
+  properties:
+    label_zh: 模組
+- id: file:tools:refactor:validate_structure.py
+  type: module
+  label: validate_structure.py
+  path: tools/refactor/validate_structure.py
+  properties:
+    label_zh: 模組
+- id: file:tools:refactor:execute_integration.py
+  type: module
+  label: execute_integration.py
+  path: tools/refactor/execute_integration.py
+  properties:
+    label_zh: 模組
+- id: file:tools:refactor:refactor_engine.py
+  type: module
+  label: refactor_engine.py
+  path: tools/refactor/refactor_engine.py
+  properties:
+    label_zh: 模組
+- id: file:tools:refactor:process_legacy_scratch.py
+  type: module
+  label: process_legacy_scratch.py
+  path: tools/refactor/process_legacy_scratch.py
+  properties:
+    label_zh: 模組
+- id: file:tools:refactor:update_indexes.py
+  type: module
+  label: update_indexes.py
+  path: tools/refactor/update_indexes.py
+  properties:
+    label_zh: 模組
+- id: file:tools:refactor:__init__.py
+  type: module
+  label: __init__.py
+  path: tools/refactor/__init__.py
+  properties:
+    label_zh: 模組
 - id: file:tools:generate-refactor-playbook.py
   type: module
   label: generate-refactor-playbook.py
@@ -3908,6 +3962,18 @@ nodes:
   type: directory
   label: _legacy_scratch
   path: docs/refactor_playbooks/_legacy_scratch
+  properties:
+    label_zh: 目錄
+- id: dir:docs:refactor_playbooks:config
+  type: config
+  label: config
+  path: docs/refactor_playbooks/config
+  properties:
+    label_zh: 設定
+- id: dir:docs:refactor_playbooks:templates
+  type: directory
+  label: templates
+  path: docs/refactor_playbooks/templates
   properties:
     label_zh: 目錄
 - id: dir:docs:refactor_playbooks:03_refactor
@@ -7571,6 +7637,9 @@ edges:
   target: file:_codeql_detected_source_root:tools:bootstrap_from_manifest.py
   type: contains
 - source: dir:_codeql_detected_source_root:tools
+  target: dir:_codeql_detected_source_root:tools:refactor
+  type: contains
+- source: dir:_codeql_detected_source_root:tools
   target: file:_codeql_detected_source_root:tools:generate-refactor-playbook.py
   type: contains
 - source: dir:_codeql_detected_source_root:tools
@@ -8663,6 +8732,30 @@ edges:
   target: file:tools:bootstrap_from_manifest.py
   type: contains
 - source: dir:tools
+  target: dir:tools:refactor
+  type: contains
+- source: dir:tools:refactor
+  target: file:tools:refactor:cognitive_engine.py
+  type: contains
+- source: dir:tools:refactor
+  target: file:tools:refactor:validate_structure.py
+  type: contains
+- source: dir:tools:refactor
+  target: file:tools:refactor:execute_integration.py
+  type: contains
+- source: dir:tools:refactor
+  target: file:tools:refactor:refactor_engine.py
+  type: contains
+- source: dir:tools:refactor
+  target: file:tools:refactor:process_legacy_scratch.py
+  type: contains
+- source: dir:tools:refactor
+  target: file:tools:refactor:update_indexes.py
+  type: contains
+- source: dir:tools:refactor
+  target: file:tools:refactor:__init__.py
+  type: contains
+- source: dir:tools
   target: file:tools:generate-refactor-playbook.py
   type: contains
 - source: dir:tools
@@ -9018,6 +9111,12 @@ edges:
   type: contains
 - source: dir:docs:refactor_playbooks
   target: dir:docs:refactor_playbooks:_legacy_scratch
+  type: contains
+- source: dir:docs:refactor_playbooks
+  target: dir:docs:refactor_playbooks:config
+  type: contains
+- source: dir:docs:refactor_playbooks
+  target: dir:docs:refactor_playbooks:templates
   type: contains
 - source: dir:docs:refactor_playbooks
   target: dir:docs:refactor_playbooks:03_refactor
@@ -10595,19 +10694,19 @@ edges:
   target: config:config:unified-config-index.yaml
   type: configures
 statistics:
-  total_nodes: 1175
-  total_edges: 1174
+  total_nodes: 1186
+  total_edges: 1185
   nodes_by_type:
     system: 1
-    directory: 512
-    module: 310
-    config: 311
+    directory: 515
+    module: 317
+    config: 312
     subsystem: 18
     document: 7
     capability: 15
     component: 1
   edges_by_type:
-    contains: 1155
+    contains: 1166
     provides: 15
     configures: 4
 meta:
