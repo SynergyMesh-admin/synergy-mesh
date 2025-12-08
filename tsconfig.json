@@ -86,7 +86,7 @@ const requestSchema = z.object({
   age: z.number().min(0),
 });
 
-export const validateRequest = (req, res, next) => {
+export const validateRequest = (req: { body: any }, res: { status: (arg0: number) => { json: (arg0: { errors: any }) => void; }; }, next: () => void) => {
   const result = requestSchema.safeParse(req.body);
   if (!result.success) {
     return res.status(400).json({ errors: result.error.errors });
