@@ -7,13 +7,16 @@
     "mcp-servers",
     "core/contract_service/contracts-L1/contracts",
     "core/advisory-database",
-    "frontend/ui"
+    "apps/web",
+    "island-ai"
   ],
   "scripts": {
     "lint": "npm run lint --workspaces --if-present",
     "test": "npm run test --workspaces --if-present",
     "build": "npm run build --workspaces --if-present",
     "install:all": "npm install --workspaces",
+    "dev:stack": "bash scripts/start-synergymesh-dev.sh",
+    "docs:lint": "markdownlint \"**/*.md\"",
     "clean": "npm run clean --workspaces --if-present && rm -rf node_modules"
   },
   "keywords": [
@@ -37,10 +40,18 @@
     "npm": ">=8.0.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@typescript-eslint/eslint-plugin": "^8.48.1",
+    "@typescript-eslint/parser": "^8.48.1",
     "eslint-config-prettier": "^9.1.2",
     "eslint-import-resolver-typescript": "^3.10.1",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prettier": "^5.5.4",
-    "prettier": "^3.7.2"
+    "markdownlint-cli": "^0.46.0",
+    "prettier": "^3.7.4",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@eslint/eslintrc": "^3.3.3"
   }
 }

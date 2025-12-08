@@ -1,4 +1,21 @@
 {
+  // ============================================
+  // GitHub Actions 擴展設定
+  // ============================================
+  // 注意：本專案使用 local reusable workflows (./.github/workflows/*.yml)
+  // VS Code 擴展可能顯示 "Unable to find reusable workflow" 警告
+  // 這是擴展的靜態分析限制，非真實錯誤
+  // Workflows 已在 GitHub 上驗證可正常運行
+  // 參考：https://github.com/github/vscode-github-actions/issues/222
+  "github-actions.workflows.pinned.workflows": [
+    ".github/workflows/core-services-ci.yml",
+    ".github/workflows/contracts-cd.yml",
+    ".github/workflows/auto-review-merge.yml"
+  ],
+  
+  // ============================================
+  // 編輯器設定
+  // ============================================
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
@@ -41,5 +58,7 @@
   },
   "[yaml]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"
-  }
+  },
+  "python-envs.defaultEnvManager": "ms-python.python:system",
+  "python-envs.pythonProjects": []
 }
