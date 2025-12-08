@@ -5,18 +5,21 @@ AI-powered chat service for drone and autonomous vehicle operations, extracted a
 ## 功能特性 (Features)
 
 ### 🚁 無人機專用功能
+
 - **實時對話**: 與無人機系統進行自然語言交互
 - **命令解析**: AI 輔助飛行命令理解與驗證
 - **上下文感知**: 整合飛行狀態、位置、任務資訊
 - **串流響應**: 低延遲的實時通訊
 
 ### 🤖 AI 能力
+
 - 支持 OpenAI GPT-4 及相容模型
 - 支持本地 LLM (Llama, Mistral 等)
 - 可自訂溫度與 token 限制
 - 串流與批次模式
 
 ### 🔒 安全性
+
 - SLSA Level 3 合規
 - TLS 1.3 加密通訊
 - JWT 認證（可選）
@@ -25,23 +28,27 @@ AI-powered chat service for drone and autonomous vehicle operations, extracted a
 ## 快速開始 (Quick Start)
 
 ### 安裝依賴
+
 ```bash
 cd core/contract_service/contracts-L1/ai-chat-service
 npm install
 ```
 
 ### 配置環境變量
+
 ```bash
 cp .env.example .env
 # 編輯 .env 並填入您的 API 金鑰
 ```
 
 ### 開發模式運行
+
 ```bash
 npm run dev
 ```
 
 ### 生產構建
+
 ```bash
 npm run build
 npm start
@@ -50,9 +57,11 @@ npm start
 ## API 端點 (API Endpoints)
 
 ### POST /api/v1/chat
+
 聊天接口（非串流）
 
 **Request:**
+
 ```json
 {
   "messages": [
@@ -76,6 +85,7 @@ npm start
 ```
 
 **Response:**
+
 ```json
 {
   "message": "無人機 DRONE-001 目前正在執行任務 MISSION-2024-001，位於海拔 100 米高度飛行中。",
@@ -84,14 +94,17 @@ npm start
 ```
 
 ### POST /api/v1/chat/stream
+
 聊天接口（串流）
 
 使用 Server-Sent Events (SSE) 串流響應。
 
 ### POST /api/v1/commands
+
 無人機命令處理
 
 **Request:**
+
 ```json
 {
   "command": "takeoff",
@@ -104,9 +117,11 @@ npm start
 ```
 
 ### GET /api/v1/status
+
 服務健康狀態檢查
 
 ### GET /api/v1/model
+
 獲取當前模型資訊
 
 ## 配置說明 (Configuration)
@@ -225,21 +240,27 @@ curl -N -X POST http://localhost:8100/api/v1/chat/stream \
 ## 故障排除 (Troubleshooting)
 
 ### API 金鑰錯誤
+
 ```
 Error: OpenAI request failed: Incorrect API key
 ```
+
 檢查 `.env` 中的 `OPENAI_API_KEY` 是否正確。
 
 ### 連接超時
+
 ```
 Error: Request timeout
 ```
+
 檢查網路連接或增加 `REQUEST_TIMEOUT_MS`。
 
 ### 模型不存在
+
 ```
 Error: Model not found
 ```
+
 確認 `AI_MODEL` 名稱正確並且您的帳戶有權限使用該模型。
 
 ## 貢獻 (Contributing)

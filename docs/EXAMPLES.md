@@ -5,6 +5,7 @@
 ### 案例 1: JavaScript 語法錯誤自動修復
 
 #### 問題代碼（修復前）
+>
 > ⚠️ 注意：以下代碼包含故意製造的錯誤，用於演示 Auto-Fix Bot 的修復能力
 
 ```javascript
@@ -58,6 +59,7 @@ $ autofix fix app.js --auto
 ```
 
 #### 修復後代碼
+
 ```javascript
 // app.js - 已修復
 function calculateTotal(items) {
@@ -82,6 +84,7 @@ console.log(result);
 ### 案例 2: Python 代碼優化
 
 #### 原始代碼
+
 ```python
 # data_processor.py
 def process_data(data):
@@ -131,6 +134,7 @@ $ autofix fix data_processor.py --auto --optimize
 ```
 
 #### 優化後代碼
+
 ```python
 # data_processor.py
 def process_data(data):
@@ -151,6 +155,7 @@ squared = [n ** 2 for n in numbers]  # ✅ 使用列表推導式
 ### 案例 3: TypeScript 類型錯誤修復
 
 #### 原始代碼
+
 ```typescript
 // user.ts
 interface User {
@@ -215,6 +220,7 @@ $ autofix fix user.ts --interactive
 ```
 
 #### 修復後代碼
+
 ```typescript
 // user.ts
 interface User {
@@ -241,6 +247,7 @@ console.log(user.email?.toLowerCase());  // ✅ 使用可選鏈
 ### 案例 4: 雲端委派批量處理
 
 #### 場景
+
 一個大型專案有 500+ 個文件需要檢查和修復。
 
 ```bash

@@ -1,4 +1,5 @@
 # Integration Guide
+
 # 集成指南 - Automation Architect
 
 ## 目錄 Table of Contents

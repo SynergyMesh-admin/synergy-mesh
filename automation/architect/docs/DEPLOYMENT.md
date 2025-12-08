@@ -1,4 +1,5 @@
 # Deployment Guide
+
 # 部署指南 - Automation Architect
 
 ## 目錄 Table of Contents
@@ -18,11 +19,13 @@
 ### 硬件需求 Hardware Requirements
 
 **最小配置 Minimum:**
+
 - CPU: 2 cores
 - RAM: 4 GB
 - Disk: 20 GB
 
 **推薦配置 Recommended:**
+
 - CPU: 4+ cores
 - RAM: 8+ GB
 - Disk: 50+ GB SSD
@@ -151,6 +154,7 @@ docker-compose up -d
 ```
 
 這將啟動：
+
 - automation-architect (主服務)
 - redis (緩存)
 - postgres (數據庫)
@@ -188,9 +192,9 @@ docker-compose down -v
 
 ### 服務訪問
 
-- **主服務**: http://localhost:8000
-- **Prometheus**: http://localhost:9090
-- **Grafana**: http://localhost:3000 (admin/admin)
+- **主服務**: <http://localhost:8000>
+- **Prometheus**: <http://localhost:9090>
+- **Grafana**: <http://localhost:3000> (admin/admin)
 - **Redis**: localhost:6379
 - **PostgreSQL**: localhost:5432
 
@@ -487,7 +491,7 @@ max_wal_size = 4GB
 
 ### Prometheus 指標
 
-訪問 http://localhost:9090 查看指標。
+訪問 <http://localhost:9090> 查看指標。
 
 **重要指標:**
 
@@ -500,7 +504,7 @@ max_wal_size = 4GB
 
 ### Grafana 儀表板
 
-1. 訪問 http://localhost:3000
+1. 訪問 <http://localhost:3000>
 2. 默認登錄: admin/admin
 3. 添加 Prometheus 數據源
 4. 導入儀表板: `monitoring/grafana/dashboards/automation-architect.json`

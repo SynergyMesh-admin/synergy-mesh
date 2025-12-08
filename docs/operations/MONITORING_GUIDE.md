@@ -1,4 +1,5 @@
 # SynergyMesh 監控系統設定指引
+
 # SynergyMesh Monitoring System Setup Guide
 
 ## 📋 文件目的 | Document Purpose
@@ -55,6 +56,7 @@ FIM detects unauthorized file changes by creating file baselines and performing 
 ---
 
 ### 📝 工作人員提示詞：部署 FIM 與建立基線
+
 ### Worker Prompt: Deploy FIM and Create Baseline
 
 ```
@@ -151,6 +153,7 @@ auditd is a kernel-level Linux audit tool that records all file access and syste
 ---
 
 ### 📝 工作人員提示詞：啟用 auditd 規則並驗證日誌上報
+
 ### Worker Prompt: Enable auditd Rules and Verify Log Forwarding
 
 ```
@@ -275,6 +278,7 @@ inotify is a Linux kernel filesystem event monitoring mechanism that provides re
 ---
 
 ### 📝 工作人員提示詞：使用 inotify 做即時測試
+
 ### Worker Prompt: Real-time Testing with inotify
 
 ```
@@ -353,6 +357,7 @@ SIEM aggregates logs from various monitoring tools, performs correlation analysi
 ---
 
 ### 📝 工作人員提示詞：SIEM 規則與自動化 Playbook
+
 ### Worker Prompt: SIEM Rules and Automation Playbook
 
 ```
@@ -489,6 +494,7 @@ index=linux_audit key=repo*_watch earliest=-24h
 ---
 
 ## 📝 工作人員提示詞：建立參照文件
+
 ### Worker Prompt: Create Reference Documentation
 
 ```
@@ -540,28 +546,33 @@ index=linux_audit key=repo*_watch earliest=-24h
 The following action items can be directly assigned to workers:
 
 ### 1. 建立參照文件 (Documentation)
+
 - **負責人**: Ops Team / Technical Writer
 - **時程**: 1-2 天
 - **產出**: ROOT_README.md, CHANGELOG.md, MONITORING_GUIDE.md
 
 ### 2. 部署 FIM Agent (FIM Deployment)
+
 - **負責人**: Infrastructure Team
 - **目標主機**: 3-5 台關鍵主機（production, staging）
 - **時程**: 3-5 天
 - **產出**: FIM 安裝報告、基線檔案
 
 ### 3. 設定 auditd 規則 (auditd Configuration)
+
 - **負責人**: SecOps Team
 - **目標主機**: 所有主機
 - **時程**: 2-3 天
 - **產出**: auditd 規則清單、測試日誌
 
 ### 4. SIEM 整合與規則建立 (SIEM Integration)
+
 - **負責人**: SecOps Team
 - **時程**: 5-7 天
 - **產出**: SIEM 規則 ID、Playbook 文件、測試報告
 
 ### 5. 代理/智能體上線演練 (Agent Onboarding Drill)
+
 - **負責人**: SRE Team
 - **時程**: 1 天
 - **產出**: 演練報告、流程改進建議
@@ -655,11 +666,13 @@ All worker reports should follow this unified format:
 ## 📚 相關資源與參考文件 | Related Resources
 
 ### 內部文件 | Internal Documentation
+
 - [ROOT_README.md](./ROOT_README.md) - 監控系統參照文件
 - [CHANGELOG.md](./CHANGELOG.md) - 變更記錄
 - [SECURITY.md](./SECURITY.md) - 安全政策
 
 ### 外部參考 | External References
+
 - [OSSEC Documentation](https://www.ossec.net/docs/)
 - [Linux Audit Documentation](https://linux-audit.com/)
 - [inotify Man Page](https://man7.org/linux/man-pages/man7/inotify.7.html)

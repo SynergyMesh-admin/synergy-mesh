@@ -94,15 +94,19 @@ kubectl apply -f policies/gatekeeper/ --dry-run=server
 ## 核心文檔
 
 ### [核心理念與定位](docs/core-principles.md)
+
 定義技術助手的能力框架、互動原則、技術棧專長與最佳實踐。
 
 ### [UAV/AD 治理規範](docs/uav-autonomous-driving-governance.md)
+
 無人機與自動駕駛系統的安全、合規與可追溯準則。
 
 ### [使用說明](docs/usage-notes.md)
+
 詳細的使用指南、配置範例與故障排除。
 
 ### [CI/CD 策略](docs/ci-cd-strategy.md)
+
 持續整合與持續部署的自動化策略與最佳實踐。
 
 ## 策略驗證
@@ -121,12 +125,16 @@ kubectl apply -f policies/gatekeeper/ --dry-run=server
 ### Gatekeeper 約束
 
 #### uav-ad-labels.yaml
+
 驗證資源包含必要標籤：
+
 - namespace.io/* 標準標籤
 - uav.io/* UAV/AD 特定標籤
 
 #### geo-fencing.yaml
+
 驗證 UAV 系統的地理圍欄配置：
+
 - geo.fence.enabled 必須為 "true" 或 "false"
 - 啟用時必須指定 geo.fence.regions
 - 區域格式：XX-RegionName（如 TW-Taipei）
@@ -283,6 +291,7 @@ kubectl describe constraint uav-ad-required-labels
 ## 版本歷史
 
 ### v2.0.0 (2025-11-25)
+
 - ✨ 初始版本發布
 - ✨ 整合核心理念與定位
 - ✨ 添加 UAV/AD 治理規範
@@ -307,7 +316,7 @@ kubectl describe constraint uav-ad-required-labels
 ## 聯繫方式
 
 - **維護團隊**：Platform Team
-- **電子郵件**：platform-team@example.com
+- **電子郵件**：<platform-team@example.com>
 - **問題回報**：GitHub Issues
 
 ## 致謝

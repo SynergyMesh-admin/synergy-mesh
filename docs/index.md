@@ -24,7 +24,7 @@ Welcome to the SynergyMesh documentation. This site contains comprehensive guide
 ### 🚀 Getting Started
 
 - [Quick Start Guide](./QUICK_START.md) - Get up and running quickly
-- [Copilot Setup](./COPILOT_SETUP.md) - GitHub Copilot integration setup
+- [Island AI Setup](./ISLAND_AI_SETUP.md) - Island AI integration setup
 - [Integration Guide](./INTEGRATION_GUIDE.md) - Integration with external systems
 
 ### 📊 Features & Usage
@@ -54,25 +54,28 @@ Welcome to the SynergyMesh documentation. This site contains comprehensive guide
 ## 🎯 Quick Navigation
 
 ### For Developers
+
 1. Start with [Quick Start Guide](./QUICK_START.md)
 2. Review [Examples](./EXAMPLES.md)
-3. Set up [GitHub Copilot](./COPILOT_SETUP.md)
+3. Set up [Island AI](./ISLAND_AI_SETUP.md)
 
 ### For DevOps Engineers
+
 1. Review [System Architecture](./architecture/SYSTEM_ARCHITECTURE.md)
 2. Follow [Deployment Guide](./architecture/DEPLOYMENT_INFRASTRUCTURE.md)
 3. Configure [Code Quality Checks](./architecture/CODE_QUALITY_CHECKS.md)
 
 ### For System Architects
+
 1. Understand [System Architecture Design](./architecture/SYSTEM_ARCHITECTURE.md)
 2. Review [Integration Patterns](./INTEGRATION_GUIDE.md)
 3. Explore [Cloud Deployment](./CLOUD_DELEGATION.md)
 
 ## 🔗 Related Resources
 
-- [GitHub Repository]({{ site.github.repository_url | default: "https://github.com/SynergyMesh/SynergyMesh" }}) - Source code
-- [Contributing Guide]({{ site.github.repository_url | default: "https://github.com/SynergyMesh/SynergyMesh" }}/blob/main/CONTRIBUTING.md) - How to contribute
-- [Security Policy]({{ site.github.repository_url | default: "https://github.com/SynergyMesh/SynergyMesh" }}/blob/main/SECURITY.md) - Security practices
+- [GitHub Repository]({{ site.github.repository_url | default: "<https://github.com/SynergyMesh/SynergyMesh>" }}) - Source code
+- [Contributing Guide]({{ site.github.repository_url | default: "<https://github.com/SynergyMesh/SynergyMesh>" }}/blob/main/CONTRIBUTING.md) - How to contribute
+- [Security Policy]({{ site.github.repository_url | default: "<https://github.com/SynergyMesh/SynergyMesh>" }}/blob/main/SECURITY.md) - Security practices
 
 ---
 

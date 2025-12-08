@@ -3,6 +3,7 @@
 ## 📋 必要標籤速查
 
 ### 標準命名空間標籤
+
 ```yaml
 namespace.io/managed-by: "platform-team"
 namespace.io/domain: "uav" # 或 "ad"
@@ -13,6 +14,7 @@ namespace.io/lifecycle: "stable" # experimental/stable/deprecated
 ```
 
 ### UAV/AD 特定標籤（Deployment）
+
 ```yaml
 uav.io/system: "uav" # 或 "ad"
 uav.io/safety-level: "L4" # L0-L5
@@ -45,6 +47,7 @@ data:
 ```
 
 **區域格式**: `XX-RegionName`
+
 - XX: 兩位大寫國家/地區代碼
 - RegionName: 可含字母、數字、底線、連字符
 - 多個區域用逗號+空格分隔
@@ -52,6 +55,7 @@ data:
 ## ⚙️ 資源要求
 
 ### UAV 系統
+
 ```yaml
 resources:
   requests:
@@ -63,6 +67,7 @@ resources:
 ```
 
 ### AD 系統
+
 ```yaml
 resources:
   requests:
@@ -76,6 +81,7 @@ resources:
 ## 🔒 安全最佳實踐
 
 ### 容器映像
+
 ```yaml
 # ✅ 推薦：使用 SHA256 digest
 image: registry.example.com/app@sha256:abc123...
@@ -85,6 +91,7 @@ image: registry.example.com/app:latest
 ```
 
 ### 安全上下文
+
 ```yaml
 securityContext:
   runAsNonRoot: true
@@ -99,6 +106,7 @@ securityContext:
 ## 🔍 驗證命令
 
 ### Conftest
+
 ```bash
 # 驗證單一檔案
 conftest test deployment.yaml -p policies/rego/
@@ -111,6 +119,7 @@ conftest test deployment.yaml -p policies/rego/ --output json
 ```
 
 ### Kubectl Dry-run
+
 ```bash
 # Server-side dry-run
 kubectl apply -f deployment.yaml --dry-run=server
@@ -120,6 +129,7 @@ kubectl apply -f manifests/ --dry-run=server
 ```
 
 ### YAML Lint
+
 ```bash
 yamllint -c .yamllint manifests/
 ```
@@ -164,6 +174,7 @@ kubectl get events -n your-namespace
 ## 🔄 GitOps 部署
 
 ### ArgoCD
+
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -185,6 +196,7 @@ spec:
 ```
 
 ### Flux
+
 ```yaml
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
@@ -200,22 +212,27 @@ spec:
 ## 🐛 常見錯誤與解決
 
 ### 錯誤 1: Missing label uav.io/system
+
 **原因**: 缺少系統類型標籤  
 **解決**: 添加 `uav.io/system: "uav"` 或 `"ad"`
 
 ### 錯誤 2: Invalid safety-level
+
 **原因**: 安全等級格式錯誤  
 **解決**: 使用 `L0`, `L1`, `L2`, `L3`, `L4`, 或 `L5`
 
 ### 錯誤 3: Missing geo.fence.enabled
+
 **原因**: UAV ConfigMap 缺少地理圍欄配置  
 **解決**: 添加 `geo.fence.enabled: "true"` 或 `"false"`
 
 ### 錯誤 4: Invalid geo-fence regions format
+
 **原因**: 區域格式錯誤  
 **解決**: 使用格式 `XX-RegionName`，如 `TW-Taipei`
 
 ### 錯誤 5: Container must set memory/cpu limits
+
 **原因**: UAV/AD 系統容器缺少資源限制  
 **解決**: 設定 `resources.limits.memory` 和 `resources.limits.cpu`
 
@@ -236,7 +253,7 @@ spec:
 1. 查看文檔：[README.md](README.md)
 2. 檢查範例：[templates/impl/examples/](templates/impl/examples/)
 3. 提交 Issue：GitHub Issues
-4. 聯繫團隊：platform-team@example.com
+4. 聯繫團隊：<platform-team@example.com>
 
 ## ⚡ 小技巧
 

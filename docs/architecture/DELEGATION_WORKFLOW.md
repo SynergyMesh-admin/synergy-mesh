@@ -54,6 +54,7 @@
 **從 OJ-agent 提取的高價值能力**，專為無人機/自動駕駛/自動化迭代系統設計：
 
 #### 1. TaskExecutor（任務執行器）
+
 - **功能**: 智能代碼分析與自動修復
 - **適用場景**: 安全關鍵系統代碼審查、實時錯誤檢測
 - **特性**:
@@ -63,6 +64,7 @@
   - 支持多種分析類型（comprehensive, security, performance）
 
 #### 2. RecognitionServer（識別服務器）
+
 - **功能**: 意圖識別與智能路由
 - **適用場景**: 請求分類、安全驗證、任務分發
 - **特性**:
@@ -72,6 +74,7 @@
   - 多維度請求分析
 
 #### 3. VisualizationAgent（可視化智能體）
+
 - **功能**: 概念解釋與知識傳遞
 - **適用場景**: 算法解釋、調試輔助、團隊培訓
 - **特性**:
@@ -111,12 +114,14 @@ intelligent_automation_task:
 **任務描述**：深度分析代碼庫，識別潛在問題
 
 **委派策略**：
+
 - **優先提供商**: 智能自動化系統 (Intelligent Automation) → AWS Lambda（高性能計算）
 - **並行度**: 中等（10個並行任務）
 - **優先級**: 高
 - **超時**: 180秒
 
 **工作流程**：
+
 ```yaml
 task: code-analysis
 steps:
@@ -156,12 +161,14 @@ steps:
 **任務描述**：自動修復識別出的代碼問題
 
 **委派策略**：
+
 - **優先提供商**: GCP Cloud Functions（靈活性）
 - **並行度**: 高（20個並行任務）
 - **優先級**: 高
 - **超時**: 300秒
 
 **工作流程**：
+
 ```yaml
 task: auto-fix
 steps:
@@ -195,12 +202,14 @@ steps:
 **任務描述**：優化代碼性能和資源使用
 
 **委派策略**：
+
 - **優先提供商**: Azure Functions（企業級）
 - **並行度**: 低（5個並行任務）
 - **優先級**: 中等
 - **超時**: 240秒
 
 **工作流程**：
+
 ```yaml
 task: optimization
 steps:
@@ -229,12 +238,14 @@ steps:
 **任務描述**：全面的安全漏洞掃描
 
 **委派策略**：
+
 - **優先提供商**: AWS Lambda（安全性）
 - **並行度**: 中高（15個並行任務）
 - **優先級**: 關鍵
 - **超時**: 200秒
 
 **工作流程**：
+
 ```yaml
 task: security-scan
 steps:
@@ -267,12 +278,14 @@ steps:
 **任務描述**：生成詳細的分析和修復報告
 
 **委派策略**：
+
 - **優先提供商**: GCP Cloud Functions（文檔處理）
 - **並行度**: 低（8個並行任務）
 - **優先級**: 低
 - **超時**: 120秒
 
 **工作流程**：
+
 ```yaml
 task: report-generation
 steps:
@@ -639,10 +652,10 @@ A: 實施多提供商故障轉移，設置合理的重試策略，監控健康�
 
 ### 獲取幫助
 
-- 📚 文檔: https://docs.auto-fix-bot.dev/delegation
-- 💬 社群: https://community.auto-fix-bot.dev
-- 🐛 問題追蹤: https://github.com/auto-fix-bot/issues
-- 📧 支援: support@auto-fix-bot.dev
+- 📚 文檔: <https://docs.auto-fix-bot.dev/delegation>
+- 💬 社群: <https://community.auto-fix-bot.dev>
+- 🐛 問題追蹤: <https://github.com/auto-fix-bot/issues>
+- 📧 支援: <support@auto-fix-bot.dev>
 
 ---
 

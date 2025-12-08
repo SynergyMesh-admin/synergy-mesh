@@ -109,6 +109,7 @@ monorepo-dispatch.yml
 ### 觸發機制
 
 **自動觸發**:
+
 ```yaml
 # Push 到 main/develop
 push:
@@ -120,6 +121,7 @@ push:
 ```
 
 **手動觸發**:
+
 ```bash
 # 為特定服務觸發 CD
 gh workflow run mcp-servers-cd.yml -f environment=dev
@@ -528,15 +530,18 @@ KUBECONFIG: <base64 encoded kubeconfig>
 每個服務的環境變數：
 
 **Contracts Service**:
+
 - `PORT=3000`
 - `NODE_ENV=production`
 - `LOG_LEVEL=info`
 
 **MCP Servers**:
+
 - `PORT=3001`
 - `NODE_ENV=production`
 
 **Advanced System**:
+
 - (Nginx 配置檔案)
 
 ## 未來規劃
@@ -571,10 +576,10 @@ KUBECONFIG: <base64 encoded kubeconfig>
 
 ## 聯絡資訊
 
-- **Contracts Team**: contracts-team@example.com
-- **Platform Team**: platform-team@example.com
-- **Frontend Team**: frontend-team@example.com
-- **Repository**: https://github.com/we-can-fix/synergymesh
+- **Contracts Team**: <contracts-team@example.com>
+- **Platform Team**: <platform-team@example.com>
+- **Frontend Team**: <frontend-team@example.com>
+- **Repository**: <https://github.com/we-can-fix/synergymesh>
 
 ## 變更歷史
 

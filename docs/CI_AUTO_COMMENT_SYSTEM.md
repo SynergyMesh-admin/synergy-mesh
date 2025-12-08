@@ -40,10 +40,12 @@
 **目的**：驗證 CI 環境的基本依賴是否正確安裝
 
 **檢查項目**：
+
 - Docker 安裝狀態
 - Docker Compose 安裝狀態（支援 `docker-compose` 和 `docker compose` 兩種形式）
 
 **輸出**：
+
 - `docker_status`: Docker 安裝狀態（success/failed）
 - `compose_status`: Docker Compose 安裝狀態（success/failed）
 - `error_message`: 錯誤訊息
@@ -51,6 +53,7 @@
 - `solution`: 建議的解決方案
 
 **特點**：
+
 - 使用 `continue-on-error: true` 確保即使失敗也能繼續執行
 - 使用 GitHub Annotation (`::error` 和 `::notice`) 在 Runner log 中標記錯誤
 - 自動生成 GITHUB_STEP_SUMMARY
@@ -62,10 +65,12 @@
 **依賴**：僅在環境檢查成功時執行
 
 **步驟**：
+
 1. 構建 Docker 鏡像
 2. 運行測試（使用主機環境而非容器，避免已知的 npm ci 問題）
 
 **特點**：
+
 - 使用 `set -o pipefail` 確保管道命令的錯誤能被正確捕捉
 - 明確指定 `shell: bash` 確保 Bash 特性可用
 - 將構建和測試日誌保存到檔案，供後續步驟使用
@@ -109,6 +114,7 @@
 | `build-failed` | 構建失敗 | 構建失敗 | 構建成功 |
 
 **特點**：
+
 - 避免重複添加標籤（先檢查現有標籤）
 - 優雅處理標籤不存在的情況
 
@@ -117,17 +123,20 @@
 **位置**：`scripts/check-env.sh`
 
 **功能**：
+
 - 檢查 Docker、Docker Compose、Node.js、Git 安裝
 - 驗證 Node.js 版本（需要 >= 18）
 - 檢查磁盤空間使用率
 - 提供彩色輸出和詳細的安裝指南
 
 **使用方式**：
+
 ```bash
 bash scripts/check-env.sh
 ```
 
 **輸出範例**：
+
 ```
 ╔════════════════════════════════════════╗
 ║     CI 環境檢查與自動修復工具          ║
@@ -158,6 +167,7 @@ bash scripts/check-env.sh
 **位置**：`docs/ci-troubleshooting.md`
 
 **內容**：
+
 - 快速診斷流程圖（Mermaid 格式）
 - 6 種常見錯誤的詳細解決方案
 - 調試命令參考（Docker、Docker Compose、npm/Node.js）
@@ -165,6 +175,7 @@ bash scripts/check-env.sh
 - 聯繫支持資訊
 
 **涵蓋錯誤類型**：
+
 1. Docker Compose 未安裝
 2. 磁盤空間不足
 3. Dockerfile 語法錯誤
@@ -179,14 +190,17 @@ bash scripts/check-env.sh
 **類型**：可重用 workflow (`workflow_call`)
 
 **功能**：
+
 - 自動安裝缺失的 Docker Compose
 - 清理磁盤空間
 - 驗證環境就緒狀態
 
 **輸出**：
+
 - `env_ready`: 環境是否準備就緒（true/false）
 
 **使用方式**：
+
 ```yaml
 jobs:
   setup:
@@ -206,6 +220,7 @@ jobs:
 ### 開發者使用
 
 1. **本地開發前檢查環境**
+
    ```bash
    bash scripts/check-env.sh
    ```
@@ -243,12 +258,14 @@ jobs:
    - 例如：`actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2`
 
 2. **權限管理**
+
    ```yaml
    permissions:
      contents: read
      pull-requests: write
      issues: write
    ```
+
    - 僅授予必要的權限
    - `contents: read` - 讀取代碼
    - `pull-requests: write` - 添加評論
@@ -361,6 +378,7 @@ jobs:
 ## 版本歷史
 
 ### v1.0.0 (2024-11-26)
+
 - 初始版本發布
 - 三階段 CI 流程
 - 自動評論功能

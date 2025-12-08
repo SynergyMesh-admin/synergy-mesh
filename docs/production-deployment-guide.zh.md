@@ -7,6 +7,7 @@
 ## 架構特點
 
 ### 核心原則
+
 - ✅ **最小化變更**: 保留既有功能，僅做必要擴充
 - ✅ **去 AXIOM 化**: 使用標準化的 `namespace.io/*` 標籤
 - ✅ **平台中立**: 支援 ArgoCD/Flux、Gatekeeper/Kyverno
@@ -14,6 +15,7 @@
 - ✅ **中文優先**: 文件與註解以繁體中文為主
 
 ### 技術棧
+
 - **容器化**: Docker (多階段構建、Debian-based)
 - **編排**: Kubernetes 1.30+
 - **CI/CD**: GitHub Actions (可重用 workflows)
@@ -153,10 +155,12 @@ conftest test deploy/*.yaml --policy ../../../../../../governance/policies/conft
 ### Workflow 觸發
 
 **自動觸發**:
+
 - Push 到 `main` 或 `develop` 分支
 - 修改 `core/contract_service/contracts-L1/contracts/**` 路徑下的檔案
 
 **手動觸發**:
+
 ```bash
 # 透過 GitHub CLI
 gh workflow run contracts-cd.yml -f environment=dev
@@ -168,6 +172,7 @@ gh workflow run contracts-cd.yml -f environment=dev
 ### Pipeline 階段
 
 #### 1. 構建與推送 (build-and-push)
+
 - ✅ Docker Buildx 多平台構建
 - ✅ 映像標籤策略（branch, PR, semver, SHA）
 - ✅ GHCR 推送
@@ -176,11 +181,13 @@ gh workflow run contracts-cd.yml -f environment=dev
 - ✅ Cache 優化（GitHub Actions cache）
 
 #### 2. 政策檢查 (policy-check)
+
 - ✅ Kubernetes manifests 驗證
 - ✅ Conftest/OPA 政策執行
 - ✅ SBOM 驗證
 
 #### 3. 部署 (deploy)
+
 - ✅ Kubernetes 部署（可選）
 - ✅ Rolling update 策略
 - ✅ Rollout 狀態驗證
@@ -207,6 +214,7 @@ KUBECONFIG: <base64 encoded kubeconfig>
 ### SBOM (Software Bill of Materials)
 
 **生成方式**:
+
 ```bash
 # 使用 CycloneDX
 npx @cyclonedx/cyclonedx-npm --output-file sbom.json
@@ -216,6 +224,7 @@ syft packages docker:contracts-service:latest -o cyclonedx-json=sbom.json
 ```
 
 **簽章**:
+
 ```bash
 # 使用 Cosign 簽章 SBOM
 cosign sign-blob --key cosign.key sbom.json > sbom.json.sig
@@ -225,6 +234,7 @@ cosign verify-blob --key cosign.pub --signature sbom.json.sig sbom.json
 ```
 
 **CI/CD 整合**:
+
 - SBOM 在構建階段自動生成
 - 作為 artifact 上傳到 GitHub Actions
 - 保留 90 天
@@ -232,6 +242,7 @@ cosign verify-blob --key cosign.pub --signature sbom.json.sig sbom.json
 ### 映像簽章
 
 **Keyless Signing（推薦）**:
+
 ```bash
 # 使用 OIDC 身份
 cosign sign \
@@ -241,6 +252,7 @@ cosign sign \
 ```
 
 **Key-based Signing**:
+
 ```bash
 # 生成金鑰對
 cosign generate-key-pair
@@ -268,6 +280,7 @@ cosign verify --key cosign.pub \
 **位置**: `governance/policies/conftest/` 和 `policy/`
 
 **驗證項目**:
+
 - ✅ 資源限制（requests/limits）
 - ✅ 安全上下文（runAsNonRoot, allowPrivilegeEscalation）
 - ✅ 健康檢查（livenessProbe, readinessProbe）
@@ -277,6 +290,7 @@ cosign verify --key cosign.pub \
 - ✅ Port 命名
 
 **執行方式**:
+
 ```bash
 # 驗證單一檔案
 conftest test deploy/deployment.yaml --policy governance/policies/conftest
@@ -291,16 +305,19 @@ conftest test deploy/*.yaml --policy governance/policies/conftest --output json
 ### 命名規範
 
 **模式**:
+
 - Namespace: `^(team|tenant|feature)-[a-z0-9-]+$`
 - Deployment/Service: `^[a-z0-9]([-a-z0-9]*[a-z0-9])?$`
 - 最大長度: 63 字元
 
 **必要標籤**:
+
 - `namespace.io/team`: 團隊標識
 - `namespace.io/environment`: 環境（dev/staging/prod）
 - `namespace.io/lifecycle`: 生命週期（active/deprecated）
 
 **檢查工具**:
+
 ```bash
 # 自動檢查
 ./scripts/naming/check-naming.sh
@@ -392,6 +409,7 @@ kubectl rollout undo deployment/contracts-service --to-revision=3
 ### Prometheus 監控
 
 **ServiceMonitor** (如果使用 Prometheus Operator):
+
 ```bash
 kubectl apply -f deploy/monitoring.yaml
 ```
@@ -399,6 +417,7 @@ kubectl apply -f deploy/monitoring.yaml
 **指標端點**: `/metrics`
 
 **關鍵指標**:
+
 - `http_requests_total`: 總請求數
 - `http_request_duration_seconds`: 請求延遲
 - `process_cpu_seconds_total`: CPU 使用
@@ -407,11 +426,13 @@ kubectl apply -f deploy/monitoring.yaml
 ### 告警規則
 
 **PrometheusRule**:
+
 ```bash
 kubectl apply -f deploy/alerts.yaml
 ```
 
 **告警項目**:
+
 - `ContractsServicePodDown`: Pod 不可用 (critical)
 - `ContractsServiceHighErrorRate`: 錯誤率 > 5% (warning)
 - `ContractsServiceHighLatency`: P99 延遲 > 1s (warning)
@@ -425,6 +446,7 @@ kubectl apply -f deploy/alerts.yaml
 （待建立）
 
 預計包含:
+
 - 請求量與錯誤率
 - 延遲分佈（P50, P95, P99）
 - 資源使用（CPU, 記憶體）
@@ -434,6 +456,7 @@ kubectl apply -f deploy/alerts.yaml
 ## 故障排查
 
 詳細故障排查步驟請參考：
+
 - [運維手冊 (Runbook)](../core/contract_service/contracts-L1/contracts/docs/runbook.zh.md)
 - [架構文件](../core/contract_service/contracts-L1/contracts/docs/architecture.zh.md)
 
@@ -466,6 +489,7 @@ OUTPUT_DIR=artifacts/reports ../../../../scripts/artifacts/build.sh
 ```
 
 **生成內容**:
+
 - `manifests/manifests-inventory.json`: Kubernetes 資源清單
 - `sbom/sbom-summary.json`: SBOM 摘要
 - `compliance/compliance-report.json`: 合規報告
@@ -492,6 +516,7 @@ ajv validate \
 ## 安全最佳實踐
 
 ### 容器安全
+
 - ✅ 使用非 root 使用者 (UID 1001)
 - ✅ 只讀根文件系統
 - ✅ Drop ALL capabilities
@@ -499,17 +524,20 @@ ajv validate \
 - ✅ SeccompProfile: RuntimeDefault
 
 ### 網路安全
+
 - ✅ NetworkPolicy 限制流量
 - ✅ 僅必要的入站/出站規則
 - ✅ TLS 加密（Ingress 層）
 
 ### 供應鏈安全
+
 - ✅ SBOM 生成與簽章
 - ✅ 映像簽章與驗證
 - ✅ Provenance 追溯
 - ✅ 固定版本（避免 :latest）
 
 ### 運行時安全
+
 - ✅ 最小權限 RBAC
 - ✅ 資源限制
 - ✅ 健康檢查
@@ -520,6 +548,7 @@ ajv validate \
 ### 資源配置
 
 **預設值**（適合大多數場景）:
+
 ```yaml
 resources:
   requests:
@@ -531,6 +560,7 @@ resources:
 ```
 
 **高負載場景**:
+
 ```yaml
 resources:
   requests:
@@ -570,8 +600,8 @@ MIT License - 詳見 [LICENSE](../LICENSE)
 ## 聯絡資訊
 
 - **團隊**: contracts-team
-- **Repository**: https://github.com/we-can-fix/synergymesh
-- **問題回報**: https://github.com/we-can-fix/synergymesh/issues
+- **Repository**: <https://github.com/we-can-fix/synergymesh>
+- **問題回報**: <https://github.com/we-can-fix/synergymesh/issues>
 
 ## 變更歷史
 

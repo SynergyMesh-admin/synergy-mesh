@@ -1,4 +1,5 @@
 # 自動化專責負責人員系統 API 文檔
+
 # Auto-Assignment System API Documentation
 
 ## 概述 (Overview)
@@ -248,15 +249,19 @@ Reassign the assignment to a different team member.
 **可用成員 ID (Available Member IDs):**
 
 **Frontend Team:**
+
 - `alice.chen`, `bob.wang`, `carol.liu`
 
 **Backend Team:**
+
 - `david.zhang`, `eva.wu`, `frank.lin`
 
 **DevOps Team:**
+
 - `grace.huang`, `henry.chen`
 
 **Security Team:**
+
 - `iris.lee`, `jack.yang`
 
 **回應 (Response):**
@@ -448,20 +453,24 @@ curl http://localhost:3000/api/v1/assignment/report
 ## 團隊結構 (Team Structure)
 
 ### Frontend Team (前端團隊)
+
 - **Alice Chen** (`alice.chen`): React, Vue, TypeScript, UI/UX
 - **Bob Wang** (`bob.wang`): React, TypeScript, Performance
 - **Carol Liu** (`carol.liu`): Vue, UI/UX, Accessibility
 
 ### Backend Team (後端團隊)
+
 - **David Zhang** (`david.zhang`): Node.js, Python, API, Database
 - **Eva Wu** (`eva.wu`): Node.js, Database, Performance
 - **Frank Lin** (`frank.lin`): Python, API, Microservices
 
 ### DevOps Team (維運團隊)
+
 - **Grace Huang** (`grace.huang`): Docker, Kubernetes, AWS, CI/CD
 - **Henry Chen** (`henry.chen`): Kubernetes, Monitoring, Infrastructure
 
 ### Security Team (安全團隊)
+
 - **Iris Lee** (`iris.lee`): Authentication, Encryption, Audit
 - **Jack Yang** (`jack.yang`): Penetration Testing, Security Review, Compliance
 
@@ -547,9 +556,9 @@ const createAssignmentFromAlert = async (alert) => {
 
 For questions or suggestions, please contact:
 
-- **Email**: support@synergymesh.dev
-- **GitHub Issues**: https://github.com/we-can-fix/synergymesh/issues
-- **Documentation**: https://docs.synergymesh.dev
+- **Email**: <support@synergymesh.dev>
+- **GitHub Issues**: <https://github.com/we-can-fix/synergymesh/issues>
+- **Documentation**: <https://docs.synergymesh.dev>
 
 ---
 

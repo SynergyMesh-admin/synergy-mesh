@@ -7,7 +7,9 @@ YAML + Markdown 治理邊界定義，包括 API 文件、責任矩陣、Quicksta
 ## 包含文件
 
 ### 1. governance_matrix.yaml
+
 完整的治理邊界定義，包括：
+
 - 模組責任矩陣
 - API 邊界定義
 - 錯誤分類與處理策略
@@ -16,7 +18,9 @@ YAML + Markdown 治理邊界定義，包括 API 文件、責任矩陣、Quicksta
 - 安全與審計需求
 
 ### 2. QUICKSTART.md
+
 快速開始指南，包括：
+
 - 系統需求
 - 安裝步驟
 - 構建說明
@@ -25,7 +29,9 @@ YAML + Markdown 治理邊界定義，包括 API 文件、責任矩陣、Quicksta
 - 故障排除
 
 ### 3. API_DOCUMENTATION.md
+
 完整的 API 文檔，包括：
+
 - API 端點定義
 - 請求/響應格式
 - 錯誤處理

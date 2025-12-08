@@ -1,4 +1,5 @@
 # 自動化專責負責人員系統
+
 # Auto-Assignment System
 
 ## 概述 (Overview)
@@ -89,23 +90,27 @@ The Auto-Assignment System is a core feature of SynergyMesh, designed to solve r
 ### 核心模組 (Core Modules)
 
 #### 1. **ResponsibilityMatrix** (責任矩陣)
+
 - 管理專業領域映射
 - 維護團隊結構定義
 - 識別相關團隊和成員
 
 #### 2. **AutoAssignmentEngine** (自動分派引擎)
+
 - 分析問題類型
 - 評估成員可用性
 - 執行智慧分派決策
 - 管理分派生命週期
 
 #### 3. **WorkloadBalancer** (工作負載平衡器)
+
 - 計算專業匹配度
 - 評估當前工作負載
 - 分析歷史表現
 - 選擇最佳負責人
 
 #### 4. **ResponsibilityGovernance** (責任治理)
+
 - 監控 SLA 達成
 - 觸發自動升級
 - 評估解決品質
@@ -184,20 +189,24 @@ console.log('團隊工作負載:', workload);
 ## 團隊配置 (Team Configuration)
 
 ### Frontend Team (前端團隊)
+
 - **Alice Chen**: React, Vue, TypeScript, UI/UX 專家
 - **Bob Wang**: React, TypeScript, 效能優化
 - **Carol Liu**: Vue, UI/UX, 無障礙設計
 
 ### Backend Team (後端團隊)
+
 - **David Zhang**: Node.js, Python, API 架構師
 - **Eva Wu**: Node.js, 資料庫, 效能調優
 - **Frank Lin**: Python, API, 微服務架構
 
 ### DevOps Team (維運團隊)
+
 - **Grace Huang**: Docker, Kubernetes, AWS, CI/CD 專家
 - **Henry Chen**: Kubernetes, 監控系統, 基礎設施
 
 ### Security Team (安全團隊)
+
 - **Iris Lee**: 認證授權, 加密, 稽核日誌
 - **Jack Yang**: 滲透測試, 安全審查, 合規性
 
@@ -216,22 +225,26 @@ where:
 ### 評分因素詳解 (Scoring Factors)
 
 **專業匹配 (Expertise Match)**: 40%
+
 - 檢查成員專業技能是否匹配問題類型
 - 分析問題描述和錯誤訊息中的關鍵字
 - 評估受影響檔案的相關性
 
 **可用性 (Availability)**: 30%
+
 - 基於時區判斷工作時間
 - 工作時間 (9:00-18:00): 100% 可用
 - 彈性時間 (7:00-9:00, 18:00-20:00): 70% 可用
 - 非工作時間: 30% 可用
 
 **工作負載 (Current Workload)**: 20%
+
 - 計算當前活動任務數量
 - 標準化至 0-1 範圍（假設最多 10 個活動任務）
 - 較低負載獲得較高分數
 
 **歷史表現 (Historical Performance)**: 10%
+
 - 參考過往成功率
 - 考慮平均解決時間
 - 新成員默認中等評分 (0.5)
@@ -395,9 +408,9 @@ MIT License - 詳見 [LICENSE](../LICENSE)
 
 ## 支援 (Support)
 
-- **Email**: support@synergymesh.dev
-- **GitHub Issues**: https://github.com/we-can-fix/synergymesh/issues
-- **Documentation**: https://docs.synergymesh.dev
+- **Email**: <support@synergymesh.dev>
+- **GitHub Issues**: <https://github.com/we-can-fix/synergymesh/issues>
+- **Documentation**: <https://docs.synergymesh.dev>
 
 ---
 

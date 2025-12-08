@@ -44,7 +44,7 @@
 ┌────────────────────────────────────────────────────────┐
 │              PR 評論 & 互動                             │
 │  • 每個 CI 有獨立的客服評論                             │
-│  • 開發者可用 @copilot 命令互動                         │
+│  • 開發者可用 @island 命令互動                         │
 │  • 智能標籤自動管理                                     │
 └────────────────────────────────────────────────────────┘
 ```
@@ -92,6 +92,7 @@ permissions:
 ### 步驟 3：測試
 
 提交 PR 後，CI 執行完畢會自動：
+
 1. 生成互動式客服評論
 2. 添加相應標籤
 3. 提供互動命令
@@ -263,7 +264,7 @@ jobs:
 
 ### 自動生成的評論格式
 
-#### 成功時：
+#### 成功時
 
 ```markdown
 ## ✅ Core Services CI - 客服報告
@@ -277,15 +278,15 @@ jobs:
 
 ### 🤝 互動服務
 如需協助，可使用以下命令：
-- `@copilot help Core Services CI` - 獲取此 CI 的詳細說明
-- `@copilot analyze Core Services CI` - 深度分析執行結果
-- `@copilot report Core Services CI` - 生成詳細報告
+- `@island help Core Services CI` - 獲取此 CI 的詳細說明
+- `@island analyze Core Services CI` - 深度分析執行結果
+- `@island report Core Services CI` - 生成詳細報告
 
 ---
 *此評論由 Core Services CI 互動式客服自動生成*
 ```
 
-#### 失敗時：
+#### 失敗時
 
 ```markdown
 ## ❌ Core Services CI - 客服報告
@@ -307,29 +308,35 @@ npm install
 ```
 
 **修復安全問題**
+
 ```bash
 npm audit fix
 ```
 
 ### 📊 錯誤摘要
+
 ```
 [錯誤日誌摘要]
 ```
 
 ### 🤝 互動式客服
+
 需要更多協助？使用以下命令：
-- `@copilot analyze Core Services CI` - 深度分析此錯誤
-- `@copilot fix Core Services CI` - 獲取自動修復建議
-- `@copilot help Core Services CI` - 查看此 CI 的完整文檔
-- `@copilot similar Core Services CI` - 查找相似問題的解決方案
+
+- `@island analyze Core Services CI` - 深度分析此錯誤
+- `@island fix Core Services CI` - 獲取自動修復建議
+- `@island help Core Services CI` - 查看此 CI 的完整文檔
+- `@island similar Core Services CI` - 查找相似問題的解決方案
 
 ### 📚 相關資源
+
 - [CI 故障排除文檔](./docs/ci-troubleshooting.md)
 - [Core Services CI 特定文檔](./docs/)
 - [環境檢查工具](./scripts/check-env.sh)
 
 ---
 *此評論由 Core Services CI 互動式客服自動生成*
+
 ```
 
 ### 支援的互動命令
@@ -338,11 +345,11 @@ npm audit fix
 
 | 命令 | 功能 |
 |------|------|
-| `@copilot help [CI名稱]` | 獲取該 CI 的詳細說明和文檔 |
-| `@copilot analyze [CI名稱]` | 深度分析該 CI 的執行結果或錯誤 |
-| `@copilot fix [CI名稱]` | 獲取自動修復建議和具體命令 |
-| `@copilot report [CI名稱]` | 生成該 CI 的詳細執行報告 |
-| `@copilot similar [CI名稱]` | 查找相似問題的解決方案 |
+| `@island help [CI名稱]` | 獲取該 CI 的詳細說明和文檔 |
+| `@island analyze [CI名稱]` | 深度分析該 CI 的執行結果或錯誤 |
+| `@island fix [CI名稱]` | 獲取自動修復建議和具體命令 |
+| `@island report [CI名稱]` | 生成該 CI 的詳細執行報告 |
+| `@island similar [CI名稱]` | 查找相似問題的解決方案 |
 
 ### 智能標籤管理
 
@@ -385,7 +392,8 @@ npm audit fix
        ci-status: ${{ ... }}
    ```
 
-2. **更新權限**
+1. **更新權限**
+
    ```yaml
    permissions:
      contents: read
@@ -393,13 +401,13 @@ npm audit fix
      issues: write
    ```
 
-3. **測試**
+2. **測試**
    - 創建測試 PR
    - 驗證評論生成
    - 驗證標籤管理
    - 測試互動命令
 
-4. **文檔**
+3. **文檔**
    - 更新 CI 特定文檔
    - 添加互動命令示例
 
@@ -410,12 +418,14 @@ npm audit fix
 使用清晰、描述性的名稱：
 
 ✅ 好的名稱：
+
 - "Core Services CI"
 - "Integration & Deployment"
 - "Code Quality Check"
 - "Security Scan"
 
 ❌ 避免的名稱：
+
 - "CI"
 - "Test"
 - "Build"
@@ -497,11 +507,13 @@ gh pr list --label "ci-core-services-ci-failed"
 ### 問題：互動式客服沒有生成評論
 
 **可能原因**：
+
 1. 權限不足
 2. PR 編號無法獲取
 3. Workflow 語法錯誤
 
 **解決方案**：
+
 1. 確保 `permissions` 包含 `pull-requests: write` 和 `issues: write`
 2. 檢查 workflow run 日誌
 3. 驗證 YAML 語法
@@ -525,6 +537,7 @@ gh pr list --label "ci-core-services-ci-failed"
 ## 📝 版本歷史
 
 ### v1.0.0 (2024-11-26)
+
 - ✨ 初始版本發布
 - 🤖 可重用互動式客服系統
 - 💬 智能評論生成

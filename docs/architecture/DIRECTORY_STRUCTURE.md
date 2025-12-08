@@ -11,6 +11,7 @@
 > **重要**: 完整的目錄分類與元件映射請參閱 [`config/system-module-map.yaml`](../../config/system-module-map.yaml)
 
 該配置提供:
+
 - 目錄分類與群組化 (Directory classification and grouping)
 - 高度映射/引用整合 (High-level mapping/reference integration)  
 - 技能與能力矩陣 (Skill & Capability matrix)

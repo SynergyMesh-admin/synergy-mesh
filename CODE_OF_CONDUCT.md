@@ -60,7 +60,7 @@ representative at an online or offline event.
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
 reported to the community leaders responsible for enforcement at
-**conduct@synergymesh.io**.
+**<conduct@synergymesh.io>**.
 
 All complaints will be reviewed and investigated promptly and fairly.
 
@@ -136,5 +136,5 @@ For answers to common questions about this code of conduct, see the FAQ at
 
 ## 📞 Contact
 
-- **Email**: conduct@synergymesh.io
-- **Website**: [synergymesh.io](https://synergymesh.io)
+* **Email**: <conduct@synergymesh.io>
+* **Website**: [synergymesh.io](https://synergymesh.io)

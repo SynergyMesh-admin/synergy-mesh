@@ -1,4 +1,5 @@
 # Intelligent Automation Module
+
 # 智能自動化模組
 
 > 產品級 Pipeline 組合，提供多代理 AI 代碼分析系統和自動化工作流。
@@ -21,11 +22,13 @@
 ### 🔗 Dependencies 依賴關係
 
 **應依賴 Should depend on:**
+
 - `core/` - 平台級 AI 能力
 - `mcp-servers/` - LLM 工具端點
 - `agent/` - 業務代理
 
 **不應依賴 Should NOT depend on:**
+
 - `frontend/` - Pipeline 不應直接依賴 UI
 - `infrastructure/` - Pipeline 不應依賴部署配置
 
@@ -46,6 +49,7 @@ SynergyMesh Core 是革命性的完全自主化系統網格，實現「無人機
 **設計哲學**: 讓程式服務於人類，而非人類服務於程式
 
 #### 1. **NaturalLanguageProcessor (自然語言處理器)** 🗣️
+
 - **零技術門檻** - Non-engineers interact through natural language
 - **意圖識別** - Automatic intent detection and classification
 - **技術規格生成** - Auto-translate business requirements to technical specs
@@ -62,6 +66,7 @@ result = await processor.process_natural_request(
 ```
 
 #### 2. **AutonomousCoordinator (自主協調器)** 🤖
+
 - **24/7 自主運行** - Fully autonomous operation without human intervention
 - **自我修復** - Self-healing and automatic error recovery
 - **智能決策** - Autonomous decision making based on historical data
@@ -81,6 +86,7 @@ task_id = coordinator.schedule_task(
 ```
 
 #### 3. **SelfEvolutionEngine (自我進化引擎)** 🧬
+
 - **自動學習** - Learn from user interactions and system behavior
 - **瓶頸識別** - Identify bottlenecks and optimization opportunities
 - **自動重構** - Auto-refactor and improve system architecture
@@ -99,6 +105,7 @@ await engine.start_evolution_cycle()  # Automatic optimization
 ```
 
 #### 4. **EcosystemOrchestrator (生態協同編排器)** 🎼
+
 - **子系統協調** - Independent subsystems work together in harmony
 - **資源分配** - Intelligent resource allocation and load balancing
 - **衝突解決** - Priority management and conflict resolution
@@ -119,24 +126,28 @@ await orchestrator.start()
 ### 傳統智能體 Traditional Agents
 
 ### 1. **TaskExecutor (任務執行器)**
+
 - **智能代碼分析** - Intelligent code analysis with security and performance checks
 - **自動修復** - Automated fixing of critical issues
 - **實時監控** - Real-time streaming analysis for continuous monitoring
 - **安全關鍵驗證** - Safety-critical validation for autonomous systems
 
 ### 2. **RecognitionServer (識別服務器)**
+
 - **意圖識別** - Intent detection and classification
 - **安全驗證** - Security validation and threat detection
 - **智能路由** - Intelligent request routing to appropriate handlers
 - **上下文感知** - Context-aware decision making
 
 ### 3. **VisualizationAgent (可視化智能體)**
+
 - **概念解釋** - Intuitive explanation generation with analogies
 - **知識傳遞** - Knowledge transfer for training and debugging
 - **實時解釋** - Real-time streaming explanations
 - **領域適配** - Domain-specific explanations (algorithms, performance, safety)
 
 ### 4. **PipelineService (管線服務)**
+
 - **多智能體協調** - Multi-agent orchestration
 - **請求編排** - Request routing and processing
 - **錯誤恢復** - Error handling and recovery
@@ -193,18 +204,21 @@ intelligent-automation/
 ## 使用場景 Use Cases
 
 ### 1. 無人機系統 (Drone Systems)
+
 - 飛控代碼實時監控
 - 安全關鍵路徑驗證
 - 異常檢測與自動修復
 - 性能優化建議
 
 ### 2. 自動駕駛 (Autonomous Vehicles)
+
 - 決策代碼質量保障
 - 多傳感器融合代碼分析
 - 實時性能監控
 - 安全驗證自動化
 
 ### 3. 自動化迭代 (Automated Iteration)
+
 - CI/CD 管線集成
 - 自動代碼審查
 - 性能回歸檢測
@@ -215,12 +229,14 @@ intelligent-automation/
 ### 環境需求 Environment Requirements
 
 **重要說明 IMPORTANT:**
+
 - 本模組使用插件架構，核心功能不依賴外部 AI/ML 服務
 - Python 版本：>= 3.8（不強制 3.10）
 - ModelScope API 等服務為**可選**，非必需
 - 依賴管理遵循治理分層原則，避免硬編碼
 
 This module uses a plugin architecture. Core functionality works without external AI/ML services.
+
 - Python version: >= 3.8 (not hardcoded to 3.10)
 - ModelScope API and similar services are **OPTIONAL**
 - Dependency management follows governance layering principles
@@ -257,6 +273,7 @@ pip install -r requirements.txt
 ```
 
 **自動升級示例 Auto-upgrade Example:**
+
 ```bash
 $ python auto_upgrade_env.py
 
@@ -278,11 +295,13 @@ $ python auto_upgrade_env.py
 ```
 
 **智能環境升級 Intelligent Environment Upgrade:**
+
 - 當檢測到缺少依賴時，系統會**自動升級環境配置**並安裝缺失的依賴
 - 無需手動干預，確保最佳功能體驗
 - 支持選擇性升級和批量升級
 
 When missing dependencies are detected, the system **automatically upgrades environment configuration** and installs missing dependencies.
+
 - No manual intervention required for optimal functionality
 - Supports selective and batch upgrades
 
@@ -328,6 +347,7 @@ asyncio.run(streaming_example())
 ### 與 SynergyMesh 集成
 
 1. **Auto-Fix Bot 集成**
+
    ```yaml
    # .auto-fix-bot.yml
    intelligent_automation:
@@ -339,6 +359,7 @@ asyncio.run(streaming_example())
    ```
 
 2. **GitHub Actions 集成**
+
    ```yaml
    # .github/workflows/intelligent-analysis.yml
    - name: Run Intelligent Analysis
@@ -347,6 +368,7 @@ asyncio.run(streaming_example())
    ```
 
 3. **Docker 集成**
+
    ```dockerfile
    # Dockerfile
    FROM python:3.10
@@ -359,7 +381,7 @@ asyncio.run(streaming_example())
 
 - **響應時間** Response Time: < 100ms (平均)
 - **並發處理** Concurrency: 1000+ requests/sec
-- **準確率** Accuracy: 
+- **準確率** Accuracy:
   - 安全問題檢測: 99.5%
   - 性能問題識別: 98.2%
   - 自動修復成功率: 95.8%
@@ -450,8 +472,8 @@ MIT License - 詳見 [LICENSE](../LICENSE)
 
 ## 聯繫方式 Contact
 
-- GitHub: https://github.com/we-can-fix/synergymesh
-- Issues: https://github.com/we-can-fix/synergymesh/issues
+- GitHub: <https://github.com/we-can-fix/synergymesh>
+- Issues: <https://github.com/we-can-fix/synergymesh/issues>
 
 ---
 

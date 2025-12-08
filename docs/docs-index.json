@@ -474,21 +474,21 @@
       "description": "Integration with external systems."
     },
     {
-      "id": "copilot_setup",
-      "path": "docs/COPILOT_SETUP.md",
-      "title": "Copilot Setup Copilot 設定",
+      "id": "island-ai_setup",
+      "path": "docs/ISLAND_AI_SETUP.md",
+      "title": "Island AI Setup Island AI 設定",
       "domain": "guides",
       "layer": "enablement",
       "type": "guide",
       "tags": [
-        "copilot",
+        "island-ai",
         "github",
         "setup"
       ],
       "owner": "docs-team",
       "status": "stable",
       "last_reviewed": "2025-11-01",
-      "description": "GitHub Copilot integration setup."
+      "description": "Island AI integration setup."
     },
     {
       "id": "vulnerability_management",

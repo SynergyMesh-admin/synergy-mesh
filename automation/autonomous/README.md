@@ -1,16 +1,29 @@
-# 無人機/無人駕駛高自治系統 - 五大骨架自動化框架
+# 無人機/無人駕駛高自治系統 - 11 個架構骨架自動化框架
 
 ## 📋 概述
 
-本系統提供完整的無人機/無人駕駛高自治系統框架，整合至 SynergyMesh 平台。系統採用五大骨架設計，確保架構穩定性、API 治理、測試兼容性、安全觀測和完整文檔。
+本系統提供完整的無人機/無人駕駛高自治系統框架，整合至 SynergyMesh 平台。系統採用 **11 個架構骨架設計**，涵蓋架構穩定性、API 治理、測試兼容性、安全觀測、身份管理、資料治理、性能優化、成本管理、文檔治理、知識庫和工作流編排。
 
-## 🏗️ 五大骨架架構
+## ⭐ 統一架構骨架系統
+
+**完整的架構指南與實現整合系統**：
+
+- **入口**: [`../architecture-skeletons/README.md`](../architecture-skeletons/README.md) - 統一使用指南
+- **索引**: [`../architecture-skeletons/unified-index.yaml`](../architecture-skeletons/unified-index.yaml) - 完整骨架索引
+- **映射**: [`../architecture-skeletons/mapping.yaml`](../architecture-skeletons/mapping.yaml) - 指南與實現雙向映射
+- **分析**: [`../../docs/ARCHITECTURE_SKELETON_ANALYSIS.md`](../../docs/ARCHITECTURE_SKELETON_ANALYSIS.md) - 整合分析報告
+
+本目錄包含 11 個骨架的 **實現代碼**，對應的 **架構指南** 位於 [`../../unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/`](../../unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/)。
+
+## 🏗️ 11 個核心骨架
 
 ### 1️⃣ 架構穩定性骨架 (Architecture Stability Skeleton)
+
 **技術棧**: C++ + ROS 2  
 **用途**: 核心控制層、即時控制、感測器融合
 
 **功能特性**:
+
 - ✅ 100Hz 控制迴圈，低延遲保證
 - ✅ IMU 感測器資料融合
 - ✅ PID 控制器實現
@@ -19,10 +32,12 @@
 [詳細文檔](./architecture-stability/README.md)
 
 ### 2️⃣ API 規格與治理邊界骨架 (API Governance Skeleton)
+
 **技術棧**: Python  
 **用途**: 模組治理層、API 契約驗證、依賴管理
 
 **功能特性**:
+
 - ✅ 模組責任矩陣定義
 - ✅ API 契約自動驗證
 - ✅ 循環依賴檢測
@@ -31,10 +46,12 @@
 [詳細文檔](./api-governance/README.md)
 
 ### 3️⃣ 測試與兼容性骨架 (Testing & Compatibility Skeleton)
+
 **技術棧**: Python + YAML  
 **用途**: CI/CD 自動化測試、版本兼容性檢查
 
 **功能特性**:
+
 - ✅ 跨版本兼容性測試
 - ✅ 自動化測試套件
 - ✅ 測試報告生成
@@ -43,10 +60,12 @@
 [詳細文檔](./testing-compatibility/README.md)
 
 ### 4️⃣ 安全性與觀測骨架 (Security & Observability Skeleton)
+
 **技術棧**: Go  
 **用途**: 微服務治理層、分布式追蹤、安全監控
 
 **功能特性**:
+
 - ✅ 分布式事件日誌系統
 - ✅ 追蹤 ID 支援
 - ✅ 安全違規檢測
@@ -54,17 +73,110 @@
 
 [詳細文檔](./security-observability/README.md)
 
-### 5️⃣ 文件與範例骨架 (Documentation & Examples Skeleton)
+### 5️⃣ 文檔治理骨架 (Documentation Governance Skeleton)
+
 **技術棧**: YAML + Markdown  
-**用途**: 治理邊界定義、API 文件、快速開始指南
+**用途**: 文檔標準、更新流程、機器可讀文檔、版本管理
 
 **功能特性**:
+
 - ✅ 完整治理矩陣定義
 - ✅ API 文檔與範例
 - ✅ Quickstart 指南
 - ✅ 故障排除手冊
 
+**狀態**: ✅ 生產就緒  
 [詳細文檔](./docs-examples/README.md)
+
+### 6️⃣ 身份與多租戶骨架 (Identity & Tenancy Skeleton) 🆕
+
+**技術棧**: Python (計劃中)  
+**用途**: 認證授權、RBAC/ABAC、租戶隔離、資料分離
+
+**計劃特性**:
+
+- OAuth2 / OpenID Connect 支援
+- RBAC / ABAC 授權
+- 多租戶隔離保證
+- 審計追蹤
+
+**狀態**: 🟡 架構設計階段  
+[詳細文檔](./identity-tenancy/README.md) | [架構指南](../../unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/identity-tenancy/)
+
+### 7️⃣ 資料治理骨架 (Data Governance Skeleton) 🆕
+
+**技術棧**: Python (計劃中)  
+**用途**: 資料模式、資料分類、資料流向、隱私合規
+
+**計劃特性**:
+
+- 資料模式管理
+- 資料分類系統
+- GDPR/CCPA 合規
+- 資料血緣追蹤
+
+**狀態**: 🟡 架構設計階段  
+[詳細文檔](./data-governance/README.md) | [架構指南](../../unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/data-governance/)
+
+### 8️⃣ 性能與可靠性骨架 (Performance & Reliability Skeleton) 🆕
+
+**技術棧**: Python (計劃中)  
+**用途**: SLA 管理、容量規劃、故障恢復、災難復原
+
+**計劃特性**:
+
+- SLA 監控與管理
+- 自動擴展控制
+- 故障檢測與恢復
+- 災難恢復計劃
+
+**狀態**: 🟡 架構設計階段  
+[詳細文檔](./performance-reliability/README.md) | [架構指南](../../unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/performance-reliability/)
+
+### 9️⃣ 成本管理骨架 (Cost Management Skeleton) 🆕
+
+**技術棧**: Python (計劃中)  
+**用途**: 成本監控、預算規劃、資源優化、成本預測
+
+**計劃特性**:
+
+- 實時成本監控
+- 預算告警管理
+- 資源優化建議
+- 成本預測模型
+
+**狀態**: 🟡 架構設計階段  
+[詳細文檔](./cost-management/README.md) | [架構指南](../../unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/cost-management/)
+
+### 🔟 知識庫骨架 (Knowledge Base Skeleton) 🆕
+
+**技術棧**: Python (計劃中)  
+**用途**: 知識組織、查詢介面、更新策略、AI 上下文管理
+
+**計劃特性**:
+
+- 語義搜索引擎
+- 知識圖譜構建
+- AI 上下文管理
+- 自動更新機制
+
+**狀態**: 🟡 架構設計階段  
+[詳細文檔](./knowledge-base/README.md) | [架構指南](../../unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/knowledge-base/)
+
+### 1️⃣1️⃣ 核心編排骨架 (Nucleus Orchestrator Skeleton) 🆕
+
+**技術棧**: Python (計劃中)  
+**用途**: 工作流編排、代理協調、任務分派、狀態管理
+
+**計劃特性**:
+
+- DAG 工作流引擎
+- 多代理協調器
+- 智能任務分派
+- 檢查點與恢復
+
+**狀態**: 🟡 架構設計階段  
+[詳細文檔](./nucleus-orchestrator/README.md) | [架構指南](../../unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/nucleus-orchestrator/)
 
 ## 🚀 快速開始
 
@@ -149,20 +261,24 @@ cd synergymesh/autonomous-system
 本自治系統框架與 SynergyMesh 平台深度整合：
 
 ### 1. 契約管理整合
+
 - API 契約驗證與 SynergyMesh Contracts L1 服務整合
 - 統一的契約管理和驗證流程
 
 ### 2. 溯源認證整合
+
 - 構建溯源資訊記錄
 - SLSA 認證支援
 - Sigstore 簽名驗證
 
 ### 3. 自動分派整合
+
 - 智能問題分派
 - SLA 監控
 - 負載平衡
 
 ### 4. 智能自動化整合
+
 - 多代理 AI 系統協調
 - 實時代碼分析
 - 安全關鍵驗證
@@ -262,9 +378,9 @@ colcon test
 
 ## 📞 支援與聯繫
 
-- **Email**: team@synergymesh.com
-- **GitHub Issues**: https://github.com/we-can-fix/synergymesh/issues
-- **文檔**: https://docs.synergymesh.com
+- **Email**: <team@synergymesh.com>
+- **GitHub Issues**: <https://github.com/we-can-fix/synergymesh/issues>
+- **文檔**: <https://docs.synergymesh.com>
 
 ## 📄 授權
 
@@ -292,16 +408,19 @@ MIT License - 詳見 [LICENSE](../LICENSE) 文件
 ## 🗺️ 路線圖
 
 ### v1.0 (當前版本)
+
 - ✅ 五大骨架基礎實現
 - ✅ 與 SynergyMesh 平台整合
 - ✅ 完整文檔和範例
 
 ### v1.1 (計劃中)
+
 - ⏳ 高級感測器融合算法
 - ⏳ 機器學習模型整合
 - ⏳ 更多 ROS 2 節點
 
 ### v2.0 (未來)
+
 - ⏳ 完整的模擬環境
 - ⏳ 硬體在環測試
 - ⏳ 雲端部署支援

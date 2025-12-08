@@ -291,16 +291,19 @@ autofix fix --batch --cloud
 ## 🎓 學習資源
 
 ### 官方文檔
+
 - [完整文檔](https://docsconfig/autofix-bot.com)
 - [API 參考](https://docsconfig/autofix-bot.com/api)
 - [最佳實踐](https://docsconfig/autofix-bot.com/best-practices)
 
 ### 社群資源
+
 - [GitHub 討論區](https://github.com/autofix-bot/discussions)
 - [Discord 社群](https://discord.gg/autofix-bot)
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/autofix-bot)
 
 ### 視頻教程
+
 - [5 分鐘快速入門](https://youtube.com/watch?v=quick-start)
 - [雲端委派深度解析](https://youtube.com/watch?v=cloud-delegation)
 - [CI/CD 整合實戰](https://youtube.com/watch?v=cicd-integration)
@@ -308,19 +311,24 @@ autofix fix --batch --cloud
 ## ❓ 常見問題
 
 ### Q: Auto-Fix Bot 是免費的嗎？
+
 A: 基本功能完全免費。雲端委派功能需要訂閱，提供免費試用期。
 
 ### Q: 支援哪些程式語言？
+
 A: 支援 15+ 種語言，包括 JavaScript, TypeScript, Python, Java, Go, C++, Rust 等。
 
 ### Q: 雲端委派安全嗎？
+
 A: 是的，使用端到端加密，敏感數據不會離開本地環境。
 
 ### Q: 可以在離線環境使用嗎？
+
 A: 可以，基本功能支援完全離線使用。雲端委派需要網絡連接。
 
 ### Q: 如何取得支援？
-A: 訪問 [supportconfig/autofix-bot.com](https://supportconfig/autofix-bot.com) 或發送郵件至 support@autofix-bot.com
+
+A: 訪問 [supportconfig/autofix-bot.com](https://supportconfig/autofix-bot.com) 或發送郵件至 <support@autofix-bot.com>
 
 ## 🚀 下一步
 

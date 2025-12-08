@@ -18,12 +18,13 @@ We take security issues seriously. If you discover a security vulnerability, ple
 #### Reporting Channels
 
 **Preferred Method**: Use GitHub Security Advisories
+
 1. Go to [Security Advisories](https://github.com/SynergyMesh/SynergyMesh/security/advisories)
 2. Click "Report a vulnerability"
 3. Fill in the detailed information
 4. Submit the report
 
-**Email**: security@synergymesh.io
+**Email**: <security@synergymesh.io>
 
 ### 📋 Information to Include in Your Report
 
@@ -46,6 +47,7 @@ Please include the following in your report:
 | Patch Release | Based on severity |
 
 **Severity and Fix Timeline**:
+
 - **Critical**: Begin fixing within 4 hours, release patch within 24 hours
 - **High**: Begin fixing within 24 hours, release patch within 7 days
 - **Medium**: Begin fixing within 7 days, release patch within 30 days
@@ -56,6 +58,7 @@ Please include the following in your report:
 This project implements the following security measures:
 
 #### Automated Security Scanning
+
 - **CodeQL**: Static Application Security Testing (SAST)
   - Supports 8 programming languages
   - Custom enterprise-level query rules
@@ -72,6 +75,7 @@ This project implements the following security measures:
   - SLA-driven fix process
 
 #### Security Workflows
+
 - PR Security Gate: Critical level automatically blocks merge
 - Automatic Vulnerability Fix: Daily scanning and intelligent fixes
 - Secret Bypass Approval: Standardized exception handling process
@@ -131,8 +135,8 @@ We follow responsible disclosure principles:
 
 ### 📞 Contact
 
-- **Security Team Email**: security@synergymesh.io
-- **Emergency Contact**: emergency@synergymesh.io
+- **Security Team Email**: <security@synergymesh.io>
+- **Emergency Contact**: <emergency@synergymesh.io>
 - **Website**: [synergymesh.io](https://synergymesh.io)
 
 ### 🔄 Policy Updates

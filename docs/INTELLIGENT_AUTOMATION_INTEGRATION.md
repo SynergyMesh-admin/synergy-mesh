@@ -1,4 +1,5 @@
 # Intelligent Automation Integration Guide
+
 # 智能自動化整合指南
 
 ## 概述 Overview
@@ -12,6 +13,7 @@ This guide explains how to integrate the intelligent automation capabilities ext
 ## 🎯 核心價值 Core Value
 
 ### 從 OJ-agent 提取的高價值能力
+
 **High-value capabilities extracted from OJ-agent:**
 
 1. **多智能體協同** - Multi-agent coordination
@@ -210,6 +212,7 @@ intelligent_automation:
 ## 📊 使用場景 Use Cases
 
 ### 場景 1: 無人機飛控代碼監控
+
 **Drone Flight Control Code Monitoring**
 
 ```python
@@ -237,6 +240,7 @@ async def monitor_flight_control():
 ```
 
 ### 場景 2: 自動駕駛決策代碼驗證
+
 **Autonomous Vehicle Decision Code Validation**
 
 ```python
@@ -260,6 +264,7 @@ async def validate_autonomous_code(pr_code):
 ```
 
 ### 場景 3: CI/CD 自動化迭代
+
 **CI/CD Automated Iteration**
 
 ```python
@@ -397,18 +402,21 @@ async def test_security_analysis():
 ### 常見問題 Common Issues
 
 #### 1. 模組導入錯誤
+
 ```bash
 # 確保路徑正確
 export PYTHONPATH="${PYTHONPATH}:/path/to/intelligent-automation"
 ```
 
 #### 2. 依賴缺失
+
 ```bash
 # 重新安裝依賴
 pip install -r requirements.txt --force-reinstall
 ```
 
 #### 3. 異步錯誤
+
 ```python
 # 確保使用 asyncio.run()
 import asyncio

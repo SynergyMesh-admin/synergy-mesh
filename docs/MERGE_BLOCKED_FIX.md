@@ -18,6 +18,7 @@ Waiting for Code Scanning results. Code Scanning may not be configured for the t
 ### 方案 1：調整 Repository Rules（推薦）
 
 1. **前往 Repository Settings**
+
    ```
    https://github.com/we-can-fix/synergymesh/settings/rules
    ```
@@ -37,6 +38,7 @@ Waiting for Code Scanning results. Code Scanning may not be configured for the t
 如果使用的是舊版 Branch Protection Rules：
 
 1. **前往 Branch Protection**
+
    ```
    https://github.com/we-can-fix/synergymesh/settings/branches
    ```

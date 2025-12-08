@@ -9,6 +9,7 @@
 **用途**: 產生完整專案目錄結構圖譜
 
 **功能**:
+
 - 自動掃描整個專案目錄結構
 - 產生樹狀結構圖譜（使用 tree 或 find 命令）
 - 統計專案檔案和目錄數量
@@ -17,6 +18,7 @@
 - 提供各目錄用途說明
 
 **使用方法**:
+
 ```bash
 # 基本用法（輸出到終端）
 ./scripts/generate-directory-tree.sh
@@ -27,6 +29,7 @@
 ```
 
 **輸出內容**:
+
 - 完整目錄樹結構（排除 node_modules、.git、dist 等）
 - 特殊目錄清單與說明
 - 專案統計資訊（檔案數、目錄數）
@@ -35,6 +38,7 @@
 - 主要目錄用途說明
 
 **特性**:
+
 - 雙語輸出（繁體中文 / English）
 - Markdown 格式，便於閱讀和分享
 - 自動排除建置產物和依賴目錄
@@ -42,6 +46,7 @@
 - 提供詳細的統計分析
 
 **範例輸出**:
+
 ```markdown
 # SynergyMesh 專案目錄結構圖譜
 
@@ -66,6 +71,7 @@
 **用途**: 多語言建置腳本，支援 CodeQL 分析
 
 **支援語言**:
+
 - JavaScript/TypeScript
 - Python
 - Java (Gradle/Maven)
@@ -76,6 +82,7 @@
 - Swift
 
 **使用方法**:
+
 ```bash
 # 基本用法
 ./build-matrix.sh <language> [build_mode]
@@ -87,10 +94,12 @@
 ```
 
 **建置模式**:
+
 - `standard` (預設): 標準建置
 - 可擴展自定義模式
 
 **特性**:
+
 - 自動檢測建置工具
 - 支援多種包管理器
 - 錯誤處理和日誌記錄
@@ -103,12 +112,14 @@
 **用途**: 高級推送保護腳本，檢測和阻止秘密洩露
 
 **檢測模式**:
+
 - `staged`: 檢查暫存的變更
 - `commits`: 檢查最近的 commits
 - `full`: 完整倉庫掃描
 - `strict`: 嚴格模式（預設，檢查暫存和 commits）
 
 **使用方法**:
+
 ```bash
 # 安裝 pre-push hook
 ./advanced-push-protection.sh install
@@ -123,6 +134,7 @@
 ```
 
 **檢測的秘密類型**:
+
 - GitHub Tokens (PAT, OAuth)
 - OpenAI API Keys
 - AWS Access Keys
@@ -134,6 +146,7 @@
 - Third-party Service Keys
 
 **特性**:
+
 - 即時秘密檢測
 - 上下文顯示（已編輯）
 - Git hook 整合
@@ -147,6 +160,7 @@
 **用途**: GitHub Secret Scanning 自定義模式管理工具
 
 **功能**:
+
 - 列出組織的自定義模式
 - 建立新的秘密掃描模式
 - 更新現有模式
@@ -155,10 +169,12 @@
 - 導出/導入模式
 
 **環境要求**:
+
 - Python 3.7+
 - requests 庫
 
 **安裝依賴**:
+
 ```bash
 pip install requests
 ```
@@ -228,6 +244,7 @@ export GITHUB_TOKEN="your_github_token"
 **企業級模式範例**:
 
 腳本內建以下企業級模式：
+
 - Enterprise Database Password
 - Internal Service Token
 - Enterprise API Key
@@ -235,6 +252,7 @@ export GITHUB_TOKEN="your_github_token"
 - JWT Signing Secret
 
 **錯誤處理**:
+
 - 連接失敗時提供詳細錯誤信息
 - API 錯誤時顯示響應內容
 - 失敗時返回適當的退出碼
@@ -351,6 +369,7 @@ git push origin main
 **問題**: 找不到建置工具
 
 **解決**:
+
 ```bash
 # 確認工具已安裝
 which gradle
@@ -363,6 +382,7 @@ which dotnet
 **問題**: 權限拒絕
 
 **解決**:
+
 ```bash
 # 對於 gradlew
 chmod +x ./gradlew
@@ -376,6 +396,7 @@ chmod +x scripts/build-matrix.sh
 **問題**: Hook 未觸發
 
 **解決**:
+
 ```bash
 # 檢查 hook 是否存在
 ls -la .git/hooks/pre-push
@@ -390,6 +411,7 @@ chmod +x .git/hooks/pre-push
 **問題**: 誤報太多
 
 **解決**:
+
 - 調整 SECRET_PATTERNS 陣列
 - 添加排除規則
 - 使用更精確的正則表達式
@@ -399,6 +421,7 @@ chmod +x .git/hooks/pre-push
 **問題**: 認證失敗
 
 **解決**:
+
 ```bash
 # 檢查 token 權限
 gh auth status
@@ -413,6 +436,7 @@ export GITHUB_TOKEN="new_token"
 **問題**: API 速率限制
 
 **解決**:
+
 - 使用認證的請求（更高的速率限制）
 - 添加延遲在批量操作之間
 - 使用企業級 GitHub 帳號
@@ -496,3 +520,33 @@ grep "detected" scan.log
 
 **維護者**: SynergyMesh Security Team  
 **最後更新**: 2025-11-22
+
+# Scripts Directory
+
+This directory contains utility scripts for SynergyMesh.
+
+## Structure
+
+```
+scripts/
+├── migration/    # Migration tools
+├── generation/   # Code generation tools
+└── utilities/    # General utility scripts
+```
+
+## Migration Scripts
+
+Scripts for migrating to the new directory topology.
+
+## Generation Scripts
+
+Tools for generating:
+
+- Boilerplate code
+- Configuration files
+- Documentation
+
+## See Also
+
+- [Migration Guide](../docs/MIGRATION.md)
+- [Build Compatibility](../docs/BUILD_COMPAT.md)

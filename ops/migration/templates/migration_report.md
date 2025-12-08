@@ -22,9 +22,11 @@
 ## 配置變更
 
 ### drone-config.yml 變更
+
 {{ drone_config_changes }}
 
 ### island-control.yml 變更
+
 {{ island_config_changes }}
 
 ## 需要手動處理的項目

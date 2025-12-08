@@ -1,4 +1,5 @@
 # Automation Architect API Documentation
+
 # 企業級自動化代碼分析與修復系統 API 文檔
 
 ## 概述 Overview
@@ -55,6 +56,7 @@ pipeline = AnalysisPipeline(config={
 **返回 Returns:**
 
 `PipelineResult` 對象，包含：
+
 - `success` (bool): 執行是否成功
 - `analysis_results` (dict): 分析結果
 - `repair_results` (dict, optional): 修復結果
@@ -109,6 +111,7 @@ asyncio.run(main())
 **返回 Returns:**
 
 `AnalysisResult` 對象，包含：
+
 - `file_path` (str): 文件路徑
 - `issues` (List[dict]): 問題列表
 - `metrics` (dict): 代碼指標
@@ -155,6 +158,7 @@ async def analyze_code():
 `List[SecurityIssue]` 安全問題列表。
 
 每個 `SecurityIssue` 包含：
+
 - `type` (str): 問題類型
 - `severity` (str): 嚴重程度
 - `message` (str): 問題描述
@@ -282,6 +286,7 @@ engine.add_rule(rule)
 **返回 Returns:**
 
 `RepairResult` 對象，包含：
+
 - `file_path` (str): 文件路徑
 - `rules_applied` (List[str]): 已應用的規則
 - `changes_made` (int): 變更數量

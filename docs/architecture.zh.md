@@ -158,6 +158,7 @@ Level 3: 防篡改建置
 **位置**: `.github/workflows/reusable-ci.yml`
 
 **功能**:
+
 - 參數化設計，支援不同子專案
 - 自動檢測專案類型
 - 條件執行（僅在相關文件存在時執行）
@@ -168,6 +169,7 @@ Level 3: 防篡改建置
 **位置**: `.github/workflows/monorepo-dispatch.yml`
 
 **功能**:
+
 - 使用 `paths-filter` 檢測變更
 - 矩陣策略並行執行
 - 僅觸發受影響的子專案
@@ -178,6 +180,7 @@ Level 3: 防篡改建置
 **位置**: `governance/registry.yaml`
 
 **功能**:
+
 - 記錄所有模組元數據
 - 定義依賴關係
 - SLA 指標追蹤
@@ -188,6 +191,7 @@ Level 3: 防篡改建置
 **位置**: `governance/policies/conftest/`
 
 **功能**:
+
 - Kubernetes 資源驗證
 - 命名規範執行
 - 安全基線檢查

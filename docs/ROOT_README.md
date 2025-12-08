@@ -1,4 +1,5 @@
 # SynergyMesh 監控系統參照文件
+
 # SynergyMesh Monitoring System Reference Documentation
 
 ## 📋 概述 | Overview
@@ -16,52 +17,62 @@ This document serves as the monitoring system reference guide for the SynergyMes
 The following directories are sorted by importance and sensitivity. It is recommended to deploy monitoring mechanisms in this order:
 
 ### 1. `config/` - 設定檔與部署參數
+
 **說明**: 包含系統設定、憑證、部署參數  
 **監控重點**: 所有變更（創建、修改、刪除）  
 **風險等級**: 🔴 高 (High)  
 **檔案範例**:
+
 - `elasticsearch-config.sh`
 - `prometheus-config.yml`
 - `security-network-config.yml`
 - `grafana-dashboard.json`
 
 ### 2. `core/contract_service/` - 合約與關鍵邏輯
+
 **說明**: 核心業務邏輯、合約管理服務  
 **監控重點**: 程式碼變更、API 修改  
 **風險等級**: 🔴 高 (High)  
 **子目錄**: `contracts-L1/contracts/`
 
 ### 3. `advanced-system-src/` & `advanced-system-dist/` - 核心系統
+
 **說明**: 核心系統原始碼與編譯產出  
 **監控重點**: 原始碼變更、建置產出物完整性  
 **風險等級**: 🔴 高 (High)
 
 ### 4. `mcp-servers/` - MCP 伺服器
+
 **說明**: Model Context Protocol 伺服器實作與工具  
 **監控重點**: 服務邏輯、驗證器、安全掃描器  
 **風險等級**: 🟠 中高 (Medium-High)
 
 ### 5. `scripts/` - 自動化腳本
+
 **說明**: 部署、維運、遷移用自動化腳本  
 **監控重點**: Shell 腳本、Python 腳本變更  
 **風險等級**: 🟠 中高 (Medium-High)  
 **檔案範例**:
+
 - `advanced-push-protection.sh`
 - `build-matrix.sh`
 - `manage-secret-patterns.py`
 - `vulnerability-alert-handler.py`
 
 ### 6. `governance/policies/conftest/` - 安全與合規政策
+
 **說明**: OPA/Conftest 政策定義檔  
 **監控重點**: 政策規則變更  
 **風險等級**: 🟠 中高 (Medium-High)
 
 ### 7. `schemas/` - 資料結構定義
+
 **說明**: JSON Schema 與資料驗證定義  
 **監控重點**: Schema 變更（影響資料完整性）  
 **風險等級**: 🟡 中 (Medium)
 
 ### 8. `docs/` - 操作手冊與部署指引
+
 **說明**: 系統文件、runbook、部署指南  
 **監控重點**: 重要操作流程文件變更  
 **風險等級**: 🟡 中 (Medium)
@@ -73,15 +84,18 @@ The following directories are sorted by importance and sensitivity. It is recomm
 ### 誰可以變更？ | Who Can Make Changes?
 
 #### 高風險目錄 (🔴 High Risk)
+
 - **授權人員**: 資深工程師、DevOps Lead、Security Team
 - **審核流程**: 必須經過 PR review + 至少 2 位 reviewer 批准
 - **緊急變更**: 需事後補齊文件與審核
 
 #### 中高風險目錄 (🟠 Medium-High Risk)
+
 - **授權人員**: 工程團隊成員
 - **審核流程**: 必須經過 PR review + 至少 1 位 reviewer 批准
 
 #### 中等風險目錄 (🟡 Medium Risk)
+
 - **授權人員**: 所有貢獻者
 - **審核流程**: PR review（建議）
 
@@ -102,21 +116,25 @@ All PRs affecting monitored directories must include:
 ## 👥 緊急聯絡人清單 | Emergency Contact List
 
 ### Security Team (資安團隊)
+
 - **職責**: 安全事件回應、存取控制、漏洞管理
 - **聯絡方式**: `security@synergymesh.example.com`
 - **Slack**: `#security-alerts`
 
 ### DevOps Team (維運團隊)
+
 - **職責**: 系統部署、監控維護、基礎設施
 - **聯絡方式**: `devops@synergymesh.example.com`
 - **Slack**: `#devops-on-call`
 
 ### Development Lead (開發主管)
+
 - **職責**: 程式碼審核、架構決策
 - **聯絡方式**: `dev-lead@synergymesh.example.com`
 - **Slack**: `#dev-leads`
 
 ### On-Call Engineer (值班工程師)
+
 - **職責**: 24/7 緊急事件處理
 - **聯絡方式**: `oncall@synergymesh.example.com`
 - **PagerDuty**: 查看 PagerDuty rotation
@@ -192,6 +210,7 @@ YYYY-MM-DD | <username> | <path> | <change_type> | <reason>
 ```
 
 **範例 | Example**:
+
 ```
 2025-11-24 | john.doe | config/prometheus-config.yml | modify | Update retention policy from 15d to 30d
 2025-11-24 | jane.smith | core/contract_service/contracts-L1/contracts/src/routes.ts | add | Add new health check endpoint
