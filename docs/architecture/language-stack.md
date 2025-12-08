@@ -20,6 +20,15 @@
 | Sensor fusion modules    | C++             | 航太級 performance       |
 | Kernel-level tools       | C / Rust        | 安全性、效能、記憶體掌控          |
 
+> ⚠️ **C++ Scope Limitation / C++ 範圍限制**
+> 
+> C++ is **ONLY** permitted in the following directories:
+> - `automation/autonomous/` - Autonomous flight control and real-time systems
+> - `core/native_adapters/` - Native performance adapters
+>
+> C++ 為 autonomous / native 子專案專用語言，**不作為全域命名規範來源**。
+> 詳細規範請參考 `docs/architecture/naming-conventions.md` 和 `config/system-module-map.yaml`。
+
 ### **Layer 1 — Core Engine（SynergyMesh 核心）**
 
 | Component                     | 語言                      | 理由                |
@@ -253,11 +262,13 @@ mkdir -p docs/architecture
 - [Language Governance](./language-governance.md) - 語言治理實施細節
 - [Language Policy Configuration](../../config/language-policy.yaml) - 語言策略配置
 - [System Module Map](../../config/system-module-map.yaml) - 模組語言映射配置
+- [Naming Conventions](./naming-conventions.md) ⭐ **NEW** - 命名規範（包含 C++ 範圍限制）
+- [Language Naming Rules](../../governance/language-naming-rules.yaml) ⭐ **NEW** - 語言命名規則配置
 - [System Architecture](./SYSTEM_ARCHITECTURE.md) - 系統整體架構
 - [Directory Structure](./DIRECTORY_STRUCTURE.md) - 目錄結構規範
 
 ---
 
-**文件版本：** v1.1  
-**最後更新：** 2025-12-07  
+**文件版本：** v1.2  
+**最後更新：** 2025-12-08  
 **維護者：** Unmanned Island System Team

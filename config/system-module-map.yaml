@@ -19,7 +19,7 @@
 # - config/unified-config-index.yaml: Phase 2 統一配置索引 (目錄合併計畫)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-version: "1.1.0"
+version: "1.2.0"
 id: "synergymesh.module-map"
 description: "SynergyMesh 系統模組映射 - 統一目錄結構"
 
@@ -27,6 +27,20 @@ description: "SynergyMesh 系統模組映射 - 統一目錄結構"
 phase2_consolidation:
   reference: "config/unified-config-index.yaml"
   description: "詳細目錄合併計畫請參閱統一配置索引"
+
+# Language Governance
+language_governance:
+  reference: "docs/architecture/language-stack.md"
+  naming_conventions: "docs/architecture/naming-conventions.md"
+  naming_rules: "governance/language-naming-rules.yaml"
+  
+  cpp_scope_limitation:
+    description: "C++ 為 autonomous / native 子專案專用語言，不作為全域命名規範來源"
+    allowed_paths:
+      - "automation/autonomous/"
+      - "core/native_adapters/"
+    forbidden_elsewhere: true
+    note: "C++ is ONLY permitted in autonomous and native adapter subsystems"
 
 # ============================================================================
 # Directory Categories (目錄分類)
@@ -250,6 +264,12 @@ directory_categories:
         path: "automation/autonomous/"
         description: "自主系統"
         provides: ["APIGovernance", "ArchitectureStability"]
+        language_scope:
+          primary: "C++"
+          secondary: "Python"
+          note: "C++ for real-time control (ROS 2), Python for high-level orchestration"
+          scope_limitation: "C++ is ONLY permitted in automation/autonomous/ and core/native_adapters/"
+          naming_reference: "docs/architecture/naming-conventions.md"
 
   # ─────────────────────────────────────────────────────────────────────────
   # Services (服務)
