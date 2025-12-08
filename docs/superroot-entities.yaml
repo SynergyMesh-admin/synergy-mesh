@@ -3,10 +3,10 @@ version: 1.0.0
 id: unmanned-island-superroot-entities
 title: Unmanned Island System - SuperRoot Entities
 description: SuperRoot-compatible entity definitions projected from knowledge graph
-generated_at: '2025-12-08T21:04:16.340040Z'
+generated_at: '2025-12-08T21:05:13.131110Z'
 source:
   knowledge_graph: unmanned-island-knowledge-graph
-  generated_at: '2025-12-08T21:04:15.131200Z'
+  generated_at: '2025-12-08T21:05:11.927729Z'
 entities:
 - id: system:unmanned-island
   type: System
@@ -859,6 +859,13 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 目錄
+- id: file:_codeql_detected_source_root:_codeql_detected_source_root:automation_launcher.py
+  type: Component
+  label: automation_launcher.py
+  path: _codeql_detected_source_root/_codeql_detected_source_root/automation_launcher.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
 - id: dir:_codeql_detected_source_root:_codeql_detected_source_root:automation
   type: Subsystem
   label: automation
@@ -1272,6 +1279,13 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 目錄
+- id: dir:_codeql_detected_source_root:tools:automation
+  type: Subsystem
+  label: automation
+  path: _codeql_detected_source_root/tools/automation
+  meta:
+    source: knowledge-graph
+    label_zh: 子系統
 - id: file:_codeql_detected_source_root:tools:load-playbook.py
   type: Component
   label: load-playbook.py
@@ -1426,6 +1440,13 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 目錄
+- id: file:_codeql_detected_source_root:automation_launcher.py
+  type: Component
+  label: automation_launcher.py
+  path: _codeql_detected_source_root/automation_launcher.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
 - id: dir:_codeql_detected_source_root:automation
   type: Subsystem
   label: automation
@@ -2273,6 +2294,13 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 設定
+- id: dir:_codeql_detected_source_root:config:automation
+  type: Subsystem
+  label: automation
+  path: _codeql_detected_source_root/config/automation
+  meta:
+    source: knowledge-graph
+    label_zh: 子系統
 - id: dir:_codeql_detected_source_root:config:conftest
   type: Directory
   label: conftest
@@ -3971,6 +3999,41 @@ entities:
   type: Component
   label: validate_vectors.py
   path: tools/utilities/validate_vectors.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:tools:automation
+  type: Subsystem
+  label: automation
+  path: tools/automation
+  meta:
+    source: knowledge-graph
+    label_zh: 子系統
+- id: file:tools:automation:master_orchestrator.py
+  type: Component
+  label: master_orchestrator.py
+  path: tools/automation/master_orchestrator.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:tools:automation:engines
+  type: Directory
+  label: engines
+  path: tools/automation/engines
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: file:tools:automation:engine_base.py
+  type: Component
+  label: engine_base.py
+  path: tools/automation/engine_base.py
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: file:tools:automation:__init__.py
+  type: Component
+  label: __init__.py
+  path: tools/automation/__init__.py
   meta:
     source: knowledge-graph
     label_zh: 模組
@@ -6767,6 +6830,27 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 設定
+- id: dir:config:automation
+  type: Subsystem
+  label: automation
+  path: config/automation
+  meta:
+    source: knowledge-graph
+    label_zh: 子系統
+- id: file:config:automation:automation.yaml
+  type: ConfigParam
+  label: automation.yaml
+  path: config/automation/automation.yaml
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:config:automation:pipelines
+  type: Directory
+  label: pipelines
+  path: config/automation/pipelines
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
 - id: dir:config:conftest
   type: Directory
   label: conftest
@@ -8699,6 +8783,9 @@ relationships:
   target: dir:_codeql_detected_source_root:_codeql_detected_source_root:runtime
   type: CONTAINS
 - source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: file:_codeql_detected_source_root:_codeql_detected_source_root:automation_launcher.py
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
   target: dir:_codeql_detected_source_root:_codeql_detected_source_root:automation
   type: CONTAINS
 - source: dir:_codeql_detected_source_root:_codeql_detected_source_root
@@ -8876,6 +8963,9 @@ relationships:
   target: dir:_codeql_detected_source_root:tools:utilities
   type: CONTAINS
 - source: dir:_codeql_detected_source_root:tools
+  target: dir:_codeql_detected_source_root:tools:automation
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:tools
   target: file:_codeql_detected_source_root:tools:load-playbook.py
   type: CONTAINS
 - source: dir:_codeql_detected_source_root:tools
@@ -8940,6 +9030,9 @@ relationships:
   type: CONTAINS
 - source: dir:_codeql_detected_source_root:runtime
   target: dir:_codeql_detected_source_root:runtime:mind_matrix
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root
+  target: file:_codeql_detected_source_root:automation_launcher.py
   type: CONTAINS
 - source: dir:_codeql_detected_source_root
   target: dir:_codeql_detected_source_root:automation
@@ -9303,6 +9396,9 @@ relationships:
   type: CONTAINS
 - source: dir:_codeql_detected_source_root:config
   target: file:_codeql_detected_source_root:config:island-ai-runtime.yaml
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:config
+  target: dir:_codeql_detected_source_root:config:automation
   type: CONTAINS
 - source: dir:_codeql_detected_source_root:config
   target: dir:_codeql_detected_source_root:config:conftest
@@ -10032,6 +10128,21 @@ relationships:
   type: CONTAINS
 - source: dir:tools:utilities
   target: file:tools:utilities:validate_vectors.py
+  type: CONTAINS
+- source: dir:tools
+  target: dir:tools:automation
+  type: CONTAINS
+- source: dir:tools:automation
+  target: file:tools:automation:master_orchestrator.py
+  type: CONTAINS
+- source: dir:tools:automation
+  target: dir:tools:automation:engines
+  type: CONTAINS
+- source: dir:tools:automation
+  target: file:tools:automation:engine_base.py
+  type: CONTAINS
+- source: dir:tools:automation
+  target: file:tools:automation:__init__.py
   type: CONTAINS
 - source: dir:tools
   target: file:tools:load-playbook.py
@@ -11231,6 +11342,15 @@ relationships:
   target: file:config:island-ai-runtime.yaml
   type: CONTAINS
 - source: dir:config
+  target: dir:config:automation
+  type: CONTAINS
+- source: dir:config:automation
+  target: file:config:automation:automation.yaml
+  type: CONTAINS
+- source: dir:config:automation
+  target: dir:config:automation:pipelines
+  type: CONTAINS
+- source: dir:config
   target: dir:config:conftest
   type: CONTAINS
 - source: dir:config
@@ -11900,15 +12020,15 @@ relationships:
   target: config:config:unified-config-index.yaml
   type: CONFIGURES
 summary:
-  total_entities: 1188
-  total_relationships: 1187
+  total_entities: 1200
+  total_relationships: 1199
   entities_by_type:
     Capability: 15
-    Component: 317
-    ConfigParam: 314
-    Directory: 516
+    Component: 322
+    ConfigParam: 315
+    Directory: 518
     Document: 7
-    Subsystem: 18
+    Subsystem: 22
     System: 1
 meta:
   generator: project_to_superroot.py

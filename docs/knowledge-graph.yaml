@@ -3,7 +3,7 @@ version: 1.0.0
 id: unmanned-island-knowledge-graph
 title: Unmanned Island System Knowledge Graph
 description: Knowledge graph representation of the repository structure and entities
-generated_at: '2025-12-08T21:04:15.131200Z'
+generated_at: '2025-12-08T21:05:11.927729Z'
 source_repo: .
 nodes:
 - id: system:unmanned-island
@@ -736,6 +736,12 @@ nodes:
   path: _codeql_detected_source_root/_codeql_detected_source_root/runtime
   properties:
     label_zh: 目錄
+- id: file:_codeql_detected_source_root:_codeql_detected_source_root:automation_launcher.py
+  type: module
+  label: automation_launcher.py
+  path: _codeql_detected_source_root/_codeql_detected_source_root/automation_launcher.py
+  properties:
+    label_zh: 模組
 - id: dir:_codeql_detected_source_root:_codeql_detected_source_root:automation
   type: subsystem
   label: automation
@@ -1090,6 +1096,12 @@ nodes:
   path: _codeql_detected_source_root/tools/utilities
   properties:
     label_zh: 目錄
+- id: dir:_codeql_detected_source_root:tools:automation
+  type: subsystem
+  label: automation
+  path: _codeql_detected_source_root/tools/automation
+  properties:
+    label_zh: 子系統
 - id: file:_codeql_detected_source_root:tools:load-playbook.py
   type: module
   label: load-playbook.py
@@ -1222,6 +1234,12 @@ nodes:
   path: _codeql_detected_source_root/runtime/mind_matrix
   properties:
     label_zh: 目錄
+- id: file:_codeql_detected_source_root:automation_launcher.py
+  type: module
+  label: automation_launcher.py
+  path: _codeql_detected_source_root/automation_launcher.py
+  properties:
+    label_zh: 模組
 - id: dir:_codeql_detected_source_root:automation
   type: subsystem
   label: automation
@@ -1948,6 +1966,12 @@ nodes:
   path: _codeql_detected_source_root/config/island-ai-runtime.yaml
   properties:
     label_zh: 設定
+- id: dir:_codeql_detected_source_root:config:automation
+  type: subsystem
+  label: automation
+  path: _codeql_detected_source_root/config/automation
+  properties:
+    label_zh: 子系統
 - id: dir:_codeql_detected_source_root:config:conftest
   type: directory
   label: conftest
@@ -3404,6 +3428,36 @@ nodes:
   type: module
   label: validate_vectors.py
   path: tools/utilities/validate_vectors.py
+  properties:
+    label_zh: 模組
+- id: dir:tools:automation
+  type: subsystem
+  label: automation
+  path: tools/automation
+  properties:
+    label_zh: 子系統
+- id: file:tools:automation:master_orchestrator.py
+  type: module
+  label: master_orchestrator.py
+  path: tools/automation/master_orchestrator.py
+  properties:
+    label_zh: 模組
+- id: dir:tools:automation:engines
+  type: directory
+  label: engines
+  path: tools/automation/engines
+  properties:
+    label_zh: 目錄
+- id: file:tools:automation:engine_base.py
+  type: module
+  label: engine_base.py
+  path: tools/automation/engine_base.py
+  properties:
+    label_zh: 模組
+- id: file:tools:automation:__init__.py
+  type: module
+  label: __init__.py
+  path: tools/automation/__init__.py
   properties:
     label_zh: 模組
 - id: file:tools:load-playbook.py
@@ -5800,6 +5854,24 @@ nodes:
   path: config/island-ai-runtime.yaml
   properties:
     label_zh: 設定
+- id: dir:config:automation
+  type: subsystem
+  label: automation
+  path: config/automation
+  properties:
+    label_zh: 子系統
+- id: file:config:automation:automation.yaml
+  type: config
+  label: automation.yaml
+  path: config/automation/automation.yaml
+  properties:
+    label_zh: 設定
+- id: dir:config:automation:pipelines
+  type: directory
+  label: pipelines
+  path: config/automation/pipelines
+  properties:
+    label_zh: 目錄
 - id: dir:config:conftest
   type: directory
   label: conftest
@@ -7511,6 +7583,9 @@ edges:
   target: dir:_codeql_detected_source_root:_codeql_detected_source_root:runtime
   type: contains
 - source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: file:_codeql_detected_source_root:_codeql_detected_source_root:automation_launcher.py
+  type: contains
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
   target: dir:_codeql_detected_source_root:_codeql_detected_source_root:automation
   type: contains
 - source: dir:_codeql_detected_source_root:_codeql_detected_source_root
@@ -7688,6 +7763,9 @@ edges:
   target: dir:_codeql_detected_source_root:tools:utilities
   type: contains
 - source: dir:_codeql_detected_source_root:tools
+  target: dir:_codeql_detected_source_root:tools:automation
+  type: contains
+- source: dir:_codeql_detected_source_root:tools
   target: file:_codeql_detected_source_root:tools:load-playbook.py
   type: contains
 - source: dir:_codeql_detected_source_root:tools
@@ -7752,6 +7830,9 @@ edges:
   type: contains
 - source: dir:_codeql_detected_source_root:runtime
   target: dir:_codeql_detected_source_root:runtime:mind_matrix
+  type: contains
+- source: dir:_codeql_detected_source_root
+  target: file:_codeql_detected_source_root:automation_launcher.py
   type: contains
 - source: dir:_codeql_detected_source_root
   target: dir:_codeql_detected_source_root:automation
@@ -8115,6 +8196,9 @@ edges:
   type: contains
 - source: dir:_codeql_detected_source_root:config
   target: file:_codeql_detected_source_root:config:island-ai-runtime.yaml
+  type: contains
+- source: dir:_codeql_detected_source_root:config
+  target: dir:_codeql_detected_source_root:config:automation
   type: contains
 - source: dir:_codeql_detected_source_root:config
   target: dir:_codeql_detected_source_root:config:conftest
@@ -8844,6 +8928,21 @@ edges:
   type: contains
 - source: dir:tools:utilities
   target: file:tools:utilities:validate_vectors.py
+  type: contains
+- source: dir:tools
+  target: dir:tools:automation
+  type: contains
+- source: dir:tools:automation
+  target: file:tools:automation:master_orchestrator.py
+  type: contains
+- source: dir:tools:automation
+  target: dir:tools:automation:engines
+  type: contains
+- source: dir:tools:automation
+  target: file:tools:automation:engine_base.py
+  type: contains
+- source: dir:tools:automation
+  target: file:tools:automation:__init__.py
   type: contains
 - source: dir:tools
   target: file:tools:load-playbook.py
@@ -10043,6 +10142,15 @@ edges:
   target: file:config:island-ai-runtime.yaml
   type: contains
 - source: dir:config
+  target: dir:config:automation
+  type: contains
+- source: dir:config:automation
+  target: file:config:automation:automation.yaml
+  type: contains
+- source: dir:config:automation
+  target: dir:config:automation:pipelines
+  type: contains
+- source: dir:config
   target: dir:config:conftest
   type: contains
 - source: dir:config
@@ -10712,19 +10820,19 @@ edges:
   target: config:config:unified-config-index.yaml
   type: configures
 statistics:
-  total_nodes: 1188
-  total_edges: 1187
+  total_nodes: 1200
+  total_edges: 1199
   nodes_by_type:
     system: 1
-    directory: 516
-    module: 316
-    config: 314
-    subsystem: 18
+    directory: 518
+    module: 321
+    config: 315
+    subsystem: 22
     document: 7
     capability: 15
     component: 1
   edges_by_type:
-    contains: 1168
+    contains: 1180
     provides: 15
     configures: 4
 meta:
