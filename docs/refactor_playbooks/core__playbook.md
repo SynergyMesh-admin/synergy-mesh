@@ -60,6 +60,11 @@
 
 ### P2（持續重構）
 - 待 LLM 生成
+- **命名規範對齊**：將本 cluster 內所有檔案/符號命名，對齊 `docs/architecture/naming-conventions.md`
+  - TypeScript 檔案：React components 使用 `PascalCase.tsx`，一般模組使用 `kebab-case.ts`
+  - Python 檔案：模組使用 `snake_case.py`，類別使用 `PascalCase`
+  - 不符合規範 → 由 Auto-Fix Bot 提出 rename 建議 PR
+  - 參考：`governance/language-naming-rules.yaml`
 
 ---
 

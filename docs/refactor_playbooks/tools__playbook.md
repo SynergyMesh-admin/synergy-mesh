@@ -59,6 +59,12 @@
 
 ### P2（持續重構）
 - 待 LLM 生成
+- **命名規範對齊**：將本 cluster 內所有檔案/符號命名，對齊 `docs/architecture/naming-conventions.md`
+  - Python 檔案：模組使用 `snake_case.py`（如 `generate_refactor_playbook.py`）
+  - TypeScript 檔案：使用 `kebab-case.ts`
+  - Bash 腳本：使用 `kebab-case.sh` 或 `snake_case.sh`
+  - 不符合規範 → 由 Auto-Fix Bot 提出 rename 建議 PR
+  - 參考：`governance/language-naming-rules.yaml`
 
 ---
 
