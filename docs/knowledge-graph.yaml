@@ -3,7 +3,7 @@ version: 1.0.0
 id: unmanned-island-knowledge-graph
 title: Unmanned Island System Knowledge Graph
 description: Knowledge graph representation of the repository structure and entities
-generated_at: '2025-12-08T20:30:18.531054Z'
+generated_at: '2025-12-08T21:04:15.131200Z'
 source_repo: .
 nodes:
 - id: system:unmanned-island
@@ -4732,16 +4732,10 @@ nodes:
   path: core/advisory-database
   properties:
     label_zh: 目錄
-- id: file:core:advisory-database:jest.config.js
+- id: file:core:advisory-database:jest.config.ts
   type: module
-  label: jest.config.js
-  path: core/advisory-database/jest.config.js
-  properties:
-    label_zh: 模組
-- id: file:core:advisory-database:eslint.config.js
-  type: module
-  label: eslint.config.js
-  path: core/advisory-database/eslint.config.js
+  label: jest.config.ts
+  path: core/advisory-database/jest.config.ts
   properties:
     label_zh: 模組
 - id: dir:core:advisory-database:src
@@ -5210,6 +5204,12 @@ nodes:
   type: directory
   label: security
   path: governance/policies/security
+  properties:
+    label_zh: 目錄
+- id: dir:governance:policies:autonomous
+  type: directory
+  label: autonomous
+  path: governance/policies/autonomous
   properties:
     label_zh: 目錄
 - id: file:governance:policies:base-policy.yaml
@@ -9509,10 +9509,7 @@ edges:
   target: dir:core:advisory-database
   type: contains
 - source: dir:core:advisory-database
-  target: file:core:advisory-database:jest.config.js
-  type: contains
-- source: dir:core:advisory-database
-  target: file:core:advisory-database:eslint.config.js
+  target: file:core:advisory-database:jest.config.ts
   type: contains
 - source: dir:core:advisory-database
   target: dir:core:advisory-database:src
@@ -9747,6 +9744,9 @@ edges:
   type: contains
 - source: dir:governance:policies
   target: dir:governance:policies:security
+  type: contains
+- source: dir:governance:policies
+  target: dir:governance:policies:autonomous
   type: contains
 - source: dir:governance:policies
   target: file:governance:policies:base-policy.yaml
@@ -10716,8 +10716,8 @@ statistics:
   total_edges: 1187
   nodes_by_type:
     system: 1
-    directory: 515
-    module: 317
+    directory: 516
+    module: 316
     config: 314
     subsystem: 18
     document: 7

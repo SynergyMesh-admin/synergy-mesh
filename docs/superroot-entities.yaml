@@ -3,10 +3,10 @@ version: 1.0.0
 id: unmanned-island-superroot-entities
 title: Unmanned Island System - SuperRoot Entities
 description: SuperRoot-compatible entity definitions projected from knowledge graph
-generated_at: '2025-12-08T20:30:19.748058Z'
+generated_at: '2025-12-08T21:04:16.340040Z'
 source:
   knowledge_graph: unmanned-island-knowledge-graph
-  generated_at: '2025-12-08T20:30:18.531054Z'
+  generated_at: '2025-12-08T21:04:15.131200Z'
 entities:
 - id: system:unmanned-island
   type: System
@@ -5521,17 +5521,10 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 目錄
-- id: file:core:advisory-database:jest.config.js
+- id: file:core:advisory-database:jest.config.ts
   type: Component
-  label: jest.config.js
-  path: core/advisory-database/jest.config.js
-  meta:
-    source: knowledge-graph
-    label_zh: 模組
-- id: file:core:advisory-database:eslint.config.js
-  type: Component
-  label: eslint.config.js
-  path: core/advisory-database/eslint.config.js
+  label: jest.config.ts
+  path: core/advisory-database/jest.config.ts
   meta:
     source: knowledge-graph
     label_zh: 模組
@@ -6078,6 +6071,13 @@ entities:
   type: Directory
   label: security
   path: governance/policies/security
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:governance:policies:autonomous
+  type: Directory
+  label: autonomous
+  path: governance/policies/autonomous
   meta:
     source: knowledge-graph
     label_zh: 目錄
@@ -10697,10 +10697,7 @@ relationships:
   target: dir:core:advisory-database
   type: CONTAINS
 - source: dir:core:advisory-database
-  target: file:core:advisory-database:jest.config.js
-  type: CONTAINS
-- source: dir:core:advisory-database
-  target: file:core:advisory-database:eslint.config.js
+  target: file:core:advisory-database:jest.config.ts
   type: CONTAINS
 - source: dir:core:advisory-database
   target: dir:core:advisory-database:src
@@ -10935,6 +10932,9 @@ relationships:
   type: CONTAINS
 - source: dir:governance:policies
   target: dir:governance:policies:security
+  type: CONTAINS
+- source: dir:governance:policies
+  target: dir:governance:policies:autonomous
   type: CONTAINS
 - source: dir:governance:policies
   target: file:governance:policies:base-policy.yaml
@@ -11904,9 +11904,9 @@ summary:
   total_relationships: 1187
   entities_by_type:
     Capability: 15
-    Component: 318
+    Component: 317
     ConfigParam: 314
-    Directory: 515
+    Directory: 516
     Document: 7
     Subsystem: 18
     System: 1
