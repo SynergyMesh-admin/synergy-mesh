@@ -1,0 +1,111 @@
+# Sensitive Fields Registry
+version: 1.0.0
+
+# PII 欄位
+pii_fields:
+  - name: email
+    sensitivity: confidential
+    handling:
+      encryption: required
+      masking: "xxx***@example.com"
+      access_log: true
+    regulations:
+      - GDPR
+      - CCPA
+    
+  - name: phone
+    sensitivity: confidential
+    handling:
+      encryption: required
+      masking: "+1***-***-1234"
+      access_log: true
+    regulations:
+      - GDPR
+      - CCPA
+    
+  - name: full_name
+    sensitivity: confidential
+    handling:
+      encryption: optional
+      masking: "J*** D***"
+      access_log: true
+    regulations:
+      - GDPR
+    
+  - name: address
+    sensitivity: confidential
+    handling:
+      encryption: required
+      masking: "***"
+      access_log: true
+    regulations:
+      - GDPR
+      - CCPA
+
+# 財務欄位
+financial_fields:
+  - name: credit_card_number
+    sensitivity: restricted
+    handling:
+      encryption: required
+      tokenization: required
+      masking: "**** **** **** 1234"
+      access_log: true
+      require_pci_compliance: true
+    regulations:
+      - PCI-DSS
+    
+  - name: bank_account_number
+    sensitivity: restricted
+    handling:
+      encryption: required
+      masking: "***1234"
+      access_log: true
+    regulations:
+      - PCI-DSS
+
+# 認證欄位
+auth_fields:
+  - name: password
+    sensitivity: restricted
+    handling:
+      storage: hash_only  # never store plain text
+      hashing_algorithm: bcrypt
+      min_rounds: 12
+      access_log: false  # never log
+      display: never
+    
+  - name: api_key
+    sensitivity: restricted
+    handling:
+      storage: hash_only
+      hashing_algorithm: bcrypt
+      access_log: true
+      display: prefix_only  # sk_live_***
+    
+  - name: access_token
+    sensitivity: restricted
+    handling:
+      encryption: required
+      ttl: 3600  # 1 hour
+      access_log: false
+      display: never
+
+# 自動偵測規則
+auto_detection:
+  patterns:
+    - pattern: "(password|passwd|pwd)"
+      field_type: auth_fields
+      sensitivity: restricted
+    
+    - pattern: "(email|e-mail)"
+      field_type: pii_fields
+      sensitivity: confidential
+    
+    - pattern: "(credit.?card|card.?number)"
+      field_type: financial_fields
+      sensitivity: restricted
+    
+    - pattern: "(api.?key|access.?token|secret)"
+      field_type: auth_fields
+      sensitivity: restricted

@@ -1,0 +1,154 @@
+# Data Schemas Registry
+version: 1.0.0
+
+# 核心實體 schemas
+schemas:
+  - id: user
+    version: 1.0.0
+    description: 使用者實體
+    fields:
+      - name: id
+        type: string
+        format: "usr_[a-zA-Z0-9]{20}"
+        required: true
+        description: 使用者唯一識別碼
+      
+      - name: email
+        type: string
+        format: email
+        required: true
+        sensitivity: pii
+        description: 使用者電子郵件
+      
+      - name: display_name
+        type: string
+        required: true
+        sensitivity: pii
+        description: 顯示名稱
+      
+      - name: tenant_id
+        type: string
+        format: "tnt_[a-zA-Z0-9]{20}"
+        required: true
+        indexed: true
+        description: 所屬租戶
+      
+      - name: created_at
+        type: timestamp
+        required: true
+        indexed: true
+        description: 建立時間
+
+  - id: tenant
+    version: 1.0.0
+    description: 租戶實體
+    fields:
+      - name: id
+        type: string
+        format: "tnt_[a-zA-Z0-9]{20}"
+        required: true
+      
+      - name: name
+        type: string
+        required: true
+        indexed: true
+        unique: true
+        pattern: "^[a-z0-9-]{3,63}$"
+      
+      - name: tier
+        type: enum
+        values: [free, standard, enterprise]
+        required: true
+        indexed: true
+      
+      - name: status
+        type: enum
+        values: [active, trial, suspended, deleted]
+        required: true
+        indexed: true
+
+  - id: project
+    version: 1.0.0
+    description: 專案實體
+    fields:
+      - name: id
+        type: string
+        format: "prj_[a-zA-Z0-9]{20}"
+        required: true
+      
+      - name: tenant_id
+        type: string
+        format: "tnt_[a-zA-Z0-9]{20}"
+        required: true
+        indexed: true
+      
+      - name: name
+        type: string
+        required: true
+      
+      - name: status
+        type: enum
+        values: [active, archived, deleted]
+        required: true
+        indexed: true
+
+# Event schemas
+event_schemas:
+  - id: user.created
+    version: 1.0.0
+    description: 使用者建立事件
+    payload:
+      - name: user_id
+        type: string
+        required: true
+      
+      - name: email
+        type: string
+        required: true
+        sensitivity: pii
+      
+      - name: tenant_id
+        type: string
+        required: true
+
+  - id: project.updated
+    version: 1.0.0
+    description: 專案更新事件
+    payload:
+      - name: project_id
+        type: string
+        required: true
+      
+      - name: tenant_id
+        type: string
+        required: true
+      
+      - name: changes
+        type: object
+        required: true
+        description: 變更內容
+
+# 敏感度分類
+sensitivity_levels:
+  - level: public
+    description: 公開資訊
+    encryption: none
+    access_log: false
+    
+  - level: internal
+    description: 內部資訊
+    encryption: optional
+    access_log: false
+    
+  - level: confidential
+    description: 機密資訊 (PII)
+    encryption: required
+    access_log: true
+    retention_days: 2555  # 7 years
+    
+  - level: restricted
+    description: 限制資訊 (財務/認證)
+    encryption: required
+    access_log: true
+    retention_days: 2555
+    require_mfa: true
