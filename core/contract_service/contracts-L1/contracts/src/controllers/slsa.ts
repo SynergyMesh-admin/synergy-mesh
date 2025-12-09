@@ -1,35 +1,12 @@
 import { Request, Response } from 'express';
-import { z } from 'zod';
+import { ZodError } from 'zod';
 
+import {
+  slsaCreateAttestationSchema,
+  slsaVerifyAttestationSchema,
+  slsaGenerateDigestSchema,
+} from '../models/slsa.model';
 import { SLSAAttestationService } from '../services/attestation';
-
-// Input validation schemas
-const CreateAttestationSchema = z
-  .object({
-    subjectPath: z.string().optional(),
-    subjectDigest: z.string().optional(),
-    subjectName: z.string().optional(),
-    buildType: z.string().default('https://synergymesh.dev/contracts/build/v1'),
-    builder: z.object({
-      id: z.string(),
-      version: z.string(),
-    }),
-  })
-  .refine(
-    (data) =>
-      Boolean(data.subjectPath) || (Boolean(data.subjectDigest) && Boolean(data.subjectName)),
-    { message: 'Either subjectPath or both subjectDigest and subjectName must be provided' }
-  );
-
-const VerifyAttestationSchema = z.object({
-  provenance: z.any().refine((val) => val !== undefined && val !== null, {
-    message: 'provenance is required',
-  }),
-});
-
-const GenerateDigestSchema = z.object({
-  content: z.string(),
-});
 
 export class SLSAController {
   private slsaService: SLSAAttestationService;
@@ -43,7 +20,7 @@ export class SLSAController {
    */
   createAttestation = async (req: Request, res: Response): Promise<void> => {
     try {
-      const validatedInput = CreateAttestationSchema.parse(req.body);
+      const validatedInput = slsaCreateAttestationSchema.parse(req.body);
 
       let subjects;
       if (validatedInput.subjectPath) {
@@ -89,10 +66,10 @@ export class SLSAController {
         message: 'SLSA build provenance attestation created successfully',
       });
     } catch (error) {
-      if (error instanceof z.ZodError) {
+      if (error instanceof ZodError) {
         res.status(400).json({
           success: false,
-          error: `Invalid input: ${error.errors.map((e) => e.message).join(', ')}`,
+          error: `Invalid input: ${error.errors.map((e: { message: string }) => e.message).join(', ')}`,
           timestamp: new Date().toISOString(),
         });
         return;
@@ -110,7 +87,7 @@ export class SLSAController {
    */
   verifyAttestation = async (req: Request, res: Response): Promise<void> => {
     try {
-      const { provenance } = VerifyAttestationSchema.parse(req.body);
+      const { provenance } = slsaVerifyAttestationSchema.parse(req.body);
 
       const isValid = await this.slsaService.verifyProvenance(provenance);
 
@@ -127,10 +104,10 @@ export class SLSAController {
         message: isValid ? 'SLSA attestation is valid' : 'SLSA attestation is invalid',
       });
     } catch (error) {
-      if (error instanceof z.ZodError) {
+      if (error instanceof ZodError) {
         res.status(400).json({
           success: false,
-          error: `Invalid input: ${error.errors.map((e) => e.message).join(', ')}`,
+          error: `Invalid input: ${error.errors.map((e: { message: string }) => e.message).join(', ')}`,
           timestamp: new Date().toISOString(),
         });
         return;
@@ -148,7 +125,7 @@ export class SLSAController {
    */
   generateDigest = async (req: Request, res: Response): Promise<void> => {
     try {
-      const { content } = GenerateDigestSchema.parse(req.body);
+      const { content } = slsaGenerateDigestSchema.parse(req.body);
 
       const subject = this.slsaService.createSubjectFromContent(
         'user-content',
@@ -167,10 +144,10 @@ export class SLSAController {
         message: 'Digest generated successfully',
       });
     } catch (error) {
-      if (error instanceof z.ZodError) {
+      if (error instanceof ZodError) {
         res.status(400).json({
           success: false,
-          error: `Invalid input: ${error.errors.map((e) => e.message).join(', ')}`,
+          error: `Invalid input: ${error.errors.map((e: { message: string }) => e.message).join(', ')}`,
           timestamp: new Date().toISOString(),
         });
         return;

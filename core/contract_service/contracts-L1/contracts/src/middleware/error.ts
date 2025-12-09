@@ -15,7 +15,15 @@ export const errorMiddleware = (
   let logLevel: 'error' | 'warn' = 'error';
 
   if (err instanceof AppError) {
-    const errorResponse: any = {
+    const errorResponse: {
+      error: {
+        code: ErrorCode;
+        message: string;
+        traceId: string;
+        timestamp: string;
+        validationErrors?: Array<{ field: string; message: string; code: string }>;
+      };
+    } = {
       error: {
         code: err.code,
         message: err.message,

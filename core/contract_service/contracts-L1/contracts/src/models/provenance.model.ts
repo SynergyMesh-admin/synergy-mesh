@@ -14,7 +14,7 @@ export const createAttestationSchema = z.object({
   filePath: z.string().min(1, 'File path is required'),
   builder: z.object({
     id: z.string().min(1, 'Builder ID is required'),
-    version: z.string().optional(),
+    version: z.string().min(1, 'Builder version is required'),
   }),
   metadata: z.record(z.any()).optional(),
 });

@@ -57,7 +57,10 @@ export class ValidationError extends AppError {
     code: string;
   }>;
 
-  constructor(message: string, validationErrors?: any[]) {
+  constructor(
+    message: string,
+    validationErrors?: Array<{ field: string; message: string; code: string }>
+  ) {
     super(message, ErrorCode.VALIDATION_ERROR, 400);
     this.validationErrors = validationErrors;
     Object.setPrototypeOf(this, ValidationError.prototype);
@@ -128,7 +131,8 @@ export class InternalError extends AppError {
  * Factory functions for creating common errors
  */
 export const createError = {
-  validation: (message: string, errors?: any[]) => new ValidationError(message, errors),
+  validation: (message: string, errors?: Array<{ field: string; message: string; code: string }>) =>
+    new ValidationError(message, errors),
   notFound: (resource: string) => new NotFoundError(resource),
   unauthorized: (message?: string) => new UnauthorizedError(message),
   forbidden: (message?: string) => new ForbiddenError(message),

@@ -4,7 +4,6 @@
  */
 
 import { Request, Response } from 'express';
-import { z } from 'zod';
 
 import {
   sendSuccess,
@@ -12,33 +11,10 @@ import {
   handleControllerError,
   getErrorMessage,
 } from '../middleware/response';
+import { incidentSchema, updateStatusSchema, reassignSchema } from '../models/assignment.model';
 import { AutoAssignmentEngine } from '../services/assignment/auto-assignment-engine';
 import { ResponsibilityGovernance } from '../services/assignment/responsibility-governance';
 import { Incident, Priority, ProblemType, AssignmentStatus } from '../types/assignment';
-
-// 驗證 Schema
-const incidentSchema = z.object({
-  type: z.enum([
-    'FRONTEND_ERROR',
-    'BACKEND_API',
-    'DATABASE_ISSUE',
-    'PERFORMANCE',
-    'SECURITY',
-    'INFRASTRUCTURE',
-  ]),
-  priority: z.enum(['CRITICAL', 'HIGH', 'MEDIUM', 'LOW']),
-  description: z.string().min(1),
-  affectedFiles: z.array(z.string()).optional(),
-  errorMessage: z.string().optional(),
-});
-
-const updateStatusSchema = z.object({
-  status: z.enum(['ASSIGNED', 'ACKNOWLEDGED', 'IN_PROGRESS', 'ESCALATED', 'RESOLVED']),
-});
-
-const reassignSchema = z.object({
-  newOwnerId: z.string().min(1),
-});
 
 export class AssignmentController {
   private engine: AutoAssignmentEngine;

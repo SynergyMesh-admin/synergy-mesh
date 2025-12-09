@@ -1,6 +1,10 @@
 import { Request, Response } from 'express';
 
 import { sendSuccess, sendError, createTimestamp, getErrorMessage } from '../middleware/response';
+import {
+  createAttestationSchema as provenanceCreateAttestationSchema,
+  verifyAttestationSchema as provenanceVerifyAttestationSchema,
+} from '../models/provenance.model';
 import { ProvenanceService } from '../services/provenance';
 
 export class ProvenanceController {
@@ -15,22 +19,13 @@ export class ProvenanceController {
    */
   createAttestation = async (req: Request, res: Response): Promise<void> => {
     try {
-      const { filePath, builder, metadata } = req.body;
-
-      if (!filePath) {
-        sendError(res, 'filePath is required', { status: 400, includeTimestamp: true });
-        return;
-      }
-
-      if (!builder) {
-        sendError(res, 'builder is required', { status: 400, includeTimestamp: true });
-        return;
-      }
+      // Use schema validation
+      const validatedData = provenanceCreateAttestationSchema.parse(req.body);
 
       const attestation = await this.provenanceService.createBuildAttestation(
-        filePath,
-        builder,
-        metadata
+        validatedData.filePath,
+        validatedData.builder,
+        validatedData.metadata
       );
 
       sendSuccess(res, attestation, {
@@ -55,20 +50,16 @@ export class ProvenanceController {
    */
   verifyAttestation = async (req: Request, res: Response): Promise<void> => {
     try {
-      const { attestation } = req.body;
+      // Use schema validation
+      const validatedData = provenanceVerifyAttestationSchema.parse(req.body);
 
-      if (!attestation) {
-        sendError(res, 'attestation is required', { status: 400, includeTimestamp: true });
-        return;
-      }
-
-      const isValid = await this.provenanceService.verifyAttestation(attestation);
+      const isValid = await this.provenanceService.verifyAttestation(validatedData.attestation);
 
       sendSuccess(
         res,
         {
           valid: isValid,
-          attestationId: attestation.id,
+          attestationId: validatedData.attestation.id,
           timestamp: createTimestamp(),
         },
         {

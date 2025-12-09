@@ -10,7 +10,7 @@ import { z } from 'zod';
 /**
  * Schema for creating SLSA attestation
  */
-export const createAttestationSchema = z
+export const slsaCreateAttestationSchema = z
   .object({
     subjectPath: z.string().optional(),
     subjectDigest: z.string().optional(),
@@ -32,7 +32,7 @@ export const createAttestationSchema = z
 /**
  * Schema for verifying attestation
  */
-export const verifyAttestationSchema = z.object({
+export const slsaVerifyAttestationSchema = z.object({
   provenance: z.any().refine((val) => val !== undefined && val !== null, {
     message: 'Provenance is required',
   }),
@@ -41,7 +41,7 @@ export const verifyAttestationSchema = z.object({
 /**
  * Schema for generating digest
  */
-export const generateDigestSchema = z.object({
+export const slsaGenerateDigestSchema = z.object({
   content: z.string().min(1, 'Content is required'),
 });
 
@@ -50,6 +50,6 @@ export const generateDigestSchema = z.object({
 /**
  * Infer TypeScript types from Zod schemas
  */
-export type CreateAttestationInput = z.infer<typeof createAttestationSchema>;
-export type VerifyAttestationInput = z.infer<typeof verifyAttestationSchema>;
-export type GenerateDigestInput = z.infer<typeof generateDigestSchema>;
+export type SLSACreateAttestationInput = z.infer<typeof slsaCreateAttestationSchema>;
+export type SLSAVerifyAttestationInput = z.infer<typeof slsaVerifyAttestationSchema>;
+export type SLSAGenerateDigestInput = z.infer<typeof slsaGenerateDigestSchema>;

@@ -49,11 +49,9 @@ export const validate = (schema: z.ZodSchema, target: ValidationTarget = 'body')
 
         // Create a validation error with detailed information
         const validationError = createError.validation(
-          `Validation failed: ${validationErrors.map((e) => `${e.field} - ${e.message}`).join('; ')}`
+          `Validation failed: ${validationErrors.map((e) => `${e.field} - ${e.message}`).join('; ')}`,
+          validationErrors
         );
-
-        // Attach detailed errors to the error object for better debugging
-        (validationError as any).validationErrors = validationErrors;
 
         next(validationError);
       } else {
