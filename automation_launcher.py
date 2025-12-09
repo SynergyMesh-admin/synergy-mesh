@@ -126,6 +126,8 @@ class AutomationLauncher:
         self.orchestrator = None
         self._running = False
         self._start_time = None
+        self._heartbeat_task = None
+        self._heartbeat_file = BASE_PATH / ".launcher_heartbeat.json"
 
     async def start(self, show_banner: bool = True) -> bool:
         """啟動全部"""
@@ -158,12 +160,16 @@ class AutomationLauncher:
             if success:
                 self._running = True
                 self._start_time = datetime.now()
+                
+                # Start heartbeat
+                self._heartbeat_task = asyncio.create_task(self._heartbeat_loop())
 
                 print()
                 print("=" * 70)
                 print(f"✅ SynergyMesh 自動化系統啟動成功")
                 print(f"   運行模式: {self.config['mode']}")
                 print(f"   引擎數量: {len(self.orchestrator.registry.get_all_engines())}")
+                print(f"   💓 Heartbeat: Active (Phoenix-ready)")
                 print("=" * 70)
                 print()
                 print("💡 提示: 按 Ctrl+C 停止系統")
@@ -188,6 +194,14 @@ class AutomationLauncher:
     async def stop(self):
         """停止全部"""
         print(f"\n[{datetime.now().strftime('%H:%M:%S')}] 🛑 停止自動化系統...")
+        
+        # Stop heartbeat
+        if self._heartbeat_task:
+            self._heartbeat_task.cancel()
+            try:
+                await self._heartbeat_task
+            except asyncio.CancelledError:
+                pass
 
         if self.orchestrator:
             await self.orchestrator.stop()
@@ -195,6 +209,29 @@ class AutomationLauncher:
         self._running = False
         print(f"[{datetime.now().strftime('%H:%M:%S')}] ✅ 系統已停止")
 
+    async def _heartbeat_loop(self):
+        """Send heartbeat to watchdog"""
+        while self._running:
+            try:
+                heartbeat = {
+                    "timestamp": datetime.now().isoformat(),
+                    "status": "running",
+                    "uptime": str(datetime.now() - self._start_time) if self._start_time else "0",
+                    "pid": os.getpid()
+                }
+                
+                # Write heartbeat file
+                with open(self._heartbeat_file, 'w') as f:
+                    json.dump(heartbeat, f, indent=2)
+                
+                # Wait 20 seconds before next heartbeat
+                await asyncio.sleep(20)
+                
+            except Exception as e:
+                # Don't let heartbeat errors crash the system
+                print(f"⚠️  Heartbeat error: {e}")
+                await asyncio.sleep(20)
+    
     async def run_forever(self):
         """持續運行"""
         try:
