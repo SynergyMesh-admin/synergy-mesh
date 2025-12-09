@@ -3,10 +3,10 @@ version: 1.0.0
 id: unmanned-island-superroot-entities
 title: Unmanned Island System - SuperRoot Entities
 description: SuperRoot-compatible entity definitions projected from knowledge graph
-generated_at: '2025-12-09T07:45:57.890370Z'
+generated_at: '2025-12-09T09:26:54.837327Z'
 source:
   knowledge_graph: unmanned-island-knowledge-graph
-  generated_at: '2025-12-09T07:45:56.596996Z'
+  generated_at: '2025-12-09T09:26:53.549552Z'
 entities:
 - id: system:unmanned-island
   type: System
