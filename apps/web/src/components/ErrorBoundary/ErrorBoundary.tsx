@@ -5,6 +5,8 @@
 
 import React, { Component, ErrorInfo, ReactNode } from 'react';
 
+const isDevelopment = process.env.NODE_ENV !== 'production';
+
 interface ErrorBoundaryProps {
   children: ReactNode;
   fallback?: ReactNode;
@@ -48,7 +50,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
     // Log error to console in development
-    if (import.meta.env.DEV) {
+    if (isDevelopment) {
       console.error('ErrorBoundary caught an error:', error);
       console.error('Error info:', errorInfo);
     }
@@ -126,7 +128,7 @@ const ErrorFallback: React.FC<ErrorFallbackProps> = ({ error, onReset }) => {
           support if the problem persists.
         </p>
 
-        {import.meta.env.DEV && error && (
+        {isDevelopment && error && (
           <details
             style={{
               marginBottom: '2rem',

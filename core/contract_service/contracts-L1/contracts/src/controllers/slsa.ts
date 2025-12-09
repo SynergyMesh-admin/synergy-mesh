@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { ZodError } from 'zod';
 
+import { formatZodError, isZodError } from '../middleware/zodErrorHandler';
 import {
   slsaCreateAttestationSchema,
   slsaVerifyAttestationSchema,
@@ -66,10 +66,10 @@ export class SLSAController {
         message: 'SLSA build provenance attestation created successfully',
       });
     } catch (error) {
-      if (error instanceof ZodError) {
+      if (isZodError(error)) {
         res.status(400).json({
           success: false,
-          error: `Invalid input: ${error.errors.map((e: { message: string }) => e.message).join(', ')}`,
+          error: formatZodError(error),
           timestamp: new Date().toISOString(),
         });
         return;
@@ -104,10 +104,10 @@ export class SLSAController {
         message: isValid ? 'SLSA attestation is valid' : 'SLSA attestation is invalid',
       });
     } catch (error) {
-      if (error instanceof ZodError) {
+      if (isZodError(error)) {
         res.status(400).json({
           success: false,
-          error: `Invalid input: ${error.errors.map((e: { message: string }) => e.message).join(', ')}`,
+          error: formatZodError(error),
           timestamp: new Date().toISOString(),
         });
         return;
@@ -144,10 +144,10 @@ export class SLSAController {
         message: 'Digest generated successfully',
       });
     } catch (error) {
-      if (error instanceof ZodError) {
+      if (isZodError(error)) {
         res.status(400).json({
           success: false,
-          error: `Invalid input: ${error.errors.map((e: { message: string }) => e.message).join(', ')}`,
+          error: formatZodError(error),
           timestamp: new Date().toISOString(),
         });
         return;

@@ -1,10 +1,7 @@
 import { Request, Response } from 'express';
 
 import { sendSuccess, sendError, createTimestamp, getErrorMessage } from '../middleware/response';
-import {
-  createAttestationSchema as provenanceCreateAttestationSchema,
-  verifyAttestationSchema as provenanceVerifyAttestationSchema,
-} from '../models/provenance.model';
+import { createAttestationSchema, verifyAttestationSchema } from '../models/provenance.model';
 import { ProvenanceService } from '../services/provenance';
 
 export class ProvenanceController {
@@ -20,7 +17,7 @@ export class ProvenanceController {
   createAttestation = async (req: Request, res: Response): Promise<void> => {
     try {
       // Use schema validation
-      const validatedData = provenanceCreateAttestationSchema.parse(req.body);
+      const validatedData = createAttestationSchema.parse(req.body);
 
       const attestation = await this.provenanceService.createBuildAttestation(
         validatedData.filePath,
@@ -51,7 +48,7 @@ export class ProvenanceController {
   verifyAttestation = async (req: Request, res: Response): Promise<void> => {
     try {
       // Use schema validation
-      const validatedData = provenanceVerifyAttestationSchema.parse(req.body);
+      const validatedData = verifyAttestationSchema.parse(req.body);
 
       const isValid = await this.provenanceService.verifyAttestation(validatedData.attestation);
 
