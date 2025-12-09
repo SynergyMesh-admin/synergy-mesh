@@ -8,6 +8,7 @@
 import { Request, Response } from 'express';
 
 import { sendSuccess, sendError, sendValidationError, sendNotFound } from '../middleware/response';
+import { createEscalationSchema } from '../models/escalation.model';
 import { EscalationEngine } from '../services/escalation/escalation-engine';
 import { Priority } from '../types/assignment';
 import {
@@ -34,44 +35,16 @@ export class EscalationController {
    */
   async createEscalation(req: Request, res: Response): Promise<void> {
     try {
-      const { incidentId, trigger, priority, context, assignmentId } = req.body;
-
-      // 驗證必要欄位
-      if (!incidentId || !trigger || !priority || !context) {
-        sendValidationError(res, 'Missing required fields: incidentId, trigger, priority, context');
-        return;
-      }
-
-      // 驗證觸發原因
-      const validTriggers: EscalationTrigger[] = [
-        'AUTO_FIX_FAILED',
-        'TIMEOUT_NO_RESPONSE',
-        'TIMEOUT_NO_PROGRESS',
-        'CRITICAL_SEVERITY',
-        'REPEATED_FAILURES',
-        'SAFETY_CRITICAL',
-        'MANUAL_REQUEST',
-      ];
-
-      if (!validTriggers.includes(trigger)) {
-        sendValidationError(res, `Invalid trigger. Must be one of: ${validTriggers.join(', ')}`);
-        return;
-      }
-
-      // 驗證優先級
-      const validPriorities: Priority[] = ['CRITICAL', 'HIGH', 'MEDIUM', 'LOW'];
-      if (!validPriorities.includes(priority)) {
-        sendValidationError(res, `Invalid priority. Must be one of: ${validPriorities.join(', ')}`);
-        return;
-      }
+      // Use schema validation
+      const validatedData = createEscalationSchema.parse(req.body);
 
       // 創建升級事件
       const escalation = this.escalationEngine.createEscalation(
-        incidentId,
-        trigger as EscalationTrigger,
-        priority as Priority,
-        context as EscalationContext,
-        assignmentId
+        validatedData.incidentId,
+        validatedData.trigger as EscalationTrigger,
+        validatedData.priority as Priority,
+        validatedData.context as EscalationContext,
+        validatedData.assignmentId
       );
 
       sendSuccess(res, { escalation }, { status: 201 });
