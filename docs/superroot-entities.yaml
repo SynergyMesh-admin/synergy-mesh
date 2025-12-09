@@ -3,10 +3,10 @@ version: 1.0.0
 id: unmanned-island-superroot-entities
 title: Unmanned Island System - SuperRoot Entities
 description: SuperRoot-compatible entity definitions projected from knowledge graph
-generated_at: '2025-12-09T13:21:48.809220Z'
+generated_at: '2025-12-09T14:28:45.742109Z'
 source:
   knowledge_graph: unmanned-island-knowledge-graph
-  generated_at: '2025-12-09T13:21:47.347380Z'
+  generated_at: '2025-12-09T14:28:44.177648Z'
 entities:
 - id: system:unmanned-island
   type: System
@@ -2098,6 +2098,13 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 目錄
+- id: dir:_codeql_detected_source_root:governance:architecture-governance
+  type: Directory
+  label: architecture-governance
+  path: _codeql_detected_source_root/governance/architecture-governance
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
 - id: dir:_codeql_detected_source_root:governance:governance-tools
   type: Directory
   label: governance-tools
@@ -2119,6 +2126,20 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 目錄
+- id: dir:_codeql_detected_source_root:governance:testing-governance
+  type: Directory
+  label: testing-governance
+  path: _codeql_detected_source_root/governance/testing-governance
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:governance:data-governance
+  type: Directory
+  label: data-governance
+  path: _codeql_detected_source_root/governance/data-governance
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
 - id: dir:_codeql_detected_source_root:governance:process-governance
   type: Directory
   label: process-governance
@@ -2137,6 +2158,13 @@ entities:
   type: Directory
   label: scripts
   path: _codeql_detected_source_root/governance/scripts
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:governance:cost-management-governance
+  type: Directory
+  label: cost-management-governance
+  path: _codeql_detected_source_root/governance/cost-management-governance
   meta:
     source: knowledge-graph
     label_zh: 目錄
@@ -2196,6 +2224,13 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 目錄
+- id: dir:_codeql_detected_source_root:governance:performance-reliability-governance
+  type: Directory
+  label: performance-reliability-governance
+  path: _codeql_detected_source_root/governance/performance-reliability-governance
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
 - id: dir:_codeql_detected_source_root:governance:governance-metrics
   type: Directory
   label: governance-metrics
@@ -2245,6 +2280,13 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 目錄
+- id: dir:_codeql_detected_source_root:governance:docs-governance
+  type: Directory
+  label: docs-governance
+  path: _codeql_detected_source_root/governance/docs-governance
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
 - id: dir:_codeql_detected_source_root:governance:audit
   type: Directory
   label: audit
@@ -2259,6 +2301,13 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 目錄
+- id: dir:_codeql_detected_source_root:governance:common
+  type: Directory
+  label: common
+  path: _codeql_detected_source_root/governance/common
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
 - id: dir:_codeql_detected_source_root:governance:security-governance
   type: Directory
   label: security-governance
@@ -2270,6 +2319,20 @@ entities:
   type: Directory
   label: compliance-governance
   path: _codeql_detected_source_root/governance/compliance-governance
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:governance:identity-tenancy-governance
+  type: Directory
+  label: identity-tenancy-governance
+  path: _codeql_detected_source_root/governance/identity-tenancy-governance
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:governance:api-governance
+  type: Directory
+  label: api-governance
+  path: _codeql_detected_source_root/governance/api-governance
   meta:
     source: knowledge-graph
     label_zh: 目錄
@@ -2385,6 +2448,13 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 目錄
+- id: file:_codeql_detected_source_root:tests:setup.ts
+  type: Component
+  label: setup.ts
+  path: _codeql_detected_source_root/tests/setup.ts
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
 - id: file:_codeql_detected_source_root:tests:__init__.py
   type: Component
   label: __init__.py
@@ -6704,6 +6774,27 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 設定
+- id: dir:governance:architecture-governance
+  type: Directory
+  label: architecture-governance
+  path: governance/architecture-governance
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:governance:architecture-governance:schemas
+  type: Directory
+  label: schemas
+  path: governance/architecture-governance/schemas
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:governance:architecture-governance:config
+  type: ConfigParam
+  label: config
+  path: governance/architecture-governance/config
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
 - id: dir:governance:governance-tools
   type: Directory
   label: governance-tools
@@ -6809,6 +6900,48 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 模組
+- id: dir:governance:testing-governance
+  type: Directory
+  label: testing-governance
+  path: governance/testing-governance
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:governance:testing-governance:schemas
+  type: Directory
+  label: schemas
+  path: governance/testing-governance/schemas
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:governance:testing-governance:config
+  type: ConfigParam
+  label: config
+  path: governance/testing-governance/config
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:governance:data-governance
+  type: Directory
+  label: data-governance
+  path: governance/data-governance
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:governance:data-governance:schemas
+  type: Directory
+  label: schemas
+  path: governance/data-governance/schemas
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:governance:data-governance:config
+  type: ConfigParam
+  label: config
+  path: governance/data-governance/config
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
 - id: dir:governance:process-governance
   type: Directory
   label: process-governance
@@ -6865,6 +6998,27 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 目錄
+- id: dir:governance:cost-management-governance
+  type: Directory
+  label: cost-management-governance
+  path: governance/cost-management-governance
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:governance:cost-management-governance:schemas
+  type: Directory
+  label: schemas
+  path: governance/cost-management-governance/schemas
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:governance:cost-management-governance:config
+  type: ConfigParam
+  label: config
+  path: governance/cost-management-governance/config
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
 - id: dir:governance:environment-matrix
   type: Directory
   label: environment-matrix
@@ -7054,6 +7208,27 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 模組
+- id: dir:governance:performance-reliability-governance
+  type: Directory
+  label: performance-reliability-governance
+  path: governance/performance-reliability-governance
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:governance:performance-reliability-governance:schemas
+  type: Directory
+  label: schemas
+  path: governance/performance-reliability-governance/schemas
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:governance:performance-reliability-governance:config
+  type: ConfigParam
+  label: config
+  path: governance/performance-reliability-governance/config
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
 - id: dir:governance:governance-metrics
   type: Directory
   label: governance-metrics
@@ -7222,6 +7397,20 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 目錄
+- id: dir:governance:docs-governance
+  type: Directory
+  label: docs-governance
+  path: governance/docs-governance
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:governance:docs-governance:config
+  type: ConfigParam
+  label: config
+  path: governance/docs-governance/config
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
 - id: dir:governance:audit
   type: Directory
   label: audit
@@ -7334,6 +7523,27 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 設定
+- id: dir:governance:common
+  type: Directory
+  label: common
+  path: governance/common
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:governance:common:tools
+  type: Component
+  label: tools
+  path: governance/common/tools
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
+- id: dir:governance:common:schemas
+  type: Directory
+  label: schemas
+  path: governance/common/schemas
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
 - id: dir:governance:security-governance
   type: Directory
   label: security-governance
@@ -7404,6 +7614,48 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 模組
+- id: dir:governance:identity-tenancy-governance
+  type: Directory
+  label: identity-tenancy-governance
+  path: governance/identity-tenancy-governance
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:governance:identity-tenancy-governance:schemas
+  type: Directory
+  label: schemas
+  path: governance/identity-tenancy-governance/schemas
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:governance:identity-tenancy-governance:config
+  type: ConfigParam
+  label: config
+  path: governance/identity-tenancy-governance/config
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
+- id: dir:governance:api-governance
+  type: Directory
+  label: api-governance
+  path: governance/api-governance
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:governance:api-governance:schemas
+  type: Directory
+  label: schemas
+  path: governance/api-governance/schemas
+  meta:
+    source: knowledge-graph
+    label_zh: 目錄
+- id: dir:governance:api-governance:config
+  type: ConfigParam
+  label: config
+  path: governance/api-governance/config
+  meta:
+    source: knowledge-graph
+    label_zh: 設定
 - id: dir:governance:decision-governance
   type: Directory
   label: decision-governance
@@ -7796,6 +8048,13 @@ entities:
   meta:
     source: knowledge-graph
     label_zh: 目錄
+- id: file:tests:setup.ts
+  type: Component
+  label: setup.ts
+  path: tests/setup.ts
+  meta:
+    source: knowledge-graph
+    label_zh: 模組
 - id: file:tests:__init__.py
   type: Component
   label: __init__.py
@@ -10560,6 +10819,9 @@ relationships:
   target: dir:_codeql_detected_source_root:governance:policies
   type: CONTAINS
 - source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:architecture-governance
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:governance
   target: dir:_codeql_detected_source_root:governance:governance-tools
   type: CONTAINS
 - source: dir:_codeql_detected_source_root:governance
@@ -10569,6 +10831,12 @@ relationships:
   target: dir:_codeql_detected_source_root:governance:audit-governance
   type: CONTAINS
 - source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:testing-governance
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:data-governance
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:governance
   target: dir:_codeql_detected_source_root:governance:process-governance
   type: CONTAINS
 - source: dir:_codeql_detected_source_root:governance
@@ -10576,6 +10844,9 @@ relationships:
   type: CONTAINS
 - source: dir:_codeql_detected_source_root:governance
   target: dir:_codeql_detected_source_root:governance:scripts
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:cost-management-governance
   type: CONTAINS
 - source: dir:_codeql_detected_source_root:governance
   target: dir:_codeql_detected_source_root:governance:environment-matrix
@@ -10602,6 +10873,9 @@ relationships:
   target: dir:_codeql_detected_source_root:governance:governance-culture
   type: CONTAINS
 - source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:performance-reliability-governance
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:governance
   target: dir:_codeql_detected_source_root:governance:governance-metrics
   type: CONTAINS
 - source: dir:_codeql_detected_source_root:governance
@@ -10623,16 +10897,28 @@ relationships:
   target: dir:_codeql_detected_source_root:governance:schemas
   type: CONTAINS
 - source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:docs-governance
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:governance
   target: dir:_codeql_detected_source_root:governance:audit
   type: CONTAINS
 - source: dir:_codeql_detected_source_root:governance
   target: dir:_codeql_detected_source_root:governance:behavior-contracts
   type: CONTAINS
 - source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:common
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:governance
   target: dir:_codeql_detected_source_root:governance:security-governance
   type: CONTAINS
 - source: dir:_codeql_detected_source_root:governance
   target: dir:_codeql_detected_source_root:governance:compliance-governance
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:identity-tenancy-governance
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:api-governance
   type: CONTAINS
 - source: dir:_codeql_detected_source_root:governance
   target: dir:_codeql_detected_source_root:governance:decision-governance
@@ -10681,6 +10967,9 @@ relationships:
   type: CONTAINS
 - source: dir:_codeql_detected_source_root:tests
   target: dir:_codeql_detected_source_root:tests:unit
+  type: CONTAINS
+- source: dir:_codeql_detected_source_root:tests
+  target: file:_codeql_detected_source_root:tests:setup.ts
   type: CONTAINS
 - source: dir:_codeql_detected_source_root:tests
   target: file:_codeql_detected_source_root:tests:__init__.py
@@ -12534,6 +12823,15 @@ relationships:
   target: file:governance:policies:base-policy.yaml
   type: CONTAINS
 - source: dir:governance
+  target: dir:governance:architecture-governance
+  type: CONTAINS
+- source: dir:governance:architecture-governance
+  target: dir:governance:architecture-governance:schemas
+  type: CONTAINS
+- source: dir:governance:architecture-governance
+  target: dir:governance:architecture-governance:config
+  type: CONTAINS
+- source: dir:governance
   target: dir:governance:governance-tools
   type: CONTAINS
 - source: dir:governance:governance-tools
@@ -12579,6 +12877,24 @@ relationships:
   target: file:governance:audit-governance:__init__.py
   type: CONTAINS
 - source: dir:governance
+  target: dir:governance:testing-governance
+  type: CONTAINS
+- source: dir:governance:testing-governance
+  target: dir:governance:testing-governance:schemas
+  type: CONTAINS
+- source: dir:governance:testing-governance
+  target: dir:governance:testing-governance:config
+  type: CONTAINS
+- source: dir:governance
+  target: dir:governance:data-governance
+  type: CONTAINS
+- source: dir:governance:data-governance
+  target: dir:governance:data-governance:schemas
+  type: CONTAINS
+- source: dir:governance:data-governance
+  target: dir:governance:data-governance:config
+  type: CONTAINS
+- source: dir:governance
   target: dir:governance:process-governance
   type: CONTAINS
 - source: dir:governance:process-governance
@@ -12601,6 +12917,15 @@ relationships:
   type: CONTAINS
 - source: dir:governance
   target: dir:governance:scripts
+  type: CONTAINS
+- source: dir:governance
+  target: dir:governance:cost-management-governance
+  type: CONTAINS
+- source: dir:governance:cost-management-governance
+  target: dir:governance:cost-management-governance:schemas
+  type: CONTAINS
+- source: dir:governance:cost-management-governance
+  target: dir:governance:cost-management-governance:config
   type: CONTAINS
 - source: dir:governance
   target: dir:governance:environment-matrix
@@ -12684,6 +13009,15 @@ relationships:
   target: file:governance:governance-culture:__init__.py
   type: CONTAINS
 - source: dir:governance
+  target: dir:governance:performance-reliability-governance
+  type: CONTAINS
+- source: dir:governance:performance-reliability-governance
+  target: dir:governance:performance-reliability-governance:schemas
+  type: CONTAINS
+- source: dir:governance:performance-reliability-governance
+  target: dir:governance:performance-reliability-governance:config
+  type: CONTAINS
+- source: dir:governance
   target: dir:governance:governance-metrics
   type: CONTAINS
 - source: dir:governance:governance-metrics
@@ -12756,6 +13090,12 @@ relationships:
   target: dir:governance:schemas:mndoc
   type: CONTAINS
 - source: dir:governance
+  target: dir:governance:docs-governance
+  type: CONTAINS
+- source: dir:governance:docs-governance
+  target: dir:governance:docs-governance:config
+  type: CONTAINS
+- source: dir:governance
   target: dir:governance:audit
   type: CONTAINS
 - source: dir:governance:audit
@@ -12804,6 +13144,15 @@ relationships:
   target: file:governance:behavior-contracts:apps.web.ui.yaml
   type: CONTAINS
 - source: dir:governance
+  target: dir:governance:common
+  type: CONTAINS
+- source: dir:governance:common
+  target: dir:governance:common:tools
+  type: CONTAINS
+- source: dir:governance:common
+  target: dir:governance:common:schemas
+  type: CONTAINS
+- source: dir:governance
   target: dir:governance:security-governance
   type: CONTAINS
 - source: dir:governance:security-governance
@@ -12832,6 +13181,24 @@ relationships:
   type: CONTAINS
 - source: dir:governance:compliance-governance
   target: file:governance:compliance-governance:__init__.py
+  type: CONTAINS
+- source: dir:governance
+  target: dir:governance:identity-tenancy-governance
+  type: CONTAINS
+- source: dir:governance:identity-tenancy-governance
+  target: dir:governance:identity-tenancy-governance:schemas
+  type: CONTAINS
+- source: dir:governance:identity-tenancy-governance
+  target: dir:governance:identity-tenancy-governance:config
+  type: CONTAINS
+- source: dir:governance
+  target: dir:governance:api-governance
+  type: CONTAINS
+- source: dir:governance:api-governance
+  target: dir:governance:api-governance:schemas
+  type: CONTAINS
+- source: dir:governance:api-governance
+  target: dir:governance:api-governance:config
   type: CONTAINS
 - source: dir:governance
   target: dir:governance:decision-governance
@@ -13000,6 +13367,9 @@ relationships:
   type: CONTAINS
 - source: dir:tests:unit
   target: dir:tests:unit:cloud-agent-delegation
+  type: CONTAINS
+- source: dir:tests
+  target: file:tests:setup.ts
   type: CONTAINS
 - source: dir:tests
   target: file:tests:__init__.py
@@ -13800,13 +14170,13 @@ relationships:
   target: config:config:unified-config-index.yaml
   type: CONFIGURES
 summary:
-  total_entities: 1378
-  total_relationships: 1377
+  total_entities: 1415
+  total_relationships: 1414
   entities_by_type:
     Capability: 15
-    Component: 387
-    ConfigParam: 353
-    Directory: 588
+    Component: 390
+    ConfigParam: 361
+    Directory: 614
     Document: 8
     Subsystem: 26
     System: 1
