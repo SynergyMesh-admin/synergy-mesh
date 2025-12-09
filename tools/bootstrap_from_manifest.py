@@ -82,8 +82,16 @@ class BootstrapContext:
             self.log(f"[dry-run] cp {self.rel(source)} {self.rel(target)}")
 
     def run_shell(self, script: str) -> None:
+        """Execute shell script with proper security considerations.
+        
+        Note: This uses shell=True for compatibility with multi-line shell scripts
+        from YAML configuration. The input source (YAML manifest) should be trusted
+        and version-controlled. For untrusted input, use subprocess with shell=False.
+        """
         formatted = script.strip()
         if self.apply:
+            # Security: Only execute scripts from trusted YAML manifests
+            # The manifest file should be version-controlled and reviewed
             subprocess.run(formatted, shell=True, check=True, cwd=self.repo_root)
             self.log("[shell] executed block")
         else:

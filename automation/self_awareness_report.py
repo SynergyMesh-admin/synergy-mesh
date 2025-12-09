@@ -82,6 +82,14 @@ def _summarize_sections(sections: dict[str, str]) -> SectionSummary:
 def _run_command_summary(
     label: str, command: str | None, cwd: Path, max_lines: int
 ) -> AutomationResult | None:
+    """Execute a command and capture its output summary.
+    
+    Security Note: This function uses shell=True for compatibility with
+    complex shell commands (pipes, redirects, etc). Commands should come from
+    trusted sources only (CLI arguments from authorized developers).
+    For programmatic usage with untrusted input, refactor to use shlex.split()
+    and shell=False.
+    """
     if not command:
         return None
 
