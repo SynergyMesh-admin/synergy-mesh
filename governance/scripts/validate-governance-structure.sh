@@ -214,9 +214,9 @@ check_dependency_completeness() {
 
     # 檢查是否定義了所有 14 個維度
     # Match dimension keys like governance_architecture, decision_governance, governance_tools, etc.
-    # Count non-comment lines with 2-space indent followed by a dimension key
+    # Only count keys under the dependencies section (before the next top-level comment)
     local dimension_count
-    dimension_count=$(grep -E "^  [a-z_]+:" "${GOVERNANCE_DIR}/GOVERNANCE_DEPENDENCY_MAP.yaml" | grep -v "^  #" | wc -l || true)
+    dimension_count=$(awk '/^dependencies:/,/^# / {if (/^  [a-z_]+:/) print}' "${GOVERNANCE_DIR}/GOVERNANCE_DEPENDENCY_MAP.yaml" | wc -l || true)
 
     if [ "$dimension_count" -ge 14 ]; then
         log_success "All 14 dimensions defined in dependency map"
