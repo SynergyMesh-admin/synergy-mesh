@@ -165,8 +165,9 @@ const baseConfig = {
         'import/no-default-export': 'off',
       },
     },
+
   ],
-  ignorePatterns: ['node_modules/', 'dist/', 'build/', 'coverage/', '*.min.js', '*.d.ts', '**/70-architecture-skeletons/**'],
+  ignorePatterns: ['node_modules/', 'dist/', 'build/', 'coverage/', '*.min.js', '*.d.ts', '**/70-architecture-skeletons/**', 'mcp-servers/**/*.js'],
 };
 
 module.exports = compat.config(baseConfig);
