@@ -311,6 +311,10 @@ jobs:
       - name: 📋 建立 Issue 與深度解決方案
         id: create
         uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
+        env:
+          SOLUTION_1: ${{ needs.generate-solutions.outputs.solution_1 }}
+          SOLUTION_2: ${{ needs.generate-solutions.outputs.solution_2 }}
+          ROOT_CAUSE_ANALYSIS: ${{ needs.generate-solutions.outputs.root_cause_analysis }}
         with:
           script: |
             const workflowName = '${{ needs.detect-failure.outputs.workflow_name }}';
@@ -334,9 +338,9 @@ jobs:
             let rootCause = {};
             
             try {
-              solution1 = JSON.parse(`${{ needs.generate-solutions.outputs.solution_1 }}`);
-              solution2 = JSON.parse(`${{ needs.generate-solutions.outputs.solution_2 }}`);
-              rootCause = JSON.parse(`${{ needs.generate-solutions.outputs.root_cause_analysis }}`);
+              solution1 = JSON.parse(process.env.SOLUTION_1);
+              solution2 = JSON.parse(process.env.SOLUTION_2);
+              rootCause = JSON.parse(process.env.ROOT_CAUSE_ANALYSIS);
             } catch (e) {
               console.log('解析解決方案時出錯:', e.message);
               solution1 = { title: '方案一', description: '請查看 CI 日誌', steps: ['檢查錯誤日誌', '分析根本原因', '實施修復'] };
