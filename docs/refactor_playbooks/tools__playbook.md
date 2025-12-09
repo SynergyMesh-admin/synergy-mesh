@@ -1,6 +1,6 @@
 # Refactor Playbook: tools/
 
-**Generated:** 2025-12-08T11:19:44.569654  
+**Generated:** 2025-12-09T00:57:02.174116  
 **Cluster Score:** 50  
 **Status:** Draft (LLM generation required for complete playbook)
 
@@ -59,12 +59,6 @@
 
 ### P2（持續重構）
 - 待 LLM 生成
-- **命名規範對齊**：將本 cluster 內所有檔案/符號命名，對齊 `docs/architecture/naming-conventions.md`
-  - Python 檔案：模組使用 `snake_case.py`（如 `generate_refactor_playbook.py`）
-  - TypeScript 檔案：使用 `kebab-case.ts`
-  - Bash 腳本：使用 `kebab-case.sh` 或 `snake_case.sh`
-  - 不符合規範 → 由 Auto-Fix Bot 提出 rename 建議 PR
-  - 參考：`governance/language-naming-rules.yaml`
 
 ---
 
@@ -103,6 +97,16 @@ tools/
 ├── _scratch/
 │   ├── .gitkeep
 │   └── README.md
+├── automation/
+│   ├── engines/
+│   │   ├── __init__.py
+│   │   ├── generation_engine.py
+│   │   ├── integration_automation_engine.py
+│   │   ├── refactor_automation_engine.py
+│   │   └── validation_automation_engine.py
+│   ├── __init__.py
+│   ├── engine_base.py
+│   └── master_orchestrator.py
 ├── ci/
 │   ├── contract-checker.js
 │   ├── language-checker.js
@@ -117,6 +121,8 @@ tools/
 │   ├── package.json
 │   └── tsconfig.json
 ├── docs/
+│   ├── README.md
+│   ├── analyze_root_reports.py
 │   ├── generate_knowledge_graph.py
 │   ├── generate_mndoc_from_readme.py
 │   ├── pr_comment_summary.py
@@ -131,6 +137,17 @@ tools/
 │   ├── generate-consolidated-report.py
 │   ├── language-governance-analyzer.py
 │   └── validate-governance-matrix.py
+├── refactor/
+│   ├── __init__.py
+│   ├── auto_refactor.py
+│   ├── cognitive_engine.py
+│   ├── execute_integration.py
+│   ├── process_legacy_scratch.py
+│   ├── refactor_engine.py
+│   ├── refactor_evolution_workflow.py
+│   ├── test_integration.sh
+│   ├── update_indexes.py
+│   └── validate_structure.py
 ├── scripts/
 │   ├── artifacts/
 │   │   └── build.sh
@@ -170,20 +187,21 @@ tools/
 ├── generate-migration-flow.py
 ├── generate-refactor-playbook.py
 ├── generate-sankey-data.py
-├── language-dashboard-data.yaml
-├── language-health-score.py
-└── ... (6 more items)
+└── ... (8 more items)
 ```
 
 ### 檔案說明
 
 - `tools/README.md` — 說明文檔
+- `tools/refactor/__init__.py` — Python 套件初始化
 - `tools/scripts/README.md` — 說明文檔
 - `tools/cli/README.md` — 說明文檔
 - `tools/cli/package.json` — Node.js 專案配置
 - `tools/cli/tsconfig.json` — TypeScript 編譯配置
 - `tools/cli/src/index.ts` — 模組入口點
 - `tools/_scratch/README.md` — 說明文檔
+- `tools/automation/__init__.py` — Python 套件初始化
+- `tools/automation/engines/__init__.py` — Python 套件初始化
 
 ---
 

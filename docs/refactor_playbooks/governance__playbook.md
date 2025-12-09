@@ -1,6 +1,6 @@
 # Refactor Playbook: governance/
 
-**Generated:** 2025-12-08T11:19:44.563725  
+**Generated:** 2025-12-09T00:57:02.168130  
 **Cluster Score:** 55  
 **Status:** Draft (LLM generation required for complete playbook)
 
@@ -59,11 +59,6 @@
 
 ### P2（持續重構）
 - 待 LLM 生成
-- **命名規範對齊**：將本 cluster 內所有檔案/符號命名，對齊 `docs/architecture/naming-conventions.md`
-  - Python 檔案：模組使用 `snake_case.py`，類別使用 `PascalCase`，函式使用 `snake_case()`
-  - YAML 配置：使用 `kebab-case.yaml` 或 `snake_case.yaml`
-  - 不符合規範 → 由 Auto-Fix Bot 提出 rename 建議 PR
-  - 參考：`governance/language-naming-rules.yaml`
 
 ---
 
@@ -131,6 +126,8 @@ governance/
 │   ├── README.md
 │   └── core.unified_integration.yaml
 ├── policies/
+│   ├── autonomous/
+│   │   └── uav_ad.rego
 │   ├── compliance/
 │   │   └── compliance-standards.yaml
 │   ├── conftest/
@@ -196,9 +193,9 @@ governance/
 ├── architecture-health.yaml
 ├── hotspot-data.json
 ├── language-governance-report.md
+├── language-naming-rules.yaml
 ├── mapping-rules.yaml
-├── migration-flow.json
-└── ... (3 more items)
+└── ... (4 more items)
 ```
 
 ### 檔案說明

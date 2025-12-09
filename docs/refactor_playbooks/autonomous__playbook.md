@@ -1,6 +1,6 @@
 # Refactor Playbook: autonomous/
 
-**Generated:** 2025-12-08T11:19:44.563228  
+**Generated:** 2025-12-09T00:57:02.167671  
 **Cluster Score:** 45  
 **Status:** Draft (LLM generation required for complete playbook)
 
@@ -59,12 +59,6 @@
 
 ### P2（持續重構）
 - 待 LLM 生成
-- **命名規範對齊**：將本 cluster 內所有檔案/符號命名，對齊 `docs/architecture/naming-conventions.md`
-  - C++ 檔案：使用 `snake_case.cpp/.h`，類別使用 `PascalCase`（注意：C++ 僅限 autonomous/ 和 native_adapters/）
-  - Python 檔案：模組使用 `snake_case.py`，高層編排程式碼
-  - 選擇並文檔化 C++ 風格（Google Style 或 ROS 2 Style），在子專案內保持一致
-  - 不符合規範 → 由 Auto-Fix Bot 提出 rename 建議 PR
-  - 參考：`governance/language-naming-rules.yaml`
 
 ---
 

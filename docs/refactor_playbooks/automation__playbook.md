@@ -1,6 +1,6 @@
 # Refactor Playbook: automation/
 
-**Generated:** 2025-12-08T11:19:44.559328  
+**Generated:** 2025-12-09T00:57:02.163833  
 **Cluster Score:** 60  
 **Status:** Draft (LLM generation required for complete playbook)
 
@@ -59,11 +59,6 @@
 
 ### P2（持續重構）
 - 待 LLM 生成
-- **命名規範對齊**：將本 cluster 內所有檔案/符號命名，對齊 `docs/architecture/naming-conventions.md`
-  - Python 檔案：模組使用 `snake_case.py`，類別使用 `PascalCase`，函式使用 `snake_case()`
-  - TypeScript 檔案：一般模組使用 `kebab-case.ts`
-  - 不符合規範 → 由 Auto-Fix Bot 提出 rename 建議 PR
-  - 參考：`governance/language-naming-rules.yaml`
 
 ---
 
@@ -172,8 +167,7 @@ automation/
 │   ├── security-observability/
 │   │   ├── observability/
 │   │   ├── README.md
-│   │   ├── go.mod
-│   │   └── main.go
+│   │   └── main.py
 │   ├── testing-compatibility/
 │   │   ├── README.md
 │   │   ├── requirements.txt
@@ -191,8 +185,7 @@ automation/
 │   │   ├── uav-autonomous-driving-governance.md
 │   │   └── usage-notes.md
 │   ├── policies/
-│   │   ├── gatekeeper/
-│   │   └── rego/
+│   │   └── gatekeeper/
 │   ├── templates/
 │   │   └── impl/
 │   ├── CHANGELOG.md

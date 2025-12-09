@@ -1,6 +1,6 @@
 # Refactor Playbook: infrastructure/
 
-**Generated:** 2025-12-08T11:19:44.572215  
+**Generated:** 2025-12-09T00:57:02.176950  
 **Cluster Score:** 40  
 **Status:** Draft (LLM generation required for complete playbook)
 
@@ -59,13 +59,6 @@
 
 ### P2（持續重構）
 - 待 LLM 生成
-- **命名規範對齊**：將本 cluster 內所有檔案/符號命名，對齊 `docs/architecture/naming-conventions.md`
-  - YAML 配置：使用 `kebab-case.yaml`
-  - Terraform (HCL)：使用 `kebab-case.tf`
-  - TypeScript 工具：使用 `kebab-case.ts`
-  - Go 工具：使用 `lowercase.go` 或 `snake_case.go`
-  - 不符合規範 → 由 Auto-Fix Bot 提出 rename 建議 PR
-  - 參考：`governance/language-naming-rules.yaml`
 
 ---
 

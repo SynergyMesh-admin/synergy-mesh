@@ -1,6 +1,6 @@
 # Refactor Playbook: apps/
 
-**Generated:** 2025-12-08T11:19:44.566945  
+**Generated:** 2025-12-09T00:57:02.171406  
 **Cluster Score:** 68  
 **Status:** Draft (LLM generation required for complete playbook)
 
@@ -59,12 +59,6 @@
 
 ### P2（持續重構）
 - 待 LLM 生成
-- **命名規範對齊**：將本 cluster 內所有檔案/符號命名，對齊 `docs/architecture/naming-conventions.md`
-  - React Components：使用 `PascalCase.tsx`（如 `Dashboard.tsx`, `SystemMonitor.tsx`）
-  - TypeScript 模組：使用 `kebab-case.ts`（如 `config-manager.ts`, `api-client.ts`）
-  - 變數/函式：使用 `camelCase`，類別使用 `PascalCase`，常數使用 `SCREAMING_SNAKE_CASE`
-  - 不符合規範 → 由 Auto-Fix Bot 提出 rename 建議 PR
-  - 參考：`governance/language-naming-rules.yaml`
 
 ---
 

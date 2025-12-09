@@ -1,6 +1,6 @@
 # Refactor Playbook: services/
 
-**Generated:** 2025-12-08T11:19:44.557358  
+**Generated:** 2025-12-09T00:57:02.161905  
 **Cluster Score:** 82  
 **Status:** Draft (LLM generation required for complete playbook)
 
@@ -60,11 +60,6 @@
 
 ### P2（持續重構）
 - 待 LLM 生成
-- **命名規範對齊**：將本 cluster 內所有檔案/符號命名，對齊 `docs/architecture/naming-conventions.md`
-  - Go 檔案：使用 `lowercase` 或 `snake_case.go`，exported 函式使用 `PascalCase()`
-  - TypeScript 檔案：一般模組使用 `kebab-case.ts`
-  - 不符合規範 → 由 Auto-Fix Bot 提出 rename 建議 PR
-  - 參考：`governance/language-naming-rules.yaml`
 
 ---
 
