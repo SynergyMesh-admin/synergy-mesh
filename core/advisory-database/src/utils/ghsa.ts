@@ -11,6 +11,7 @@
  */
 
 import { webcrypto } from 'node:crypto';
+
 import { GHSA_ID_PATTERN } from '../types/advisory.js';
 
 /**
@@ -181,7 +182,8 @@ export async function computeDeterministicGHSAId(data: string): Promise<string> 
  * // ['GHSA-c3gv-9cxf-6f57', 'GHSA-x2p5-qgf7-r8m4']
  */
 export function extractGHSAIds(text: string): string[] {
-  const globalPattern = /GHSA-[23456789cfghjmpqrvwx]{4}-[23456789cfghjmpqrvwx]{4}-[23456789cfghjmpqrvwx]{4}/g;
+  const globalPattern =
+    /GHSA-[23456789cfghjmpqrvwx]{4}-[23456789cfghjmpqrvwx]{4}-[23456789cfghjmpqrvwx]{4}/g;
   const matches = text.match(globalPattern);
   return matches ? [...new Set(matches)] : [];
 }

@@ -20,19 +20,19 @@ import { z } from 'zod';
  * These match the ecosystems supported by GitHub Advisory Database
  */
 export const EcosystemSchema = z.enum([
-  'actions',     // GitHub Actions
-  'composer',    // PHP Composer (packagist.org)
-  'erlang',      // Erlang (hex.pm)
-  'go',          // Go modules (pkg.go.dev)
-  'maven',       // Java Maven (repo.maven.apache.org)
-  'npm',         // Node.js (npmjs.com)
-  'nuget',       // .NET NuGet (nuget.org)
-  'other',       // Other ecosystems
-  'pip',         // Python (pypi.org)
-  'pub',         // Dart/Flutter (pub.dev)
-  'rubygems',    // Ruby (rubygems.org)
-  'rust',        // Rust Cargo (crates.io)
-  'swift',       // Swift packages
+  'actions', // GitHub Actions
+  'composer', // PHP Composer (packagist.org)
+  'erlang', // Erlang (hex.pm)
+  'go', // Go modules (pkg.go.dev)
+  'maven', // Java Maven (repo.maven.apache.org)
+  'npm', // Node.js (npmjs.com)
+  'nuget', // .NET NuGet (nuget.org)
+  'other', // Other ecosystems
+  'pip', // Python (pypi.org)
+  'pub', // Dart/Flutter (pub.dev)
+  'rubygems', // Ruby (rubygems.org)
+  'rust', // Rust Cargo (crates.io)
+  'swift', // Swift packages
 ]);
 
 export type Ecosystem = z.infer<typeof EcosystemSchema>;
@@ -45,7 +45,8 @@ export type Ecosystem = z.infer<typeof EcosystemSchema>;
  * GHSA ID validation pattern
  * Format: GHSA-xxxx-xxxx-xxxx where x is from set: 23456789cfghjmpqrvwx
  */
-export const GHSA_ID_PATTERN = /^GHSA-[23456789cfghjmpqrvwx]{4}-[23456789cfghjmpqrvwx]{4}-[23456789cfghjmpqrvwx]{4}$/;
+export const GHSA_ID_PATTERN =
+  /^GHSA-[23456789cfghjmpqrvwx]{4}-[23456789cfghjmpqrvwx]{4}-[23456789cfghjmpqrvwx]{4}$/;
 
 /**
  * CVE ID validation pattern
@@ -84,12 +85,7 @@ export const Cvss4VectorSchema = z.object({
 /**
  * Severity level schema
  */
-export const SeverityLevelSchema = z.enum([
-  'CRITICAL',
-  'HIGH',
-  'MEDIUM',
-  'LOW',
-]);
+export const SeverityLevelSchema = z.enum(['CRITICAL', 'HIGH', 'MEDIUM', 'LOW']);
 
 export type SeverityLevel = z.infer<typeof SeverityLevelSchema>;
 
@@ -131,12 +127,7 @@ export type Reference = z.infer<typeof ReferenceSchema>;
 /**
  * Event type for version ranges
  */
-export const EventTypeSchema = z.enum([
-  'introduced',
-  'fixed',
-  'last_affected',
-  'limit',
-]);
+export const EventTypeSchema = z.enum(['introduced', 'fixed', 'last_affected', 'limit']);
 
 /**
  * Range event schema
@@ -151,18 +142,16 @@ export const RangeEventSchema = z.object({
 /**
  * Range type for version ranges
  */
-export const RangeTypeSchema = z.enum([
-  'SEMVER',
-  'ECOSYSTEM',
-  'GIT',
-]);
+export const RangeTypeSchema = z.enum(['SEMVER', 'ECOSYSTEM', 'GIT']);
 
 /**
  * Database-specific range info (GitHub specific)
  */
-export const RangeDatabaseSpecificSchema = z.object({
-  last_known_affected_version_range: z.string().optional(),
-}).passthrough();
+export const RangeDatabaseSpecificSchema = z
+  .object({
+    last_known_affected_version_range: z.string().optional(),
+  })
+  .passthrough();
 
 /**
  * Version range schema
@@ -188,19 +177,25 @@ export const PackageSchema = z.object({
 /**
  * Affected database-specific info
  */
-export const AffectedDatabaseSpecificSchema = z.object({
-  source: z.string().optional(),
-}).passthrough();
+export const AffectedDatabaseSpecificSchema = z
+  .object({
+    source: z.string().optional(),
+  })
+  .passthrough();
 
 /**
  * Affected package schema
  */
 export const AffectedSchema = z.object({
   package: PackageSchema,
-  severity: z.array(z.object({
-    type: z.enum(['CVSS_V2', 'CVSS_V3', 'CVSS_V4']),
-    score: z.string(),
-  })).optional(),
+  severity: z
+    .array(
+      z.object({
+        type: z.enum(['CVSS_V2', 'CVSS_V3', 'CVSS_V4']),
+        score: z.string(),
+      })
+    )
+    .optional(),
   ranges: z.array(RangeSchema).optional(),
   versions: z.array(z.string()).optional(),
   ecosystem_specific: z.record(z.unknown()).optional(),
@@ -275,10 +270,14 @@ export const AdvisorySchema = z.object({
   related: z.array(z.string()).optional(),
   summary: z.string(),
   details: z.string().optional(),
-  severity: z.array(z.object({
-    type: z.enum(['CVSS_V2', 'CVSS_V3', 'CVSS_V4']),
-    score: z.string(),
-  })).optional(),
+  severity: z
+    .array(
+      z.object({
+        type: z.enum(['CVSS_V2', 'CVSS_V3', 'CVSS_V4']),
+        score: z.string(),
+      })
+    )
+    .optional(),
   affected: z.array(AffectedSchema),
   references: z.array(ReferenceSchema).optional(),
   credits: z.array(CreditSchema).optional(),

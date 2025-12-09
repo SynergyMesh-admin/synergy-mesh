@@ -1,30 +1,34 @@
 import { Request, Response } from 'express';
-import { SLSAAttestationService } from '../services/attestation';
 import { z } from 'zod';
 
+import { SLSAAttestationService } from '../services/attestation';
+
 // Input validation schemas
-const CreateAttestationSchema = z.object({
-  subjectPath: z.string().optional(),
-  subjectDigest: z.string().optional(),
-  subjectName: z.string().optional(),
-  buildType: z.string().default('https://synergymesh.dev/contracts/build/v1'),
-  builder: z.object({
-    id: z.string(),
-    version: z.string()
+const CreateAttestationSchema = z
+  .object({
+    subjectPath: z.string().optional(),
+    subjectDigest: z.string().optional(),
+    subjectName: z.string().optional(),
+    buildType: z.string().default('https://synergymesh.dev/contracts/build/v1'),
+    builder: z.object({
+      id: z.string(),
+      version: z.string(),
+    }),
   })
-}).refine(data => 
-  Boolean(data.subjectPath) || (Boolean(data.subjectDigest) && Boolean(data.subjectName)),
-  { message: "Either subjectPath or both subjectDigest and subjectName must be provided" }
-);
+  .refine(
+    (data) =>
+      Boolean(data.subjectPath) || (Boolean(data.subjectDigest) && Boolean(data.subjectName)),
+    { message: 'Either subjectPath or both subjectDigest and subjectName must be provided' }
+  );
 
 const VerifyAttestationSchema = z.object({
   provenance: z.any().refine((val) => val !== undefined && val !== null, {
-    message: 'provenance is required'
-  })
+    message: 'provenance is required',
+  }),
 });
 
 const GenerateDigestSchema = z.object({
-  content: z.string()
+  content: z.string(),
 });
 
 export class SLSAController {
@@ -40,22 +44,21 @@ export class SLSAController {
   createAttestation = async (req: Request, res: Response): Promise<void> => {
     try {
       const validatedInput = CreateAttestationSchema.parse(req.body);
-      
+
       let subjects;
       if (validatedInput.subjectPath) {
         // 從文件路徑創建主體
         const fs = await import('fs/promises');
         const content = await fs.readFile(validatedInput.subjectPath);
-        subjects = [this.slsaService.createSubjectFromContent(
-          validatedInput.subjectPath,
-          content
-        )];
+        subjects = [this.slsaService.createSubjectFromContent(validatedInput.subjectPath, content)];
       } else {
         // 從摘要創建主體
-        subjects = [this.slsaService.createSubjectFromDigest(
-          validatedInput.subjectName!,
-          validatedInput.subjectDigest!.replace('sha256:', '')
-        )];
+        subjects = [
+          this.slsaService.createSubjectFromDigest(
+            validatedInput.subjectName!,
+            validatedInput.subjectDigest!.replace('sha256:', '')
+          ),
+        ];
       }
 
       const metadata = this.slsaService.generateContractBuildMetadata(
@@ -67,8 +70,8 @@ export class SLSAController {
       // 更新構建元數據
       metadata.builder.id = validatedInput.builder.id;
       metadata.builder.version = {
-        'builder': validatedInput.builder.version,
-        'node': process.version
+        builder: validatedInput.builder.version,
+        node: process.version,
       };
       metadata.buildType = validatedInput.buildType;
       metadata.finishedOn = new Date().toISOString();
@@ -81,23 +84,23 @@ export class SLSAController {
           provenance,
           attestationId: metadata.invocationId,
           subjects: subjects.length,
-          buildType: metadata.buildType
+          buildType: metadata.buildType,
         },
-        message: 'SLSA build provenance attestation created successfully'
+        message: 'SLSA build provenance attestation created successfully',
       });
     } catch (error) {
       if (error instanceof z.ZodError) {
         res.status(400).json({
           success: false,
-          error: `Invalid input: ${error.errors.map(e => e.message).join(', ')}`,
-          timestamp: new Date().toISOString()
+          error: `Invalid input: ${error.errors.map((e) => e.message).join(', ')}`,
+          timestamp: new Date().toISOString(),
         });
         return;
       }
       res.status(500).json({
         success: false,
         error: error instanceof Error ? error.message : 'Failed to create SLSA attestation',
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       });
     }
   };
@@ -108,32 +111,34 @@ export class SLSAController {
   verifyAttestation = async (req: Request, res: Response): Promise<void> => {
     try {
       const { provenance } = VerifyAttestationSchema.parse(req.body);
-      
+
       const isValid = await this.slsaService.verifyProvenance(provenance);
-      
+
       res.json({
         success: true,
         data: {
           valid: isValid,
           timestamp: new Date().toISOString(),
-          provenanceType: typeof provenance === 'object' && provenance !== null && 
-            'predicateType' in provenance ? (provenance as { predicateType: string }).predicateType : 'unknown'
+          provenanceType:
+            typeof provenance === 'object' && provenance !== null && 'predicateType' in provenance
+              ? (provenance as { predicateType: string }).predicateType
+              : 'unknown',
         },
-        message: isValid ? 'SLSA attestation is valid' : 'SLSA attestation is invalid'
+        message: isValid ? 'SLSA attestation is valid' : 'SLSA attestation is invalid',
       });
     } catch (error) {
       if (error instanceof z.ZodError) {
         res.status(400).json({
           success: false,
-          error: `Invalid input: ${error.errors.map(e => e.message).join(', ')}`,
-          timestamp: new Date().toISOString()
+          error: `Invalid input: ${error.errors.map((e) => e.message).join(', ')}`,
+          timestamp: new Date().toISOString(),
         });
         return;
       }
       res.status(500).json({
         success: false,
         error: error instanceof Error ? error.message : 'Failed to verify SLSA attestation',
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       });
     }
   };
@@ -144,12 +149,12 @@ export class SLSAController {
   generateDigest = async (req: Request, res: Response): Promise<void> => {
     try {
       const { content } = GenerateDigestSchema.parse(req.body);
-      
+
       const subject = this.slsaService.createSubjectFromContent(
         'user-content',
         Buffer.from(content, 'utf-8')
       );
-      
+
       res.json({
         success: true,
         data: {
@@ -157,23 +162,23 @@ export class SLSAController {
           digest: subject.digest,
           sha256: subject.digest.sha256,
           algorithm: 'sha256',
-          timestamp: new Date().toISOString()
+          timestamp: new Date().toISOString(),
         },
-        message: 'Digest generated successfully'
+        message: 'Digest generated successfully',
       });
     } catch (error) {
       if (error instanceof z.ZodError) {
         res.status(400).json({
           success: false,
-          error: `Invalid input: ${error.errors.map(e => e.message).join(', ')}`,
-          timestamp: new Date().toISOString()
+          error: `Invalid input: ${error.errors.map((e) => e.message).join(', ')}`,
+          timestamp: new Date().toISOString(),
         });
         return;
       }
       res.status(500).json({
         success: false,
         error: error instanceof Error ? error.message : 'Failed to generate digest',
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       });
     }
   };
@@ -183,19 +188,14 @@ export class SLSAController {
    */
   createContractAttestation = async (req: Request, res: Response): Promise<void> => {
     try {
-      const {
-        contractName,
-        contractVersion,
-        deployerAddress,
-        contractCode,
-        deploymentTxHash
-      } = req.body;
+      const { contractName, contractVersion, deployerAddress, contractCode, deploymentTxHash } =
+        req.body;
 
       if (!contractName || !contractCode) {
         res.status(400).json({
           success: false,
           error: 'Contract name and code are required',
-          timestamp: new Date().toISOString()
+          timestamp: new Date().toISOString(),
         });
         return;
       }
@@ -216,7 +216,7 @@ export class SLSAController {
         ...metadata.externalParameters,
         deploymentTxHash,
         contractName,
-        deployerAddress
+        deployerAddress,
       };
       metadata.finishedOn = new Date().toISOString();
 
@@ -232,16 +232,16 @@ export class SLSAController {
             deployerAddress,
             deploymentTxHash,
             codeHash: subject.digest.sha256,
-            attestationId: metadata.invocationId
-          }
+            attestationId: metadata.invocationId,
+          },
         },
-        message: 'Contract deployment attestation created successfully'
+        message: 'Contract deployment attestation created successfully',
       });
     } catch (error) {
       res.status(500).json({
         success: false,
         error: error instanceof Error ? error.message : 'Failed to create contract attestation',
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       });
     }
   };
@@ -257,7 +257,7 @@ export class SLSAController {
         res.status(400).json({
           success: false,
           error: 'Provenance data is required',
-          timestamp: new Date().toISOString()
+          timestamp: new Date().toISOString(),
         });
         return;
       }
@@ -272,19 +272,19 @@ export class SLSAController {
         buildType: provenance.predicate?.buildDefinition?.buildType || 'unknown',
         builder: provenance.predicate?.runDetails?.builder?.id || 'unknown',
         timestamp: provenance.predicate?.runDetails?.metadata?.startedOn || 'unknown',
-        invocationId: provenance.predicate?.runDetails?.metadata?.invocationId || 'unknown'
+        invocationId: provenance.predicate?.runDetails?.metadata?.invocationId || 'unknown',
       };
 
       res.json({
         success: true,
         data: summary,
-        message: 'Attestation summary generated successfully'
+        message: 'Attestation summary generated successfully',
       });
     } catch (error) {
       res.status(500).json({
         success: false,
         error: error instanceof Error ? error.message : 'Failed to generate attestation summary',
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       });
     }
   };

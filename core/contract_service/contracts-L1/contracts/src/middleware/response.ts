@@ -92,22 +92,14 @@ export const sendError = (
 /**
  * Send a validation error response
  */
-export const sendValidationError = (
-  res: Response,
-  error: string,
-  details?: unknown
-): void => {
+export const sendValidationError = (res: Response, error: string, details?: unknown): void => {
   sendError(res, error, { status: 400, details });
 };
 
 /**
  * Send a not found error response
  */
-export const sendNotFound = (
-  res: Response,
-  resource: string,
-  includeTimestamp = false
-): void => {
+export const sendNotFound = (res: Response, resource: string, includeTimestamp = false): void => {
   sendError(res, `${resource} not found`, { status: 404, includeTimestamp });
 };
 
@@ -150,7 +142,11 @@ export const handleControllerError = (
     fallbackMessage?: string;
   } = {}
 ): void => {
-  const { notFoundCheck, notFoundStatus = 404, fallbackMessage = 'Unknown error occurred' } = options;
+  const {
+    notFoundCheck,
+    notFoundStatus = 404,
+    fallbackMessage = 'Unknown error occurred',
+  } = options;
 
   if (error instanceof z.ZodError) {
     sendValidationError(res, 'Validation error', error.errors);
@@ -158,7 +154,7 @@ export const handleControllerError = (
   }
 
   if (error instanceof Error) {
-    if (notFoundCheck && notFoundCheck(error.message)) {
+    if (notFoundCheck?.(error.message)) {
       sendError(res, error.message, { status: notFoundStatus });
       return;
     }

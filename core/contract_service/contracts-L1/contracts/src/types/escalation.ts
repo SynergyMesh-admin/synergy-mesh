@@ -1,7 +1,7 @@
 /**
  * 進階升級系統類型定義
  * Advanced Escalation System Type Definitions
- * 
+ *
  * 支援無人機、自動駕駛和自動化系統的智能升級機制
  * Supports intelligent escalation for drones, autonomous vehicles, and automated systems
  */
@@ -13,47 +13,47 @@ import { Priority, TeamMember } from './assignment';
  * Escalation trigger reasons
  */
 export type EscalationTrigger =
-  | 'AUTO_FIX_FAILED'           // 自動修復失敗
-  | 'TIMEOUT_NO_RESPONSE'        // 超時無回應
-  | 'TIMEOUT_NO_PROGRESS'        // 超時無進展
-  | 'CRITICAL_SEVERITY'          // 嚴重等級
-  | 'REPEATED_FAILURES'          // 重複失敗
-  | 'SAFETY_CRITICAL'            // 安全關鍵
-  | 'MANUAL_REQUEST';            // 手動請求
+  | 'AUTO_FIX_FAILED' // 自動修復失敗
+  | 'TIMEOUT_NO_RESPONSE' // 超時無回應
+  | 'TIMEOUT_NO_PROGRESS' // 超時無進展
+  | 'CRITICAL_SEVERITY' // 嚴重等級
+  | 'REPEATED_FAILURES' // 重複失敗
+  | 'SAFETY_CRITICAL' // 安全關鍵
+  | 'MANUAL_REQUEST'; // 手動請求
 
 /**
  * 升級層級
  * Escalation levels
  */
 export type EscalationLevel =
-  | 'L1_AUTO'                    // L1: 自動化處理
-  | 'L2_TEAM_LEAD'               // L2: 團隊主管
-  | 'L3_SUPPORT_ENGINEER'        // L3: 支援工程師
-  | 'L4_SENIOR_ENGINEER'         // L4: 資深工程師
-  | 'L5_CUSTOMER_SERVICE';       // L5: 客服人員介入
+  | 'L1_AUTO' // L1: 自動化處理
+  | 'L2_TEAM_LEAD' // L2: 團隊主管
+  | 'L3_SUPPORT_ENGINEER' // L3: 支援工程師
+  | 'L4_SENIOR_ENGINEER' // L4: 資深工程師
+  | 'L5_CUSTOMER_SERVICE'; // L5: 客服人員介入
 
 /**
  * 升級狀態
  * Escalation status
  */
 export type EscalationStatus =
-  | 'PENDING'                    // 等待中
-  | 'IN_REVIEW'                  // 審查中
-  | 'ASSIGNED'                   // 已分派
-  | 'IN_PROGRESS'                // 處理中
-  | 'RESOLVED'                   // 已解決
-  | 'CLOSED';                    // 已關閉
+  | 'PENDING' // 等待中
+  | 'IN_REVIEW' // 審查中
+  | 'ASSIGNED' // 已分派
+  | 'IN_PROGRESS' // 處理中
+  | 'RESOLVED' // 已解決
+  | 'CLOSED'; // 已關閉
 
 /**
  * 解決方案類型
  * Solution types
  */
 export type SolutionType =
-  | 'AUTOMATED'                  // 自動化解決
-  | 'HUMAN_ASSISTED'             // 人工輔助
-  | 'MANUAL_INTERVENTION'        // 手動介入
-  | 'WORKAROUND'                 // 臨時解決方案
-  | 'ESCALATED_FURTHER';         // 進一步升級
+  | 'AUTOMATED' // 自動化解決
+  | 'HUMAN_ASSISTED' // 人工輔助
+  | 'MANUAL_INTERVENTION' // 手動介入
+  | 'WORKAROUND' // 臨時解決方案
+  | 'ESCALATED_FURTHER'; // 進一步升級
 
 /**
  * 升級事件
@@ -84,7 +84,7 @@ export interface EscalationContext {
   // 系統資訊
   systemType: 'DRONE' | 'AUTONOMOUS_VEHICLE' | 'AUTOMATED_SYSTEM' | 'GENERAL';
   environment: 'PRODUCTION' | 'STAGING' | 'DEVELOPMENT';
-  
+
   // 問題詳情
   errorDetails: {
     message: string;
@@ -92,14 +92,14 @@ export interface EscalationContext {
     affectedComponents: string[];
     impactLevel: 'HIGH' | 'MEDIUM' | 'LOW';
   };
-  
+
   // 自動化嘗試記錄
   autoFixAttempts: AutoFixAttempt[];
-  
+
   // 相關資料
   relatedIncidents?: string[];
   similarIssues?: string[];
-  
+
   // 業務影響
   businessImpact?: {
     affectedUsers: number;
@@ -133,17 +133,17 @@ export interface EscalationResolution {
   implementedAt: Date;
   verifiedBy?: TeamMember;
   verifiedAt?: Date;
-  
+
   // 解決方案詳情
   changes: {
     files: string[];
     description: string;
     commitHash?: string;
   };
-  
+
   // 預防措施
   preventiveMeasures?: string[];
-  
+
   // 知識庫文章
   knowledgeBaseArticle?: {
     id: string;
@@ -182,19 +182,19 @@ export interface CustomerServiceAgent extends TeamMember {
 export interface EscalationRuleConfig {
   trigger: EscalationTrigger;
   priority: Priority;
-  
+
   // 升級層級對應
   targetLevel: EscalationLevel;
-  
+
   // 時間閾值（分鐘）
   timeThresholds: {
     autoEscalation: number;
     maxWaitTime: number;
   };
-  
+
   // 自動化重試次數
   maxAutoRetries: number;
-  
+
   // 通知配置
   notifications: {
     channels: ('EMAIL' | 'SLACK' | 'SMS' | 'PHONE')[];
@@ -211,17 +211,17 @@ export interface EscalationStatistics {
     start: Date;
     end: Date;
   };
-  
+
   totalEscalations: number;
-  
+
   byLevel: Record<EscalationLevel, number>;
   byTrigger: Record<EscalationTrigger, number>;
   byStatus: Record<EscalationStatus, number>;
-  
+
   averageResolutionTime: number; // 分鐘
-  
+
   solutionTypes: Record<SolutionType, number>;
-  
+
   // 成功率
   successRate: {
     l1Auto: number;

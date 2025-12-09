@@ -6,8 +6,9 @@
  * ============================================================================
  */
 
-import { Request, Response, NextFunction } from 'express';
 import crypto from 'crypto';
+
+import { Request, Response, NextFunction } from 'express';
 
 /**
  * 擴展的 Request 類型，包含可選的用戶資訊
@@ -23,23 +24,23 @@ interface AuthenticatedRequest extends Request {
  * 審計日誌條目
  */
 interface AuditLogEntry {
-  id: string;                  // 唯一標識符
-  timestamp: string;           // ISO 8601 時間戳
-  traceId: string;            // 追蹤 ID
-  userId?: string;            // 用戶 ID (如果已認證)
-  ipAddress: string;          // 客戶端 IP
-  userAgent: string;          // User Agent
-  method: string;             // HTTP 方法
-  path: string;               // 請求路徑
+  id: string; // 唯一標識符
+  timestamp: string; // ISO 8601 時間戳
+  traceId: string; // 追蹤 ID
+  userId?: string; // 用戶 ID (如果已認證)
+  ipAddress: string; // 客戶端 IP
+  userAgent: string; // User Agent
+  method: string; // HTTP 方法
+  path: string; // 請求路徑
   query?: Record<string, unknown>; // 查詢參數
-  body?: unknown;             // 請求主體 (已清理敏感數據)
-  statusCode?: number;        // 回應狀態碼
-  responseTime?: number;      // 回應時間 (ms)
-  error?: string;             // 錯誤訊息
-  action?: string;            // 動作類型 (CREATE, READ, UPDATE, DELETE)
-  resource?: string;          // 資源類型
-  result?: 'SUCCESS' | 'FAILURE';  // 結果
-  metadata?: Record<string, unknown>;  // 額外元數據
+  body?: unknown; // 請求主體 (已清理敏感數據)
+  statusCode?: number; // 回應狀態碼
+  responseTime?: number; // 回應時間 (ms)
+  error?: string; // 錯誤訊息
+  action?: string; // 動作類型 (CREATE, READ, UPDATE, DELETE)
+  resource?: string; // 資源類型
+  result?: 'SUCCESS' | 'FAILURE'; // 結果
+  metadata?: Record<string, unknown>; // 額外元數據
 }
 
 /**
@@ -48,22 +49,22 @@ interface AuditLogEntry {
 interface AuditLogConfig {
   // 是否啟用審計日誌
   enabled?: boolean;
-  
+
   // 敏感欄位列表 (將被遮罩)
   sensitiveFields?: string[];
-  
+
   // 是否記錄請求主體
   logRequestBody?: boolean;
-  
+
   // 是否記錄回應主體
   logResponseBody?: boolean;
-  
+
   // 最大主體大小 (bytes)
   maxBodySize?: number;
-  
+
   // 跳過日誌的路徑模式
   skipPaths?: RegExp[];
-  
+
   // 自定義日誌處理器
   logHandler?: (entry: AuditLogEntry) => Promise<void> | void;
 }
@@ -86,26 +87,19 @@ const defaultConfig: Required<Omit<AuditLogConfig, 'logHandler'>> = {
   logRequestBody: true,
   logResponseBody: false,
   maxBodySize: 10240, // 10KB
-  skipPaths: [
-    /\/health/i,
-    /\/metrics/i,
-    /\/favicon.ico/i,
-  ],
+  skipPaths: [/\/health/i, /\/metrics/i, /\/favicon.ico/i],
 };
 
 /**
  * 清理敏感數據
  */
-function sanitizeData(
-  data: unknown,
-  sensitiveFields: string[]
-): unknown {
+function sanitizeData(data: unknown, sensitiveFields: string[]): unknown {
   if (!data || typeof data !== 'object') {
     return data;
   }
 
   if (Array.isArray(data)) {
-    return data.map(item => sanitizeData(item, sensitiveFields));
+    return data.map((item) => sanitizeData(item, sensitiveFields));
   }
 
   // 僅處理純物件，排除特殊物件 (Date, Map, Set, 類別實例等)
@@ -117,7 +111,7 @@ function sanitizeData(
   for (const key in sanitized) {
     if (Object.prototype.hasOwnProperty.call(sanitized, key)) {
       // 檢查是否為敏感欄位
-      if (sensitiveFields.some(field => key.toLowerCase().includes(field.toLowerCase()))) {
+      if (sensitiveFields.some((field) => key.toLowerCase().includes(field.toLowerCase()))) {
         sanitized[key] = '***REDACTED***';
       } else if (typeof sanitized[key] === 'object' && sanitized[key] !== null) {
         // 遞歸清理嵌套對象
@@ -157,11 +151,13 @@ function extractResourceFromPath(path: string): string {
  */
 function defaultLogHandler(entry: AuditLogEntry): void {
   const logLevel = entry.result === 'FAILURE' ? 'error' : 'info';
-  console.log(JSON.stringify({
-    level: logLevel,
-    type: 'audit',
-    ...entry,
-  }));
+  console.log(
+    JSON.stringify({
+      level: logLevel,
+      type: 'audit',
+      ...entry,
+    })
+  );
 }
 
 /**
@@ -180,16 +176,15 @@ export function createAuditLogger(
 
   return (req: Request, res: Response, next: NextFunction): void => {
     // 檢查是否跳過此路徑
-    if (finalConfig.skipPaths.some(pattern => pattern.test(req.path))) {
+    if (finalConfig.skipPaths.some((pattern) => pattern.test(req.path))) {
       return next();
     }
 
     const startTime = Date.now();
-    
+
     // 生成追蹤 ID
-    const traceId = req.headers['x-trace-id'] as string ||
-                    crypto.randomUUID();
-    
+    const traceId = (req.headers['x-trace-id'] as string) || crypto.randomUUID();
+
     // 設置追蹤 ID 到請求和回應
     req.headers['x-trace-id'] = traceId;
     res.setHeader('X-Trace-Id', traceId);
@@ -199,10 +194,11 @@ export function createAuditLogger(
       id: crypto.randomUUID(),
       timestamp: new Date().toISOString(),
       traceId,
-      ipAddress: (req.headers['x-forwarded-for'] as string)?.split(',')[0]?.trim() || 
-                 req.ip || 
-                 req.connection.remoteAddress || 
-                 'unknown',
+      ipAddress:
+        (req.headers['x-forwarded-for'] as string)?.split(',')[0]?.trim() ||
+        req.ip ||
+        req.connection.remoteAddress ||
+        'unknown',
       userAgent: req.headers['user-agent'] || 'unknown',
       method: req.method,
       path: req.path,
@@ -218,8 +214,7 @@ export function createAuditLogger(
     }
 
     // 記錄請求主體
-    if (finalConfig.logRequestBody && req.body && 
-        Object.keys(req.body).length > 0) {
+    if (finalConfig.logRequestBody && req.body && Object.keys(req.body).length > 0) {
       const bodySize = JSON.stringify(req.body).length;
       if (bodySize <= finalConfig.maxBodySize) {
         logEntry.body = sanitizeData(req.body, finalConfig.sensitiveFields);
@@ -242,9 +237,8 @@ export function createAuditLogger(
       // 記錄錯誤訊息
       if (res.statusCode >= 400 && body && typeof body === 'object' && 'error' in body) {
         const errorBody = body as { error: unknown };
-        logEntry.error = typeof errorBody.error === 'string' 
-          ? errorBody.error 
-          : JSON.stringify(errorBody.error);
+        logEntry.error =
+          typeof errorBody.error === 'string' ? errorBody.error : JSON.stringify(errorBody.error);
       }
 
       // 記錄回應主體 (可選)
@@ -259,10 +253,9 @@ export function createAuditLogger(
       }
 
       // 寫入審計日誌
-      Promise.resolve(logHandler(logEntry as AuditLogEntry))
-        .catch(err => {
-          console.error('Failed to write audit log:', err);
-        });
+      Promise.resolve(logHandler(logEntry as AuditLogEntry)).catch((err) => {
+        console.error('Failed to write audit log:', err);
+      });
 
       return originalJson(body);
     };
@@ -275,10 +268,9 @@ export function createAuditLogger(
         logEntry.responseTime = Date.now() - startTime;
         logEntry.result = res.statusCode < 400 ? 'SUCCESS' : 'FAILURE';
 
-        Promise.resolve(logHandler(logEntry as AuditLogEntry))
-          .catch(err => {
-            console.error('Failed to write audit log:', err);
-          });
+        Promise.resolve(logHandler(logEntry as AuditLogEntry)).catch((err) => {
+          console.error('Failed to write audit log:', err);
+        });
       }
     });
 
@@ -293,10 +285,7 @@ export class AuditLogQuery {
   /**
    * 根據用戶 ID 查詢審計日誌
    */
-  static async findByUserId(
-    _userId: string,
-    _limit: number = 100
-  ): Promise<AuditLogEntry[]> {
+  static async findByUserId(_userId: string, _limit: number = 100): Promise<AuditLogEntry[]> {
     // 實現依賴於實際的存儲後端
     // 這裡提供接口定義
     throw new Error('Not implemented - requires storage backend');
@@ -316,20 +305,14 @@ export class AuditLogQuery {
   /**
    * 根據動作類型查詢審計日誌
    */
-  static async findByAction(
-    _action: string,
-    _limit: number = 100
-  ): Promise<AuditLogEntry[]> {
+  static async findByAction(_action: string, _limit: number = 100): Promise<AuditLogEntry[]> {
     throw new Error('Not implemented - requires storage backend');
   }
 
   /**
    * 根據資源類型查詢審計日誌
    */
-  static async findByResource(
-    _resource: string,
-    _limit: number = 100
-  ): Promise<AuditLogEntry[]> {
+  static async findByResource(_resource: string, _limit: number = 100): Promise<AuditLogEntry[]> {
     throw new Error('Not implemented - requires storage backend');
   }
 }

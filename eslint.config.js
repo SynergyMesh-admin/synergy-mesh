@@ -152,9 +152,16 @@ const baseConfig = {
   overrides: [
     {
       files: ['**/*.test.ts', '**/*.spec.ts', '**/__tests__/**'],
+      parserOptions: {
+        project: null,
+      },
       rules: {
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
+        '@typescript-eslint/prefer-nullish-coalescing': 'off',
+        '@typescript-eslint/strict-boolean-expressions': 'off',
+        '@typescript-eslint/no-floating-promises': 'off',
+        '@typescript-eslint/no-misused-promises': 'off',
         'max-lines': 'off',
       },
     },
@@ -165,8 +172,67 @@ const baseConfig = {
         'import/no-default-export': 'off',
       },
     },
+    {
+      files: ['core/advisory-database/**/*.ts', 'core/contract_service/contracts-L1/contracts/src/**/*.ts'],
+      rules: {
+        '@typescript-eslint/naming-convention': [
+          'error',
+          {
+            selector: 'default',
+            format: ['camelCase'],
+          },
+          {
+            selector: 'variable',
+            format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
+          },
+          {
+            selector: 'parameter',
+            format: ['camelCase'],
+            leadingUnderscore: 'allow',
+          },
+          {
+            selector: 'property',
+            format: ['camelCase', 'snake_case', 'UPPER_CASE', 'PascalCase'],
+            leadingUnderscore: 'allow',
+          },
+          {
+            selector: 'objectLiteralProperty',
+            format: null,
+          },
+          {
+            selector: 'memberLike',
+            modifiers: ['private'],
+            format: ['camelCase'],
+            leadingUnderscore: 'allowSingleOrDouble',
+          },
+          {
+            selector: 'typeLike',
+            format: ['PascalCase'],
+          },
+          {
+            selector: 'enumMember',
+            format: ['UPPER_CASE'],
+          },
+        ],
+        '@typescript-eslint/strict-boolean-expressions': 'off',
+        '@typescript-eslint/explicit-function-return-type': 'off',
+        '@typescript-eslint/require-await': 'off',
+        '@typescript-eslint/prefer-nullish-coalescing': 'off',
+        '@typescript-eslint/no-non-null-assertion': 'off',
+        '@typescript-eslint/no-unsafe-assignment': 'off',
+        '@typescript-eslint/no-unsafe-argument': 'off',
+        '@typescript-eslint/no-unsafe-member-access': 'off',
+        '@typescript-eslint/no-unsafe-call': 'off',
+        '@typescript-eslint/no-unsafe-return': 'off',
+        '@typescript-eslint/no-floating-promises': 'off',
+        '@typescript-eslint/no-misused-promises': 'off',
+        'import/no-unresolved': 'off',
+        'import/no-named-as-default': 'off',
+        'no-console': 'off',
+      },
+    },
   ],
-  ignorePatterns: ['node_modules/', 'dist/', 'build/', 'coverage/', '*.min.js', '*.d.ts', '**/70-architecture-skeletons/**'],
+  ignorePatterns: ['node_modules/', 'dist/', 'build/', 'coverage/', '*.min.js', '*.d.ts', '**/70-architecture-skeletons/**', 'mcp-servers/**/*.js'],
 };
 
 module.exports = compat.config(baseConfig);

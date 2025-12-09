@@ -1,5 +1,7 @@
-import { Request, Response, NextFunction } from 'express';
 import { randomUUID } from 'crypto';
+
+import { Request, Response, NextFunction } from 'express';
+
 import config from '../config';
 
 interface RequestLog {
@@ -18,7 +20,7 @@ const ALLOWED_HEADERS = [
   'content-type',
   'authorization',
   'x-forwarded-for',
-  'x-real-ip'
+  'x-real-ip',
 ] as const;
 
 function sanitizeHeaders(headers: Record<string, unknown>): Record<string, unknown> {
@@ -42,14 +44,14 @@ export const loggingMiddleware = (req: Request, res: Response, next: NextFunctio
     url: req.url,
     userAgent: req.get('user-agent') || 'unknown',
     ip: req.ip || req.socket?.remoteAddress || 'unknown',
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
   };
 
   if (config.LOG_LEVEL === 'debug') {
     console.log('Request started:', {
       ...requestLog,
       headers: sanitizeHeaders(req.headers as Record<string, unknown>),
-      body: req.body ? '[BODY_PRESENT]' : '[NO_BODY]'
+      body: req.body ? '[BODY_PRESENT]' : '[NO_BODY]',
     });
   } else {
     console.log('Request:', `${requestLog.method} ${requestLog.url} [${traceId}]`);
@@ -63,7 +65,10 @@ export const loggingMiddleware = (req: Request, res: Response, next: NextFunctio
     } else if (res.statusCode >= 400) {
       console.warn('Request completed with client error:', responseLog);
     } else {
-      console.log('Request completed:', `${responseLog.method} ${responseLog.url} ${responseLog.statusCode} ${duration}ms [${traceId}]`);
+      console.log(
+        'Request completed:',
+        `${responseLog.method} ${responseLog.url} ${responseLog.statusCode} ${duration}ms [${traceId}]`
+      );
     }
   });
 

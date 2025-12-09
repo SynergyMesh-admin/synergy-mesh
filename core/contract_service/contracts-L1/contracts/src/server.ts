@@ -1,10 +1,11 @@
+import cors from 'cors';
 import express, { Application } from 'express';
 import helmet from 'helmet';
-import cors from 'cors';
+
 import config from './config';
-import routes from './routes';
-import loggingMiddleware from './middleware/logging';
 import { errorMiddleware, notFoundMiddleware } from './middleware/error';
+import loggingMiddleware from './middleware/logging';
+import routes from './routes';
 
 const app: Application = express();
 

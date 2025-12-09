@@ -1,8 +1,8 @@
-import { createHash } from 'crypto';
+import { createHash, randomUUID } from 'crypto';
 import { readFile, stat } from 'fs/promises';
 import { relative } from 'path';
+
 import { SLSAAttestationService, SLSAProvenance, BuildMetadata } from './attestation';
-import { randomUUID } from 'crypto';
 
 export interface BuildAttestation {
   id: string;
@@ -99,7 +99,10 @@ export class ProvenanceService {
 
     // 生成格式為 att_timestamp_hash 的 ID
     const timestamp = Date.now();
-    const hash = createHash('sha256').update(`${timestamp}${subjectPath}`).digest('hex').substring(0, 8);
+    const hash = createHash('sha256')
+      .update(`${timestamp}${subjectPath}`)
+      .digest('hex')
+      .substring(0, 8);
     const attestationId = `att_${timestamp}_${hash}`;
 
     const buildInvocationId = metadata.buildInvocationId || randomUUID();
@@ -115,22 +118,22 @@ export class ProvenanceService {
         id: builder.id,
         version: {
           builderVersion: builder.version,
-          nodeVersion: process.version
-        }
+          nodeVersion: process.version,
+        },
       },
       externalParameters: {
         entryPoint: 'npm run build',
-        environment: process.env.NODE_ENV || 'production'
+        environment: process.env.NODE_ENV || 'production',
       },
-      dependencies: builder.builderDependencies?.map(dep => ({
+      dependencies: builder.builderDependencies?.map((dep) => ({
         uri: dep.uri,
         digest: dep.digest,
-        name: dep.name
-      }))
+        name: dep.name,
+      })),
     };
 
     const slsaProvenance = await this.slsaService.createProvenance([subject], buildMetadata);
-    
+
     // 轉換為既有的 BuildAttestation 格式以保持相容性
     return {
       id: attestationId,
@@ -138,7 +141,7 @@ export class ProvenanceService {
       subject: {
         name: subject.name,
         digest: `sha256:${subject.digest.sha256}`,
-        path: subjectPath
+        path: subjectPath,
       },
       predicate: {
         type: slsaProvenance.predicateType,
@@ -150,8 +153,8 @@ export class ProvenanceService {
           arguments: buildMetadata.externalParameters || {},
           environment: {
             NODE_ENV: process.env.NODE_ENV || 'production',
-            NODE_VERSION: process.version
-          }
+            NODE_VERSION: process.version,
+          },
         },
         metadata: {
           buildStartedOn: startedOn,
@@ -159,14 +162,14 @@ export class ProvenanceService {
           completeness: {
             parameters: true,
             environment: true,
-            materials: true
+            materials: true,
           },
           reproducible: metadata.reproducible !== undefined ? metadata.reproducible : false,
-          buildInvocationId
-        }
+          buildInvocationId,
+        },
       },
       // 附加 SLSA 認證資料
-      slsaProvenance
+      slsaProvenance,
     };
   }
 
@@ -176,7 +179,12 @@ export class ProvenanceService {
   async verifyAttestation(attestation: BuildAttestation): Promise<boolean> {
     try {
       // 基本結構驗證
-      if (!attestation.id || !attestation.timestamp || !attestation.subject || !attestation.predicate) {
+      if (
+        !attestation.id ||
+        !attestation.timestamp ||
+        !attestation.subject ||
+        !attestation.predicate
+      ) {
         return false;
       }
 
@@ -204,7 +212,7 @@ export class ProvenanceService {
    */
   importAttestation(jsonData: string): BuildAttestation {
     const attestation = JSON.parse(jsonData);
-    
+
     // 基本驗證
     if (!attestation.id || !attestation.predicate) {
       throw new Error('Invalid attestation format');

@@ -38,10 +38,10 @@ export class WorkloadBalancer {
     const incidentKeywords = [
       incident.description.toLowerCase(),
       incident.errorMessage?.toLowerCase() || '',
-      ...(incident.affectedFiles || []).map(f => f.toLowerCase())
+      ...(incident.affectedFiles || []).map((f) => f.toLowerCase()),
     ].join(' ');
 
-    member.specialties.forEach(specialty => {
+    member.specialties.forEach((specialty) => {
       totalChecks++;
       if (incidentKeywords.includes(specialty.toLowerCase())) {
         matchScore++;
@@ -65,7 +65,7 @@ export class WorkloadBalancer {
     // Assume working hours are 9:00-18:00
     if (hour >= 9 && hour < 18) {
       return 1.0; // 完全可用
-    } else if (hour >= 7 && hour < 9 || hour >= 18 && hour < 20) {
+    } else if ((hour >= 7 && hour < 9) || (hour >= 18 && hour < 20)) {
       return 0.7; // 部分可用
     } else {
       return 0.3; // 可能不可用
@@ -110,7 +110,7 @@ export class WorkloadBalancer {
       expertise: this.calculateExpertiseMatch(member, incident) * 0.4,
       availability: this.calculateAvailability(member) * 0.3,
       currentLoad: this.calculateCurrentWorkload(member) * 0.2,
-      responseHistory: this.calculateHistoricalPerformance(member) * 0.1
+      responseHistory: this.calculateHistoricalPerformance(member) * 0.1,
     };
 
     const score = Object.values(factors).reduce((sum, value) => sum + value, 0);
@@ -122,8 +122,8 @@ export class WorkloadBalancer {
         expertise: factors.expertise / 0.4,
         availability: factors.availability / 0.3,
         currentLoad: factors.currentLoad / 0.2,
-        responseHistory: factors.responseHistory / 0.1
-      }
+        responseHistory: factors.responseHistory / 0.1,
+      },
     };
   }
 
@@ -137,7 +137,7 @@ export class WorkloadBalancer {
     }
 
     const scores = candidates
-      .map(member => this.calculateAssignmentScore(member, incident))
+      .map((member) => this.calculateAssignmentScore(member, incident))
       .sort((a, b) => b.score - a.score);
 
     return scores[0].member;
@@ -153,12 +153,12 @@ export class WorkloadBalancer {
       activeAssignments: 0,
       totalAssignments: 0,
       averageResolutionTime: 0,
-      successRate: 0.5
+      successRate: 0.5,
     };
 
     this.workloadMetrics.set(memberId, {
       ...current,
-      ...metrics
+      ...metrics,
     });
   }
 

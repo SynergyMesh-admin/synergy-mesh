@@ -58,60 +58,50 @@ export class InMemoryStorageAdapter implements AdvisoryStorageAdapter {
 
     // Apply filters
     if (filters.ecosystem) {
-      advisories = advisories.filter(a =>
-        a.affected.some(af => af.package.ecosystem === filters.ecosystem)
+      advisories = advisories.filter((a) =>
+        a.affected.some((af) => af.package.ecosystem === filters.ecosystem)
       );
     }
 
     if (filters.severity) {
-      advisories = advisories.filter(a =>
-        a.database_specific?.severity === filters.severity
-      );
+      advisories = advisories.filter((a) => a.database_specific?.severity === filters.severity);
     }
 
     if (filters.package) {
       const pkgName = filters.package.toLowerCase();
-      advisories = advisories.filter(a =>
-        a.affected.some(af => af.package.name.toLowerCase().includes(pkgName))
+      advisories = advisories.filter((a) =>
+        a.affected.some((af) => af.package.name.toLowerCase().includes(pkgName))
       );
     }
 
     if (filters.cve_id) {
-      advisories = advisories.filter(a =>
-        a.aliases?.includes(filters.cve_id!) ?? false
-      );
+      advisories = advisories.filter((a) => a.aliases?.includes(filters.cve_id!) ?? false);
     }
 
     if (filters.cwe_id) {
-      advisories = advisories.filter(a =>
-        a.database_specific?.cwe_ids?.includes(filters.cwe_id!) ?? false
+      advisories = advisories.filter(
+        (a) => a.database_specific?.cwe_ids?.includes(filters.cwe_id!) ?? false
       );
     }
 
     if (filters.github_reviewed !== undefined) {
-      advisories = advisories.filter(a =>
-        a.database_specific?.github_reviewed === filters.github_reviewed
+      advisories = advisories.filter(
+        (a) => a.database_specific?.github_reviewed === filters.github_reviewed
       );
     }
 
     if (filters.modified_after) {
       const afterDate = new Date(filters.modified_after);
-      advisories = advisories.filter(a =>
-        new Date(a.modified) >= afterDate
-      );
+      advisories = advisories.filter((a) => new Date(a.modified) >= afterDate);
     }
 
     if (filters.modified_before) {
       const beforeDate = new Date(filters.modified_before);
-      advisories = advisories.filter(a =>
-        new Date(a.modified) <= beforeDate
-      );
+      advisories = advisories.filter((a) => new Date(a.modified) <= beforeDate);
     }
 
     // Sort by modified date descending
-    advisories.sort((a, b) =>
-      new Date(b.modified).getTime() - new Date(a.modified).getTime()
-    );
+    advisories.sort((a, b) => new Date(b.modified).getTime() - new Date(a.modified).getTime());
 
     const total = advisories.length;
 
@@ -268,7 +258,10 @@ export class AdvisoryService {
    * @param input - Update data
    * @returns Updated advisory
    */
-  async update(id: string, input: UpdateAdvisoryInput): Promise<{
+  async update(
+    id: string,
+    input: UpdateAdvisoryInput
+  ): Promise<{
     advisory: Advisory;
     validation: AdvisoryValidationResult;
   }> {
@@ -363,10 +356,7 @@ export class AdvisoryService {
    * @param ecosystem - Optional ecosystem filter
    * @returns Matching advisories
    */
-  async searchByPackage(
-    packageName: string,
-    ecosystem?: Ecosystem
-  ): Promise<Advisory[]> {
+  async searchByPackage(packageName: string, ecosystem?: Ecosystem): Promise<Advisory[]> {
     const { advisories } = await this.list({
       package: packageName,
       ecosystem,

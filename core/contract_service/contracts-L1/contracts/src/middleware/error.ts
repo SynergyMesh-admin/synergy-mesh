@@ -1,5 +1,7 @@
-import { Request, Response, NextFunction } from 'express';
 import { randomUUID } from 'crypto';
+
+import { Request, Response, NextFunction } from 'express';
+
 import config from '../config';
 
 export enum ErrorCode {
@@ -9,7 +11,7 @@ export enum ErrorCode {
   FORBIDDEN = 'FORBIDDEN',
   INTERNAL_ERROR = 'INTERNAL_ERROR',
   SERVICE_UNAVAILABLE = 'SERVICE_UNAVAILABLE',
-  RATE_LIMIT = 'RATE_LIMIT'
+  RATE_LIMIT = 'RATE_LIMIT',
 }
 
 export class AppError extends Error {
@@ -35,19 +37,33 @@ export const createError = {
   notFound: (resource: string) => new AppError(`${resource} not found`, ErrorCode.NOT_FOUND, 404),
   unauthorized: (message = 'Unauthorized') => new AppError(message, ErrorCode.UNAUTHORIZED, 401),
   forbidden: (message = 'Forbidden') => new AppError(message, ErrorCode.FORBIDDEN, 403),
-  internal: (message = 'Internal server error') => new AppError(message, ErrorCode.INTERNAL_ERROR, 500, false),
-  serviceUnavailable: (service: string) => new AppError(`${service} is unavailable`, ErrorCode.SERVICE_UNAVAILABLE, 503)
+  internal: (message = 'Internal server error') =>
+    new AppError(message, ErrorCode.INTERNAL_ERROR, 500, false),
+  serviceUnavailable: (service: string) =>
+    new AppError(`${service} is unavailable`, ErrorCode.SERVICE_UNAVAILABLE, 503),
 };
 
-export const errorMiddleware = (err: Error | AppError, req: Request, res: Response, _next: NextFunction): void => {
+export const errorMiddleware = (
+  err: Error | AppError,
+  req: Request,
+  res: Response,
+  _next: NextFunction
+): void => {
   const traceId = req.traceId || randomUUID();
   let logLevel: 'error' | 'warn' = 'error';
 
   if (err instanceof AppError) {
     const errorResponse = {
-      error: { code: err.code, message: err.message, traceId: err.traceId, timestamp: err.timestamp }
+      error: {
+        code: err.code,
+        message: err.message,
+        traceId: err.traceId,
+        timestamp: err.timestamp,
+      },
     };
-    if (err.statusCode < 500) logLevel = 'warn';
+    if (err.statusCode < 500) {
+      logLevel = 'warn';
+    }
     res.status(err.statusCode).json(errorResponse);
   } else {
     const errorResponse = {
@@ -55,8 +71,8 @@ export const errorMiddleware = (err: Error | AppError, req: Request, res: Respon
         code: ErrorCode.INTERNAL_ERROR,
         message: config.NODE_ENV === 'production' ? 'Internal server error' : err.message,
         traceId,
-        timestamp: new Date().toISOString()
-      }
+        timestamp: new Date().toISOString(),
+      },
     };
     res.status(500).json(errorResponse);
   }
@@ -67,19 +83,22 @@ export const errorMiddleware = (err: Error | AppError, req: Request, res: Respon
       name: err.name,
       message: err.message,
       code: err instanceof AppError ? err.code : ErrorCode.INTERNAL_ERROR,
-      stack: config.NODE_ENV !== 'production' ? err.stack : undefined
+      stack: config.NODE_ENV !== 'production' ? err.stack : undefined,
     },
     request: {
       method: req.method,
       url: req.url,
       userAgent: req.get('user-agent'),
-      ip: req.ip
+      ip: req.ip,
     },
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
   };
 
-  if (logLevel === 'error') console.error('Application error:', errorLog);
-  else console.warn('Client error:', errorLog);
+  if (logLevel === 'error') {
+    console.error('Application error:', errorLog);
+  } else {
+    console.warn('Client error:', errorLog);
+  }
 };
 
 export const notFoundMiddleware = (req: Request, res: Response, _next: NextFunction): void => {
@@ -87,7 +106,12 @@ export const notFoundMiddleware = (req: Request, res: Response, _next: NextFunct
   const traceId = req.traceId || randomUUID();
 
   res.status(404).json({
-    error: { code: error.code, message: error.message, traceId, timestamp: new Date().toISOString() }
+    error: {
+      code: error.code,
+      message: error.message,
+      traceId,
+      timestamp: new Date().toISOString(),
+    },
   });
 };
 

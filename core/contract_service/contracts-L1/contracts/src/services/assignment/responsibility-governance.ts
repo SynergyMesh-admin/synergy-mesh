@@ -3,11 +3,7 @@
  * Monitors and enforces SLA compliance and escalation
  */
 
-import {
-  Assignment,
-  Priority,
-  EscalationRule
-} from '../../types/assignment';
+import { Assignment, Priority, EscalationRule } from '../../types/assignment';
 
 interface PerformanceMetric {
   recordedAt: Date;
@@ -34,30 +30,30 @@ export class ResponsibilityGovernance {
   private initializeEscalationRules(): void {
     this.escalationRules.set('CRITICAL', {
       priority: 'CRITICAL',
-      noResponseTimeout: 5,      // 5 分鐘無回應
-      noProgressTimeout: 15,     // 15 分鐘無進展
-      unresolvedTimeout: 60      // 60 分鐘未解決
+      noResponseTimeout: 5, // 5 分鐘無回應
+      noProgressTimeout: 15, // 15 分鐘無進展
+      unresolvedTimeout: 60, // 60 分鐘未解決
     });
 
     this.escalationRules.set('HIGH', {
       priority: 'HIGH',
-      noResponseTimeout: 15,     // 15 分鐘無回應
-      noProgressTimeout: 30,     // 30 分鐘無進展
-      unresolvedTimeout: 240     // 240 分鐘未解決
+      noResponseTimeout: 15, // 15 分鐘無回應
+      noProgressTimeout: 30, // 30 分鐘無進展
+      unresolvedTimeout: 240, // 240 分鐘未解決
     });
 
     this.escalationRules.set('MEDIUM', {
       priority: 'MEDIUM',
-      noResponseTimeout: 60,     // 60 分鐘無回應
-      noProgressTimeout: 120,    // 120 分鐘無進展
-      unresolvedTimeout: 480     // 480 分鐘未解決
+      noResponseTimeout: 60, // 60 分鐘無回應
+      noProgressTimeout: 120, // 120 分鐘無進展
+      unresolvedTimeout: 480, // 480 分鐘未解決
     });
 
     this.escalationRules.set('LOW', {
       priority: 'LOW',
-      noResponseTimeout: 240,    // 240 分鐘無回應
-      noProgressTimeout: 480,    // 480 分鐘無進展
-      unresolvedTimeout: 1440    // 1440 分鐘未解決
+      noResponseTimeout: 240, // 240 分鐘無回應
+      noProgressTimeout: 480, // 480 分鐘無進展
+      unresolvedTimeout: 1440, // 1440 分鐘未解決
     });
   }
 
@@ -65,7 +61,10 @@ export class ResponsibilityGovernance {
    * 檢查是否需要升級
    * Check if escalation is needed
    */
-  checkEscalationNeeded(assignment: Assignment, priority: Priority): {
+  checkEscalationNeeded(
+    assignment: Assignment,
+    priority: Priority
+  ): {
     needed: boolean;
     reason?: string;
     timeout?: number;
@@ -83,7 +82,7 @@ export class ResponsibilityGovernance {
       return {
         needed: true,
         reason: 'No response timeout',
-        timeout: rule.noResponseTimeout
+        timeout: rule.noResponseTimeout,
       };
     }
 
@@ -96,7 +95,7 @@ export class ResponsibilityGovernance {
       return {
         needed: true,
         reason: 'No progress timeout',
-        timeout: rule.noProgressTimeout
+        timeout: rule.noProgressTimeout,
       };
     }
 
@@ -109,7 +108,7 @@ export class ResponsibilityGovernance {
       return {
         needed: true,
         reason: 'Unresolved timeout',
-        timeout: rule.unresolvedTimeout
+        timeout: rule.unresolvedTimeout,
       };
     }
 
@@ -134,7 +133,9 @@ export class ResponsibilityGovernance {
     if (assignment.acknowledgedAt) {
       responseTime = this.getMinutesDiff(assignment.assignedAt, assignment.acknowledgedAt);
       if (responseTime > assignment.slaTarget.responseTime) {
-        violations.push(`Response time exceeded: ${responseTime}min > ${assignment.slaTarget.responseTime}min`);
+        violations.push(
+          `Response time exceeded: ${responseTime}min > ${assignment.slaTarget.responseTime}min`
+        );
       }
     }
 
@@ -142,7 +143,9 @@ export class ResponsibilityGovernance {
     if (assignment.resolvedAt) {
       resolutionTime = this.getMinutesDiff(assignment.assignedAt, assignment.resolvedAt);
       if (resolutionTime > assignment.slaTarget.resolutionTime) {
-        violations.push(`Resolution time exceeded: ${resolutionTime}min > ${assignment.slaTarget.resolutionTime}min`);
+        violations.push(
+          `Resolution time exceeded: ${resolutionTime}min > ${assignment.slaTarget.resolutionTime}min`
+        );
       }
     }
 
@@ -150,7 +153,7 @@ export class ResponsibilityGovernance {
       compliant: violations.length === 0,
       responseTime,
       resolutionTime,
-      violations
+      violations,
     };
   }
 
@@ -172,7 +175,7 @@ export class ResponsibilityGovernance {
     if (assignment.resolvedAt) {
       const resolutionTime = this.getMinutesDiff(assignment.assignedAt, assignment.resolvedAt);
       const targetTime = assignment.slaTarget.resolutionTime;
-      
+
       if (resolutionTime <= targetTime * 0.5) {
         timelinessScore = 1.0; // 非常快
       } else if (resolutionTime <= targetTime) {
@@ -191,14 +194,14 @@ export class ResponsibilityGovernance {
       completenessScore = 0.0;
     }
 
-    const overallScore = (timelinessScore * 0.6 + completenessScore * 0.4);
+    const overallScore = timelinessScore * 0.6 + completenessScore * 0.4;
 
     return {
       score: overallScore,
       criteria: {
         timeliness: timelinessScore,
-        completeness: completenessScore
-      }
+        completeness: completenessScore,
+      },
     };
   }
 
@@ -225,7 +228,7 @@ export class ResponsibilityGovernance {
   recordPerformanceMetrics(assignmentId: string, metrics: Record<string, unknown>): void {
     this.performanceMetrics.set(assignmentId, {
       ...metrics,
-      recordedAt: new Date()
+      recordedAt: new Date(),
     });
   }
 
@@ -248,14 +251,14 @@ export class ResponsibilityGovernance {
     averageResolutionTime: number;
     slaCompliance: number;
   } {
-    const resolved = assignments.filter(a => a.status === 'RESOLVED');
-    
+    const resolved = assignments.filter((a) => a.status === 'RESOLVED');
+
     let totalResponseTime = 0;
     let totalResolutionTime = 0;
     let slaCompliant = 0;
     let responseCount = 0;
 
-    resolved.forEach(assignment => {
+    resolved.forEach((assignment) => {
       const performance = this.monitorAssignmentPerformance(assignment);
 
       if (performance.responseTime !== undefined) {
@@ -277,7 +280,7 @@ export class ResponsibilityGovernance {
       resolved: resolved.length,
       averageResponseTime: responseCount > 0 ? totalResponseTime / responseCount : 0,
       averageResolutionTime: resolved.length > 0 ? totalResolutionTime / resolved.length : 0,
-      slaCompliance: resolved.length > 0 ? (slaCompliant / resolved.length) * 100 : 0
+      slaCompliance: resolved.length > 0 ? (slaCompliant / resolved.length) * 100 : 0,
     };
   }
 }

@@ -3,7 +3,7 @@
 /**
  * Performance Analyzer MCP Server
  * Enterprise-grade performance analysis, bottleneck identification, and optimization
- * 
+ *
  * @module performance-analyzer
  * @author SynergyMesh Team
  * @license MIT
@@ -15,7 +15,7 @@ import {
   CallToolRequestSchema,
   ListToolsRequestSchema,
   ErrorCode,
-  McpError
+  McpError,
 } from '@modelcontextprotocol/sdk/types.js';
 import { z } from 'zod';
 
@@ -23,21 +23,30 @@ import { z } from 'zod';
 const AnalyzePerformanceSchema = z.object({
   code: z.string().min(1, 'Code content is required'),
   language: z.string().optional().default('javascript'),
-  metrics: z.array(z.enum(['complexity', 'memory', 'loops', 'async', 'all'])).optional().default(['all'])
+  metrics: z
+    .array(z.enum(['complexity', 'memory', 'loops', 'async', 'all']))
+    .optional()
+    .default(['all']),
 });
 
 const IdentifyBottlenecksSchema = z.object({
   code: z.string().min(1, 'Code content is required'),
-  threshold: z.object({
-    complexity: z.number().optional().default(10),
-    loopDepth: z.number().optional().default(3),
-    functionLength: z.number().optional().default(50)
-  }).optional().default({})
+  threshold: z
+    .object({
+      complexity: z.number().optional().default(10),
+      loopDepth: z.number().optional().default(3),
+      functionLength: z.number().optional().default(50),
+    })
+    .optional()
+    .default({}),
 });
 
 const SuggestOptimizationsSchema = z.object({
   code: z.string().min(1, 'Code content is required'),
-  focus: z.array(z.enum(['speed', 'memory', 'readability', 'all'])).optional().default(['all'])
+  focus: z
+    .array(z.enum(['speed', 'memory', 'readability', 'all']))
+    .optional()
+    .default(['all']),
 });
 
 /**
@@ -53,7 +62,7 @@ class PerformanceAnalyzer {
       language,
       metrics: {},
       score: 0,
-      grade: 'A'
+      grade: 'A',
     };
 
     const includeAll = metrics.includes('all');
@@ -90,21 +99,24 @@ class PerformanceAnalyzer {
       threshold: {
         complexity: threshold.complexity || 10,
         loopDepth: threshold.loopDepth || 3,
-        functionLength: threshold.functionLength || 50
+        functionLength: threshold.functionLength || 50,
       },
       critical: [],
       warnings: [],
       summary: {
         totalBottlenecks: 0,
         critical: 0,
-        warnings: 0
-      }
+        warnings: 0,
+      },
     };
 
     // Check for high complexity functions
-    const complexityIssues = this._findHighComplexityFunctions(code, bottlenecks.threshold.complexity);
-    bottlenecks.critical.push(...complexityIssues.filter(i => i.severity === 'critical'));
-    bottlenecks.warnings.push(...complexityIssues.filter(i => i.severity === 'warning'));
+    const complexityIssues = this._findHighComplexityFunctions(
+      code,
+      bottlenecks.threshold.complexity
+    );
+    bottlenecks.critical.push(...complexityIssues.filter((i) => i.severity === 'critical'));
+    bottlenecks.warnings.push(...complexityIssues.filter((i) => i.severity === 'warning'));
 
     // Check for nested loops
     const loopIssues = this._findDeepNestedLoops(code, bottlenecks.threshold.loopDepth);
@@ -125,7 +137,8 @@ class PerformanceAnalyzer {
     // Update summary
     bottlenecks.summary.critical = bottlenecks.critical.length;
     bottlenecks.summary.warnings = bottlenecks.warnings.length;
-    bottlenecks.summary.totalBottlenecks = bottlenecks.critical.length + bottlenecks.warnings.length;
+    bottlenecks.summary.totalBottlenecks =
+      bottlenecks.critical.length + bottlenecks.warnings.length;
 
     return bottlenecks;
   }
@@ -141,8 +154,8 @@ class PerformanceAnalyzer {
       estimatedImpact: {
         speed: 0,
         memory: 0,
-        readability: 0
-      }
+        readability: 0,
+      },
     };
 
     const includeAll = focus.includes('all');
@@ -180,14 +193,16 @@ class PerformanceAnalyzer {
       cyclomatic: this._calculateCyclomaticComplexity(code),
       cognitive: this._calculateCognitiveComplexity(code),
       halstead: this._calculateHalsteadMetrics(code),
-      maintainabilityIndex: 0
+      maintainabilityIndex: 0,
     };
 
     // Calculate maintainability index
-    complexity.maintainabilityIndex = Math.max(0, 
-      171 - 5.2 * Math.log(complexity.halstead.volume) - 
-      0.23 * complexity.cyclomatic - 
-      16.2 * Math.log(lines.length)
+    complexity.maintainabilityIndex = Math.max(
+      0,
+      171 -
+        5.2 * Math.log(complexity.halstead.volume) -
+        0.23 * complexity.cyclomatic -
+        16.2 * Math.log(lines.length)
     );
 
     return complexity;
@@ -199,7 +214,7 @@ class PerformanceAnalyzer {
       largArrays: 0,
       closureIssues: 0,
       globalVariables: 0,
-      score: 100
+      score: 100,
     };
 
     // Check for potential memory leaks
@@ -220,11 +235,13 @@ class PerformanceAnalyzer {
     analysis.globalVariables = globals ? globals.length : 0;
 
     // Calculate score
-    analysis.score = Math.max(0, 100 - 
-      (analysis.potentialLeaks * 20) - 
-      (analysis.largArrays * 10) - 
-      (analysis.closureIssues * 5) - 
-      (analysis.globalVariables * 2)
+    analysis.score = Math.max(
+      0,
+      100 -
+        analysis.potentialLeaks * 20 -
+        analysis.largArrays * 10 -
+        analysis.closureIssues * 5 -
+        analysis.globalVariables * 2
     );
 
     return analysis;
@@ -235,7 +252,7 @@ class PerformanceAnalyzer {
       totalLoops: 0,
       nestedLoops: 0,
       maxDepth: 0,
-      inefficientLoops: []
+      inefficientLoops: [],
     };
 
     // Count loops
@@ -255,8 +272,8 @@ class PerformanceAnalyzer {
         depth++;
         maxDepth = Math.max(maxDepth, depth);
         if (depth > 1) {
-analysis.nestedLoops++;
-}
+          analysis.nestedLoops++;
+        }
       }
       if (line.includes('}') && depth > 0) {
         depth--;
@@ -269,7 +286,7 @@ analysis.nestedLoops++;
     if (/for\s*\([^)]*\)[^{]*{[^}]*\.push\(/.test(code)) {
       analysis.inefficientLoops.push({
         type: 'array-push-in-loop',
-        suggestion: 'Consider pre-allocating array or using array methods'
+        suggestion: 'Consider pre-allocating array or using array methods',
       });
     }
 
@@ -283,7 +300,7 @@ analysis.nestedLoops++;
       callbacks: 0,
       potentialBlocking: 0,
       missingAwait: 0,
-      score: 100
+      score: 100,
     };
 
     // Count async patterns
@@ -301,9 +318,9 @@ analysis.nestedLoops++;
     analysis.missingAwait = asyncWithoutAwait ? asyncWithoutAwait.length : 0;
 
     // Calculate score
-    analysis.score = Math.max(0, 100 - 
-      (analysis.potentialBlocking * 25) - 
-      (analysis.missingAwait * 10)
+    analysis.score = Math.max(
+      0,
+      100 - analysis.potentialBlocking * 25 - analysis.missingAwait * 10
     );
 
     return analysis;
@@ -311,8 +328,15 @@ analysis.nestedLoops++;
 
   _calculateCyclomaticComplexity(code) {
     const patterns = [
-      /\bif\b/g, /\belse\b/g, /\bfor\b/g, /\bwhile\b/g,
-      /\bcase\b/g, /\bcatch\b/g, /&&/g, /\|\|/g, /\?/g
+      /\bif\b/g,
+      /\belse\b/g,
+      /\bfor\b/g,
+      /\bwhile\b/g,
+      /\bcase\b/g,
+      /\bcatch\b/g,
+      /&&/g,
+      /\|\|/g,
+      /\?/g,
     ];
 
     let complexity = 1;
@@ -331,12 +355,12 @@ analysis.nestedLoops++;
 
     for (const line of lines) {
       if (line.includes('{')) {
-nesting++;
-}
+        nesting++;
+      }
       if (line.includes('}')) {
-nesting = Math.max(0, nesting - 1);
-}
-      
+        nesting = Math.max(0, nesting - 1);
+      }
+
       if (/\b(if|for|while|switch|catch)\b/.test(line)) {
         complexity += 1 + nesting;
       }
@@ -351,9 +375,9 @@ nesting = Math.max(0, nesting - 1);
     const operands = code.match(/\b[a-zA-Z_][a-zA-Z0-9_]*\b|\b\d+\b/g) || [];
 
     const n1 = new Set(operators).size; // Unique operators
-    const n2 = new Set(operands).size;  // Unique operands
-    const N1 = operators.length;        // Total operators
-    const N2 = operands.length;         // Total operands
+    const n2 = new Set(operands).size; // Unique operands
+    const N1 = operators.length; // Total operators
+    const N2 = operands.length; // Total operands
 
     const vocabulary = n1 + n2;
     const length = N1 + N2;
@@ -369,10 +393,10 @@ nesting = Math.max(0, nesting - 1);
 
     if (metrics.complexity) {
       if (metrics.complexity.cyclomatic > 20) {
-score -= 20;
-} else if (metrics.complexity.cyclomatic > 10) {
-score -= 10;
-}
+        score -= 20;
+      } else if (metrics.complexity.cyclomatic > 10) {
+        score -= 10;
+      }
     }
 
     if (metrics.memory) {
@@ -393,23 +417,25 @@ score -= 10;
 
   _calculateGrade(score) {
     if (score >= 90) {
-return 'A';
-}
+      return 'A';
+    }
     if (score >= 80) {
-return 'B';
-}
+      return 'B';
+    }
     if (score >= 70) {
-return 'C';
-}
+      return 'C';
+    }
     if (score >= 60) {
-return 'D';
-}
+      return 'D';
+    }
     return 'F';
   }
 
   _findHighComplexityFunctions(code, threshold) {
     const issues = [];
-    const functions = code.matchAll(/function\s+(\w+)\s*\([^)]*\)\s*{|const\s+(\w+)\s*=\s*\([^)]*\)\s*=>/g);
+    const functions = code.matchAll(
+      /function\s+(\w+)\s*\([^)]*\)\s*{|const\s+(\w+)\s*=\s*\([^)]*\)\s*=>/g
+    );
 
     for (const match of functions) {
       const name = match[1] || match[2];
@@ -423,7 +449,7 @@ return 'D';
           function: name,
           complexity,
           line: this._findLineNumber(code, match.index),
-          message: `Function ${name} has very high complexity (${complexity})`
+          message: `Function ${name} has very high complexity (${complexity})`,
         });
       } else if (complexity > threshold) {
         issues.push({
@@ -432,7 +458,7 @@ return 'D';
           function: name,
           complexity,
           line: this._findLineNumber(code, match.index),
-          message: `Function ${name} has high complexity (${complexity})`
+          message: `Function ${name} has high complexity (${complexity})`,
         });
       }
     }
@@ -450,8 +476,8 @@ return 'D';
     for (let i = 0; i < lines.length; i++) {
       if (/\bfor\s*\(|\bwhile\s*\(/.test(lines[i])) {
         if (depth === 0) {
-startLine = i + 1;
-}
+          startLine = i + 1;
+        }
         depth++;
         maxDepth = Math.max(maxDepth, depth);
       }
@@ -463,7 +489,7 @@ startLine = i + 1;
             severity: 'critical',
             depth: maxDepth,
             line: startLine,
-            message: `Loop nesting depth of ${maxDepth} exceeds threshold of ${threshold}`
+            message: `Loop nesting depth of ${maxDepth} exceeds threshold of ${threshold}`,
           });
           maxDepth = 0;
         }
@@ -475,7 +501,9 @@ startLine = i + 1;
 
   _findLongFunctions(code, threshold) {
     const issues = [];
-    const functions = code.matchAll(/function\s+(\w+)\s*\([^)]*\)\s*{|const\s+(\w+)\s*=\s*\([^)]*\)\s*=>/g);
+    const functions = code.matchAll(
+      /function\s+(\w+)\s*\([^)]*\)\s*{|const\s+(\w+)\s*=\s*\([^)]*\)\s*=>/g
+    );
 
     for (const match of functions) {
       const name = match[1] || match[2];
@@ -489,7 +517,7 @@ startLine = i + 1;
           function: name,
           lines,
           line: this._findLineNumber(code, match.index),
-          message: `Function ${name} is ${lines} lines long (threshold: ${threshold})`
+          message: `Function ${name} is ${lines} lines long (threshold: ${threshold})`,
         });
       }
     }
@@ -503,7 +531,7 @@ startLine = i + 1;
       { pattern: /\.readFileSync\(/g, name: 'readFileSync' },
       { pattern: /\.writeFileSync\(/g, name: 'writeFileSync' },
       { pattern: /\.execSync\(/g, name: 'execSync' },
-      { pattern: /\.statSync\(/g, name: 'statSync' }
+      { pattern: /\.statSync\(/g, name: 'statSync' },
     ];
 
     for (const op of blockingOps) {
@@ -514,7 +542,7 @@ startLine = i + 1;
           severity: 'critical',
           operation: op.name,
           line: this._findLineNumber(code, match.index),
-          message: `Synchronous blocking operation: ${op.name}`
+          message: `Synchronous blocking operation: ${op.name}`,
         });
       }
     }
@@ -531,7 +559,7 @@ startLine = i + 1;
         type: 'memory-leak',
         severity: 'warning',
         cause: 'setInterval without clearInterval',
-        message: 'Interval timer may cause memory leak'
+        message: 'Interval timer may cause memory leak',
       });
     }
 
@@ -541,7 +569,7 @@ startLine = i + 1;
         type: 'memory-leak',
         severity: 'warning',
         cause: 'addEventListener without removeEventListener',
-        message: 'Event listener may cause memory leak'
+        message: 'Event listener may cause memory leak',
       });
     }
 
@@ -559,7 +587,7 @@ startLine = i + 1;
         description: 'Replace nested loops with hash maps or more efficient algorithms',
         priority: 90,
         impact: { speed: 30, memory: 0, readability: 5 },
-        example: 'Use Map or Set for O(1) lookups instead of O(n) nested loops'
+        example: 'Use Map or Set for O(1) lookups instead of O(n) nested loops',
       });
     }
 
@@ -571,7 +599,7 @@ startLine = i + 1;
         description: 'Convert promise chains to async/await for better readability and performance',
         priority: 60,
         impact: { speed: 10, memory: 0, readability: 15 },
-        example: 'Replace .then() chains with async/await'
+        example: 'Replace .then() chains with async/await',
       });
     }
 
@@ -589,7 +617,7 @@ startLine = i + 1;
         description: 'Pre-allocating arrays reduces memory reallocation overhead',
         priority: 50,
         impact: { speed: 10, memory: 20, readability: 0 },
-        example: 'new Array(size) instead of repeated push()'
+        example: 'new Array(size) instead of repeated push()',
       });
     }
 
@@ -607,7 +635,7 @@ startLine = i + 1;
         description: 'Move complex conditions to named variables for better readability',
         priority: 40,
         impact: { speed: 0, memory: 0, readability: 25 },
-        example: 'const isValid = condition1 && condition2; if (isValid) {...}'
+        example: 'const isValid = condition1 && condition2; if (isValid) {...}',
       });
     }
 
@@ -647,43 +675,37 @@ startLine = i + 1;
  */
 function handleToolCall(analyzer, name, args) {
   switch (name) {
-        case 'analyze-performance': {
-          const validated = AnalyzePerformanceSchema.parse(args);
-          const result = analyzer.analyzePerformance(
-            validated.code,
-            validated.language,
-            validated.metrics
-          );
-          return {
-            content: [{ type: 'text', text: JSON.stringify(result, null, 2) }]
-          };
-        }
+    case 'analyze-performance': {
+      const validated = AnalyzePerformanceSchema.parse(args);
+      const result = analyzer.analyzePerformance(
+        validated.code,
+        validated.language,
+        validated.metrics
+      );
+      return {
+        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+      };
+    }
 
-        case 'identify-bottlenecks': {
-          const validated = IdentifyBottlenecksSchema.parse(args);
-          const result = analyzer.identifyBottlenecks(
-            validated.code,
-            validated.threshold
-          );
-          return {
-            content: [{ type: 'text', text: JSON.stringify(result, null, 2) }]
-          };
-        }
+    case 'identify-bottlenecks': {
+      const validated = IdentifyBottlenecksSchema.parse(args);
+      const result = analyzer.identifyBottlenecks(validated.code, validated.threshold);
+      return {
+        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+      };
+    }
 
-        case 'suggest-optimizations': {
-          const validated = SuggestOptimizationsSchema.parse(args);
-          const result = analyzer.suggestOptimizations(
-            validated.code,
-            validated.focus
-          );
-          return {
-            content: [{ type: 'text', text: JSON.stringify(result, null, 2) }]
-          };
-        }
+    case 'suggest-optimizations': {
+      const validated = SuggestOptimizationsSchema.parse(args);
+      const result = analyzer.suggestOptimizations(validated.code, validated.focus);
+      return {
+        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+      };
+    }
 
-        default:
-          throw new McpError(ErrorCode.MethodNotFound, `Unknown tool: ${name}`);
-      }
+    default:
+      throw new McpError(ErrorCode.MethodNotFound, `Unknown tool: ${name}`);
+  }
 }
 
 /**
@@ -691,64 +713,64 @@ function handleToolCall(analyzer, name, args) {
  */
 function getToolDefinitions() {
   return [
-{
-        name: 'analyze-performance',
-        description: 'Analyze code performance metrics',
-        inputSchema: {
-          type: 'object',
-          properties: {
-            code: { type: 'string', description: 'Code to analyze' },
-            language: { type: 'string', default: 'javascript' },
-            metrics: {
-              type: 'array',
-              items: {
-                type: 'string',
-                enum: ['complexity', 'memory', 'loops', 'async', 'all']
-              },
-              default: ['all']
-            }
+    {
+      name: 'analyze-performance',
+      description: 'Analyze code performance metrics',
+      inputSchema: {
+        type: 'object',
+        properties: {
+          code: { type: 'string', description: 'Code to analyze' },
+          language: { type: 'string', default: 'javascript' },
+          metrics: {
+            type: 'array',
+            items: {
+              type: 'string',
+              enum: ['complexity', 'memory', 'loops', 'async', 'all'],
+            },
+            default: ['all'],
           },
-          required: ['code']
-        }
+        },
+        required: ['code'],
       },
-      {
-        name: 'identify-bottlenecks',
-        description: 'Identify performance bottlenecks in code',
-        inputSchema: {
-          type: 'object',
-          properties: {
-            code: { type: 'string', description: 'Code to analyze' },
-            threshold: {
-              type: 'object',
-              properties: {
-                complexity: { type: 'number', default: 10 },
-                loopDepth: { type: 'number', default: 3 },
-                functionLength: { type: 'number', default: 50 }
-              }
-            }
+    },
+    {
+      name: 'identify-bottlenecks',
+      description: 'Identify performance bottlenecks in code',
+      inputSchema: {
+        type: 'object',
+        properties: {
+          code: { type: 'string', description: 'Code to analyze' },
+          threshold: {
+            type: 'object',
+            properties: {
+              complexity: { type: 'number', default: 10 },
+              loopDepth: { type: 'number', default: 3 },
+              functionLength: { type: 'number', default: 50 },
+            },
           },
-          required: ['code']
-        }
+        },
+        required: ['code'],
       },
-      {
-        name: 'suggest-optimizations',
-        description: 'Suggest performance optimizations',
-        inputSchema: {
-          type: 'object',
-          properties: {
-            code: { type: 'string', description: 'Code to optimize' },
-            focus: {
-              type: 'array',
-              items: {
-                type: 'string',
-                enum: ['speed', 'memory', 'readability', 'all']
-              },
-              default: ['all']
-            }
+    },
+    {
+      name: 'suggest-optimizations',
+      description: 'Suggest performance optimizations',
+      inputSchema: {
+        type: 'object',
+        properties: {
+          code: { type: 'string', description: 'Code to optimize' },
+          focus: {
+            type: 'array',
+            items: {
+              type: 'string',
+              enum: ['speed', 'memory', 'readability', 'all'],
+            },
+            default: ['all'],
           },
-          required: ['code']
-        }
-      }
+        },
+        required: ['code'],
+      },
+    },
   ];
 }
 
@@ -770,7 +792,7 @@ async function main() {
   );
 
   server.setRequestHandler(ListToolsRequestSchema, () => ({
-    tools: getToolDefinitions()
+    tools: getToolDefinitions(),
   }));
 
   server.setRequestHandler(CallToolRequestSchema, (request) => {
@@ -782,7 +804,7 @@ async function main() {
       if (error instanceof z.ZodError) {
         throw new McpError(
           ErrorCode.InvalidParams,
-          `Invalid parameters: ${error.errors.map(e => e.message).join(', ')}`
+          `Invalid parameters: ${error.errors.map((e) => e.message).join(', ')}`
         );
       }
       if (error instanceof McpError) {
