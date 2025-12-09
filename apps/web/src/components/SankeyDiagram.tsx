@@ -20,8 +20,13 @@ export default function SankeyDiagram({ data }: SankeyDiagramProps) {
     if (ref.current && data.length > 0) {
       // Generate Sankey diagram from data
       const sankeyChart = generateSankeyChart(data);
-      // Security: Use mermaid.render for safer rendering with unique IDs
-      const id = `sankey-${Date.now()}-${Math.random().toString(36).substring(2, 11)}`;
+      // Security: Use mermaid.render for safer rendering with cryptographically secure IDs
+      // Use crypto.randomUUID() if available, fallback to timestamp-based ID
+      const uniqueId = typeof crypto !== 'undefined' && crypto.randomUUID 
+        ? crypto.randomUUID() 
+        : `${Date.now()}-${Math.random().toString(36).substring(2, 11)}`;
+      const id = `sankey-${uniqueId}`;
+      
       mermaid.render(id, sankeyChart).then(({ svg }) => {
         if (ref.current) {
           ref.current.innerHTML = svg;
@@ -44,12 +49,16 @@ export default function SankeyDiagram({ data }: SankeyDiagramProps) {
 
 function sanitizeString(str: string): string {
   // Security: Escape dangerous characters while preserving valid Mermaid syntax
-  // Only escape characters that could lead to XSS or syntax breaking
+  // Handle ampersands first to avoid double-encoding, then escape other dangerous characters
   return String(str)
+    .replace(/&/g, '&amp;')  // Must be first to avoid double-encoding
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
+    .replace(/'/g, '&#39;')
+    // Remove any Mermaid-specific syntax that could break diagram structure
+    .replace(/[\n\r\t]/g, ' ')  // Remove line breaks and tabs
+    .replace(/[{}[\]]/g, '_');  // Remove curly braces and brackets that affect Mermaid syntax
 }
 
 function generateSankeyChart(data: SankeyNode[]): string {

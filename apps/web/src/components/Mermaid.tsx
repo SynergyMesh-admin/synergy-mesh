@@ -26,7 +26,12 @@ export default function Mermaid({ chart }: MermaidProps) {
     if (ref.current) {
       // Security: Use mermaid.render with strict security level for safe rendering
       // The strict security level handles sanitization internally
-      const id = `mermaid-${Date.now()}-${Math.random().toString(36).substring(2, 11)}`;
+      // Use crypto.randomUUID() if available, fallback to timestamp-based ID
+      const uniqueId = typeof crypto !== 'undefined' && crypto.randomUUID 
+        ? crypto.randomUUID() 
+        : `${Date.now()}-${Math.random().toString(36).substring(2, 11)}`;
+      const id = `mermaid-${uniqueId}`;
+      
       mermaid.render(id, chart).then(({ svg }) => {
         if (ref.current) {
           ref.current.innerHTML = svg;
