@@ -5,7 +5,7 @@
 
 import { Request, Response, NextFunction } from 'express';
 import { errorMiddleware } from '../middleware/error';
-import { createError } from '../errors';
+import { createError, AppError, ErrorCode } from '../errors';
 
 describe('Error Middleware', () => {
   let mockRequest: Partial<Request>;
@@ -34,7 +34,7 @@ describe('Error Middleware', () => {
 
   describe('HTTP Error Handling', () => {
     it('should handle 400 Bad Request errors', () => {
-      const error = createError.badRequest('Invalid input');
+      const error = createError.validation('Invalid input');
 
       errorMiddleware(
         error,
@@ -165,7 +165,8 @@ describe('Error Middleware', () => {
     });
 
     it('should handle 429 Rate Limit errors', () => {
-      const error = createError.rateLimit('Too many requests');
+      // Create a custom AppError for rate limiting since no factory exists
+      const error = new AppError('Too many requests', ErrorCode.RATE_LIMIT, 429);
 
       errorMiddleware(
         error,
@@ -207,7 +208,7 @@ describe('Error Middleware', () => {
     });
 
     it('should handle 503 Service Unavailable errors', () => {
-      const error = createError.serviceUnavailable('Service temporarily unavailable');
+      const error = createError.serviceUnavailable('External API');
 
       errorMiddleware(
         error,
@@ -220,7 +221,7 @@ describe('Error Middleware', () => {
       expect(jsonMock).toHaveBeenCalledWith(
         expect.objectContaining({
           error: expect.objectContaining({
-            message: 'Service temporarily unavailable',
+            message: 'External API is currently unavailable',
             status: 503,
           }),
         })
