@@ -151,7 +151,7 @@ GitHub CI ──▶ arch-governance-validation.yml ──▶ 5 個驗證 jobs
 
 | PR #73 組件 | 現有系統組件 | 關聯類型 |
 |-------------|--------------|----------|
-| `ci-agent-config.yaml` | `config/virtual-experts.yaml` | 同層級配置 |
+| `ci-agent-config.yaml` | `config/agents/team/virtual-experts.yaml` | 同層級配置 |
 | `ci-agent-config.yaml` | `config/ai-constitution.yaml` | 概念延伸 |
 | `ci-error-handler.yaml` | `config/ci-comprehensive-solution.yaml` | 擴充與整合 |
 | `arch-governance-validation.yml` | `core-services-ci.yml` | 平行工作流 |

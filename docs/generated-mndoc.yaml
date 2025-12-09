@@ -190,7 +190,7 @@ sections:
   content_preview: '## 👨‍💼 虛擬專家團隊
 
 
-    內建多位虛擬專家，對應架構、安全、資料庫、DevOps 等領域，詳細映射參考 config/virtual-experts.yaml。
+    內建多位虛擬專家，對應架構、安全、資料庫、DevOps 等領域，詳細映射參考 config/agents/team/virtual-experts.yaml。
 
 
     ---'

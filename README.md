@@ -797,7 +797,7 @@ apps/web 提供企業級代碼分析服務，包括 React 前端與 FastAPI 後�
 | config/unified-config-index.yaml  | 統一配置索引 v3.0.0             |
 | config/system-module-map.yaml     | 模組映射                         |
 | config/ai-constitution.yaml       | AI 最高指導憲章（三層憲法體系） |
-| config/virtual-experts.yaml       | 虛擬專家團隊配置                 |
+| config/agents/team/virtual-experts.yaml | 虛擬專家團隊配置                 |
 | config/safety-mechanisms.yaml     | 安全機制配置                     |
 | config/topology-mind-matrix.yaml  | 心智矩陣拓撲配置                 |
 | config/drone-config.yml           | 無人機編隊與自動化系統配置       |
@@ -807,7 +807,7 @@ apps/web 提供企業級代碼分析服務，包括 React 前端與 FastAPI 後�
 
 ## 👨‍💼 虛擬專家團隊
 
-內建多位虛擬專家，對應架構、安全、資料庫、DevOps 等領域，詳細映射參考 config/virtual-experts.yaml。
+內建多位虛擬專家，對應架構、安全、資料庫、DevOps 等領域，詳細映射參考 config/agents/team/virtual-experts.yaml。
 
 ---
 

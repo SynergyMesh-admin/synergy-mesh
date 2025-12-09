@@ -89,7 +89,7 @@ The new components align with existing project structure:
 
 | New Component | Aligns With |
 |---------------|-------------|
-| `config/ci-agent-config.yaml` | `config/virtual-experts.yaml`, `config/ai-constitution.yaml` |
+| `config/ci-agent-config.yaml` | `config/agents/team/virtual-experts.yaml`, `config/ai-constitution.yaml` |
 | `config/ci-error-handler.yaml` | `config/ci-comprehensive-solution.yaml` |
 | `.github/workflows/arch-governance-validation.yml` | `.github/workflows/core-services-ci.yml` |
 | `scripts/hooks/` | `scripts/sync/`, `.git/hooks/` (Stage 0 template) |

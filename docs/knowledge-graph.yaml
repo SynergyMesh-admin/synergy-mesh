@@ -1837,7 +1837,7 @@ nodes:
 - id: file:_codeql_detected_source_root:config:virtual-experts.yaml
   type: config
   label: virtual-experts.yaml
-  path: _codeql_detected_source_root/config/virtual-experts.yaml
+  path: _codeql_detected_source_root/config/agents/team/virtual-experts.yaml
   properties:
     label_zh: 設定
 - id: dir:_codeql_detected_source_root:config:autofix
@@ -5725,7 +5725,7 @@ nodes:
 - id: file:config:virtual-experts.yaml
   type: config
   label: virtual-experts.yaml
-  path: config/virtual-experts.yaml
+  path: config/agents/team/virtual-experts.yaml
   properties:
     label_zh: 設定
 - id: dir:config:autofix
@@ -6805,7 +6805,7 @@ nodes:
 - id: file:infra:config:virtual-experts.yaml
   type: config
   label: virtual-experts.yaml
-  path: infra/config/virtual-experts.yaml
+  path: infra/config/agents/team/virtual-experts.yaml
   properties:
     label_zh: 設定
 - id: dir:infra:config:autofix

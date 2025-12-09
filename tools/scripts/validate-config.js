@@ -20,7 +20,7 @@ const CONFIG_FILES = [
   { config: 'config/environment.yaml', schema: 'schemas/environment.schema.json' },
   { config: 'config/dependencies.yaml', schema: 'schemas/dependencies.schema.json' },
   { config: 'config/ai-constitution.yaml', schema: 'schemas/ai-constitution.schema.json' },
-  { config: 'config/virtual-experts.yaml', schema: 'schemas/virtual-experts.schema.json' },
+  { config: 'config/agents/team/virtual-experts.yaml', schema: 'config/agents/schemas/virtual-experts.schema.json' },
   { config: 'config/safety-mechanisms.yaml', schema: 'schemas/safety-mechanisms.schema.json' }
 ];
 
