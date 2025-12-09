@@ -7,19 +7,22 @@ import Frontend from './pages/Frontend';
 import Backend from './pages/Backend';
 import Contact from './pages/Contact';
 import LanguageGovernance from './pages/LanguageGovernance';
+import { ErrorBoundary } from './components/ErrorBoundary';
 
 export default function App() {
   return (
-    <HashRouter>
-      <Toaster position="top-center" richColors theme="dark" />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/architecture" element={<Architecture />} />
-        <Route path="/frontend" element={<Frontend />} />
-        <Route path="/backend" element={<Backend />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/language-governance" element={<LanguageGovernance />} />
-      </Routes>
-    </HashRouter>
+    <ErrorBoundary>
+      <HashRouter>
+        <Toaster position="top-center" richColors theme="dark" />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/architecture" element={<Architecture />} />
+          <Route path="/frontend" element={<Frontend />} />
+          <Route path="/backend" element={<Backend />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/language-governance" element={<LanguageGovernance />} />
+        </Routes>
+      </HashRouter>
+    </ErrorBoundary>
   );
 }

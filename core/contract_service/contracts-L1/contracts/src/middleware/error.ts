@@ -3,45 +3,7 @@ import { randomUUID } from 'crypto';
 import { Request, Response, NextFunction } from 'express';
 
 import config from '../config';
-
-export enum ErrorCode {
-  VALIDATION_ERROR = 'VALIDATION_ERROR',
-  NOT_FOUND = 'NOT_FOUND',
-  UNAUTHORIZED = 'UNAUTHORIZED',
-  FORBIDDEN = 'FORBIDDEN',
-  INTERNAL_ERROR = 'INTERNAL_ERROR',
-  SERVICE_UNAVAILABLE = 'SERVICE_UNAVAILABLE',
-  RATE_LIMIT = 'RATE_LIMIT',
-}
-
-export class AppError extends Error {
-  public readonly code: ErrorCode;
-  public readonly statusCode: number;
-  public readonly traceId: string;
-  public readonly timestamp: string;
-  public readonly isOperational: boolean;
-
-  constructor(message: string, code: ErrorCode, statusCode = 500, isOperational = true) {
-    super(message);
-    this.code = code;
-    this.statusCode = statusCode;
-    this.traceId = randomUUID();
-    this.timestamp = new Date().toISOString();
-    this.isOperational = isOperational;
-    Error.captureStackTrace(this, this.constructor);
-  }
-}
-
-export const createError = {
-  validation: (message: string) => new AppError(message, ErrorCode.VALIDATION_ERROR, 400),
-  notFound: (resource: string) => new AppError(`${resource} not found`, ErrorCode.NOT_FOUND, 404),
-  unauthorized: (message = 'Unauthorized') => new AppError(message, ErrorCode.UNAUTHORIZED, 401),
-  forbidden: (message = 'Forbidden') => new AppError(message, ErrorCode.FORBIDDEN, 403),
-  internal: (message = 'Internal server error') =>
-    new AppError(message, ErrorCode.INTERNAL_ERROR, 500, false),
-  serviceUnavailable: (service: string) =>
-    new AppError(`${service} is unavailable`, ErrorCode.SERVICE_UNAVAILABLE, 503),
-};
+import { AppError, ErrorCode, createError, ValidationError } from '../errors';
 
 export const errorMiddleware = (
   err: Error | AppError,
@@ -53,7 +15,7 @@ export const errorMiddleware = (
   let logLevel: 'error' | 'warn' = 'error';
 
   if (err instanceof AppError) {
-    const errorResponse = {
+    const errorResponse: any = {
       error: {
         code: err.code,
         message: err.message,
@@ -61,6 +23,12 @@ export const errorMiddleware = (
         timestamp: err.timestamp,
       },
     };
+
+    // Include validation errors if present
+    if (err instanceof ValidationError && err.validationErrors) {
+      errorResponse.error.validationErrors = err.validationErrors;
+    }
+
     if (err.statusCode < 500) {
       logLevel = 'warn';
     }
@@ -84,6 +52,8 @@ export const errorMiddleware = (
       message: err.message,
       code: err instanceof AppError ? err.code : ErrorCode.INTERNAL_ERROR,
       stack: config.NODE_ENV !== 'production' ? err.stack : undefined,
+      validationErrors:
+        err instanceof ValidationError && err.validationErrors ? err.validationErrors : undefined,
     },
     request: {
       method: req.method,
@@ -114,5 +84,8 @@ export const notFoundMiddleware = (req: Request, res: Response, _next: NextFunct
     },
   });
 };
+
+// Re-export for backwards compatibility
+export { AppError, ErrorCode, createError, ValidationError };
 
 export default errorMiddleware;
