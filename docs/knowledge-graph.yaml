@@ -3,7 +3,7 @@ version: 1.0.0
 id: unmanned-island-knowledge-graph
 title: Unmanned Island System Knowledge Graph
 description: Knowledge graph representation of the repository structure and entities
-generated_at: '2025-12-09T09:49:10.914385Z'
+generated_at: '2025-12-09T09:54:39.056968Z'
 source_repo: .
 nodes:
 - id: system:unmanned-island
