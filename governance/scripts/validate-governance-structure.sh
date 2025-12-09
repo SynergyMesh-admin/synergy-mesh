@@ -137,27 +137,30 @@ check_index_files() {
 check_yaml_format() {
     log_info "Checking YAML file format validity..."
 
-    local yaml_files=$(find "${GOVERNANCE_DIR}" -name "*.yaml" -type f | grep -v "_scratch")
     local invalid=0
+    local yaml_file_list
 
-    for file in $yaml_files; do
-        if command -v yq &> /dev/null; then
+    if command -v yq &> /dev/null; then
+        # Store file list in array to avoid subshell issues
+        mapfile -t yaml_file_list < <(find "${GOVERNANCE_DIR}" -name "*.yaml" -type f ! -path "*_scratch*")
+        
+        for file in "${yaml_file_list[@]}"; do
             if yq eval . "$file" > /dev/null 2>&1; then
-                log_success "Valid YAML: $(basename $file)"
+                log_success "Valid YAML: $(basename "$file")"
             else
-                log_error "Invalid YAML: $(basename $file)"
+                log_error "Invalid YAML: $(basename "$file")"
                 invalid=$((invalid + 1))
             fi
+        done
+        
+        if [ $invalid -eq 0 ]; then
+            log_success "All YAML files are valid"
         else
-            log_warning "yq not installed, skipping YAML validation"
-            return
+            log_error "Found $invalid invalid YAML files"
         fi
-    done
-
-    if [ $invalid -eq 0 ]; then
-        log_success "All YAML files are valid"
     else
-        log_error "Found $invalid invalid YAML files"
+        log_warning "yq not installed, skipping YAML validation"
+        return
     fi
 }
 
@@ -210,7 +213,10 @@ check_dependency_completeness() {
     fi
 
     # 檢查是否定義了所有 14 個維度
-    local dimension_count=$(grep -c "^  [a-z_]*_governance:" "${GOVERNANCE_DIR}/GOVERNANCE_DEPENDENCY_MAP.yaml" || true)
+    # Match dimension keys like governance_architecture, decision_governance, governance_tools, etc.
+    # Only count keys under the dependencies section (before the next top-level comment)
+    local dimension_count
+    dimension_count=$(awk '/^dependencies:/,/^# / {if (/^  [a-z_]+:/) print}' "${GOVERNANCE_DIR}/GOVERNANCE_DEPENDENCY_MAP.yaml" | wc -l || true)
 
     if [ "$dimension_count" -ge 14 ]; then
         log_success "All 14 dimensions defined in dependency map"
@@ -227,7 +233,7 @@ check_cross_references() {
     if [ -f "${GOVERNANCE_DIR}/GOVERNANCE_STRUCTURE_INDEX.md" ]; then
         local index_file="${GOVERNANCE_DIR}/GOVERNANCE_STRUCTURE_INDEX.md"
 
-        local dimensions_in_index=$(grep -o "governance-[a-z]*" "$index_file" | sort | uniq | wc -l)
+        local dimensions_in_index=$(grep -o "governance-[a-z-]*" "$index_file" | sort | uniq | wc -l)
 
         if [ "$dimensions_in_index" -ge 14 ]; then
             log_success "All dimensions referenced in index file"

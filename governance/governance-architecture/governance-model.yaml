@@ -13,7 +13,7 @@ governance_model:
 characteristics:
   - name: "分層決策"
     description: "Strategic decisions at board level, tactical decisions at management level, operational autonomy at department level"
-  - name: "権限平衡"
+  - name: "權限平衡"
     description: "Balance between centralized oversight and decentralized autonomy"
   - name: "透明治理"
     description: "Transparent governance with complete audit trails"

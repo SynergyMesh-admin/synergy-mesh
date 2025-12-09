@@ -13,6 +13,64 @@ echo "║  治理配置初始化                                                
 echo "╚════════════════════════════════════════════════════════════════╝"
 echo ""
 
+# 生成配置模板內容的輔助函數
+generate_template() {
+    local config_type=$1
+    local name_field=$2
+    local description=$3
+    
+    # Validate parameters
+    if [ -z "$config_type" ] || [ -z "$name_field" ] || [ -z "$description" ]; then
+        echo "Error: generate_template requires all three parameters" >&2
+        return 1
+    fi
+    
+    cat << EOF
+---
+# PLACEHOLDER: ${config_type} Configuration
+# 此文件是自動生成的佔位符，需要根據實際需求填充
+
+version: "1.0"
+lastUpdated: "2025-12-09"
+status: "draft"
+
+${name_field}:
+  name: "${config_type} Name"
+  description: "${description}"
+EOF
+    
+    case "$config_type" in
+        "Policy")
+            cat << 'EOF'
+  owner: "Policy Owner"
+  approval_required: true
+
+# TODO: Add policy details
+EOF
+            ;;
+        "Framework")
+            cat << 'EOF'
+  components: []
+
+# TODO: Add framework components
+EOF
+            ;;
+        "System")
+            cat << 'EOF'
+  components: []
+
+# TODO: Add system specifications
+EOF
+            ;;
+        *)
+            cat << 'EOF'
+
+# TODO: Add configuration details
+EOF
+            ;;
+    esac
+}
+
 # 為缺失的維度創建基本配置文件
 create_config_if_missing() {
     local dim=$1
@@ -26,72 +84,16 @@ create_config_if_missing() {
 
         case "$config_type" in
             "policy")
-                cat > "$full_path" << 'EOF'
----
-# PLACEHOLDER: Policy Configuration
-# 此文件是自動生成的佔位符，需要根據實際需求填充
-
-version: "1.0"
-lastUpdated: "2025-12-09"
-status: "draft"
-
-policy:
-  name: "Policy Name"
-  description: "Policy description goes here"
-  owner: "Policy Owner"
-  approval_required: true
-
-# TODO: Add policy details
-EOF
+                generate_template "Policy" "policy" "Policy description goes here" > "$full_path"
                 ;;
             "framework")
-                cat > "$full_path" << 'EOF'
----
-# PLACEHOLDER: Framework Configuration
-# 此文件是自動生成的佔位符，需要根據實際需求填充
-
-version: "1.0"
-lastUpdated: "2025-12-09"
-status: "draft"
-
-framework:
-  name: "Framework Name"
-  description: "Framework description goes here"
-  components: []
-
-# TODO: Add framework components
-EOF
+                generate_template "Framework" "framework" "Framework description goes here" > "$full_path"
                 ;;
             "system")
-                cat > "$full_path" << 'EOF'
----
-# PLACEHOLDER: System Configuration
-# 此文件是自動生成的佔位符，需要根據實際需求填充
-
-version: "1.0"
-lastUpdated: "2025-12-09"
-status: "draft"
-
-system:
-  name: "System Name"
-  description: "System description goes here"
-  components: []
-
-# TODO: Add system specifications
-EOF
+                generate_template "System" "system" "System description goes here" > "$full_path"
                 ;;
             *)
-                cat > "$full_path" << 'EOF'
----
-# PLACEHOLDER: Configuration
-# 此文件是自動生成的佔位符，需要根據實際需求填充
-
-version: "1.0"
-lastUpdated: "2025-12-09"
-status: "draft"
-
-# TODO: Add configuration details
-EOF
+                generate_template "Configuration" "config" "Configuration description goes here" > "$full_path"
                 ;;
         esac
 
