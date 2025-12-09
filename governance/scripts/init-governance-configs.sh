@@ -19,6 +19,12 @@ generate_template() {
     local name_field=$2
     local description=$3
     
+    # Validate parameters
+    if [ -z "$config_type" ] || [ -z "$name_field" ] || [ -z "$description" ]; then
+        echo "Error: generate_template requires all three parameters" >&2
+        return 1
+    fi
+    
     cat << EOF
 ---
 # PLACEHOLDER: ${config_type} Configuration

@@ -142,7 +142,7 @@ check_yaml_format() {
 
     if command -v yq &> /dev/null; then
         # Store file list in array to avoid subshell issues
-        mapfile -t yaml_file_list < <(find "${GOVERNANCE_DIR}" -name "*.yaml" -type f | grep -v "_scratch")
+        mapfile -t yaml_file_list < <(find "${GOVERNANCE_DIR}" -name "*.yaml" -type f ! -path "*_scratch*")
         
         for file in "${yaml_file_list[@]}"; do
             if yq eval . "$file" > /dev/null 2>&1; then
@@ -214,7 +214,9 @@ check_dependency_completeness() {
 
     # 檢查是否定義了所有 14 個維度
     # Match dimension keys like governance_architecture, decision_governance, governance_tools, etc.
-    local dimension_count=$(grep -E "^  (governance_|[a-z]+_governance|governance_[a-z]+):" "${GOVERNANCE_DIR}/GOVERNANCE_DEPENDENCY_MAP.yaml" | grep -v "^  #" | wc -l || true)
+    # Count non-comment lines with 2-space indent followed by a dimension key
+    local dimension_count
+    dimension_count=$(grep -E "^  [a-z_]+:" "${GOVERNANCE_DIR}/GOVERNANCE_DEPENDENCY_MAP.yaml" | grep -v "^  #" | wc -l || true)
 
     if [ "$dimension_count" -ge 14 ]; then
         log_success "All 14 dimensions defined in dependency map"
