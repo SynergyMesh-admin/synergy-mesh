@@ -3,7 +3,7 @@ version: 1.0.0
 id: unmanned-island-knowledge-graph
 title: Unmanned Island System Knowledge Graph
 description: Knowledge graph representation of the repository structure and entities
-generated_at: '2025-12-09T09:26:53.549552Z'
+generated_at: '2025-12-09T09:49:10.914385Z'
 source_repo: .
 nodes:
 - id: system:unmanned-island
@@ -1786,16 +1786,52 @@ nodes:
   path: _codeql_detected_source_root/governance/language-naming-rules.yaml
   properties:
     label_zh: 設定
+- id: file:_codeql_detected_source_root:governance:GOVERNANCE_DEPENDENCY_MAP.yaml
+  type: config
+  label: GOVERNANCE_DEPENDENCY_MAP.yaml
+  path: _codeql_detected_source_root/governance/GOVERNANCE_DEPENDENCY_MAP.yaml
+  properties:
+    label_zh: 設定
 - id: dir:_codeql_detected_source_root:governance:policies
   type: directory
   label: policies
   path: _codeql_detected_source_root/governance/policies
   properties:
     label_zh: 目錄
+- id: dir:_codeql_detected_source_root:governance:governance-tools
+  type: directory
+  label: governance-tools
+  path: _codeql_detected_source_root/governance/governance-tools
+  properties:
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:governance:performance-governance
+  type: directory
+  label: performance-governance
+  path: _codeql_detected_source_root/governance/performance-governance
+  properties:
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:governance:audit-governance
+  type: directory
+  label: audit-governance
+  path: _codeql_detected_source_root/governance/audit-governance
+  properties:
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:governance:process-governance
+  type: directory
+  label: process-governance
+  path: _codeql_detected_source_root/governance/process-governance
+  properties:
+    label_zh: 目錄
 - id: dir:_codeql_detected_source_root:governance:architecture
   type: directory
   label: architecture
   path: _codeql_detected_source_root/governance/architecture
+  properties:
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:governance:scripts
+  type: directory
+  label: scripts
+  path: _codeql_detected_source_root/governance/scripts
   properties:
     label_zh: 目錄
 - id: dir:_codeql_detected_source_root:governance:environment-matrix
@@ -1810,10 +1846,28 @@ nodes:
   path: _codeql_detected_source_root/governance/ownership-map.yaml
   properties:
     label_zh: 設定
+- id: dir:_codeql_detected_source_root:governance:governance-architecture
+  type: directory
+  label: governance-architecture
+  path: _codeql_detected_source_root/governance/governance-architecture
+  properties:
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:governance:governance-improvement
+  type: directory
+  label: governance-improvement
+  path: _codeql_detected_source_root/governance/governance-improvement
+  properties:
+    label_zh: 目錄
 - id: dir:_codeql_detected_source_root:governance:rules
   type: directory
   label: rules
   path: _codeql_detected_source_root/governance/rules
+  properties:
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:governance:stakeholder-governance
+  type: directory
+  label: stakeholder-governance
+  path: _codeql_detected_source_root/governance/stakeholder-governance
   properties:
     label_zh: 目錄
 - id: file:_codeql_detected_source_root:governance:mapping-rules.yaml
@@ -1822,6 +1876,18 @@ nodes:
   path: _codeql_detected_source_root/governance/mapping-rules.yaml
   properties:
     label_zh: 設定
+- id: dir:_codeql_detected_source_root:governance:governance-culture
+  type: directory
+  label: governance-culture
+  path: _codeql_detected_source_root/governance/governance-culture
+  properties:
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:governance:governance-metrics
+  type: directory
+  label: governance-metrics
+  path: _codeql_detected_source_root/governance/governance-metrics
+  properties:
+    label_zh: 目錄
 - id: dir:_codeql_detected_source_root:governance:registry
   type: directory
   label: registry
@@ -1840,6 +1906,12 @@ nodes:
   path: _codeql_detected_source_root/governance/deployment
   properties:
     label_zh: 目錄
+- id: dir:_codeql_detected_source_root:governance:automation
+  type: subsystem
+  label: automation
+  path: _codeql_detected_source_root/governance/automation
+  properties:
+    label_zh: 子系統
 - id: file:_codeql_detected_source_root:governance:architecture-health.yaml
   type: config
   label: architecture-health.yaml
@@ -1864,10 +1936,40 @@ nodes:
   path: _codeql_detected_source_root/governance/behavior-contracts
   properties:
     label_zh: 目錄
+- id: dir:_codeql_detected_source_root:governance:security-governance
+  type: directory
+  label: security-governance
+  path: _codeql_detected_source_root/governance/security-governance
+  properties:
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:governance:compliance-governance
+  type: directory
+  label: compliance-governance
+  path: _codeql_detected_source_root/governance/compliance-governance
+  properties:
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:governance:decision-governance
+  type: directory
+  label: decision-governance
+  path: _codeql_detected_source_root/governance/decision-governance
+  properties:
+    label_zh: 目錄
 - id: dir:_codeql_detected_source_root:governance:sbom
   type: directory
   label: sbom
   path: _codeql_detected_source_root/governance/sbom
+  properties:
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:governance:change-governance
+  type: directory
+  label: change-governance
+  path: _codeql_detected_source_root/governance/change-governance
+  properties:
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:governance:risk-governance
+  type: directory
+  label: risk-governance
+  path: _codeql_detected_source_root/governance/risk-governance
   properties:
     label_zh: 目錄
 - id: dir:_codeql_detected_source_root:governance:principles
@@ -5560,6 +5662,12 @@ nodes:
   path: governance/language-naming-rules.yaml
   properties:
     label_zh: 設定
+- id: file:governance:GOVERNANCE_DEPENDENCY_MAP.yaml
+  type: config
+  label: GOVERNANCE_DEPENDENCY_MAP.yaml
+  path: governance/GOVERNANCE_DEPENDENCY_MAP.yaml
+  properties:
+    label_zh: 設定
 - id: dir:governance:policies
   type: directory
   label: policies
@@ -5638,6 +5746,126 @@ nodes:
   path: governance/policies/base-policy.yaml
   properties:
     label_zh: 設定
+- id: dir:governance:governance-tools
+  type: directory
+  label: governance-tools
+  path: governance/governance-tools
+  properties:
+    label_zh: 目錄
+- id: file:governance:governance-tools:automation_engine.py
+  type: module
+  label: automation_engine.py
+  path: governance/governance-tools/automation_engine.py
+  properties:
+    label_zh: 模組
+- id: file:governance:governance-tools:decision-support-system.yaml
+  type: config
+  label: decision-support-system.yaml
+  path: governance/governance-tools/decision-support-system.yaml
+  properties:
+    label_zh: 設定
+- id: file:governance:governance-tools:system-integration-guide.yaml
+  type: config
+  label: system-integration-guide.yaml
+  path: governance/governance-tools/system-integration-guide.yaml
+  properties:
+    label_zh: 設定
+- id: file:governance:governance-tools:__init__.py
+  type: module
+  label: __init__.py
+  path: governance/governance-tools/__init__.py
+  properties:
+    label_zh: 模組
+- id: dir:governance:performance-governance
+  type: directory
+  label: performance-governance
+  path: governance/performance-governance
+  properties:
+    label_zh: 目錄
+- id: file:governance:performance-governance:automation_engine.py
+  type: module
+  label: automation_engine.py
+  path: governance/performance-governance/automation_engine.py
+  properties:
+    label_zh: 模組
+- id: file:governance:performance-governance:performance-targets.yaml
+  type: config
+  label: performance-targets.yaml
+  path: governance/performance-governance/performance-targets.yaml
+  properties:
+    label_zh: 設定
+- id: file:governance:performance-governance:__init__.py
+  type: module
+  label: __init__.py
+  path: governance/performance-governance/__init__.py
+  properties:
+    label_zh: 模組
+- id: file:governance:performance-governance:kpi-framework.yaml
+  type: config
+  label: kpi-framework.yaml
+  path: governance/performance-governance/kpi-framework.yaml
+  properties:
+    label_zh: 設定
+- id: dir:governance:audit-governance
+  type: directory
+  label: audit-governance
+  path: governance/audit-governance
+  properties:
+    label_zh: 目錄
+- id: file:governance:audit-governance:audit-plan-annual.yaml
+  type: config
+  label: audit-plan-annual.yaml
+  path: governance/audit-governance/audit-plan-annual.yaml
+  properties:
+    label_zh: 設定
+- id: file:governance:audit-governance:automation_engine.py
+  type: module
+  label: automation_engine.py
+  path: governance/audit-governance/automation_engine.py
+  properties:
+    label_zh: 模組
+- id: file:governance:audit-governance:audit-framework.yaml
+  type: config
+  label: audit-framework.yaml
+  path: governance/audit-governance/audit-framework.yaml
+  properties:
+    label_zh: 設定
+- id: file:governance:audit-governance:__init__.py
+  type: module
+  label: __init__.py
+  path: governance/audit-governance/__init__.py
+  properties:
+    label_zh: 模組
+- id: dir:governance:process-governance
+  type: directory
+  label: process-governance
+  path: governance/process-governance
+  properties:
+    label_zh: 目錄
+- id: file:governance:process-governance:automation_engine.py
+  type: module
+  label: automation_engine.py
+  path: governance/process-governance/automation_engine.py
+  properties:
+    label_zh: 模組
+- id: file:governance:process-governance:process-design-standards.yaml
+  type: config
+  label: process-design-standards.yaml
+  path: governance/process-governance/process-design-standards.yaml
+  properties:
+    label_zh: 設定
+- id: file:governance:process-governance:process-inventory.yaml
+  type: config
+  label: process-inventory.yaml
+  path: governance/process-governance/process-inventory.yaml
+  properties:
+    label_zh: 設定
+- id: file:governance:process-governance:__init__.py
+  type: module
+  label: __init__.py
+  path: governance/process-governance/__init__.py
+  properties:
+    label_zh: 模組
 - id: dir:governance:architecture
   type: directory
   label: architecture
@@ -5650,6 +5878,12 @@ nodes:
   path: governance/architecture/layers-domains.yaml
   properties:
     label_zh: 設定
+- id: dir:governance:scripts
+  type: directory
+  label: scripts
+  path: governance/scripts
+  properties:
+    label_zh: 目錄
 - id: dir:governance:environment-matrix
   type: directory
   label: environment-matrix
@@ -5668,6 +5902,72 @@ nodes:
   path: governance/ownership-map.yaml
   properties:
     label_zh: 設定
+- id: dir:governance:governance-architecture
+  type: directory
+  label: governance-architecture
+  path: governance/governance-architecture
+  properties:
+    label_zh: 目錄
+- id: file:governance:governance-architecture:automation_engine.py
+  type: module
+  label: automation_engine.py
+  path: governance/governance-architecture/automation_engine.py
+  properties:
+    label_zh: 模組
+- id: file:governance:governance-architecture:organizational-structure.yaml
+  type: config
+  label: organizational-structure.yaml
+  path: governance/governance-architecture/organizational-structure.yaml
+  properties:
+    label_zh: 設定
+- id: file:governance:governance-architecture:governance-model.yaml
+  type: config
+  label: governance-model.yaml
+  path: governance/governance-architecture/governance-model.yaml
+  properties:
+    label_zh: 設定
+- id: file:governance:governance-architecture:__init__.py
+  type: module
+  label: __init__.py
+  path: governance/governance-architecture/__init__.py
+  properties:
+    label_zh: 模組
+- id: file:governance:governance-architecture:governance-principles.yaml
+  type: config
+  label: governance-principles.yaml
+  path: governance/governance-architecture/governance-principles.yaml
+  properties:
+    label_zh: 設定
+- id: dir:governance:governance-improvement
+  type: directory
+  label: governance-improvement
+  path: governance/governance-improvement
+  properties:
+    label_zh: 目錄
+- id: file:governance:governance-improvement:automation_engine.py
+  type: module
+  label: automation_engine.py
+  path: governance/governance-improvement/automation_engine.py
+  properties:
+    label_zh: 模組
+- id: file:governance:governance-improvement:improvement-planning.yaml
+  type: config
+  label: improvement-planning.yaml
+  path: governance/governance-improvement/improvement-planning.yaml
+  properties:
+    label_zh: 設定
+- id: file:governance:governance-improvement:improvement-identification.yaml
+  type: config
+  label: improvement-identification.yaml
+  path: governance/governance-improvement/improvement-identification.yaml
+  properties:
+    label_zh: 設定
+- id: file:governance:governance-improvement:__init__.py
+  type: module
+  label: __init__.py
+  path: governance/governance-improvement/__init__.py
+  properties:
+    label_zh: 模組
 - id: dir:governance:rules
   type: directory
   label: rules
@@ -5680,12 +5980,102 @@ nodes:
   path: governance/rules/language-policy.yml
   properties:
     label_zh: 設定
+- id: dir:governance:stakeholder-governance
+  type: directory
+  label: stakeholder-governance
+  path: governance/stakeholder-governance
+  properties:
+    label_zh: 目錄
+- id: file:governance:stakeholder-governance:automation_engine.py
+  type: module
+  label: automation_engine.py
+  path: governance/stakeholder-governance/automation_engine.py
+  properties:
+    label_zh: 模組
+- id: file:governance:stakeholder-governance:stakeholder-identification.yaml
+  type: config
+  label: stakeholder-identification.yaml
+  path: governance/stakeholder-governance/stakeholder-identification.yaml
+  properties:
+    label_zh: 設定
+- id: file:governance:stakeholder-governance:stakeholder-analysis.yaml
+  type: config
+  label: stakeholder-analysis.yaml
+  path: governance/stakeholder-governance/stakeholder-analysis.yaml
+  properties:
+    label_zh: 設定
+- id: file:governance:stakeholder-governance:__init__.py
+  type: module
+  label: __init__.py
+  path: governance/stakeholder-governance/__init__.py
+  properties:
+    label_zh: 模組
 - id: file:governance:mapping-rules.yaml
   type: config
   label: mapping-rules.yaml
   path: governance/mapping-rules.yaml
   properties:
     label_zh: 設定
+- id: dir:governance:governance-culture
+  type: directory
+  label: governance-culture
+  path: governance/governance-culture
+  properties:
+    label_zh: 目錄
+- id: file:governance:governance-culture:capability-model.yaml
+  type: config
+  label: capability-model.yaml
+  path: governance/governance-culture/capability-model.yaml
+  properties:
+    label_zh: 設定
+- id: file:governance:governance-culture:automation_engine.py
+  type: module
+  label: automation_engine.py
+  path: governance/governance-culture/automation_engine.py
+  properties:
+    label_zh: 模組
+- id: file:governance:governance-culture:governance-values.yaml
+  type: config
+  label: governance-values.yaml
+  path: governance/governance-culture/governance-values.yaml
+  properties:
+    label_zh: 設定
+- id: file:governance:governance-culture:__init__.py
+  type: module
+  label: __init__.py
+  path: governance/governance-culture/__init__.py
+  properties:
+    label_zh: 模組
+- id: dir:governance:governance-metrics
+  type: directory
+  label: governance-metrics
+  path: governance/governance-metrics
+  properties:
+    label_zh: 目錄
+- id: file:governance:governance-metrics:automation_engine.py
+  type: module
+  label: automation_engine.py
+  path: governance/governance-metrics/automation_engine.py
+  properties:
+    label_zh: 模組
+- id: file:governance:governance-metrics:dashboard-specification.yaml
+  type: config
+  label: dashboard-specification.yaml
+  path: governance/governance-metrics/dashboard-specification.yaml
+  properties:
+    label_zh: 設定
+- id: file:governance:governance-metrics:kpi-definitions.yaml
+  type: config
+  label: kpi-definitions.yaml
+  path: governance/governance-metrics/kpi-definitions.yaml
+  properties:
+    label_zh: 設定
+- id: file:governance:governance-metrics:__init__.py
+  type: module
+  label: __init__.py
+  path: governance/governance-metrics/__init__.py
+  properties:
+    label_zh: 模組
 - id: dir:governance:registry
   type: directory
   label: registry
@@ -5734,6 +6124,54 @@ nodes:
   path: governance/deployment/matechat-services.yml
   properties:
     label_zh: 設定
+- id: dir:governance:automation
+  type: subsystem
+  label: automation
+  path: governance/automation
+  properties:
+    label_zh: 子系統
+- id: dir:governance:automation:engines
+  type: directory
+  label: engines
+  path: governance/automation/engines
+  properties:
+    label_zh: 目錄
+- id: file:governance:automation:deploy_dimension_engines.py
+  type: module
+  label: deploy_dimension_engines.py
+  path: governance/automation/deploy_dimension_engines.py
+  properties:
+    label_zh: 模組
+- id: file:governance:automation:test_automation_system.py
+  type: module
+  label: test_automation_system.py
+  path: governance/automation/test_automation_system.py
+  properties:
+    label_zh: 模組
+- id: file:governance:automation:integrated_launcher.py
+  type: module
+  label: integrated_launcher.py
+  path: governance/automation/integrated_launcher.py
+  properties:
+    label_zh: 模組
+- id: file:governance:automation:governance_automation_launcher.py
+  type: module
+  label: governance_automation_launcher.py
+  path: governance/automation/governance_automation_launcher.py
+  properties:
+    label_zh: 模組
+- id: dir:governance:automation:coordinator
+  type: directory
+  label: coordinator
+  path: governance/automation/coordinator
+  properties:
+    label_zh: 目錄
+- id: file:governance:automation:__init__.py
+  type: module
+  label: __init__.py
+  path: governance/automation/__init__.py
+  properties:
+    label_zh: 模組
 - id: file:governance:architecture-health.yaml
   type: config
   label: architecture-health.yaml
@@ -5848,6 +6286,102 @@ nodes:
   path: governance/behavior-contracts/apps.web.ui.yaml
   properties:
     label_zh: 設定
+- id: dir:governance:security-governance
+  type: directory
+  label: security-governance
+  path: governance/security-governance
+  properties:
+    label_zh: 目錄
+- id: file:governance:security-governance:automation_engine.py
+  type: module
+  label: automation_engine.py
+  path: governance/security-governance/automation_engine.py
+  properties:
+    label_zh: 模組
+- id: file:governance:security-governance:security-audit-framework.yaml
+  type: config
+  label: security-audit-framework.yaml
+  path: governance/security-governance/security-audit-framework.yaml
+  properties:
+    label_zh: 設定
+- id: file:governance:security-governance:access-control-policy.yaml
+  type: config
+  label: access-control-policy.yaml
+  path: governance/security-governance/access-control-policy.yaml
+  properties:
+    label_zh: 設定
+- id: file:governance:security-governance:__init__.py
+  type: module
+  label: __init__.py
+  path: governance/security-governance/__init__.py
+  properties:
+    label_zh: 模組
+- id: dir:governance:compliance-governance
+  type: directory
+  label: compliance-governance
+  path: governance/compliance-governance
+  properties:
+    label_zh: 目錄
+- id: file:governance:compliance-governance:automation_engine.py
+  type: module
+  label: automation_engine.py
+  path: governance/compliance-governance/automation_engine.py
+  properties:
+    label_zh: 模組
+- id: file:governance:compliance-governance:compliance-check-rules.yaml
+  type: config
+  label: compliance-check-rules.yaml
+  path: governance/compliance-governance/compliance-check-rules.yaml
+  properties:
+    label_zh: 設定
+- id: file:governance:compliance-governance:compliance-standards.yaml
+  type: config
+  label: compliance-standards.yaml
+  path: governance/compliance-governance/compliance-standards.yaml
+  properties:
+    label_zh: 設定
+- id: file:governance:compliance-governance:__init__.py
+  type: module
+  label: __init__.py
+  path: governance/compliance-governance/__init__.py
+  properties:
+    label_zh: 模組
+- id: dir:governance:decision-governance
+  type: directory
+  label: decision-governance
+  path: governance/decision-governance
+  properties:
+    label_zh: 目錄
+- id: file:governance:decision-governance:decision-framework.yaml
+  type: config
+  label: decision-framework.yaml
+  path: governance/decision-governance/decision-framework.yaml
+  properties:
+    label_zh: 設定
+- id: file:governance:decision-governance:automation_engine.py
+  type: module
+  label: automation_engine.py
+  path: governance/decision-governance/automation_engine.py
+  properties:
+    label_zh: 模組
+- id: file:governance:decision-governance:decision-authority-matrix.yaml
+  type: config
+  label: decision-authority-matrix.yaml
+  path: governance/decision-governance/decision-authority-matrix.yaml
+  properties:
+    label_zh: 設定
+- id: file:governance:decision-governance:decision-processes.yaml
+  type: config
+  label: decision-processes.yaml
+  path: governance/decision-governance/decision-processes.yaml
+  properties:
+    label_zh: 設定
+- id: file:governance:decision-governance:__init__.py
+  type: module
+  label: __init__.py
+  path: governance/decision-governance/__init__.py
+  properties:
+    label_zh: 模組
 - id: dir:governance:sbom
   type: directory
   label: sbom
@@ -5858,6 +6392,72 @@ nodes:
   type: config
   label: signing-policy.yml
   path: governance/sbom/signing-policy.yml
+  properties:
+    label_zh: 設定
+- id: dir:governance:change-governance
+  type: directory
+  label: change-governance
+  path: governance/change-governance
+  properties:
+    label_zh: 目錄
+- id: file:governance:change-governance:automation_engine.py
+  type: module
+  label: automation_engine.py
+  path: governance/change-governance/automation_engine.py
+  properties:
+    label_zh: 模組
+- id: file:governance:change-governance:change-processes.yaml
+  type: config
+  label: change-processes.yaml
+  path: governance/change-governance/change-processes.yaml
+  properties:
+    label_zh: 設定
+- id: file:governance:change-governance:change-control-matrix.yaml
+  type: config
+  label: change-control-matrix.yaml
+  path: governance/change-governance/change-control-matrix.yaml
+  properties:
+    label_zh: 設定
+- id: file:governance:change-governance:__init__.py
+  type: module
+  label: __init__.py
+  path: governance/change-governance/__init__.py
+  properties:
+    label_zh: 模組
+- id: file:governance:change-governance:change-classification.yaml
+  type: config
+  label: change-classification.yaml
+  path: governance/change-governance/change-classification.yaml
+  properties:
+    label_zh: 設定
+- id: dir:governance:risk-governance
+  type: directory
+  label: risk-governance
+  path: governance/risk-governance
+  properties:
+    label_zh: 目錄
+- id: file:governance:risk-governance:automation_engine.py
+  type: module
+  label: automation_engine.py
+  path: governance/risk-governance/automation_engine.py
+  properties:
+    label_zh: 模組
+- id: file:governance:risk-governance:risk-assessment-framework.yaml
+  type: config
+  label: risk-assessment-framework.yaml
+  path: governance/risk-governance/risk-assessment-framework.yaml
+  properties:
+    label_zh: 設定
+- id: file:governance:risk-governance:__init__.py
+  type: module
+  label: __init__.py
+  path: governance/risk-governance/__init__.py
+  properties:
+    label_zh: 模組
+- id: file:governance:risk-governance:risk-register.yaml
+  type: config
+  label: risk-register.yaml
+  path: governance/risk-governance/risk-register.yaml
   properties:
     label_zh: 設定
 - id: dir:governance:principles
@@ -8576,10 +9176,28 @@ edges:
   target: file:_codeql_detected_source_root:governance:language-naming-rules.yaml
   type: contains
 - source: dir:_codeql_detected_source_root:governance
+  target: file:_codeql_detected_source_root:governance:GOVERNANCE_DEPENDENCY_MAP.yaml
+  type: contains
+- source: dir:_codeql_detected_source_root:governance
   target: dir:_codeql_detected_source_root:governance:policies
   type: contains
 - source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:governance-tools
+  type: contains
+- source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:performance-governance
+  type: contains
+- source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:audit-governance
+  type: contains
+- source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:process-governance
+  type: contains
+- source: dir:_codeql_detected_source_root:governance
   target: dir:_codeql_detected_source_root:governance:architecture
+  type: contains
+- source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:scripts
   type: contains
 - source: dir:_codeql_detected_source_root:governance
   target: dir:_codeql_detected_source_root:governance:environment-matrix
@@ -8588,10 +9206,25 @@ edges:
   target: file:_codeql_detected_source_root:governance:ownership-map.yaml
   type: contains
 - source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:governance-architecture
+  type: contains
+- source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:governance-improvement
+  type: contains
+- source: dir:_codeql_detected_source_root:governance
   target: dir:_codeql_detected_source_root:governance:rules
   type: contains
 - source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:stakeholder-governance
+  type: contains
+- source: dir:_codeql_detected_source_root:governance
   target: file:_codeql_detected_source_root:governance:mapping-rules.yaml
+  type: contains
+- source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:governance-culture
+  type: contains
+- source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:governance-metrics
   type: contains
 - source: dir:_codeql_detected_source_root:governance
   target: dir:_codeql_detected_source_root:governance:registry
@@ -8601,6 +9234,9 @@ edges:
   type: contains
 - source: dir:_codeql_detected_source_root:governance
   target: dir:_codeql_detected_source_root:governance:deployment
+  type: contains
+- source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:automation
   type: contains
 - source: dir:_codeql_detected_source_root:governance
   target: file:_codeql_detected_source_root:governance:architecture-health.yaml
@@ -8615,7 +9251,22 @@ edges:
   target: dir:_codeql_detected_source_root:governance:behavior-contracts
   type: contains
 - source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:security-governance
+  type: contains
+- source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:compliance-governance
+  type: contains
+- source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:decision-governance
+  type: contains
+- source: dir:_codeql_detected_source_root:governance
   target: dir:_codeql_detected_source_root:governance:sbom
+  type: contains
+- source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:change-governance
+  type: contains
+- source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:risk-governance
   type: contains
 - source: dir:_codeql_detected_source_root:governance
   target: dir:_codeql_detected_source_root:governance:principles
@@ -10463,6 +11114,9 @@ edges:
   target: file:governance:language-naming-rules.yaml
   type: contains
 - source: dir:governance
+  target: file:governance:GOVERNANCE_DEPENDENCY_MAP.yaml
+  type: contains
+- source: dir:governance
   target: dir:governance:policies
   type: contains
 - source: dir:governance:policies
@@ -10502,10 +11156,73 @@ edges:
   target: file:governance:policies:base-policy.yaml
   type: contains
 - source: dir:governance
+  target: dir:governance:governance-tools
+  type: contains
+- source: dir:governance:governance-tools
+  target: file:governance:governance-tools:automation_engine.py
+  type: contains
+- source: dir:governance:governance-tools
+  target: file:governance:governance-tools:decision-support-system.yaml
+  type: contains
+- source: dir:governance:governance-tools
+  target: file:governance:governance-tools:system-integration-guide.yaml
+  type: contains
+- source: dir:governance:governance-tools
+  target: file:governance:governance-tools:__init__.py
+  type: contains
+- source: dir:governance
+  target: dir:governance:performance-governance
+  type: contains
+- source: dir:governance:performance-governance
+  target: file:governance:performance-governance:automation_engine.py
+  type: contains
+- source: dir:governance:performance-governance
+  target: file:governance:performance-governance:performance-targets.yaml
+  type: contains
+- source: dir:governance:performance-governance
+  target: file:governance:performance-governance:__init__.py
+  type: contains
+- source: dir:governance:performance-governance
+  target: file:governance:performance-governance:kpi-framework.yaml
+  type: contains
+- source: dir:governance
+  target: dir:governance:audit-governance
+  type: contains
+- source: dir:governance:audit-governance
+  target: file:governance:audit-governance:audit-plan-annual.yaml
+  type: contains
+- source: dir:governance:audit-governance
+  target: file:governance:audit-governance:automation_engine.py
+  type: contains
+- source: dir:governance:audit-governance
+  target: file:governance:audit-governance:audit-framework.yaml
+  type: contains
+- source: dir:governance:audit-governance
+  target: file:governance:audit-governance:__init__.py
+  type: contains
+- source: dir:governance
+  target: dir:governance:process-governance
+  type: contains
+- source: dir:governance:process-governance
+  target: file:governance:process-governance:automation_engine.py
+  type: contains
+- source: dir:governance:process-governance
+  target: file:governance:process-governance:process-design-standards.yaml
+  type: contains
+- source: dir:governance:process-governance
+  target: file:governance:process-governance:process-inventory.yaml
+  type: contains
+- source: dir:governance:process-governance
+  target: file:governance:process-governance:__init__.py
+  type: contains
+- source: dir:governance
   target: dir:governance:architecture
   type: contains
 - source: dir:governance:architecture
   target: file:governance:architecture:layers-domains.yaml
+  type: contains
+- source: dir:governance
+  target: dir:governance:scripts
   type: contains
 - source: dir:governance
   target: dir:governance:environment-matrix
@@ -10517,13 +11234,91 @@ edges:
   target: file:governance:ownership-map.yaml
   type: contains
 - source: dir:governance
+  target: dir:governance:governance-architecture
+  type: contains
+- source: dir:governance:governance-architecture
+  target: file:governance:governance-architecture:automation_engine.py
+  type: contains
+- source: dir:governance:governance-architecture
+  target: file:governance:governance-architecture:organizational-structure.yaml
+  type: contains
+- source: dir:governance:governance-architecture
+  target: file:governance:governance-architecture:governance-model.yaml
+  type: contains
+- source: dir:governance:governance-architecture
+  target: file:governance:governance-architecture:__init__.py
+  type: contains
+- source: dir:governance:governance-architecture
+  target: file:governance:governance-architecture:governance-principles.yaml
+  type: contains
+- source: dir:governance
+  target: dir:governance:governance-improvement
+  type: contains
+- source: dir:governance:governance-improvement
+  target: file:governance:governance-improvement:automation_engine.py
+  type: contains
+- source: dir:governance:governance-improvement
+  target: file:governance:governance-improvement:improvement-planning.yaml
+  type: contains
+- source: dir:governance:governance-improvement
+  target: file:governance:governance-improvement:improvement-identification.yaml
+  type: contains
+- source: dir:governance:governance-improvement
+  target: file:governance:governance-improvement:__init__.py
+  type: contains
+- source: dir:governance
   target: dir:governance:rules
   type: contains
 - source: dir:governance:rules
   target: file:governance:rules:language-policy.yml
   type: contains
 - source: dir:governance
+  target: dir:governance:stakeholder-governance
+  type: contains
+- source: dir:governance:stakeholder-governance
+  target: file:governance:stakeholder-governance:automation_engine.py
+  type: contains
+- source: dir:governance:stakeholder-governance
+  target: file:governance:stakeholder-governance:stakeholder-identification.yaml
+  type: contains
+- source: dir:governance:stakeholder-governance
+  target: file:governance:stakeholder-governance:stakeholder-analysis.yaml
+  type: contains
+- source: dir:governance:stakeholder-governance
+  target: file:governance:stakeholder-governance:__init__.py
+  type: contains
+- source: dir:governance
   target: file:governance:mapping-rules.yaml
+  type: contains
+- source: dir:governance
+  target: dir:governance:governance-culture
+  type: contains
+- source: dir:governance:governance-culture
+  target: file:governance:governance-culture:capability-model.yaml
+  type: contains
+- source: dir:governance:governance-culture
+  target: file:governance:governance-culture:automation_engine.py
+  type: contains
+- source: dir:governance:governance-culture
+  target: file:governance:governance-culture:governance-values.yaml
+  type: contains
+- source: dir:governance:governance-culture
+  target: file:governance:governance-culture:__init__.py
+  type: contains
+- source: dir:governance
+  target: dir:governance:governance-metrics
+  type: contains
+- source: dir:governance:governance-metrics
+  target: file:governance:governance-metrics:automation_engine.py
+  type: contains
+- source: dir:governance:governance-metrics
+  target: file:governance:governance-metrics:dashboard-specification.yaml
+  type: contains
+- source: dir:governance:governance-metrics
+  target: file:governance:governance-metrics:kpi-definitions.yaml
+  type: contains
+- source: dir:governance:governance-metrics
+  target: file:governance:governance-metrics:__init__.py
   type: contains
 - source: dir:governance
   target: dir:governance:registry
@@ -10548,6 +11343,30 @@ edges:
   type: contains
 - source: dir:governance:deployment
   target: file:governance:deployment:matechat-services.yml
+  type: contains
+- source: dir:governance
+  target: dir:governance:automation
+  type: contains
+- source: dir:governance:automation
+  target: dir:governance:automation:engines
+  type: contains
+- source: dir:governance:automation
+  target: file:governance:automation:deploy_dimension_engines.py
+  type: contains
+- source: dir:governance:automation
+  target: file:governance:automation:test_automation_system.py
+  type: contains
+- source: dir:governance:automation
+  target: file:governance:automation:integrated_launcher.py
+  type: contains
+- source: dir:governance:automation
+  target: file:governance:automation:governance_automation_launcher.py
+  type: contains
+- source: dir:governance:automation
+  target: dir:governance:automation:coordinator
+  type: contains
+- source: dir:governance:automation
+  target: file:governance:automation:__init__.py
   type: contains
 - source: dir:governance
   target: file:governance:architecture-health.yaml
@@ -10607,10 +11426,91 @@ edges:
   target: file:governance:behavior-contracts:apps.web.ui.yaml
   type: contains
 - source: dir:governance
+  target: dir:governance:security-governance
+  type: contains
+- source: dir:governance:security-governance
+  target: file:governance:security-governance:automation_engine.py
+  type: contains
+- source: dir:governance:security-governance
+  target: file:governance:security-governance:security-audit-framework.yaml
+  type: contains
+- source: dir:governance:security-governance
+  target: file:governance:security-governance:access-control-policy.yaml
+  type: contains
+- source: dir:governance:security-governance
+  target: file:governance:security-governance:__init__.py
+  type: contains
+- source: dir:governance
+  target: dir:governance:compliance-governance
+  type: contains
+- source: dir:governance:compliance-governance
+  target: file:governance:compliance-governance:automation_engine.py
+  type: contains
+- source: dir:governance:compliance-governance
+  target: file:governance:compliance-governance:compliance-check-rules.yaml
+  type: contains
+- source: dir:governance:compliance-governance
+  target: file:governance:compliance-governance:compliance-standards.yaml
+  type: contains
+- source: dir:governance:compliance-governance
+  target: file:governance:compliance-governance:__init__.py
+  type: contains
+- source: dir:governance
+  target: dir:governance:decision-governance
+  type: contains
+- source: dir:governance:decision-governance
+  target: file:governance:decision-governance:decision-framework.yaml
+  type: contains
+- source: dir:governance:decision-governance
+  target: file:governance:decision-governance:automation_engine.py
+  type: contains
+- source: dir:governance:decision-governance
+  target: file:governance:decision-governance:decision-authority-matrix.yaml
+  type: contains
+- source: dir:governance:decision-governance
+  target: file:governance:decision-governance:decision-processes.yaml
+  type: contains
+- source: dir:governance:decision-governance
+  target: file:governance:decision-governance:__init__.py
+  type: contains
+- source: dir:governance
   target: dir:governance:sbom
   type: contains
 - source: dir:governance:sbom
   target: file:governance:sbom:signing-policy.yml
+  type: contains
+- source: dir:governance
+  target: dir:governance:change-governance
+  type: contains
+- source: dir:governance:change-governance
+  target: file:governance:change-governance:automation_engine.py
+  type: contains
+- source: dir:governance:change-governance
+  target: file:governance:change-governance:change-processes.yaml
+  type: contains
+- source: dir:governance:change-governance
+  target: file:governance:change-governance:change-control-matrix.yaml
+  type: contains
+- source: dir:governance:change-governance
+  target: file:governance:change-governance:__init__.py
+  type: contains
+- source: dir:governance:change-governance
+  target: file:governance:change-governance:change-classification.yaml
+  type: contains
+- source: dir:governance
+  target: dir:governance:risk-governance
+  type: contains
+- source: dir:governance:risk-governance
+  target: file:governance:risk-governance:automation_engine.py
+  type: contains
+- source: dir:governance:risk-governance
+  target: file:governance:risk-governance:risk-assessment-framework.yaml
+  type: contains
+- source: dir:governance:risk-governance
+  target: file:governance:risk-governance:__init__.py
+  type: contains
+- source: dir:governance:risk-governance
+  target: file:governance:risk-governance:risk-register.yaml
   type: contains
 - source: dir:governance
   target: dir:governance:principles
@@ -11522,19 +12422,19 @@ edges:
   target: config:config:unified-config-index.yaml
   type: configures
 statistics:
-  total_nodes: 1278
-  total_edges: 1277
+  total_nodes: 1378
+  total_edges: 1377
   nodes_by_type:
     system: 1
-    directory: 556
-    module: 353
-    config: 320
-    subsystem: 24
+    directory: 588
+    module: 386
+    config: 353
+    subsystem: 26
     document: 8
     capability: 15
     component: 1
   edges_by_type:
-    contains: 1258
+    contains: 1358
     provides: 15
     configures: 4
 meta:
