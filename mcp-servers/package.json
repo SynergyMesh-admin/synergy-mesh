@@ -31,8 +31,8 @@
     "node": ">=18.0.0"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^0.7.0",
-    "zod": "^3.22.4"
+    "@modelcontextprotocol/sdk": "^1.24.3",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "eslint": "^8.54.0"
