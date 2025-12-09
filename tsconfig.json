@@ -74,5 +74,9 @@
     { "path": "./mcp-servers" },
     { "path": "./core/contract_service/contracts-L1/contracts" },
     { "path": "./unmanned-engineer-ceo" }
-  ]
+  ],
+
+  "dependencies": {
+    "zod": "^3.0.0"
+  }
 }
