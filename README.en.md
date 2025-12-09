@@ -231,7 +231,7 @@ Node.js >= 18.0.0
   - config/unified-config-index.yaml – unified config index
   - config/system-module-map.yaml – module mapping
   - config/ai-constitution.yaml – AI constitution
-  - config/virtual-experts.yaml – virtual expert team
+  - config/agents/team/virtual-experts.yaml – virtual expert team
   - config/safety-mechanisms.yaml – safety mechanisms
   - config/topology-mind-matrix.yaml – mind matrix topology
   - config/drone-config.yml – drone fleet configuration
@@ -241,7 +241,7 @@ Node.js >= 18.0.0
   ## 👨‍💼 Virtual Expert Team
 
   Virtual experts model domain knowledge across architecture, security, DB, AI, DevOps, etc.
-  Mappings and domains: config/virtual-experts.yaml.
+  Mappings and domains: config/agents/team/virtual-experts.yaml.
 
   ---
 

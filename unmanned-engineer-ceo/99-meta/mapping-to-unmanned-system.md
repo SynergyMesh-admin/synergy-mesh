@@ -4,7 +4,7 @@
 | ----- | ----------- | ------ |
 | 00-03 | 技術能力 | core/, automation/, config/ |
 | 04 | 系統思維 | governance/, services/agents |
-| 10 | 特質矩陣 | config/virtual-experts.yaml |
+| 10 | 特質矩陣 | config/agents/team/virtual-experts.yaml |
 | 20 | 路線圖 | DOCUMENTATION_INDEX.md, HR 系統 |
 | 30 | 評估矩陣 | automation/self_awareness_report.py |
 | 40 | 模擬 | infrastructure/drift, docs/operations |

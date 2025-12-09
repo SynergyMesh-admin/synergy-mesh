@@ -15,7 +15,7 @@ const CONFIG_HIERARCHY = [
   'config/environment.yaml',
   'config/dependencies.yaml',
   'config/ai-constitution.yaml',
-  'config/virtual-experts.yaml',
+  'config/agents/team/virtual-experts.yaml',
   'config/safety-mechanisms.yaml'
 ];
 

@@ -14,14 +14,21 @@ This directory contains intelligent business agents for the SynergyMesh platform
 ## 📁 Directory Structure 目錄結構
 
 ```
-agent/
+services/agents/
+├── architecture-reasoner/ # 架構推理代理 - Architecture reasoning agent
 ├── auto-repair/           # 自動修復代理 - Auto-repair agent
 ├── code-analyzer/         # 代碼分析代理 - Code analysis agent
 ├── dependency-manager/    # 依賴管理代理 - Dependency management agent
 ├── orchestrator/          # 代理編排器 - Agent orchestrator
+├── recovery/              # 恢復代理 - Recovery agent (Dr. Phoenix)
 ├── vulnerability-detector/# 漏洞檢測代理 - Vulnerability detection agent
 └── runbook-executor.sh    # 運維手冊執行腳本 - Runbook executor script
 ```
+
+**Related Configuration** 相關配置: Agent configurations are centralized in `config/agents/` directory.
+- Individual profiles: `config/agents/profiles/`
+- Team configurations: `config/agents/team/`
+- Validation schemas: `config/agents/schemas/`
 
 ## 🎯 What This Directory Does 本目錄負責什麼
 
@@ -68,7 +75,7 @@ agent/
 | `core/` | 使用平台級 AI 決策引擎、上下文理解等能力 |
 | `mcp-servers/` | 調用 LLM 工具端點進行分析 |
 | `shared/` | 使用共用工具和配置 |
-| `config/` | 讀取代理配置 |
+| `config/agents/` | 讀取代理配置（profiles, team, schemas） |
 
 ### ❌ Prohibited Dependencies 禁止的依賴
 
@@ -135,6 +142,7 @@ class BaseAgent:
 
 ## 📖 Related Documentation 相關文檔
 
+- [Agent Configuration Guide](../../config/agents/README.md) - 代理配置指南
 - [Architecture Layers](../docs/architecture/layers.md) - 架構分層視圖
 - [Repository Map](../docs/architecture/repo-map.md) - 倉庫語義邊界
 - [MCP Servers](../mcp-servers/README.md) - LLM 工具端點

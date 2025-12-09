@@ -93,7 +93,7 @@ nucleus-orchestrator/
    - AI 決策支援
    - 智能派工
 
-4. **Virtual Experts** (`config/virtual-experts.yaml`)
+4. **Virtual Experts** (`config/agents/team/virtual-experts.yaml`)
    - 虛擬專家配置
    - 能力定義
 
@@ -426,7 +426,7 @@ dashboard:
 - [架構指南](../../unmanned-engineer-ceo/60-machine-guides/70-architecture-skeletons/nucleus-orchestrator/)
 - [Mind Matrix](../../core/mind_matrix/README.md)
 - [Unified Integration](../../core/unified_integration/README.md)
-- [Virtual Experts](../../config/virtual-experts.yaml)
+- [Virtual Experts](../../config/agents/team/virtual-experts.yaml)
 
 ### 相關骨架
 - [Architecture Stability Skeleton](../architecture-stability/README.md)

@@ -574,7 +574,7 @@ cross_references:
   mind_matrix_dependencies:
     - "config/topology-mind-matrix.yaml"
     - "config/ai-constitution.yaml"
-    - "config/virtual-experts.yaml"
+    - "config/agents/team/virtual-experts.yaml"
     - "config/safety-mechanisms.yaml"
     - "core/unified_integration/"
   

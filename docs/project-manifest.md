@@ -43,7 +43,7 @@ are explicitly out of bounds.
   `npm test --workspaces --if-present` succeed after any tooling change.
 - ✅ `.github/workflows/project-self-awareness.yml` posts an up-to-date summary
   on every pull request.
-- ✅ Agents listed in `config/virtual-experts.yaml` have matching docs under
+- ✅ Agents listed in `config/agents/team/virtual-experts.yaml` have matching docs under
   `docs/agents/` describing scope and anti-goals.
 - ✅ `.github/workflows/project-self-awareness-nightly.yml` raises an issue when
   automation signals fail and links to the troubleshooting index for context.

@@ -169,7 +169,7 @@ curl -X POST http://localhost:8000/api/v1/expert-consult \
 虛擬專家配置定義在：
 
 ```
-config/virtual-experts.yaml
+config/agents/team/virtual-experts.yaml
 ```
 
 ---

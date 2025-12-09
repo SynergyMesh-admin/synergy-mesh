@@ -38,7 +38,7 @@ configs:
     file: "config/ai-constitution.yaml"
   - id: "virtual_experts"
     kind: "experts"
-    file: "config/virtual-experts.yaml"
+    file: "config/agents/team/virtual-experts.yaml"
   - id: "safety"
     kind: "safety"
     file: "config/safety-mechanisms.yaml"

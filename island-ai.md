@@ -593,7 +593,7 @@ quality_gates:
 | 配置檔案 | 說明 |
 |---------|------|
 | `config/ai-constitution.yaml` | AI 最高指導憲章（三層憲法體系） |
-| `config/virtual-experts.yaml` | 虛擬專家團隊配置 |
+| `config/agents/team/virtual-experts.yaml` | 虛擬專家團隊配置 |
 | `config/safety-mechanisms.yaml` | 安全機制配置 |
 | `config/topology-mind-matrix.yaml` | 心智矩陣拓撲配置 |
 
@@ -1667,7 +1667,7 @@ quality_gates:
 | 配置檔案 | 說明 |
 |---------|------|
 | `config/ai-constitution.yaml` | AI 最高指導憲章（三層憲法體系） |
-| `config/virtual-experts.yaml` | 虛擬專家團隊配置 |
+| `config/agents/team/virtual-experts.yaml` | 虛擬專家團隊配置 |
 | `config/safety-mechanisms.yaml` | 安全機制配置 |
 | `config/topology-mind-matrix.yaml` | 心智矩陣拓撲配置 |
 

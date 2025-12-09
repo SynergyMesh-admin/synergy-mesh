@@ -54,7 +54,7 @@ modules:
     schema: governance/schemas/process-handbook.schema.json
     depends_on:
       - .github/workflows
-      - config/virtual-experts.yaml
+      - config/agents/team/virtual-experts.yaml
   - id: enterprise.cicd
     name: CI/CD & DevOps
     path: unmanned-engineer-ceo/02-enterprise-capabilities/07-ci-cd-devops
@@ -122,7 +122,7 @@ modules:
     path: unmanned-engineer-ceo/10-traits-matrix
     schema: governance/schemas/talent-matrix.schema.json
     depends_on:
-      - config/virtual-experts.yaml
+      - config/agents/team/virtual-experts.yaml
       - docs/KNOWLEDGE_HEALTH.md
   - id: roadmap.program
     name: Capability Roadmap

@@ -171,6 +171,8 @@ directory_consolidation:
         capabilities: ["GovernanceRules"]
       - path: "governance/policies/"
         capabilities: ["PolicyDefinitions"]
+      - path: "governance/policies/workflow/"
+        capabilities: ["WorkflowBehaviorContracts", "WorkflowValidationRules"]
       - path: "governance/schemas/"
         capabilities: ["SchemaDefinitions"]
       - path: "governance/sbom/"
@@ -180,6 +182,8 @@ directory_consolidation:
     unified_capabilities:
       - "GovernanceRules"
       - "PolicyDefinitions"
+      - "WorkflowBehaviorContracts"
+      - "WorkflowValidationRules"
       - "SchemaDefinitions"
       - "SoftwareBillOfMaterials"
       - "AuditLogs"
@@ -388,6 +392,27 @@ unified_capabilities:
       provider: "core/autonomous_trust_engine.py"
     governance_validation:
       provider: "core/ai_constitution/"
+    workflow_behavior_contracts:
+      provider: "governance/policies/workflow/behavior-contracts.yaml"
+      description: "工作流程行為契約定義"
+    workflow_validation_rules:
+      provider: "governance/policies/workflow/validation-rules.yaml"
+      description: "工作流程驗證規則"
+  
+  # Workflow System (工作流程系統)
+  workflow:
+    contract_engine:
+      provider: "core/contract_engine.py"
+      description: "契約引擎 - 契約註冊、驗證和執行"
+    plugin_system:
+      provider: "core/plugin_system.py"
+      description: "插件系統 - 插件發現、載入和管理"
+    multi_layer_validator:
+      provider: "core/validators/multi_layer_validator.py"
+      description: "多層驗證器 - 協調所有驗證層"
+    contract_generator:
+      provider: "tools/generators/contract_generator.py"
+      description: "契約生成器 - 從模板生成契約定義"
 
 # ============================================================================
 # Post-Consolidation Directory Structure (合併後目錄結構)
@@ -470,7 +495,7 @@ config_file_index:
     - file: "config/ai-constitution.yaml"
       purpose: "AI 治理憲章"
       references: []
-    - file: "config/virtual-experts.yaml"
+    - file: "config/agents/team/virtual-experts.yaml"
       purpose: "虛擬專家配置"
       references: []
     - file: "config/safety-mechanisms.yaml"
