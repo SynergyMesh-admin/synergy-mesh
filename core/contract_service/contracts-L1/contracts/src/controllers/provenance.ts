@@ -1,11 +1,7 @@
 import { Request, Response } from 'express';
+
+import { sendSuccess, sendError, createTimestamp, getErrorMessage } from '../middleware/response';
 import { ProvenanceService } from '../services/provenance';
-import {
-  sendSuccess,
-  sendError,
-  createTimestamp,
-  getErrorMessage
-} from '../middleware/response';
 
 export class ProvenanceController {
   private provenanceService: ProvenanceService;
@@ -39,7 +35,7 @@ export class ProvenanceController {
 
       sendSuccess(res, attestation, {
         message: 'Build attestation created successfully',
-        status: 201
+        status: 201,
       });
     } catch (error) {
       const nodeError = error as NodeJS.ErrnoException;
@@ -48,7 +44,7 @@ export class ProvenanceController {
       } else {
         sendError(res, getErrorMessage(error, 'Failed to create attestation'), {
           status: 500,
-          includeTimestamp: true
+          includeTimestamp: true,
         });
       }
     }
@@ -68,17 +64,21 @@ export class ProvenanceController {
 
       const isValid = await this.provenanceService.verifyAttestation(attestation);
 
-      sendSuccess(res, {
-        valid: isValid,
-        attestationId: attestation.id,
-        timestamp: createTimestamp()
-      }, {
-        message: isValid ? 'Attestation is valid' : 'Attestation is invalid'
-      });
+      sendSuccess(
+        res,
+        {
+          valid: isValid,
+          attestationId: attestation.id,
+          timestamp: createTimestamp(),
+        },
+        {
+          message: isValid ? 'Attestation is valid' : 'Attestation is invalid',
+        }
+      );
     } catch (error) {
       sendError(res, getErrorMessage(error, 'Failed to verify attestation'), {
         status: 500,
-        includeTimestamp: true
+        includeTimestamp: true,
       });
     }
   };
@@ -99,13 +99,17 @@ export class ProvenanceController {
       const decodedPath = decodeURIComponent(filePath);
       const digest = await this.provenanceService.generateFileDigest(decodedPath);
 
-      sendSuccess(res, {
-        filePath: decodedPath,
-        digest,
-        timestamp: createTimestamp()
-      }, {
-        message: 'File digest generated successfully'
-      });
+      sendSuccess(
+        res,
+        {
+          filePath: decodedPath,
+          digest,
+          timestamp: createTimestamp(),
+        },
+        {
+          message: 'File digest generated successfully',
+        }
+      );
     } catch (error) {
       const nodeError = error as NodeJS.ErrnoException;
       if (nodeError.code === 'ENOENT') {
@@ -113,7 +117,7 @@ export class ProvenanceController {
       } else {
         sendError(res, getErrorMessage(error, 'Failed to generate file digest'), {
           status: 500,
-          includeTimestamp: true
+          includeTimestamp: true,
         });
       }
     }
@@ -134,12 +138,12 @@ export class ProvenanceController {
       const attestation = this.provenanceService.importAttestation(attestationJson);
 
       sendSuccess(res, attestation, {
-        message: 'Attestation imported successfully'
+        message: 'Attestation imported successfully',
       });
     } catch (error) {
       sendError(res, getErrorMessage(error, 'Invalid JSON data or attestation format'), {
         status: 400,
-        includeTimestamp: true
+        includeTimestamp: true,
       });
     }
   };
@@ -150,19 +154,23 @@ export class ProvenanceController {
   exportAttestation = async (req: Request, res: Response): Promise<void> => {
     try {
       const { id } = req.params;
-      
+
       // 這裡應該從數據庫獲取認證，現在返回格式化消息
-      sendSuccess(res, {
-        message: `Attestation export for ID: ${id}`,
-        format: 'json',
-        timestamp: createTimestamp()
-      }, {
-        message: 'Attestation export endpoint'
-      });
+      sendSuccess(
+        res,
+        {
+          message: `Attestation export for ID: ${id}`,
+          format: 'json',
+          timestamp: createTimestamp(),
+        },
+        {
+          message: 'Attestation export endpoint',
+        }
+      );
     } catch (error) {
       sendError(res, getErrorMessage(error, 'Failed to export attestation'), {
         status: 500,
-        includeTimestamp: true
+        includeTimestamp: true,
       });
     }
   };

@@ -10,7 +10,7 @@ const envSchema = z.object({
   REDIS_URL: z.string().optional(),
   BUILD_SHA: z.string().optional(),
   BUILD_TIME: z.string().optional(),
-  WE_TONKE: z.string().optional()
+  WE_TONKE: z.string().optional(),
 });
 
 export type Config = z.infer<typeof envSchema>;
@@ -22,8 +22,12 @@ function loadConfig(): Config {
       NODE_ENV: parsed.NODE_ENV,
       PORT: parsed.PORT,
       SERVICE_NAME: parsed.SERVICE_NAME,
-      sources: { env_file: !!process.env.npm_config_env, process_env: true, defaults_applied: true },
-      timestamp: new Date().toISOString()
+      sources: {
+        env_file: !!process.env.npm_config_env,
+        process_env: true,
+        defaults_applied: true,
+      },
+      timestamp: new Date().toISOString(),
     });
     return parsed;
   } catch (error) {

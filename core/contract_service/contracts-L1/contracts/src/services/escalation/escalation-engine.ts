@@ -1,15 +1,16 @@
 /**
  * 進階升級引擎 (Advanced Escalation Engine)
- * 
+ *
  * 核心功能：
  * - 自動檢測需要升級的情況
  * - 智能選擇升級路徑和負責人
  * - 管理升級生命週期
  * - 追蹤升級效能和統計
- * 
+ *
  * 設計用於無人機、自動駕駛和自動化系統的關鍵場景
  */
 
+import { Priority, TeamMember } from '../../types/assignment';
 import {
   EscalationEvent,
   EscalationTrigger,
@@ -18,9 +19,8 @@ import {
   EscalationContext,
   EscalationResolution,
   CustomerServiceAgent,
-  EscalationRuleConfig
+  EscalationRuleConfig,
 } from '../../types/escalation';
-import { Priority, TeamMember } from '../../types/assignment';
 
 interface EscalationEngineConfig {
   autoRetryLimit: number;
@@ -42,9 +42,9 @@ export class EscalationEngine {
       autoRetryLimit: 3,
       enableSmartRouting: true,
       notificationEnabled: true,
-      ...config
+      ...config,
     };
-    
+
     this.initializeEscalationRules();
     this.initializeCustomerServiceAgents();
   }
@@ -61,13 +61,13 @@ export class EscalationEngine {
       targetLevel: 'L4_SENIOR_ENGINEER',
       timeThresholds: {
         autoEscalation: 5,
-        maxWaitTime: 15
+        maxWaitTime: 15,
       },
       maxAutoRetries: 2,
       notifications: {
         channels: ['SLACK', 'SMS', 'EMAIL'],
-        recipients: ['on-call-engineer', 'team-lead']
-      }
+        recipients: ['on-call-engineer', 'team-lead'],
+      },
     });
 
     // CRITICAL 優先級 - 安全關鍵
@@ -77,13 +77,13 @@ export class EscalationEngine {
       targetLevel: 'L5_CUSTOMER_SERVICE',
       timeThresholds: {
         autoEscalation: 2,
-        maxWaitTime: 10
+        maxWaitTime: 10,
       },
       maxAutoRetries: 1,
       notifications: {
         channels: ['PHONE', 'SMS', 'SLACK'],
-        recipients: ['safety-officer', 'customer-service-lead']
-      }
+        recipients: ['safety-officer', 'customer-service-lead'],
+      },
     });
 
     // HIGH 優先級 - 重複失敗
@@ -93,13 +93,13 @@ export class EscalationEngine {
       targetLevel: 'L3_SUPPORT_ENGINEER',
       timeThresholds: {
         autoEscalation: 10,
-        maxWaitTime: 30
+        maxWaitTime: 30,
       },
       maxAutoRetries: 3,
       notifications: {
         channels: ['SLACK', 'EMAIL'],
-        recipients: ['support-team', 'team-lead']
-      }
+        recipients: ['support-team', 'team-lead'],
+      },
     });
 
     // MEDIUM 優先級 - 超時無進展
@@ -109,13 +109,13 @@ export class EscalationEngine {
       targetLevel: 'L2_TEAM_LEAD',
       timeThresholds: {
         autoEscalation: 30,
-        maxWaitTime: 60
+        maxWaitTime: 60,
       },
       maxAutoRetries: 2,
       notifications: {
         channels: ['SLACK', 'EMAIL'],
-        recipients: ['team-lead']
-      }
+        recipients: ['team-lead'],
+      },
     });
   }
 
@@ -134,18 +134,18 @@ export class EscalationEngine {
       availability: {
         status: 'AVAILABLE',
         maxConcurrentCases: 5,
-        currentCases: 0
+        currentCases: 0,
       },
       expertise: {
         technical: true,
         languages: ['en', 'zh-TW'],
-        specializations: ['Drones', 'Autonomous Systems', 'Emergency Response']
+        specializations: ['Drones', 'Autonomous Systems', 'Emergency Response'],
       },
       performance: {
         averageResponseTime: 3,
         resolutionRate: 92,
-        customerSatisfaction: 4.7
-      }
+        customerSatisfaction: 4.7,
+      },
     };
 
     const agent2: CustomerServiceAgent = {
@@ -158,18 +158,18 @@ export class EscalationEngine {
       availability: {
         status: 'AVAILABLE',
         maxConcurrentCases: 5,
-        currentCases: 0
+        currentCases: 0,
       },
       expertise: {
         technical: true,
         languages: ['zh-TW', 'en'],
-        specializations: ['Autonomous Vehicles', 'Safety Systems', 'Performance Optimization']
+        specializations: ['Autonomous Vehicles', 'Safety Systems', 'Performance Optimization'],
       },
       performance: {
         averageResponseTime: 2.5,
         resolutionRate: 95,
-        customerSatisfaction: 4.8
-      }
+        customerSatisfaction: 4.8,
+      },
     };
 
     this.customerServiceAgents.set(agent1.id, agent1);
@@ -188,10 +188,10 @@ export class EscalationEngine {
     assignmentId?: string
   ): EscalationEvent {
     const escalationId = `esc-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
-    
+
     // 根據觸發原因和優先級決定升級層級
     const level = this.determineEscalationLevel(trigger, priority, context);
-    
+
     const escalation: EscalationEvent = {
       id: escalationId,
       incidentId,
@@ -203,7 +203,7 @@ export class EscalationEngine {
       description: this.generateEscalationDescription(trigger, context),
       context,
       createdAt: new Date(),
-      updatedAt: new Date()
+      updatedAt: new Date(),
     };
 
     // 智能分派
@@ -216,7 +216,7 @@ export class EscalationEngine {
     }
 
     this.escalations.set(escalationId, escalation);
-    
+
     // 發送通知
     if (this.config.notificationEnabled) {
       this.sendEscalationNotification(escalation);
@@ -250,16 +250,14 @@ export class EscalationEngine {
 
     // 重複失敗
     if (trigger === 'REPEATED_FAILURES') {
-      return priority === 'CRITICAL' || priority === 'HIGH' 
-        ? 'L3_SUPPORT_ENGINEER' 
+      return priority === 'CRITICAL' || priority === 'HIGH'
+        ? 'L3_SUPPORT_ENGINEER'
         : 'L2_TEAM_LEAD';
     }
 
     // 超時問題
     if (trigger === 'TIMEOUT_NO_RESPONSE' || trigger === 'TIMEOUT_NO_PROGRESS') {
-      return priority === 'CRITICAL' 
-        ? 'L3_SUPPORT_ENGINEER' 
-        : 'L2_TEAM_LEAD';
+      return priority === 'CRITICAL' ? 'L3_SUPPORT_ENGINEER' : 'L2_TEAM_LEAD';
     }
 
     // 手動請求
@@ -292,38 +290,42 @@ export class EscalationEngine {
   private selectBestCustomerServiceAgent(
     escalation: EscalationEvent
   ): CustomerServiceAgent | undefined {
-    const availableAgents = Array.from(this.customerServiceAgents.values())
-      .filter(agent => 
+    const availableAgents = Array.from(this.customerServiceAgents.values()).filter(
+      (agent) =>
         agent.availability.status === 'AVAILABLE' &&
         agent.availability.currentCases < agent.availability.maxConcurrentCases
-      );
+    );
 
     if (availableAgents.length === 0) {
       return undefined;
     }
 
     // 評分系統
-    const scores = availableAgents.map(agent => {
+    const scores = availableAgents.map((agent) => {
       let score = 0;
 
       // 專業匹配 (40%)
       const systemType = escalation.context.systemType;
       if (systemType === 'DRONE' && agent.expertise.specializations.includes('Drones')) {
         score += 40;
-      } else if (systemType === 'AUTONOMOUS_VEHICLE' && 
-                 agent.expertise.specializations.includes('Autonomous Vehicles')) {
+      } else if (
+        systemType === 'AUTONOMOUS_VEHICLE' &&
+        agent.expertise.specializations.includes('Autonomous Vehicles')
+      ) {
         score += 40;
       } else if (agent.expertise.specializations.includes('Autonomous Systems')) {
         score += 30;
       }
 
       // 當前負載 (30%)
-      const loadScore = (1 - agent.availability.currentCases / agent.availability.maxConcurrentCases) * 30;
+      const loadScore =
+        (1 - agent.availability.currentCases / agent.availability.maxConcurrentCases) * 30;
       score += loadScore;
 
       // 績效表現 (30%)
-      const perfScore = (agent.performance.resolutionRate / 100) * 15 +
-                       (agent.performance.customerSatisfaction / 5) * 15;
+      const perfScore =
+        (agent.performance.resolutionRate / 100) * 15 +
+        (agent.performance.customerSatisfaction / 5) * 15;
       score += perfScore;
 
       return { agent, score };
@@ -343,13 +345,13 @@ export class EscalationEngine {
     context: EscalationContext
   ): string {
     const descriptions: Record<EscalationTrigger, string> = {
-      'AUTO_FIX_FAILED': `自動修復失敗 (${context.autoFixAttempts.length} 次嘗試)：${context.errorDetails.message}`,
-      'TIMEOUT_NO_RESPONSE': `超時無回應：${context.errorDetails.message}`,
-      'TIMEOUT_NO_PROGRESS': `超時無進展：${context.errorDetails.message}`,
-      'CRITICAL_SEVERITY': `關鍵嚴重性問題：${context.errorDetails.message}`,
-      'REPEATED_FAILURES': `重複失敗 (影響 ${context.errorDetails.affectedComponents.join(', ')})`,
-      'SAFETY_CRITICAL': `安全關鍵問題：${context.errorDetails.message} - 影響等級: ${context.errorDetails.impactLevel}`,
-      'MANUAL_REQUEST': `手動升級請求：${context.errorDetails.message}`
+      AUTO_FIX_FAILED: `自動修復失敗 (${context.autoFixAttempts.length} 次嘗試)：${context.errorDetails.message}`,
+      TIMEOUT_NO_RESPONSE: `超時無回應：${context.errorDetails.message}`,
+      TIMEOUT_NO_PROGRESS: `超時無進展：${context.errorDetails.message}`,
+      CRITICAL_SEVERITY: `關鍵嚴重性問題：${context.errorDetails.message}`,
+      REPEATED_FAILURES: `重複失敗 (影響 ${context.errorDetails.affectedComponents.join(', ')})`,
+      SAFETY_CRITICAL: `安全關鍵問題：${context.errorDetails.message} - 影響等級: ${context.errorDetails.impactLevel}`,
+      MANUAL_REQUEST: `手動升級請求：${context.errorDetails.message}`,
     };
 
     return descriptions[trigger] || context.errorDetails.message;
@@ -393,7 +395,11 @@ export class EscalationEngine {
     }
 
     // 更新客服人員工作負載
-    if (status === 'ASSIGNED' && escalation.assignedTo && escalation.level === 'L5_CUSTOMER_SERVICE') {
+    if (
+      status === 'ASSIGNED' &&
+      escalation.assignedTo &&
+      escalation.level === 'L5_CUSTOMER_SERVICE'
+    ) {
       const agent = this.customerServiceAgents.get(escalation.assignedTo.id);
       if (agent) {
         agent.availability.currentCases++;
@@ -436,10 +442,7 @@ export class EscalationEngine {
    * 進一步升級
    * Escalate further
    */
-  escalateFurther(
-    escalationId: string,
-    reason: string
-  ): EscalationEvent | null {
+  escalateFurther(escalationId: string, reason: string): EscalationEvent | null {
     const currentEscalation = this.escalations.get(escalationId);
     if (!currentEscalation) {
       return null;
@@ -461,8 +464,8 @@ export class EscalationEngine {
         ...currentEscalation.context,
         errorDetails: {
           ...currentEscalation.context.errorDetails,
-          message: `Escalated from ${currentEscalation.level}: ${reason}`
-        }
+          message: `Escalated from ${currentEscalation.level}: ${reason}`,
+        },
       },
       currentEscalation.assignmentId
     );
@@ -483,7 +486,7 @@ export class EscalationEngine {
       'L2_TEAM_LEAD',
       'L3_SUPPORT_ENGINEER',
       'L4_SENIOR_ENGINEER',
-      'L5_CUSTOMER_SERVICE'
+      'L5_CUSTOMER_SERVICE',
     ];
 
     const currentIndex = levelHierarchy.indexOf(currentLevel);
@@ -508,7 +511,7 @@ export class EscalationEngine {
    */
   getEscalationsByIncident(incidentId: string): EscalationEvent[] {
     return Array.from(this.escalations.values())
-      .filter(esc => esc.incidentId === incidentId)
+      .filter((esc) => esc.incidentId === incidentId)
       .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
   }
 
@@ -518,7 +521,7 @@ export class EscalationEngine {
    */
   getAvailableCustomerServiceAgents(): CustomerServiceAgent[] {
     return Array.from(this.customerServiceAgents.values())
-      .filter(agent => agent.availability.status === 'AVAILABLE')
+      .filter((agent) => agent.availability.status === 'AVAILABLE')
       .sort((a, b) => {
         // 按負載和績效排序
         const loadA = a.availability.currentCases / a.availability.maxConcurrentCases;
@@ -531,25 +534,26 @@ export class EscalationEngine {
    * 取得所有升級統計
    * Get escalation statistics
    */
-  getEscalationStatistics(startDate: Date, endDate: Date): {
+  getEscalationStatistics(
+    startDate: Date,
+    endDate: Date
+  ): {
     total: number;
     byLevel: Record<EscalationLevel, number>;
     byTrigger: Record<EscalationTrigger, number>;
     byStatus: Record<EscalationStatus, number>;
     averageResolutionTime: number;
   } {
-    const escalationsInPeriod = Array.from(this.escalations.values())
-      .filter(esc => 
-        esc.createdAt >= startDate && 
-        esc.createdAt <= endDate
-      );
+    const escalationsInPeriod = Array.from(this.escalations.values()).filter(
+      (esc) => esc.createdAt >= startDate && esc.createdAt <= endDate
+    );
 
     const stats = {
       total: escalationsInPeriod.length,
       byLevel: {} as Record<EscalationLevel, number>,
       byTrigger: {} as Record<EscalationTrigger, number>,
       byStatus: {} as Record<EscalationStatus, number>,
-      averageResolutionTime: 0
+      averageResolutionTime: 0,
     };
 
     let totalResolutionTime = 0;
@@ -558,10 +562,10 @@ export class EscalationEngine {
     for (const esc of escalationsInPeriod) {
       // 按層級統計
       stats.byLevel[esc.level] = (stats.byLevel[esc.level] || 0) + 1;
-      
+
       // 按觸發原因統計
       stats.byTrigger[esc.trigger] = (stats.byTrigger[esc.trigger] || 0) + 1;
-      
+
       // 按狀態統計
       stats.byStatus[esc.status] = (stats.byStatus[esc.status] || 0) + 1;
 

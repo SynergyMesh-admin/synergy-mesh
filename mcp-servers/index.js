@@ -2,7 +2,7 @@
 
 /**
  * MCP Servers - 主入口點
- * 
+ *
  * 提供 MCP (Model Context Protocol) 服務器功能，包括：
  * - 代碼分析
  * - SLSA 驗證
@@ -25,7 +25,7 @@ const MCP_SERVICES = [
   'Logic Validation',
   'Performance Analysis',
   'Test Generation',
-  'Documentation Generation'
+  'Documentation Generation',
 ];
 
 const MCP_SERVICE_FILES = [
@@ -36,7 +36,7 @@ const MCP_SERVICE_FILES = [
   'logic-validator.js',
   'performance-analyzer.js',
   'test-generator.js',
-  'doc-generator.js'
+  'doc-generator.js',
 ];
 
 /**
@@ -61,82 +61,103 @@ function createHealthCheckServer() {
     // 健康檢查端點
     if (url === '/health' || url === '/healthz') {
       res.writeHead(200);
-      res.end(JSON.stringify({
-        status: 'healthy',
-        timestamp: new Date().toISOString(),
-        service: 'mcp-servers',
-        version: '1.0.0'
-      }));
+      res.end(
+        JSON.stringify({
+          status: 'healthy',
+          timestamp: new Date().toISOString(),
+          service: 'mcp-servers',
+          version: '1.0.0',
+        })
+      );
       return;
     }
 
     // 就緒檢查端點
     if (url === '/ready' || url === '/readyz') {
       res.writeHead(200);
-      res.end(JSON.stringify({
-        status: 'ready',
-        timestamp: new Date().toISOString(),
-        checks: {
-          mcp: 'available',
-          validators: 'loaded'
-        }
-      }));
+      res.end(
+        JSON.stringify({
+          status: 'ready',
+          timestamp: new Date().toISOString(),
+          checks: {
+            mcp: 'available',
+            validators: 'loaded',
+          },
+        })
+      );
       return;
     }
 
     // 版本信息端點
     if (url === '/version') {
       res.writeHead(200);
-      res.end(JSON.stringify({
-        version: '1.0.0',
-        build: process.env.BUILD_SHA || 'local',
-        timestamp: new Date().toISOString(),
-        node: process.version
-      }));
+      res.end(
+        JSON.stringify({
+          version: '1.0.0',
+          build: process.env.BUILD_SHA || 'local',
+          timestamp: new Date().toISOString(),
+          node: process.version,
+        })
+      );
       return;
     }
 
     // 狀態信息端點
     if (url === '/status') {
       res.writeHead(200);
-      res.end(JSON.stringify({
-        service: 'mcp-servers',
-        status: 'running',
-        uptime: process.uptime(),
-        memory: process.memoryUsage(),
-        timestamp: new Date().toISOString(),
-        environment: process.env.NODE_ENV || 'development'
-      }));
+      res.end(
+        JSON.stringify({
+          service: 'mcp-servers',
+          status: 'running',
+          uptime: process.uptime(),
+          memory: process.memoryUsage(),
+          timestamp: new Date().toISOString(),
+          environment: process.env.NODE_ENV || 'development',
+        })
+      );
       return;
     }
 
     // 根端點 - 服務信息
     if (url === '/' || url === '') {
       res.writeHead(200);
-      res.end(JSON.stringify({
-        service: 'mcp-servers',
-        version: '1.0.0',
-        description: 'Enterprise-grade MCP servers for code analysis, SLSA validation, and security scanning',
-        endpoints: {
-          health: '/health',
-          ready: '/ready',
-          version: '/version',
-          status: '/status'
-        },
-        features: MCP_SERVICES
-      }));
+      res.end(
+        JSON.stringify({
+          service: 'mcp-servers',
+          version: '1.0.0',
+          description:
+            'Enterprise-grade MCP servers for code analysis, SLSA validation, and security scanning',
+          endpoints: {
+            health: '/health',
+            ready: '/ready',
+            version: '/version',
+            status: '/status',
+          },
+          features: MCP_SERVICES,
+        })
+      );
       return;
     }
 
     // 404 處理
     res.writeHead(404);
-    res.end(JSON.stringify({
-      error: 'Not Found',
-      message: 'The requested endpoint does not exist',
-      path: url,
-      availableEndpoints: ['/health', '/healthz', '/ready', '/readyz', '/version', '/status', '/'],
-      timestamp: new Date().toISOString()
-    }));
+    res.end(
+      JSON.stringify({
+        error: 'Not Found',
+        message: 'The requested endpoint does not exist',
+        path: url,
+        availableEndpoints: [
+          '/health',
+          '/healthz',
+          '/ready',
+          '/readyz',
+          '/version',
+          '/status',
+          '/',
+        ],
+        timestamp: new Date().toISOString(),
+      })
+    );
   });
 
   return server;

@@ -103,7 +103,7 @@ const VALIDATION_RULES: ValidationRule[] = [
     name: 'Details provided for complex issues',
     severity: 'warning',
     validate: (advisory) => {
-      const hasCVE = advisory.aliases?.some(a => CVE_ID_PATTERN.test(a));
+      const hasCVE = advisory.aliases?.some((a) => CVE_ID_PATTERN.test(a));
       if (hasCVE && (!advisory.details || advisory.details.length < 50)) {
         return 'CVE-linked advisories should include detailed description';
       }
@@ -116,7 +116,7 @@ const VALIDATION_RULES: ValidationRule[] = [
     severity: 'error',
     validate: (advisory) => {
       const cweIds = advisory.database_specific?.cwe_ids || [];
-      const invalidCWEs = cweIds.filter(id => !CWE_ID_PATTERN.test(id));
+      const invalidCWEs = cweIds.filter((id) => !CWE_ID_PATTERN.test(id));
       if (invalidCWEs.length > 0) {
         return `Invalid CWE ID format: ${invalidCWEs.join(', ')}. Expected format: CWE-NNN`;
       }
@@ -145,8 +145,19 @@ const VALIDATION_RULES: ValidationRule[] = [
     severity: 'error',
     validate: (advisory) => {
       const validEcosystems: Ecosystem[] = [
-        'actions', 'composer', 'erlang', 'go', 'maven',
-        'npm', 'nuget', 'other', 'pip', 'pub', 'rubygems', 'rust', 'swift',
+        'actions',
+        'composer',
+        'erlang',
+        'go',
+        'maven',
+        'npm',
+        'nuget',
+        'other',
+        'pip',
+        'pub',
+        'rubygems',
+        'rust',
+        'swift',
       ];
       for (let i = 0; i < advisory.affected.length; i++) {
         const ecosystem = advisory.affected[i].package?.ecosystem;
@@ -186,7 +197,7 @@ const VALIDATION_RULES: ValidationRule[] = [
             return `Affected package ${i + 1}, range ${j + 1}: No events specified`;
           }
           // Check for at least one introduced event
-          const hasIntroduced = events.some(e => e.introduced !== undefined);
+          const hasIntroduced = events.some((e) => e.introduced !== undefined);
           if (!hasIntroduced) {
             return `Affected package ${i + 1}, range ${j + 1}: Missing 'introduced' event`;
           }
@@ -219,9 +230,7 @@ const VALIDATION_RULES: ValidationRule[] = [
     severity: 'warning',
     validate: (advisory) => {
       const refs = advisory.references || [];
-      const hasPrimarySource = refs.some(r =>
-        r.type === 'ADVISORY' || r.type === 'REPORT'
-      );
+      const hasPrimarySource = refs.some((r) => r.type === 'ADVISORY' || r.type === 'REPORT');
       if (!hasPrimarySource && refs.length > 0) {
         return 'Consider including a primary source reference (ADVISORY or REPORT type)';
       }
@@ -236,8 +245,8 @@ const VALIDATION_RULES: ValidationRule[] = [
     severity: 'error',
     validate: (advisory) => {
       const aliases = advisory.aliases || [];
-      const cves = aliases.filter(a => a.startsWith('CVE-'));
-      const invalidCVEs = cves.filter(a => !CVE_ID_PATTERN.test(a));
+      const cves = aliases.filter((a) => a.startsWith('CVE-'));
+      const invalidCVEs = cves.filter((a) => !CVE_ID_PATTERN.test(a));
       if (invalidCVEs.length > 0) {
         return `Invalid CVE format: ${invalidCVEs.join(', ')}. Expected format: CVE-YYYY-NNNNN`;
       }
@@ -306,8 +315,8 @@ export class AdvisoryValidator {
    * Remove a rule by ID
    */
   removeRule(ruleId: string): void {
-    this._rules = this._rules.filter(r => r.id !== ruleId);
-    this._customRules = this._customRules.filter(r => r.id !== ruleId);
+    this._rules = this._rules.filter((r) => r.id !== ruleId);
+    this._customRules = this._customRules.filter((r) => r.id !== ruleId);
   }
 
   /**
@@ -406,11 +415,12 @@ export class AdvisoryValidator {
    */
   private _getSuggestion(ruleId: string): string | undefined {
     const suggestions: Record<string, string> = {
-      'CONTENT_001': 'Keep summary under 500 characters and move details to the details field.',
-      'CONTENT_002': 'Add comprehensive details explaining the vulnerability impact and attack vectors.',
-      'AFFECTED_003': 'Specify either a list of affected versions or version ranges.',
-      'REFERENCE_002': 'Include an ADVISORY or REPORT type reference for the primary source.',
-      'GITHUB_001': 'Set github_reviewed_at when marking an advisory as reviewed.',
+      CONTENT_001: 'Keep summary under 500 characters and move details to the details field.',
+      CONTENT_002:
+        'Add comprehensive details explaining the vulnerability impact and attack vectors.',
+      AFFECTED_003: 'Specify either a list of affected versions or version ranges.',
+      REFERENCE_002: 'Include an ADVISORY or REPORT type reference for the primary source.',
+      GITHUB_001: 'Set github_reviewed_at when marking an advisory as reviewed.',
     };
     return suggestions[ruleId];
   }

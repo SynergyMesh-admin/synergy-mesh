@@ -3,7 +3,7 @@
 /**
  * Logic Validator
  * Validates code logic, authenticity, and correctness
- * 
+ *
  * @module logic-validator
  * @author SynergyMesh Team
  * @license MIT
@@ -27,15 +27,15 @@ class LogicValidator {
         logic: this._validateLogic(code),
         consistency: this._validateConsistency(code),
         patterns: this._validatePatterns(code),
-        dependencies: this._validateDependencies(code)
+        dependencies: this._validateDependencies(code),
       },
       summary: {
         totalChecks: 0,
         passed: 0,
         failed: 0,
-        warnings: 0
+        warnings: 0,
       },
-      score: 0
+      score: 0,
     };
 
     // Count results
@@ -65,27 +65,27 @@ class LogicValidator {
     const result = {
       valid: true,
       checks: [],
-      warnings: []
+      warnings: [],
     };
 
     // Check for suspicious patterns
     const suspiciousPatterns = [
       {
         pattern: /eval\s*\(/g,
-        message: 'Use of eval() detected - potential security risk'
+        message: 'Use of eval() detected - potential security risk',
       },
       {
         pattern: /Function\s*\(/g,
-        message: 'Dynamic function creation detected'
+        message: 'Dynamic function creation detected',
       },
       {
         pattern: /\.innerHTML\s*=/g,
-        message: 'Direct innerHTML manipulation - XSS risk'
+        message: 'Direct innerHTML manipulation - XSS risk',
       },
       {
         pattern: /document\.write/g,
-        message: 'document.write usage - potential security issue'
-      }
+        message: 'document.write usage - potential security issue',
+      },
     ];
 
     for (const { pattern, message } of suspiciousPatterns) {
@@ -94,17 +94,17 @@ class LogicValidator {
         result.checks.push({
           passed: false,
           message,
-          severity: 'error'
+          severity: 'error',
         });
       }
     }
 
     // Check for obfuscation
     const obfuscationIndicators = [
-      /\\x[0-9a-f]{2}/gi,  // Hex escape sequences
-      /\\u[0-9a-f]{4}/gi,  // Unicode escape sequences
+      /\\x[0-9a-f]{2}/gi, // Hex escape sequences
+      /\\u[0-9a-f]{4}/gi, // Unicode escape sequences
       /String\.fromCharCode/g,
-      /_0x[a-f0-9]{4,}/g   // Common obfuscation variable names
+      /_0x[a-f0-9]{4,}/g, // Common obfuscation variable names
     ];
 
     for (const pattern of obfuscationIndicators) {
@@ -112,7 +112,7 @@ class LogicValidator {
       if (matches && matches.length > 5) {
         result.warnings.push({
           message: 'Possible code obfuscation detected',
-          count: matches.length
+          count: matches.length,
         });
       }
     }
@@ -121,13 +121,13 @@ class LogicValidator {
     result.integrity = {
       sha256: createHash('sha256').update(code).digest('hex'),
       length: code.length,
-      lines: code.split('\n').length
+      lines: code.split('\n').length,
     };
 
     if (result.checks.length === 0) {
       result.checks.push({
         passed: true,
-        message: 'No suspicious patterns detected'
+        message: 'No suspicious patterns detected',
       });
     }
 
@@ -138,19 +138,19 @@ class LogicValidator {
    * Check for unreachable code
    */
   _checkUnreachableCode(code, warnings) {
-    const unreachablePatterns = [
-      /return\s+[^;]+;[\s\S]*?(?=\})/g
-    ];
+    const unreachablePatterns = [/return\s+[^;]+;[\s\S]*?(?=\})/g];
 
     for (const pattern of unreachablePatterns) {
       const matches = code.match(pattern);
       if (matches) {
         for (const match of matches) {
           const afterReturn = match.split('return')[1];
-          if (afterReturn && afterReturn.includes('\n') && 
-              /[a-z]/i.test(afterReturn.split('\n').slice(1).join('\n'))) {
+          if (
+            afterReturn?.includes('\n') &&
+            /[a-z]/i.test(afterReturn.split('\n').slice(1).join('\n'))
+          ) {
             warnings.push({
-              message: 'Potential unreachable code after return statement'
+              message: 'Potential unreachable code after return statement',
             });
           }
         }
@@ -164,7 +164,7 @@ class LogicValidator {
   _checkInfiniteLoops(code, result) {
     const infiniteLoopPatterns = [
       /while\s*\(\s*true\s*\)\s*\{[^}]*\}/g,
-      /for\s*\(\s*;\s*;\s*\)\s*\{[^}]*\}/g
+      /for\s*\(\s*;\s*;\s*\)\s*\{[^}]*\}/g,
     ];
 
     for (const pattern of infiniteLoopPatterns) {
@@ -176,7 +176,7 @@ class LogicValidator {
             result.checks.push({
               passed: false,
               message: 'Potential infinite loop without break/return',
-              severity: 'error'
+              severity: 'error',
             });
           }
         }
@@ -192,7 +192,7 @@ class LogicValidator {
     if (functionScopes.length > 0) {
       const varNames = new Set();
       const shadowedVars = [];
-      
+
       const varDeclarations = code.match(/(?:var|let|const)\s+(\w+)/g) || [];
       for (const decl of varDeclarations) {
         const varName = decl.split(/\s+/)[1];
@@ -201,10 +201,10 @@ class LogicValidator {
         }
         varNames.add(varName);
       }
-      
+
       if (shadowedVars.length > 0) {
         warnings.push({
-          message: `Variable shadowing detected: ${shadowedVars.join(', ')}`
+          message: `Variable shadowing detected: ${shadowedVars.join(', ')}`,
         });
       }
     }
@@ -217,7 +217,7 @@ class LogicValidator {
     const result = {
       valid: true,
       checks: [],
-      warnings: []
+      warnings: [],
     };
 
     // Check for logical inconsistencies
@@ -226,7 +226,7 @@ class LogicValidator {
     // Empty catch blocks
     if (/catch\s*\([^)]*\)\s*\{\s*\}/.test(code)) {
       result.warnings.push({
-        message: 'Empty catch block found - errors may be silently ignored'
+        message: 'Empty catch block found - errors may be silently ignored',
       });
     }
 
@@ -235,7 +235,7 @@ class LogicValidator {
     // Equality comparisons
     if (/==(?!=)/.test(code) || /!=(?!=)/.test(code)) {
       result.warnings.push({
-        message: 'Loose equality (==, !=) used - consider strict equality (===, !==)'
+        message: 'Loose equality (==, !=) used - consider strict equality (===, !==)',
       });
     }
 
@@ -244,10 +244,10 @@ class LogicValidator {
     const catchPattern = /\.catch\s*\([^)]*\)/g;
     const promiseCount = (code.match(promisePattern) || []).length;
     const catchCount = (code.match(catchPattern) || []).length;
-    
+
     if (promiseCount > catchCount * 2) {
       result.warnings.push({
-        message: 'Some promises may lack error handling'
+        message: 'Some promises may lack error handling',
       });
     }
 
@@ -256,7 +256,7 @@ class LogicValidator {
     if (result.checks.length === 0) {
       result.checks.push({
         passed: true,
-        message: 'No critical logic issues detected'
+        message: 'No critical logic issues detected',
       });
     }
 
@@ -269,10 +269,10 @@ class LogicValidator {
   _checkIndentation(code, warnings) {
     const lines = code.split('\n');
     const indentations = lines
-      .filter(line => line.trim().length > 0)
-      .map(line => line.match(/^(\s*)/)[0].length);
-    
-    const spaceCounts = indentations.filter(i => i > 0);
+      .filter((line) => line.trim().length > 0)
+      .map((line) => line.match(/^(\s*)/)[0].length);
+
+    const spaceCounts = indentations.filter((i) => i > 0);
     if (spaceCounts.length > 0) {
       const gcd = spaceCounts.reduce((a, b) => {
         while (b !== 0) {
@@ -282,10 +282,10 @@ class LogicValidator {
         }
         return a;
       });
-      
+
       if (gcd !== 2 && gcd !== 4) {
         warnings.push({
-          message: `Inconsistent indentation detected (GCD: ${gcd})`
+          message: `Inconsistent indentation detected (GCD: ${gcd})`,
         });
       }
     }
@@ -296,17 +296,22 @@ class LogicValidator {
    */
   _checkNamingConventions(code, warnings) {
     const functionNames = (code.match(/function\s+(\w+)|const\s+(\w+)\s*=/g) || [])
-      .map(m => m.match(/\w+$/)?.[0])
+      .map((m) => m.match(/\w+$/)?.[0])
       .filter(Boolean);
-    
+
     if (functionNames.length > 0) {
-      const camelCaseCount = functionNames.filter(name => /^[a-z][a-zA-Z0-9]*$/.test(name)).length;
-      const snakeCaseCount = functionNames.filter(name => /^[a-z][a-z0-9_]*$/.test(name)).length;
-      
-      if (camelCaseCount > 0 && snakeCaseCount > 0 && 
-          Math.abs(camelCaseCount - snakeCaseCount) < functionNames.length * 0.8) {
+      const camelCaseCount = functionNames.filter((name) =>
+        /^[a-z][a-zA-Z0-9]*$/.test(name)
+      ).length;
+      const snakeCaseCount = functionNames.filter((name) => /^[a-z][a-z0-9_]*$/.test(name)).length;
+
+      if (
+        camelCaseCount > 0 &&
+        snakeCaseCount > 0 &&
+        Math.abs(camelCaseCount - snakeCaseCount) < functionNames.length * 0.8
+      ) {
         warnings.push({
-          message: 'Mixed naming conventions detected (camelCase vs snake_case)'
+          message: 'Mixed naming conventions detected (camelCase vs snake_case)',
         });
       }
     }
@@ -319,15 +324,15 @@ class LogicValidator {
     const singleQuotes = (code.match(/'/g) || []).length;
     const doubleQuotes = (code.match(/"/g) || []).length;
     const backticks = (code.match(/`/g) || []).length;
-    
+
     const totalQuotes = singleQuotes + doubleQuotes + backticks;
     if (totalQuotes > 10) {
       const quoteCounts = [singleQuotes, doubleQuotes, backticks];
       const maxCount = Math.max(...quoteCounts);
-      
+
       if (maxCount < totalQuotes * 0.7) {
         warnings.push({
-          message: 'Inconsistent quote style detected'
+          message: 'Inconsistent quote style detected',
         });
       }
     }
@@ -340,38 +345,40 @@ class LogicValidator {
     const result = {
       valid: true,
       checks: [],
-      warnings: []
+      warnings: [],
     };
 
     const lines = code.split('\n');
-    
+
     this._checkIndentation(code, result.warnings);
     this._checkNamingConventions(code, result.warnings);
     this._checkQuoteStyle(code, result.warnings);
 
     // Consistent semicolon usage
-    const linesWithCode = lines.filter(line => {
+    const linesWithCode = lines.filter((line) => {
       const trimmed = line.trim();
-      return trimmed.length > 0 && 
-             !trimmed.startsWith('//') && 
-             !trimmed.startsWith('/*') &&
-             !trimmed.startsWith('*') &&
-             !trimmed.endsWith('{') &&
-             !trimmed.endsWith('}');
+      return (
+        trimmed.length > 0 &&
+        !trimmed.startsWith('//') &&
+        !trimmed.startsWith('/*') &&
+        !trimmed.startsWith('*') &&
+        !trimmed.endsWith('{') &&
+        !trimmed.endsWith('}')
+      );
     });
-    
-    const linesWithSemicolon = linesWithCode.filter(line => line.trim().endsWith(';')).length;
+
+    const linesWithSemicolon = linesWithCode.filter((line) => line.trim().endsWith(';')).length;
     const semicolonRatio = linesWithSemicolon / linesWithCode.length;
-    
+
     if (semicolonRatio > 0.2 && semicolonRatio < 0.8) {
       result.warnings.push({
-        message: 'Inconsistent semicolon usage detected'
+        message: 'Inconsistent semicolon usage detected',
       });
     }
 
     result.checks.push({
       passed: true,
-      message: 'Consistency checks completed'
+      message: 'Consistency checks completed',
     });
 
     return result;
@@ -384,57 +391,59 @@ class LogicValidator {
     const result = {
       valid: true,
       checks: [],
-      warnings: []
+      warnings: [],
     };
 
     // 1. Error handling patterns
     const tryBlocks = (code.match(/try\s*\{/g) || []).length;
     const catchBlocks = (code.match(/catch\s*\(/g) || []).length;
-    
+
     if (tryBlocks !== catchBlocks) {
       result.valid = false;
       result.checks.push({
         passed: false,
         message: 'Mismatched try-catch blocks',
-        severity: 'error'
+        severity: 'error',
       });
     }
 
     // 2. Async/await patterns
     const asyncFunctions = (code.match(/async\s+function|async\s*\(/g) || []).length;
     const awaitCalls = (code.match(/await\s+/g) || []).length;
-    
+
     if (asyncFunctions > 0 && awaitCalls === 0) {
       result.warnings.push({
-        message: 'Async functions without await - consider if async is necessary'
+        message: 'Async functions without await - consider if async is necessary',
       });
     }
 
     // 3. Callback hell detection
-    const nestedCallbacks = code.match(/function\s*\([^)]*\)\s*\{[^}]*function\s*\([^)]*\)\s*\{[^}]*function\s*\(/g);
+    const nestedCallbacks = code.match(
+      /function\s*\([^)]*\)\s*\{[^}]*function\s*\([^)]*\)\s*\{[^}]*function\s*\(/g
+    );
     if (nestedCallbacks && nestedCallbacks.length > 0) {
       result.warnings.push({
-        message: 'Deeply nested callbacks detected - consider using async/await'
+        message: 'Deeply nested callbacks detected - consider using async/await',
       });
     }
 
     // 4. Resource cleanup patterns
     if (/setInterval\s*\(/.test(code) && !/clearInterval/.test(code)) {
       result.warnings.push({
-        message: 'setInterval without clearInterval - potential memory leak'
+        message: 'setInterval without clearInterval - potential memory leak',
       });
     }
 
     if (/addEventListener\s*\(/.test(code) && !/removeEventListener/.test(code)) {
       result.warnings.push({
-        message: 'addEventListener without removeEventListener - potential memory leak'
+        message: 'addEventListener without removeEventListener - potential memory leak',
       });
     }
 
     if (result.checks.length === 0) {
       result.checks.push({
         passed: true,
-        message: 'Code patterns are acceptable'
+        message: 'Code patterns are acceptable',
       });
     }
 
@@ -450,7 +459,7 @@ class LogicValidator {
       checks: [],
       warnings: [],
       imports: [],
-      requires: []
+      requires: [],
     };
 
     // Extract imports
@@ -468,23 +477,24 @@ class LogicValidator {
     // Check for mixed import styles
     if (result.imports.length > 0 && result.requires.length > 0) {
       result.warnings.push({
-        message: 'Mixed import styles (ES6 import and CommonJS require)'
+        message: 'Mixed import styles (ES6 import and CommonJS require)',
       });
     }
 
     // Check for relative imports
-    const relativeImports = [...result.imports, ...result.requires]
-      .filter(dep => dep.startsWith('./') || dep.startsWith('../'));
-    
+    const relativeImports = [...result.imports, ...result.requires].filter(
+      (dep) => dep.startsWith('./') || dep.startsWith('../')
+    );
+
     if (relativeImports.length > 10) {
       result.warnings.push({
-        message: `Many relative imports (${relativeImports.length}) - consider module aliases`
+        message: `Many relative imports (${relativeImports.length}) - consider module aliases`,
       });
     }
 
     result.checks.push({
       passed: true,
-      message: `Found ${result.imports.length + result.requires.length} dependencies`
+      message: `Found ${result.imports.length + result.requires.length} dependencies`,
     });
 
     return result;
@@ -496,7 +506,7 @@ class LogicValidator {
  */
 function main() {
   const validator = new LogicValidator();
-  
+
   // Example usage
   const testCode = `
     function example(x) {

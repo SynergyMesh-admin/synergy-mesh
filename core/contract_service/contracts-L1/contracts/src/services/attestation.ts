@@ -1,47 +1,61 @@
-import { randomUUID } from 'crypto';
-import { createHash } from 'crypto';
+import { randomUUID, createHash } from 'crypto';
+
 import { z } from 'zod';
 
 // SLSA Provenance Schema
 const SLSAProvenanceSchema = z.object({
   _type: z.literal('https://in-toto.io/Statement/v1'),
-  subject: z.array(z.object({
-    name: z.string(),
-    digest: z.record(z.string())
-  })),
+  subject: z.array(
+    z.object({
+      name: z.string(),
+      digest: z.record(z.string()),
+    })
+  ),
   predicateType: z.literal('https://slsa.dev/provenance/v1'),
   predicate: z.object({
     buildDefinition: z.object({
       buildType: z.string(),
       externalParameters: z.record(z.any()),
       internalParameters: z.record(z.any()).optional(),
-      resolvedDependencies: z.array(z.object({
-        uri: z.string(),
-        digest: z.record(z.string()).optional(),
-        name: z.string().optional()
-      })).optional()
+      resolvedDependencies: z
+        .array(
+          z.object({
+            uri: z.string(),
+            digest: z.record(z.string()).optional(),
+            name: z.string().optional(),
+          })
+        )
+        .optional(),
     }),
     runDetails: z.object({
       builder: z.object({
         id: z.string(),
-        builderDependencies: z.array(z.object({
-          uri: z.string(),
-          digest: z.record(z.string()).optional()
-        })).optional(),
-        version: z.record(z.string()).optional()
+        builderDependencies: z
+          .array(
+            z.object({
+              uri: z.string(),
+              digest: z.record(z.string()).optional(),
+            })
+          )
+          .optional(),
+        version: z.record(z.string()).optional(),
       }),
       metadata: z.object({
         invocationId: z.string(),
         startedOn: z.string().datetime(),
-        finishedOn: z.string().datetime().optional()
+        finishedOn: z.string().datetime().optional(),
       }),
-      byproducts: z.array(z.object({
-        name: z.string().optional(),
-        uri: z.string().optional(),
-        digest: z.record(z.string()).optional()
-      })).optional()
-    })
-  })
+      byproducts: z
+        .array(
+          z.object({
+            name: z.string().optional(),
+            uri: z.string().optional(),
+            digest: z.record(z.string()).optional(),
+          })
+        )
+        .optional(),
+    }),
+  }),
 });
 
 export type SLSAProvenance = z.infer<typeof SLSAProvenanceSchema>;
@@ -92,20 +106,20 @@ export class SLSAAttestationService {
           buildType: metadata.buildType,
           externalParameters: metadata.externalParameters || {},
           internalParameters: {},
-          resolvedDependencies: metadata.dependencies
+          resolvedDependencies: metadata.dependencies,
         },
         runDetails: {
           builder: {
             id: metadata.builder.id,
-            version: metadata.builder.version
+            version: metadata.builder.version,
           },
           metadata: {
             invocationId: metadata.invocationId,
             startedOn: metadata.startedOn,
-            finishedOn: metadata.finishedOn
-          }
-        }
-      }
+            finishedOn: metadata.finishedOn,
+          },
+        },
+      },
     };
 
     // Validate the provenance against schema
@@ -120,8 +134,8 @@ export class SLSAAttestationService {
     return {
       name,
       digest: {
-        sha256: digest
-      }
+        sha256: digest,
+      },
     };
   }
 
@@ -132,8 +146,8 @@ export class SLSAAttestationService {
     return {
       name,
       digest: {
-        sha256: sha256Digest
-      }
+        sha256: sha256Digest,
+      },
     };
   }
 
@@ -166,14 +180,14 @@ export class SLSAAttestationService {
         id: 'https://synergymesh.dev/builder/contracts-l1',
         version: {
           'synergymesh-contracts': version,
-          'node': process.version
-        }
+          node: process.version,
+        },
       },
       externalParameters: {
         contractName,
         deployer,
-        environment: process.env.NODE_ENV || 'development'
-      }
+        environment: process.env.NODE_ENV || 'development',
+      },
     };
   }
 }

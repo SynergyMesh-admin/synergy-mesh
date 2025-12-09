@@ -42,25 +42,25 @@ export class ResponsibilityMatrix {
           name: 'Alice Chen',
           email: 'alice.chen@synergymesh.dev',
           specialties: ['react', 'vue', 'typescript', 'ui/ux'],
-          timezone: 'Asia/Taipei'
+          timezone: 'Asia/Taipei',
         },
         {
           id: 'bob.wang',
           name: 'Bob Wang',
           email: 'bob.wang@synergymesh.dev',
           specialties: ['react', 'typescript', 'performance'],
-          timezone: 'Asia/Taipei'
+          timezone: 'Asia/Taipei',
         },
         {
           id: 'carol.liu',
           name: 'Carol Liu',
           email: 'carol.liu@synergymesh.dev',
           specialties: ['vue', 'ui/ux', 'accessibility'],
-          timezone: 'Asia/Taipei'
-        }
+          timezone: 'Asia/Taipei',
+        },
       ],
       specialties: ['react', 'vue', 'typescript', 'ui/ux'],
-      timezone: 'Asia/Taipei'
+      timezone: 'Asia/Taipei',
     });
 
     this.teamStructures.set('backend', {
@@ -71,25 +71,25 @@ export class ResponsibilityMatrix {
           name: 'David Zhang',
           email: 'david.zhang@synergymesh.dev',
           specialties: ['node.js', 'python', 'api', 'database'],
-          timezone: 'Asia/Taipei'
+          timezone: 'Asia/Taipei',
         },
         {
           id: 'eva.wu',
           name: 'Eva Wu',
           email: 'eva.wu@synergymesh.dev',
           specialties: ['node.js', 'database', 'performance'],
-          timezone: 'Asia/Taipei'
+          timezone: 'Asia/Taipei',
         },
         {
           id: 'frank.lin',
           name: 'Frank Lin',
           email: 'frank.lin@synergymesh.dev',
           specialties: ['python', 'api', 'microservices'],
-          timezone: 'Asia/Taipei'
-        }
+          timezone: 'Asia/Taipei',
+        },
       ],
       specialties: ['node.js', 'python', 'database', 'api'],
-      timezone: 'Asia/Taipei'
+      timezone: 'Asia/Taipei',
     });
 
     this.teamStructures.set('devops', {
@@ -100,18 +100,18 @@ export class ResponsibilityMatrix {
           name: 'Grace Huang',
           email: 'grace.huang@synergymesh.dev',
           specialties: ['docker', 'kubernetes', 'aws', 'ci/cd'],
-          timezone: 'UTC'
+          timezone: 'UTC',
         },
         {
           id: 'henry.chen',
           name: 'Henry Chen',
           email: 'henry.chen@synergymesh.dev',
           specialties: ['kubernetes', 'monitoring', 'infrastructure'],
-          timezone: 'UTC'
-        }
+          timezone: 'UTC',
+        },
       ],
       specialties: ['docker', 'kubernetes', 'aws', 'ci/cd'],
-      timezone: 'UTC'
+      timezone: 'UTC',
     });
 
     this.teamStructures.set('security', {
@@ -122,18 +122,18 @@ export class ResponsibilityMatrix {
           name: 'Iris Lee',
           email: 'iris.lee@synergymesh.dev',
           specialties: ['authentication', 'encryption', 'audit'],
-          timezone: 'Asia/Shanghai'
+          timezone: 'Asia/Shanghai',
         },
         {
           id: 'jack.yang',
           name: 'Jack Yang',
           email: 'jack.yang@synergymesh.dev',
           specialties: ['penetration-testing', 'security-review', 'compliance'],
-          timezone: 'Asia/Shanghai'
-        }
+          timezone: 'Asia/Shanghai',
+        },
       ],
       specialties: ['authentication', 'encryption', 'audit'],
-      timezone: 'Asia/Shanghai'
+      timezone: 'Asia/Shanghai',
     });
   }
 
@@ -144,7 +144,7 @@ export class ResponsibilityMatrix {
   identifyRelevantTeams(problemType: ProblemType): TeamStructure[] {
     const teamNames = this.expertiseMap.get(problemType) || [];
     return teamNames
-      .map(name => this.teamStructures.get(name))
+      .map((name) => this.teamStructures.get(name))
       .filter((team): team is TeamStructure => team !== undefined);
   }
 
@@ -154,7 +154,7 @@ export class ResponsibilityMatrix {
    */
   getAllMembers(): TeamMember[] {
     const members: TeamMember[] = [];
-    this.teamStructures.forEach(team => {
+    this.teamStructures.forEach((team) => {
       members.push(...team.members);
     });
     return members;
@@ -165,7 +165,7 @@ export class ResponsibilityMatrix {
    * Get member by ID
    */
   getMemberById(id: string): TeamMember | undefined {
-    return this.getAllMembers().find(member => member.id === id);
+    return this.getAllMembers().find((member) => member.id === id);
   }
 
   /**

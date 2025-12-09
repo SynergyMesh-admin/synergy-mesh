@@ -3,14 +3,14 @@
 /**
  * Deployment Configuration Validator
  * Validates deployment configurations for production readiness
- * 
+ *
  * @module deployment-validator
  * @author SynergyMesh Team
  * @license MIT
  */
 
-import { readFile } from 'fs/promises';
 import { existsSync } from 'fs';
+import { readFile } from 'fs/promises';
 import { resolve } from 'path';
 
 /**
@@ -18,12 +18,8 @@ import { resolve } from 'path';
  */
 class DeploymentValidator {
   constructor() {
-    this.requiredFiles = [
-      'package.json',
-      'README.md',
-      '.gitignore'
-    ];
-    
+    this.requiredFiles = ['package.json', 'README.md', '.gitignore'];
+
     this.requiredPackageFields = [
       'name',
       'version',
@@ -31,13 +27,10 @@ class DeploymentValidator {
       'main',
       'scripts',
       'license',
-      'engines'
+      'engines',
     ];
-    
-    this.requiredScripts = [
-      'start',
-      'test'
-    ];
+
+    this.requiredScripts = ['start', 'test'];
   }
 
   /**
@@ -50,22 +43,22 @@ class DeploymentValidator {
       checks: [],
       errors: [],
       warnings: [],
-      score: 100
+      score: 100,
     };
 
     try {
       // Check required files
       results.checks.push(await this._checkRequiredFiles(basePath));
-      
+
       // Validate package.json
       results.checks.push(await this._validatePackageJson(basePath));
-      
+
       // Check security configurations
       results.checks.push(await this._checkSecurityConfig(basePath));
-      
+
       // Validate environment variables
       results.checks.push(this._validateEnvironmentConfig());
-      
+
       // Check Node.js version
       results.checks.push(this._checkNodeVersion());
 
@@ -85,13 +78,12 @@ class DeploymentValidator {
 
       results.score = Math.max(0, results.score);
       results.grade = this._calculateGrade(results.score);
-
     } catch (error) {
       results.valid = false;
       results.errors.push({
         name: 'Validation Error',
         message: error.message,
-        severity: 'error'
+        severity: 'error',
       });
     }
 
@@ -106,7 +98,7 @@ class DeploymentValidator {
       name: 'Required Files Check',
       passed: true,
       severity: 'error',
-      details: []
+      details: [],
     };
 
     for (const file of this.requiredFiles) {
@@ -132,7 +124,7 @@ class DeploymentValidator {
       name: 'Package.json Validation',
       passed: true,
       severity: 'error',
-      details: []
+      details: [],
     };
 
     try {
@@ -176,7 +168,6 @@ class DeploymentValidator {
       if (check.passed) {
         check.details.push('Package.json is valid');
       }
-
     } catch (error) {
       check.passed = false;
       check.details.push(`Failed to validate package.json: ${error.message}`);
@@ -193,7 +184,7 @@ class DeploymentValidator {
       name: 'Security Configuration Check',
       passed: true,
       severity: 'warning',
-      details: []
+      details: [],
     };
 
     // Check for .gitignore
@@ -205,7 +196,7 @@ class DeploymentValidator {
       try {
         const content = await readFile(gitignorePath, 'utf-8');
         const requiredPatterns = ['node_modules', '.env', '*.log'];
-        
+
         for (const pattern of requiredPatterns) {
           if (!content.includes(pattern)) {
             check.details.push(`Missing .gitignore pattern: ${pattern}`);
@@ -241,7 +232,7 @@ class DeploymentValidator {
       name: 'Environment Configuration',
       passed: true,
       severity: 'warning',
-      details: []
+      details: [],
     };
 
     const nodeEnv = process.env.NODE_ENV;
@@ -267,7 +258,7 @@ class DeploymentValidator {
       name: 'Node.js Version Check',
       passed: true,
       severity: 'error',
-      details: []
+      details: [],
     };
 
     const currentVersion = process.version;

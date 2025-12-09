@@ -4,6 +4,7 @@
  */
 
 import { v4 as uuidv4 } from 'uuid';
+
 import {
   Incident,
   Assignment,
@@ -11,8 +12,9 @@ import {
   TeamMember,
   Priority,
   ProblemType,
-  WorkloadMetrics
+  WorkloadMetrics,
 } from '../../types/assignment';
+
 import { ResponsibilityMatrix } from './responsibility-matrix';
 import { WorkloadBalancer } from './workload-balancer';
 
@@ -43,7 +45,7 @@ export class AutoAssignmentEngine {
    */
   identifyRelevantTeams(problemType: ProblemType): string[] {
     const teams = this.responsibilityMatrix.identifyRelevantTeams(problemType);
-    return teams.map(team => team.name);
+    return teams.map((team) => team.name);
   }
 
   /**
@@ -84,7 +86,7 @@ export class AutoAssignmentEngine {
     secondaryOwner?: TeamMember
   ): Promise<Assignment> {
     const slaTargets = this.getSLATargets(incident.priority);
-    
+
     const assignment: Assignment = {
       id: uuidv4(),
       incidentId: incident.id,
@@ -92,14 +94,14 @@ export class AutoAssignmentEngine {
       secondaryOwner,
       status: 'ASSIGNED',
       assignedAt: new Date(),
-      slaTarget: slaTargets
+      slaTarget: slaTargets,
     };
 
     this.assignments.set(assignment.id, assignment);
-    
+
     // 更新工作負載
     this.updateMemberWorkload(primaryOwner.id, 1);
-    
+
     return assignment;
   }
 
@@ -109,10 +111,10 @@ export class AutoAssignmentEngine {
    */
   private getSLATargets(priority: Priority): { responseTime: number; resolutionTime: number } {
     const targets = {
-      'CRITICAL': { responseTime: 5, resolutionTime: 60 },
-      'HIGH': { responseTime: 15, resolutionTime: 240 },
-      'MEDIUM': { responseTime: 60, resolutionTime: 480 },
-      'LOW': { responseTime: 240, resolutionTime: 1440 }
+      CRITICAL: { responseTime: 5, resolutionTime: 60 },
+      HIGH: { responseTime: 15, resolutionTime: 240 },
+      MEDIUM: { responseTime: 60, resolutionTime: 480 },
+      LOW: { responseTime: 240, resolutionTime: 1440 },
     };
 
     return targets[priority];
@@ -125,33 +127,30 @@ export class AutoAssignmentEngine {
   async assignResponsibility(incident: Incident): Promise<Assignment> {
     // 步驟 1: 分析問題類型
     const problemType = await this.analyzeProblemType(incident);
-    
+
     // 步驟 2: 識別相關團隊
     const candidateTeams = this.identifyRelevantTeams(problemType);
-    
+
     // 步驟 3: 評估成員可用性
     const availableMembers = await this.checkMemberAvailability(candidateTeams);
-    
+
     if (availableMembers.length === 0) {
       throw new Error('No available members for assignment');
     }
-    
+
     // 步驟 4: 智慧選擇最佳負責人
     const primaryOwner = this.selectOptimalAssignee(availableMembers, incident);
-    
+
     // 選擇備援負責人（第二優先）
-    const remainingMembers = availableMembers.filter(m => m.id !== primaryOwner.id);
-    const secondaryOwner = remainingMembers.length > 0
-      ? this.workloadBalancer.selectOptimalAssignee(remainingMembers, incident)
-      : undefined;
-    
+    const remainingMembers = availableMembers.filter((m) => m.id !== primaryOwner.id);
+    const secondaryOwner =
+      remainingMembers.length > 0
+        ? this.workloadBalancer.selectOptimalAssignee(remainingMembers, incident)
+        : undefined;
+
     // 步驟 5: 建立責任追蹤
-    const assignment = await this.createAssignmentRecord(
-      primaryOwner,
-      incident,
-      secondaryOwner
-    );
-    
+    const assignment = await this.createAssignmentRecord(primaryOwner, incident, secondaryOwner);
+
     return assignment;
   }
 
@@ -164,13 +163,13 @@ export class AutoAssignmentEngine {
     status: AssignmentStatus
   ): Promise<Assignment> {
     const assignment = this.assignments.get(assignmentId);
-    
+
     if (!assignment) {
       throw new Error(`Assignment ${assignmentId} not found`);
     }
-    
+
     assignment.status = status;
-    
+
     // 更新時間戳記
     if (status === 'ACKNOWLEDGED' && !assignment.acknowledgedAt) {
       assignment.acknowledgedAt = new Date();
@@ -181,9 +180,9 @@ export class AutoAssignmentEngine {
       // 減少工作負載
       this.updateMemberWorkload(assignment.primaryOwner.id, -1);
     }
-    
+
     this.assignments.set(assignmentId, assignment);
-    
+
     return assignment;
   }
 
@@ -207,35 +206,32 @@ export class AutoAssignmentEngine {
    * 重新分派責任
    * Reassign responsibility
    */
-  async reassignResponsibility(
-    assignmentId: string,
-    newOwnerId: string
-  ): Promise<Assignment> {
+  async reassignResponsibility(assignmentId: string, newOwnerId: string): Promise<Assignment> {
     const assignment = this.assignments.get(assignmentId);
-    
+
     if (!assignment) {
       throw new Error(`Assignment ${assignmentId} not found`);
     }
-    
+
     const newOwner = this.responsibilityMatrix.getMemberById(newOwnerId);
-    
+
     if (!newOwner) {
       throw new Error(`Member ${newOwnerId} not found`);
     }
-    
+
     // 減少舊負責人的工作負載
     this.updateMemberWorkload(assignment.primaryOwner.id, -1);
-    
+
     // 更新分派
     assignment.primaryOwner = newOwner;
     assignment.status = 'ASSIGNED';
     assignment.assignedAt = new Date();
-    
+
     // 增加新負責人的工作負載
     this.updateMemberWorkload(newOwner.id, 1);
-    
+
     this.assignments.set(assignmentId, assignment);
-    
+
     return assignment;
   }
 
@@ -249,12 +245,12 @@ export class AutoAssignmentEngine {
       activeAssignments: 0,
       totalAssignments: 0,
       averageResolutionTime: 0,
-      successRate: 0.5
+      successRate: 0.5,
     };
 
     this.workloadBalancer.updateWorkloadMetrics(memberId, {
       activeAssignments: Math.max(0, current.activeAssignments + delta),
-      totalAssignments: delta > 0 ? current.totalAssignments + delta : current.totalAssignments
+      totalAssignments: delta > 0 ? current.totalAssignments + delta : current.totalAssignments,
     });
   }
 

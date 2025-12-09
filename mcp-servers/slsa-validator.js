@@ -3,7 +3,7 @@
 /**
  * SLSA Validator MCP Server
  * Enterprise-grade SLSA provenance validation and compliance checking
- * 
+ *
  * @module slsa-validator
  * @author SynergyMesh Team
  * @license MIT
@@ -15,7 +15,7 @@ import {
   CallToolRequestSchema,
   ListToolsRequestSchema,
   ErrorCode,
-  McpError
+  McpError,
 } from '@modelcontextprotocol/sdk/types.js';
 import { z } from 'zod';
 
@@ -25,9 +25,9 @@ const ValidateProvenanceSchema = z.object({
     _type: z.string(),
     predicateType: z.string(),
     subject: z.array(z.any()),
-    predicate: z.any()
+    predicate: z.any(),
   }),
-  level: z.enum(['1', '2', '3', '4']).optional().default('3')
+  level: z.enum(['1', '2', '3', '4']).optional().default('3'),
 });
 
 const CheckSLSAComplianceSchema = z.object({
@@ -35,9 +35,9 @@ const CheckSLSAComplianceSchema = z.object({
     _type: z.string(),
     predicateType: z.string(),
     subject: z.array(z.any()),
-    predicate: z.any()
+    predicate: z.any(),
   }),
-  targetLevel: z.enum(['1', '2', '3', '4']).default('3')
+  targetLevel: z.enum(['1', '2', '3', '4']).default('3'),
 });
 
 const GenerateComplianceReportSchema = z.object({
@@ -45,9 +45,9 @@ const GenerateComplianceReportSchema = z.object({
     _type: z.string(),
     predicateType: z.string(),
     subject: z.array(z.any()),
-    predicate: z.any()
+    predicate: z.any(),
   }),
-  includeRemediation: z.boolean().optional().default(true)
+  includeRemediation: z.boolean().optional().default(true),
 });
 
 /**
@@ -68,29 +68,32 @@ class SLSAValidator {
       checks: [],
       errors: [],
       warnings: [],
-      score: 100
+      score: 100,
     };
 
     // Basic structure validation
     validation.checks.push(this._checkStructure(provenance));
-    
+
     // Subject validation
     validation.checks.push(this._checkSubjects(provenance.subject));
-    
+
     // Predicate validation
     validation.checks.push(this._checkPredicate(provenance.predicate));
-    
+
     // Level-specific validation
     validation.checks.push(...this._checkLevelRequirements(provenance, level));
 
     // Calculate overall validity
-    const failedChecks = validation.checks.filter(c => !c.passed);
+    const failedChecks = validation.checks.filter((c) => !c.passed);
     validation.valid = failedChecks.length === 0;
-    validation.errors = failedChecks.filter(c => c.severity === 'error');
-    validation.warnings = failedChecks.filter(c => c.severity === 'warning');
-    
+    validation.errors = failedChecks.filter((c) => c.severity === 'error');
+    validation.warnings = failedChecks.filter((c) => c.severity === 'warning');
+
     // Calculate score
-    validation.score = Math.max(0, 100 - (validation.errors.length * 20) - (validation.warnings.length * 5));
+    validation.score = Math.max(
+      0,
+      100 - validation.errors.length * 20 - validation.warnings.length * 5
+    );
 
     return validation;
   }
@@ -105,21 +108,21 @@ class SLSAValidator {
       currentLevel: '0',
       requirements: [],
       gaps: [],
-      recommendations: []
+      recommendations: [],
     };
 
     // Check each level requirement
     for (let level = 1; level <= parseInt(targetLevel); level++) {
       const levelStr = level.toString();
       const requirements = this._getLevelRequirements(levelStr);
-      
+
       for (const req of requirements) {
         const check = this._checkRequirement(provenance, req);
         compliance.requirements.push({
           level: levelStr,
           requirement: req.name,
           met: check.met,
-          details: check.details
+          details: check.details,
         });
 
         if (!check.met) {
@@ -127,7 +130,7 @@ class SLSAValidator {
             level: levelStr,
             requirement: req.name,
             description: req.description,
-            remediation: req.remediation
+            remediation: req.remediation,
           });
         }
       }
@@ -154,7 +157,7 @@ class SLSAValidator {
       summary: {},
       validation: {},
       compliance: {},
-      recommendations: []
+      recommendations: [],
     };
 
     // Run validation for all levels
@@ -179,9 +182,7 @@ class SLSAValidator {
       totalChecks: Object.values(validations).reduce((sum, v) => sum + v.checks.length, 0),
       totalErrors: Object.values(validations).reduce((sum, v) => sum + v.errors.length, 0),
       totalWarnings: Object.values(validations).reduce((sum, v) => sum + v.warnings.length, 0),
-      overallScore: Math.round(
-        Object.values(validations).reduce((sum, v) => sum + v.score, 0) / 4
-      )
+      overallScore: Math.round(Object.values(validations).reduce((sum, v) => sum + v.score, 0) / 4),
     };
 
     // Generate recommendations
@@ -199,7 +200,7 @@ class SLSAValidator {
       name: 'Structure Validation',
       passed: true,
       severity: 'error',
-      details: []
+      details: [],
     };
 
     if (!provenance._type) {
@@ -207,7 +208,7 @@ class SLSAValidator {
       check.details.push('Missing _type field');
     }
 
-    if (!provenance.predicateType || !provenance.predicateType.includes('slsa')) {
+    if (!provenance.predicateType?.includes('slsa')) {
       check.passed = false;
       check.details.push('Invalid or missing predicateType');
     }
@@ -234,18 +235,18 @@ class SLSAValidator {
       name: 'Subject Validation',
       passed: true,
       severity: 'error',
-      details: []
+      details: [],
     };
 
     for (let i = 0; i < subjects.length; i++) {
       const subject = subjects[i];
-      
+
       if (!subject.name) {
         check.passed = false;
         check.details.push(`Subject ${i}: Missing name`);
       }
 
-      if (!subject.digest || !subject.digest.sha256) {
+      if (!subject.digest?.sha256) {
         check.passed = false;
         check.details.push(`Subject ${i}: Missing or invalid digest`);
       }
@@ -263,7 +264,7 @@ class SLSAValidator {
       name: 'Predicate Validation',
       passed: true,
       severity: 'error',
-      details: []
+      details: [],
     };
 
     if (!predicate.buildDefinition) {
@@ -303,7 +304,7 @@ class SLSAValidator {
         name: `SLSA Level ${level}: ${req.name}`,
         passed: check.met,
         severity: req.severity || 'error',
-        details: [check.details]
+        details: [check.details],
       });
     }
 
@@ -312,35 +313,35 @@ class SLSAValidator {
 
   _getLevelRequirements(level) {
     const requirements = {
-      '1': [
+      1: [
         {
           name: 'Build Process Documentation',
           description: 'Provenance must document the build process',
           check: (p) => Boolean(p.predicate?.buildDefinition),
-          remediation: 'Add buildDefinition to provenance'
+          remediation: 'Add buildDefinition to provenance',
         },
         {
           name: 'Version Control',
           description: 'Source must be identified from version control',
           check: (p) => Boolean(p.predicate?.buildDefinition?.externalParameters),
-          remediation: 'Include version control information'
-        }
+          remediation: 'Include version control information',
+        },
       ],
-      '2': [
+      2: [
         {
           name: 'Build Service',
           description: 'Built by trusted build service',
           check: (p) => Boolean(p.predicate?.runDetails?.builder?.id),
-          remediation: 'Specify builder ID in runDetails'
+          remediation: 'Specify builder ID in runDetails',
         },
         {
           name: 'Source Integrity',
           description: 'Source integrity verified',
           check: (p) => Boolean(p.predicate?.buildDefinition?.resolvedDependencies),
-          remediation: 'Include resolved dependencies'
-        }
+          remediation: 'Include resolved dependencies',
+        },
       ],
-      '3': [
+      3: [
         {
           name: 'Hardened Build Platform',
           description: 'Build platform must be hardened',
@@ -348,16 +349,16 @@ class SLSAValidator {
             const metadata = p.predicate?.runDetails?.metadata;
             return metadata && (metadata.invocationId || metadata.startedOn);
           },
-          remediation: 'Add comprehensive build metadata'
+          remediation: 'Add comprehensive build metadata',
         },
         {
           name: 'Non-falsifiable',
           description: 'Provenance cannot be falsified by build service',
           check: (p) => Boolean(p.predicate?.runDetails?.metadata?.invocationId),
-          remediation: 'Include unique invocation ID'
-        }
+          remediation: 'Include unique invocation ID',
+        },
       ],
-      '4': [
+      4: [
         {
           name: 'Hermetic Build',
           description: 'Build must be hermetic',
@@ -365,15 +366,15 @@ class SLSAValidator {
             const deps = p.predicate?.buildDefinition?.resolvedDependencies;
             return deps && deps.length > 0;
           },
-          remediation: 'Ensure build is hermetic with resolved dependencies'
+          remediation: 'Ensure build is hermetic with resolved dependencies',
         },
         {
           name: 'Two-Party Review',
           description: 'Changes must be reviewed',
           check: (p) => Boolean(p.predicate?.buildDefinition?.externalParameters?.reviewers),
-          remediation: 'Include reviewer information'
-        }
-      ]
+          remediation: 'Include reviewer information',
+        },
+      ],
     };
 
     return requirements[level] || [];
@@ -382,17 +383,17 @@ class SLSAValidator {
   _checkRequirement(provenance, req) {
     return {
       met: req.check(provenance),
-      details: req.description
+      details: req.description,
     };
   }
 
   _determineCurrentLevel(requirements) {
     let currentLevel = '0';
-    
+
     for (let level = 1; level <= 4; level++) {
-      const levelReqs = requirements.filter(r => r.level === level.toString());
-      const allMet = levelReqs.every(r => r.met);
-      
+      const levelReqs = requirements.filter((r) => r.level === level.toString());
+      const allMet = levelReqs.every((r) => r.met);
+
       if (allMet) {
         currentLevel = level.toString();
       } else {
@@ -404,12 +405,12 @@ class SLSAValidator {
   }
 
   _generateRecommendations(gaps) {
-    return gaps.map(gap => ({
+    return gaps.map((gap) => ({
       priority: parseInt(gap.level) > 2 ? 'high' : 'medium',
       level: gap.level,
       requirement: gap.requirement,
       action: gap.remediation,
-      impact: `Required for SLSA Level ${gap.level} compliance`
+      impact: `Required for SLSA Level ${gap.level} compliance`,
     }));
   }
 
@@ -433,9 +434,9 @@ class SLSAValidator {
       recommendations.push({
         title: `Achieve SLSA Level ${nextLevel}`,
         priority: 'high',
-        steps: gaps.map(g => g.remediation),
+        steps: gaps.map((g) => g.remediation),
         estimatedEffort: 'Medium',
-        impact: `Improve supply chain security to Level ${nextLevel}`
+        impact: `Improve supply chain security to Level ${nextLevel}`,
       });
     }
 
@@ -445,7 +446,7 @@ class SLSAValidator {
         priority: 'critical',
         steps: ['Review and fix all validation errors'],
         estimatedEffort: 'High',
-        impact: 'Required for basic SLSA compliance'
+        impact: 'Required for basic SLSA compliance',
       });
     }
 
@@ -458,42 +459,36 @@ class SLSAValidator {
  */
 function handleToolCall(validator, name, args) {
   switch (name) {
-        case 'validate-provenance': {
-          const validated = ValidateProvenanceSchema.parse(args);
-          const result = validator.validateProvenance(
-            validated.provenance,
-            validated.level
-          );
-          return {
-            content: [{ type: 'text', text: JSON.stringify(result, null, 2) }]
-          };
-        }
+    case 'validate-provenance': {
+      const validated = ValidateProvenanceSchema.parse(args);
+      const result = validator.validateProvenance(validated.provenance, validated.level);
+      return {
+        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+      };
+    }
 
-        case 'check-slsa-compliance': {
-          const validated = CheckSLSAComplianceSchema.parse(args);
-          const result = validator.checkSLSACompliance(
-            validated.provenance,
-            validated.targetLevel
-          );
-          return {
-            content: [{ type: 'text', text: JSON.stringify(result, null, 2) }]
-          };
-        }
+    case 'check-slsa-compliance': {
+      const validated = CheckSLSAComplianceSchema.parse(args);
+      const result = validator.checkSLSACompliance(validated.provenance, validated.targetLevel);
+      return {
+        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+      };
+    }
 
-        case 'generate-compliance-report': {
-          const validated = GenerateComplianceReportSchema.parse(args);
-          const result = validator.generateComplianceReport(
-            validated.provenance,
-            validated.includeRemediation
-          );
-          return {
-            content: [{ type: 'text', text: JSON.stringify(result, null, 2) }]
-          };
-        }
+    case 'generate-compliance-report': {
+      const validated = GenerateComplianceReportSchema.parse(args);
+      const result = validator.generateComplianceReport(
+        validated.provenance,
+        validated.includeRemediation
+      );
+      return {
+        content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
+      };
+    }
 
-        default:
-          throw new McpError(ErrorCode.MethodNotFound, `Unknown tool: ${name}`);
-      }
+    default:
+      throw new McpError(ErrorCode.MethodNotFound, `Unknown tool: ${name}`);
+  }
 }
 
 /**
@@ -501,65 +496,65 @@ function handleToolCall(validator, name, args) {
  */
 function getToolDefinitions() {
   return [
-{
-        name: 'validate-provenance',
-        description: 'Validate SLSA provenance data for specified level',
-        inputSchema: {
-          type: 'object',
-          properties: {
-            provenance: {
-              type: 'object',
-              description: 'SLSA provenance object'
-            },
-            level: {
-              type: 'string',
-              enum: ['1', '2', '3', '4'],
-              default: '3',
-              description: 'SLSA level to validate against'
-            }
+    {
+      name: 'validate-provenance',
+      description: 'Validate SLSA provenance data for specified level',
+      inputSchema: {
+        type: 'object',
+        properties: {
+          provenance: {
+            type: 'object',
+            description: 'SLSA provenance object',
           },
-          required: ['provenance']
-        }
+          level: {
+            type: 'string',
+            enum: ['1', '2', '3', '4'],
+            default: '3',
+            description: 'SLSA level to validate against',
+          },
+        },
+        required: ['provenance'],
       },
-      {
-        name: 'check-slsa-compliance',
-        description: 'Check SLSA compliance for target level',
-        inputSchema: {
-          type: 'object',
-          properties: {
-            provenance: {
-              type: 'object',
-              description: 'SLSA provenance object'
-            },
-            targetLevel: {
-              type: 'string',
-              enum: ['1', '2', '3', '4'],
-              default: '3',
-              description: 'Target SLSA level'
-            }
+    },
+    {
+      name: 'check-slsa-compliance',
+      description: 'Check SLSA compliance for target level',
+      inputSchema: {
+        type: 'object',
+        properties: {
+          provenance: {
+            type: 'object',
+            description: 'SLSA provenance object',
           },
-          required: ['provenance']
-        }
+          targetLevel: {
+            type: 'string',
+            enum: ['1', '2', '3', '4'],
+            default: '3',
+            description: 'Target SLSA level',
+          },
+        },
+        required: ['provenance'],
       },
-      {
-        name: 'generate-compliance-report',
-        description: 'Generate comprehensive SLSA compliance report',
-        inputSchema: {
-          type: 'object',
-          properties: {
-            provenance: {
-              type: 'object',
-              description: 'SLSA provenance object'
-            },
-            includeRemediation: {
-              type: 'boolean',
-              default: true,
-              description: 'Include remediation recommendations'
-            }
+    },
+    {
+      name: 'generate-compliance-report',
+      description: 'Generate comprehensive SLSA compliance report',
+      inputSchema: {
+        type: 'object',
+        properties: {
+          provenance: {
+            type: 'object',
+            description: 'SLSA provenance object',
           },
-          required: ['provenance']
-        }
-      }
+          includeRemediation: {
+            type: 'boolean',
+            default: true,
+            description: 'Include remediation recommendations',
+          },
+        },
+        required: ['provenance'],
+      },
+    },
   ];
 }
 
@@ -581,7 +576,7 @@ async function main() {
   );
 
   server.setRequestHandler(ListToolsRequestSchema, () => ({
-    tools: getToolDefinitions()
+    tools: getToolDefinitions(),
   }));
 
   server.setRequestHandler(CallToolRequestSchema, (request) => {
@@ -593,7 +588,7 @@ async function main() {
       if (error instanceof z.ZodError) {
         throw new McpError(
           ErrorCode.InvalidParams,
-          `Invalid parameters: ${error.errors.map(e => e.message).join(', ')}`
+          `Invalid parameters: ${error.errors.map((e) => e.message).join(', ')}`
         );
       }
       // Wrap all other errors in McpError with InternalError code

@@ -1,25 +1,21 @@
 /**
  * 升級控制器 (Escalation Controller)
- * 
+ *
  * 提供進階升級系統的 REST API 端點
  * Provides REST API endpoints for advanced escalation system
  */
 
 import { Request, Response } from 'express';
+
+import { sendSuccess, sendError, sendValidationError, sendNotFound } from '../middleware/response';
 import { EscalationEngine } from '../services/escalation/escalation-engine';
+import { Priority } from '../types/assignment';
 import {
   EscalationTrigger,
   EscalationStatus,
   EscalationContext,
-  EscalationResolution
+  EscalationResolution,
 } from '../types/escalation';
-import { Priority } from '../types/assignment';
-import {
-  sendSuccess,
-  sendError,
-  sendValidationError,
-  sendNotFound
-} from '../middleware/response';
 
 export class EscalationController {
   private escalationEngine: EscalationEngine;
@@ -28,7 +24,7 @@ export class EscalationController {
     this.escalationEngine = new EscalationEngine({
       autoRetryLimit: 3,
       enableSmartRouting: true,
-      notificationEnabled: true
+      notificationEnabled: true,
     });
   }
 
@@ -38,13 +34,7 @@ export class EscalationController {
    */
   async createEscalation(req: Request, res: Response): Promise<void> {
     try {
-      const {
-        incidentId,
-        trigger,
-        priority,
-        context,
-        assignmentId
-      } = req.body;
+      const { incidentId, trigger, priority, context, assignmentId } = req.body;
 
       // 驗證必要欄位
       if (!incidentId || !trigger || !priority || !context) {
@@ -60,7 +50,7 @@ export class EscalationController {
         'CRITICAL_SEVERITY',
         'REPEATED_FAILURES',
         'SAFETY_CRITICAL',
-        'MANUAL_REQUEST'
+        'MANUAL_REQUEST',
       ];
 
       if (!validTriggers.includes(trigger)) {
@@ -150,7 +140,7 @@ export class EscalationController {
         'ASSIGNED',
         'IN_PROGRESS',
         'RESOLVED',
-        'CLOSED'
+        'CLOSED',
       ];
 
       if (!validStatuses.includes(status)) {
@@ -185,15 +175,15 @@ export class EscalationController {
       const { escalationId } = req.params;
       const resolution = req.body as EscalationResolution;
 
-      if (!resolution || !resolution.solutionType || !resolution.description || !resolution.implementedBy) {
-        sendValidationError(res, 'Missing required resolution fields: solutionType, description, implementedBy');
+      if (!resolution?.solutionType || !resolution.description || !resolution.implementedBy) {
+        sendValidationError(
+          res,
+          'Missing required resolution fields: solutionType, description, implementedBy'
+        );
         return;
       }
 
-      const resolvedEscalation = this.escalationEngine.resolveEscalation(
-        escalationId,
-        resolution
-      );
+      const resolvedEscalation = this.escalationEngine.resolveEscalation(escalationId, resolution);
 
       if (!resolvedEscalation) {
         sendNotFound(res, 'Escalation');
@@ -221,10 +211,7 @@ export class EscalationController {
         return;
       }
 
-      const newEscalation = this.escalationEngine.escalateFurther(
-        escalationId,
-        reason
-      );
+      const newEscalation = this.escalationEngine.escalateFurther(escalationId, reason);
 
       if (!newEscalation) {
         sendError(res, 'Cannot escalate further or escalation not found', { status: 400 });

@@ -129,10 +129,7 @@ export type {
 // Bot Engine Exports
 // ============================================================================
 
-export {
-  AdvisoryBotEngine,
-  DEFAULT_BOT_CONFIG,
-} from './services/advisory-bot.js';
+export { AdvisoryBotEngine, DEFAULT_BOT_CONFIG } from './services/advisory-bot.js';
 
 export type {
   PullRequestInfo,

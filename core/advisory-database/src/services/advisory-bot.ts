@@ -9,12 +9,7 @@
  * @license MIT
  */
 
-import {
-  AdvisoryBotConfig,
-  ValidationRule,
-  Advisory,
-  Ecosystem,
-} from '../types/advisory.js';
+import { AdvisoryBotConfig, ValidationRule, Advisory, Ecosystem } from '../types/advisory.js';
 
 /**
  * Default bot configuration matching GitHub Advisory Database patterns
@@ -33,7 +28,8 @@ export const DEFAULT_BOT_CONFIG: AdvisoryBotConfig = {
     staleLabel: 'Stale',
     exemptLabels: ['Keep'],
     staleMessage: `👋 This pull request has been marked as stale because it has been open with no activity. You can: comment on the issue or remove the stale label to hold stale off for a while, add the \`Keep\` label to hold stale off permanently, or do nothing. If you do nothing this pull request will be closed eventually by the stale bot. Please see CONTRIBUTING.md for more policy details.`,
-    closeMessage: '🔒 This pull request has been closed due to inactivity. Feel free to reopen or submit a new PR.',
+    closeMessage:
+      '🔒 This pull request has been closed due to inactivity. Feel free to reopen or submit a new PR.',
   },
   curationTeam: [],
   supportedEcosystems: [
@@ -151,9 +147,7 @@ export class AdvisoryBotEngine {
    */
   generateStagingBranchName(pr: PullRequestInfo): string {
     const pattern = this._config.stagingBranch.branchPattern;
-    return pattern
-      .replace('{author}', pr.author)
-      .replace('{pr_number}', pr.number.toString());
+    return pattern.replace('{author}', pr.author).replace('{pr_number}', pr.number.toString());
   }
 
   /**
@@ -169,7 +163,7 @@ export class AdvisoryBotEngine {
     }
 
     // Check if any advisory files are changed
-    return pr.files.some(f => this._isAdvisoryFile(f));
+    return pr.files.some((f) => this._isAdvisoryFile(f));
   }
 
   /**
@@ -224,13 +218,13 @@ export class AdvisoryBotEngine {
 
     // Check exempt labels
     const exemptLabels = this._config.stalePR.exemptLabels;
-    const hasExemptLabel = pr.labels.some(l => exemptLabels.includes(l));
+    const hasExemptLabel = pr.labels.some((l) => exemptLabels.includes(l));
     if (hasExemptLabel) {
       return {
         isStale: false,
         shouldClose: false,
         daysSinceActivity: 0,
-        exemptReason: `Has exempt label: ${pr.labels.find(l => exemptLabels.includes(l))}`,
+        exemptReason: `Has exempt label: ${pr.labels.find((l) => exemptLabels.includes(l))}`,
       };
     }
 
@@ -241,9 +235,8 @@ export class AdvisoryBotEngine {
     );
 
     const isStale = daysSinceActivity >= this._config.stalePR.staleDays;
-    const shouldClose = daysSinceActivity >= (
-      this._config.stalePR.staleDays + this._config.stalePR.closeDays
-    );
+    const shouldClose =
+      daysSinceActivity >= this._config.stalePR.staleDays + this._config.stalePR.closeDays;
 
     return {
       isStale,
@@ -320,7 +313,7 @@ export class AdvisoryBotEngine {
     }
 
     return {
-      valid: issues.filter(i => i.severity === 'error').length === 0,
+      valid: issues.filter((i) => i.severity === 'error').length === 0,
       issues,
     };
   }
@@ -332,10 +325,7 @@ export class AdvisoryBotEngine {
    * @param advisory - Advisory being submitted
    * @returns Curation actions to take
    */
-  generateCurationActions(
-    _pr: PullRequestInfo,
-    advisory: Advisory
-  ): CurationAction[] {
+  generateCurationActions(_pr: PullRequestInfo, advisory: Advisory): CurationAction[] {
     const actions: CurationAction[] = [];
     const validation = this.validateForCuration(advisory);
 
@@ -380,9 +370,7 @@ export class AdvisoryBotEngine {
    * @param ruleId - ID of the rule to remove
    */
   removeValidationRule(ruleId: string): void {
-    this._config.validationRules = this._config.validationRules.filter(
-      r => r.id !== ruleId
-    );
+    this._config.validationRules = this._config.validationRules.filter((r) => r.id !== ruleId);
   }
 
   // =========================================================================
@@ -510,17 +498,19 @@ jobs:
    */
   private _escapeYamlString(str: string): string {
     return str
-      .replace(/\\/g, '\\\\')  // Escape backslashes first
-      .replace(/"/g, '\\"')     // Escape double quotes
-      .replace(/\n/g, '\\n');   // Escape newlines
+      .replace(/\\/g, '\\\\') // Escape backslashes first
+      .replace(/"/g, '\\"') // Escape double quotes
+      .replace(/\n/g, '\\n'); // Escape newlines
   }
 
   /**
    * Check if a file path is an advisory file
    */
   private _isAdvisoryFile(filePath: string): boolean {
-    return filePath.startsWith('advisories/') ||
-           filePath.endsWith('.json') && filePath.includes('advisory');
+    return (
+      filePath.startsWith('advisories/') ||
+      (filePath.endsWith('.json') && filePath.includes('advisory'))
+    );
   }
 
   /**
@@ -529,8 +519,8 @@ jobs:
   private _formatValidationMessage(
     issues: Array<{ severity: 'error' | 'warning'; message: string }>
   ): string {
-    const errors = issues.filter(i => i.severity === 'error');
-    const warnings = issues.filter(i => i.severity === 'warning');
+    const errors = issues.filter((i) => i.severity === 'error');
+    const warnings = issues.filter((i) => i.severity === 'warning');
 
     let message = '';
 
