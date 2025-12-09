@@ -3,7 +3,7 @@ version: 1.0.0
 id: unmanned-island-knowledge-graph
 title: Unmanned Island System Knowledge Graph
 description: Knowledge graph representation of the repository structure and entities
-generated_at: '2025-12-09T01:43:47.292564Z'
+generated_at: '2025-12-09T02:31:30.339915Z'
 source_repo: .
 nodes:
 - id: system:unmanned-island
@@ -574,6 +574,12 @@ nodes:
   path: _codeql_detected_source_root/agent/code-analyzer
   properties:
     label_zh: 目錄
+- id: file:_codeql_detected_source_root:setup.py
+  type: module
+  label: setup.py
+  path: _codeql_detected_source_root/setup.py
+  properties:
+    label_zh: 模組
 - id: file:_codeql_detected_source_root:docker-compose.dev.yml
   type: config
   label: docker-compose.dev.yml
@@ -640,6 +646,12 @@ nodes:
   path: _codeql_detected_source_root/_codeql_detected_source_root/agent
   properties:
     label_zh: 模組
+- id: file:_codeql_detected_source_root:_codeql_detected_source_root:setup.py
+  type: module
+  label: setup.py
+  path: _codeql_detected_source_root/_codeql_detected_source_root/setup.py
+  properties:
+    label_zh: 模組
 - id: file:_codeql_detected_source_root:_codeql_detected_source_root:docker-compose.dev.yml
   type: config
   label: docker-compose.dev.yml
@@ -658,6 +670,12 @@ nodes:
   path: _codeql_detected_source_root/_codeql_detected_source_root/_codeql_detected_source_root
   properties:
     label_zh: 目錄
+- id: file:_codeql_detected_source_root:_codeql_detected_source_root:emergency_recovery.py
+  type: module
+  label: emergency_recovery.py
+  path: _codeql_detected_source_root/_codeql_detected_source_root/emergency_recovery.py
+  properties:
+    label_zh: 模組
 - id: dir:_codeql_detected_source_root:_codeql_detected_source_root:services
   type: directory
   label: services
@@ -716,6 +734,12 @@ nodes:
   type: directory
   label: ops
   path: _codeql_detected_source_root/_codeql_detected_source_root/ops
+  properties:
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:_codeql_detected_source_root:deployment
+  type: directory
+  label: deployment
+  path: _codeql_detected_source_root/_codeql_detected_source_root/deployment
   properties:
     label_zh: 目錄
 - id: dir:_codeql_detected_source_root:_codeql_detected_source_root:docker-templates
@@ -880,6 +904,12 @@ nodes:
   path: _codeql_detected_source_root/_codeql_detected_source_root/templates
   properties:
     label_zh: 目錄
+- id: file:_codeql_detected_source_root:emergency_recovery.py
+  type: module
+  label: emergency_recovery.py
+  path: _codeql_detected_source_root/emergency_recovery.py
+  properties:
+    label_zh: 模組
 - id: dir:_codeql_detected_source_root:services
   type: directory
   label: services
@@ -910,6 +940,12 @@ nodes:
   path: _codeql_detected_source_root/services/__init__.py
   properties:
     label_zh: 模組
+- id: dir:_codeql_detected_source_root:services:watchdog
+  type: directory
+  label: watchdog
+  path: _codeql_detected_source_root/services/watchdog
+  properties:
+    label_zh: 目錄
 - id: file:_codeql_detected_source_root:auto-fix-bot.yml
   type: config
   label: auto-fix-bot.yml
@@ -938,6 +974,12 @@ nodes:
   type: directory
   label: sync
   path: _codeql_detected_source_root/scripts/sync
+  properties:
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:scripts:k8s
+  type: directory
+  label: k8s
+  path: _codeql_detected_source_root/scripts/k8s
   properties:
     label_zh: 目錄
 - id: file:_codeql_detected_source_root:scripts:brand-replacer.py
@@ -1012,6 +1054,12 @@ nodes:
   path: _codeql_detected_source_root/tools
   properties:
     label_zh: 模組
+- id: dir:_codeql_detected_source_root:tools:ai
+  type: directory
+  label: ai
+  path: _codeql_detected_source_root/tools/ai
+  properties:
+    label_zh: 目錄
 - id: file:_codeql_detected_source_root:tools:generate-language-dashboard.py
   type: module
   label: generate-language-dashboard.py
@@ -1072,6 +1120,12 @@ nodes:
   path: _codeql_detected_source_root/tools/generate-migration-flow.py
   properties:
     label_zh: 模組
+- id: dir:_codeql_detected_source_root:tools:generators
+  type: directory
+  label: generators
+  path: _codeql_detected_source_root/tools/generators
+  properties:
+    label_zh: 目錄
 - id: dir:_codeql_detected_source_root:tools:evolution
   type: directory
   label: evolution
@@ -1216,6 +1270,24 @@ nodes:
   path: _codeql_detected_source_root/ops/migration
   properties:
     label_zh: 目錄
+- id: dir:_codeql_detected_source_root:deployment
+  type: directory
+  label: deployment
+  path: _codeql_detected_source_root/deployment
+  properties:
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:deployment:docker
+  type: directory
+  label: docker
+  path: _codeql_detected_source_root/deployment/docker
+  properties:
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:deployment:kubernetes
+  type: directory
+  label: kubernetes
+  path: _codeql_detected_source_root/deployment/kubernetes
+  properties:
+    label_zh: 目錄
 - id: dir:_codeql_detected_source_root:docker-templates
   type: directory
   label: docker-templates
@@ -1286,6 +1358,12 @@ nodes:
   type: directory
   label: architect
   path: _codeql_detected_source_root/automation/architect
+  properties:
+    label_zh: 目錄
+- id: dir:_codeql_detected_source_root:automation:pipelines
+  type: directory
+  label: pipelines
+  path: _codeql_detected_source_root/automation/pipelines
   properties:
     label_zh: 目錄
 - id: file:_codeql_detected_source_root:automation:zero_touch_deployment.py
@@ -1528,6 +1606,12 @@ nodes:
   path: _codeql_detected_source_root/core/tech_stack
   properties:
     label_zh: 目錄
+- id: dir:_codeql_detected_source_root:core:validators
+  type: directory
+  label: validators
+  path: _codeql_detected_source_root/core/validators
+  properties:
+    label_zh: 目錄
 - id: dir:_codeql_detected_source_root:core:yaml_module_system
   type: directory
   label: yaml_module_system
@@ -1540,6 +1624,12 @@ nodes:
   path: _codeql_detected_source_root/core/execution_architecture
   properties:
     label_zh: 目錄
+- id: file:_codeql_detected_source_root:core:plugin_system.py
+  type: module
+  label: plugin_system.py
+  path: _codeql_detected_source_root/core/plugin_system.py
+  properties:
+    label_zh: 模組
 - id: dir:_codeql_detected_source_root:core:island_ai_runtime
   type: directory
   label: island_ai_runtime
@@ -1634,6 +1724,12 @@ nodes:
   type: module
   label: context_understanding_engine.py
   path: _codeql_detected_source_root/core/context_understanding_engine.py
+  properties:
+    label_zh: 模組
+- id: file:_codeql_detected_source_root:core:contract_engine.py
+  type: module
+  label: contract_engine.py
+  path: _codeql_detected_source_root/core/contract_engine.py
   properties:
     label_zh: 模組
 - id: file:_codeql_detected_source_root:core:__init__.py
@@ -1774,6 +1870,12 @@ nodes:
   path: _codeql_detected_source_root/governance/sbom
   properties:
     label_zh: 目錄
+- id: dir:_codeql_detected_source_root:governance:principles
+  type: directory
+  label: principles
+  path: _codeql_detected_source_root/governance/principles
+  properties:
+    label_zh: 目錄
 - id: dir:_codeql_detected_source_root:governance:modules
   type: directory
   label: modules
@@ -1810,6 +1912,12 @@ nodes:
   path: _codeql_detected_source_root/tests
   properties:
     label_zh: 模組
+- id: dir:_codeql_detected_source_root:tests:integration
+  type: directory
+  label: integration
+  path: _codeql_detected_source_root/tests/integration
+  properties:
+    label_zh: 目錄
 - id: dir:_codeql_detected_source_root:tests:performance
   type: directory
   label: performance
@@ -1822,22 +1930,28 @@ nodes:
   path: _codeql_detected_source_root/tests/vectors
   properties:
     label_zh: 目錄
+- id: dir:_codeql_detected_source_root:tests:automation
+  type: subsystem
+  label: automation
+  path: _codeql_detected_source_root/tests/automation
+  properties:
+    label_zh: 子系統
 - id: dir:_codeql_detected_source_root:tests:unit
   type: directory
   label: unit
   path: _codeql_detected_source_root/tests/unit
   properties:
     label_zh: 目錄
+- id: file:_codeql_detected_source_root:tests:__init__.py
+  type: module
+  label: __init__.py
+  path: _codeql_detected_source_root/tests/__init__.py
+  properties:
+    label_zh: 模組
 - id: dir:_codeql_detected_source_root:config
   type: config
   label: config
   path: _codeql_detected_source_root/config
-  properties:
-    label_zh: 設定
-- id: file:_codeql_detected_source_root:config:virtual-experts.yaml
-  type: config
-  label: virtual-experts.yaml
-  path: _codeql_detected_source_root/config/agents/team/virtual-experts.yaml
   properties:
     label_zh: 設定
 - id: dir:_codeql_detected_source_root:config:autofix
@@ -1996,6 +2110,12 @@ nodes:
   path: _codeql_detected_source_root/config/builder-system-prompt.yaml
   properties:
     label_zh: 設定
+- id: file:_codeql_detected_source_root:config:recovery-system.yaml
+  type: config
+  label: recovery-system.yaml
+  path: _codeql_detected_source_root/config/recovery-system.yaml
+  properties:
+    label_zh: 設定
 - id: file:_codeql_detected_source_root:config:system-module-map.example.yaml
   type: config
   label: system-module-map.example.yaml
@@ -2014,6 +2134,12 @@ nodes:
   path: _codeql_detected_source_root/config/integrations-index.yaml
   properties:
     label_zh: 設定
+- id: dir:_codeql_detected_source_root:config:agents
+  type: directory
+  label: agents
+  path: _codeql_detected_source_root/config/agents
+  properties:
+    label_zh: 目錄
 - id: file:_codeql_detected_source_root:config:topology-mind-matrix.yaml
   type: config
   label: topology-mind-matrix.yaml
@@ -2030,6 +2156,12 @@ nodes:
   type: config
   label: ai-constitution.yaml
   path: _codeql_detected_source_root/config/ai-constitution.yaml
+  properties:
+    label_zh: 設定
+- id: file:_codeql_detected_source_root:config:instant-execution-pipeline.yaml
+  type: config
+  label: instant-execution-pipeline.yaml
+  path: _codeql_detected_source_root/config/instant-execution-pipeline.yaml
   properties:
     label_zh: 設定
 - id: file:_codeql_detected_source_root:config:cloud-agent-delegation.yml
@@ -2362,6 +2494,12 @@ nodes:
   path: _codeql_detected_source_root/templates/sync
   properties:
     label_zh: 目錄
+- id: dir:_codeql_detected_source_root:templates:yaml-patterns
+  type: directory
+  label: yaml-patterns
+  path: _codeql_detected_source_root/templates/yaml-patterns
+  properties:
+    label_zh: 目錄
 - id: dir:services
   type: directory
   label: services
@@ -2464,6 +2602,12 @@ nodes:
   path: services/agents/architecture-reasoner
   properties:
     label_zh: 目錄
+- id: dir:services:agents:recovery
+  type: directory
+  label: recovery
+  path: services/agents/recovery
+  properties:
+    label_zh: 目錄
 - id: dir:services:agents:dependency-manager
   type: directory
   label: dependency-manager
@@ -2500,6 +2644,24 @@ nodes:
   path: services/__init__.py
   properties:
     label_zh: 模組
+- id: dir:services:watchdog
+  type: directory
+  label: watchdog
+  path: services/watchdog
+  properties:
+    label_zh: 目錄
+- id: file:services:watchdog:system_watchdog.py
+  type: module
+  label: system_watchdog.py
+  path: services/watchdog/system_watchdog.py
+  properties:
+    label_zh: 模組
+- id: file:services:watchdog:__init__.py
+  type: module
+  label: __init__.py
+  path: services/watchdog/__init__.py
+  properties:
+    label_zh: 模組
 - id: dir:scripts
   type: directory
   label: scripts
@@ -2522,6 +2684,12 @@ nodes:
   type: directory
   label: sync
   path: scripts/sync
+  properties:
+    label_zh: 目錄
+- id: dir:scripts:k8s
+  type: directory
+  label: k8s
+  path: scripts/k8s
   properties:
     label_zh: 目錄
 - id: file:scripts:brand-replacer.py
@@ -3076,6 +3244,12 @@ nodes:
   path: .github/labeler.yml
   properties:
     label_zh: 設定
+- id: dir:.github:docs
+  type: document
+  label: docs
+  path: .github/docs
+  properties:
+    label_zh: 文件
 - id: dir:.github:agents
   type: directory
   label: agents
@@ -3256,6 +3430,24 @@ nodes:
   path: tools
   properties:
     label_zh: 模組
+- id: dir:tools:ai
+  type: directory
+  label: ai
+  path: tools/ai
+  properties:
+    label_zh: 目錄
+- id: file:tools:ai:governance_engine.py
+  type: module
+  label: governance_engine.py
+  path: tools/ai/governance_engine.py
+  properties:
+    label_zh: 模組
+- id: file:tools:ai:__init__.py
+  type: module
+  label: __init__.py
+  path: tools/ai/__init__.py
+  properties:
+    label_zh: 模組
 - id: file:tools:generate-language-dashboard.py
   type: module
   label: generate-language-dashboard.py
@@ -3416,6 +3608,36 @@ nodes:
   type: module
   label: generate-migration-flow.py
   path: tools/generate-migration-flow.py
+  properties:
+    label_zh: 模組
+- id: dir:tools:generators
+  type: directory
+  label: generators
+  path: tools/generators
+  properties:
+    label_zh: 目錄
+- id: file:tools:generators:contract_generator.py
+  type: module
+  label: contract_generator.py
+  path: tools/generators/contract_generator.py
+  properties:
+    label_zh: 模組
+- id: file:tools:generators:__init__.py
+  type: module
+  label: __init__.py
+  path: tools/generators/__init__.py
+  properties:
+    label_zh: 模組
+- id: file:tools:generators:validator_generator.py
+  type: module
+  label: validator_generator.py
+  path: tools/generators/validator_generator.py
+  properties:
+    label_zh: 模組
+- id: file:tools:generators:documentation_generator.py
+  type: module
+  label: documentation_generator.py
+  path: tools/generators/documentation_generator.py
   properties:
     label_zh: 模組
 - id: dir:tools:evolution
@@ -3742,6 +3964,30 @@ nodes:
   path: ops/migration/templates
   properties:
     label_zh: 目錄
+- id: dir:deployment
+  type: directory
+  label: deployment
+  path: deployment
+  properties:
+    label_zh: 目錄
+- id: dir:deployment:docker
+  type: directory
+  label: docker
+  path: deployment/docker
+  properties:
+    label_zh: 目錄
+- id: dir:deployment:kubernetes
+  type: directory
+  label: kubernetes
+  path: deployment/kubernetes
+  properties:
+    label_zh: 目錄
+- id: file:deployment:kubernetes:workflow-deployment.yaml
+  type: config
+  label: workflow-deployment.yaml
+  path: deployment/kubernetes/workflow-deployment.yaml
+  properties:
+    label_zh: 設定
 - id: dir:docker-templates
   type: directory
   label: docker-templates
@@ -4018,6 +4264,24 @@ nodes:
   path: automation/architect/scenarios
   properties:
     label_zh: 目錄
+- id: dir:automation:pipelines
+  type: directory
+  label: pipelines
+  path: automation/pipelines
+  properties:
+    label_zh: 目錄
+- id: file:automation:pipelines:instant_execution_pipeline.py
+  type: module
+  label: instant_execution_pipeline.py
+  path: automation/pipelines/instant_execution_pipeline.py
+  properties:
+    label_zh: 模組
+- id: file:automation:pipelines:__init__.py
+  type: module
+  label: __init__.py
+  path: automation/pipelines/__init__.py
+  properties:
+    label_zh: 模組
 - id: file:automation:zero_touch_deployment.py
   type: module
   label: zero_touch_deployment.py
@@ -4510,6 +4774,42 @@ nodes:
   path: core/tech_stack/__init__.py
   properties:
     label_zh: 模組
+- id: dir:core:validators
+  type: directory
+  label: validators
+  path: core/validators
+  properties:
+    label_zh: 目錄
+- id: file:core:validators:semantic_validator.py
+  type: module
+  label: semantic_validator.py
+  path: core/validators/semantic_validator.py
+  properties:
+    label_zh: 模組
+- id: file:core:validators:multi_layer_validator.py
+  type: module
+  label: multi_layer_validator.py
+  path: core/validators/multi_layer_validator.py
+  properties:
+    label_zh: 模組
+- id: file:core:validators:syntax_validator.py
+  type: module
+  label: syntax_validator.py
+  path: core/validators/syntax_validator.py
+  properties:
+    label_zh: 模組
+- id: file:core:validators:security_validator.py
+  type: module
+  label: security_validator.py
+  path: core/validators/security_validator.py
+  properties:
+    label_zh: 模組
+- id: file:core:validators:__init__.py
+  type: module
+  label: __init__.py
+  path: core/validators/__init__.py
+  properties:
+    label_zh: 模組
 - id: dir:core:yaml_module_system
   type: directory
   label: yaml_module_system
@@ -4598,6 +4898,12 @@ nodes:
   type: module
   label: __init__.py
   path: core/execution_architecture/__init__.py
+  properties:
+    label_zh: 模組
+- id: file:core:plugin_system.py
+  type: module
+  label: plugin_system.py
+  path: core/plugin_system.py
   properties:
     label_zh: 模組
 - id: dir:core:island_ai_runtime
@@ -5092,6 +5398,12 @@ nodes:
   path: core/context_understanding_engine.py
   properties:
     label_zh: 模組
+- id: file:core:contract_engine.py
+  type: module
+  label: contract_engine.py
+  path: core/contract_engine.py
+  properties:
+    label_zh: 模組
 - id: file:core:__init__.py
   type: module
   label: __init__.py
@@ -5252,6 +5564,12 @@ nodes:
   type: directory
   label: policies
   path: governance/policies
+  properties:
+    label_zh: 目錄
+- id: dir:governance:policies:workflow
+  type: directory
+  label: workflow
+  path: governance/policies/workflow
   properties:
     label_zh: 目錄
 - id: file:governance:policies:plugin-quality-gates.yaml
@@ -5542,6 +5860,12 @@ nodes:
   path: governance/sbom/signing-policy.yml
   properties:
     label_zh: 設定
+- id: dir:governance:principles
+  type: directory
+  label: principles
+  path: governance/principles
+  properties:
+    label_zh: 目錄
 - id: dir:governance:modules
   type: directory
   label: modules
@@ -5582,6 +5906,24 @@ nodes:
   type: module
   label: tests
   path: tests
+  properties:
+    label_zh: 模組
+- id: dir:tests:integration
+  type: directory
+  label: integration
+  path: tests/integration
+  properties:
+    label_zh: 目錄
+- id: file:tests:integration:test_recovery_system.py
+  type: module
+  label: test_recovery_system.py
+  path: tests/integration/test_recovery_system.py
+  properties:
+    label_zh: 模組
+- id: file:tests:integration:test_workflow_system.py
+  type: module
+  label: test_workflow_system.py
+  path: tests/integration/test_workflow_system.py
   properties:
     label_zh: 模組
 - id: dir:tests:performance
@@ -5632,6 +5974,18 @@ nodes:
   path: tests/vectors/cloud-agent-delegation
   properties:
     label_zh: 目錄
+- id: dir:tests:automation
+  type: subsystem
+  label: automation
+  path: tests/automation
+  properties:
+    label_zh: 子系統
+- id: file:tests:automation:test_framework_patterns.py
+  type: module
+  label: test_framework_patterns.py
+  path: tests/automation/test_framework_patterns.py
+  properties:
+    label_zh: 模組
 - id: dir:tests:unit
   type: directory
   label: unit
@@ -5642,6 +5996,12 @@ nodes:
   type: module
   label: load-test.js
   path: tests/unit/load-test.js
+  properties:
+    label_zh: 模組
+- id: file:tests:unit:test_validators.py
+  type: module
+  label: test_validators.py
+  path: tests/unit/test_validators.py
   properties:
     label_zh: 模組
 - id: dir:tests:unit:auto-fix-bot
@@ -5680,6 +6040,12 @@ nodes:
   path: tests/unit/phases
   properties:
     label_zh: 目錄
+- id: file:tests:unit:test_contract_engine.py
+  type: module
+  label: test_contract_engine.py
+  path: tests/unit/test_contract_engine.py
+  properties:
+    label_zh: 模組
 - id: file:tests:unit:test_deep_execution_system.py
   type: module
   label: test_deep_execution_system.py
@@ -5716,16 +6082,16 @@ nodes:
   path: tests/unit/cloud-agent-delegation
   properties:
     label_zh: 目錄
+- id: file:tests:__init__.py
+  type: module
+  label: __init__.py
+  path: tests/__init__.py
+  properties:
+    label_zh: 模組
 - id: dir:config
   type: config
   label: config
   path: config
-  properties:
-    label_zh: 設定
-- id: file:config:virtual-experts.yaml
-  type: config
-  label: virtual-experts.yaml
-  path: config/agents/team/virtual-experts.yaml
   properties:
     label_zh: 設定
 - id: dir:config:autofix
@@ -5938,6 +6304,12 @@ nodes:
   path: config/builder-system-prompt.yaml
   properties:
     label_zh: 設定
+- id: file:config:recovery-system.yaml
+  type: config
+  label: recovery-system.yaml
+  path: config/recovery-system.yaml
+  properties:
+    label_zh: 設定
 - id: file:config:system-module-map.example.yaml
   type: config
   label: system-module-map.example.yaml
@@ -5980,6 +6352,30 @@ nodes:
   path: config/integrations-index.yaml
   properties:
     label_zh: 設定
+- id: dir:config:agents
+  type: directory
+  label: agents
+  path: config/agents
+  properties:
+    label_zh: 目錄
+- id: dir:config:agents:team
+  type: directory
+  label: team
+  path: config/agents/team
+  properties:
+    label_zh: 目錄
+- id: dir:config:agents:schemas
+  type: directory
+  label: schemas
+  path: config/agents/schemas
+  properties:
+    label_zh: 目錄
+- id: dir:config:agents:profiles
+  type: directory
+  label: profiles
+  path: config/agents/profiles
+  properties:
+    label_zh: 目錄
 - id: file:config:topology-mind-matrix.yaml
   type: config
   label: topology-mind-matrix.yaml
@@ -5996,6 +6392,12 @@ nodes:
   type: config
   label: ai-constitution.yaml
   path: config/ai-constitution.yaml
+  properties:
+    label_zh: 設定
+- id: file:config:instant-execution-pipeline.yaml
+  type: config
+  label: instant-execution-pipeline.yaml
+  path: config/instant-execution-pipeline.yaml
   properties:
     label_zh: 設定
 - id: file:config:cloud-agent-delegation.yml
@@ -6802,12 +7204,6 @@ nodes:
   path: infra/config
   properties:
     label_zh: 設定
-- id: file:infra:config:virtual-experts.yaml
-  type: config
-  label: virtual-experts.yaml
-  path: infra/config/agents/team/virtual-experts.yaml
-  properties:
-    label_zh: 設定
 - id: dir:infra:config:autofix
   type: directory
   label: autofix
@@ -7136,6 +7532,12 @@ nodes:
   type: directory
   label: sync
   path: templates/sync
+  properties:
+    label_zh: 目錄
+- id: dir:templates:yaml-patterns
+  type: directory
+  label: yaml-patterns
+  path: templates/yaml-patterns
   properties:
     label_zh: 目錄
 - id: entity:autonomous-framework
@@ -7568,6 +7970,9 @@ edges:
   target: dir:_codeql_detected_source_root:agent:code-analyzer
   type: contains
 - source: dir:_codeql_detected_source_root
+  target: file:_codeql_detected_source_root:setup.py
+  type: contains
+- source: dir:_codeql_detected_source_root
   target: file:_codeql_detected_source_root:docker-compose.dev.yml
   type: contains
 - source: dir:_codeql_detected_source_root
@@ -7601,6 +8006,9 @@ edges:
   target: dir:_codeql_detected_source_root:_codeql_detected_source_root:agent
   type: contains
 - source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: file:_codeql_detected_source_root:_codeql_detected_source_root:setup.py
+  type: contains
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
   target: file:_codeql_detected_source_root:_codeql_detected_source_root:docker-compose.dev.yml
   type: contains
 - source: dir:_codeql_detected_source_root:_codeql_detected_source_root
@@ -7608,6 +8016,9 @@ edges:
   type: contains
 - source: dir:_codeql_detected_source_root:_codeql_detected_source_root
   target: dir:_codeql_detected_source_root:_codeql_detected_source_root:_codeql_detected_source_root
+  type: contains
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: file:_codeql_detected_source_root:_codeql_detected_source_root:emergency_recovery.py
   type: contains
 - source: dir:_codeql_detected_source_root:_codeql_detected_source_root
   target: dir:_codeql_detected_source_root:_codeql_detected_source_root:services
@@ -7638,6 +8049,9 @@ edges:
   type: contains
 - source: dir:_codeql_detected_source_root:_codeql_detected_source_root
   target: dir:_codeql_detected_source_root:_codeql_detected_source_root:ops
+  type: contains
+- source: dir:_codeql_detected_source_root:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:_codeql_detected_source_root:deployment
   type: contains
 - source: dir:_codeql_detected_source_root:_codeql_detected_source_root
   target: dir:_codeql_detected_source_root:_codeql_detected_source_root:docker-templates
@@ -7721,6 +8135,9 @@ edges:
   target: dir:_codeql_detected_source_root:_codeql_detected_source_root:templates
   type: contains
 - source: dir:_codeql_detected_source_root
+  target: file:_codeql_detected_source_root:emergency_recovery.py
+  type: contains
+- source: dir:_codeql_detected_source_root
   target: dir:_codeql_detected_source_root:services
   type: contains
 - source: dir:_codeql_detected_source_root:services
@@ -7734,6 +8151,9 @@ edges:
   type: contains
 - source: dir:_codeql_detected_source_root:services
   target: file:_codeql_detected_source_root:services:__init__.py
+  type: contains
+- source: dir:_codeql_detected_source_root:services
+  target: dir:_codeql_detected_source_root:services:watchdog
   type: contains
 - source: dir:_codeql_detected_source_root
   target: file:_codeql_detected_source_root:auto-fix-bot.yml
@@ -7749,6 +8169,9 @@ edges:
   type: contains
 - source: dir:_codeql_detected_source_root:scripts
   target: dir:_codeql_detected_source_root:scripts:sync
+  type: contains
+- source: dir:_codeql_detected_source_root:scripts
+  target: dir:_codeql_detected_source_root:scripts:k8s
   type: contains
 - source: dir:_codeql_detected_source_root:scripts
   target: file:_codeql_detected_source_root:scripts:brand-replacer.py
@@ -7787,6 +8210,9 @@ edges:
   target: dir:_codeql_detected_source_root:tools
   type: contains
 - source: dir:_codeql_detected_source_root:tools
+  target: dir:_codeql_detected_source_root:tools:ai
+  type: contains
+- source: dir:_codeql_detected_source_root:tools
   target: file:_codeql_detected_source_root:tools:generate-language-dashboard.py
   type: contains
 - source: dir:_codeql_detected_source_root:tools
@@ -7815,6 +8241,9 @@ edges:
   type: contains
 - source: dir:_codeql_detected_source_root:tools
   target: file:_codeql_detected_source_root:tools:generate-migration-flow.py
+  type: contains
+- source: dir:_codeql_detected_source_root:tools
+  target: dir:_codeql_detected_source_root:tools:generators
   type: contains
 - source: dir:_codeql_detected_source_root:tools
   target: dir:_codeql_detected_source_root:tools:evolution
@@ -7889,6 +8318,15 @@ edges:
   target: dir:_codeql_detected_source_root:ops:migration
   type: contains
 - source: dir:_codeql_detected_source_root
+  target: dir:_codeql_detected_source_root:deployment
+  type: contains
+- source: dir:_codeql_detected_source_root:deployment
+  target: dir:_codeql_detected_source_root:deployment:docker
+  type: contains
+- source: dir:_codeql_detected_source_root:deployment
+  target: dir:_codeql_detected_source_root:deployment:kubernetes
+  type: contains
+- source: dir:_codeql_detected_source_root
   target: dir:_codeql_detected_source_root:docker-templates
   type: contains
 - source: dir:_codeql_detected_source_root
@@ -7923,6 +8361,9 @@ edges:
   type: contains
 - source: dir:_codeql_detected_source_root:automation
   target: dir:_codeql_detected_source_root:automation:architect
+  type: contains
+- source: dir:_codeql_detected_source_root:automation
+  target: dir:_codeql_detected_source_root:automation:pipelines
   type: contains
 - source: dir:_codeql_detected_source_root:automation
   target: file:_codeql_detected_source_root:automation:zero_touch_deployment.py
@@ -8045,10 +8486,16 @@ edges:
   target: dir:_codeql_detected_source_root:core:tech_stack
   type: contains
 - source: dir:_codeql_detected_source_root:core
+  target: dir:_codeql_detected_source_root:core:validators
+  type: contains
+- source: dir:_codeql_detected_source_root:core
   target: dir:_codeql_detected_source_root:core:yaml_module_system
   type: contains
 - source: dir:_codeql_detected_source_root:core
   target: dir:_codeql_detected_source_root:core:execution_architecture
+  type: contains
+- source: dir:_codeql_detected_source_root:core
+  target: file:_codeql_detected_source_root:core:plugin_system.py
   type: contains
 - source: dir:_codeql_detected_source_root:core
   target: dir:_codeql_detected_source_root:core:island_ai_runtime
@@ -8097,6 +8544,9 @@ edges:
   type: contains
 - source: dir:_codeql_detected_source_root:core
   target: file:_codeql_detected_source_root:core:context_understanding_engine.py
+  type: contains
+- source: dir:_codeql_detected_source_root:core
+  target: file:_codeql_detected_source_root:core:contract_engine.py
   type: contains
 - source: dir:_codeql_detected_source_root:core
   target: file:_codeql_detected_source_root:core:__init__.py
@@ -8168,6 +8618,9 @@ edges:
   target: dir:_codeql_detected_source_root:governance:sbom
   type: contains
 - source: dir:_codeql_detected_source_root:governance
+  target: dir:_codeql_detected_source_root:governance:principles
+  type: contains
+- source: dir:_codeql_detected_source_root:governance
   target: dir:_codeql_detected_source_root:governance:modules
   type: contains
 - source: dir:_codeql_detected_source_root
@@ -8186,19 +8639,25 @@ edges:
   target: dir:_codeql_detected_source_root:tests
   type: contains
 - source: dir:_codeql_detected_source_root:tests
+  target: dir:_codeql_detected_source_root:tests:integration
+  type: contains
+- source: dir:_codeql_detected_source_root:tests
   target: dir:_codeql_detected_source_root:tests:performance
   type: contains
 - source: dir:_codeql_detected_source_root:tests
   target: dir:_codeql_detected_source_root:tests:vectors
   type: contains
 - source: dir:_codeql_detected_source_root:tests
+  target: dir:_codeql_detected_source_root:tests:automation
+  type: contains
+- source: dir:_codeql_detected_source_root:tests
   target: dir:_codeql_detected_source_root:tests:unit
+  type: contains
+- source: dir:_codeql_detected_source_root:tests
+  target: file:_codeql_detected_source_root:tests:__init__.py
   type: contains
 - source: dir:_codeql_detected_source_root
   target: dir:_codeql_detected_source_root:config
-  type: contains
-- source: dir:_codeql_detected_source_root:config
-  target: file:_codeql_detected_source_root:config:virtual-experts.yaml
   type: contains
 - source: dir:_codeql_detected_source_root:config
   target: dir:_codeql_detected_source_root:config:autofix
@@ -8279,6 +8738,9 @@ edges:
   target: file:_codeql_detected_source_root:config:builder-system-prompt.yaml
   type: contains
 - source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:recovery-system.yaml
+  type: contains
+- source: dir:_codeql_detected_source_root:config
   target: file:_codeql_detected_source_root:config:system-module-map.example.yaml
   type: contains
 - source: dir:_codeql_detected_source_root:config
@@ -8288,6 +8750,9 @@ edges:
   target: file:_codeql_detected_source_root:config:integrations-index.yaml
   type: contains
 - source: dir:_codeql_detected_source_root:config
+  target: dir:_codeql_detected_source_root:config:agents
+  type: contains
+- source: dir:_codeql_detected_source_root:config
   target: file:_codeql_detected_source_root:config:topology-mind-matrix.yaml
   type: contains
 - source: dir:_codeql_detected_source_root:config
@@ -8295,6 +8760,9 @@ edges:
   type: contains
 - source: dir:_codeql_detected_source_root:config
   target: file:_codeql_detected_source_root:config:ai-constitution.yaml
+  type: contains
+- source: dir:_codeql_detected_source_root:config
+  target: file:_codeql_detected_source_root:config:instant-execution-pipeline.yaml
   type: contains
 - source: dir:_codeql_detected_source_root:config
   target: file:_codeql_detected_source_root:config:cloud-agent-delegation.yml
@@ -8461,6 +8929,9 @@ edges:
 - source: dir:_codeql_detected_source_root:templates
   target: dir:_codeql_detected_source_root:templates:sync
   type: contains
+- source: dir:_codeql_detected_source_root:templates
+  target: dir:_codeql_detected_source_root:templates:yaml-patterns
+  type: contains
 - source: system:unmanned-island
   target: dir:services
   type: contains
@@ -8513,6 +8984,9 @@ edges:
   target: dir:services:agents:architecture-reasoner
   type: contains
 - source: dir:services:agents
+  target: dir:services:agents:recovery
+  type: contains
+- source: dir:services:agents
   target: dir:services:agents:dependency-manager
   type: contains
 - source: dir:services:agents
@@ -8530,6 +9004,15 @@ edges:
 - source: dir:services
   target: file:services:__init__.py
   type: contains
+- source: dir:services
+  target: dir:services:watchdog
+  type: contains
+- source: dir:services:watchdog
+  target: file:services:watchdog:system_watchdog.py
+  type: contains
+- source: dir:services:watchdog
+  target: file:services:watchdog:__init__.py
+  type: contains
 - source: system:unmanned-island
   target: dir:scripts
   type: contains
@@ -8541,6 +9024,9 @@ edges:
   type: contains
 - source: dir:scripts
   target: dir:scripts:sync
+  type: contains
+- source: dir:scripts
+  target: dir:scripts:k8s
   type: contains
 - source: dir:scripts
   target: file:scripts:brand-replacer.py
@@ -8819,6 +9305,9 @@ edges:
   target: file:.github:labeler.yml
   type: contains
 - source: dir:.github
+  target: dir:.github:docs
+  type: contains
+- source: dir:.github
   target: dir:.github:agents
   type: contains
 - source: dir:.github
@@ -8909,6 +9398,15 @@ edges:
   target: dir:tools
   type: contains
 - source: dir:tools
+  target: dir:tools:ai
+  type: contains
+- source: dir:tools:ai
+  target: file:tools:ai:governance_engine.py
+  type: contains
+- source: dir:tools:ai
+  target: file:tools:ai:__init__.py
+  type: contains
+- source: dir:tools
   target: file:tools:generate-language-dashboard.py
   type: contains
 - source: dir:tools
@@ -8988,6 +9486,21 @@ edges:
   type: contains
 - source: dir:tools
   target: file:tools:generate-migration-flow.py
+  type: contains
+- source: dir:tools
+  target: dir:tools:generators
+  type: contains
+- source: dir:tools:generators
+  target: file:tools:generators:contract_generator.py
+  type: contains
+- source: dir:tools:generators
+  target: file:tools:generators:__init__.py
+  type: contains
+- source: dir:tools:generators
+  target: file:tools:generators:validator_generator.py
+  type: contains
+- source: dir:tools:generators
+  target: file:tools:generators:documentation_generator.py
   type: contains
 - source: dir:tools
   target: dir:tools:evolution
@@ -9152,6 +9665,18 @@ edges:
   target: dir:ops:migration:templates
   type: contains
 - source: system:unmanned-island
+  target: dir:deployment
+  type: contains
+- source: dir:deployment
+  target: dir:deployment:docker
+  type: contains
+- source: dir:deployment
+  target: dir:deployment:kubernetes
+  type: contains
+- source: dir:deployment:kubernetes
+  target: file:deployment:kubernetes:workflow-deployment.yaml
+  type: contains
+- source: system:unmanned-island
   target: dir:docker-templates
   type: contains
 - source: system:unmanned-island
@@ -9288,6 +9813,15 @@ edges:
   type: contains
 - source: dir:automation:architect
   target: dir:automation:architect:scenarios
+  type: contains
+- source: dir:automation
+  target: dir:automation:pipelines
+  type: contains
+- source: dir:automation:pipelines
+  target: file:automation:pipelines:instant_execution_pipeline.py
+  type: contains
+- source: dir:automation:pipelines
+  target: file:automation:pipelines:__init__.py
   type: contains
 - source: dir:automation
   target: file:automation:zero_touch_deployment.py
@@ -9536,6 +10070,24 @@ edges:
   target: file:core:tech_stack:__init__.py
   type: contains
 - source: dir:core
+  target: dir:core:validators
+  type: contains
+- source: dir:core:validators
+  target: file:core:validators:semantic_validator.py
+  type: contains
+- source: dir:core:validators
+  target: file:core:validators:multi_layer_validator.py
+  type: contains
+- source: dir:core:validators
+  target: file:core:validators:syntax_validator.py
+  type: contains
+- source: dir:core:validators
+  target: file:core:validators:security_validator.py
+  type: contains
+- source: dir:core:validators
+  target: file:core:validators:__init__.py
+  type: contains
+- source: dir:core
   target: dir:core:yaml_module_system
   type: contains
 - source: dir:core:yaml_module_system
@@ -9579,6 +10131,9 @@ edges:
   type: contains
 - source: dir:core:execution_architecture
   target: file:core:execution_architecture:__init__.py
+  type: contains
+- source: dir:core
+  target: file:core:plugin_system.py
   type: contains
 - source: dir:core
   target: dir:core:island_ai_runtime
@@ -9827,6 +10382,9 @@ edges:
   target: file:core:context_understanding_engine.py
   type: contains
 - source: dir:core
+  target: file:core:contract_engine.py
+  type: contains
+- source: dir:core
   target: file:core:__init__.py
   type: contains
 - source: dir:core
@@ -9906,6 +10464,9 @@ edges:
   type: contains
 - source: dir:governance
   target: dir:governance:policies
+  type: contains
+- source: dir:governance:policies
+  target: dir:governance:policies:workflow
   type: contains
 - source: dir:governance:policies
   target: file:governance:policies:plugin-quality-gates.yaml
@@ -10052,6 +10613,9 @@ edges:
   target: file:governance:sbom:signing-policy.yml
   type: contains
 - source: dir:governance
+  target: dir:governance:principles
+  type: contains
+- source: dir:governance
   target: dir:governance:modules
   type: contains
 - source: dir:governance:modules
@@ -10071,6 +10635,15 @@ edges:
   type: contains
 - source: system:unmanned-island
   target: dir:tests
+  type: contains
+- source: dir:tests
+  target: dir:tests:integration
+  type: contains
+- source: dir:tests:integration
+  target: file:tests:integration:test_recovery_system.py
+  type: contains
+- source: dir:tests:integration
+  target: file:tests:integration:test_workflow_system.py
   type: contains
 - source: dir:tests
   target: dir:tests:performance
@@ -10097,10 +10670,19 @@ edges:
   target: dir:tests:vectors:cloud-agent-delegation
   type: contains
 - source: dir:tests
+  target: dir:tests:automation
+  type: contains
+- source: dir:tests:automation
+  target: file:tests:automation:test_framework_patterns.py
+  type: contains
+- source: dir:tests
   target: dir:tests:unit
   type: contains
 - source: dir:tests:unit
   target: file:tests:unit:load-test.js
+  type: contains
+- source: dir:tests:unit
+  target: file:tests:unit:test_validators.py
   type: contains
 - source: dir:tests:unit
   target: dir:tests:unit:auto-fix-bot
@@ -10121,6 +10703,9 @@ edges:
   target: dir:tests:unit:phases
   type: contains
 - source: dir:tests:unit
+  target: file:tests:unit:test_contract_engine.py
+  type: contains
+- source: dir:tests:unit
   target: file:tests:unit:test_deep_execution_system.py
   type: contains
 - source: dir:tests:unit
@@ -10138,11 +10723,11 @@ edges:
 - source: dir:tests:unit
   target: dir:tests:unit:cloud-agent-delegation
   type: contains
+- source: dir:tests
+  target: file:tests:__init__.py
+  type: contains
 - source: system:unmanned-island
   target: dir:config
-  type: contains
-- source: dir:config
-  target: file:config:virtual-experts.yaml
   type: contains
 - source: dir:config
   target: dir:config:autofix
@@ -10250,6 +10835,9 @@ edges:
   target: file:config:builder-system-prompt.yaml
   type: contains
 - source: dir:config
+  target: file:config:recovery-system.yaml
+  type: contains
+- source: dir:config
   target: file:config:system-module-map.example.yaml
   type: contains
 - source: dir:config
@@ -10271,6 +10859,18 @@ edges:
   target: file:config:integrations-index.yaml
   type: contains
 - source: dir:config
+  target: dir:config:agents
+  type: contains
+- source: dir:config:agents
+  target: dir:config:agents:team
+  type: contains
+- source: dir:config:agents
+  target: dir:config:agents:schemas
+  type: contains
+- source: dir:config:agents
+  target: dir:config:agents:profiles
+  type: contains
+- source: dir:config
   target: file:config:topology-mind-matrix.yaml
   type: contains
 - source: dir:config
@@ -10278,6 +10878,9 @@ edges:
   type: contains
 - source: dir:config
   target: file:config:ai-constitution.yaml
+  type: contains
+- source: dir:config
+  target: file:config:instant-execution-pipeline.yaml
   type: contains
 - source: dir:config
   target: file:config:cloud-agent-delegation.yml
@@ -10682,9 +11285,6 @@ edges:
   target: dir:infra:config
   type: contains
 - source: dir:infra:config
-  target: file:infra:config:virtual-experts.yaml
-  type: contains
-- source: dir:infra:config
   target: dir:infra:config:autofix
   type: contains
 - source: dir:infra:config
@@ -10849,6 +11449,9 @@ edges:
 - source: dir:templates
   target: dir:templates:sync
   type: contains
+- source: dir:templates
+  target: dir:templates:yaml-patterns
+  type: contains
 - source: system:unmanned-island
   target: entity:autonomous-framework
   type: contains
@@ -10919,19 +11522,19 @@ edges:
   target: config:config:unified-config-index.yaml
   type: configures
 statistics:
-  total_nodes: 1211
-  total_edges: 1210
+  total_nodes: 1278
+  total_edges: 1277
   nodes_by_type:
     system: 1
-    directory: 524
-    module: 323
-    config: 318
-    subsystem: 22
-    document: 7
+    directory: 556
+    module: 353
+    config: 320
+    subsystem: 24
+    document: 8
     capability: 15
     component: 1
   edges_by_type:
-    contains: 1191
+    contains: 1258
     provides: 15
     configures: 4
 meta:
