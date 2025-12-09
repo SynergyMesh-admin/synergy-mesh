@@ -270,7 +270,7 @@ describe('Error Middleware', () => {
     it('should include request context in error response', () => {
       mockRequest.method = 'POST';
       mockRequest.url = '/api/v1/test';
-      const error = createError.badRequest('Invalid data');
+      const error = createError.validation('Invalid data');
 
       errorMiddleware(
         error,

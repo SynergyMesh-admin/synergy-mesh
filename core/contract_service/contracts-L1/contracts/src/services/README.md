@@ -46,7 +46,7 @@ export class SomeService {
 
   private validateBusinessRules(input: SomeInput): void {
     if (!this.meetsRequirement(input)) {
-      throw createError.badRequest('Business rule violated');
+      throw createError.validation('Business rule violated');
     }
   }
 
@@ -385,7 +385,7 @@ export class ExampleService {
 
   private validateInput(input: ExampleInput): void {
     if (!input.name) {
-      throw createError.badRequest('Name is required');
+      throw createError.validation('Name is required');
     }
   }
 
