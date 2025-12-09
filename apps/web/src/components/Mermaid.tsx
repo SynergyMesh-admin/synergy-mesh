@@ -4,7 +4,7 @@ import mermaid from 'mermaid';
 mermaid.initialize({
   startOnLoad: true,
   theme: 'dark',
-  securityLevel: 'loose',
+  securityLevel: 'strict', // Security: Changed from 'loose' to 'strict' to prevent XSS
   themeVariables: {
     primaryColor: '#3b82f6',
     primaryTextColor: '#fff',
@@ -24,8 +24,21 @@ export default function Mermaid({ chart }: MermaidProps) {
 
   useEffect(() => {
     if (ref.current) {
-      ref.current.innerHTML = chart;
-      mermaid.contentLoaded();
+      // Security: Use textContent first to sanitize, then let Mermaid render safely
+      // This prevents direct HTML injection while allowing Mermaid to parse the diagram
+      ref.current.textContent = chart;
+      // Use mermaid.render with unique ID for better security
+      const id = `mermaid-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+      mermaid.render(id, chart).then(({ svg }) => {
+        if (ref.current) {
+          ref.current.innerHTML = svg;
+        }
+      }).catch(err => {
+        console.error('Mermaid rendering error:', err);
+        if (ref.current) {
+          ref.current.textContent = 'Error rendering diagram';
+        }
+      });
     }
   }, [chart]);
 

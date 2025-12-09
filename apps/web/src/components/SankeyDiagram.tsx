@@ -20,8 +20,18 @@ export default function SankeyDiagram({ data }: SankeyDiagramProps) {
     if (ref.current && data.length > 0) {
       // Generate Sankey diagram from data
       const sankeyChart = generateSankeyChart(data);
-      ref.current.innerHTML = sankeyChart;
-      mermaid.contentLoaded();
+      // Security: Use mermaid.render for safer rendering instead of innerHTML
+      const id = `sankey-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+      mermaid.render(id, sankeyChart).then(({ svg }) => {
+        if (ref.current) {
+          ref.current.innerHTML = svg;
+        }
+      }).catch(err => {
+        console.error('Sankey diagram rendering error:', err);
+        if (ref.current) {
+          ref.current.textContent = 'Error rendering diagram';
+        }
+      });
     }
   }, [data]);
 
@@ -32,14 +42,21 @@ export default function SankeyDiagram({ data }: SankeyDiagramProps) {
   );
 }
 
+function sanitizeString(str: string): string {
+  // Security: Sanitize strings to prevent injection attacks
+  // Remove any characters that could break Mermaid syntax
+  return String(str).replace(/[<>"'`\n\r]/g, '_');
+}
+
 function generateSankeyChart(data: SankeyNode[]): string {
   // Group by source layer, language, and fix target
   const flows = data.map(node => {
     const count = node.count || 1;
-    const source = `${node.sourceLayer}`;
-    const language = `${node.language}`;
-    const violation = node.violationType;
-    const target = node.fixTarget;
+    // Security: Sanitize all user-provided strings
+    const source = sanitizeString(node.sourceLayer);
+    const language = sanitizeString(node.language);
+    const violation = sanitizeString(node.violationType);
+    const target = sanitizeString(node.fixTarget);
     
     return `${source},${language},${count}\n${language},${violation},${count}\n${violation},${target},${count}`;
   }).join('\n');
