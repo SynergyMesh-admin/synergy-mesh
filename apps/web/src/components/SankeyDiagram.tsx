@@ -20,8 +20,8 @@ export default function SankeyDiagram({ data }: SankeyDiagramProps) {
     if (ref.current && data.length > 0) {
       // Generate Sankey diagram from data
       const sankeyChart = generateSankeyChart(data);
-      // Security: Use mermaid.render for safer rendering instead of innerHTML
-      const id = `sankey-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+      // Security: Use mermaid.render for safer rendering with unique IDs
+      const id = `sankey-${Date.now()}-${Math.random().toString(36).substring(2, 11)}`;
       mermaid.render(id, sankeyChart).then(({ svg }) => {
         if (ref.current) {
           ref.current.innerHTML = svg;
@@ -43,16 +43,21 @@ export default function SankeyDiagram({ data }: SankeyDiagramProps) {
 }
 
 function sanitizeString(str: string): string {
-  // Security: Sanitize strings to prevent injection attacks
-  // Remove any characters that could break Mermaid syntax
-  return String(str).replace(/[<>"'`\n\r]/g, '_');
+  // Security: Escape dangerous characters while preserving valid Mermaid syntax
+  // Only escape characters that could lead to XSS or syntax breaking
+  return String(str)
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
 
 function generateSankeyChart(data: SankeyNode[]): string {
   // Group by source layer, language, and fix target
   const flows = data.map(node => {
     const count = node.count || 1;
-    // Security: Sanitize all user-provided strings
+    // Security: Sanitize all user-provided strings to prevent XSS
+    // Note: Mermaid with strict security level provides additional protection
     const source = sanitizeString(node.sourceLayer);
     const language = sanitizeString(node.language);
     const violation = sanitizeString(node.violationType);

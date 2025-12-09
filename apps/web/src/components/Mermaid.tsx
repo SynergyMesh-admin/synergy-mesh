@@ -24,11 +24,9 @@ export default function Mermaid({ chart }: MermaidProps) {
 
   useEffect(() => {
     if (ref.current) {
-      // Security: Use textContent first to sanitize, then let Mermaid render safely
-      // This prevents direct HTML injection while allowing Mermaid to parse the diagram
-      ref.current.textContent = chart;
-      // Use mermaid.render with unique ID for better security
-      const id = `mermaid-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+      // Security: Use mermaid.render with strict security level for safe rendering
+      // The strict security level handles sanitization internally
+      const id = `mermaid-${Date.now()}-${Math.random().toString(36).substring(2, 11)}`;
       mermaid.render(id, chart).then(({ svg }) => {
         if (ref.current) {
           ref.current.innerHTML = svg;
