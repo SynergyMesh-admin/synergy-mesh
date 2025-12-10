@@ -1,6 +1,6 @@
 # Refactor Playbook: services/
 
-**Generated:** 2025-12-09T00:57:02.161905  
+**Generated:** 2025-12-10T00:58:26.990810  
 **Cluster Score:** 82  
 **Status:** Draft (LLM generation required for complete playbook)
 
@@ -112,6 +112,10 @@ services/
 │   │   └── README.md
 │   ├── orchestrator/
 │   │   └── README.md
+│   ├── recovery/
+│   │   ├── README.md
+│   │   ├── __init__.py
+│   │   └── phoenix_agent.py
 │   ├── vulnerability-detector/
 │   │   └── README.md
 │   ├── README.md
@@ -142,6 +146,10 @@ services/
 │   ├── slsa-validator.js
 │   ├── test-generator.js
 │   └── tsconfig.json
+├── watchdog/
+│   ├── README.md
+│   ├── __init__.py
+│   └── system_watchdog.py
 ├── README.md
 └── __init__.py
 ```
@@ -156,8 +164,8 @@ services/
 - `services/_scratch/README.md` — 說明文檔
 - `services/agents/README.md` — 說明文檔
 - `services/agents/architecture-reasoner/README.md` — 說明文檔
-- `services/agents/dependency-manager/README.md` — 說明文檔
-- `services/agents/dependency-manager/tests/__init__.py` — Python 套件初始化
+- `services/agents/recovery/README.md` — 說明文檔
+- `services/agents/recovery/__init__.py` — Python 套件初始化
 
 ---
 

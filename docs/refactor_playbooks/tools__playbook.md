@@ -1,6 +1,6 @@
 # Refactor Playbook: tools/
 
-**Generated:** 2025-12-09T00:57:02.174116  
+**Generated:** 2025-12-10T00:58:27.003718  
 **Cluster Score:** 50  
 **Status:** Draft (LLM generation required for complete playbook)
 
@@ -97,9 +97,13 @@ tools/
 ├── _scratch/
 │   ├── .gitkeep
 │   └── README.md
+├── ai/
+│   ├── __init__.py
+│   └── governance_engine.py
 ├── automation/
 │   ├── engines/
 │   │   ├── __init__.py
+│   │   ├── baseline_validation_engine.py
 │   │   ├── generation_engine.py
 │   │   ├── integration_automation_engine.py
 │   │   ├── refactor_automation_engine.py
@@ -132,6 +136,11 @@ tools/
 │   └── validate_index.py
 ├── evolution/
 │   └── generate_evolution_report.py
+├── generators/
+│   ├── __init__.py
+│   ├── contract_generator.py
+│   ├── documentation_generator.py
+│   └── validator_generator.py
 ├── governance/
 │   ├── check-language-policy.py
 │   ├── generate-consolidated-report.py
@@ -185,23 +194,21 @@ tools/
 ├── generate-hotspot-heatmap.py
 ├── generate-language-dashboard.py
 ├── generate-migration-flow.py
-├── generate-refactor-playbook.py
-├── generate-sankey-data.py
-└── ... (8 more items)
+└── ... (10 more items)
 ```
 
 ### 檔案說明
 
 - `tools/README.md` — 說明文檔
+- `tools/ai/__init__.py` — Python 套件初始化
 - `tools/refactor/__init__.py` — Python 套件初始化
 - `tools/scripts/README.md` — 說明文檔
+- `tools/generators/__init__.py` — Python 套件初始化
 - `tools/cli/README.md` — 說明文檔
 - `tools/cli/package.json` — Node.js 專案配置
 - `tools/cli/tsconfig.json` — TypeScript 編譯配置
 - `tools/cli/src/index.ts` — 模組入口點
 - `tools/_scratch/README.md` — 說明文檔
-- `tools/automation/__init__.py` — Python 套件初始化
-- `tools/automation/engines/__init__.py` — Python 套件初始化
 
 ---
 

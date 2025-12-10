@@ -1,6 +1,6 @@
 # Refactor Playbook: core/
 
-**Generated:** 2025-12-09T00:57:02.156655  
+**Generated:** 2025-12-10T00:58:26.986043  
 **Cluster Score:** 75  
 **Status:** Draft (LLM generation required for complete playbook)
 
@@ -324,20 +324,18 @@ core/
 │   ├── system_orchestrator.py
 │   ├── unified_controller.py
 │   └── work_configuration_manager.py
+├── validators/
+│   ├── __init__.py
+│   ├── multi_layer_validator.py
+│   ├── security_validator.py
+│   ├── semantic_validator.py
+│   └── syntax_validator.py
 ├── virtual_experts/
 │   ├── __init__.py
 │   ├── domain_experts.py
 │   ├── expert_base.py
 │   └── expert_team.py
-├── yaml_module_system/
-│   ├── __init__.py
-│   ├── audit_trail.py
-│   ├── ci_verification_pipeline.py
-│   ├── policy_gate.py
-│   ├── slsa_compliance.py
-│   ├── yaml_module_definition.py
-│   └── yaml_schema_validator.py
-└── ... (8 more items)
+└── ... (11 more items)
 ```
 
 ### 檔案說明
@@ -350,8 +348,8 @@ core/
 - `core/training_system/__init__.py` — Python 套件初始化
 - `core/mcp_servers_enhanced/__init__.py` — Python 套件初始化
 - `core/tech_stack/__init__.py` — Python 套件初始化
+- `core/validators/__init__.py` — Python 套件初始化
 - `core/yaml_module_system/__init__.py` — Python 套件初始化
-- `core/execution_architecture/README.md` — 說明文檔
 
 ---
 

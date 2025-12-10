@@ -1,6 +1,6 @@
 # Refactor Playbook: automation/
 
-**Generated:** 2025-12-09T00:57:02.163833  
+**Generated:** 2025-12-10T00:58:26.992720  
 **Cluster Score:** 60  
 **Status:** Draft (LLM generation required for complete playbook)
 
@@ -145,6 +145,7 @@ automation/
 │   │   ├── README.md
 │   │   ├── flight_controller.cpp
 │   │   ├── package.xml
+│   │   ├── ros2_flight_control.hpp
 │   │   ├── system_hal.c
 │   │   └── system_hal.h
 │   ├── cost-management/
@@ -240,6 +241,10 @@ automation/
 │   ├── pyrightconfig.json
 │   ├── pytest.ini
 │   └── requirements.txt
+├── pipelines/
+│   ├── README.md
+│   ├── __init__.py
+│   └── instant_execution_pipeline.py
 ├── README.md
 ├── self_awareness_report.py
 └── zero_touch_deployment.py

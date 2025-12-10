@@ -1,6 +1,6 @@
 # Refactor Playbook: apps/
 
-**Generated:** 2025-12-09T00:57:02.171406  
+**Generated:** 2025-12-10T00:58:27.000979  
 **Cluster Score:** 68  
 **Status:** Draft (LLM generation required for complete playbook)
 
@@ -147,6 +147,7 @@ apps/
 - `apps/web/README.md` — 說明文檔
 - `apps/web/package.json` — Node.js 專案配置
 - `apps/web/tsconfig.json` — TypeScript 編譯配置
+- `apps/web/src/components/ErrorBoundary/index.ts` — 模組入口點
 - `apps/web-backend/tests/__init__.py` — Python 套件初始化
 - `apps/_scratch/README.md` — 說明文檔
 

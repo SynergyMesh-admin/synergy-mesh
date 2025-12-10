@@ -1,6 +1,6 @@
 # Refactor Playbook: autonomous/
 
-**Generated:** 2025-12-09T00:57:02.167671  
+**Generated:** 2025-12-10T00:58:26.996613  
 **Cluster Score:** 45  
 **Status:** Draft (LLM generation required for complete playbook)
 

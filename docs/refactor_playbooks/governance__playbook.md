@@ -1,6 +1,6 @@
 # Refactor Playbook: governance/
 
-**Generated:** 2025-12-09T00:57:02.168130  
+**Generated:** 2025-12-10T00:58:26.997060  
 **Cluster Score:** 55  
 **Status:** Draft (LLM generation required for complete playbook)
 
@@ -97,12 +97,45 @@ governance/
 ├── _scratch/
 │   ├── .gitkeep
 │   └── README.md
+├── api-governance/
+│   ├── config/
+│   │   └── api-policy.yaml
+│   ├── schemas/
+│   │   └── api-schema.json
+│   └── README.md
 ├── architecture/
 │   ├── README.md
 │   └── layers-domains.yaml
+├── architecture-governance/
+│   ├── config/
+│   │   └── architecture-policy.yaml
+│   ├── schemas/
+│   │   └── architecture-schema.json
+│   └── README.md
 ├── audit/
 │   ├── append-only-log-client.js
 │   └── format.yaml
+├── audit-governance/
+│   ├── AUTOMATION_ENGINE_README.md
+│   ├── README.md
+│   ├── __init__.py
+│   ├── audit-framework.yaml
+│   ├── audit-plan-annual.yaml
+│   └── automation_engine.py
+├── automation/
+│   ├── coordinator/
+│   │   ├── __init__.py
+│   │   └── engine_coordinator.py
+│   ├── engines/
+│   │   ├── __init__.py
+│   │   └── dimension_automation_engine.py
+│   ├── README.md
+│   ├── SYSTEM_OVERVIEW.md
+│   ├── __init__.py
+│   ├── deploy_dimension_engines.py
+│   ├── governance_automation_launcher.py
+│   ├── integrated_launcher.py
+│   └── test_automation_system.py
 ├── behavior-contracts/
 │   ├── README.md
 │   ├── apps.web.ui.yaml
@@ -117,95 +150,99 @@ governance/
 │   ├── core.unified_integration.yaml
 │   ├── island_ai.yaml
 │   └── services.mcp.yaml
+├── change-governance/
+│   ├── AUTOMATION_ENGINE_README.md
+│   ├── README.md
+│   ├── __init__.py
+│   ├── automation_engine.py
+│   ├── change-classification.yaml
+│   ├── change-control-matrix.yaml
+│   └── change-processes.yaml
+├── common/
+│   ├── schemas/
+│   │   ├── config.schema.json
+│   │   ├── dependency.schema.json
+│   │   ├── framework.schema.json
+│   │   └── policy.schema.json
+│   ├── tools/
+│   │   ├── dependency_analyzer.py
+│   │   ├── governance_policy_checker.py
+│   │   ├── schema_validator.py
+│   │   └── validate_governance_matrix.py
+│   └── README.md
+├── compliance-governance/
+│   ├── AUTOMATION_ENGINE_README.md
+│   ├── README.md
+│   ├── __init__.py
+│   ├── automation_engine.py
+│   ├── compliance-check-rules.yaml
+│   └── compliance-standards.yaml
+├── cost-management-governance/
+│   ├── config/
+│   │   └── cost-policy.yaml
+│   ├── schemas/
+│   │   └── cost-schema.json
+│   └── README.md
+├── data-governance/
+│   ├── config/
+│   │   └── data-policy.yaml
+│   ├── schemas/
+│   │   └── data-schema.json
+│   └── README.md
+├── decision-governance/
+│   ├── AUTOMATION_ENGINE_README.md
+│   ├── README.md
+│   ├── __init__.py
+│   ├── automation_engine.py
+│   ├── decision-authority-matrix.yaml
+│   ├── decision-framework.yaml
+│   └── decision-processes.yaml
 ├── deployment/
 │   └── matechat-services.yml
+├── docs-governance/
+│   ├── config/
+│   │   └── docs-policy.yaml
+│   └── README.md
 ├── environment-matrix/
 │   ├── LANGUAGE_DIMENSION_MAPPING.md
 │   └── module-environment-matrix.yml
-├── modules/
+├── governance-architecture/
+│   ├── AUTOMATION_ENGINE_README.md
 │   ├── README.md
-│   └── core.unified_integration.yaml
-├── policies/
-│   ├── autonomous/
-│   │   └── uav_ad.rego
-│   ├── compliance/
-│   │   └── compliance-standards.yaml
-│   ├── conftest/
-│   │   ├── matechat-integration/
-│   │   └── naming_policy.rego
-│   ├── security/
-│   │   ├── audit-policy.yaml
-│   │   ├── hlp-executor-security-policy.yaml
-│   │   └── rbac-role-matrix.yaml
-│   ├── architecture-rules.yaml
-│   ├── base-policies.yaml
-│   ├── base-policy.yaml
-│   ├── ci-policy-gate.yaml
-│   ├── cli-safe-mode.rego
-│   ├── data-privacy-policy.yaml
-│   ├── manifest-policies.rego
-│   ├── namespace-naming-policy.yaml
-│   └── plugin-quality-gates.yaml
-├── registry/
-│   ├── plugins/
-│   │   └── hlp-executor-core.yaml
-│   ├── module-A.yaml
-│   ├── module-contracts-l1.yaml
-│   ├── schema.json
-│   └── services.yaml
-├── rules/
-│   └── language-policy.yml
-├── sbom/
-│   ├── docs-provenance.json
-│   ├── provenance.json
-│   ├── signing-policy.yml
-│   └── synergymesh.spdx.json
-├── schemas/
-│   ├── mndoc/
-│   │   ├── entity-component-collection.schema.json
-│   │   ├── entity-component.schema.json
-│   │   ├── entity-configuration.schema.json
-│   │   ├── entity-governance.schema.json
-│   │   ├── entity-subsystem.schema.json
-│   │   ├── entity-system.schema.json
-│   │   ├── knowledge-graph.schema.json
-│   │   ├── mapping-rules.schema.json
-│   │   ├── mndoc-index.schema.json
-│   │   └── mndoc.schema.json
-│   ├── ai-constitution.schema.json
-│   ├── auto-fix-bot-v2.schema.json
-│   ├── cloud-agent-delegation.schema.json
-│   ├── code-analysis.schema.json
-│   ├── dependencies.schema.json
-│   ├── docs-index.schema.json
-│   ├── environment.schema.json
-│   ├── namespace-labels.schema.json
-│   ├── osv-advisory.schema.json
-│   ├── plugin-specification.schema.json
-│   ├── repair.schema.json
-│   ├── safety-mechanisms.schema.json
-│   ├── state-machine.schema.json
-│   ├── virtual-experts.schema.json
-│   └── vulnerability.schema.json
-├── ARCHITECTURE_GOVERNANCE_MATRIX.md
-├── README.md
-├── ai-refactor-suggestions.md
-├── architecture-health.yaml
-├── hotspot-data.json
-├── language-governance-report.md
-├── language-naming-rules.yaml
-├── mapping-rules.yaml
-└── ... (4 more items)
+│   ├── __init__.py
+│   ├── automation_engine.py
+│   ├── governance-model.yaml
+│   ├── governance-principles.yaml
+│   └── organizational-structure.yaml
+├── governance-culture/
+│   ├── AUTOMATION_ENGINE_README.md
+│   ├── README.md
+│   ├── __init__.py
+│   ├── automation_engine.py
+│   ├── capability-model.yaml
+│   └── governance-values.yaml
+├── governance-improvement/
+│   ├── AUTOMATION_ENGINE_README.md
+│   ├── README.md
+│   ├── __init__.py
+│   ├── automation_engine.py
+│   ├── improvement-identification.yaml
+│   └── improvement-planning.yaml
+└── ... (36 more items)
 ```
 
 ### 檔案說明
 
 - `governance/README.md` — 說明文檔
 - `governance/policies/conftest/matechat-integration/README.md` — 說明文檔
-- `governance/architecture/README.md` — 說明文檔
-- `governance/_scratch/README.md` — 說明文檔
-- `governance/behavior-contracts/README.md` — 說明文檔
-- `governance/modules/README.md` — 說明文檔
+- `governance/architecture-governance/README.md` — 說明文檔
+- `governance/governance-tools/README.md` — 說明文檔
+- `governance/governance-tools/__init__.py` — Python 套件初始化
+- `governance/performance-governance/README.md` — 說明文檔
+- `governance/performance-governance/__init__.py` — Python 套件初始化
+- `governance/audit-governance/README.md` — 說明文檔
+- `governance/audit-governance/__init__.py` — Python 套件初始化
+- `governance/testing-governance/README.md` — 說明文檔
 
 ---
 
