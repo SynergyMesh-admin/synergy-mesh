@@ -12,6 +12,7 @@ This directory contains the private custom agents architecture for the SynergyMe
 .github-private/
 ├── README.md                    # 此文件 (This file)
 ├── agents/                      # 自訂代理程式定義
+│   ├── synergy-mesh-administrator.agent.md # 系統管理代理
 │   ├── code-review.agent.md     # 代碼審查代理
 │   ├── security-scanner.agent.md # 安全掃描代理
 │   ├── dependency-updater.agent.md # 依賴更新代理
@@ -24,22 +25,27 @@ This directory contains the private custom agents architecture for the SynergyMe
 
 ## 代理程式類型 (Agent Types)
 
-### 1. Code Review Agent (代碼審查代理)
+### 1. Synergy Mesh Administrator Agent (系統管理代理)
+- **功能**: 平台管理、系統監控、用戶權限管理、平台治理、備份恢復
+- **觸發**: 系統健康檢查、管理操作、定時任務、告警事件
+- **整合**: Kubernetes, Prometheus, Grafana, HashiCorp Vault, Auth0
+
+### 2. Code Review Agent (代碼審查代理)
 - **功能**: 自動化代碼審查、風格檢查、最佳實踐建議
 - **觸發**: PR 創建或更新時
 - **整合**: ESLint, TypeScript, Prettier
 
-### 2. Security Scanner Agent (安全掃描代理)
+### 3. Security Scanner Agent (安全掃描代理)
 - **功能**: 安全漏洞檢測、依賴審計、密鑰洩漏檢測
 - **觸發**: 代碼變更、定時掃描
 - **整合**: CodeQL, Snyk, Semgrep
 
-### 3. Dependency Updater Agent (依賴更新代理)
+### 4. Dependency Updater Agent (依賴更新代理)
 - **功能**: 依賴版本檢查、自動更新 PR、相容性測試
 - **觸發**: 定時檢查、手動觸發
 - **整合**: Dependabot, npm audit
 
-### 4. Workflow Optimizer Agent (工作流優化代理)
+### 5. Workflow Optimizer Agent (工作流優化代理)
 - **功能**: CI/CD 優化建議、效能分析、成本優化
 - **觸發**: 工作流完成後
 - **整合**: GitHub Actions Analytics

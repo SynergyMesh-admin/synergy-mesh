@@ -15,6 +15,45 @@ global:
 
 # Agent-specific settings
 agents:
+  # Synergy Mesh Administrator Agent
+  synergy-mesh-administrator:
+    enabled: true
+    monitoring:
+      health_check_interval: 300  # seconds
+      alert_threshold: 0.8
+      metrics:
+        - cpu_usage
+        - memory_usage
+        - disk_usage
+        - service_availability
+        - api_latency
+    user_management:
+      auto_provision: true
+      role_sync: enabled
+      session_timeout: 3600  # seconds
+      max_failed_logins: 5
+    governance:
+      policy_enforcement: strict
+      compliance_checks: enabled
+      audit_retention_days: 365
+    backup:
+      enabled: true
+      schedule: "0 1 * * *"  # Daily at 1 AM
+      retention_days: 30
+      remote_storage: true
+    notifications:
+      critical_alerts: immediate
+      warning_alerts: batched
+      info_alerts: daily_digest
+    alert_channels:
+      - slack
+      - email
+      - pagerduty
+    compliance_frameworks:
+      - GDPR
+      - SOC2
+      - ISO27001
+
   # Code Review Agent
   code-review:
     enabled: true
