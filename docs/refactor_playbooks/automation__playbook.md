@@ -1,6 +1,6 @@
 # Refactor Playbook: automation/
 
-**Generated:** 2025-12-10T00:58:26.992720  
+**Generated:** 2025-12-11T00:58:55.474606  
 **Cluster Score:** 60  
 **Status:** Draft (LLM generation required for complete playbook)
 
