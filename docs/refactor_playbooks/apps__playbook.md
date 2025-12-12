@@ -1,6 +1,6 @@
 # Refactor Playbook: apps/
 
-**Generated:** 2025-12-11T00:58:55.482910  
+**Generated:** 2025-12-12T00:58:33.981051  
 **Cluster Score:** 68  
 **Status:** Draft (LLM generation required for complete playbook)
 

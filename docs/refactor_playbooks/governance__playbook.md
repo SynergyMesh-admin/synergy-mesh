@@ -1,6 +1,6 @@
 # Refactor Playbook: governance/
 
-**Generated:** 2025-12-11T00:58:55.478949  
+**Generated:** 2025-12-12T00:58:33.977146  
 **Cluster Score:** 55  
 **Status:** Draft (LLM generation required for complete playbook)
 
