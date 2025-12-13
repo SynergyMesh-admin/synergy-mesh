@@ -1,6 +1,6 @@
 # Refactor Playbook: tools/
 
-**Generated:** 2025-12-12T00:58:33.983785  
+**Generated:** 2025-12-13T00:54:58.902172  
 **Cluster Score:** 50  
 **Status:** Draft (LLM generation required for complete playbook)
 
